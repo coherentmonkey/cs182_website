@@ -5,6 +5,65 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CS 182 Special Participation Directory</title>
     <style>
+        :root {
+            /* Light mode colors */
+            --bg-primary: #f5f7fa;
+            --bg-secondary: #ffffff;
+            --bg-tertiary: #f7fafc;
+            --bg-header: linear-gradient(135deg, #1a365d 0%, #2d3748 100%);
+            --bg-tabs: #2d3748;
+            --bg-controls: #ffffff;
+            --bg-card: #ffffff;
+            --bg-highlight: linear-gradient(135deg, #ebf8ff 0%, #e6fffa 100%);
+            --bg-info: #edf2f7;
+
+            --text-primary: #333333;
+            --text-secondary: #4a5568;
+            --text-muted: #718096;
+            --text-light: #a0aec0;
+
+            --border-color: #e2e8f0;
+            --border-light: #edf2f7;
+
+            --accent-primary: #4299e1;
+            --accent-hover: rgba(255, 255, 255, 0.1);
+
+            --shadow-sm: 0 2px 6px rgba(0, 0, 0, 0.06);
+            --shadow-md: 0 2px 8px rgba(0, 0, 0, 0.08);
+            --shadow-lg: 0 12px 40px rgba(0, 0, 0, 0.2);
+
+            --quick-view-bg: #edf2f7;
+        }
+
+        [data-theme="dark"] {
+            --bg-primary: #1a1a2e;
+            --bg-secondary: #16213e;
+            --bg-tertiary: #1f2937;
+            --bg-header: linear-gradient(135deg, #0f0f23 0%, #1a1a2e 100%);
+            --bg-tabs: #0f0f23;
+            --bg-controls: #16213e;
+            --bg-card: #1e293b;
+            --bg-highlight: linear-gradient(135deg, #1e3a5f 0%, #1a3a3a 100%);
+            --bg-info: #1f2937;
+
+            --text-primary: #e2e8f0;
+            --text-secondary: #cbd5e0;
+            --text-muted: #a0aec0;
+            --text-light: #718096;
+
+            --border-color: #374151;
+            --border-light: #2d3748;
+
+            --accent-primary: #60a5fa;
+            --accent-hover: rgba(255, 255, 255, 0.05);
+
+            --shadow-sm: 0 2px 6px rgba(0, 0, 0, 0.3);
+            --shadow-md: 0 2px 8px rgba(0, 0, 0, 0.4);
+            --shadow-lg: 0 12px 40px rgba(0, 0, 0, 0.5);
+
+            --quick-view-bg: #1f2937;
+        }
+
         * {
             margin: 0;
             padding: 0;
@@ -13,9 +72,10 @@
 
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
-            background: #f5f7fa;
-            color: #333;
+            background: var(--bg-primary);
+            color: var(--text-primary);
             line-height: 1.6;
+            transition: background-color 0.3s, color 0.3s;
         }
 
         .container {
@@ -25,11 +85,12 @@
         }
 
         header {
-            background: linear-gradient(135deg, #1a365d 0%, #2d3748 100%);
+            background: var(--bg-header);
             color: white;
             padding: 30px 20px;
             text-align: center;
             margin-bottom: 0;
+            position: relative;
         }
 
         header h1 {
@@ -42,10 +103,36 @@
             font-size: 1.1rem;
         }
 
+        /* Theme Toggle */
+        .theme-toggle {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 8px;
+            padding: 8px 12px;
+            color: white;
+            cursor: pointer;
+            font-size: 14px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            transition: background 0.2s;
+        }
+
+        .theme-toggle:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        .theme-toggle .icon {
+            font-size: 16px;
+        }
+
         /* Tab Navigation */
         .tabs {
             display: flex;
-            background: #2d3748;
+            background: var(--bg-tabs);
             padding: 0 20px;
             overflow-x: auto;
             position: sticky;
@@ -56,7 +143,7 @@
         .tab {
             padding: 15px 30px;
             cursor: pointer;
-            color: #a0aec0;
+            color: var(--text-light);
             font-weight: 500;
             border-bottom: 3px solid transparent;
             transition: all 0.2s;
@@ -65,12 +152,12 @@
 
         .tab:hover {
             color: white;
-            background: rgba(255, 255, 255, 0.1);
+            background: var(--accent-hover);
         }
 
         .tab.active {
             color: white;
-            border-bottom-color: #4299e1;
+            border-bottom-color: var(--accent-primary);
             background: rgba(255, 255, 255, 0.05);
         }
 
@@ -82,9 +169,9 @@
 
         /* Controls */
         .controls {
-            background: white;
+            background: var(--bg-controls);
             padding: 20px;
-            border-bottom: 1px solid #e2e8f0;
+            border-bottom: 1px solid var(--border-color);
             display: flex;
             flex-wrap: wrap;
             gap: 15px;
@@ -99,21 +186,22 @@
 
         .control-group label {
             font-weight: 500;
-            color: #4a5568;
+            color: var(--text-secondary);
         }
 
         select {
             padding: 8px 12px;
-            border: 1px solid #e2e8f0;
+            border: 1px solid var(--border-color);
             border-radius: 6px;
             font-size: 14px;
-            background: white;
+            background: var(--bg-secondary);
+            color: var(--text-primary);
             cursor: pointer;
         }
 
         select:focus {
             outline: none;
-            border-color: #4299e1;
+            border-color: var(--accent-primary);
         }
 
         .search-box {
@@ -124,18 +212,20 @@
         .search-box input {
             width: 100%;
             padding: 10px 15px;
-            border: 1px solid #e2e8f0;
+            border: 1px solid var(--border-color);
             border-radius: 6px;
             font-size: 14px;
+            background: var(--bg-secondary);
+            color: var(--text-primary);
         }
 
         .search-box input:focus {
             outline: none;
-            border-color: #4299e1;
+            border-color: var(--accent-primary);
         }
 
         .results-count {
-            color: #718096;
+            color: var(--text-muted);
             font-size: 14px;
         }
 
@@ -145,8 +235,8 @@
             flex-wrap: wrap;
             gap: 6px;
             padding: 12px 20px;
-            background: #f7fafc;
-            border-bottom: 1px solid #e2e8f0;
+            background: var(--bg-tertiary);
+            border-bottom: 1px solid var(--border-color);
             max-width: 1200px;
             margin: 0 auto;
         }
@@ -157,7 +247,7 @@
 
         .tag-selector-label {
             font-weight: 500;
-            color: #4a5568;
+            color: var(--text-secondary);
             margin-right: 6px;
             align-self: center;
             white-space: nowrap;
@@ -166,10 +256,10 @@
 
         .tag-btn {
             padding: 3px 8px;
-            border: 1px solid #e2e8f0;
+            border: 1px solid var(--border-color);
             border-radius: 12px;
-            background: white;
-            color: #4a5568;
+            background: var(--bg-secondary);
+            color: var(--text-secondary);
             font-size: 11px;
             cursor: pointer;
             transition: all 0.2s;
@@ -177,13 +267,13 @@
         }
 
         .tag-btn:hover {
-            border-color: #4299e1;
-            color: #4299e1;
+            border-color: var(--accent-primary);
+            color: var(--accent-primary);
         }
 
         .tag-btn.active {
-            background: #4299e1;
-            border-color: #4299e1;
+            background: var(--accent-primary);
+            border-color: var(--accent-primary);
             color: white;
         }
 
@@ -255,30 +345,30 @@
 
         /* Home Page Styles */
         .home-intro {
-            background: white;
+            background: var(--bg-secondary);
             border-radius: 12px;
             padding: 30px;
             margin-bottom: 30px;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+            box-shadow: var(--shadow-md);
         }
 
         .home-intro h2 {
-            color: #1a365d;
+            color: var(--accent-primary);
             margin-bottom: 15px;
             font-size: 1.5rem;
         }
 
         .home-intro p {
-            color: #4a5568;
+            color: var(--text-secondary);
             line-height: 1.7;
             margin-bottom: 12px;
         }
 
         .home-intro .highlight {
-            background: linear-gradient(135deg, #ebf8ff 0%, #e6fffa 100%);
+            background: var(--bg-highlight);
             padding: 15px 20px;
             border-radius: 8px;
-            border-left: 4px solid #4299e1;
+            border-left: 4px solid var(--accent-primary);
             margin-top: 20px;
         }
 
@@ -292,11 +382,11 @@
             align-items: center;
             margin-bottom: 15px;
             padding-bottom: 10px;
-            border-bottom: 2px solid #e2e8f0;
+            border-bottom: 2px solid var(--border-color);
         }
 
         .home-section-header h3 {
-            color: #2d3748;
+            color: var(--text-primary);
             font-size: 1.1rem;
             display: flex;
             align-items: center;
@@ -304,7 +394,7 @@
         }
 
         .home-section-header .section-badge {
-            background: #4299e1;
+            background: var(--accent-primary);
             color: white;
             padding: 3px 10px;
             border-radius: 12px;
@@ -313,7 +403,7 @@
         }
 
         .home-section-header .view-all {
-            color: #4299e1;
+            color: var(--accent-primary);
             text-decoration: none;
             font-size: 13px;
             font-weight: 500;
@@ -325,7 +415,7 @@
         }
 
         .home-section-desc {
-            color: #718096;
+            color: var(--text-muted);
             font-size: 13px;
             margin-bottom: 15px;
         }
@@ -337,11 +427,11 @@
         }
 
         .no-pinned {
-            color: #a0aec0;
+            color: var(--text-light);
             font-style: italic;
             padding: 20px;
             text-align: center;
-            background: #f7fafc;
+            background: var(--bg-tertiary);
             border-radius: 8px;
         }
 
@@ -356,34 +446,34 @@
 
         /* Participation Info */
         .participation-info {
-            background: #edf2f7;
+            background: var(--bg-info);
             padding: 15px 20px;
-            border-left: 4px solid #4299e1;
+            border-left: 4px solid var(--accent-primary);
             margin-bottom: 20px;
         }
 
         .participation-info h3 {
-            color: #2d3748;
+            color: var(--text-primary);
             margin-bottom: 5px;
         }
 
         .participation-info p {
-            color: #4a5568;
+            color: var(--text-secondary);
             font-size: 14px;
         }
 
         /* Performance Summary Box */
         .performance-summary {
-            background: white;
+            background: var(--bg-secondary);
             border-radius: 10px;
             padding: 20px;
             margin-bottom: 20px;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
-            border: 1px solid #e2e8f0;
+            box-shadow: var(--shadow-md);
+            border: 1px solid var(--border-color);
         }
 
         .performance-summary h4 {
-            color: #2d3748;
+            color: var(--text-primary);
             margin-bottom: 12px;
             font-size: 1rem;
             display: flex;
@@ -399,20 +489,20 @@
         }
 
         .performance-summary .stat {
-            background: #f7fafc;
+            background: var(--bg-tertiary);
             padding: 8px 14px;
             border-radius: 8px;
             font-size: 13px;
         }
 
         .performance-summary .stat-label {
-            color: #718096;
+            color: var(--text-muted);
             font-size: 11px;
             text-transform: uppercase;
         }
 
         .performance-summary .stat-value {
-            color: #2d3748;
+            color: var(--text-primary);
             font-weight: 600;
         }
 
@@ -430,15 +520,15 @@
 
         .performance-summary .column h5 {
             font-size: 13px;
-            color: #4a5568;
+            color: var(--text-secondary);
             margin-bottom: 8px;
             display: flex;
             align-items: center;
             gap: 6px;
         }
 
-        .performance-summary .column h5.strengths { color: #276749; }
-        .performance-summary .column h5.weaknesses { color: #c53030; }
+        .performance-summary .column h5.strengths { color: #48bb78; }
+        .performance-summary .column h5.weaknesses { color: #fc8181; }
 
         .performance-summary ul {
             list-style: none;
@@ -448,7 +538,7 @@
 
         .performance-summary li {
             font-size: 12px;
-            color: #4a5568;
+            color: var(--text-secondary);
             padding: 4px 0;
             padding-left: 16px;
             position: relative;
@@ -458,11 +548,11 @@
             content: '•';
             position: absolute;
             left: 0;
-            color: #a0aec0;
+            color: var(--text-light);
         }
 
         .performance-summary .no-data {
-            color: #a0aec0;
+            color: var(--text-light);
             font-style: italic;
             font-size: 12px;
         }
@@ -480,19 +570,19 @@
             position: relative;
             display: flex;
             flex-direction: column;
-            background: white;
+            background: var(--bg-card);
             border-radius: 10px;
-            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.06);
+            box-shadow: var(--shadow-sm);
             overflow: hidden;
             transition: transform 0.3s ease, box-shadow 0.3s, border-color 0.3s, z-index 0s;
             text-decoration: none;
             color: inherit;
-            border: 1px solid #e2e8f0;
+            border: 1px solid var(--border-color);
         }
 
         .thread-card.hovered {
-            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.2);
-            border-color: #4299e1;
+            box-shadow: var(--shadow-lg);
+            border-color: var(--accent-primary);
             z-index: 100;
             overflow: visible;
         }
@@ -526,7 +616,7 @@
 
         .thread-title {
             font-size: 0.85rem;
-            color: #2d3748;
+            color: var(--text-primary);
             font-weight: 600;
             line-height: 1.4;
             display: -webkit-box;
@@ -540,7 +630,7 @@
             flex-wrap: wrap;
             gap: 8px;
             font-size: 11px;
-            color: #718096;
+            color: var(--text-muted);
             margin-top: auto;
         }
 
@@ -559,16 +649,16 @@
             transform: translate(-50%, -50%);
             width: 350px;
             max-width: 90vw;
-            background: white;
-            border: 1px solid #e2e8f0;
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-color);
             border-radius: 10px;
-            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.2);
+            box-shadow: var(--shadow-lg);
             z-index: 50;
         }
 
         .quick-view-header {
             padding: 10px 14px;
-            background: #4299e1;
+            background: var(--accent-primary);
             color: white;
             font-weight: 600;
             font-size: 13px;
@@ -579,7 +669,7 @@
             padding: 10px 12px;
             font-size: 11px;
             line-height: 1.5;
-            color: #4a5568;
+            color: var(--text-secondary);
             white-space: pre-wrap;
             word-wrap: break-word;
             max-height: 150px;
@@ -611,19 +701,19 @@
 
         .quick-view-cta {
             padding: 8px 14px;
-            background: #edf2f7;
-            border-top: 1px solid #e2e8f0;
+            background: var(--quick-view-bg);
+            border-top: 1px solid var(--border-color);
             text-align: center;
             font-size: 12px;
-            color: #4299e1;
+            color: var(--accent-primary);
             font-weight: 500;
         }
 
         .model-badge {
             display: inline-block;
             padding: 2px 8px;
-            background: #e2e8f0;
-            color: #4a5568;
+            background: var(--border-color);
+            color: var(--text-secondary);
             border-radius: 10px;
             font-size: 10px;
             font-weight: 500;
@@ -648,8 +738,8 @@
         .model-badge.polar-express { background: #cffafe; color: #155e75; }
 
         .attachment-badge {
-            background: #edf2f7;
-            color: #4a5568;
+            background: var(--bg-info);
+            color: var(--text-secondary);
             padding: 2px 6px;
             border-radius: 8px;
             font-size: 9px;
@@ -689,20 +779,68 @@
         .empty-state {
             text-align: center;
             padding: 60px 20px;
-            color: #718096;
+            color: var(--text-muted);
         }
 
         .empty-state h3 {
             margin-bottom: 10px;
-            color: #4a5568;
+            color: var(--text-secondary);
         }
 
         /* Footer */
         footer {
             text-align: center;
             padding: 30px;
-            color: #718096;
+            color: var(--text-muted);
             font-size: 14px;
+        }
+
+        /* Pagination */
+        .pagination {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 8px;
+            padding: 20px 0;
+            flex-wrap: wrap;
+        }
+
+        .pagination-btn {
+            padding: 8px 14px;
+            border: 1px solid var(--border-color);
+            border-radius: 6px;
+            background: var(--bg-secondary);
+            color: var(--text-secondary);
+            cursor: pointer;
+            font-size: 14px;
+            transition: all 0.2s;
+        }
+
+        .pagination-btn:hover:not(:disabled) {
+            border-color: var(--accent-primary);
+            color: var(--accent-primary);
+        }
+
+        .pagination-btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        .pagination-btn.active {
+            background: var(--accent-primary);
+            border-color: var(--accent-primary);
+            color: white;
+        }
+
+        .pagination-info {
+            color: var(--text-muted);
+            font-size: 13px;
+            padding: 0 10px;
+        }
+
+        .pagination-ellipsis {
+            color: var(--text-muted);
+            padding: 0 4px;
         }
 
         /* Responsive */
@@ -755,6 +893,10 @@
     <header>
         <h1>CS 182 Special Participation Directory</h1>
         <p>Browse student submissions across all participation categories</p>
+        <button class="theme-toggle" id="theme-toggle" aria-label="Toggle dark mode">
+            <span class="icon" id="theme-icon">&#9790;</span>
+            <span id="theme-text">Dark</span>
+        </button>
     </header>
 
     <nav class="tabs" id="tabs" style="visibility: hidden;">
@@ -796,11 +938,50 @@
     </footer>
 
     <script>
-        // Data will be loaded from data.json and summaries.json
+        // ===== THEME TOGGLE =====
+        function initTheme() {
+            const savedTheme = localStorage.getItem('theme');
+            const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+            const theme = savedTheme || (prefersDark ? 'dark' : 'light');
+            setTheme(theme);
+        }
+
+        function setTheme(theme) {
+            document.documentElement.setAttribute('data-theme', theme);
+            localStorage.setItem('theme', theme);
+            updateThemeButton(theme);
+        }
+
+        function updateThemeButton(theme) {
+            const icon = document.getElementById('theme-icon');
+            const text = document.getElementById('theme-text');
+            if (theme === 'dark') {
+                icon.innerHTML = '&#9788;'; // Sun
+                text.textContent = 'Light';
+            } else {
+                icon.innerHTML = '&#9790;'; // Moon
+                text.textContent = 'Dark';
+            }
+        }
+
+        function toggleTheme() {
+            const current = document.documentElement.getAttribute('data-theme') || 'light';
+            setTheme(current === 'dark' ? 'light' : 'dark');
+        }
+
+        // Initialize theme immediately to prevent flash
+        initTheme();
+
+        document.getElementById('theme-toggle').addEventListener('click', toggleTheme);
+
+        // ===== DATA & STATE =====
         let data = {};
         let summaries = {};
         let currentTab = 'home';
+        let currentPage = 1;
         let selectedCategories = new Set(); // For participation E category filtering
+
+        const ITEMS_PER_PAGE = 24; // Cards per page
 
         // Tab ID to URL hash mapping
         const tabToHash = {
@@ -817,18 +998,39 @@
             Object.entries(tabToHash).map(([k, v]) => [v, k])
         );
 
-        function getTabFromHash() {
+        function parseHash() {
             const hash = window.location.hash.slice(1); // Remove the #
-            return hashToTab[hash] || 'home';
+            const parts = hash.split('/');
+            const tabHash = parts[0] || '';
+            const page = parts[1] ? parseInt(parts[1], 10) : 1;
+            return {
+                tab: hashToTab[tabHash] || 'home',
+                page: isNaN(page) || page < 1 ? 1 : page
+            };
         }
 
-        function updateUrlHash(tabId, replace = false) {
-            const hash = tabToHash[tabId] || '';
-            const newUrl = hash ? `#${hash}` : window.location.pathname;
-            if (replace) {
-                history.replaceState({ tab: tabId }, '', newUrl);
+        function getTabFromHash() {
+            return parseHash().tab;
+        }
+
+        function getPageFromHash() {
+            return parseHash().page;
+        }
+
+        function updateUrlHash(tabId, page = 1, replace = false) {
+            const tabHash = tabToHash[tabId] || '';
+            let newUrl;
+            if (!tabHash) {
+                newUrl = window.location.pathname;
+            } else if (page <= 1) {
+                newUrl = `#${tabHash}`;
             } else {
-                history.pushState({ tab: tabId }, '', newUrl);
+                newUrl = `#${tabHash}/${page}`;
+            }
+            if (replace) {
+                history.replaceState({ tab: tabId, page }, '', newUrl);
+            } else {
+                history.pushState({ tab: tabId, page }, '', newUrl);
             }
         }
 
@@ -875,10 +1077,12 @@
                 data = jsonData;
                 summaries = summaryData;
 
-                // Read initial tab from URL hash
-                currentTab = getTabFromHash();
+                // Read initial tab and page from URL hash
+                const parsed = parseHash();
+                currentTab = parsed.tab;
+                currentPage = parsed.page;
                 // Replace initial history state
-                updateUrlHash(currentTab, true);
+                updateUrlHash(currentTab, currentPage, true);
 
                 initializeTabs();
                 renderCurrentTab();
@@ -927,12 +1131,13 @@
             tabsContainer.appendChild(topicsTab);
         }
 
-        function switchTab(tabId, updateHistory = true) {
+        function switchTab(tabId, updateHistory = true, page = 1) {
             currentTab = tabId;
+            currentPage = page;
 
             // Update URL hash
             if (updateHistory) {
-                updateUrlHash(tabId);
+                updateUrlHash(tabId, page);
             }
 
             // Update tab active states
@@ -940,19 +1145,34 @@
                 tab.classList.toggle('active', tab.dataset.tab === tabId);
             });
 
-            // Reset filters
-            document.getElementById('model-filter').value = 'all';
-            document.getElementById('hw-filter').value = 'all';
-            document.getElementById('search').value = '';
-            selectedCategories.clear();
+            // Reset filters only when switching tabs (not just pages)
+            if (updateHistory && page === 1) {
+                document.getElementById('model-filter').value = 'all';
+                document.getElementById('hw-filter').value = 'all';
+                document.getElementById('search').value = '';
+                selectedCategories.clear();
+            }
 
             renderCurrentTab();
         }
 
+        function goToPage(page, updateHistory = true) {
+            currentPage = page;
+            if (updateHistory) {
+                updateUrlHash(currentTab, page);
+            }
+            renderThreads();
+            // Scroll to top of thread list
+            document.querySelector('.controls')?.scrollIntoView({ behavior: 'smooth' });
+        }
+
         // Handle browser back/forward navigation
         window.addEventListener('popstate', (event) => {
-            const tabId = event.state?.tab || getTabFromHash();
-            switchTab(tabId, false); // Don't update history on popstate
+            const parsed = parseHash();
+            const tabId = event.state?.tab || parsed.tab;
+            const page = event.state?.page || parsed.page;
+            currentPage = page;
+            switchTab(tabId, false, page); // Don't update history on popstate
         });
 
         function renderCurrentTab() {
@@ -1045,6 +1265,8 @@
                             selectedCategories.add(cat);
                         }
                     }
+                    currentPage = 1; // Reset to page 1 when category changes
+                    updateUrlHash(currentTab, currentPage, true);
                     populateCategoryFilter();
                     updateModelFilterForCategories();
                     renderThreads();
@@ -1419,9 +1641,25 @@
                 });
             }
 
+            // Pagination calculations
+            const totalThreads = threads.length;
+            const totalPages = Math.ceil(totalThreads / ITEMS_PER_PAGE);
+
+            // Validate current page
+            if (currentPage > totalPages && totalPages > 0) {
+                currentPage = totalPages;
+            }
+            if (currentPage < 1) {
+                currentPage = 1;
+            }
+
+            const startIndex = (currentPage - 1) * ITEMS_PER_PAGE;
+            const endIndex = Math.min(startIndex + ITEMS_PER_PAGE, totalThreads);
+            const paginatedThreads = threads.slice(startIndex, endIndex);
+
             // Update results count
             document.getElementById('results-count').textContent =
-                `Showing ${threads.length} of ${participation.threads.length} threads`;
+                `Showing ${startIndex + 1}-${endIndex} of ${totalThreads} threads`;
 
             // Build HTML
             const panelsContainer = document.getElementById('tab-panels');
@@ -1443,14 +1681,68 @@
                 html += '<div class="empty-state"><h3>No threads found</h3><p>Try adjusting your filters.</p></div>';
             } else {
                 html += '<div class="thread-list">';
-                threads.forEach((thread, index) => {
-                    html += renderThreadCard(thread, index);
+                paginatedThreads.forEach((thread, index) => {
+                    html += renderThreadCard(thread, startIndex + index);
                 });
                 html += '</div>';
+
+                // Add pagination controls
+                if (totalPages > 1) {
+                    html += renderPagination(currentPage, totalPages);
+                }
             }
 
             panelsContainer.innerHTML = html;
 
+            // Add pagination event listeners
+            if (totalPages > 1) {
+                document.querySelectorAll('.pagination-btn[data-page]').forEach(btn => {
+                    btn.addEventListener('click', () => {
+                        const page = parseInt(btn.dataset.page, 10);
+                        goToPage(page);
+                    });
+                });
+            }
+        }
+
+        function renderPagination(currentPage, totalPages) {
+            let html = '<div class="pagination">';
+
+            // Previous button
+            html += `<button class="pagination-btn" data-page="${currentPage - 1}" ${currentPage === 1 ? 'disabled' : ''}>← Prev</button>`;
+
+            // Page numbers
+            const maxVisible = 5;
+            let startPage = Math.max(1, currentPage - Math.floor(maxVisible / 2));
+            let endPage = Math.min(totalPages, startPage + maxVisible - 1);
+
+            if (endPage - startPage < maxVisible - 1) {
+                startPage = Math.max(1, endPage - maxVisible + 1);
+            }
+
+            if (startPage > 1) {
+                html += `<button class="pagination-btn" data-page="1">1</button>`;
+                if (startPage > 2) {
+                    html += `<span class="pagination-ellipsis">...</span>`;
+                }
+            }
+
+            for (let i = startPage; i <= endPage; i++) {
+                html += `<button class="pagination-btn ${i === currentPage ? 'active' : ''}" data-page="${i}">${i}</button>`;
+            }
+
+            if (endPage < totalPages) {
+                if (endPage < totalPages - 1) {
+                    html += `<span class="pagination-ellipsis">...</span>`;
+                }
+                html += `<button class="pagination-btn" data-page="${totalPages}">${totalPages}</button>`;
+            }
+
+            // Next button
+            html += `<button class="pagination-btn" data-page="${currentPage + 1}" ${currentPage === totalPages ? 'disabled' : ''}>Next →</button>`;
+
+            html += '</div>';
+            return html;
         }
 
         function renderPerformanceSummary(participation, modelFilter, hwFilter) {
@@ -1601,17 +1893,25 @@
 
         // Event listeners for filters
         document.getElementById('model-filter').addEventListener('change', () => {
+            currentPage = 1; // Reset to page 1 when filter changes
             updateFilterOptions('model');
             if (currentTab === 'participation_E') {
                 populateCategoryFilter();
             }
+            updateUrlHash(currentTab, currentPage, true);
             renderThreads();
         });
         document.getElementById('hw-filter').addEventListener('change', () => {
+            currentPage = 1; // Reset to page 1 when filter changes
             updateFilterOptions('hw');
+            updateUrlHash(currentTab, currentPage, true);
             renderThreads();
         });
-        document.getElementById('search').addEventListener('input', debounce(renderThreads, 300));
+        document.getElementById('search').addEventListener('input', debounce(() => {
+            currentPage = 1; // Reset to page 1 when search changes
+            updateUrlHash(currentTab, currentPage, true);
+            renderThreads();
+        }, 300));
 
         function debounce(func, wait) {
             let timeout;
