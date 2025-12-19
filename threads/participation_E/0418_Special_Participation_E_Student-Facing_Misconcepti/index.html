@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Special Participation E: Student-Facing Misconception Guides - CS 182</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #f5f7fa;
+            color: #333;
+            line-height: 1.6;
+        }
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .back-link {
+            display: inline-block;
+            margin-bottom: 20px;
+            color: #4299e1;
+            text-decoration: none;
+        }
+        .back-link:hover { text-decoration: underline; }
+        .thread-header {
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+        }
+        .thread-title {
+            font-size: 1.8rem;
+            color: #2d3748;
+            margin-bottom: 15px;
+        }
+        .thread-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            color: #718096;
+            font-size: 14px;
+        }
+        .model-badge {
+            display: inline-block;
+            padding: 4px 12px;
+            background: #e2e8f0;
+            color: #4a5568;
+            border-radius: 15px;
+            font-size: 13px;
+            font-weight: 500;
+        }
+        .hw-badge {
+            display: inline-block;
+            padding: 4px 12px;
+            background: #fed7e2;
+            color: #97266d;
+            border-radius: 15px;
+            font-size: 13px;
+            font-weight: 500;
+        }
+        .thread-body {
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+        }
+        .thread-body h3 {
+            margin-bottom: 15px;
+            color: #2d3748;
+        }
+        .body-content {
+            white-space: pre-wrap;
+            word-wrap: break-word;
+            line-height: 1.8;
+            font-size: 15px;
+        }
+        .body-content a {
+            color: #4299e1;
+            word-break: break-all;
+        }
+        .attachments {
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
+        .attachments h3 {
+            margin-bottom: 20px;
+            color: #2d3748;
+        }
+        .attachment {
+            margin-bottom: 25px;
+            border: 1px solid #e2e8f0;
+            border-radius: 6px;
+            overflow: hidden;
+        }
+        .attachment-label {
+            background: #f7fafc;
+            padding: 10px 15px;
+            font-weight: 500;
+            font-size: 14px;
+            border-bottom: 1px solid #e2e8f0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .download-link {
+            color: #4299e1;
+            text-decoration: none;
+            font-weight: normal;
+        }
+        .download-link:hover { text-decoration: underline; }
+        .attachment-image img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+        .attachment-pdf iframe {
+            width: 100%;
+            height: 800px;
+            border: none;
+        }
+        .attachment-video video {
+            width: 100%;
+            max-height: 600px;
+        }
+        .attachment-audio audio {
+            width: 100%;
+            padding: 15px;
+        }
+        .attachment-text pre {
+            padding: 15px;
+            background: #f7fafc;
+            overflow-x: auto;
+            max-height: 500px;
+            font-size: 13px;
+            line-height: 1.5;
+        }
+        .attachment-file {
+            padding: 15px;
+        }
+        .file-link {
+            color: #4299e1;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .file-link:hover { text-decoration: underline; }
+        .ed-link {
+            display: inline-block;
+            margin-top: 15px;
+            color: #4299e1;
+            text-decoration: none;
+        }
+        .ed-link:hover { text-decoration: underline; }
+        @media (max-width: 768px) {
+            .thread-title { font-size: 1.4rem; }
+            .attachment-pdf iframe { height: 500px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <a href="../../../index.html" class="back-link">← Back to Directory</a>
+
+        <div class="thread-header">
+            <h1 class="thread-title">Special Participation E: Student-Facing Misconception Guides</h1>
+            <div class="thread-meta">
+                <span>By Sammie Smith</span>
+                <span>2025-12-03</span>
+                
+                <span class="model-badge">GPT</span>
+            </div>
+            <a href="https://edstem.org/us/courses/84647/discussion/7397241" target="_blank" class="ed-link">View on Ed Stem →</a>
+        </div>
+
+        <div class="thread-body">
+            <div class="body-content">Hey everyone,
+
+I wanted to share my experience using an LLM to generate a &quot;Common Mistakes&quot; guide for my optimization lecture notes. I wanted to build a guide that addresses common student conceptual pitfalls to help me check my understanding of lecture material before/during homework. 
+
+TL;DR: careful prompting dramatically improved conceptual structure, but mathematical errors make the output dangerous. Even though this didn&#x27;t work super well, I think it still is useful to know that we can&#x27;t easily prompt models to identify potential student misconceptions/pitfalls purely from lecture material. And I think this reflects on a shared student experience these days: AI can explain the lecture notes but it struggles to identify the student knowledge state, which is critical in guiding students from misunderstanding to mastery using the correct level of rigor. 
+
+Here are my results:
+
+(I used the .tex lecture notes generated from Jameson Liu. See ed thread #301)
+
+1) with chatGPT
+
+
+
+2) with claude
+
+
+
+My General Commentary:
+
+My first attempt with ChatGPT was a disaster—superficial and completely missed that data geometry drives optimization behavior. So I crafted a detailed prompt forcing the AI to: (1) analyze the &quot;big picture&quot; first, (2) identify where students shift from scalar to geometric thinking, (3) derive misconceptions organically from lecture structure, (4) organize around themes, and (5) include worked examples. The prompt was topic-agnostic.
+
+The conceptual improvements were real. The AI organized misconceptions into coherent themes like &quot;Spectral Properties vs. Dataset Size,&quot; consistently used geometric language (&quot;elongated bowl,&quot; &quot;steep walls&quot;), correctly identified SVD as the unifying framework, and created an excellent debugging checklist. The warning signs were specific: &quot;Your justification for η mentions only n or d, not σ_max.&quot;
+
+But the mathematics is catastrophically wrong. Worked examples have incorrect arithmetic that doesn&#x27;t even stay consistent across steps. Claims are asserted without justification then &quot;verified&quot; with completely different numbers handwaved as &quot;similar patterns.&quot; Examples reference undefined quantities. I couldn&#x27;t verify most calculations due to missing steps, ambiguous notation, or wrong arithmetic.
+
+The fundamental problem: the AI confidently generates mathematical content it cannot verify. It&#x27;s sophisticated enough to be convincing but wrong enough to be dangerous. Students won&#x27;t spot errors because the surrounding text sounds authoritative. The time sink is verification, not generation.
+
+---------------------------------------
+
+My Specific Commentary For Claude Generation:
+
+The &quot;Experiments to Deepen Understanding&quot; section lists good ideas but provides no guidance on implementation, what to observe, or what conclusions to draw. Telling students to &quot;measure the smoothness (variance of step directions)&quot; for momentum without explaining how to compute this or what values to expect is not helpful. These experiments need more scaffolding.
+
+Despite the improved tone, the fundamental framing is still &quot;here are mistakes and how to fix them&quot; rather than &quot;here&#x27;s how to build robust understanding.&quot; The guide would be stronger if it started each section with &quot;Here&#x27;s what you should understand&quot; and then showed common pitfalls as deviations from that understanding, rather than leading with the mistakes
+
+Theme 1, Mistake 1.1: First warning sign is too specific. The third is too vague
+
+
+
+Math Hallucination! In the complete 2x2 example, there&#x27;s a critical arithmetic error that undermines the entire demonstration. The guide gets [4 0.04]^T for w1, but really this should be [40, 0.04]^T. This makes the calculation for w2 incorrect as well. This is a serious pedagogical failure because students trying to verify the calculation will get confused and lose trust in the material. A worked example with wrong arithmetic is worse than no example at all.
+
+The guide states &quot;Error [1,1]^T&quot; but never defines what &quot;Error&quot; means here. Is this w* - wt or wt - w*? The inconsistent usage makes it impossible to verify the calculations. Later it says &quot;error multiplied by 0.8 per iteration&quot; but earlier showed the update factor as (1−2*0.1*9)=−0.8, which is negative. The magnitude is 0.8, sure, but this distinction matters when students are trying to understand convergence versus oscillation.
+
+While the &quot;Connection to Practice&quot; sections are useful, they&#x27;re too brief and disconnected from the main exposition. For instance, when discussing condition number, the guide mentions batch normalization helps but doesn&#x27;t explain how or why it affects the condition number. These connections feel tacked on rather than integrated. A student reading this still won&#x27;t understand why practitioners obsess over things like feature normalization.
+
+The guide calculates scaling factors and then says &quot;Wait, this seems wrong!&quot; This is pedagogically bizarre. It makes it seem like even the guide author is confused. The issue is that the guide conflates two different quantities: the scaling factor sigma_i / (sigma_i^2 + lambda) 
+(which appears in the formula) with the actual shrinkage of the final solution. When it says scaling factor 2 is 1.429 (which is &gt;1), this should have been a red flag that something was wrong with the setup. The &quot;correction&quot; that follows is actually computing a different quantity (wi,Ridge) without clarifying the distinction. This will confuse students who are trying to understand what the scaling factor actually means.
+
+
+
+The numerical illustration considers f(w) = w^2 and claims data pts give gradients of f1(1)=3, etc. But this doesn&#x27;t make sense. If f(w) = w^2, the the gradient is 2w, and so the gradient evaluated at 1 should be 2 always. The guide seems to be trying to show per sample gradients but it never defines what the individual fi functions are. This example fails because it;s trying to illustrate a concept without properly setting up the mathematical framework. Students will be confused about what &quot;data points giving different gradients&quot; means for the same function at the same point.
+
+Many of the self-check questions ask for numerical calculations rather than conceptual reasoning
+
+There is not justification or derivation of the claim that early stopping has a specific ridge equivalent. This is presented as fact but is actually a loose heuristic that depends heavily on the problem structure. The worked example that follows doesn&#x27;t really validate this relationship—the numbers are completely different (w3 = [.936, .174], wridge =[.730,.026]). The guide just handwaves this as &quot;similar patterns.&quot; This is intellectually dishonest. If the relationship is approximate, explain why and under what conditions it holds.
+
+The &quot;Experiments to Deepen Understanding&quot; section lists good ideas but provides no guidance on implementation, what to observe, or what conclusions to draw. Telling students to &quot;measure the smoothness (variance of step directions)&quot; for momentum without explaining how to compute this or what values to expect is not helpful. These experiments need more scaffolding.
+
+Despite the improved tone, the fundamental framing is still &quot;here are mistakes and how to fix them&quot; rather than &quot;here&#x27;s how to build robust understanding.&quot; The guide would be stronger if it started each section with &quot;Here&#x27;s what you should understand&quot; and then showed common pitfalls as deviations from that understanding, rather than leading with the mistakes.</div>
+        </div>
+
+        <div class="attachments">
+                    <div class="attachment attachment-text">
+                        <div class="attachment-label">cs182_chatgpt_prompt.txt <a href="attachments/cs182_chatgpt_prompt.txt" target="_blank" class="download-link">Download</a></div>
+                        <pre><code>You are an expert CS educator and pedagogy researcher. I will provide you with a set of notes for a CS course topic. Using only those notes, produce the following:
+1.	A pedagogy guide for instructors. This should include: the key learning objectives for the topic; the conceptual prerequisites students need; recommended teaching strategies and sequencing; examples or demonstrations that instructors should use; common points of confusion; suggested scaffolding approaches; and ideas for quick formative assessments. Write this guide for instructors, not for students.
+2.	A list of common student misconceptions that are likely to appear when learning this topic. For each misconception, provide a short name, a clear description, an explanation of why students tend to form this misunderstanding, and observable symptoms an instructor might see in student work or explanations. Ensure the misconceptions are non-redundant and realistically grounded in CS pedagogy.
+3.	One or two realistic scenarios for each misconception, showing how a student might express it in class, on homework, or in office hours. These scenarios should be short and should reveal the underlying misunderstanding, ideally through example code, reasoning steps, or verbal explanations.
+4.	Ideal instructor responses to each scenario. These responses should use sound pedagogy: guiding questions instead of answers, prompts that help surface the student’s mental model, and steps that help the student revise their understanding. For each response, briefly explain why the chosen prompts are pedagogically effective.
+Present the output in the order: pedagogy guide, misconception list, scenarios, ideal responses. Use clear, concise writing. Do not introduce external content; rely only on the notes I provide.
+Format Rules: 
+At the end, I will paste the notes for the topic.
+</code></pre>
+                    </div>
+                    <div class="attachment attachment-text">
+                        <div class="attachment-label">cs182_claude_prompt.txt <a href="attachments/cs182_claude_prompt.txt" target="_blank" class="download-link">Download</a></div>
+                        <pre><code>You are an expert pedagogy consultant tasked with creating a student-facing &quot;Common Mistakes&quot; guide for a lecture on optimization in deep learning. This guide will help students identify, understand, and correct their misconceptions.
+
+INPUT MATERIALS:
+You will be provided with lecture notes on Gradient Descent, Ridge Regression, SGD, and Momentum that build toward understanding implicit regularization through geometric analysis in the SVD basis.
+
+YOUR TASK:
+Create a LaTeX document titled &quot;Common Mistakes in Optimization: A Self-Diagnosis Guide&quot; that helps students actively debug their own understanding.
+
+CRITICAL REQUIREMENTS:
+
+1. CONCEPTUAL ORGANIZATION:
+- Organize mistakes around 3-4 major conceptual themes, NOT as isolated errors
+- Each theme should connect multiple related misconceptions
+- Show how these themes relate to the central idea: data geometry (singular value spectrum) drives optimization behavior
+- Themes might include: &quot;Geometry vs. Dataset Size&quot;, &quot;Directional Behavior in Optimization&quot;, &quot;Regularization Across Time and Space&quot;
+
+2. STRUCTURE FOR EACH MISTAKE:
+For each mistake, provide:
+
+a) Recognition Section:
+- &quot;How to spot this in your own thinking&quot; - specific warning signs in their reasoning or homework
+- Concrete example of incorrect reasoning (e.g., &quot;I chose η=1 because n=1000 is large&quot;)
+- Why this reasoning feels plausible initially
+
+b) Conceptual Explanation:
+- What&#x27;s actually happening geometrically/mathematically (use SVD basis perspective where relevant)
+- Build from simpler to more complex understanding
+- Include a 2×2 or 3×3 worked example with actual numbers showing the correct behavior
+- Use visualization descriptions where helpful (e.g., &quot;imagine the loss surface elongated along...&quot;)
+
+c) Self-Check Questions:
+- 3-4 questions students can ask themselves to test understanding
+- Questions should require reasoning, not just formula recall
+- Include one computational check they can do on simple examples
+
+d) Connection to Practice:
+- When does this mistake actually matter in ML? When is it harmless?
+- Brief mention of what happens in real neural network training
+
+3. MATHEMATICAL RIGOR:
+- All inequalities, bounds, and conditions must be precisely stated
+- Distinguish between divergence, oscillation, and slow convergence
+- Use correct notation from the lecture notes
+- Numerical examples must be arithmetically correct and pedagogically meaningful
+- When showing formulas, explain what each term represents physically/geometrically
+
+4. WORKED EXAMPLES:
+- Include at least 2 complete worked examples with realistic numbers
+- One example should use a 2×2 matrix to show complete SVD analysis
+- Another should demonstrate the numerical behavior over several iterations
+- Examples should illustrate the geometry, not just arithmetic
+
+5. MISCONCEPTIONS TO ADDRESS:
+Based on common student difficulties, include:
+- Confusing dataset size with spectral properties for learning rate selection
+- Thinking Ridge shrinks all directions uniformly
+- Expecting GD to converge equally fast in all directions
+- Missing the connection between early stopping and Ridge regularization
+- Believing SGD gradients are biased (confusing variance with bias)
+- Misunderstanding momentum as just &quot;bigger steps&quot; rather than exponential averaging
+- Thinking constant step size SGD cannot converge
+- (Add others from the lecture content as appropriate)
+
+6. PEDAGOGICAL TONE:
+- Respectful and empowering - treat mistakes as natural steps in learning
+- Frame as &quot;developing more refined understanding&quot; not &quot;you were wrong&quot;
+- Use &quot;we&quot; and &quot;us&quot; occasionally to show this is a shared learning process
+- Be encouraging but mathematically honest
+
+7. PRACTICAL LEARNING AIDS:
+- Include a &quot;Quick Reference&quot; box summarizing key formulas with geometric interpretations
+- Provide a &quot;Debugging Checklist&quot; students can use when solving problems
+- Suggest specific experiments students can run (e.g., &quot;Try GD on a 2×2 problem with σ₁=10, σ₂=0.1&quot;)
+
+8. LATEX FORMATTING:
+- Use clear section hierarchy with \section and \subsection
+- Include theorem/example environments where appropriate
+- Use \textbf for key concepts, but don&#x27;t overuse formatting
+- Include margin notes or highlighted boxes for critical insights
+- Make it visually scannable - students should be able to quickly find relevant sections
+
+WHAT TO AVOID:
+- Do NOT just list formulas without geometric interpretation
+- Do NOT use patronizing language or trivialize student thinking
+- Do NOT provide only toy examples (like 1+1=2 level)
+- Do NOT treat mistakes as isolated facts to memorize
+- Do NOT include content that isn&#x27;t directly connected to the lecture notes
+- Do NOT be vague - every claim needs mathematical backing
+
+OUTPUT FORMAT:
+A complete, compilable LaTeX document that is 6-10 pages long, well-organized, mathematically rigorous, and genuinely helpful for student self-diagnosis and learning.
+
+Begin your response with \documentclass and end with \end{document}. The document should be immediately compilable.</code></pre>
+                    </div>
+                <div class="attachment attachment-pdf">
+                    <div class="attachment-label">cs182_special_participation_student_guide (1).pdf <a href="attachments/cs182_special_participation_student_guide (1).pdf" target="_blank" class="download-link">Open in new tab</a></div>
+                    <iframe src="attachments/cs182_special_participation_student_guide (1).pdf" loading="lazy"></iframe>
+                </div>
+                <div class="attachment attachment-pdf">
+                    <div class="attachment-label">cs182_special_participation_student_guide.pdf <a href="attachments/cs182_special_participation_student_guide.pdf" target="_blank" class="download-link">Open in new tab</a></div>
+                    <iframe src="attachments/cs182_special_participation_student_guide.pdf" loading="lazy"></iframe>
+                </div>
+                <div class="attachment attachment-image">
+                    <div class="attachment-label">image_1_cHbC9MPZZ3Mp1tsUDHQCvCny.png</div>
+                    <img src="attachments/image_1_cHbC9MPZZ3Mp1tsUDHQCvCny.png" alt="image_1_cHbC9MPZZ3Mp1tsUDHQCvCny.png" loading="lazy">
+                </div>
+                <div class="attachment attachment-image">
+                    <div class="attachment-label">image_2_prsFBWgl2iMMcFP4r2AJEIM3.png</div>
+                    <img src="attachments/image_2_prsFBWgl2iMMcFP4r2AJEIM3.png" alt="image_2_prsFBWgl2iMMcFP4r2AJEIM3.png" loading="lazy">
+                </div>
+                <div class="attachment attachment-image">
+                    <div class="attachment-label">image_3_1WiZtafV9gLuv25x2vEIZxQb.png</div>
+                    <img src="attachments/image_3_1WiZtafV9gLuv25x2vEIZxQb.png" alt="image_3_1WiZtafV9gLuv25x2vEIZxQb.png" loading="lazy">
+                </div>
+                <div class="attachment attachment-image">
+                    <div class="attachment-label">image_4_zmih0izXnH8ZMwCeXqq9w0af.png</div>
+                    <img src="attachments/image_4_zmih0izXnH8ZMwCeXqq9w0af.png" alt="image_4_zmih0izXnH8ZMwCeXqq9w0af.png" loading="lazy">
+                </div>
+                <div class="attachment attachment-image">
+                    <div class="attachment-label">image_5_dtsANrQas6duL8GOwjN4EsLk.png</div>
+                    <img src="attachments/image_5_dtsANrQas6duL8GOwjN4EsLk.png" alt="image_5_dtsANrQas6duL8GOwjN4EsLk.png" loading="lazy">
+                </div>
+                <div class="attachment attachment-image">
+                    <div class="attachment-label">image_6_iwC0bnD1Nwt1tL44oGONJY5G.png</div>
+                    <img src="attachments/image_6_iwC0bnD1Nwt1tL44oGONJY5G.png" alt="image_6_iwC0bnD1Nwt1tL44oGONJY5G.png" loading="lazy">
+                </div>
+                <div class="attachment attachment-image">
+                    <div class="attachment-label">image_7_SCSegdxmmZtUmrgDja10eJfi.png</div>
+                    <img src="attachments/image_7_SCSegdxmmZtUmrgDja10eJfi.png" alt="image_7_SCSegdxmmZtUmrgDja10eJfi.png" loading="lazy">
+                </div>
+                <div class="attachment attachment-image">
+                    <div class="attachment-label">image_8_56dwdLpOBHq7vgUODkUTWhEa.png</div>
+                    <img src="attachments/image_8_56dwdLpOBHq7vgUODkUTWhEa.png" alt="image_8_56dwdLpOBHq7vgUODkUTWhEa.png" loading="lazy">
+                </div>
+                <div class="attachment attachment-image">
+                    <div class="attachment-label">image_9_shwc3ntIPjU1GLf07i3zQfjm.png</div>
+                    <img src="attachments/image_9_shwc3ntIPjU1GLf07i3zQfjm.png" alt="image_9_shwc3ntIPjU1GLf07i3zQfjm.png" loading="lazy">
+                </div></div>
+    </div>
+</body>
+</html>

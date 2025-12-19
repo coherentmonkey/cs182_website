@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Special Participation E: Project Idea Exploration &amp; Feasibility Assistant - CS 182</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #f5f7fa;
+            color: #333;
+            line-height: 1.6;
+        }
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .back-link {
+            display: inline-block;
+            margin-bottom: 20px;
+            color: #4299e1;
+            text-decoration: none;
+        }
+        .back-link:hover { text-decoration: underline; }
+        .thread-header {
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+        }
+        .thread-title {
+            font-size: 1.8rem;
+            color: #2d3748;
+            margin-bottom: 15px;
+        }
+        .thread-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            color: #718096;
+            font-size: 14px;
+        }
+        .model-badge {
+            display: inline-block;
+            padding: 4px 12px;
+            background: #e2e8f0;
+            color: #4a5568;
+            border-radius: 15px;
+            font-size: 13px;
+            font-weight: 500;
+        }
+        .hw-badge {
+            display: inline-block;
+            padding: 4px 12px;
+            background: #fed7e2;
+            color: #97266d;
+            border-radius: 15px;
+            font-size: 13px;
+            font-weight: 500;
+        }
+        .thread-body {
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+        }
+        .thread-body h3 {
+            margin-bottom: 15px;
+            color: #2d3748;
+        }
+        .body-content {
+            white-space: pre-wrap;
+            word-wrap: break-word;
+            line-height: 1.8;
+            font-size: 15px;
+        }
+        .body-content a {
+            color: #4299e1;
+            word-break: break-all;
+        }
+        .attachments {
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
+        .attachments h3 {
+            margin-bottom: 20px;
+            color: #2d3748;
+        }
+        .attachment {
+            margin-bottom: 25px;
+            border: 1px solid #e2e8f0;
+            border-radius: 6px;
+            overflow: hidden;
+        }
+        .attachment-label {
+            background: #f7fafc;
+            padding: 10px 15px;
+            font-weight: 500;
+            font-size: 14px;
+            border-bottom: 1px solid #e2e8f0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .download-link {
+            color: #4299e1;
+            text-decoration: none;
+            font-weight: normal;
+        }
+        .download-link:hover { text-decoration: underline; }
+        .attachment-image img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+        .attachment-pdf iframe {
+            width: 100%;
+            height: 800px;
+            border: none;
+        }
+        .attachment-video video {
+            width: 100%;
+            max-height: 600px;
+        }
+        .attachment-audio audio {
+            width: 100%;
+            padding: 15px;
+        }
+        .attachment-text pre {
+            padding: 15px;
+            background: #f7fafc;
+            overflow-x: auto;
+            max-height: 500px;
+            font-size: 13px;
+            line-height: 1.5;
+        }
+        .attachment-file {
+            padding: 15px;
+        }
+        .file-link {
+            color: #4299e1;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .file-link:hover { text-decoration: underline; }
+        .ed-link {
+            display: inline-block;
+            margin-top: 15px;
+            color: #4299e1;
+            text-decoration: none;
+        }
+        .ed-link:hover { text-decoration: underline; }
+        @media (max-width: 768px) {
+            .thread-title { font-size: 1.4rem; }
+            .attachment-pdf iframe { height: 500px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <a href="../../../index.html" class="back-link">← Back to Directory</a>
+
+        <div class="thread-header">
+            <h1 class="thread-title">Special Participation E: Project Idea Exploration &amp; Feasibility Assistant</h1>
+            <div class="thread-meta">
+                <span>By Tvisha Londhe</span>
+                <span>2025-12-11</span>
+                
+                <span class="model-badge">GPT</span>
+            </div>
+            <a href="https://edstem.org/us/courses/84647/discussion/7451649" target="_blank" class="ed-link">View on Ed Stem →</a>
+        </div>
+
+        <div class="thread-body">
+            <div class="body-content">The EECS182 project was highly involved, and for our team the most time-consuming part was the brainstorming phase. We spent nearly two weeks reading papers, trying to understand their methods, and repeatedly pivoting ideas — from OOD interpretability → to latent-space interpretability → to eventually an ICL project with hierarchical networks. Since this kind of exploration and back-and-forth is natural but often overwhelming, I explored a ChatGPT-based tool designed to guide early project conversations, refine vague ideas, and help assess feasibility given the papers, compute constraints, and time available.
+
+I see this tool being especially helpful in the early stages of a project, when groups are still trying to solidify an idea. Just like the 15-minute TA meetings where we discussed feasibility and scope, this tool acts as an additional “team member” that can be used as pre-project meeting tool to steer brainstorming, flag ideas that may be infeasible given time or compute constraints, and guide teams toward more realistic project directions.
+
+I logged an annotated example interaction using papers my team originally considered.
+
+This is the chat trace without annotations: <a href="https://chatgpt.com/share/693a1979-fb28-800f-a783-53551776ef47" target="_blank" rel="noopener noreferrer">https://chatgpt.com/share/693a1979-fb28-800f-a783-53551776ef47</a> 
+
+Overall, the tool was helpful for bouncing ideas around once you’ve read a few papers and have a vague project direction. Its responses were detailed and often generated multiple possible project paths, which can be useful in the brainstorming phase.
+
+Some takeaways:
+
+You might need to steer the conversation 
+
+Because the tool is designed for open-ended brainstorming, it tends to explore many possible directions at once. This is intentional, but it can feel overwhelming if you only have a rough understanding of a paper or the project you want to explore. I found that without guidance, it would branch into areas we weren&#x27;t planning to pursue (e.g., suggesting synthetic datasets when that wasn’t our focus). Actively redirecting the tool back to your specific interests helps prevent the conversation from becoming too scattered
+
+Once guided back to your specific interests, it adapts well and becomes helpful 
+
+When I clarified what our team was actually considering using GSM8K for mathematical reasoning or ProsQA for logical reasoning as our datasets instead, it quickly recalibrated and offered much more targeted, relevant suggestions. It refined hypotheses, highlighted feasibility concerns, and evaluated our chosen directions rather than proposing unrelated ones 
+
+Helps keep thoughts organized 
+
+What I found most helpful is how the tool encourages you to structure your thinking and identify the main hypothesis. It’s easy to get lost in the details of papers, and this kind of back-and-forth helps pull your ideas back into a clear, organized direction
+
+One limitation: limited grounding in specific prior work
+
+In some cases, the tool suggested reasonable-sounding model choices—like using a 4–6 layer Transformer with a 256-dimensional hidden size—but it didn’t provide citations or connect these recommendations to actual papers. It would be more helpful if the assistant could reference related work or justify design choices using concrete examples from the literature, rather than relying solely on general guidance. After analyzing these responses, I changed the prompt to ground its responses on actual papers 
+
+For the prompt, I used the ED post Prof. Sahai made about the guidelines to keep in mind for the project TA meeting(ed post link: <a href="https://edstem.org/us/courses/84647/discussion/7253578)." target="_blank" rel="noopener noreferrer">https://edstem.org/us/courses/84647/discussion/7253578).</a> I would recommend attaching the project requirements pdf as well in the prompt. 
+
+
+
+Hope this is helpful for future students working on their projects!</div>
+        </div>
+
+        <div class="attachments">
+                <div class="attachment attachment-pdf">
+                    <div class="attachment-label">SpecialParticipationE_ProjectBrainstromingExplorer_annotations-part-2.pdf <a href="attachments/SpecialParticipationE_ProjectBrainstromingExplorer_annotations-part-2.pdf" target="_blank" class="download-link">Open in new tab</a></div>
+                    <iframe src="attachments/SpecialParticipationE_ProjectBrainstromingExplorer_annotations-part-2.pdf" loading="lazy"></iframe>
+                </div>
+                <div class="attachment attachment-file">
+                    <a href="attachments/project_brainstromer_prompt" target="_blank" class="file-link">project_brainstromer_prompt</a>
+                </div></div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,1715 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CS 182 Special Participation Directory</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+            background: #f5f7fa;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        header {
+            background: linear-gradient(135deg, #1a365d 0%, #2d3748 100%);
+            color: white;
+            padding: 30px 20px;
+            text-align: center;
+            margin-bottom: 0;
+        }
+
+        header h1 {
+            font-size: 2rem;
+            margin-bottom: 10px;
+        }
+
+        header p {
+            opacity: 0.9;
+            font-size: 1.1rem;
+        }
+
+        /* Tab Navigation */
+        .tabs {
+            display: flex;
+            background: #2d3748;
+            padding: 0 20px;
+            overflow-x: auto;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .tab {
+            padding: 15px 30px;
+            cursor: pointer;
+            color: #a0aec0;
+            font-weight: 500;
+            border-bottom: 3px solid transparent;
+            transition: all 0.2s;
+            white-space: nowrap;
+        }
+
+        .tab:hover {
+            color: white;
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .tab.active {
+            color: white;
+            border-bottom-color: #4299e1;
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        .tab .count {
+            font-size: 0.8em;
+            opacity: 0.7;
+            margin-left: 5px;
+        }
+
+        /* Controls */
+        .controls {
+            background: white;
+            padding: 20px;
+            border-bottom: 1px solid #e2e8f0;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            align-items: center;
+        }
+
+        .control-group {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .control-group label {
+            font-weight: 500;
+            color: #4a5568;
+        }
+
+        select {
+            padding: 8px 12px;
+            border: 1px solid #e2e8f0;
+            border-radius: 6px;
+            font-size: 14px;
+            background: white;
+            cursor: pointer;
+        }
+
+        select:focus {
+            outline: none;
+            border-color: #4299e1;
+        }
+
+        .search-box {
+            flex: 1;
+            min-width: 200px;
+        }
+
+        .search-box input {
+            width: 100%;
+            padding: 10px 15px;
+            border: 1px solid #e2e8f0;
+            border-radius: 6px;
+            font-size: 14px;
+        }
+
+        .search-box input:focus {
+            outline: none;
+            border-color: #4299e1;
+        }
+
+        .results-count {
+            color: #718096;
+            font-size: 14px;
+        }
+
+        /* Tag Selector for Participation E */
+        .tag-selector {
+            display: none;
+            flex-wrap: wrap;
+            gap: 6px;
+            padding: 12px 20px;
+            background: #f7fafc;
+            border-bottom: 1px solid #e2e8f0;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .tag-selector.active {
+            display: flex;
+        }
+
+        .tag-selector-label {
+            font-weight: 500;
+            color: #4a5568;
+            margin-right: 6px;
+            align-self: center;
+            white-space: nowrap;
+            font-size: 11px;
+        }
+
+        .tag-btn {
+            padding: 3px 8px;
+            border: 1px solid #e2e8f0;
+            border-radius: 12px;
+            background: white;
+            color: #4a5568;
+            font-size: 11px;
+            cursor: pointer;
+            transition: all 0.2s;
+            white-space: nowrap;
+        }
+
+        .tag-btn:hover {
+            border-color: #4299e1;
+            color: #4299e1;
+        }
+
+        .tag-btn.active {
+            background: #4299e1;
+            border-color: #4299e1;
+            color: white;
+        }
+
+        .tag-btn .count {
+            font-size: 10px;
+            opacity: 0.8;
+            margin-left: 3px;
+        }
+
+        /* Category badge */
+        .category-badge {
+            display: inline-block;
+            padding: 2px 8px;
+            border-radius: 10px;
+            font-size: 10px;
+            font-weight: 500;
+            white-space: nowrap;
+        }
+
+        .category-badge.interactive-tutor { background: #c6f6d5; color: #276749; }
+        .category-badge.concept-review { background: #bee3f8; color: #2b6cb0; }
+        .category-badge.visualization-tool { background: #e9d8fd; color: #6b46c1; }
+        .category-badge.quiz-exam-prep { background: #feebc8; color: #c05621; }
+        .category-badge.practice-problems { background: #fed7d7; color: #c53030; }
+        .category-badge.code-helper { background: #b2f5ea; color: #285e61; }
+        .category-badge.learning-game { background: #fce7f3; color: #9d174d; }
+        .category-badge.discussion { background: #e2e8f0; color: #718096; }
+
+        /* Topic badges */
+        .topic-badge {
+            display: inline-block;
+            padding: 2px 8px;
+            border-radius: 10px;
+            font-size: 10px;
+            font-weight: 500;
+            white-space: nowrap;
+        }
+
+        .topic-badge.optimizers { background: #fef3c7; color: #92400e; }
+        .topic-badge.cnns-gnns { background: #dbeafe; color: #1e40af; }
+        .topic-badge.rnn-ssm { background: #d1fae5; color: #065f46; }
+        .topic-badge.transformers-attention { background: #ede9fe; color: #5b21b6; }
+        .topic-badge.fine-tuning-icl { background: #fce7f3; color: #9d174d; }
+        .topic-badge.generative-models { background: #fed7d7; color: #991b1b; }
+        .topic-badge.unknown { background: #e2e8f0; color: #718096; }
+
+        /* Notable/Pinned thread indicator */
+        .notable-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 3px;
+            padding: 2px 8px;
+            background: linear-gradient(135deg, #f6e05e 0%, #ecc94b 100%);
+            color: #744210;
+            border-radius: 10px;
+            font-size: 10px;
+            font-weight: 600;
+            white-space: nowrap;
+        }
+
+        .notable-badge::before {
+            content: '\2605';
+        }
+
+        .thread-card.notable {
+            border: 2px solid #ecc94b;
+            box-shadow: 0 4px 12px rgba(236, 201, 75, 0.3);
+        }
+
+        /* Home Page Styles */
+        .home-intro {
+            background: white;
+            border-radius: 12px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+        }
+
+        .home-intro h2 {
+            color: #1a365d;
+            margin-bottom: 15px;
+            font-size: 1.5rem;
+        }
+
+        .home-intro p {
+            color: #4a5568;
+            line-height: 1.7;
+            margin-bottom: 12px;
+        }
+
+        .home-intro .highlight {
+            background: linear-gradient(135deg, #ebf8ff 0%, #e6fffa 100%);
+            padding: 15px 20px;
+            border-radius: 8px;
+            border-left: 4px solid #4299e1;
+            margin-top: 20px;
+        }
+
+        .home-section {
+            margin-bottom: 35px;
+        }
+
+        .home-section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #e2e8f0;
+        }
+
+        .home-section-header h3 {
+            color: #2d3748;
+            font-size: 1.1rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .home-section-header .section-badge {
+            background: #4299e1;
+            color: white;
+            padding: 3px 10px;
+            border-radius: 12px;
+            font-size: 11px;
+            font-weight: 500;
+        }
+
+        .home-section-header .view-all {
+            color: #4299e1;
+            text-decoration: none;
+            font-size: 13px;
+            font-weight: 500;
+            cursor: pointer;
+        }
+
+        .home-section-header .view-all:hover {
+            text-decoration: underline;
+        }
+
+        .home-section-desc {
+            color: #718096;
+            font-size: 13px;
+            margin-bottom: 15px;
+        }
+
+        .pinned-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 15px;
+        }
+
+        .no-pinned {
+            color: #a0aec0;
+            font-style: italic;
+            padding: 20px;
+            text-align: center;
+            background: #f7fafc;
+            border-radius: 8px;
+        }
+
+        /* Tab Panels */
+        .tab-panel {
+            display: none;
+        }
+
+        .tab-panel.active {
+            display: block;
+        }
+
+        /* Participation Info */
+        .participation-info {
+            background: #edf2f7;
+            padding: 15px 20px;
+            border-left: 4px solid #4299e1;
+            margin-bottom: 20px;
+        }
+
+        .participation-info h3 {
+            color: #2d3748;
+            margin-bottom: 5px;
+        }
+
+        .participation-info p {
+            color: #4a5568;
+            font-size: 14px;
+        }
+
+        /* Performance Summary Box */
+        .performance-summary {
+            background: white;
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+            border: 1px solid #e2e8f0;
+        }
+
+        .performance-summary h4 {
+            color: #2d3748;
+            margin-bottom: 12px;
+            font-size: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .performance-summary .summary-stats {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 15px;
+            flex-wrap: wrap;
+        }
+
+        .performance-summary .stat {
+            background: #f7fafc;
+            padding: 8px 14px;
+            border-radius: 8px;
+            font-size: 13px;
+        }
+
+        .performance-summary .stat-label {
+            color: #718096;
+            font-size: 11px;
+            text-transform: uppercase;
+        }
+
+        .performance-summary .stat-value {
+            color: #2d3748;
+            font-weight: 600;
+        }
+
+        .performance-summary .columns {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        @media (max-width: 600px) {
+            .performance-summary .columns {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .performance-summary .column h5 {
+            font-size: 13px;
+            color: #4a5568;
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .performance-summary .column h5.strengths { color: #276749; }
+        .performance-summary .column h5.weaknesses { color: #c53030; }
+
+        .performance-summary ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .performance-summary li {
+            font-size: 12px;
+            color: #4a5568;
+            padding: 4px 0;
+            padding-left: 16px;
+            position: relative;
+        }
+
+        .performance-summary li::before {
+            content: '•';
+            position: absolute;
+            left: 0;
+            color: #a0aec0;
+        }
+
+        .performance-summary .no-data {
+            color: #a0aec0;
+            font-style: italic;
+            font-size: 12px;
+        }
+
+        /* Thread Directory - Card Grid */
+        .thread-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+            gap: 15px;
+            padding: 10px 0;
+            align-items: start;
+        }
+
+        .thread-card {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.06);
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s, border-color 0.3s, z-index 0s;
+            text-decoration: none;
+            color: inherit;
+            border: 1px solid #e2e8f0;
+        }
+
+        .thread-card.hovered {
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.2);
+            border-color: #4299e1;
+            z-index: 100;
+            overflow: visible;
+        }
+
+        .thread-card.pushed {
+            transition: transform 0.3s ease;
+        }
+
+        .thread-card.hovered .quick-view {
+            display: block;
+        }
+
+        .thread-header {
+            padding: 14px;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            flex: 1;
+        }
+
+        .thread-badges {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            align-items: center;
+        }
+
+        .thread-title-section {
+            flex: 1;
+        }
+
+        .thread-title {
+            font-size: 0.85rem;
+            color: #2d3748;
+            font-weight: 600;
+            line-height: 1.4;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+        .thread-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            font-size: 11px;
+            color: #718096;
+            margin-top: auto;
+        }
+
+        .thread-meta span {
+            display: flex;
+            align-items: center;
+            gap: 3px;
+        }
+
+        /* Quick View - Centered Popup */
+        .quick-view {
+            display: none;
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            width: 350px;
+            max-width: 90vw;
+            background: white;
+            border: 1px solid #e2e8f0;
+            border-radius: 10px;
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.2);
+            z-index: 50;
+        }
+
+        .quick-view-header {
+            padding: 10px 14px;
+            background: #4299e1;
+            color: white;
+            font-weight: 600;
+            font-size: 13px;
+            border-radius: 10px 10px 0 0;
+        }
+
+        .quick-view-content {
+            padding: 10px 12px;
+            font-size: 11px;
+            line-height: 1.5;
+            color: #4a5568;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+            max-height: 150px;
+            overflow-y: auto;
+        }
+
+        /* Larger preview for home page pinned grids */
+        .pinned-grid .quick-view {
+            width: 420px;
+        }
+
+        .pinned-grid .quick-view-header {
+            padding: 12px 16px;
+            font-size: 14px;
+        }
+
+        .pinned-grid .quick-view-content {
+            padding: 14px 16px;
+            font-size: 12px;
+            line-height: 1.6;
+            max-height: 220px;
+        }
+
+        /* Smaller popups for Course Topics page */
+        .course-topics-page .quick-view-content {
+            max-height: 140px;
+            padding: 10px 14px;
+        }
+
+        .quick-view-cta {
+            padding: 8px 14px;
+            background: #edf2f7;
+            border-top: 1px solid #e2e8f0;
+            text-align: center;
+            font-size: 12px;
+            color: #4299e1;
+            font-weight: 500;
+        }
+
+        .model-badge {
+            display: inline-block;
+            padding: 2px 8px;
+            background: #e2e8f0;
+            color: #4a5568;
+            border-radius: 10px;
+            font-size: 10px;
+            font-weight: 500;
+            white-space: nowrap;
+        }
+
+        .model-badge.gpt { background: #c6f6d5; color: #276749; }
+        .model-badge.claude { background: #feebc8; color: #c05621; }
+        .model-badge.gemini { background: #bee3f8; color: #2b6cb0; }
+        .model-badge.deepseek { background: #e9d8fd; color: #6b46c1; }
+        .model-badge.grok { background: #fed7d7; color: #c53030; }
+        .model-badge.mistral { background: #fef3c7; color: #92400e; }
+        .model-badge.cursor { background: #d1fae5; color: #065f46; }
+        .model-badge.unknown { background: #e2e8f0; color: #718096; }
+        /* Optimizer badges for Participation D */
+        .model-badge.muon { background: #fce7f3; color: #9d174d; }
+        .model-badge.lion { background: #fef3c7; color: #92400e; }
+        .model-badge.soap { background: #dbeafe; color: #1e40af; }
+        .model-badge.shampoo { background: #d1fae5; color: #065f46; }
+        .model-badge.mup { background: #ede9fe; color: #5b21b6; }
+        .model-badge.lr-scaling { background: #fecaca; color: #991b1b; }
+        .model-badge.polar-express { background: #cffafe; color: #155e75; }
+
+        .attachment-badge {
+            background: #edf2f7;
+            color: #4a5568;
+            padding: 2px 6px;
+            border-radius: 8px;
+            font-size: 9px;
+        }
+
+        .hw-badge {
+            display: inline-block;
+            padding: 2px 8px;
+            border-radius: 10px;
+            font-size: 10px;
+            font-weight: 500;
+            white-space: nowrap;
+        }
+
+        /* HW-based colors */
+        .hw-badge.hw0 { background: #e2e8f0; color: #4a5568; }
+        .hw-badge.hw1 { background: #fed7d7; color: #c53030; }
+        .hw-badge.hw2 { background: #feebc8; color: #c05621; }
+        .hw-badge.hw3 { background: #faf089; color: #975a16; }
+        .hw-badge.hw4 { background: #c6f6d5; color: #276749; }
+        .hw-badge.hw5 { background: #b2f5ea; color: #285e61; }
+        .hw-badge.hw6 { background: #bee3f8; color: #2b6cb0; }
+        .hw-badge.hw7 { background: #c3dafe; color: #4c51bf; }
+        .hw-badge.hw8 { background: #e9d8fd; color: #6b46c1; }
+        .hw-badge.hw9 { background: #fed7e2; color: #97266d; }
+        .hw-badge.hw10 { background: #fbb6ce; color: #b83280; }
+        .hw-badge.hw11 { background: #f687b3; color: #702459; }
+        .hw-badge.hw12 { background: #d6bcfa; color: #553c9a; }
+        .hw-badge.hw13 { background: #9f7aea; color: #44337a; }
+
+        .expand-icon {
+            color: #a0aec0;
+            font-size: 20px;
+        }
+
+        /* Empty State */
+        .empty-state {
+            text-align: center;
+            padding: 60px 20px;
+            color: #718096;
+        }
+
+        .empty-state h3 {
+            margin-bottom: 10px;
+            color: #4a5568;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 30px;
+            color: #718096;
+            font-size: 14px;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .controls {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .control-group {
+                width: 100%;
+            }
+
+            .tab {
+                padding: 12px 20px;
+            }
+
+            header h1 {
+                font-size: 1.5rem;
+            }
+
+            .thread-list {
+                grid-template-columns: 1fr;
+                gap: 12px;
+            }
+
+            .quick-view-content {
+                max-height: 150px;
+            }
+
+            .quick-view {
+                width: 95vw;
+            }
+        }
+
+        @media (min-width: 1200px) {
+            .thread-list {
+                grid-template-columns: repeat(4, 1fr);
+            }
+        }
+
+        @media (min-width: 1600px) {
+            .thread-list {
+                grid-template-columns: repeat(5, 1fr);
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>CS 182 Special Participation Directory</h1>
+        <p>Browse student submissions across all participation categories</p>
+    </header>
+
+    <nav class="tabs" id="tabs">
+        <!-- Tabs will be generated by JavaScript -->
+    </nav>
+
+    <div class="container">
+        <div class="controls">
+            <div class="control-group" id="hw-filter-group" style="display: none;">
+                <label for="hw-filter">Filter by Homework:</label>
+                <select id="hw-filter">
+                    <option value="all">All Homeworks</option>
+                </select>
+            </div>
+            <div class="control-group">
+                <label for="model-filter">Filter by Model:</label>
+                <select id="model-filter">
+                    <option value="all">All Models</option>
+                </select>
+            </div>
+            <div class="search-box">
+                <input type="text" id="search" placeholder="Search threads by title or content...">
+            </div>
+            <div class="results-count" id="results-count"></div>
+        </div>
+
+        <div class="tag-selector" id="category-filter">
+            <span class="tag-selector-label">Filter by Type:</span>
+            <!-- Tags will be generated by JavaScript -->
+        </div>
+
+        <div id="tab-panels">
+            <!-- Tab panels will be generated by JavaScript -->
+        </div>
+    </div>
+
+    <footer>
+        CS 182 Deep Learning - Fall 2025
+    </footer>
+
+    <script>
+        // Data will be loaded from data.json and summaries.json
+        let data = {};
+        let summaries = {};
+        let currentTab = 'home';
+        let selectedCategories = new Set(); // For participation E category filtering
+
+        // Tab ID to URL hash mapping
+        const tabToHash = {
+            'home': '',
+            'participation_A': 'participation-a',
+            'participation_B': 'participation-b',
+            'participation_C': 'participation-c',
+            'participation_D': 'participation-d',
+            'participation_E': 'participation-e',
+            'course_topics': 'course-topics'
+        };
+
+        const hashToTab = Object.fromEntries(
+            Object.entries(tabToHash).map(([k, v]) => [v, k])
+        );
+
+        function getTabFromHash() {
+            const hash = window.location.hash.slice(1); // Remove the #
+            return hashToTab[hash] || 'home';
+        }
+
+        function updateUrlHash(tabId, replace = false) {
+            const hash = tabToHash[tabId] || '';
+            const newUrl = hash ? `#${hash}` : window.location.pathname;
+            if (replace) {
+                history.replaceState({ tab: tabId }, '', newUrl);
+            } else {
+                history.pushState({ tab: tabId }, '', newUrl);
+            }
+        }
+
+        const TOOL_CATEGORIES = [
+            'Interactive Tutor',
+            'Concept Review',
+            'Visualization Tool',
+            'Quiz/Exam Prep',
+            'Practice Problems',
+            'Code Helper',
+            'Learning Game',
+            'Discussion'
+        ];
+
+        const PARTICIPATION_INFO = {
+            'participation_A': {
+                title: 'Interactive LLM Engagement for Non-Coding HW Problems',
+                description: 'Students use LLMs (GPT, Claude, Grok, etc.) to solve homework problems. Focus on comparing different model capabilities on analytical and theoretical questions.'
+            },
+            'participation_B': {
+                title: 'Interactive LLM Engagement for Coding HW Problems',
+                description: 'Students use LLMs to assist with coding tasks from homework assignments. Focus on code generation, debugging, and implementation challenges with detailed analysis of model performance.'
+            },
+            'participation_C': {
+                title: 'Code Refactoring',
+                description: 'Students use AI tools to refactor existing homework code for improved readability, modularity, and best practices. Focus on software engineering improvements.'
+            },
+            'participation_D': {
+                title: 'Novel Optimizer Integration',
+                description: 'Students implement and experiment with novel optimizers (SOAP, Muon, Lion, Shampoo, MuP, etc.) not covered in homework, comparing against baseline optimizers.'
+            },
+            'participation_E': {
+                title: 'Educational Tool Creation',
+                description: 'Students create educational resources using LLMs: tutors, problem generators, visualization tools, concept checkers, interactive tutoring systems, etc.'
+            }
+        };
+
+        // Load data and summaries
+        Promise.all([
+            fetch('data.json').then(r => r.json()),
+            fetch('summaries.json').then(r => r.json()).catch(() => ({}))
+        ])
+            .then(([jsonData, summaryData]) => {
+                data = jsonData;
+                summaries = summaryData;
+
+                // Read initial tab from URL hash
+                currentTab = getTabFromHash();
+                // Replace initial history state
+                updateUrlHash(currentTab, true);
+
+                initializeTabs();
+                renderCurrentTab();
+            })
+            .catch(error => {
+                console.error('Error loading data:', error);
+                document.getElementById('tab-panels').innerHTML =
+                    '<div class="empty-state"><h3>Error loading data</h3><p>Please make sure data.json exists.</p></div>';
+            });
+
+        function initializeTabs() {
+            const tabsContainer = document.getElementById('tabs');
+
+            // Add Home tab first
+            const homeTab = document.createElement('div');
+            homeTab.className = 'tab' + (currentTab === 'home' ? ' active' : '');
+            homeTab.dataset.tab = 'home';
+            homeTab.innerHTML = 'Home';
+            homeTab.onclick = () => switchTab('home');
+            tabsContainer.appendChild(homeTab);
+
+            const participations = ['participation_A', 'participation_B', 'participation_C', 'participation_D', 'participation_E'];
+
+            participations.forEach(p => {
+                const tab = document.createElement('div');
+                tab.className = 'tab' + (p === currentTab ? ' active' : '');
+                tab.dataset.tab = p;
+                tab.innerHTML = `${p.replace('participation_', 'Participation ')}<span class="count">(${data[p]?.count || 0})</span>`;
+                tab.onclick = () => switchTab(p);
+                tabsContainer.appendChild(tab);
+            });
+
+            // Add Course Topics tab
+            const topicsTab = document.createElement('div');
+            topicsTab.className = 'tab' + (currentTab === 'course_topics' ? ' active' : '');
+            topicsTab.dataset.tab = 'course_topics';
+            topicsTab.innerHTML = 'Course Topics';
+            topicsTab.onclick = () => switchTab('course_topics');
+            tabsContainer.appendChild(topicsTab);
+        }
+
+        function switchTab(tabId, updateHistory = true) {
+            currentTab = tabId;
+
+            // Update URL hash
+            if (updateHistory) {
+                updateUrlHash(tabId);
+            }
+
+            // Update tab active states
+            document.querySelectorAll('.tab').forEach(tab => {
+                tab.classList.toggle('active', tab.dataset.tab === tabId);
+            });
+
+            // Reset filters
+            document.getElementById('model-filter').value = 'all';
+            document.getElementById('hw-filter').value = 'all';
+            document.getElementById('search').value = '';
+            selectedCategories.clear();
+
+            renderCurrentTab();
+        }
+
+        // Handle browser back/forward navigation
+        window.addEventListener('popstate', (event) => {
+            const tabId = event.state?.tab || getTabFromHash();
+            switchTab(tabId, false); // Don't update history on popstate
+        });
+
+        function renderCurrentTab() {
+            // Handle home tab separately
+            if (currentTab === 'home') {
+                renderHomePage();
+                return;
+            }
+
+            // Handle course topics tab
+            if (currentTab === 'course_topics') {
+                renderCourseTopicsPage();
+                return;
+            }
+
+            const participation = data[currentTab];
+            if (!participation) return;
+
+            const hwFilterGroup = document.getElementById('hw-filter-group');
+            const categoryFilter = document.getElementById('category-filter');
+            const isOptimizerTab = currentTab === 'participation_D';
+
+            // Update label for model filter
+            const modelLabel = document.querySelector('label[for="model-filter"]');
+            modelLabel.textContent = isOptimizerTab ? 'Filter by Optimizer:' : 'Filter by Model:';
+
+            // Show/hide homework filter for participation A and B
+            if (currentTab === 'participation_A' || currentTab === 'participation_B') {
+                hwFilterGroup.style.display = 'flex';
+            } else {
+                hwFilterGroup.style.display = 'none';
+            }
+
+            // Show/hide category filter for participation E
+            if (currentTab === 'participation_E') {
+                categoryFilter.classList.add('active');
+                populateCategoryFilter();
+            } else {
+                categoryFilter.classList.remove('active');
+            }
+
+            // Populate both filters with all options initially
+            updateFilterOptions();
+            renderThreads();
+        }
+
+        function populateCategoryFilter() {
+            const categoryFilter = document.getElementById('category-filter');
+            const participation = data[currentTab];
+            if (!participation) return;
+
+            const modelFilter = document.getElementById('model-filter').value;
+
+            // Filter threads based on current model selection
+            const filteredThreads = modelFilter === 'all'
+                ? participation.threads
+                : participation.threads.filter(t => t.model_family === modelFilter);
+
+            // Count threads per category from filtered threads
+            const categoryCounts = {};
+            filteredThreads.forEach(thread => {
+                const cat = thread.tool_category || 'Discussion';
+                categoryCounts[cat] = (categoryCounts[cat] || 0) + 1;
+            });
+
+            // Generate tag buttons
+            let html = '<span class="tag-selector-label">Filter by Type:</span>';
+            html += `<button class="tag-btn ${selectedCategories.size === 0 ? 'active' : ''}" data-category="all">All<span class="count">(${filteredThreads.length})</span></button>`;
+
+            TOOL_CATEGORIES.forEach(cat => {
+                const count = categoryCounts[cat] || 0;
+                if (count > 0) {
+                    const isActive = selectedCategories.has(cat) ? 'active' : '';
+                    html += `<button class="tag-btn ${isActive}" data-category="${cat}">${cat}<span class="count">(${count})</span></button>`;
+                }
+            });
+
+            categoryFilter.innerHTML = html;
+
+            // Add click handlers
+            categoryFilter.querySelectorAll('.tag-btn').forEach(btn => {
+                btn.addEventListener('click', () => {
+                    const cat = btn.dataset.category;
+                    if (cat === 'all') {
+                        selectedCategories.clear();
+                    } else {
+                        if (selectedCategories.has(cat)) {
+                            selectedCategories.delete(cat);
+                        } else {
+                            selectedCategories.add(cat);
+                        }
+                    }
+                    populateCategoryFilter();
+                    updateModelFilterForCategories();
+                    renderThreads();
+                });
+            });
+        }
+
+        function updateModelFilterForCategories() {
+            if (currentTab !== 'participation_E') return;
+
+            const participation = data[currentTab];
+            if (!participation) return;
+
+            const modelFilterEl = document.getElementById('model-filter');
+            const currentModelValue = modelFilterEl.value;
+
+            // Filter threads based on selected categories
+            const filteredThreads = selectedCategories.size === 0
+                ? participation.threads
+                : participation.threads.filter(t => selectedCategories.has(t.tool_category || 'Discussion'));
+
+            // Get available models from filtered threads
+            const availableModels = [...new Set(filteredThreads.map(t => t.model_family).filter(m => m && m !== 'Unknown'))];
+            availableModels.sort();
+
+            modelFilterEl.innerHTML = '<option value="all">All Models</option>';
+            availableModels.forEach(model => {
+                const option = document.createElement('option');
+                option.value = model;
+                option.textContent = model;
+                modelFilterEl.appendChild(option);
+            });
+
+            // Add Unknown if present
+            if (filteredThreads.some(t => t.model_family === 'Unknown')) {
+                const option = document.createElement('option');
+                option.value = 'Unknown';
+                option.textContent = 'Unknown';
+                modelFilterEl.appendChild(option);
+            }
+
+            // Restore selection if still valid
+            if (availableModels.includes(currentModelValue) || currentModelValue === 'Unknown') {
+                modelFilterEl.value = currentModelValue;
+            } else {
+                modelFilterEl.value = 'all';
+            }
+        }
+
+        function updateFilterOptions(changedFilter = null) {
+            const participation = data[currentTab];
+            if (!participation) return;
+
+            const modelFilterEl = document.getElementById('model-filter');
+            const hwFilterEl = document.getElementById('hw-filter');
+            const currentModelValue = modelFilterEl.value;
+            const currentHwValue = hwFilterEl.value;
+            const isOptimizerTab = currentTab === 'participation_D';
+
+            // Get filtered threads based on which filter changed
+            let relevantThreads = participation.threads;
+
+            if (changedFilter === 'hw' && currentHwValue !== 'all') {
+                // HW was changed - filter threads by HW to get available models
+                relevantThreads = participation.threads.filter(t => t.homework === currentHwValue);
+            } else if (changedFilter === 'model' && currentModelValue !== 'all') {
+                // Model was changed - filter threads by model to get available HWs
+                relevantThreads = participation.threads.filter(t => t.model_family === currentModelValue);
+            }
+
+            // Update model dropdown based on HW selection
+            if (changedFilter === 'hw' || changedFilter === null) {
+                const availableModels = [...new Set(relevantThreads.map(t => t.model_family).filter(m => m))];
+                availableModels.sort();
+
+                modelFilterEl.innerHTML = isOptimizerTab
+                    ? '<option value="all">All Optimizers</option>'
+                    : '<option value="all">All Models</option>';
+
+                availableModels.forEach(model => {
+                    const option = document.createElement('option');
+                    option.value = model;
+                    option.textContent = model;
+                    modelFilterEl.appendChild(option);
+                });
+
+                // Restore selection if still valid
+                if (availableModels.includes(currentModelValue)) {
+                    modelFilterEl.value = currentModelValue;
+                } else if (changedFilter === 'hw') {
+                    modelFilterEl.value = 'all';
+                }
+            }
+
+            // Update HW dropdown based on model selection (for participation A and B)
+            if ((currentTab === 'participation_A' || currentTab === 'participation_B') &&
+                (changedFilter === 'model' || changedFilter === null)) {
+                const threadsForHw = changedFilter === 'model' && currentModelValue !== 'all'
+                    ? participation.threads.filter(t => t.model_family === currentModelValue)
+                    : participation.threads;
+
+                const availableHWs = [...new Set(threadsForHw.map(t => t.homework).filter(h => h && h !== 'Unknown'))];
+                availableHWs.sort((a, b) => {
+                    const numA = parseInt(a.replace('HW', ''));
+                    const numB = parseInt(b.replace('HW', ''));
+                    return numA - numB;
+                });
+
+                hwFilterEl.innerHTML = '<option value="all">All Homeworks</option>';
+
+                availableHWs.forEach(hw => {
+                    const option = document.createElement('option');
+                    option.value = hw;
+                    option.textContent = hw;
+                    hwFilterEl.appendChild(option);
+                });
+
+                // Add Unknown if present
+                if (threadsForHw.some(t => t.homework === 'Unknown')) {
+                    const option = document.createElement('option');
+                    option.value = 'Unknown';
+                    option.textContent = 'Unknown';
+                    hwFilterEl.appendChild(option);
+                }
+
+                // Restore selection if still valid
+                if (availableHWs.includes(currentHwValue) || currentHwValue === 'Unknown') {
+                    hwFilterEl.value = currentHwValue;
+                } else if (changedFilter === 'model') {
+                    hwFilterEl.value = 'all';
+                }
+            }
+        }
+
+        function renderHomePage() {
+            // Hide filters for home page
+            document.getElementById('hw-filter-group').style.display = 'none';
+            document.getElementById('category-filter').classList.remove('active');
+            document.querySelector('.controls').style.display = 'none';
+
+            const panelsContainer = document.getElementById('tab-panels');
+
+            // Calculate total threads and unique students
+            const totalThreads = Object.values(data).reduce((sum, p) => sum + (p?.count || 0), 0);
+            const allAuthors = new Set();
+            Object.values(data).forEach(p => {
+                if (p?.threads) {
+                    p.threads.forEach(t => {
+                        if (t.author && t.author !== 'Unknown') {
+                            allAuthors.add(t.author);
+                        }
+                    });
+                }
+            });
+            const uniqueStudents = allAuthors.size;
+
+            let html = `
+                <div class="home-intro">
+                    <h2>Welcome to the CS 182 Special Participation Directory</h2>
+                    <p>
+                        This directory showcases student submissions from the CS 182 Deep Learning course's special participation assignments.
+                        Students explored the capabilities and limitations of Large Language Models (LLMs) across various deep learning tasks,
+                        from solving homework problems to creating educational tools.
+                    </p>
+                    <p>
+                        Browse through <strong>${totalThreads} submissions</strong> from <strong>${uniqueStudents} students</strong> across 5 participation categories, or explore the highlighted
+                        pinned threads below that represent some of the most insightful and creative work from the course.
+                    </p>
+                    <div class="highlight">
+                        <strong>Categories:</strong> Participation A & B focus on LLM problem-solving, C on code refactoring,
+                        D on novel optimizer experiments, and E on educational tool creation.
+                    </div>
+                </div>
+            `;
+
+            // Render pinned threads for each participation
+            const participations = [
+                { key: 'participation_A', name: 'Participation A', desc: 'Interactive LLM Engagement for Non-Coding HW Problems' },
+                { key: 'participation_B', name: 'Participation B', desc: 'Interactive LLM Engagement for Coding HW Problems' },
+                { key: 'participation_C', name: 'Participation C', desc: 'Code Refactoring with AI' },
+                { key: 'participation_D', name: 'Participation D', desc: 'Novel Optimizer Integration' },
+                { key: 'participation_E', name: 'Participation E', desc: 'Educational Tool Creation' }
+            ];
+
+            participations.forEach(p => {
+                const participation = data[p.key];
+                if (!participation) return;
+
+                const pinnedThreads = participation.threads.filter(t => t.is_notable);
+                const totalCount = participation.count;
+
+                html += `
+                    <div class="home-section">
+                        <div class="home-section-header">
+                            <h3>
+                                ${p.name}
+                                <span class="section-badge">${totalCount} threads</span>
+                            </h3>
+                            <span class="view-all" onclick="switchTab('${p.key}')">View all &rarr;</span>
+                        </div>
+                        <div class="home-section-desc">${p.desc}</div>
+                `;
+
+                if (pinnedThreads.length > 0) {
+                    html += '<div class="pinned-grid">';
+                    pinnedThreads.forEach((thread, index) => {
+                        html += renderThreadCard(thread, index);
+                    });
+                    html += '</div>';
+                } else {
+                    html += '<div class="no-pinned">No pinned threads for this category</div>';
+                }
+
+                html += '</div>';
+            });
+
+            panelsContainer.innerHTML = html;
+
+            // Setup explosion effect for pinned cards
+            setTimeout(setupExplosionEffect, 0);
+        }
+
+        function renderCourseTopicsPage() {
+            // Hide filters for course topics page
+            document.getElementById('hw-filter-group').style.display = 'none';
+            document.getElementById('category-filter').classList.remove('active');
+            document.querySelector('.controls').style.display = 'none';
+
+            const panelsContainer = document.getElementById('tab-panels');
+            const topicRankings = data.topic_rankings || {};
+
+            const topics = [
+                { key: 'Optimizers', name: 'Optimizers', desc: 'SGD, Adam, learning rate schedules, momentum, novel optimizers (Lion, Muon, SOAP)', color: '#fef3c7', textColor: '#92400e' },
+                { key: 'CNNs/GNNs', name: 'CNNs / GNNs', desc: 'Convolutional Neural Networks, Graph Neural Networks, pooling, convolutions', color: '#dbeafe', textColor: '#1e40af' },
+                { key: 'RNN/SSM', name: 'RNN / SSM', desc: 'Recurrent Neural Networks, LSTM, GRU, State Space Models, Mamba', color: '#d1fae5', textColor: '#065f46' },
+                { key: 'Transformers/Attention', name: 'Transformers / Attention', desc: 'Self-attention, multi-head attention, positional encoding, vision transformers', color: '#ede9fe', textColor: '#5b21b6' },
+                { key: 'Fine-tuning/ICL', name: 'Fine-tuning / ICL', desc: 'Fine-tuning pretrained models, in-context learning, transfer learning, LoRA', color: '#fce7f3', textColor: '#9d174d' },
+                { key: 'Generative Models', name: 'Generative Models', desc: 'VAEs, GANs, diffusion models, autoencoders, image generation', color: '#fed7d7', textColor: '#991b1b' }
+            ];
+
+            let html = `
+                <div class="course-topics-page">
+                <div class="home-intro">
+                    <h2>Course Topics</h2>
+                    <p>
+                        Explore the top-rated threads organized by the six major topics covered in CS 182.
+                        These threads were selected based on their quality scores across all participation categories.
+                    </p>
+                </div>
+            `;
+
+            // Build a map of folder_name -> thread data for quick lookup
+            const allThreads = {};
+            ['participation_A', 'participation_B', 'participation_C', 'participation_D', 'participation_E'].forEach(p => {
+                if (data[p]?.threads) {
+                    data[p].threads.forEach(t => {
+                        allThreads[t.folder_name] = t;
+                    });
+                }
+            });
+
+            topics.forEach(topic => {
+                const rankings = topicRankings[topic.key] || [];
+
+                html += `
+                    <div class="home-section">
+                        <div class="home-section-header">
+                            <h3>
+                                <span style="display: inline-block; padding: 4px 12px; background: ${topic.color}; color: ${topic.textColor}; border-radius: 6px; font-size: 14px;">
+                                    ${topic.name}
+                                </span>
+                            </h3>
+                        </div>
+                        <div class="home-section-desc">${topic.desc}</div>
+                `;
+
+                if (rankings.length > 0) {
+                    html += '<div class="pinned-grid">';
+                    rankings.forEach((ranked, index) => {
+                        // Get full thread data
+                        const thread = allThreads[ranked.folder_name];
+                        if (thread) {
+                            // Add score badge to the thread for display
+                            const threadWithScore = { ...thread, _score: ranked.score, _reason: ranked.reason };
+                            html += renderTopicThreadCard(threadWithScore, index, ranked.score);
+                        }
+                    });
+                    html += '</div>';
+                } else {
+                    html += '<div class="no-pinned">No ranked threads for this topic</div>';
+                }
+
+                html += '</div>';
+            });
+
+            html += '</div>'; // Close course-topics-page wrapper
+
+            panelsContainer.innerHTML = html;
+
+            // Setup explosion effect for pinned cards
+            setTimeout(setupExplosionEffect, 0);
+        }
+
+        function renderTopicThreadCard(thread, index, score) {
+            const modelClass = thread.model_family?.toLowerCase().replace(/\s+/g, '-') || 'unknown';
+            const date = thread.date ? new Date(thread.date).toLocaleDateString() : '';
+            const attachmentBadge = thread.has_attachments
+                ? `<span class="attachment-badge">${thread.attachment_count} file${thread.attachment_count > 1 ? 's' : ''}</span>`
+                : '';
+
+            const modelBadge = thread.model_family
+                ? `<span class="model-badge ${modelClass}">${escapeHtml(thread.model_family)}</span>`
+                : '';
+
+            const bodyPreview = thread.body ? thread.body.substring(0, 600) : '';
+
+            return `
+                <a href="${thread.page_url}" class="thread-card notable" data-index="${index}">
+                    <div class="thread-header">
+                        <div class="thread-badges">
+                            ${modelBadge}
+                            ${attachmentBadge}
+                        </div>
+                        <div class="thread-title-section">
+                            <div class="thread-title">${escapeHtml(thread.title)}</div>
+                        </div>
+                        <div class="thread-meta">
+                            <span class="author">${escapeHtml(thread.author)}</span>
+                            ${date ? `<span class="date">${date}</span>` : ''}
+                        </div>
+                    </div>
+                    <div class="quick-view">
+                        <div class="quick-view-header">${escapeHtml(thread.title)}</div>
+                        <div class="quick-view-content">${escapeHtml(bodyPreview)}${bodyPreview.length >= 600 ? '...' : ''}</div>
+                        <div class="quick-view-cta">Click to view full thread →</div>
+                    </div>
+                </a>
+            `;
+        }
+
+        function renderThreads() {
+            // Show controls for non-home tabs
+            document.querySelector('.controls').style.display = 'flex';
+
+            const participation = data[currentTab];
+            if (!participation) return;
+
+            const modelFilter = document.getElementById('model-filter').value;
+            const hwFilter = document.getElementById('hw-filter').value;
+            const searchTerm = document.getElementById('search').value.toLowerCase();
+
+            // Filter threads
+            let threads = participation.threads.filter(thread => {
+                const matchesModel = modelFilter === 'all' || thread.model_family === modelFilter;
+                const matchesHw = hwFilter === 'all' || thread.homework === hwFilter;
+                const matchesSearch = !searchTerm ||
+                    thread.title.toLowerCase().includes(searchTerm) ||
+                    thread.body.toLowerCase().includes(searchTerm) ||
+                    thread.author.toLowerCase().includes(searchTerm);
+                // Category filter for participation E
+                const matchesCategory = selectedCategories.size === 0 ||
+                    selectedCategories.has(thread.tool_category || 'Discussion');
+                return matchesModel && matchesHw && matchesSearch && matchesCategory;
+            });
+
+            // Sort notable threads first (for participation A, B, C, D, and E)
+            if (currentTab === 'participation_A' || currentTab === 'participation_B' || currentTab === 'participation_C' || currentTab === 'participation_D' || currentTab === 'participation_E') {
+                threads.sort((a, b) => {
+                    if (a.is_notable && !b.is_notable) return -1;
+                    if (!a.is_notable && b.is_notable) return 1;
+                    return 0;
+                });
+            }
+
+            // Update results count
+            document.getElementById('results-count').textContent =
+                `Showing ${threads.length} of ${participation.threads.length} threads`;
+
+            // Build HTML
+            const panelsContainer = document.getElementById('tab-panels');
+            const info = PARTICIPATION_INFO[currentTab];
+
+            let html = `
+                <div class="participation-info">
+                    <h3>${info.title}</h3>
+                    <p>${info.description}</p>
+                </div>
+            `;
+
+            // Add performance summary for participation A and B when HW is selected
+            if ((currentTab === 'participation_A' || currentTab === 'participation_B') && hwFilter !== 'all') {
+                html += renderPerformanceSummary(currentTab, modelFilter, hwFilter);
+            }
+
+            if (threads.length === 0) {
+                html += '<div class="empty-state"><h3>No threads found</h3><p>Try adjusting your filters.</p></div>';
+            } else {
+                html += '<div class="thread-list">';
+                threads.forEach((thread, index) => {
+                    html += renderThreadCard(thread, index);
+                });
+                html += '</div>';
+            }
+
+            panelsContainer.innerHTML = html;
+
+        }
+
+        function renderPerformanceSummary(participation, modelFilter, hwFilter) {
+            const partSummaries = summaries[participation];
+            if (!partSummaries) return '';
+
+            let summary;
+            let title;
+
+            if (modelFilter === 'all') {
+                // Show aggregate summary for all models on this HW
+                summary = partSummaries.by_hw?.[hwFilter];
+                title = `Model Performance on ${hwFilter}`;
+            } else {
+                // Show model-specific summary
+                const key = `${modelFilter}|${hwFilter}`;
+                summary = partSummaries.by_model_hw?.[key];
+                title = `${modelFilter} Performance on ${hwFilter}`;
+            }
+
+            if (!summary) {
+                return `
+                    <div class="performance-summary">
+                        <h4>${title}</h4>
+                        <p class="no-data">No performance data available for this selection.</p>
+                    </div>
+                `;
+            }
+
+            const strengthsList = summary.strengths?.length > 0
+                ? `<ul>${summary.strengths.map(s => `<li>${escapeHtml(s)}</li>`).join('')}</ul>`
+                : '<p class="no-data">No specific strengths identified</p>';
+
+            const weaknessesList = summary.weaknesses?.length > 0
+                ? `<ul>${summary.weaknesses.map(w => `<li>${escapeHtml(w)}</li>`).join('')}</ul>`
+                : '<p class="no-data">No specific weaknesses identified</p>';
+
+            return `
+                <div class="performance-summary">
+                    <h4>${title}</h4>
+                    <div class="summary-stats">
+                        <div class="stat">
+                            <div class="stat-label">Threads Analyzed</div>
+                            <div class="stat-value">${summary.thread_count}</div>
+                        </div>
+                        ${summary.sentiment ? `
+                        <div class="stat">
+                            <div class="stat-label">Overall Sentiment</div>
+                            <div class="stat-value">${summary.sentiment}</div>
+                        </div>
+                        ` : ''}
+                    </div>
+                    <div class="columns">
+                        <div class="column">
+                            <h5 class="strengths">Strengths (Problems Done Well)</h5>
+                            ${strengthsList}
+                        </div>
+                        <div class="column">
+                            <h5 class="weaknesses">Weaknesses (Common Issues)</h5>
+                            ${weaknessesList}
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
+
+        function renderThreadCard(thread, index) {
+            const modelClass = thread.model_family?.toLowerCase().replace(/\s+/g, '-') || 'unknown';
+            const hwClass = thread.homework ? thread.homework.toLowerCase().replace(/\s+/g, '') : '';
+            const date = thread.date ? new Date(thread.date).toLocaleDateString() : '';
+            const attachmentBadge = thread.has_attachments
+                ? `<span class="attachment-badge">${thread.attachment_count} file${thread.attachment_count > 1 ? 's' : ''}</span>`
+                : '';
+            const hwBadge = thread.homework && thread.homework !== 'Unknown'
+                ? `<span class="hw-badge ${hwClass}">${escapeHtml(thread.homework)}</span>`
+                : '';
+
+            // For participation D, show multiple optimizer badges
+            let modelBadges = '';
+            if (thread.optimizers && thread.optimizers.length > 0) {
+                modelBadges = thread.optimizers.map(opt => {
+                    const optClass = opt.toLowerCase().replace(/\s+/g, '-');
+                    return `<span class="model-badge ${optClass}">${escapeHtml(opt)}</span>`;
+                }).join('');
+            } else if (thread.model_family) {
+                modelBadges = `<span class="model-badge ${modelClass}">${escapeHtml(thread.model_family)}</span>`;
+            }
+
+            // For participation E, show category badge
+            let categoryBadge = '';
+            if (thread.tool_category) {
+                const catClass = thread.tool_category.toLowerCase().replace(/[\s\/]+/g, '-');
+                categoryBadge = `<span class="category-badge ${catClass}">${escapeHtml(thread.tool_category)}</span>`;
+            }
+
+            // For participation A, show pinned badge
+            let notableBadge = '';
+            if (thread.is_notable) {
+                notableBadge = `<span class="notable-badge">Pinned</span>`;
+            }
+
+            // Topic badge for all threads
+            let topicBadge = '';
+            if (thread.topic && thread.topic !== 'Unknown') {
+                const topicClass = thread.topic.toLowerCase().replace(/[\s\/]+/g, '-');
+                topicBadge = `<span class="topic-badge ${topicClass}">${escapeHtml(thread.topic)}</span>`;
+            }
+
+            // Truncate body for quick view
+            const bodyPreview = thread.body ? thread.body.substring(0, 600) : '';
+
+            const notableClass = thread.is_notable ? ' notable' : '';
+
+            return `
+                <a href="${thread.page_url}" class="thread-card${notableClass}" data-index="${index}">
+                    <div class="thread-header">
+                        <div class="thread-badges">
+                            ${notableBadge}
+                            ${topicBadge}
+                            ${categoryBadge}
+                            ${hwBadge}
+                            ${modelBadges}
+                            ${attachmentBadge}
+                        </div>
+                        <div class="thread-title-section">
+                            <div class="thread-title">${escapeHtml(thread.title)}</div>
+                        </div>
+                        <div class="thread-meta">
+                            <span>${escapeHtml(thread.author)}</span>
+                            ${date ? `<span>${date}</span>` : ''}
+                        </div>
+                    </div>
+                    <div class="quick-view">
+                        <div class="quick-view-header">${escapeHtml(thread.title)}</div>
+                        <div class="quick-view-content">${escapeHtml(bodyPreview)}${thread.body && thread.body.length > 600 ? '...' : ''}</div>
+                        <div class="quick-view-cta">Click to view full thread →</div>
+                    </div>
+                </a>
+            `;
+        }
+
+        function escapeHtml(text) {
+            if (!text) return '';
+            const div = document.createElement('div');
+            div.textContent = text;
+            return div.innerHTML;
+        }
+
+        // Event listeners for filters
+        document.getElementById('model-filter').addEventListener('change', () => {
+            updateFilterOptions('model');
+            if (currentTab === 'participation_E') {
+                populateCategoryFilter();
+            }
+            renderThreads();
+        });
+        document.getElementById('hw-filter').addEventListener('change', () => {
+            updateFilterOptions('hw');
+            renderThreads();
+        });
+        document.getElementById('search').addEventListener('input', debounce(renderThreads, 300));
+
+        function debounce(func, wait) {
+            let timeout;
+            return function(...args) {
+                clearTimeout(timeout);
+                timeout = setTimeout(() => func.apply(this, args), wait);
+            };
+        }
+
+        // Explosion effect for card hover
+        const PUSH_DISTANCE = 50; // pixels to push cards away
+
+        function setupExplosionEffect() {
+            // Setup for both thread-list and pinned-grid
+            const grids = document.querySelectorAll('.thread-list, .pinned-grid');
+            grids.forEach(grid => {
+                grid.addEventListener('mouseenter', handleCardHover, true);
+                grid.addEventListener('mouseleave', handleCardLeave, true);
+            });
+        }
+
+        function handleCardHover(e) {
+            const card = e.target.closest('.thread-card');
+            if (!card) return;
+
+            const grid = card.closest('.thread-list, .pinned-grid');
+            if (!grid) return;
+            const cards = Array.from(grid.querySelectorAll('.thread-card'));
+
+            // Get grid layout info
+            const gridStyle = getComputedStyle(grid);
+            const columns = gridStyle.gridTemplateColumns.split(' ').length;
+
+            const hoveredIndex = cards.indexOf(card);
+            const hoveredRow = Math.floor(hoveredIndex / columns);
+            const hoveredCol = hoveredIndex % columns;
+
+            // Get hovered card's center position
+            const hoveredRect = card.getBoundingClientRect();
+            const hoveredCenterX = hoveredRect.left + hoveredRect.width / 2;
+            const hoveredCenterY = hoveredRect.top + hoveredRect.height / 2;
+
+            cards.forEach((otherCard, index) => {
+                if (otherCard === card) {
+                    otherCard.classList.add('hovered');
+                    otherCard.classList.remove('pushed');
+                    otherCard.style.transform = '';
+                    return;
+                }
+
+                const row = Math.floor(index / columns);
+                const col = index % columns;
+
+                // Calculate direction to push
+                const rowDiff = row - hoveredRow;
+                const colDiff = col - hoveredCol;
+
+                // Calculate push amount based on distance (closer = pushed more)
+                const distance = Math.sqrt(rowDiff * rowDiff + colDiff * colDiff);
+                if (distance === 0) return;
+
+                const pushFactor = Math.max(0, 1 - (distance - 1) * 0.3); // Decrease push for farther cards
+
+                let pushX = 0;
+                let pushY = 0;
+
+                if (colDiff !== 0) {
+                    pushX = (colDiff > 0 ? 1 : -1) * PUSH_DISTANCE * pushFactor;
+                }
+                if (rowDiff !== 0) {
+                    pushY = (rowDiff > 0 ? 1 : -1) * PUSH_DISTANCE * pushFactor;
+                }
+
+                otherCard.classList.add('pushed');
+                otherCard.classList.remove('hovered');
+                otherCard.style.transform = `translate(${pushX}px, ${pushY}px)`;
+            });
+        }
+
+        function handleCardLeave(e) {
+            const card = e.target.closest('.thread-card');
+            if (!card) return;
+
+            // Check if we're leaving to another card or leaving the grid entirely
+            const relatedTarget = e.relatedTarget;
+            if (relatedTarget && relatedTarget.closest('.thread-card')) {
+                return; // Moving to another card, let that card's hover handle it
+            }
+
+            // Reset all cards in this grid
+            const grid = card.closest('.thread-list, .pinned-grid');
+            if (!grid) return;
+            const cards = grid.querySelectorAll('.thread-card');
+            cards.forEach(c => {
+                c.classList.remove('hovered', 'pushed');
+                c.style.transform = '';
+            });
+        }
+
+        // Re-setup explosion effect when threads are re-rendered
+        const originalRenderThreads = renderThreads;
+        renderThreads = function() {
+            originalRenderThreads();
+            setTimeout(setupExplosionEffect, 0);
+        };
+    </script>
+</body>
+</html>

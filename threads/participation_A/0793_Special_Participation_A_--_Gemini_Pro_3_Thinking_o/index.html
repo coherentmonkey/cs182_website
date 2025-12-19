@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Special Participation A -- Gemini Pro 3 Thinking on HW 10 , Arvind Kruthiventy - CS 182</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #f5f7fa;
+            color: #333;
+            line-height: 1.6;
+        }
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .back-link {
+            display: inline-block;
+            margin-bottom: 20px;
+            color: #4299e1;
+            text-decoration: none;
+        }
+        .back-link:hover { text-decoration: underline; }
+        .thread-header {
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+        }
+        .thread-title {
+            font-size: 1.8rem;
+            color: #2d3748;
+            margin-bottom: 15px;
+        }
+        .thread-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            color: #718096;
+            font-size: 14px;
+        }
+        .model-badge {
+            display: inline-block;
+            padding: 4px 12px;
+            background: #e2e8f0;
+            color: #4a5568;
+            border-radius: 15px;
+            font-size: 13px;
+            font-weight: 500;
+        }
+        .hw-badge {
+            display: inline-block;
+            padding: 4px 12px;
+            background: #fed7e2;
+            color: #97266d;
+            border-radius: 15px;
+            font-size: 13px;
+            font-weight: 500;
+        }
+        .thread-body {
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+        }
+        .thread-body h3 {
+            margin-bottom: 15px;
+            color: #2d3748;
+        }
+        .body-content {
+            white-space: pre-wrap;
+            word-wrap: break-word;
+            line-height: 1.8;
+            font-size: 15px;
+        }
+        .body-content a {
+            color: #4299e1;
+            word-break: break-all;
+        }
+        .attachments {
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
+        .attachments h3 {
+            margin-bottom: 20px;
+            color: #2d3748;
+        }
+        .attachment {
+            margin-bottom: 25px;
+            border: 1px solid #e2e8f0;
+            border-radius: 6px;
+            overflow: hidden;
+        }
+        .attachment-label {
+            background: #f7fafc;
+            padding: 10px 15px;
+            font-weight: 500;
+            font-size: 14px;
+            border-bottom: 1px solid #e2e8f0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .download-link {
+            color: #4299e1;
+            text-decoration: none;
+            font-weight: normal;
+        }
+        .download-link:hover { text-decoration: underline; }
+        .attachment-image img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+        .attachment-pdf iframe {
+            width: 100%;
+            height: 800px;
+            border: none;
+        }
+        .attachment-video video {
+            width: 100%;
+            max-height: 600px;
+        }
+        .attachment-audio audio {
+            width: 100%;
+            padding: 15px;
+        }
+        .attachment-text pre {
+            padding: 15px;
+            background: #f7fafc;
+            overflow-x: auto;
+            max-height: 500px;
+            font-size: 13px;
+            line-height: 1.5;
+        }
+        .attachment-file {
+            padding: 15px;
+        }
+        .file-link {
+            color: #4299e1;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .file-link:hover { text-decoration: underline; }
+        .ed-link {
+            display: inline-block;
+            margin-top: 15px;
+            color: #4299e1;
+            text-decoration: none;
+        }
+        .ed-link:hover { text-decoration: underline; }
+        @media (max-width: 768px) {
+            .thread-title { font-size: 1.4rem; }
+            .attachment-pdf iframe { height: 500px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <a href="../../../index.html" class="back-link">← Back to Directory</a>
+
+        <div class="thread-header">
+            <h1 class="thread-title">Special Participation A -- Gemini Pro 3 Thinking on HW 10 , Arvind Kruthiventy</h1>
+            <div class="thread-meta">
+                <span>By Arvind Kruthiventy</span>
+                <span>2025-12-11</span>
+                <span class="hw-badge">HW10</span>
+                <span class="model-badge">Gemini</span>
+            </div>
+            <a href="https://edstem.org/us/courses/84647/discussion/7447290" target="_blank" class="ed-link">View on Ed Stem →</a>
+        </div>
+
+        <div class="thread-body">
+            <div class="body-content">In this post, I use Gemini Pro 3 on the HW 10 to answer the non-coding portions which were two questions: one question on kernelized linear attention for efficient attention computation over long sequences and one about the FaceNet paper. In the first question, Gemini Pro successfully answers the questions related to deriving formulas in part a part 1 and part b in the first attempt but it struggles a little with the question about computing the computational cost. It appears to answer these questions with less accuracy than other questions and answers to these types of questions should be carefully checked. However, for the second question on the FaceNet paper, Gemini oneshots it and provides detailed and accurate responses to all the questions that match the provided solutions. Summarization and querying key details from dense articles and papers appears to be its strength because it generates answers fairly quickly and with high accuracy; questions that are a little bit more general or require more analysis it seems to provide more shallow responses than is desired, but overalls its responses are very good if you are using to summarize the key implementation details and contributions of a work. I noticed that Gemini had an easier time with the non-coding questions than the coding ones where it would take significantly longer and could still require significant iteration before the code matches the user&#x27;s requests.</div>
+        </div>
+
+        <div class="attachments">
+                <div class="attachment attachment-pdf">
+                    <div class="attachment-label">Special Participation A -- Gemini Pro 3 Thinking on HW 10 , Arvind Kruthiventy.pdf <a href="attachments/Special Participation A -- Gemini Pro 3 Thinking on HW 10 , Arvind Kruthiventy.pdf" target="_blank" class="download-link">Open in new tab</a></div>
+                    <iframe src="attachments/Special Participation A -- Gemini Pro 3 Thinking on HW 10 , Arvind Kruthiventy.pdf" loading="lazy"></iframe>
+                </div></div>
+    </div>
+</body>
+</html>

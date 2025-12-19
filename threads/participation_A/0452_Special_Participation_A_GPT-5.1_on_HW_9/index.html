@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Special Participation A: GPT-5.1 on HW 9 - CS 182</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #f5f7fa;
+            color: #333;
+            line-height: 1.6;
+        }
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .back-link {
+            display: inline-block;
+            margin-bottom: 20px;
+            color: #4299e1;
+            text-decoration: none;
+        }
+        .back-link:hover { text-decoration: underline; }
+        .thread-header {
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+        }
+        .thread-title {
+            font-size: 1.8rem;
+            color: #2d3748;
+            margin-bottom: 15px;
+        }
+        .thread-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            color: #718096;
+            font-size: 14px;
+        }
+        .model-badge {
+            display: inline-block;
+            padding: 4px 12px;
+            background: #e2e8f0;
+            color: #4a5568;
+            border-radius: 15px;
+            font-size: 13px;
+            font-weight: 500;
+        }
+        .hw-badge {
+            display: inline-block;
+            padding: 4px 12px;
+            background: #fed7e2;
+            color: #97266d;
+            border-radius: 15px;
+            font-size: 13px;
+            font-weight: 500;
+        }
+        .thread-body {
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+        }
+        .thread-body h3 {
+            margin-bottom: 15px;
+            color: #2d3748;
+        }
+        .body-content {
+            white-space: pre-wrap;
+            word-wrap: break-word;
+            line-height: 1.8;
+            font-size: 15px;
+        }
+        .body-content a {
+            color: #4299e1;
+            word-break: break-all;
+        }
+        .attachments {
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
+        .attachments h3 {
+            margin-bottom: 20px;
+            color: #2d3748;
+        }
+        .attachment {
+            margin-bottom: 25px;
+            border: 1px solid #e2e8f0;
+            border-radius: 6px;
+            overflow: hidden;
+        }
+        .attachment-label {
+            background: #f7fafc;
+            padding: 10px 15px;
+            font-weight: 500;
+            font-size: 14px;
+            border-bottom: 1px solid #e2e8f0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .download-link {
+            color: #4299e1;
+            text-decoration: none;
+            font-weight: normal;
+        }
+        .download-link:hover { text-decoration: underline; }
+        .attachment-image img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+        .attachment-pdf iframe {
+            width: 100%;
+            height: 800px;
+            border: none;
+        }
+        .attachment-video video {
+            width: 100%;
+            max-height: 600px;
+        }
+        .attachment-audio audio {
+            width: 100%;
+            padding: 15px;
+        }
+        .attachment-text pre {
+            padding: 15px;
+            background: #f7fafc;
+            overflow-x: auto;
+            max-height: 500px;
+            font-size: 13px;
+            line-height: 1.5;
+        }
+        .attachment-file {
+            padding: 15px;
+        }
+        .file-link {
+            color: #4299e1;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .file-link:hover { text-decoration: underline; }
+        .ed-link {
+            display: inline-block;
+            margin-top: 15px;
+            color: #4299e1;
+            text-decoration: none;
+        }
+        .ed-link:hover { text-decoration: underline; }
+        @media (max-width: 768px) {
+            .thread-title { font-size: 1.4rem; }
+            .attachment-pdf iframe { height: 500px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <a href="../../../index.html" class="back-link">← Back to Directory</a>
+
+        <div class="thread-header">
+            <h1 class="thread-title">Special Participation A: GPT-5.1 on HW 9</h1>
+            <div class="thread-meta">
+                <span>By Lenci Ni</span>
+                <span>2025-12-04</span>
+                <span class="hw-badge">HW9</span>
+                <span class="model-badge">GPT</span>
+            </div>
+            <a href="https://edstem.org/us/courses/84647/discussion/7405370" target="_blank" class="ed-link">View on Ed Stem →</a>
+        </div>
+
+        <div class="thread-body">
+            <div class="body-content">I used GPT-5.1 to help with the written (non-coding) parts of Homework 9: Problems 1, 2, 3, 4, and 6. I included screenshots of the problem statements, and my prompt for each problem followed the structure:
+
+For each subpart, please: (1) restate the problem in your own words, (2) explain the main idea before doing any calculations, (3) show the full step-by-step solution with no big jumps, and (4) summarize the final answer clearly. I have attached screenshots of each problem.
+
+Summary: GPT-5.1 handled these questions very well. It reliably extracted equations from screenshots, followed the structured prompt, and produced organized, readable solutions. Most final answers matched the official solutions.
+
+Strengths: GPT-5.1 did very well across all the written parts. It was able to correctly parse mathematical expressions, notation, and multi-step problems from screenshots reliably, even when the problem statements was spread across multiple images. The solutions given by the LLM followed the structure that was specified in the prompt, with each answer including a restatement of the subproblem, a plan, detailed step by step derivations, and a summary. For most subparts, GPT-5.1 was able to one-shot the correct solution with no iteration needed. Many explanations were not only correct, but also more detailed than the official solutions. Overall, it demonstrated strong reasoning and required little follow up guidance.
+
+Weaknesses: The main issue I encountered was an occasional misinterpretations of notation or implicit conventions in the problem statement. The main example was in Q6, where GPT-5.1 defaulted to the homogeneous quadratic kernel rather than the degree-2 polynomial kernel expected by the assignment. Once I explicitly asked about the missing constant term, it corrected itself immediately, so this was not a hallucination but more so like falling back on a common default kernel definition. In addition, some of the complexity analyses, while correct, could have been clearer, and would benefit from including pseudocode. Overall, most of the issues were minor and the model had sound reasoning.</div>
+        </div>
+
+        <div class="attachments">
+                <div class="attachment attachment-pdf">
+                    <div class="attachment-label">participation_a_hw9.pdf <a href="attachments/participation_a_hw9.pdf" target="_blank" class="download-link">Open in new tab</a></div>
+                    <iframe src="attachments/participation_a_hw9.pdf" loading="lazy"></iframe>
+                </div></div>
+    </div>
+</body>
+</html>

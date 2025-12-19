@@ -1,0 +1,93 @@
+You are an expert pedagogy consultant tasked with creating a student-facing "Common Mistakes" guide for a lecture on optimization in deep learning. This guide will help students identify, understand, and correct their misconceptions.
+
+INPUT MATERIALS:
+You will be provided with lecture notes on Gradient Descent, Ridge Regression, SGD, and Momentum that build toward understanding implicit regularization through geometric analysis in the SVD basis.
+
+YOUR TASK:
+Create a LaTeX document titled "Common Mistakes in Optimization: A Self-Diagnosis Guide" that helps students actively debug their own understanding.
+
+CRITICAL REQUIREMENTS:
+
+1. CONCEPTUAL ORGANIZATION:
+- Organize mistakes around 3-4 major conceptual themes, NOT as isolated errors
+- Each theme should connect multiple related misconceptions
+- Show how these themes relate to the central idea: data geometry (singular value spectrum) drives optimization behavior
+- Themes might include: "Geometry vs. Dataset Size", "Directional Behavior in Optimization", "Regularization Across Time and Space"
+
+2. STRUCTURE FOR EACH MISTAKE:
+For each mistake, provide:
+
+a) Recognition Section:
+- "How to spot this in your own thinking" - specific warning signs in their reasoning or homework
+- Concrete example of incorrect reasoning (e.g., "I chose η=1 because n=1000 is large")
+- Why this reasoning feels plausible initially
+
+b) Conceptual Explanation:
+- What's actually happening geometrically/mathematically (use SVD basis perspective where relevant)
+- Build from simpler to more complex understanding
+- Include a 2×2 or 3×3 worked example with actual numbers showing the correct behavior
+- Use visualization descriptions where helpful (e.g., "imagine the loss surface elongated along...")
+
+c) Self-Check Questions:
+- 3-4 questions students can ask themselves to test understanding
+- Questions should require reasoning, not just formula recall
+- Include one computational check they can do on simple examples
+
+d) Connection to Practice:
+- When does this mistake actually matter in ML? When is it harmless?
+- Brief mention of what happens in real neural network training
+
+3. MATHEMATICAL RIGOR:
+- All inequalities, bounds, and conditions must be precisely stated
+- Distinguish between divergence, oscillation, and slow convergence
+- Use correct notation from the lecture notes
+- Numerical examples must be arithmetically correct and pedagogically meaningful
+- When showing formulas, explain what each term represents physically/geometrically
+
+4. WORKED EXAMPLES:
+- Include at least 2 complete worked examples with realistic numbers
+- One example should use a 2×2 matrix to show complete SVD analysis
+- Another should demonstrate the numerical behavior over several iterations
+- Examples should illustrate the geometry, not just arithmetic
+
+5. MISCONCEPTIONS TO ADDRESS:
+Based on common student difficulties, include:
+- Confusing dataset size with spectral properties for learning rate selection
+- Thinking Ridge shrinks all directions uniformly
+- Expecting GD to converge equally fast in all directions
+- Missing the connection between early stopping and Ridge regularization
+- Believing SGD gradients are biased (confusing variance with bias)
+- Misunderstanding momentum as just "bigger steps" rather than exponential averaging
+- Thinking constant step size SGD cannot converge
+- (Add others from the lecture content as appropriate)
+
+6. PEDAGOGICAL TONE:
+- Respectful and empowering - treat mistakes as natural steps in learning
+- Frame as "developing more refined understanding" not "you were wrong"
+- Use "we" and "us" occasionally to show this is a shared learning process
+- Be encouraging but mathematically honest
+
+7. PRACTICAL LEARNING AIDS:
+- Include a "Quick Reference" box summarizing key formulas with geometric interpretations
+- Provide a "Debugging Checklist" students can use when solving problems
+- Suggest specific experiments students can run (e.g., "Try GD on a 2×2 problem with σ₁=10, σ₂=0.1")
+
+8. LATEX FORMATTING:
+- Use clear section hierarchy with \section and \subsection
+- Include theorem/example environments where appropriate
+- Use \textbf for key concepts, but don't overuse formatting
+- Include margin notes or highlighted boxes for critical insights
+- Make it visually scannable - students should be able to quickly find relevant sections
+
+WHAT TO AVOID:
+- Do NOT just list formulas without geometric interpretation
+- Do NOT use patronizing language or trivialize student thinking
+- Do NOT provide only toy examples (like 1+1=2 level)
+- Do NOT treat mistakes as isolated facts to memorize
+- Do NOT include content that isn't directly connected to the lecture notes
+- Do NOT be vague - every claim needs mathematical backing
+
+OUTPUT FORMAT:
+A complete, compilable LaTeX document that is 6-10 pages long, well-organized, mathematically rigorous, and genuinely helpful for student self-diagnosis and learning.
+
+Begin your response with \documentclass and end with \end{document}. The document should be immediately compilable.

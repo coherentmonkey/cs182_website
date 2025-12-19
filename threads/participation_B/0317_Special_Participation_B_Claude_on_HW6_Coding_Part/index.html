@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Special Participation B: Claude on HW6 Coding Part - CS 182</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #f5f7fa;
+            color: #333;
+            line-height: 1.6;
+        }
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .back-link {
+            display: inline-block;
+            margin-bottom: 20px;
+            color: #4299e1;
+            text-decoration: none;
+        }
+        .back-link:hover { text-decoration: underline; }
+        .thread-header {
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+        }
+        .thread-title {
+            font-size: 1.8rem;
+            color: #2d3748;
+            margin-bottom: 15px;
+        }
+        .thread-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            color: #718096;
+            font-size: 14px;
+        }
+        .model-badge {
+            display: inline-block;
+            padding: 4px 12px;
+            background: #e2e8f0;
+            color: #4a5568;
+            border-radius: 15px;
+            font-size: 13px;
+            font-weight: 500;
+        }
+        .hw-badge {
+            display: inline-block;
+            padding: 4px 12px;
+            background: #fed7e2;
+            color: #97266d;
+            border-radius: 15px;
+            font-size: 13px;
+            font-weight: 500;
+        }
+        .thread-body {
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+        }
+        .thread-body h3 {
+            margin-bottom: 15px;
+            color: #2d3748;
+        }
+        .body-content {
+            white-space: pre-wrap;
+            word-wrap: break-word;
+            line-height: 1.8;
+            font-size: 15px;
+        }
+        .body-content a {
+            color: #4299e1;
+            word-break: break-all;
+        }
+        .attachments {
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
+        .attachments h3 {
+            margin-bottom: 20px;
+            color: #2d3748;
+        }
+        .attachment {
+            margin-bottom: 25px;
+            border: 1px solid #e2e8f0;
+            border-radius: 6px;
+            overflow: hidden;
+        }
+        .attachment-label {
+            background: #f7fafc;
+            padding: 10px 15px;
+            font-weight: 500;
+            font-size: 14px;
+            border-bottom: 1px solid #e2e8f0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .download-link {
+            color: #4299e1;
+            text-decoration: none;
+            font-weight: normal;
+        }
+        .download-link:hover { text-decoration: underline; }
+        .attachment-image img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+        .attachment-pdf iframe {
+            width: 100%;
+            height: 800px;
+            border: none;
+        }
+        .attachment-video video {
+            width: 100%;
+            max-height: 600px;
+        }
+        .attachment-audio audio {
+            width: 100%;
+            padding: 15px;
+        }
+        .attachment-text pre {
+            padding: 15px;
+            background: #f7fafc;
+            overflow-x: auto;
+            max-height: 500px;
+            font-size: 13px;
+            line-height: 1.5;
+        }
+        .attachment-file {
+            padding: 15px;
+        }
+        .file-link {
+            color: #4299e1;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .file-link:hover { text-decoration: underline; }
+        .ed-link {
+            display: inline-block;
+            margin-top: 15px;
+            color: #4299e1;
+            text-decoration: none;
+        }
+        .ed-link:hover { text-decoration: underline; }
+        @media (max-width: 768px) {
+            .thread-title { font-size: 1.4rem; }
+            .attachment-pdf iframe { height: 500px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <a href="../../../index.html" class="back-link">← Back to Directory</a>
+
+        <div class="thread-header">
+            <h1 class="thread-title">Special Participation B: Claude on HW6 Coding Part</h1>
+            <div class="thread-meta">
+                <span>By Angelina Zhang</span>
+                <span>2025-11-25</span>
+                <span class="hw-badge">HW6</span>
+                <span class="model-badge">Claude</span>
+            </div>
+            <a href="https://edstem.org/us/courses/84647/discussion/7361344" target="_blank" class="ed-link">View on Ed Stem →</a>
+        </div>
+
+        <div class="thread-body">
+            <div class="body-content">TLDR Claude generally produced responses that sounded correct at a high level, but it frequently broke the assignment’s required function calls, changed tensor shapes, invented details, or fabricated empirical results, showing that it needs strict guidance and careful verification to be reliably useful.
+
+I used Claude for all the coding tasks (ZKC GNN, Muon optimizer, TensorBoard and W&amp;B logging) (this also includes question 1 and 4 since I am curious how it would react to experimental questions). Here is the link that includes this conversation and my comment: <a href="https://drive.google.com/file/d/18G2z--73h13fW7IHrvMpzHCTN3_F9cmB/view?usp=sharing" target="_blank" rel="noopener noreferrer">https://drive.google.com/file/d/18G2z--73h13fW7IHrvMpzHCTN3_F9cmB/view?usp=sharing</a>
+Claude provided solutions that were often superficially aligned with the mathematical intent, but its behavior consistently revealed several limitations: an over-tendency to generalize, a willingness to invent details, and a lack of adherence to the assignment’s scaffolding and API requirements. While Claude frequently produced code that looked correct, a careful comparison with the solution demonstrates that many answers were only conceptually plausible rather than implementation-correct.
+
+In the GNN portion, Claude captured the high-level idea of Graph Convolution, but its implementations often broke the shape contracts required by the scaffold. It rewrote layer equations, changed tensor orientations, and introduced unnecessary rearrangements so that the model no longer matched the Softmax layer’s expected shapes. It also redesigned entire GNN architectures, ignoring the intended pattern shown in the solution. These deviations were not mathematically wrong, but they would break the notebook environment and cause error. This illustrates Claude’s tendency to over-help by redesigning code rather than filling the required blanks. 
+For the Muon optimizer, Claude again produced code with correct high-level structure, but the implementation contained realistic flaws. For the TensorBoard and W&amp;B exercises, Claude often replaced the provided structure with its own training loops and added hyperparameters not requested at the cost of diverging from the assignment scaffold. Moreover, In all the written conceptual questions, Claude repeatedly provided hypothetical performance numbers (“Muon ~70% accuracy,” “MuonSVD similar to Muon”) and expected rankings without access to actual results. 
+
+My overall conclusion is Claude is strong at reconstructing textbook-level intent but unreliable at satisfying precise implementation constraints unless rigorously constrained. It tends to restructure code and produce fabricated empirical claims when data is unavailable. The exercise emphasized that LLM-assisted coding requires careful oversight.</div>
+        </div>
+
+        
+    </div>
+</body>
+</html>

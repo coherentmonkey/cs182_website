@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Special Participation B: Seed1.6 (ByteDance) on HW3 - CS 182</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #f5f7fa;
+            color: #333;
+            line-height: 1.6;
+        }
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .back-link {
+            display: inline-block;
+            margin-bottom: 20px;
+            color: #4299e1;
+            text-decoration: none;
+        }
+        .back-link:hover { text-decoration: underline; }
+        .thread-header {
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+        }
+        .thread-title {
+            font-size: 1.8rem;
+            color: #2d3748;
+            margin-bottom: 15px;
+        }
+        .thread-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            color: #718096;
+            font-size: 14px;
+        }
+        .model-badge {
+            display: inline-block;
+            padding: 4px 12px;
+            background: #e2e8f0;
+            color: #4a5568;
+            border-radius: 15px;
+            font-size: 13px;
+            font-weight: 500;
+        }
+        .hw-badge {
+            display: inline-block;
+            padding: 4px 12px;
+            background: #fed7e2;
+            color: #97266d;
+            border-radius: 15px;
+            font-size: 13px;
+            font-weight: 500;
+        }
+        .thread-body {
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+        }
+        .thread-body h3 {
+            margin-bottom: 15px;
+            color: #2d3748;
+        }
+        .body-content {
+            white-space: pre-wrap;
+            word-wrap: break-word;
+            line-height: 1.8;
+            font-size: 15px;
+        }
+        .body-content a {
+            color: #4299e1;
+            word-break: break-all;
+        }
+        .attachments {
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
+        .attachments h3 {
+            margin-bottom: 20px;
+            color: #2d3748;
+        }
+        .attachment {
+            margin-bottom: 25px;
+            border: 1px solid #e2e8f0;
+            border-radius: 6px;
+            overflow: hidden;
+        }
+        .attachment-label {
+            background: #f7fafc;
+            padding: 10px 15px;
+            font-weight: 500;
+            font-size: 14px;
+            border-bottom: 1px solid #e2e8f0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .download-link {
+            color: #4299e1;
+            text-decoration: none;
+            font-weight: normal;
+        }
+        .download-link:hover { text-decoration: underline; }
+        .attachment-image img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+        .attachment-pdf iframe {
+            width: 100%;
+            height: 800px;
+            border: none;
+        }
+        .attachment-video video {
+            width: 100%;
+            max-height: 600px;
+        }
+        .attachment-audio audio {
+            width: 100%;
+            padding: 15px;
+        }
+        .attachment-text pre {
+            padding: 15px;
+            background: #f7fafc;
+            overflow-x: auto;
+            max-height: 500px;
+            font-size: 13px;
+            line-height: 1.5;
+        }
+        .attachment-file {
+            padding: 15px;
+        }
+        .file-link {
+            color: #4299e1;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .file-link:hover { text-decoration: underline; }
+        .ed-link {
+            display: inline-block;
+            margin-top: 15px;
+            color: #4299e1;
+            text-decoration: none;
+        }
+        .ed-link:hover { text-decoration: underline; }
+        @media (max-width: 768px) {
+            .thread-title { font-size: 1.4rem; }
+            .attachment-pdf iframe { height: 500px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <a href="../../../index.html" class="back-link">← Back to Directory</a>
+
+        <div class="thread-header">
+            <h1 class="thread-title">Special Participation B: Seed1.6 (ByteDance) on HW3</h1>
+            <div class="thread-meta">
+                <span>By Ken Zheng</span>
+                <span>2025-11-29</span>
+                <span class="hw-badge">HW3</span>
+                <span class="model-badge">Other</span>
+            </div>
+            <a href="https://edstem.org/us/courses/84647/discussion/7374084" target="_blank" class="ed-link">View on Ed Stem →</a>
+        </div>
+
+        <div class="thread-body">
+            <div class="body-content">I completed the coding parts of Homework 3 using Doubao Seed1.6 (from ByteDance).
+
+Motivation
+
+Doubao Seed1.6 doesn&#x27;t support .ipynb file uploads so I manually copy-pasted each part as text input. I tried to limit the extent of prompt optimizations in order to explore to what extend Seed is able to first-try questions without any additional support.
+
+Summary
+
+Overall Seed is a capable coding model that is adaptive and flexible. Seed mostly zero-shots every part, producing accurate, clean, and commented code in a well-structured manner. Nevertheless, when its first attempt is erroneous and the user follows up by asking for modifications on top of the previous code, it has a tendency to slightly spiral towards chaos (i.e., by adding more code and introducing more variables to deal with the changes instead of reforming logic to incorporate both previous and new requirements). This rising-entropy approach isn&#x27;t unique to Seed -- I&#x27;ve witnessed similar behavior in ChatGPT, Qwen, and Claude when I repeatedly ask for incremental but substantial changes to previously generated code. But I digress. 
+
+Seed also tends to assume control of the entire code snippet and frequently makes edits outside of TODO blocks. The prompts in the question notebook never explicitly state &quot;only add to/change what&#x27;s in the TODO blocks&quot;, which is probably what gives Seed its bravery. As humans, however, we naturally understand we should only modify content within the TODOs. This is easily fixable, however, by just telling Seed to only modify TODO blocks. This works even after a few back and forths and then asking it to condense all the changes it has made into the TODO block of the first version of the code. You can see this in action for part (c).
+
+For more specific observations please see my annotations below!
+
+Files &amp; Links
+
+Part A
+
+Part B
+
+Parts C-E
+
+Annotated conversations:
+
+Completed notebook ran on code from Seed (to show correctness):</div>
+        </div>
+
+        <div class="attachments">
+                <div class="attachment attachment-pdf">
+                    <div class="attachment-label">HW3_Q2_Annotated.pdf <a href="attachments/HW3_Q2_Annotated.pdf" target="_blank" class="download-link">Open in new tab</a></div>
+                    <iframe src="attachments/HW3_Q2_Annotated.pdf" loading="lazy"></iframe>
+                </div>
+                <div class="attachment attachment-file">
+                    <a href="attachments/q_mup_coding_seedified.ipynb" target="_blank" class="file-link">q_mup_coding_seedified.ipynb</a>
+                </div></div>
+    </div>
+</body>
+</html>

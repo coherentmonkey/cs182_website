@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Special Participation E: ChatGPT as a Finetuning Simulation - CS 182</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #f5f7fa;
+            color: #333;
+            line-height: 1.6;
+        }
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .back-link {
+            display: inline-block;
+            margin-bottom: 20px;
+            color: #4299e1;
+            text-decoration: none;
+        }
+        .back-link:hover { text-decoration: underline; }
+        .thread-header {
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+        }
+        .thread-title {
+            font-size: 1.8rem;
+            color: #2d3748;
+            margin-bottom: 15px;
+        }
+        .thread-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            color: #718096;
+            font-size: 14px;
+        }
+        .model-badge {
+            display: inline-block;
+            padding: 4px 12px;
+            background: #e2e8f0;
+            color: #4a5568;
+            border-radius: 15px;
+            font-size: 13px;
+            font-weight: 500;
+        }
+        .hw-badge {
+            display: inline-block;
+            padding: 4px 12px;
+            background: #fed7e2;
+            color: #97266d;
+            border-radius: 15px;
+            font-size: 13px;
+            font-weight: 500;
+        }
+        .thread-body {
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+        }
+        .thread-body h3 {
+            margin-bottom: 15px;
+            color: #2d3748;
+        }
+        .body-content {
+            white-space: pre-wrap;
+            word-wrap: break-word;
+            line-height: 1.8;
+            font-size: 15px;
+        }
+        .body-content a {
+            color: #4299e1;
+            word-break: break-all;
+        }
+        .attachments {
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
+        .attachments h3 {
+            margin-bottom: 20px;
+            color: #2d3748;
+        }
+        .attachment {
+            margin-bottom: 25px;
+            border: 1px solid #e2e8f0;
+            border-radius: 6px;
+            overflow: hidden;
+        }
+        .attachment-label {
+            background: #f7fafc;
+            padding: 10px 15px;
+            font-weight: 500;
+            font-size: 14px;
+            border-bottom: 1px solid #e2e8f0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .download-link {
+            color: #4299e1;
+            text-decoration: none;
+            font-weight: normal;
+        }
+        .download-link:hover { text-decoration: underline; }
+        .attachment-image img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+        .attachment-pdf iframe {
+            width: 100%;
+            height: 800px;
+            border: none;
+        }
+        .attachment-video video {
+            width: 100%;
+            max-height: 600px;
+        }
+        .attachment-audio audio {
+            width: 100%;
+            padding: 15px;
+        }
+        .attachment-text pre {
+            padding: 15px;
+            background: #f7fafc;
+            overflow-x: auto;
+            max-height: 500px;
+            font-size: 13px;
+            line-height: 1.5;
+        }
+        .attachment-file {
+            padding: 15px;
+        }
+        .file-link {
+            color: #4299e1;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .file-link:hover { text-decoration: underline; }
+        .ed-link {
+            display: inline-block;
+            margin-top: 15px;
+            color: #4299e1;
+            text-decoration: none;
+        }
+        .ed-link:hover { text-decoration: underline; }
+        @media (max-width: 768px) {
+            .thread-title { font-size: 1.4rem; }
+            .attachment-pdf iframe { height: 500px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <a href="../../../index.html" class="back-link">← Back to Directory</a>
+
+        <div class="thread-header">
+            <h1 class="thread-title">Special Participation E: ChatGPT as a Finetuning Simulation</h1>
+            <div class="thread-meta">
+                <span>By Akhil Agarwal</span>
+                <span>2025-12-07</span>
+                
+                <span class="model-badge">GPT</span>
+            </div>
+            <a href="https://edstem.org/us/courses/84647/discussion/7422729" target="_blank" class="ed-link">View on Ed Stem →</a>
+        </div>
+
+        <div class="thread-body">
+            <div class="body-content">Motivation/Summary
+
+I tend to struggle quite a bit with hyperparameter tuning whenever it comes up in the homeworks, and I noticed that LLMs tend to be pretty good with it, probably due to having a lot of examples to go off of. So, I decided to make a finetuning simulator, where the LLM comes up with some hypothetical task, model architecture, loss function, and optimizer, and the user has to work on finetuning it. The model would produce training/validation loss and accuracy curves after every change, and also forced the user to explain their reasoning. I learned quite a bit in my chat with it, such as some nuances of the learning rate scheduling, as well as how large oscillations can happen in validation loss and not in training loss if some hyperparameters are off. It did quite well, adjusting the curves according to the changes proposed and providing very helpful analysis when requested. I wanted the user to do most of the work, and so it was instructed to do minimal analysis unless requested, but it started to add more analysis as the chat went on, though still not too much. It also didn&#x27;t deny all of my changes as bad or accept them all as good, so I think it was trying to be objective based on the situation it started with, which was great.
+
+Trace: <a href="https://chatgpt.com/share/6934b9ec-e3cc-800f-bab9-74457b92d562" target="_blank" rel="noopener noreferrer">https://chatgpt.com/share/6934b9ec-e3cc-800f-bab9-74457b92d562</a>
+
+Annotated Trace:
+
+
+
+System Prompt:
+
+Role: You are an advanced Deep Learning Hyperparameter Tuning Simulator. Your goal is to help the user master tuning dynamics by allowing them to manipulate hyperparameters and observing the consequences via simulated loss and accuracy curves.
+
+Operational Rules: Initialization:
+
+Start by randomly selecting a Task (e.g., Image Classification, Sentiment Analysis, Regression), a Model (CNN, MLP, GNN, Transformer), an Optimizer (SGD, Adam, AdamW, SGD-Momentum), and a Loss Function (MSE, Cross-Entropy).
+
+Do not initialize the hyperparameters, and allow the user to initialize the values to start. If they are missing a key hyperparameter which the model would not be able to work without, make sure to prompt them towards initializing it without mentioning the name of it, but if it is possible to run without it or set it to 0 as a default, do that but do not mention the hyperparameter, allowing the user to discover it. If there is some extra hyperparameter they supply, or they would like to modify the architecture, allow for that, as long as it is implementable.
+
+The key is to allow the user as much flexibility as they would like, and only help them in any way when they request it. The first message should simply ask the user for hyperparameters, and not mention the names of any of them, along with defining the task, model architecture, and loss function.
+
+Do not explain why the values are bad.
+
+The &quot;Reasoning&quot; Requirement (Strict):
+
+The user must propose a change and provide a reason (e.g., &quot;Decrease LR to 1e-3 to stop oscillation&quot;).
+
+Condition A: If the reasoning contradicts the action (e.g., &quot;Increase LR to reduce noise&quot;), REJECT the change and ask them to clarify.
+
+Condition B: If the reasoning is logical but the move is mathematically wrong for the current state (e.g., &quot;Increase LR&quot; when it&#x27;s already exploding), ACCEPT the change and simulate the disastrous result.
+
+Condition C: If the reasoning is logical and the move is correct, ACCEPT the change and simulate the improvement.
+
+Visual Feedback Only:
+
+CRITICAL: Do not provide text-based &quot;Expert Analysis&quot; or explain why the curve looks the way it does. Do not give away the solution.
+
+Instead, you must generate a synthetic Loss/Accuracy curve that accurately reflects the mathematical behavior of the current hyperparameters.
+
+Example: If LR is too high, plot a jagged, exploding line. If Batch Size is small, add heavy Gaussian noise to the line. If Overfitting, curl the Validation Loss upward.
+
+Response Format:
+
+Current Hyperparameters: List the current state.
+
+Simulation: The graph of the loss and accuracy (training &amp; validation).
+
+Visual Description: A brief, objective description of the line (e.g., &quot;The line is flat,&quot; &quot;The line is oscillating&quot;). Do not interpret the meaning.
+
+Next Step: Ask the user: &quot;What is your next proposal? (Remember to include your reasoning.)&quot;
+
+IF the user is asking for feedback or analysis, provide it to the extent that the user asks, giving no more information than is necessary, while satisfying the user&#x27;s request.
+
+Goal: The user should &quot;win&quot; by successfully tuning the model to high accuracy through trial and error, relying solely on their ability to read the graphs. Only offer a hint if the user explicitly asks for help or fails 3 times in a row. Ensure that the simulation is realistic.</div>
+        </div>
+
+        <div class="attachments">
+                <div class="attachment attachment-pdf">
+                    <div class="attachment-label">Special_Participation_E1.pdf <a href="attachments/Special_Participation_E1.pdf" target="_blank" class="download-link">Open in new tab</a></div>
+                    <iframe src="attachments/Special_Participation_E1.pdf" loading="lazy"></iframe>
+                </div></div>
+    </div>
+</body>
+</html>

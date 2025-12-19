@@ -1,0 +1,20 @@
+You are modeling a line of students waiting at office hours for this course.
+
+Above I have shared lecture material such as slides, notes, or a worksheet. Use that as the main source for everything you do here.
+
+Your task:
+
+1. Read the material and identify the key ideas and skills it covers.
+
+2. Based only on this material and basic background that a typical student in this class would already know, create seven realistic student questions.
+
+3. The seven questions must follow this pattern:
+- Two clarification questions about definitions, notation, or basic setup.
+- Three why or how questions that dig into reasoning, assumptions, or connections between ideas.
+- Two application questions that ask what would happen if we change an assumption, parameter, or example.
+
+4. Make the questions sound like real questions a strong but slightly confused student might ask.
+
+5. Make sure the questions span the full range of important ideas in the material.
+
+6. Do not answer the questions. Number them from 1 to 7.

@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Special Participation A: Qwen on hw11 - CS 182</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #f5f7fa;
+            color: #333;
+            line-height: 1.6;
+        }
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .back-link {
+            display: inline-block;
+            margin-bottom: 20px;
+            color: #4299e1;
+            text-decoration: none;
+        }
+        .back-link:hover { text-decoration: underline; }
+        .thread-header {
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+        }
+        .thread-title {
+            font-size: 1.8rem;
+            color: #2d3748;
+            margin-bottom: 15px;
+        }
+        .thread-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            color: #718096;
+            font-size: 14px;
+        }
+        .model-badge {
+            display: inline-block;
+            padding: 4px 12px;
+            background: #e2e8f0;
+            color: #4a5568;
+            border-radius: 15px;
+            font-size: 13px;
+            font-weight: 500;
+        }
+        .hw-badge {
+            display: inline-block;
+            padding: 4px 12px;
+            background: #fed7e2;
+            color: #97266d;
+            border-radius: 15px;
+            font-size: 13px;
+            font-weight: 500;
+        }
+        .thread-body {
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+        }
+        .thread-body h3 {
+            margin-bottom: 15px;
+            color: #2d3748;
+        }
+        .body-content {
+            white-space: pre-wrap;
+            word-wrap: break-word;
+            line-height: 1.8;
+            font-size: 15px;
+        }
+        .body-content a {
+            color: #4299e1;
+            word-break: break-all;
+        }
+        .attachments {
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
+        .attachments h3 {
+            margin-bottom: 20px;
+            color: #2d3748;
+        }
+        .attachment {
+            margin-bottom: 25px;
+            border: 1px solid #e2e8f0;
+            border-radius: 6px;
+            overflow: hidden;
+        }
+        .attachment-label {
+            background: #f7fafc;
+            padding: 10px 15px;
+            font-weight: 500;
+            font-size: 14px;
+            border-bottom: 1px solid #e2e8f0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .download-link {
+            color: #4299e1;
+            text-decoration: none;
+            font-weight: normal;
+        }
+        .download-link:hover { text-decoration: underline; }
+        .attachment-image img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+        .attachment-pdf iframe {
+            width: 100%;
+            height: 800px;
+            border: none;
+        }
+        .attachment-video video {
+            width: 100%;
+            max-height: 600px;
+        }
+        .attachment-audio audio {
+            width: 100%;
+            padding: 15px;
+        }
+        .attachment-text pre {
+            padding: 15px;
+            background: #f7fafc;
+            overflow-x: auto;
+            max-height: 500px;
+            font-size: 13px;
+            line-height: 1.5;
+        }
+        .attachment-file {
+            padding: 15px;
+        }
+        .file-link {
+            color: #4299e1;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .file-link:hover { text-decoration: underline; }
+        .ed-link {
+            display: inline-block;
+            margin-top: 15px;
+            color: #4299e1;
+            text-decoration: none;
+        }
+        .ed-link:hover { text-decoration: underline; }
+        @media (max-width: 768px) {
+            .thread-title { font-size: 1.4rem; }
+            .attachment-pdf iframe { height: 500px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <a href="../../../index.html" class="back-link">← Back to Directory</a>
+
+        <div class="thread-header">
+            <h1 class="thread-title">Special Participation A: Qwen on hw11</h1>
+            <div class="thread-meta">
+                <span>By Reyna Liu</span>
+                <span>2025-12-08</span>
+                <span class="hw-badge">HW11</span>
+                <span class="model-badge">Qwen</span>
+            </div>
+            <a href="https://edstem.org/us/courses/84647/discussion/7427535" target="_blank" class="ed-link">View on Ed Stem →</a>
+        </div>
+
+        <div class="thread-body">
+            <div class="body-content">Link to conversation: <a href="https://www.qianwen.com/share?shareId=99965dbe-7cb8-4b68-a181-f66d29022d0f" target="_blank" rel="noopener noreferrer">https://www.qianwen.com/share?shareId=99965dbe-7cb8-4b68-a181-f66d29022d0f</a>
+
+The model was reasonably good at one-shotting the problems, but it’s still far from trustworthy. It was quite good at high-level conceptual explanations and even symbolic derivations, but it made small but fatal mathematical and numerical mistakes, and almost never flagged its own uncertainty. Getting to fully correct answers usually required some active steering.
+
+One-shot correctness:
+ About 70% of individual sub-questions were essentially correct on the first try, especially the more conceptual ones. Throughout the process, it often gave good reasoning behind its answers.
+
+
+
+Fixed within one rounds of feedback:
+ Another ~20% could be fixed after a single iteration where I pointed out its mistakes. After the incorrect portion was pointed out, the model did a good job refocusing on that specific portion and fixing the issue, whether it was a mathematical error or a conceptual one. However this required the user to know the ground truth answer to be able to tell the model where things went wrong, which was not feasible sometimes.
+
+Strategy I used to steer the model:
+
+My main strategy was localizing errors. When something was incorrect, I would point out a specific part where things went wrong and ask it to redo that portion or rewrite the answer with that constraint in mind. If the revised answer still contained other errors, I would then point those out as well. This iterative process usually converged to the correct solution, but only because I was checking against the official answers.
+
+Where it did well:
+
+Linear algebra (for example the Chinchilla scaling law question was done well, with correct derivations)
+
+Conceptual explanations (especially for 6.Soft-Prompting Language Models, where the model one-shot all the sub-questions with clear, coherent explanations)
+
+Errors and hallucinations:
+
+The main issue is the model gives confident, mostly correct answers with hidden mistakes. For example, in 2(a), the model mentioned similarity with a bag-of-words model, while the problem was asking about a token-by-token model. Interestingly, the model knew the correct answer, and did include it in its output(“So, it&#x27;s essentially a token-to-token mapping without any awareness of context or sequence structure”). If it had simply not added the bag-of-words remark, the answer would have been fully correct. Another example is 2(b), where it talked about a matrix being block-diagonal when it was horizontally partitioned. These wrong side-comments did not derail the final conclusion, but they weakened the model’s usefulness as a learning tool, because a student might not know which parts to trust.
+
+Mathematically, the model made sloppy arithmetic mistakes, messing up the exponent in problem 5(h) twice, and did not fix the second mistake when the first one was pointed out. Without the user explicitly checking the numbers and forcing it to recompute, it would happily present a numerically incorrect result.
+
+It also made overconfident statements. In 2(e), it made claims about the read subspace without appropriate qualifications. Despite this, it still managed to reach the correct high-level conclusion that “the read subspace dimension is at most d_head”. When I later prompted it to tone down the overconfident statement, it also dropped the correct statement entirely. This illustrates a common LLM behavior: it is too eager to agree with the user, sometimes over-editing and discarding correct content when asked to correct itself. This makes adjusting the model’s confidence level the most difficult in my opinion.
+
+It was also occasionally under-confident. Notably in problem 1, the model said “At initialization, since A=0 and B=0, the gradients may be zero or very small”, when in fact the gradient is exactly zero in this setup. So it hedged (“may be”) where the correct answer was deterministic.
+
+Overall, the model can one-shot many questions or get very close, but it often introduces mistakes even in derivations that look careful. It’s not reliable as an automated homework solver, and it’s not even a great tutor unless the user actively engages the model, checks its work, and asks thoughtful, targeted follow-up questions to give the model a chance to fix its mistakes. Without active supervision, it’s very easy to walk away with answers that are wrong.</div>
+        </div>
+
+        
+    </div>
+</body>
+</html>

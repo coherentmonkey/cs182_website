@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Special Participation E: NotebookLM for Reviewing GNNs - CS 182</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #f5f7fa;
+            color: #333;
+            line-height: 1.6;
+        }
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .back-link {
+            display: inline-block;
+            margin-bottom: 20px;
+            color: #4299e1;
+            text-decoration: none;
+        }
+        .back-link:hover { text-decoration: underline; }
+        .thread-header {
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+        }
+        .thread-title {
+            font-size: 1.8rem;
+            color: #2d3748;
+            margin-bottom: 15px;
+        }
+        .thread-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            color: #718096;
+            font-size: 14px;
+        }
+        .model-badge {
+            display: inline-block;
+            padding: 4px 12px;
+            background: #e2e8f0;
+            color: #4a5568;
+            border-radius: 15px;
+            font-size: 13px;
+            font-weight: 500;
+        }
+        .hw-badge {
+            display: inline-block;
+            padding: 4px 12px;
+            background: #fed7e2;
+            color: #97266d;
+            border-radius: 15px;
+            font-size: 13px;
+            font-weight: 500;
+        }
+        .thread-body {
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+        }
+        .thread-body h3 {
+            margin-bottom: 15px;
+            color: #2d3748;
+        }
+        .body-content {
+            white-space: pre-wrap;
+            word-wrap: break-word;
+            line-height: 1.8;
+            font-size: 15px;
+        }
+        .body-content a {
+            color: #4299e1;
+            word-break: break-all;
+        }
+        .attachments {
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
+        .attachments h3 {
+            margin-bottom: 20px;
+            color: #2d3748;
+        }
+        .attachment {
+            margin-bottom: 25px;
+            border: 1px solid #e2e8f0;
+            border-radius: 6px;
+            overflow: hidden;
+        }
+        .attachment-label {
+            background: #f7fafc;
+            padding: 10px 15px;
+            font-weight: 500;
+            font-size: 14px;
+            border-bottom: 1px solid #e2e8f0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .download-link {
+            color: #4299e1;
+            text-decoration: none;
+            font-weight: normal;
+        }
+        .download-link:hover { text-decoration: underline; }
+        .attachment-image img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+        .attachment-pdf iframe {
+            width: 100%;
+            height: 800px;
+            border: none;
+        }
+        .attachment-video video {
+            width: 100%;
+            max-height: 600px;
+        }
+        .attachment-audio audio {
+            width: 100%;
+            padding: 15px;
+        }
+        .attachment-text pre {
+            padding: 15px;
+            background: #f7fafc;
+            overflow-x: auto;
+            max-height: 500px;
+            font-size: 13px;
+            line-height: 1.5;
+        }
+        .attachment-file {
+            padding: 15px;
+        }
+        .file-link {
+            color: #4299e1;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .file-link:hover { text-decoration: underline; }
+        .ed-link {
+            display: inline-block;
+            margin-top: 15px;
+            color: #4299e1;
+            text-decoration: none;
+        }
+        .ed-link:hover { text-decoration: underline; }
+        @media (max-width: 768px) {
+            .thread-title { font-size: 1.4rem; }
+            .attachment-pdf iframe { height: 500px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <a href="../../../index.html" class="back-link">← Back to Directory</a>
+
+        <div class="thread-header">
+            <h1 class="thread-title">Special Participation E: NotebookLM for Reviewing GNNs</h1>
+            <div class="thread-meta">
+                <span>By Akhil Agarwal</span>
+                <span>2025-12-08</span>
+                
+                <span class="model-badge">NotebookLM</span>
+            </div>
+            <a href="https://edstem.org/us/courses/84647/discussion/7431036" target="_blank" class="ed-link">View on Ed Stem →</a>
+        </div>
+
+        <div class="thread-body">
+            <div class="body-content">Here, I used NotebookLM to review GNNs comprehensively. I had never used it before, so this was a new experience and I was doing a mix of trying to learn about things I didn&#x27;t understand, as well as testing its capabilities. I uploaded the lecture notes for both lectures covering GNNs, as well as the transcripts copy-pasted from YouTube for those two lectures. Overall, I was extremely impressed by its performance. First, the mindmap was good, but when it generated the quiz I was far more impressed. The quiz comprehensively reviewed the entire topic of GNNs (conceptually), and all of the answer choices were very related to the correct answer and the topic. Some of the questions were easy for me, while others challenged me more (I actually got 1 wrong as well, which I asked the model about, which was more of a nomenclature question, where it asked about what a concept was). When I asked it to explain why I got it wrong, it responded well, and explained the concept in depth, along with its motivation. Then, I asked it some more questions about the applications of GNNs and types of aggregation functions. It did well while talking about the things in the sources. However, when I dug further, it was limited in its scope by what was in the sources that I uploaded, so I found that while NotebookLM is an amazing resource in understanding the content you upload, it won&#x27;t be able to help too much beyond that, and it may be beneficial to give it many sources about the topic to help it have more background. The video it made to explain the concepts was actually very good, which I was not expecting, and it covered the entire content nicely. The way it explained the concepts without being very robotic and being more &quot;human&quot; / having imperfect wordings also helped.
+
+Overall, it was a great experience, and I will definitely be using NotebookLM again, though I&#x27;ll be adding as many sources as possible if I want to ask questions out of scope of the main content.
+
+NotebookLM chat: <a href="https://notebooklm.google.com/notebook/7772f54e-0aaa-45d3-9d57-08c968c212d5" target="_blank" rel="noopener noreferrer">https://notebooklm.google.com/notebook/7772f54e-0aaa-45d3-9d57-08c968c212d5</a>
+
+Annotated chat trace:</div>
+        </div>
+
+        <div class="attachments">
+                <div class="attachment attachment-pdf">
+                    <div class="attachment-label">Special_Participation_E2.pdf <a href="attachments/Special_Participation_E2.pdf" target="_blank" class="download-link">Open in new tab</a></div>
+                    <iframe src="attachments/Special_Participation_E2.pdf" loading="lazy"></iframe>
+                </div></div>
+    </div>
+</body>
+</html>

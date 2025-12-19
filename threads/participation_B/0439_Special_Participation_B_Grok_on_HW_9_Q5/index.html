@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Special Participation B: Grok on HW 9 Q5 - CS 182</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #f5f7fa;
+            color: #333;
+            line-height: 1.6;
+        }
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .back-link {
+            display: inline-block;
+            margin-bottom: 20px;
+            color: #4299e1;
+            text-decoration: none;
+        }
+        .back-link:hover { text-decoration: underline; }
+        .thread-header {
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+        }
+        .thread-title {
+            font-size: 1.8rem;
+            color: #2d3748;
+            margin-bottom: 15px;
+        }
+        .thread-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            color: #718096;
+            font-size: 14px;
+        }
+        .model-badge {
+            display: inline-block;
+            padding: 4px 12px;
+            background: #e2e8f0;
+            color: #4a5568;
+            border-radius: 15px;
+            font-size: 13px;
+            font-weight: 500;
+        }
+        .hw-badge {
+            display: inline-block;
+            padding: 4px 12px;
+            background: #fed7e2;
+            color: #97266d;
+            border-radius: 15px;
+            font-size: 13px;
+            font-weight: 500;
+        }
+        .thread-body {
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+        }
+        .thread-body h3 {
+            margin-bottom: 15px;
+            color: #2d3748;
+        }
+        .body-content {
+            white-space: pre-wrap;
+            word-wrap: break-word;
+            line-height: 1.8;
+            font-size: 15px;
+        }
+        .body-content a {
+            color: #4299e1;
+            word-break: break-all;
+        }
+        .attachments {
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
+        .attachments h3 {
+            margin-bottom: 20px;
+            color: #2d3748;
+        }
+        .attachment {
+            margin-bottom: 25px;
+            border: 1px solid #e2e8f0;
+            border-radius: 6px;
+            overflow: hidden;
+        }
+        .attachment-label {
+            background: #f7fafc;
+            padding: 10px 15px;
+            font-weight: 500;
+            font-size: 14px;
+            border-bottom: 1px solid #e2e8f0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .download-link {
+            color: #4299e1;
+            text-decoration: none;
+            font-weight: normal;
+        }
+        .download-link:hover { text-decoration: underline; }
+        .attachment-image img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+        .attachment-pdf iframe {
+            width: 100%;
+            height: 800px;
+            border: none;
+        }
+        .attachment-video video {
+            width: 100%;
+            max-height: 600px;
+        }
+        .attachment-audio audio {
+            width: 100%;
+            padding: 15px;
+        }
+        .attachment-text pre {
+            padding: 15px;
+            background: #f7fafc;
+            overflow-x: auto;
+            max-height: 500px;
+            font-size: 13px;
+            line-height: 1.5;
+        }
+        .attachment-file {
+            padding: 15px;
+        }
+        .file-link {
+            color: #4299e1;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .file-link:hover { text-decoration: underline; }
+        .ed-link {
+            display: inline-block;
+            margin-top: 15px;
+            color: #4299e1;
+            text-decoration: none;
+        }
+        .ed-link:hover { text-decoration: underline; }
+        @media (max-width: 768px) {
+            .thread-title { font-size: 1.4rem; }
+            .attachment-pdf iframe { height: 500px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <a href="../../../index.html" class="back-link">← Back to Directory</a>
+
+        <div class="thread-header">
+            <h1 class="thread-title">Special Participation B: Grok on HW 9 Q5</h1>
+            <div class="thread-meta">
+                <span>By Jaimyn Drake</span>
+                <span>2025-12-04</span>
+                <span class="hw-badge">HW9</span>
+                <span class="model-badge">Grok</span>
+            </div>
+            <a href="https://edstem.org/us/courses/84647/discussion/7404147" target="_blank" class="ed-link">View on Ed Stem →</a>
+        </div>
+
+        <div class="thread-body">
+            <div class="body-content">Hey guys! I worked with Grok to answer the Coding Question for Homework 9: Visualizing Attention.
+
+TL;DR - In its analysis of the attention visualizations produced by this assignment’s Jupyter notebook, Grok exhibits impressive visual reasoning abilities. By allowing it to request the PDF printouts of particular layers, Grok is able to provide serviceable answers to the assignment’s array of conceptual questions. These responses indicate that Grok is somewhat able to parse the visuals and supplement gaps with a latent understanding of the BERT and GPT architecture, but there remain hallucinations and biases that can lead it astray from true responses.
+
+
+
+Since this coding question doesn’t involve writing code itself, I instead focused on exploring Grok’s visual reasoning abilities. In order to allow Grok to actually interact with the visual attention plots of the notebook itself, I focused on specifically providing it with providing it PDF printouts of the entire notebook (at running all of the cells in sequence by hand), which it could then use to observe the relationships between attentions and make observations to answer the associated conceptual questions.
+
+Part a):
+
+Upon initially providing it with the PDF printout of the Jupyter notebook, Grok attempted to answer all of the conceptual questions at one go, for which answers seemed serviceable at face value. However, it did not have full access to the visualizations for different layers (although it was able to determine that there were 11 layers overall), and so its initial answers did not fully reflect the behavior of those later layers.
+
+In order to give Grok more agency, I prompted it to decide on the selection of other layers to look at, which I then provided the PDFs of. For this part, Grok requested layers 5 and 11, both at Head 0.
+
+In some way, I was impressed by Grok’s ability to infer information from the PDF format at all, where I worried it might struggle to read the visualizations. However, Grok successfully identifies the causal nature of the attention (that tokens attend to only preceding tokens), and that “ran” attends to “dog,” reflecting their subject-verb relationship. In question 2, Grok identifies that by layer 5, “ran” comes to attend to the first word “The” over the word “dog.” These are examples of reasoning consistent with the official solutions. That said, Grok also appears to generally report results in line with a particular narrative it holds about the behavior of different layers, rather than truly reporting on the empirical results. For example, it claims that by layer 11, &quot;Mr.&quot; broadly weights towards &quot;his&quot;, &quot;party&quot;, and &quot;election&quot;, which would align with a story about attention connecting more broadly at that layer, but is simply not reflected in the visual output. Importantly, Grok fails to highlight the overpowering trend of all tokens attending to the very first input, which is prominent throughout layers but overwhelmingly features in layer 5 that it requested to observe. This implies that while Grok’s answers are fair at times, some of its correctness may come from an underlying understanding of what might be expected instead of a focus on the actual input. The conversation log for part (a) is as follows:
+
+Part b):
+
+For this part, I once again asked Grok to select which layer and head numbers for which it would like to receive PDFs. Since Grok once again selected layers 0, 5, and 11 at Head 0, I provided it with PDFs where those settings were selected for all visualization cells in the notebook.
+
+In answering the questions, Grok successfully identifies the bidirectional nature of BERT vs GPT, which may be a side effect of its own internal training data, and highlights the multiple interpretations of the word “play” as affecting the attention results between examples. As expected, Grok understands that fine-tuning can help improve the representation learned by BERT. When prompted, Grok points out that CLS receives a lot of attention from other tokens, which is reflected in the assignment solutions.
+
+When asked to clean up or modify its responses to questions, Grok frequently ends up repeating the same statements and claims. Additionally, Grok continues to hallucinate some attention behavior, as it emphasizes connections like “it” and “party” that are not easily visible in the provided PDFs. This repetition indicates that Grok may actually be poisoning its own context, leading to the reinforcement of incorrect information as it reiterates responses.
+
+Part c):
+
+Having it draw on the PDF documents from the existing context, I remind Grok about the focus of questions 8 and 9 about the distinct qualities learned by different attention heads. In this part, Grok fully reinforces its high level generalizations that lower layers (0-3) should handle local relationships while higher layers (9-11) emphasize broader connections and an emphasis on special tokens. While Grok does exaggerate by posing this in black-and-white terms, its description of some “diagonal or short-range” connections existing amount lower layers and heads, and “patterns converging on special tokens” among the higher layers are roughly reflected in the appropriate visualizations. The conversation log for parts (b) and (c) is as follows:
+
+Part d):
+
+For this part, Grok easily identifies that an untrained BERT model should have practically uniform attention weights, rather than the dedicated structure of the learned model. When asked to identify particular tokens for which it expects high attention, Grok continues to parrot the relationship between “it” and “party” that it has been emphasizing throughout its responses. While prompting allows it to also provide other answers, like the [CLS] token that receives attention from most other tokens, this general tendency reflects that Grok’s reasoning may be strongly biased by its initial context; Grok inadvertently enters an echo chamber of its own creation.
+
+For your reference, here is a PDF of the entire chat log.
+
+Thanks guys. Have a wonderful day!</div>
+        </div>
+
+        <div class="attachments">
+                <div class="attachment attachment-pdf">
+                    <div class="attachment-label">GrokCode9Q12.pdf <a href="attachments/GrokCode9Q12.pdf" target="_blank" class="download-link">Open in new tab</a></div>
+                    <iframe src="attachments/GrokCode9Q12.pdf" loading="lazy"></iframe>
+                </div>
+                <div class="attachment attachment-pdf">
+                    <div class="attachment-label">GrokCode9Q3456789.pdf <a href="attachments/GrokCode9Q3456789.pdf" target="_blank" class="download-link">Open in new tab</a></div>
+                    <iframe src="attachments/GrokCode9Q3456789.pdf" loading="lazy"></iframe>
+                </div>
+                <div class="attachment attachment-pdf">
+                    <div class="attachment-label">GrokCode9_Q1011.pdf <a href="attachments/GrokCode9_Q1011.pdf" target="_blank" class="download-link">Open in new tab</a></div>
+                    <iframe src="attachments/GrokCode9_Q1011.pdf" loading="lazy"></iframe>
+                </div>
+                <div class="attachment attachment-pdf">
+                    <div class="attachment-label">GrokCode9full.pdf <a href="attachments/GrokCode9full.pdf" target="_blank" class="download-link">Open in new tab</a></div>
+                    <iframe src="attachments/GrokCode9full.pdf" loading="lazy"></iframe>
+                </div></div>
+    </div>
+</body>
+</html>

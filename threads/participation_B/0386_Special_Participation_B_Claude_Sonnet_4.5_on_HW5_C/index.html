@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Special Participation B: Claude Sonnet 4.5 on HW5 Coding Questions - CS 182</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #f5f7fa;
+            color: #333;
+            line-height: 1.6;
+        }
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .back-link {
+            display: inline-block;
+            margin-bottom: 20px;
+            color: #4299e1;
+            text-decoration: none;
+        }
+        .back-link:hover { text-decoration: underline; }
+        .thread-header {
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+        }
+        .thread-title {
+            font-size: 1.8rem;
+            color: #2d3748;
+            margin-bottom: 15px;
+        }
+        .thread-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            color: #718096;
+            font-size: 14px;
+        }
+        .model-badge {
+            display: inline-block;
+            padding: 4px 12px;
+            background: #e2e8f0;
+            color: #4a5568;
+            border-radius: 15px;
+            font-size: 13px;
+            font-weight: 500;
+        }
+        .hw-badge {
+            display: inline-block;
+            padding: 4px 12px;
+            background: #fed7e2;
+            color: #97266d;
+            border-radius: 15px;
+            font-size: 13px;
+            font-weight: 500;
+        }
+        .thread-body {
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+        }
+        .thread-body h3 {
+            margin-bottom: 15px;
+            color: #2d3748;
+        }
+        .body-content {
+            white-space: pre-wrap;
+            word-wrap: break-word;
+            line-height: 1.8;
+            font-size: 15px;
+        }
+        .body-content a {
+            color: #4299e1;
+            word-break: break-all;
+        }
+        .attachments {
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
+        .attachments h3 {
+            margin-bottom: 20px;
+            color: #2d3748;
+        }
+        .attachment {
+            margin-bottom: 25px;
+            border: 1px solid #e2e8f0;
+            border-radius: 6px;
+            overflow: hidden;
+        }
+        .attachment-label {
+            background: #f7fafc;
+            padding: 10px 15px;
+            font-weight: 500;
+            font-size: 14px;
+            border-bottom: 1px solid #e2e8f0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .download-link {
+            color: #4299e1;
+            text-decoration: none;
+            font-weight: normal;
+        }
+        .download-link:hover { text-decoration: underline; }
+        .attachment-image img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+        .attachment-pdf iframe {
+            width: 100%;
+            height: 800px;
+            border: none;
+        }
+        .attachment-video video {
+            width: 100%;
+            max-height: 600px;
+        }
+        .attachment-audio audio {
+            width: 100%;
+            padding: 15px;
+        }
+        .attachment-text pre {
+            padding: 15px;
+            background: #f7fafc;
+            overflow-x: auto;
+            max-height: 500px;
+            font-size: 13px;
+            line-height: 1.5;
+        }
+        .attachment-file {
+            padding: 15px;
+        }
+        .file-link {
+            color: #4299e1;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .file-link:hover { text-decoration: underline; }
+        .ed-link {
+            display: inline-block;
+            margin-top: 15px;
+            color: #4299e1;
+            text-decoration: none;
+        }
+        .ed-link:hover { text-decoration: underline; }
+        @media (max-width: 768px) {
+            .thread-title { font-size: 1.4rem; }
+            .attachment-pdf iframe { height: 500px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <a href="../../../index.html" class="back-link">← Back to Directory</a>
+
+        <div class="thread-header">
+            <h1 class="thread-title">Special Participation B: Claude Sonnet 4.5 on HW5 Coding Questions</h1>
+            <div class="thread-meta">
+                <span>By Kithmini Herath</span>
+                <span>2025-12-02</span>
+                <span class="hw-badge">HW5</span>
+                <span class="model-badge">Claude</span>
+            </div>
+            <a href="https://edstem.org/us/courses/84647/discussion/7387198" target="_blank" class="ed-link">View on Ed Stem →</a>
+        </div>
+
+        <div class="thread-body">
+            <div class="body-content">In this assignment I used Claude Sonnet 4.5 for the coding questions (Q5, Q6) in HW5. My strategy was to first introduce what the assignment entails in one sentence and then attach all notebooks and walk-through each of the sections step-by-step while adding other relevant python files needed to complete the task at each step. For Q6, I thought the length of the HW was too long to export out from a single chat, so I split the coding question into two main questions: 1) Implementing batchnorm, dropout, convolution and spatial batch norm, 2) implementing CNNs with PyTorch. I did a max of three attempts to correct Claude if needed to get to the correct/ reasonable answer before stopping and leading to a conclusion about its performance on a specific task. I’ve attached annotated pdfs of my interactions with the LLM. 
+
+Across these coding questions, Claude showed exceptional coding capability, particularly in its ability to self-correct using its internal code execution environment. However, notable weaknesses were there in multimodal interpretation (reading plots/filenames) and visual spatial reasoning (ASCII graphs). 
+
+Notable observations: 
+
+Internal code verification &amp; self-correction: The most significant feature distinguishing the Claude.ai platform was its use of the code execution feature to verify answers before presenting them. This mimics a standard programming workflow (Code $\rightarrow$ Test $\rightarrow$ Debug $\rightarrow$ Commit) rather than a typical LLM workflow (Predict $\rightarrow$ Final output to user).
+
+Debugging skills: In the batch normalization backward pass section, Claude initially implemented a solution that resulted in a high gradient error. Instead of outputting this flawed code, it recognized the error via its internal test script, re-derived the math, fixed the implementation, and verified that the error dropped before showing the final solution to the user.
+
+Environment &amp; dependency management: It successfully utilized multiple uploaded files (layers.py, notebooks, etc.) as context, effectively acting like an IDE by importing functions from one file to test another. This is already a feature in Claude Code or Claude+Cursor on a user workstation/ personal laptop, but I was impressed that within Claude.ai it handles files very well to provide context for the LLM to implement code.
+
+Bug detection in source material: The code execution feature allowed Claude to identify a bug in the staff provided template code regarding the mode initialization in FullyConnectedNet in deeplearning/classifiers/fc_net.py file in the bn_drop.ipynb coding task. Because the code actually ran, Claude could see the test failure that a text-only parser would likely miss. 
+
+One-shot accuracy &amp; coding proficiency: 
+
+Standard neural network component implementation: Claude achieved 100% one-shot success on standard implementation tasks, including Naïve Convolution, Max Pooling, and Ordinary Least Squares (OLS) solutions.
+
+Code optimization: It successfully identified and implemented a &quot;smart&quot; solution for switching between Train/Test modes in Batch Norm without user intervention, surpassing the manual toggling method initially suggested by itself as a fix for the bug in the provided HW codes.
+
+Architecture design: While it failed to meet the parameter count constraint (&lt;1M) on the first two tries for the CIFAR-100 CNN, it successfully iterated to an architecture within that constraint on the third try, demonstrating an understanding of the importance of neural network depth (keeping the number of layers constant throughout) vs. scaling the channel width.
+
+Hallucinations &amp; misconceptions:
+
+Multimodal/visual failures: 
+
+Filename/plot mismatch: In the Dropout assignment, Claude inverted the analysis of the results. It confused the model_dropout and model_no_dropout plots despite the filenames. This led to a logic hallucination where it argued that Dropout made performance worse, inventing a narrative about &quot;dropout encouraged exploitation of cheating features&quot; to justify the hallucinated data. This is an example which shows how it required user correction to flip the hallucinated analysis.
+
+Diagram generation: Claude struggled significantly to generate a correct ASCII computational graph for Batch Norm. Despite understanding the flow mathematically, the visual output repeatedly missed edges or directed them incorrectly.
+
+Math hallucinations: During the mathematical derivation of the Batch Norm backward pass, Claude introduced an incorrect square root term in an intermediate step which was later cancelled out and finally appeared (hallucinated) to arrive at the correct final expression. This indicates it &quot;knew&quot; the answer but fabricated the intermediate logic to get there. 
+
+In conclusion, Claude does remarkably well in coding tasks. Its ability to run unit tests internally minimizes/prevents syntax errors and logical bugs from reaching the user, saving significant debugging time. However, we must be careful regarding 1) confident misreading of charts/ file associations, 2) mathematical and logical hallucinations, 3) constraint adherence (prioritizing accuracy over explicit constraints mentioned in the instructions on neural network architecture) weaknesses of Claude.</div>
+        </div>
+
+        <div class="attachments">
+                <div class="attachment attachment-pdf">
+                    <div class="attachment-label">Claude-Q5_Dropout neural networks homework implementation.pdf <a href="attachments/Claude-Q5_Dropout neural networks homework implementation.pdf" target="_blank" class="download-link">Open in new tab</a></div>
+                    <iframe src="attachments/Claude-Q5_Dropout neural networks homework implementation.pdf" loading="lazy"></iframe>
+                </div>
+                <div class="attachment attachment-pdf">
+                    <div class="attachment-label">Claude-Q6abc_Batch normalization computational graph (1).pdf <a href="attachments/Claude-Q6abc_Batch normalization computational graph (1).pdf" target="_blank" class="download-link">Open in new tab</a></div>
+                    <iframe src="attachments/Claude-Q6abc_Batch normalization computational graph (1).pdf" loading="lazy"></iframe>
+                </div>
+                <div class="attachment attachment-pdf">
+                    <div class="attachment-label">Claude-Q6d_Implementing convolutional neural networks in PyTorch.pdf <a href="attachments/Claude-Q6d_Implementing convolutional neural networks in PyTorch.pdf" target="_blank" class="download-link">Open in new tab</a></div>
+                    <iframe src="attachments/Claude-Q6d_Implementing convolutional neural networks in PyTorch.pdf" loading="lazy"></iframe>
+                </div></div>
+    </div>
+</body>
+</html>

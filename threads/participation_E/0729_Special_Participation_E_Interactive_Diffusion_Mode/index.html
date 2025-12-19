@@ -1,0 +1,697 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Special Participation E: Interactive Diffusion Models Visualizer, Building Geometric Intuition - CS 182</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #f5f7fa;
+            color: #333;
+            line-height: 1.6;
+        }
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .back-link {
+            display: inline-block;
+            margin-bottom: 20px;
+            color: #4299e1;
+            text-decoration: none;
+        }
+        .back-link:hover { text-decoration: underline; }
+        .thread-header {
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+        }
+        .thread-title {
+            font-size: 1.8rem;
+            color: #2d3748;
+            margin-bottom: 15px;
+        }
+        .thread-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            color: #718096;
+            font-size: 14px;
+        }
+        .model-badge {
+            display: inline-block;
+            padding: 4px 12px;
+            background: #e2e8f0;
+            color: #4a5568;
+            border-radius: 15px;
+            font-size: 13px;
+            font-weight: 500;
+        }
+        .hw-badge {
+            display: inline-block;
+            padding: 4px 12px;
+            background: #fed7e2;
+            color: #97266d;
+            border-radius: 15px;
+            font-size: 13px;
+            font-weight: 500;
+        }
+        .thread-body {
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+        }
+        .thread-body h3 {
+            margin-bottom: 15px;
+            color: #2d3748;
+        }
+        .body-content {
+            white-space: pre-wrap;
+            word-wrap: break-word;
+            line-height: 1.8;
+            font-size: 15px;
+        }
+        .body-content a {
+            color: #4299e1;
+            word-break: break-all;
+        }
+        .attachments {
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
+        .attachments h3 {
+            margin-bottom: 20px;
+            color: #2d3748;
+        }
+        .attachment {
+            margin-bottom: 25px;
+            border: 1px solid #e2e8f0;
+            border-radius: 6px;
+            overflow: hidden;
+        }
+        .attachment-label {
+            background: #f7fafc;
+            padding: 10px 15px;
+            font-weight: 500;
+            font-size: 14px;
+            border-bottom: 1px solid #e2e8f0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .download-link {
+            color: #4299e1;
+            text-decoration: none;
+            font-weight: normal;
+        }
+        .download-link:hover { text-decoration: underline; }
+        .attachment-image img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+        .attachment-pdf iframe {
+            width: 100%;
+            height: 800px;
+            border: none;
+        }
+        .attachment-video video {
+            width: 100%;
+            max-height: 600px;
+        }
+        .attachment-audio audio {
+            width: 100%;
+            padding: 15px;
+        }
+        .attachment-text pre {
+            padding: 15px;
+            background: #f7fafc;
+            overflow-x: auto;
+            max-height: 500px;
+            font-size: 13px;
+            line-height: 1.5;
+        }
+        .attachment-file {
+            padding: 15px;
+        }
+        .file-link {
+            color: #4299e1;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .file-link:hover { text-decoration: underline; }
+        .ed-link {
+            display: inline-block;
+            margin-top: 15px;
+            color: #4299e1;
+            text-decoration: none;
+        }
+        .ed-link:hover { text-decoration: underline; }
+        @media (max-width: 768px) {
+            .thread-title { font-size: 1.4rem; }
+            .attachment-pdf iframe { height: 500px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <a href="../../../index.html" class="back-link">← Back to Directory</a>
+
+        <div class="thread-header">
+            <h1 class="thread-title">Special Participation E: Interactive Diffusion Models Visualizer, Building Geometric Intuition</h1>
+            <div class="thread-meta">
+                <span>By Elizabeth Weaver</span>
+                <span>2025-12-09</span>
+                
+                <span class="model-badge">Claude</span>
+            </div>
+            <a href="https://edstem.org/us/courses/84647/discussion/7432931" target="_blank" class="ed-link">View on Ed Stem →</a>
+        </div>
+
+        <div class="thread-body">
+            <div class="body-content">Hi everyone!
+
+The diffusion lectures introduced a lot of dense math: forward processes, reverse processes, score functions, DDPM vs DDIM, etc. I found it hard to develop intuition for what&#x27;s actually happening geometrically, so I built an interactive visualization tool using Claude to help understand these concepts.
+
+ Link to Interactive Tool
+
+Click the link above to access the tool directly in Claude. You can interact with all the visualizations yourself!
+
+What This Tool Does
+
+The visualizer helps you understand diffusion models through interactive 2D demonstrations:
+
+1. Forward Process Visualization
+
+Watch data points diffuse from structured distributions (moons, spirals, clusters) into Gaussian noise
+
+Scrub through timesteps with a slider to see how signal and noise trade off
+
+See the exact values of √ᾱₜ (signal) and √(1-ᾱₜ) (noise) at each step
+
+2. Reverse Process Visualization
+
+See how following the score function brings noisy points back to the data manifold
+
+Includes Bayes rule visualization showing why the reverse conditional is Gaussian
+
+Understand why we can start from pure noise and end up with structured samples
+
+3. Score Function Visualization
+
+View the score field ∇ₓ log p(x) as a vector field
+
+See how the score changes from sharp/detailed (low noise) to smooth/uniform (high noise)
+
+Includes density heatmap showing p(x) alongside the score vectors
+
+4. DDPM vs DDIM Comparison
+
+See multiple sampling trajectories side-by-side
+
+DDPM: stochastic trajectories that diverge from the same starting noise
+
+DDIM: deterministic trajectories that always produce the same output
+
+Resample to see how randomness affects DDPM but not DDIM
+
+5. Interactive Image Noise Demo
+
+Apply the forward process to simple images (gradient, checkerboard, circle, face)
+
+Watch structure dissolve as t increases
+
+Reference strip showing key timesteps side-by-side
+
+6. Interactive Manifold Diagram
+
+Drag a &quot;noisy sample&quot; point around high-dimensional space
+
+See the score vector pointing toward the natural image manifold
+
+Animate the denoising process following the score back to valid images
+
+7. Velocity Field Visualization
+
+See the &quot;gas analogy&quot;: particles flowing along streamlines
+
+Connects to the probability flow ODE perspective
+
+8. Comprehensive Quiz Bank (50+ questions)
+
+Context-aware quizzes that change based on which tab you&#x27;re viewing
+
+Questions derived from the diffusion paper covered in lecture
+
+Covers forward process, reverse process, score functions, and DDPM vs DDIM
+
+Detailed explanations for each answer
+
+Track your score and review all explanations
+
+How to Use This for Studying
+
+Start with the Forward Process tab: pick different distributions and watch how they diffuse. Notice how structure persists longer for some shapes than others.
+
+
+
+Toggle on the Score Field: see how arrows point toward data at low noise but become uniform at high noise. This is the &quot;coarse-to-fine&quot; intuition.
+
+
+
+Switch to Reverse Process: start from t=T and watch points flow back to the manifold. Check out the Bayes rule visualization to understand why the reverse process is Gaussian.
+
+
+
+Try the DDPM vs DDIM tab: resample multiple times and notice how DDPM gives different outputs while DDIM is deterministic.
+
+
+
+Play with the Image Demo: this connects the 2D toy examples to real image generation.
+
+
+
+Drag points in the Manifold diagram: build intuition for how the score always points &quot;toward real images.&quot;
+
+
+
+Test yourself with the quizzes: each tab has 15-20 questions ranging from basic definitions to deeper conceptual understanding. The explanations are helpful even if you get the answer right!
+
+
+
+The Prompt Engineering Process
+
+I worked with Claude Opus 4.5 to iteratively design this tool. Interestingly, I used Claude itself to help me create the prompt. I started by describing what I wanted (interactive diffusion visualizations with geometric intuition), and through back-and-forth conversation, Claude helped me refine the specifications into a detailed prompt. I then used that prompt in a fresh chat to generate the final tool.
+
+After sending the prompt to the new chat, I continued refining the visualization through several iterations:
+
+Made the Score Function tab distinct: Initially the Forward Process and Score Function tabs looked identical; I asked Claude to make the Score Function tab show a density heatmap with prominent score vectors instead of data points
+
+Made the manifold diagram interactive: The static manifold illustration became a draggable demo where you can move a &quot;noisy sample&quot; point and watch the score vector update, then animate the denoising trajectory
+
+Added DDPM vs DDIM comparison: I provided the diffusion paper and asked Claude to add visualizations explaining the math, which led to the side-by-side trajectory comparison showing stochastic vs deterministic sampling
+
+Added Bayes rule and velocity field visualizations: These help explain why the reverse process is Gaussian and connect to the &quot;gas analogy&quot; from the paper
+
+Made the image noise demo interactive: Added a slider to control the noise level and a play/pause animation
+
+Reorganized the layout: I attempted to move the image demo and manifold sections to the top of the right panel so the intuitive examples are immediately visible alongside the main visualizer, but this is not shown in the visualization 
+
+The model failed here
+
+Added the quiz section: Started with regeneratable random questions, then switched to showing all questions at once
+
+Expanded and curated quiz questions: Added more technical questions based on the paper, then removed advanced topics (classifier-free guidance, v-prediction, consistency distillation, etc.) that weren&#x27;t covered in the paper or lecture
+
+An issue here was that the paper was no longer in the uploads for the chat, and I couldn’t upload it without reaching the length limit. Therefore I think Claude ended up using mostly its own knowledge here.
+
+The key insights for the prompt:
+
+Start with educational goals: what specific confusions should this address?
+
+Specify the math precisely: include the actual equations (β schedule, ᾱₜ, forward/reverse formulas)
+
+Request multiple linked visualizations: 2D toy distributions, actual images, and conceptual diagrams reinforce each other
+
+Ask for interactivity: sliders, toggles, and draggable elements let you explore parameter space
+
+Include dynamic explanations: text that changes based on the current timestep helps connect visuals to concepts
+
+Provide source material: I gave Claude the diffusion paper we&#x27;re covering in lecture, which helped generate accurate quiz questions and mathematical explanations
+
+Add self-assessment: quiz questions with detailed explanations help solidify understanding
+
+Iterate and curate: Review generated content against source material to remove anything beyond scope
+
+The full prompt I used is provided at the end.
+
+Critical Annotations
+
+Here&#x27;s my honest assessment of the tool:
+
+What works well:
+
+The forward/reverse process visualizations clearly show the signal/noise tradeoff
+
+Score field visualization makes the &quot;pointing toward data&quot; intuition concrete
+
+DDPM vs DDIM comparison is very effective: you can immediately see the stochasticity difference
+
+The interactive manifold diagram is great for building intuition about high-dimensional geometry
+
+Stats display (√ᾱₜ, √(1-ᾱₜ)) keeps you grounded in the actual math
+
+The quiz questions are well-calibrated and the explanations are helpful
+
+Velocity field visualization connects nicely to the probability flow ODE / flow matching perspective
+
+Potential issues / limitations:
+
+The score field is approximated using kernel density estimation, not a learned neural network. This is pedagogically useful but not exactly what happens in practice
+
+The 2D visualizations are toy examples; real diffusion operates in ~200,000 dimensions for images, where geometry behaves very differently
+
+The &quot;image&quot; demo uses a tiny 12×12 grid, which oversimplifies the complexity of real image diffusion
+
+The Bayes rule visualization uses a simplified 1D example; the actual derivation involves more careful analysis of the Gaussian conditionals
+
+Trajectory simulations use simplified dynamics, real DDPM/DDIM have more nuanced update rules
+
+Generally, Claude Opus 4.5 struggled a lot more with creating this tool than I expected
+
+The final result is good, but it took more chats than I thought it would
+
+Important note about the quiz questions:
+
+The only material I gave the model to generate the quiz questions, besides what it already knew about diffusion, was the paper we were building off of in class
+
+This means some questions may use slightly different notation or framing than what was presented in class
+
+Some questions may cover details from the paper that weren&#x27;t emphasized in lecture
+
+Use these questions to deepen your understanding of the paper&#x27;s perspective, but cross-reference with lecture notes and the homework for exam-specific material
+
+Minor technical notes:
+
+The DDPM/DDIM trajectory simulation uses a simplified score-based update rather than the exact DDPM/DDIM formulas, but the qualitative behavior (stochastic vs deterministic) is correct
+
+The velocity field shows E[x₀|xₜ] - xₜ direction, which is related to but not exactly the probability flow ODE velocity
+
+Questions for Discussion
+
+After playing with the tool, consider:
+
+Why does the score field become more uniform as noise increases? What does this mean for early vs. late denoising steps?
+
+
+
+In the DDPM vs DDIM comparison, both methods use the same learned score function. Why does adding noise during sampling (DDPM) lead to diversity while removing it (DDIM) leads to determinism?
+
+
+
+The manifold diagram suggests the score &quot;points toward real images.&quot; But in 200,000 dimensions, what does &quot;toward&quot; even mean? How does the network learn this direction?
+
+
+
+The quiz questions are based on the diffusion paper. Did you notice any differences in notation or framing compared to how concepts were presented in lecture?
+
+
+
+Hope this helps with studying! The quiz section has 50+ questions across all four topics, so there&#x27;s plenty to work through. Let me know if you have questions or find any errors in the explanations.
+
+I&#x27;ve added in the prompt, annotated prompt generation chat, and the annotated visualization creation chat below. Hopefully this method could be used to generate visualizations for other concepts as well!</div>
+        </div>
+
+        <div class="attachments">
+                <div class="attachment attachment-pdf">
+                    <div class="attachment-label">Claude-AI tutor for critical feedback on explanations.pdf <a href="attachments/Claude-AI tutor for critical feedback on explanations.pdf" target="_blank" class="download-link">Open in new tab</a></div>
+                    <iframe src="attachments/Claude-AI tutor for critical feedback on explanations.pdf" loading="lazy"></iframe>
+                </div>
+                <div class="attachment attachment-pdf">
+                    <div class="attachment-label">Claude-React component single file.pdf <a href="attachments/Claude-React component single file.pdf" target="_blank" class="download-link">Open in new tab</a></div>
+                    <iframe src="attachments/Claude-React component single file.pdf" loading="lazy"></iframe>
+                </div>
+                    <div class="attachment attachment-text">
+                        <div class="attachment-label">diffusion-visualizer-prompt.md <a href="attachments/diffusion-visualizer-prompt.md" target="_blank" class="download-link">Download</a></div>
+                        <pre><code># Prompt: Interactive Diffusion Models Visualizer
+
+Create a comprehensive, interactive React visualization tool for understanding diffusion models. This is an educational tool for a deep learning course (CS 182/282A) that helps students build geometric intuition for how diffusion models work.
+
+## Design Philosophy
+
+- **Aesthetic**: Dark, sophisticated, data-visualization inspired. Think: scientific visualization meets modern dashboard. Use deep blues, purples, and accent colors. Avoid generic AI aesthetics.
+- **Typography**: Use IBM Plex Sans for UI and IBM Plex Mono for mathematical notation and stats
+- **Interactions**: Smooth, responsive, with meaningful animations that reinforce the concepts being taught
+- **Education-first**: Every visual element should teach something. No decoration without purpose.
+
+## Core Components
+
+### 1. Main Navigation Tabs
+Three main modes:
+- **Forward Process**: Visualize q(xₜ | x₀) - adding noise over time
+- **Reverse Process**: Visualize p(xₜ₋₁ | xₜ) - denoising over time  
+- **Score Function**: Focus on understanding ∇ₓ log p(x)
+
+### 2. 2D Toy Distribution Visualizer (Primary Panel)
+
+**Data Distribution Options** (user can switch between):
+- Two Moons
+- Mixture of 4 Gaussians (clusters)
+- Spiral
+- Circle/Ring
+
+**Visualization Features**:
+- ~120-150 data points rendered as colored dots
+- Points should have colors based on their original position (so you can track where they came from)
+- Faint trails connecting current position to original position (shows displacement)
+- Background grid for spatial reference
+- Axes through center
+
+**Time Slider**:
+- Slider from t=0 to t=T (use T=50 timesteps)
+- Show current t value prominently
+- Labels: &quot;t=0 (clean data)&quot; on left, &quot;t=T (pure noise)&quot; on right
+
+**Animation Controls**:
+- Play/Pause button for automatic animation
+- Reset button to return to starting state
+- Animation should go forward for &quot;Forward Process&quot; tab, backward for &quot;Reverse Process&quot; tab
+
+**Stats Display** (always visible):
+- Current timestep: t = X / T
+- Signal remaining: √ᾱₜ as percentage
+- Noise level: √(1-ᾱₜ) as percentage  
+- Raw ᾱₜ value
+
+**Score Field Visualization** (toggle-able):
+- Render as vector field (arrows on a grid)
+- Arrow direction: points toward high-density regions of the data
+- Arrow opacity/intensity: proportional to magnitude
+- At low t: detailed, points toward nearby modes
+- At high t: smooth, points toward global center
+- Use ~15x15 grid of arrows
+
+**Mathematical Details for Implementation**:
+```
+Beta schedule (linear): β_t = β_min + (β_max - β_min) * (t/T)
+  where β_min = 0.0001, β_max = 0.02
+
+Alpha bar: ᾱₜ = ∏_{i=0}^{t} (1 - β_i)
+
+Forward diffusion: x_t = √ᾱₜ · x₀ + √(1-ᾱₜ) · ε, where ε ~ N(0, I)
+
+Score approximation: For visualization, approximate score as weighted sum 
+  pointing toward data points, with weights based on Gaussian kernel
+  whose bandwidth depends on noise level (1-ᾱₜ)
+```
+
+### 3. Real Image Examples Panel (Secondary Panel)
+
+Show a row of images demonstrating the forward process on actual images:
+- Use placeholder colored rectangles or simple generated patterns if actual images aren&#x27;t available
+- Show: Clean image → t=T/4 → t=T/2 → t=3T/4 → Pure noise
+- Label each with the timestep and noise level
+- This helps connect the 2D toy visualization to real image generation
+
+Alternative: Show a simple 8x8 or 16x16 pixel grid that gets progressively noisier, which can actually be computed in the browser.
+
+### 4. Explanation Panel (Right Sidebar)
+
+**Dynamic Content** that changes based on:
+- Which tab is active (Forward/Reverse/Score)
+- Current timestep value
+
+**Structure**:
+1. **Title**: Name of current concept (e.g., &quot;Forward Process: q(xₜ | x₀)&quot;)
+
+2. **Description**: 2-3 sentences explaining what&#x27;s happening at the current timestep. Should vary based on t:
+   - t ≈ 0: Talk about clean data, the data manifold
+   - t ≈ T/4: Structure still visible, noise starting to blur
+   - t ≈ T/2: Balanced regime, interesting for learning
+   - t ≈ 3T/4: Structure mostly destroyed
+   - t ≈ T: Pure Gaussian noise
+
+3. **Math Block**: Show the relevant equation in monospace with nice formatting
+   - Forward: `x_t = √ᾱₜ · x₀ + √(1-ᾱₜ) · ε`
+   - Reverse: `x_{t-1} = (x_t - (1-α_t)/√(1-ᾱₜ) · s_θ(x_t,t)) / √α_t + σ_t·z`
+   - Score: `s_θ(x_t, t) ≈ ∇_x log p(x_t)`
+
+4. **Key Insight Box**: Highlighted box with core takeaway for current mode
+
+5. **Connection to Images**: Brief note on how this applies to actual image generation
+
+### 5. Natural Image Manifold Diagram
+
+A conceptual SVG illustration showing:
+- Large box representing &quot;all possible pixel values&quot; (labeled as such)
+- Curved line/surface representing the &quot;natural image manifold&quot;
+- Green dots on the manifold labeled &quot;real images&quot;
+- Red dot off the manifold labeled &quot;noisy image&quot;
+- Purple arrow from noisy point toward manifold labeled &quot;score&quot;
+
+This should be a static but well-designed diagram that reinforces the geometric intuition.
+
+### 6. Sampling Trajectories Visualization
+
+When in &quot;Reverse Process&quot; mode, add option to show:
+- Multiple (3-5) reverse trajectories starting from the same noise
+- Each trajectory in a different color
+- Shows the stochasticity of sampling (different paths, same destination region)
+- Toggle: &quot;Show multiple trajectories&quot;
+
+### 7. DDPM vs DDIM Comparison (Optional Advanced Feature)
+
+A toggle or separate sub-tab showing:
+- DDPM: Stochastic sampling (multiple different trajectories)
+- DDIM: Deterministic sampling (same trajectory every time)
+- Side-by-side or overlay visualization
+
+### 8. Quiz/Self-Assessment Section
+
+Include 2-3 interactive quiz questions at the bottom:
+
+**Question 1** (about score at different noise levels):
+&quot;At t = T/2, which statement about the score function is most accurate?&quot;
+- A) Points uniformly toward center
+- B) Still reflects multi-modal structure but smoothed ✓
+- C) Original structure completely destroyed
+- D) Forward and reverse are symmetric
+
+**Question 2** (about the manifold):
+&quot;Why can we start from pure Gaussian noise when generating images?&quot;
+- A) The neural network memorizes all training images
+- B) At t=T, the noisy data distribution ≈ N(0,I), so we can sample from that ✓
+- C) The forward process is reversible without learning
+- D) Gaussian noise contains hidden image information
+
+**Question 3** (about the loss):
+&quot;The diffusion training objective is equivalent to:&quot;
+- A) Reconstructing the original image directly
+- B) Predicting the noise that was added ✓ (or equivalently, the score)
+- C) Classifying which timestep we&#x27;re at
+- D) Maximizing likelihood directly
+
+Each question should:
+- Show options as clickable cards
+- On selection, show explanation of why the answer is correct/incorrect
+- Use color coding (green for correct, red for incorrect)
+
+### 9. Socratic Probing Questions
+
+Throughout the interface, include prompting questions that encourage active thinking:
+
+- Near the time slider: &quot;What happens to the score field as you increase t? Why?&quot;
+- Near the distribution selector: &quot;How does the shape of the data distribution affect how quickly structure is destroyed?&quot;
+- Near the trajectory visualization: &quot;Why do different reverse trajectories end up at different points, even starting from the same noise?&quot;
+
+These should be styled as subtle callout boxes that invite reflection.
+
+## Technical Implementation Notes
+
+### State Management
+```javascript
+const [activeTab, setActiveTab] = useState(&#x27;forward&#x27;); // &#x27;forward&#x27; | &#x27;reverse&#x27; | &#x27;score&#x27;
+const [timeStep, setTimeStep] = useState(0); // 0 to T
+const [distribution, setDistribution] = useState(&#x27;moons&#x27;);
+const [showScore, setShowScore] = useState(false);
+const [showTrajectories, setShowTrajectories] = useState(false);
+const [isPlaying, setIsPlaying] = useState(false);
+const [quizAnswers, setQuizAnswers] = useState({});
+```
+
+### Animation
+- Use `useEffect` with `setInterval` for play/pause
+- Forward mode: increment t from 0 to T
+- Reverse mode: decrement t from T to 0
+- ~100ms per frame for smooth animation
+
+### Deterministic Noise
+For consistent visualization (same points go to same places when scrubbing):
+```javascript
+const seededRandom = (seed) =&gt; {
+  const x = Math.sin(seed * 12.9898) * 43758.5453;
+  return x - Math.floor(x);
+};
+// Use point.id as seed for its noise values
+```
+
+### Score Field Computation
+Approximate score as kernel density gradient:
+```javascript
+// For each grid point, compute weighted direction toward data
+// Weight by Gaussian kernel with bandwidth ~ sqrt(1 - alpha_bar)
+// Normalize for visualization
+```
+
+### Coordinate Transform
+```javascript
+const toScreen = (x, y, width, height) =&gt; ({
+  x: (x + 1.5) / 3 * width,   // map [-1.5, 1.5] to [0, width]
+  y: (1.5 - y) / 3 * height   // map [-1.5, 1.5] to [0, height], flipped
+});
+```
+
+## Visual Design Specifications
+
+### Color Palette
+- Background: `#0a0a0f` to `#1a1a2e` gradient
+- Primary accent: `#667eea` (purple-blue)
+- Secondary accent: `#764ba2` (purple)
+- Success/Signal: `#4ade80` (green)
+- Error/Noise: `#f87171` (red)
+- Score field: `#a78bfa` (light purple)
+- Text primary: `#e0e0e0`
+- Text secondary: `#a0a0a0`
+- Text muted: `#666666`
+
+### Component Styling
+- Panels: `background: #111`, `border: 1px solid #222`, `border-radius: 12px`
+- Buttons: Gradient background for primary, outlined for secondary
+- Math blocks: Monospace font, dark background, left border accent
+- Hover states: Subtle glow or border color change
+
+### Responsive Considerations
+- Main layout: Flex with visualization on left (flex: 1), explanation on right (fixed width ~340px)
+- On smaller screens, stack vertically
+- SVG viewBox for scalable visualization
+
+## Additional Features to Consider
+
+1. **Loss Landscape Visualization**: Show a simplified view of what the denoising loss looks like
+
+2. **Step-by-Step Mode**: Instead of continuous slider, button to step through discrete timesteps with detailed explanation at each
+
+3. **&quot;What the Network Sees&quot; Panel**: At current timestep, show what information the denoising network has access to
+
+4. **Noise Schedule Comparison**: Toggle between linear, cosine, and other schedules to see effect
+
+5. **Export/Share**: Button to capture current visualization state as image
+
+## Final Notes
+
+The goal is for a student to:
+1. Load this tool
+2. Play with the forward process on different distributions
+3. Observe how the score field changes with noise level
+4. Understand why we can start from pure noise
+5. See the reverse process as &quot;following the score back to data&quot;
+6. Test their understanding with the quiz questions
+7. Leave with strong geometric intuition for diffusion
+
+Every element should serve this educational purpose. Avoid feature creep that doesn&#x27;t teach something new.
+</code></pre>
+                    </div></div>
+    </div>
+</body>
+</html>

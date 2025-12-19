@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Participation B: Grok HW 6 - CS 182</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #f5f7fa;
+            color: #333;
+            line-height: 1.6;
+        }
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .back-link {
+            display: inline-block;
+            margin-bottom: 20px;
+            color: #4299e1;
+            text-decoration: none;
+        }
+        .back-link:hover { text-decoration: underline; }
+        .thread-header {
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+        }
+        .thread-title {
+            font-size: 1.8rem;
+            color: #2d3748;
+            margin-bottom: 15px;
+        }
+        .thread-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            color: #718096;
+            font-size: 14px;
+        }
+        .model-badge {
+            display: inline-block;
+            padding: 4px 12px;
+            background: #e2e8f0;
+            color: #4a5568;
+            border-radius: 15px;
+            font-size: 13px;
+            font-weight: 500;
+        }
+        .hw-badge {
+            display: inline-block;
+            padding: 4px 12px;
+            background: #fed7e2;
+            color: #97266d;
+            border-radius: 15px;
+            font-size: 13px;
+            font-weight: 500;
+        }
+        .thread-body {
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+        }
+        .thread-body h3 {
+            margin-bottom: 15px;
+            color: #2d3748;
+        }
+        .body-content {
+            white-space: pre-wrap;
+            word-wrap: break-word;
+            line-height: 1.8;
+            font-size: 15px;
+        }
+        .body-content a {
+            color: #4299e1;
+            word-break: break-all;
+        }
+        .attachments {
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
+        .attachments h3 {
+            margin-bottom: 20px;
+            color: #2d3748;
+        }
+        .attachment {
+            margin-bottom: 25px;
+            border: 1px solid #e2e8f0;
+            border-radius: 6px;
+            overflow: hidden;
+        }
+        .attachment-label {
+            background: #f7fafc;
+            padding: 10px 15px;
+            font-weight: 500;
+            font-size: 14px;
+            border-bottom: 1px solid #e2e8f0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .download-link {
+            color: #4299e1;
+            text-decoration: none;
+            font-weight: normal;
+        }
+        .download-link:hover { text-decoration: underline; }
+        .attachment-image img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+        .attachment-pdf iframe {
+            width: 100%;
+            height: 800px;
+            border: none;
+        }
+        .attachment-video video {
+            width: 100%;
+            max-height: 600px;
+        }
+        .attachment-audio audio {
+            width: 100%;
+            padding: 15px;
+        }
+        .attachment-text pre {
+            padding: 15px;
+            background: #f7fafc;
+            overflow-x: auto;
+            max-height: 500px;
+            font-size: 13px;
+            line-height: 1.5;
+        }
+        .attachment-file {
+            padding: 15px;
+        }
+        .file-link {
+            color: #4299e1;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .file-link:hover { text-decoration: underline; }
+        .ed-link {
+            display: inline-block;
+            margin-top: 15px;
+            color: #4299e1;
+            text-decoration: none;
+        }
+        .ed-link:hover { text-decoration: underline; }
+        @media (max-width: 768px) {
+            .thread-title { font-size: 1.4rem; }
+            .attachment-pdf iframe { height: 500px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <a href="../../../index.html" class="back-link">← Back to Directory</a>
+
+        <div class="thread-header">
+            <h1 class="thread-title">Participation B: Grok HW 6</h1>
+            <div class="thread-meta">
+                <span>By Leon Kornfeld</span>
+                <span>2025-10-22</span>
+                <span class="hw-badge">HW6</span>
+                <span class="model-badge">Grok</span>
+            </div>
+            <a href="https://edstem.org/us/courses/84647/discussion/7178115" target="_blank" class="ed-link">View on Ed Stem →</a>
+        </div>
+
+        <div class="thread-body">
+            <div class="body-content">I used Grok to solve problems 5 and 6 of HW6 (coding).
+
+Note: Because problem 1 wasn’t implementation-based and was about running cells and reading off values generated from GPU data, I figured it was unnecessary — or odd — to solve it with Grok.
+
+Problem 5:
+
+Reflection:
+To have Grok solve the problems associated with this notebook, I first gave it an overall prompt:
+
+“As I provide you sequential code blocks, solve all the TODOs without changing the code skeleton.”
+
+After that, I started providing context for each question (the markdown cells in the notebook detailing the instructions) and then the actual skeleton code where it needed to fill things in. Grok then output the completed code, which I copied into the notebook and ran. I repeated this process throughout the notebook. With each response, Grok provided its reasoning, which can be seen in the transcript above.
+
+Fast-forwarding, the first bug I encountered was when trying to instantiate the full gnn_model. The variable hidden_dim was passed in as a list, while Grok had coded it as an integer. This naturally led to a type error, since the code Grok wrote treated the list as an integer.
+
+My next prompt to Grok was incorrect: I suggested just changing the list to an integer to avoid modifying the skeleton code. Grok acknowledged that while this was possible, it wasn’t the best solution because it went against the intended design. Instead, it suggested that a better approach was to fix the skeleton code to treat hidden_dim as a list. After one “index out of range” error and one more prompt to Grok, the code ran successfully.
+
+The remainder of the problem went smoothly. For Q9 — the conceptual question on accuracy — Grok provided a multitude of possible explanations for the discrepancy. Because I hadn’t provided the graph in the prompt, all of Grok’s reasoning was speculative based on the limited context. My prompt said:
+
+“After training the model, we get 100 percent accuracy on the test data. However, we see two samples that are misclassified.”
+
+This didn’t specify that we were looking at all the samples (including the training data) or analyzing a graph. Without that information, Grok didn’t get the correct answer. When I clarified that we were looking at the entire dataset, Grok correctly deduced that the misclassifications came from the training set.
+
+Problem 6:
+
+Reflection:
+
+I used the exact same prompting approach that I used for question 5.
+
+Grok originally assumed that the X matrix in the Newton–Schulz calculation was square. Therefore, the original code it produced used (X @ X @ X) instead of (X @ X.T @ X.T). When later code failed due to dimension errors, I had to prompt Grok that X was not necessarily square. It then gave a more complex solution using a Gram matrix. I further prompted it to just use X, and it responded with the correct answer.
+
+Once Grok finished the coding questions, I started prompting it with the conceptual ones. I asked,
+
+“Which optimizer performed best between Muon, SGD, and AdamW?”
+
+I also provided a screenshot of the graphs. It gave the correct answer, though I doubted whether it actually analyzed the graph. I tested this by asking graph-specific questions to see if it could interpret the image. Grok correctly identified that the training ran for 5 epochs but was slightly off on the lowest loss (saying 0.8 instead of 0.6).
+
+After a few more partially accurate answers, I decided to provide the numerical training data instead of a screenshot. With that, Grok did a much better job answering the conceptual questions.
+
+Interestingly, all the questions except the last one required little reasoning. The final conceptual question — whether orthogonalization or muP mattered more — took Grok about two minutes of processing, during which it visited around 15 webpages. It eventually answered the question correctly.
+
+Conclusion:
+
+Grok does a pretty good job at zero-shotting the coding problems. It struggles when the user prompt lacks specific information (e.g. matrix shape, what image/graph we are analyzing) and thus makes generalizations that could lead to the wrong answer/code bugs. However, once more context was provided, Grok was able to correct itself and arrive at the right answer.</div>
+        </div>
+
+        <div class="attachments">
+                <div class="attachment attachment-pdf">
+                    <div class="attachment-label">GCN Karate Club Node Classification - Grok.pdf <a href="attachments/GCN Karate Club Node Classification - Grok.pdf" target="_blank" class="download-link">Open in new tab</a></div>
+                    <iframe src="attachments/GCN Karate Club Node Classification - Grok.pdf" loading="lazy"></iframe>
+                </div>
+                <div class="attachment attachment-pdf">
+                    <div class="attachment-label">Newton-Schulz Matrix Orthogonalization Implementation - Grok.pdf <a href="attachments/Newton-Schulz Matrix Orthogonalization Implementation - Grok.pdf" target="_blank" class="download-link">Open in new tab</a></div>
+                    <iframe src="attachments/Newton-Schulz Matrix Orthogonalization Implementation - Grok.pdf" loading="lazy"></iframe>
+                </div></div>
+    </div>
+</body>
+</html>

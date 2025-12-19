@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Special Participation E1 - CS 182</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #f5f7fa;
+            color: #333;
+            line-height: 1.6;
+        }
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .back-link {
+            display: inline-block;
+            margin-bottom: 20px;
+            color: #4299e1;
+            text-decoration: none;
+        }
+        .back-link:hover { text-decoration: underline; }
+        .thread-header {
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+        }
+        .thread-title {
+            font-size: 1.8rem;
+            color: #2d3748;
+            margin-bottom: 15px;
+        }
+        .thread-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            color: #718096;
+            font-size: 14px;
+        }
+        .model-badge {
+            display: inline-block;
+            padding: 4px 12px;
+            background: #e2e8f0;
+            color: #4a5568;
+            border-radius: 15px;
+            font-size: 13px;
+            font-weight: 500;
+        }
+        .hw-badge {
+            display: inline-block;
+            padding: 4px 12px;
+            background: #fed7e2;
+            color: #97266d;
+            border-radius: 15px;
+            font-size: 13px;
+            font-weight: 500;
+        }
+        .thread-body {
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+        }
+        .thread-body h3 {
+            margin-bottom: 15px;
+            color: #2d3748;
+        }
+        .body-content {
+            white-space: pre-wrap;
+            word-wrap: break-word;
+            line-height: 1.8;
+            font-size: 15px;
+        }
+        .body-content a {
+            color: #4299e1;
+            word-break: break-all;
+        }
+        .attachments {
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
+        .attachments h3 {
+            margin-bottom: 20px;
+            color: #2d3748;
+        }
+        .attachment {
+            margin-bottom: 25px;
+            border: 1px solid #e2e8f0;
+            border-radius: 6px;
+            overflow: hidden;
+        }
+        .attachment-label {
+            background: #f7fafc;
+            padding: 10px 15px;
+            font-weight: 500;
+            font-size: 14px;
+            border-bottom: 1px solid #e2e8f0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .download-link {
+            color: #4299e1;
+            text-decoration: none;
+            font-weight: normal;
+        }
+        .download-link:hover { text-decoration: underline; }
+        .attachment-image img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+        .attachment-pdf iframe {
+            width: 100%;
+            height: 800px;
+            border: none;
+        }
+        .attachment-video video {
+            width: 100%;
+            max-height: 600px;
+        }
+        .attachment-audio audio {
+            width: 100%;
+            padding: 15px;
+        }
+        .attachment-text pre {
+            padding: 15px;
+            background: #f7fafc;
+            overflow-x: auto;
+            max-height: 500px;
+            font-size: 13px;
+            line-height: 1.5;
+        }
+        .attachment-file {
+            padding: 15px;
+        }
+        .file-link {
+            color: #4299e1;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .file-link:hover { text-decoration: underline; }
+        .ed-link {
+            display: inline-block;
+            margin-top: 15px;
+            color: #4299e1;
+            text-decoration: none;
+        }
+        .ed-link:hover { text-decoration: underline; }
+        @media (max-width: 768px) {
+            .thread-title { font-size: 1.4rem; }
+            .attachment-pdf iframe { height: 500px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <a href="../../../index.html" class="back-link">← Back to Directory</a>
+
+        <div class="thread-header">
+            <h1 class="thread-title">Special Participation E1</h1>
+            <div class="thread-meta">
+                <span>By Xueli Sun</span>
+                <span>2025-12-16</span>
+                
+                <span class="model-badge">Gemini</span>
+            </div>
+            <a href="https://edstem.org/us/courses/84647/discussion/7473259" target="_blank" class="ed-link">View on Ed Stem →</a>
+        </div>
+
+        <div class="thread-body">
+            <div class="body-content">2. Participation E: HTML illustration on Multi-head Attention with Gemini3 pro
+
+I was reviewing problem 3 from HW9 (Ordinary Softmax Multihead Attention Implementation) and was confused about the dimensions, especially when it comes to 4 dimensions. So I thought it might be helpful to create a diagram with LLM. 
+
+Gemini Pro created a simple HTML page with a PowerPoint-like illustration, with minimal interaction.
+
+Dialogue and result screenshots: 
+
+Generated HTML file:</div>
+        </div>
+
+        <div class="attachments">
+                <div class="attachment attachment-pdf">
+                    <div class="attachment-label">MHA_Gemini.pdf <a href="attachments/MHA_Gemini.pdf" target="_blank" class="download-link">Open in new tab</a></div>
+                    <iframe src="attachments/MHA_Gemini.pdf" loading="lazy"></iframe>
+                </div>
+                    <div class="attachment attachment-text">
+                        <div class="attachment-label">index.html <a href="attachments/index.html" target="_blank" class="download-link">Download</a></div>
+                        <pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+&lt;head&gt;
+    &lt;meta charset=&quot;UTF-8&quot;&gt;
+    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;
+    &lt;title&gt;Visual MHA Animator - Complete Pipeline&lt;/title&gt;
+    &lt;script src=&quot;https://cdn.tailwindcss.com&quot;&gt;&lt;/script&gt;
+    &lt;style&gt;
+        /* Animation Base Styles */
+        .stage-container {
+            position: relative;
+            height: 600px; /* Increased height for complex steps */
+            width: 100%;
+            overflow: hidden;
+            background-color: #f8fafc; /* slate-50 */
+            border: 1px solid #e2e8f0;
+            border-radius: 0.5rem;
+        }
+
+        .matrix-block {
+            position: absolute;
+            transition: all 1.0s cubic-bezier(0.4, 0, 0.2, 1);
+            display: grid;
+            gap: 2px;
+            padding: 4px;
+            background: rgba(255, 255, 255, 0.9);
+            border: 1px solid #cbd5e1;
+            border-radius: 4px;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        }
+
+        .cell {
+            width: 20px;
+            height: 20px;
+            font-size: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 2px;
+            font-family: monospace;
+            color: white;
+            transition: background-color 0.3s, transform 0.3s;
+        }
+
+        /* Highlight animations */
+        @keyframes pulse-border {
+            0% { border-color: #2563eb; }
+            50% { border-color: #93c5fd; }
+            100% { border-color: #2563eb; }
+        }
+        .highlight-row { border: 2px solid #2563eb; z-index: 10; transform: scale(1.1); }
+        .highlight-col { border: 2px solid #dc2626; z-index: 10; transform: scale(1.1); }
+        .highlight-result { border: 2px solid #16a34a; background-color: #dcfce7 !important; color: #166534 !important; font-weight: bold;}
+        
+        .fade-text { transition: opacity 0.5s ease-in-out; }
+        
+        /* Arrow helper */
+        .arrow-right {
+            position: absolute;
+            font-size: 24px;
+            color: #94a3b8;
+            font-weight: bold;
+        }
+    &lt;/style&gt;
+&lt;/head&gt;
+&lt;body class=&quot;bg-gray-100 p-8 font-sans&quot;&gt;
+
+    &lt;div class=&quot;max-w-6xl mx-auto space-y-6&quot;&gt;
+        &lt;div class=&quot;bg-white p-6 rounded-lg shadow-sm border border-gray-200 flex justify-between items-center&quot;&gt;
+            &lt;div&gt;
+                &lt;h1 class=&quot;text-3xl font-bold text-gray-800&quot;&gt;📽️ Complete MHA Pipeline Animator&lt;/h1&gt;
+                &lt;p class=&quot;text-gray-600&quot;&gt;Visualizing: Split $\rightarrow$ Attention $\rightarrow$ Weighted Sum $\rightarrow$ Combine $\rightarrow$ $W_o$&lt;/p&gt;
+            &lt;/div&gt;
+            &lt;div class=&quot;text-right text-sm text-gray-500 font-mono&quot;&gt;
+                &lt;p&gt;Seq Len (L)=4&lt;/p&gt;
+                &lt;p&gt;d_model (D)=12&lt;/p&gt;
+                &lt;p&gt;Heads (H)=3&lt;/p&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+
+        &lt;div class=&quot;bg-white p-4 rounded-lg shadow-lg border border-gray-200&quot;&gt;
+            &lt;div class=&quot;flex justify-between items-center mb-4&quot;&gt;
+                &lt;h2 class=&quot;text-xl font-bold text-blue-700&quot; id=&quot;step-title&quot;&gt;1. Input Tensor&lt;/h2&gt;
+                &lt;div class=&quot;space-x-2&quot;&gt;
+                    &lt;button onclick=&quot;prevStep()&quot; class=&quot;px-4 py-2 bg-gray-200 hover:bg-gray-300 rounded text-gray-700 font-medium disabled:opacity-50&quot; id=&quot;btn-prev&quot;&gt;Previous&lt;/button&gt;
+                    &lt;button onclick=&quot;nextStep()&quot; class=&quot;px-4 py-2 bg-blue-600 hover:bg-blue-700 rounded text-white font-medium shadow-md hover:shadow-lg transition-all&quot; id=&quot;btn-next&quot;&gt;Next Operation ➡&lt;/button&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+
+            &lt;div id=&quot;stage&quot; class=&quot;stage-container relative&quot;&gt;
+                &lt;div id=&quot;explanation-overlay&quot; class=&quot;absolute bottom-4 left-4 right-4 bg-white/95 p-4 rounded border-l-4 border-blue-500 shadow-xl text-sm text-gray-800 backdrop-blur-sm fade-text z-50&quot;&gt;
+                    Initializing...
+                &lt;/div&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;script&gt;
+        // --- Configuration ---
+        const L = 4;   // Sequence Length
+        const D = 12;  // d_model
+        const H = 3;   // Heads
+        const Dk = 4;  // d_k (12/3)
+        
+        // --- State Management ---
+        let currentStep = 0;
+        
+        const steps = [
+            { id: 0, title: &#x27;1. Input Tensor&#x27;, text: &#x27;Start with input X (Shape: 4x12). This contains the embeddings for 4 tokens.&#x27; },
+            { id: 1, title: &#x27;2. Split Heads (Visual Slice)&#x27;, text: &#x27;We logically slice the vectors into 3 parts (Red, Green, Blue).&#x27; },
+            { id: 2, title: &#x27;3. Split Heads (Physical Separate)&#x27;, text: &#x27;The slices are pulled apart into 3 separate Heads (Shape: 3 x 4x4).&#x27; },
+            { id: 3, title: &#x27;4. Prepare Attention (Head 1)&#x27;, text: &#x27;Focusing on the Red Head: We have Query (Q) and Key (K) matrices.&#x27; },
+            { id: 4, title: &#x27;5. Transpose Key (K)&#x27;, text: &#x27;To multiply, we rotate K to become K^T (Shape: 4x4 -&gt; 4x4).&#x27; },
+            { id: 5, title: &#x27;6. Attention Scores (Q @ K^T)&#x27;, text: &#x27;Dot Product: Row of Q * Col of K^T = Score. Highlighted: Q_row_0 attending to K_col_0.&#x27; },
+            { id: 6, title: &#x27;7. Weighted Sum (Scores @ V)&#x27;, text: &#x27;We multiply the Attention Scores (probabilities) by the Value matrix (V). This creates the Context Vector for this head.&#x27; },
+            { id: 7, title: &#x27;8. Combine Heads&#x27;, text: &#x27;We perform this for all 3 heads, then concatenate the results back together.&#x27; },
+            { id: 8, title: &#x27;9. Final Linear Layer (Context @ Wo)&#x27;, text: &#x27;Finally, the combined matrix (4x12) is multiplied by the Output Weight Matrix Wo (12x12) to mix information across heads.&#x27; }
+        ];
+
+        // --- Render Helpers ---
+
+        function createMatrix(id, rows, cols, startX, startY, colorClass, label) {
+            const matrix = document.createElement(&#x27;div&#x27;);
+            matrix.id = id;
+            matrix.className = &#x27;matrix-block&#x27;;
+            matrix.style.gridTemplateColumns = `repeat(${cols}, 1fr)`;
+            matrix.style.left = `${startX}px`;
+            matrix.style.top = `${startY}px`;
+            
+            // Label
+            const lbl = document.createElement(&#x27;div&#x27;);
+            lbl.innerText = label;
+            lbl.className = &#x27;absolute -top-6 left-0 w-full text-center text-xs font-bold text-gray-500 whitespace-nowrap&#x27;;
+            matrix.appendChild(lbl);
+
+            // Cells
+            for (let r = 0; r &lt; rows; r++) {
+                for (let c = 0; c &lt; cols; c++) {
+                    const cell = document.createElement(&#x27;div&#x27;);
+                    cell.className = `cell ${colorClass}`;
+                    cell.innerText = &#x27;•&#x27;; 
+                    cell.dataset.r = r;
+                    cell.dataset.c = c;
+                    matrix.appendChild(cell);
+                }
+            }
+            return matrix;
+        }
+
+        function createArrow(x, y) {
+            const arrow = document.createElement(&#x27;div&#x27;);
+            arrow.className = &#x27;arrow-right&#x27;;
+            arrow.innerHTML = &#x27;➜&#x27;;
+            arrow.style.left = `${x}px`;
+            arrow.style.top = `${y}px`;
+            return arrow;
+        }
+
+        // --- Main Render Function ---
+        function render() {
+            const stage = document.getElementById(&#x27;stage&#x27;);
+            const explanation = document.getElementById(&#x27;explanation-overlay&#x27;);
+            const title = document.getElementById(&#x27;step-title&#x27;);
+            
+            title.innerText = steps[currentStep].title;
+            explanation.innerText = steps[currentStep].text;
+
+            // Clear stage (except overlay if we wanted to keep it, but easy to just rebuild)
+            stage.innerHTML = &#x27;&#x27;;
+            stage.appendChild(explanation);
+
+            const colors = [&#x27;bg-red-500&#x27;, &#x27;bg-green-500&#x27;, &#x27;bg-blue-500&#x27;];
+
+            // --- STEP 0: Input ---
+            if (currentStep === 0) {
+                stage.appendChild(createMatrix(&#x27;in&#x27;, L, D, 150, 200, &#x27;bg-gray-600&#x27;, &#x27;Input X (4x12)&#x27;));
+            } 
+            
+            // --- STEP 1: Color Slices ---
+            else if (currentStep === 1) {
+                const m = createMatrix(&#x27;in&#x27;, L, D, 150, 200, &#x27;&#x27;, &#x27;Input X (4x12)&#x27;);
+                Array.from(m.children).forEach((child, i) =&gt; {
+                    if (child.classList.contains(&#x27;cell&#x27;)) {
+                        const colIndex = i % D;
+                        if (colIndex &lt; 4) child.classList.add(&#x27;bg-red-500&#x27;);
+                        else if (colIndex &lt; 8) child.classList.add(&#x27;bg-green-500&#x27;);
+                        else child.classList.add(&#x27;bg-blue-500&#x27;);
+                    }
+                });
+                stage.appendChild(m);
+            }
+            
+            // --- STEP 2: Separate Heads ---
+            else if (currentStep === 2) {
+                const gaps = [50, 250, 450];
+                colors.forEach((col, i) =&gt; {
+                    stage.appendChild(createMatrix(`h${i}`, L, Dk, gaps[i], 200, col, `Head ${i+1}`));
+                });
+            }
+            
+            // --- STEP 3: Prep Attention ---
+            else if (currentStep === 3) {
+                stage.appendChild(createMatrix(&#x27;Q&#x27;, L, Dk, 150, 200, &#x27;bg-red-500&#x27;, &#x27;Query (Q)&#x27;));
+                stage.appendChild(createMatrix(&#x27;K&#x27;, L, Dk, 350, 200, &#x27;bg-red-300&#x27;, &#x27;Key (K)&#x27;));
+            }
+            
+            // --- STEP 4: Transpose K ---
+            else if (currentStep === 4) {
+                stage.appendChild(createMatrix(&#x27;Q&#x27;, L, Dk, 150, 200, &#x27;bg-red-500&#x27;, &#x27;Query (Q)&#x27;));
+                
+                const k = createMatrix(&#x27;K&#x27;, L, Dk, 350, 200, &#x27;bg-red-300&#x27;, &#x27;Key^T&#x27;);
+                k.style.transform = &quot;rotate(90deg)&quot;; // CSS Rotate
+                k.style.left = &quot;400px&quot;; // Adjust for visual center
+                stage.appendChild(k);
+            }
+            
+            // --- STEP 5: Attention Scores ---
+            else if (currentStep === 5) {
+                // Layout: Q(Left) * Kt(Top) = Scores(Middle)
+                const q = createMatrix(&#x27;Q&#x27;, L, Dk, 50, 250, &#x27;bg-red-500&#x27;, &#x27;Q&#x27;);
+                const kt = createMatrix(&#x27;Kt&#x27;, Dk, L, 200, 100, &#x27;bg-red-300&#x27;, &#x27;K^T&#x27;); // Physically transposed dimensions for clarity
+                const scores = createMatrix(&#x27;Sc&#x27;, L, L, 200, 250, &#x27;bg-gray-400&#x27;, &#x27;Scores (Softmax)&#x27;);
+                
+                stage.appendChild(q);
+                stage.appendChild(kt);
+                stage.appendChild(scores);
+                
+                setTimeout(() =&gt; {
+                    highlightRow(q, 0);
+                    highlightCol(kt, 0);
+                    highlightCell(scores, 0, 0);
+                }, 500);
+            }
+
+            // --- STEP 6: Weighted Sum (Scores * V) ---
+            else if (currentStep === 6) {
+                // Layout: Scores(Left) * V(Top-Right-ish) = Context(Right)
+                // Equation: Scores(LxL) * V(LxDk) = Context(LxDk)
+                
+                const scores = createMatrix(&#x27;Sc&#x27;, L, L, 50, 250, &#x27;bg-gray-400&#x27;, &#x27;Scores (Probabilities)&#x27;);
+                const v = createMatrix(&#x27;V&#x27;, L, Dk, 250, 100, &#x27;bg-red-600&#x27;, &#x27;Value (V)&#x27;); // V is darker red usually
+                const ctx = createMatrix(&#x27;Ctx&#x27;, L, Dk, 250, 250, &#x27;bg-purple-600&#x27;, &#x27;Context Vector&#x27;);
+
+                stage.appendChild(scores);
+                stage.appendChild(v);
+                stage.appendChild(ctx);
+                stage.appendChild(createArrow(210, 270)); // Arrow between Scores and Ctx
+
+                setTimeout(() =&gt; {
+                    // Show that Row 0 of Scores * ALL of V = Row 0 of Context
+                    highlightRow(scores, 0); 
+                    // To imply matrix mult logic: Row 0 of scores weights the rows of V.
+                    // Let&#x27;s highlight the whole V lightly, or just columns. 
+                    // Standard Matmul: Row 0(Sc) * Col 0(V) = Cell 0,0(Ctx)
+                    highlightCol(v, 0);
+                    highlightCell(ctx, 0, 0);
+                }, 500);
+            }
+
+            // --- STEP 7: Combine Heads ---
+            else if (currentStep === 7) {
+                // Show 3 Context vectors snapping together
+                // Start separated
+                const ctx1 = createMatrix(&#x27;c1&#x27;, L, Dk, 50, 200, &#x27;bg-purple-600&#x27;, &#x27;Head 1&#x27;);
+                const ctx2 = createMatrix(&#x27;c2&#x27;, L, Dk, 250, 200, &#x27;bg-purple-600&#x27;, &#x27;Head 2&#x27;); // Normally different colors per head result, but reusing for simplicity
+                const ctx3 = createMatrix(&#x27;c3&#x27;, L, Dk, 450, 200, &#x27;bg-purple-600&#x27;, &#x27;Head 3&#x27;);
+                
+                // Override colors to match Step 1 colors
+                recolorMatrix(ctx1, &#x27;bg-red-600&#x27;);
+                recolorMatrix(ctx2, &#x27;bg-green-600&#x27;);
+                recolorMatrix(ctx3, &#x27;bg-blue-600&#x27;);
+
+                stage.appendChild(ctx1);
+                stage.appendChild(ctx2);
+                stage.appendChild(ctx3);
+
+                // Animate to center
+                setTimeout(() =&gt; {
+                    ctx1.style.left = &quot;150px&quot;;
+                    ctx2.style.left = &quot;230px&quot;; // 150 + width(approx 80)
+                    ctx3.style.left = &quot;310px&quot;; // 230 + width
+                    // Update label
+                    ctx1.querySelector(&#x27;div&#x27;).innerText = &quot;Concatenated (4x12)&quot;;
+                    ctx2.querySelector(&#x27;div&#x27;).innerText = &quot;&quot;;
+                    ctx3.querySelector(&#x27;div&#x27;).innerText = &quot;&quot;;
+                }, 200);
+            }
+
+            // --- STEP 8: Final Linear (Wo) ---
+            else if (currentStep === 8) {
+                // Layout: Combined(Left) * Wo(Right) = Output(Far Right)
+                // Shape: (L x D) * (D x D) = (L x D)
+                
+                // To fit in 600px width, we might need to scale down or overlap
+                // Combined (4x12)
+                const comb = createMatrix(&#x27;comb&#x27;, L, D, 50, 200, &#x27;&#x27;, &#x27;Combined Heads&#x27;);
+                 // Color the cols again
+                 Array.from(comb.children).forEach((child, i) =&gt; {
+                    if (child.classList.contains(&#x27;cell&#x27;)) {
+                        const c = i % D;
+                        if (c &lt; 4) child.classList.add(&#x27;bg-red-600&#x27;);
+                        else if (c &lt; 8) child.classList.add(&#x27;bg-green-600&#x27;);
+                        else child.classList.add(&#x27;bg-blue-600&#x27;);
+                    }
+                });
+
+                // Wo (12x12) - Big matrix!
+                const wo = createMatrix(&#x27;Wo&#x27;, D, D, 300, 50, &#x27;bg-gray-800&#x27;, &#x27;Weights (Wo)&#x27;);
+                
+                // Output
+                const out = createMatrix(&#x27;out&#x27;, L, D, 300, 350, &#x27;bg-indigo-600&#x27;, &#x27;Final Output (Z)&#x27;);
+
+                stage.appendChild(comb);
+                stage.appendChild(wo);
+                stage.appendChild(out);
+
+                setTimeout(() =&gt; {
+                    highlightRow(comb, 0);
+                    highlightCol(wo, 0);
+                    highlightCell(out, 0, 0);
+                }, 500);
+            }
+        }
+
+        // --- Utils ---
+        function highlightRow(matrix, rowIdx) {
+            Array.from(matrix.children).forEach(cell =&gt; {
+                if (cell.dataset.r == rowIdx) cell.classList.add(&#x27;highlight-row&#x27;);
+            });
+        }
+        function highlightCol(matrix, colIdx) {
+            Array.from(matrix.children).forEach(cell =&gt; {
+                if (cell.dataset.c == colIdx) cell.classList.add(&#x27;highlight-col&#x27;);
+            });
+        }
+        function highlightCell(matrix, r, c) {
+            Array.from(matrix.children).forEach(cell =&gt; {
+                if (cell.dataset.r == r &amp;&amp; cell.dataset.c == c) {
+                    cell.innerText = &quot;★&quot;;
+                    cell.classList.add(&#x27;highlight-result&#x27;);
+                }
+            });
+        }
+        function recolorMatrix(matrix, colorClass) {
+            Array.from(matrix.children).forEach(cell =&gt; {
+                if (cell.classList.contains(&#x27;cell&#x27;)) {
+                    cell.className = `cell ${colorClass}`;
+                }
+            });
+        }
+
+        // --- Controls ---
+        function nextStep() {
+            if (currentStep &lt; steps.length - 1) {
+                currentStep++;
+                render();
+            }
+        }
+        function prevStep() {
+            if (currentStep &gt; 0) {
+                currentStep--;
+                render();
+            }
+        }
+
+        // Init
+        document.addEventListener(&#x27;DOMContentLoaded&#x27;, () =&gt; {
+            render();
+            document.addEventListener(&#x27;keydown&#x27;, (e) =&gt; {
+                if (e.key === &quot;ArrowRight&quot;) nextStep();
+                if (e.key === &quot;ArrowLeft&quot;) prevStep();
+            });
+        });
+
+    &lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+                    </div></div>
+    </div>
+</body>
+</html>

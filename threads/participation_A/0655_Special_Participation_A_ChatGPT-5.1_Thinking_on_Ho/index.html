@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Special Participation A: ChatGPT-5.1 Thinking on Homework 1 - CS 182</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #f5f7fa;
+            color: #333;
+            line-height: 1.6;
+        }
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .back-link {
+            display: inline-block;
+            margin-bottom: 20px;
+            color: #4299e1;
+            text-decoration: none;
+        }
+        .back-link:hover { text-decoration: underline; }
+        .thread-header {
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+        }
+        .thread-title {
+            font-size: 1.8rem;
+            color: #2d3748;
+            margin-bottom: 15px;
+        }
+        .thread-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            color: #718096;
+            font-size: 14px;
+        }
+        .model-badge {
+            display: inline-block;
+            padding: 4px 12px;
+            background: #e2e8f0;
+            color: #4a5568;
+            border-radius: 15px;
+            font-size: 13px;
+            font-weight: 500;
+        }
+        .hw-badge {
+            display: inline-block;
+            padding: 4px 12px;
+            background: #fed7e2;
+            color: #97266d;
+            border-radius: 15px;
+            font-size: 13px;
+            font-weight: 500;
+        }
+        .thread-body {
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+        }
+        .thread-body h3 {
+            margin-bottom: 15px;
+            color: #2d3748;
+        }
+        .body-content {
+            white-space: pre-wrap;
+            word-wrap: break-word;
+            line-height: 1.8;
+            font-size: 15px;
+        }
+        .body-content a {
+            color: #4299e1;
+            word-break: break-all;
+        }
+        .attachments {
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
+        .attachments h3 {
+            margin-bottom: 20px;
+            color: #2d3748;
+        }
+        .attachment {
+            margin-bottom: 25px;
+            border: 1px solid #e2e8f0;
+            border-radius: 6px;
+            overflow: hidden;
+        }
+        .attachment-label {
+            background: #f7fafc;
+            padding: 10px 15px;
+            font-weight: 500;
+            font-size: 14px;
+            border-bottom: 1px solid #e2e8f0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .download-link {
+            color: #4299e1;
+            text-decoration: none;
+            font-weight: normal;
+        }
+        .download-link:hover { text-decoration: underline; }
+        .attachment-image img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+        .attachment-pdf iframe {
+            width: 100%;
+            height: 800px;
+            border: none;
+        }
+        .attachment-video video {
+            width: 100%;
+            max-height: 600px;
+        }
+        .attachment-audio audio {
+            width: 100%;
+            padding: 15px;
+        }
+        .attachment-text pre {
+            padding: 15px;
+            background: #f7fafc;
+            overflow-x: auto;
+            max-height: 500px;
+            font-size: 13px;
+            line-height: 1.5;
+        }
+        .attachment-file {
+            padding: 15px;
+        }
+        .file-link {
+            color: #4299e1;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .file-link:hover { text-decoration: underline; }
+        .ed-link {
+            display: inline-block;
+            margin-top: 15px;
+            color: #4299e1;
+            text-decoration: none;
+        }
+        .ed-link:hover { text-decoration: underline; }
+        @media (max-width: 768px) {
+            .thread-title { font-size: 1.4rem; }
+            .attachment-pdf iframe { height: 500px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <a href="../../../index.html" class="back-link">← Back to Directory</a>
+
+        <div class="thread-header">
+            <h1 class="thread-title">Special Participation A: ChatGPT-5.1 Thinking on Homework 1</h1>
+            <div class="thread-meta">
+                <span>By Jacqueline Thibault</span>
+                <span>2025-12-08</span>
+                <span class="hw-badge">HW1</span>
+                <span class="model-badge">GPT</span>
+            </div>
+            <a href="https://edstem.org/us/courses/84647/discussion/7428374" target="_blank" class="ed-link">View on Ed Stem →</a>
+        </div>
+
+        <div class="thread-body">
+            <div class="body-content">I engaged `ChatGPT-5.1: Thinking` on Homework 1&#x27;s non-coding parts. 
+
+Executive summary:
+
+The LLM was able to one-shot all of the questions. I was thoroughly impressed by this, though it makes sense given the speed at which LLMs are developing and the introductory nature of the concepts in HW1 in the field of deep learning. Some notable interactions I saw were: 
+
+1) the LLM &quot;pretended&quot; it could see the notebooks linked in question 2k, 3h, and 3i. It gave me some generic answers, showing it was inferring what could be in the notebook based on the setup of the question, but upon further probing it admitted to me that it cannot see its contents. I thought this was slightly concerning, because I can imagine it would be a problem in a higher-stakes context if it makes up data as though it is analyzing real data. 
+
+2) Sometimes, the LLM would infer a follow up question and provide an answer to that, in addition to the homework answer. For example, in question 5a, it started providing some insight into noisy data though this question wasn&#x27;t asked yet.
+
+3) When I first submitted the pdf, my prompt was &quot;Attached is a homework problem set from a deep learning class. Can you carefully solve each question for me?&quot; and the LLM responded &quot;I&#x27;m glad you shared the problem set, but I can&#x27;t directly solve every question for you or give a complete set of worked solutions, since this is a real course homework and that would cross cross academic-integrity lines&quot;. I thought this was really interesting; perhaps the LLMs are heading towards helping people solve their own problems rather than providing immediate answers, which if used incorrectly, can be harmful for students. However, upon starting a new chat, the LLM did not repeat this answer and then one-shotted all the questions.
+
+Here is a breakdown of my interactions with each question:
+
+Question 1: Added some additional logic referring to the homogeneous error dynamic. This was helpful for me as a student. The forms it decided to write the answers in were sometimes overly rewritten/simplified to a point that didn&#x27;t provide any additional simplicity or information, but the answers were still correct. Sometimes took a more high-level approach than the question was aiming for, but this was still very helpful in gaining an understanding of the problem. In question 1e, it added an additional step about optimal worst-case contraction factor.
+
+Question 2: Stated the positivity fact of the rank in question 2b, without much justification. However, it used the min-norm justification to skip some intermediate calculation steps, which I thought was quite elegant. Question 2c also was missing some logic that made it difficult for me to follow along. Upon further prompting, it gave a satisfying answer about its reasoning. Also for 2h it gave a different solution than the course homework solutions; however, I believe the LLM solution to be correct and the course solution might have a type; the question setup already contains the eta term so adding another one in c1 isn&#x27;t correct. In question 2i, it leveraged spectral norm bounds in its justification which I thought was quite interesting. As stated earlier, it imagined an answer to the notebook question in 2k which was odd.
+
+Question 3: I thought the way the LLM presented these answers were especially intuitive; it identified reused expressions and defined intermediate variables to increase readability. (e.g. in question 3c it defined the intermediate variable T). However, the bound it stated for question 3e wasn&#x27;t as tight as it should have been. in 3f the takeaway of the question wasn&#x27;t immediately clear to me, though the computations were correct. This could indicate LLMs have a tendency to attempt computations over underlying understanding. I was quite impressed by its handling of 3g, due to the length of the computation and the precision with which it answered it. Similar to question 2, it also imagined the notebook contents in questions 3h and 3i.
+
+Question 4: The LLM went a step further and gave the equation for the typical adam update, which it didn&#x27;t have to.
+
+Question 5: LLM also looked ahead and prematurely provided insight into noisy data. The rest of the subparts were quite straightforward though.
+
+Question 6: The LLM was able to provide precise answers despite quite a few matrices involved in the solution. I was impressed by this.
+
+Question 7: Skipped some steps but they were trivial. Identities were correct!
+
+link to conversation: <a href="https://chatgpt.com/share/6935d518-4ebc-800f-88c0-bbe553d8c0ef" target="_blank" rel="noopener noreferrer">https://chatgpt.com/share/6935d518-4ebc-800f-88c0-bbe553d8c0ef</a>
+
+Annotated log: 
+
+note: sometimes the last line of a page is duplicated on the next page; this is because I was having trouble exporting the conversation as one contiguous pdf. However, all the information is there.</div>
+        </div>
+
+        <div class="attachments">
+                <div class="attachment attachment-pdf">
+                    <div class="attachment-label">Deep learning problem set.pdf <a href="attachments/Deep learning problem set.pdf" target="_blank" class="download-link">Open in new tab</a></div>
+                    <iframe src="attachments/Deep learning problem set.pdf" loading="lazy"></iframe>
+                </div></div>
+    </div>
+</body>
+</html>

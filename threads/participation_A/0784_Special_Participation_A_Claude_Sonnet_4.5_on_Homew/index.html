@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Special Participation A: Claude Sonnet 4.5 on Homework 4 (Written Problems) - CS 182</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #f5f7fa;
+            color: #333;
+            line-height: 1.6;
+        }
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .back-link {
+            display: inline-block;
+            margin-bottom: 20px;
+            color: #4299e1;
+            text-decoration: none;
+        }
+        .back-link:hover { text-decoration: underline; }
+        .thread-header {
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+        }
+        .thread-title {
+            font-size: 1.8rem;
+            color: #2d3748;
+            margin-bottom: 15px;
+        }
+        .thread-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            color: #718096;
+            font-size: 14px;
+        }
+        .model-badge {
+            display: inline-block;
+            padding: 4px 12px;
+            background: #e2e8f0;
+            color: #4a5568;
+            border-radius: 15px;
+            font-size: 13px;
+            font-weight: 500;
+        }
+        .hw-badge {
+            display: inline-block;
+            padding: 4px 12px;
+            background: #fed7e2;
+            color: #97266d;
+            border-radius: 15px;
+            font-size: 13px;
+            font-weight: 500;
+        }
+        .thread-body {
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+        }
+        .thread-body h3 {
+            margin-bottom: 15px;
+            color: #2d3748;
+        }
+        .body-content {
+            white-space: pre-wrap;
+            word-wrap: break-word;
+            line-height: 1.8;
+            font-size: 15px;
+        }
+        .body-content a {
+            color: #4299e1;
+            word-break: break-all;
+        }
+        .attachments {
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
+        .attachments h3 {
+            margin-bottom: 20px;
+            color: #2d3748;
+        }
+        .attachment {
+            margin-bottom: 25px;
+            border: 1px solid #e2e8f0;
+            border-radius: 6px;
+            overflow: hidden;
+        }
+        .attachment-label {
+            background: #f7fafc;
+            padding: 10px 15px;
+            font-weight: 500;
+            font-size: 14px;
+            border-bottom: 1px solid #e2e8f0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .download-link {
+            color: #4299e1;
+            text-decoration: none;
+            font-weight: normal;
+        }
+        .download-link:hover { text-decoration: underline; }
+        .attachment-image img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+        .attachment-pdf iframe {
+            width: 100%;
+            height: 800px;
+            border: none;
+        }
+        .attachment-video video {
+            width: 100%;
+            max-height: 600px;
+        }
+        .attachment-audio audio {
+            width: 100%;
+            padding: 15px;
+        }
+        .attachment-text pre {
+            padding: 15px;
+            background: #f7fafc;
+            overflow-x: auto;
+            max-height: 500px;
+            font-size: 13px;
+            line-height: 1.5;
+        }
+        .attachment-file {
+            padding: 15px;
+        }
+        .file-link {
+            color: #4299e1;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .file-link:hover { text-decoration: underline; }
+        .ed-link {
+            display: inline-block;
+            margin-top: 15px;
+            color: #4299e1;
+            text-decoration: none;
+        }
+        .ed-link:hover { text-decoration: underline; }
+        @media (max-width: 768px) {
+            .thread-title { font-size: 1.4rem; }
+            .attachment-pdf iframe { height: 500px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <a href="../../../index.html" class="back-link">← Back to Directory</a>
+
+        <div class="thread-header">
+            <h1 class="thread-title">Special Participation A: Claude Sonnet 4.5 on Homework 4 (Written Problems)</h1>
+            <div class="thread-meta">
+                <span>By Elizabeth Weaver</span>
+                <span>2025-12-10</span>
+                <span class="hw-badge">HW4</span>
+                <span class="model-badge">Claude</span>
+            </div>
+            <a href="https://edstem.org/us/courses/84647/discussion/7445493" target="_blank" class="ed-link">View on Ed Stem →</a>
+        </div>
+
+        <div class="thread-body">
+            <div class="body-content">I engaged Claude Sonnet 4.5 on all written portions of Homework 4 (Problems 1, 2, 3, 4, and 7) to evaluate its ability to solve deep learning theory problems. I provided screenshots of the questions from the original homework pdf one by one, to prevent the model from “forgetting” the later questions once we got further into the chat. This post documents my observations and an analysis of where the model succeeded and failed. Full annotated chat log is attached at the end of this post.
+
+The model has strong conceptual understanding but struggles with notation conventions, sign errors in signal processing, and tracking how multiple scaling factors interact.
+
+Detailed Findings by Problem
+
+Problem 1: Newton-Schulz Runtime (with minor prompting)
+
+What happened:
+
+The model correctly identified the two dominant matrix multiplications and their complexity
+
+Issue: Defaulted to Big-O notation instead of the requested cmnp format
+
+Required two prompts: (1) &quot;use cmnp format&quot; and (2) &quot;you&#x27;re missing the constant c&quot;
+
+Claude defaults to familiar conventions. Explicit format requests may need reinforcement.
+
+Problem 2: MuP at the Unit Scale
+
+The model one-shotted most parts of this problem (a, b, c, f). Part d required a minor fix, while part e was a major struggle. Part g was initially wrong, but was fixed correctly after fixing part e.
+
+Problem 2(e) Deep Dive, the hardest question:
+
+This asked for the learning rate α for Muon-style orthogonalization where ΔW = α·UV^T.
+
+Attempt 1: Model got α = √n_out (missing √n_in factor)
+
+Attempt 2: After prompting &quot;your answer is incorrect,&quot; still got √n_out
+
+Attempt 3: I asked &quot;where are you losing the √n_in?&quot;, which caused the model to try various approaches, but it still couldn&#x27;t find where it was missing the answer
+
+Final resolution: I showed the solution snippet explaining how c = 1/√d_in adds a factor to the spectral norm. Only then did the model understand and arrive at α = √(n_out · n_in)
+
+Why this was hard: The model struggled to track how the forward-pass constant c interacts with the spectral norm constraint. This requires reasoning about parameterization across the forward and backward passes simultaneously.
+
+Problem 3: Convolution as FIR Filter
+
+The model one-shotted only part b here. Part a required a minor fix, while part c had a sign error and part d also had an inherited error from part c. However part d wasn’t fixed immediately when the issue with part c was fixed.
+
+The Convolution vs. Correlation Confusion:
+
+This was a classic signal processing error. The problem explicitly states &quot;we will follow the definition in equation 3&quot; (true convolution with flip-and-drag), but the model computed correlation (no flip).
+
+Initial answer for part (c): Matrix of all +40
+
+Correct answer: Matrix of all -40
+
+When I pointed out the sign error, the model realized it needed to flip the kernel h to h_flipped before computing. This error then propagated to part (d), requiring multiple corrections for the padded boundary cases.
+
+LLMs trained heavily on ML code (where &quot;convolution&quot; usually means correlation) may default to the wrong convention even when the mathematical definition is specified.
+
+Problem 4: CNN Feature Dimensions
+
+Almost all of the subparts were oneshotted here, while for the last subpart it flipped its answers.
+
+Problem 4(f) Error:
+
+Given x1 (horizontal edge) -&gt; g1 = [0.8, 0, 0]^T and x2 (vertical edge) -&gt; g2 = [0, 0.8, 0]^T, the model was asked to find g3 and g4 for shifted versions.
+
+Model&#x27;s initial answer: g3 = [0.8, 0, 0]^T, g4 = [0, 0.8, 0]^T
+
+Correct answer: g3 = [0, 0.8, 0]^T, g4 = [0.8, 0, 0]^T
+
+The model confused which image (x3 or x4) had which edge type. After I pointed out the flip, it correctly explained that x3 has a vertical edge (like x2) and x4 has a horizontal edge (like x1).
+
+Problem 7: Weights and Gradients in CNNs
+
+The model one-shotted all of the answers for this question! This was the model&#x27;s strongest section. All parts were correct on the first attempt.
+
+Common Failures
+
+Notation/Format Defaults: Model uses Big-O when cmnp requested, uses inequalities when equalities expected
+
+Convolution vs. Correlation: Classic signal processing confusion; defaults to ML convention (correlation) even when math definition specifies convolution
+
+Multi-Factor Scaling: Struggles to track how multiple constants (like forward-pass c and spectral norms) interact across equations
+
+Spatial/Visual Confusion: Difficulty with edge orientations and which dimension corresponds to &quot;horizontal&quot; vs &quot;vertical&quot;
+
+Arithmetic in Boundary Cases: Padded convolution computations were error-prone
+
+Conclusions
+
+Can Claude Sonnet 4.5 solve this homework? Yes, but not reliably without human guidance.
+
+What&#x27;s it good for?
+
+Explaining concepts and deriving formulas
+
+Standard calculations (CNN dimensions, parameter counts)
+
+Generating first-draft solutions to check
+
+What requires human oversight?
+
+Verifying numerical computations
+
+Catching convention errors (convolution vs. correlation)
+
+Problems requiring reasoning about multiple interacting factors
+
+Here is the annotated version of my chat log with Claude, all of my annotations are in red. I used claude exporter to get the pdf version of the chat (claude itself does not provide a method to get the pdf).</div>
+        </div>
+
+        <div class="attachments">
+                <div class="attachment attachment-pdf">
+                    <div class="attachment-label">Claude-Deep learning homework solutions.pdf <a href="attachments/Claude-Deep learning homework solutions.pdf" target="_blank" class="download-link">Open in new tab</a></div>
+                    <iframe src="attachments/Claude-Deep learning homework solutions.pdf" loading="lazy"></iframe>
+                </div></div>
+    </div>
+</body>
+</html>

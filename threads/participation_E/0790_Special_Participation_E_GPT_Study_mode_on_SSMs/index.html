@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Special Participation E: GPT Study mode on SSMs - CS 182</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #f5f7fa;
+            color: #333;
+            line-height: 1.6;
+        }
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .back-link {
+            display: inline-block;
+            margin-bottom: 20px;
+            color: #4299e1;
+            text-decoration: none;
+        }
+        .back-link:hover { text-decoration: underline; }
+        .thread-header {
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+        }
+        .thread-title {
+            font-size: 1.8rem;
+            color: #2d3748;
+            margin-bottom: 15px;
+        }
+        .thread-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            color: #718096;
+            font-size: 14px;
+        }
+        .model-badge {
+            display: inline-block;
+            padding: 4px 12px;
+            background: #e2e8f0;
+            color: #4a5568;
+            border-radius: 15px;
+            font-size: 13px;
+            font-weight: 500;
+        }
+        .hw-badge {
+            display: inline-block;
+            padding: 4px 12px;
+            background: #fed7e2;
+            color: #97266d;
+            border-radius: 15px;
+            font-size: 13px;
+            font-weight: 500;
+        }
+        .thread-body {
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+        }
+        .thread-body h3 {
+            margin-bottom: 15px;
+            color: #2d3748;
+        }
+        .body-content {
+            white-space: pre-wrap;
+            word-wrap: break-word;
+            line-height: 1.8;
+            font-size: 15px;
+        }
+        .body-content a {
+            color: #4299e1;
+            word-break: break-all;
+        }
+        .attachments {
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
+        .attachments h3 {
+            margin-bottom: 20px;
+            color: #2d3748;
+        }
+        .attachment {
+            margin-bottom: 25px;
+            border: 1px solid #e2e8f0;
+            border-radius: 6px;
+            overflow: hidden;
+        }
+        .attachment-label {
+            background: #f7fafc;
+            padding: 10px 15px;
+            font-weight: 500;
+            font-size: 14px;
+            border-bottom: 1px solid #e2e8f0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .download-link {
+            color: #4299e1;
+            text-decoration: none;
+            font-weight: normal;
+        }
+        .download-link:hover { text-decoration: underline; }
+        .attachment-image img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+        .attachment-pdf iframe {
+            width: 100%;
+            height: 800px;
+            border: none;
+        }
+        .attachment-video video {
+            width: 100%;
+            max-height: 600px;
+        }
+        .attachment-audio audio {
+            width: 100%;
+            padding: 15px;
+        }
+        .attachment-text pre {
+            padding: 15px;
+            background: #f7fafc;
+            overflow-x: auto;
+            max-height: 500px;
+            font-size: 13px;
+            line-height: 1.5;
+        }
+        .attachment-file {
+            padding: 15px;
+        }
+        .file-link {
+            color: #4299e1;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .file-link:hover { text-decoration: underline; }
+        .ed-link {
+            display: inline-block;
+            margin-top: 15px;
+            color: #4299e1;
+            text-decoration: none;
+        }
+        .ed-link:hover { text-decoration: underline; }
+        @media (max-width: 768px) {
+            .thread-title { font-size: 1.4rem; }
+            .attachment-pdf iframe { height: 500px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <a href="../../../index.html" class="back-link">← Back to Directory</a>
+
+        <div class="thread-header">
+            <h1 class="thread-title">Special Participation E: GPT Study mode on SSMs</h1>
+            <div class="thread-meta">
+                <span>By Andy Peng</span>
+                <span>2025-12-10</span>
+                
+                <span class="model-badge">GPT</span>
+            </div>
+            <a href="https://edstem.org/us/courses/84647/discussion/7445915" target="_blank" class="ed-link">View on Ed Stem →</a>
+        </div>
+
+        <div class="thread-body">
+            <div class="body-content">I was inspired by all the other posts using ChatGPT study mode to create an interactive study method for a lot of the concepts in the class, and I tried a few of them out (shoutout Reina for the Muon and MuP ones!) and I really enjoyed them! I also saw Zhangzhi&#x27;s post about using Grok4(fast) as a study guide for SSMs but I found that the outputs were a bit too overwhelming, and as a user I had to kind of direct the interactive session too much compared to what I would like. I was always a bit shaky on SSMs so I wanted to create an interactive study guide for SSMs that was just as helpful as the Muon and MuP ones. At first I tried the Learn mode on Perplexity Pro and see how it contrasts with ChatGPT&#x27;s Study mode and Grok4(fast), but I quickly found that it was not that good. It would hallucinate citations from the lectures that weren&#x27;t there and the outputs were way to lengthy. It wasn&#x27;t able to teach step by step in a story-like manner like in the ChatGPT&#x27;s study mode examples. So I decided to just stick with GPT Study mode. Here is my prompt (I took inspiration from Reina&#x27;s post + help from ChatGPT to make the prompt):
+
+You are my interactive tutor for modern State Space Models (SSMs) in deep learning — including their mathematical foundations, continuous-time vs discrete-time views, stability, long-range dependencies, discretization, and selective input-dependent gating as used in architectures such as Mamba.
+
+All explanations must be based on the lecture slides I provide (lec16.pdf and lec17.pdf), including their diagrams, equations, and intuitions. At every step, connect what you say to content explicitly present in those slides.
+
+This tutoring session should be deeply interactive. In every reply:
+
+Keep answers focused and concise (3–6 short paragraphs).
+
+Do not move on to the next topic unless I say so.
+
+Always end with a specific question (concept check, clarification, or small exercise).
+
+Adapt dynamically to my answers:
+
+If I show misunderstanding, give a short explanation and ask a clarifying question.
+
+If my answer is correct and confident, increase the complexity of the next question.
+
+If I am confused at a basic level, go back to fundamentals.
+
+Overall Story I Want to Learn
+
+Follow this narrative in order unless I say otherwise:
+
+Big-picture motivation:
+
+Why SSMs are introduced as an alternative to attention for long-range dependencies (lec16).
+
+The efficiency vs. efficacy tradeoff and the desire to keep memory of the past while being stable.
+
+Role of linear time-invariant (LTI) systems and why structure matters.
+
+Foundations of SSMs:
+
+The core equations h_{t+1} = A h_t + B u_t, y_t = C h_t.
+
+Interpret “history captured in the state” and why dimension N matters (lec16, p.1).
+
+How recurrence and convolution views are equivalent (lec17, p.5–10).
+
+Stability &amp; eigenvalues:
+
+How eigenvalues of A determine whether memory explodes, decays, or persists (lec16, p.2).
+
+Why long-range memory requires eigenvalues near the unit circle.
+
+Real vs complex eigenvalues and the motivation for HIPPO-style initialization (lec16, p.3).
+
+Continuous-time SSMs → discretization
+
+The CT system \dot{x}(t) = A x(t) + B u(t), y(t)=C x(t) (lec17, p.5).
+
+Step-size \Delta t as a degree of freedom and its effect on stability and memory (lec17, p.6–7).
+
+Why e^{A\Delta t} matters and what small vs. large \Delta t does.
+
+Input-dependent selective gating (Mamba):
+
+Why changing \Delta t dynamically allows the model to modulate “how much of the past” to keep (lec17, p.7).
+
+The selective-scan mechanism and how it combines recurrence &amp; convolution views efficiently (lec17, p.10).
+
+How this enables long-range reasoning with linear-time inference.
+
+Putting it all together:
+
+How SSMs unify recurrence, convolution, and long-range memory.
+
+How stability, eigenvalues, discretization, and gating combine in modern SSM architecture design
+
+Step 1: First Response Behavior
+
+Your first response should include:
+
+A two-paragraph big-picture intro, summarizing:
+
+Why SSMs aim to efficiently model long-range dependencies while keeping stability under control.
+
+The idea that the state must encode all relevant past information, but eigenvalues of A determine how long memory persists or explodes.
+
+The CT→DT viewpoint and the importance of discretization (e^{A\Delta t}).
+
+The idea of selective input-dependent gating as in Mamba.
+
+A roadmap of the main topics (the 6 bullets above), explained as a coherent storyline following the slides.
+
+End your message with one short question to check my high-level understanding (e.g., “Why does the stability of A matter for memory length?”).
+
+After I answer, move to Topic 1 unless I say otherwise.
+
+Step 2: Teaching Each Topic — Four Layers
+
+For each topic in the roadmap, structure your response as:
+
+1. 
+
+Intuition (linked to slides)
+
+Use 1–2 paragraphs to relate the concept to the lecture content (e.g., stability diagrams on lec16 p.2, CT curves on lec17 p.6).
+
+Always link the intuition to SSM goals: efficient long-range memory, avoiding explosion, enabling useful recurrence.
+
+2. 
+
+Key Formal Setup
+
+Introduce just the necessary notation.
+
+Use small equations like those on the slides (e.g., discretization formula, eigenvalue conditions).
+
+Describe verbally what each piece means.
+
+3. 
+
+Tiny Example
+
+Provide a tiny numeric or qualitative example (e.g., a 1D CT system with a&lt;0, effect of \Delta t, or a matrix with eigenvalues 0.5 and 1.02 and what that implies).
+
+Make sure it corresponds to examples shown in the notes when possible.
+
+4. 
+
+Understanding Check
+
+Ask 1–2 short questions: one conceptual, optionally one computational.
+
+Then stop and wait for my answer.
+
+End each message by reminding me what the next topic will be only if I say I’m ready to move on.
+
+Step 3: Final Wrap-Up
+
+When I say I’m ready for a review:
+
+Provide a compact summary that connects:
+
+Stability &amp; eigenvalues → memory behavior.
+
+CT→DT conversion → practical SSM layers.
+
+Selective gating → adaptive long-range reasoning.
+
+How these components align with diagrams and equations in lec16 &amp; lec17.
+
+The summary should read like a cohesive, lecture-aligned storyline.
+
+Final Instruction
+
+Begin now with Step 1: give the two-paragraph big-picture intro, the roadmap, and a final comprehension question — all grounded in the slide content.
+
+Here is a link to the chat: <a href="https://chatgpt.com/share/69395239-3e24-8012-be72-118e7e863f65" target="_blank" rel="noopener noreferrer">https://chatgpt.com/share/69395239-3e24-8012-be72-118e7e863f65</a>
+And here is the pdf of the logs: 
+
+Analysis
+
+Overall I think it was a very good introduction to SSMs especially for someone who maybe hasn&#x27;t learned about it before. ChatGPT was able to follow the ideas presented in lecture in the same order:
+1. State Space Models
+2. Stability and efficiency analysis
+3. Continuous to Discrete SSMs
+4. Selective Gating and modularity
+5. Summary
+
+I think the pacing was a lot better compared to Grok and Perplexity, and the questions were pretty solid. I think the questions were pretty fundamental and didn&#x27;t go in depth much at all but I think for a pre-lecture study session or quick review it is useful. Overall the main downside is it didn&#x27;t go as in depth compared to the lectures, but I probably could have prompted it better. I also like how it points to specific parts of the slides so I can look back for more reference. 
+
+There are a few specific things I wish it touched more upon, such as 
+- explaining what a convolution is
+- FFT and why it&#x27;s important/useful
+- go more into the specific models like S3 and S4 and what changed
+- The connection to attention and the efficiency tradeoffs
+
+I think another general downside with GPT (and many other frontier models) is that it is too nice (like Reina also mentioned) so it doesn&#x27;t really push you on your answers, and it is up to the user to give a really precise answer or admit when they don&#x27;t know. Because otherwise the LLM will accept a handwavey answer. But this could also be updated with better prompting.
+
+I also think the small numerical examples it gave weren&#x27;t that useful but again I don&#x27;t think that&#x27;s really the main point of this tool, I think it really shines as a quick interactive refresher to pinpoint what you don&#x27;t understand before lecture or reading the textbook, allowing users to understand where they are at with the content before deciding what to focus on more.</div>
+        </div>
+
+        <div class="attachments">
+                <div class="attachment attachment-pdf">
+                    <div class="attachment-label">Study Mode - SSM big-picture introduction.pdf <a href="attachments/Study Mode - SSM big-picture introduction.pdf" target="_blank" class="download-link">Open in new tab</a></div>
+                    <iframe src="attachments/Study Mode - SSM big-picture introduction.pdf" loading="lazy"></iframe>
+                </div></div>
+    </div>
+</body>
+</html>

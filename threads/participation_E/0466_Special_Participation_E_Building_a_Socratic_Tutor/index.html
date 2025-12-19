@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Special Participation E: Building a Socratic Tutor - CS 182</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #f5f7fa;
+            color: #333;
+            line-height: 1.6;
+        }
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .back-link {
+            display: inline-block;
+            margin-bottom: 20px;
+            color: #4299e1;
+            text-decoration: none;
+        }
+        .back-link:hover { text-decoration: underline; }
+        .thread-header {
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+        }
+        .thread-title {
+            font-size: 1.8rem;
+            color: #2d3748;
+            margin-bottom: 15px;
+        }
+        .thread-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            color: #718096;
+            font-size: 14px;
+        }
+        .model-badge {
+            display: inline-block;
+            padding: 4px 12px;
+            background: #e2e8f0;
+            color: #4a5568;
+            border-radius: 15px;
+            font-size: 13px;
+            font-weight: 500;
+        }
+        .hw-badge {
+            display: inline-block;
+            padding: 4px 12px;
+            background: #fed7e2;
+            color: #97266d;
+            border-radius: 15px;
+            font-size: 13px;
+            font-weight: 500;
+        }
+        .thread-body {
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+        }
+        .thread-body h3 {
+            margin-bottom: 15px;
+            color: #2d3748;
+        }
+        .body-content {
+            white-space: pre-wrap;
+            word-wrap: break-word;
+            line-height: 1.8;
+            font-size: 15px;
+        }
+        .body-content a {
+            color: #4299e1;
+            word-break: break-all;
+        }
+        .attachments {
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
+        .attachments h3 {
+            margin-bottom: 20px;
+            color: #2d3748;
+        }
+        .attachment {
+            margin-bottom: 25px;
+            border: 1px solid #e2e8f0;
+            border-radius: 6px;
+            overflow: hidden;
+        }
+        .attachment-label {
+            background: #f7fafc;
+            padding: 10px 15px;
+            font-weight: 500;
+            font-size: 14px;
+            border-bottom: 1px solid #e2e8f0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .download-link {
+            color: #4299e1;
+            text-decoration: none;
+            font-weight: normal;
+        }
+        .download-link:hover { text-decoration: underline; }
+        .attachment-image img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+        .attachment-pdf iframe {
+            width: 100%;
+            height: 800px;
+            border: none;
+        }
+        .attachment-video video {
+            width: 100%;
+            max-height: 600px;
+        }
+        .attachment-audio audio {
+            width: 100%;
+            padding: 15px;
+        }
+        .attachment-text pre {
+            padding: 15px;
+            background: #f7fafc;
+            overflow-x: auto;
+            max-height: 500px;
+            font-size: 13px;
+            line-height: 1.5;
+        }
+        .attachment-file {
+            padding: 15px;
+        }
+        .file-link {
+            color: #4299e1;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .file-link:hover { text-decoration: underline; }
+        .ed-link {
+            display: inline-block;
+            margin-top: 15px;
+            color: #4299e1;
+            text-decoration: none;
+        }
+        .ed-link:hover { text-decoration: underline; }
+        @media (max-width: 768px) {
+            .thread-title { font-size: 1.4rem; }
+            .attachment-pdf iframe { height: 500px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <a href="../../../index.html" class="back-link">← Back to Directory</a>
+
+        <div class="thread-header">
+            <h1 class="thread-title">Special Participation E: Building a Socratic Tutor</h1>
+            <div class="thread-meta">
+                <span>By Elizabeth Weaver</span>
+                <span>2025-12-05</span>
+                
+                <span class="model-badge">Claude</span>
+            </div>
+            <a href="https://edstem.org/us/courses/84647/discussion/7406979" target="_blank" class="ed-link">View on Ed Stem →</a>
+        </div>
+
+        <div class="thread-body">
+            <div class="body-content">Building a Socratic Tutor for Deep Learning: Designing Prompts That Probe Rather Than Tell
+
+For the special participation assignment on AI-enhanced learning tools, I took a different approach than using an existing AI learning assistant. I designed a Socratic tutor prompt from scratch with specific pedagogical goals in mind.
+
+I used this prompt in a conversation with Claude Opus 4.5. I used Claude&#x27;s &quot;project&quot; feature and uploaded the lecture notes to the project, though this didn&#x27;t seem to make much of a difference as you&#x27;ll see later.
+
+The Core Idea: Test Understanding, Don&#x27;t Just Explain
+
+The key distinction in my approach is that the AI&#x27;s primary job is not to explain concepts to me, it&#x27;s to probe my understanding and expose gaps. Rather than uploading lecture materials and asking the model to teach me, I created a prompt where I explain concepts to the model, and it asks pointed follow-up questions to find weaknesses in my reasoning. My goal is to expose where I am too overconfident in my understanding of a topic, and fill in the holes.
+
+They say that teaching is the best way to learn. Here, you don&#x27;t just re-read notes, you practice articulating ideas and defending them under questioning, explaining a topic to the model.
+
+Prompt Design Choices
+
+I iteratively built the system prompt with several specific features:
+
+1. Question Progression Structure The prompt instructs the model to follow a specific arc: verify basic definitions -&gt; ask about mechanics -&gt; probe edge cases and failure modes -&gt; ask about connections to other course topics. This ensures the conversation doesn&#x27;t just stay surface-level.
+
+2. &quot;Don&#x27;t Immediately Correct&quot; Rule When I get something wrong, the model is instructed to first ask a question that helps me discover the error myself, only providing explanations after 2-3 failed attempts. This is crucial. If the model just corrects you immediately, you lose the learning opportunity.
+
+3. Confidence Checks The prompt includes instructions to occasionally ask &quot;How confident are you in that?&quot; before probing further. This surfaces areas where I already know I&#x27;m uncertain, making the conversation more efficient.
+
+4. Explicit Course Topic List I included the actual syllabus topics so the model can ask cross-topic connection questions. For instance, during my SSM discussion, it connected the &quot;fixed-size hidden state&quot; limitation to oversquashing in GNNs, a connection I brought up, but that the prompt structure encouraged.
+
+5. Summary at End The prompt asks for a structured summary covering: what I understood well, what misconceptions were uncovered, and key connections to review.
+
+What Worked Well
+
+Looking at my annotated conversation on State Space Models, several things stood out:
+
+The model followed the &quot;don&#x27;t immediately correct&quot; instruction well. When I initially claimed &quot;outputs at time k only depend on previous inputs, not previous states,&quot; it didn&#x27;t correct me, it asked me to write down the recurrence equations so I could see the issue myself.
+
+Good question scaffolding. When I got stuck on where nonlinearities live in SSM architectures, the model broke it down: &quot;If I stack two SSM layers with nothing in between, what do I effectively have?&quot; This smaller question was easier to answer than the original.
+
+Cross-topic connections. The model naturally connected SSMs to RNNs (vanishing gradients), Transformers (content-based vs. fixed mixing), and GNNs (oversquashing). These connections helped solidify understanding.
+
+The summary was genuinely useful. It accurately captured my gaps (fuzzy on HiPPO, initially confused about SVD vs eigendecomposition) and suggested specific review topics.
+
+What Could Be Improved
+
+From my annotations, I noticed several areas where the prompt could be strengthened:
+
+1. Hallucinations about what I said. At one point (page 8), the model claimed &quot;you mentioned the unrolling involves powers of A&quot;, but I hadn&#x27;t actually said this. The model was leading the conversation in a good direction, but it shouldn&#x27;t attribute statements to me that I didn&#x27;t make.
+
+2. Imprecise technical claims. The model said inference is &quot;O(1) per step&quot; (page 8), which can be misleading. It is true that it is constant time per token, but it would be better for the student’s understanding to explain it as O(L), where L is sequence length.
+
+3. Oversimplification of HiPPO eigenvalues. The model stated HiPPO produces &quot;negative real&quot; eigenvalues (page 11), when in reality they&#x27;re generally complex with negative real parts. This is a subtle but meaningful distinction.
+
+4. Missed opportunities to probe further. When the model mentioned LayerNorm or the D matrix, the model didn&#x27;t follow up. A more thorough tutor might ask &quot;what does the D matrix do?&quot; or &quot;why LayerNorm specifically?&quot;
+
+5. Not referencing lecture notes. The prompt instructs the model to tie explanations to &quot;lecture notes in this project,&quot; but even with notes provided, it often explained concepts from general knowledge rather than grounding in the specific course material.
+
+Reflection
+
+Using this tool genuinely helped me prepare for understanding SSMs more deeply. The conversation forced me to articulate things I thought I understood but actually couldn&#x27;t explain precisely (i.e. why selective SSMs break the convolution trick).
+
+The main takeaway: the value isn&#x27;t in having an AI explain things to you, it&#x27;s in having an AI pressure-test your own explanations. This is a fundamentally different mode of studying, and I think it&#x27;s more effective for deep understanding than passive review.
+
+I&#x27;ve added in the prompt here so you can try it for yourself! I also added in the pdf of the original chat, and my annotated version.</div>
+        </div>
+
+        <div class="attachments">
+                <div class="attachment attachment-pdf">
+                    <div class="attachment-label">Claude-Understanding state space models annotated.pdf <a href="attachments/Claude-Understanding state space models annotated.pdf" target="_blank" class="download-link">Open in new tab</a></div>
+                    <iframe src="attachments/Claude-Understanding state space models annotated.pdf" loading="lazy"></iframe>
+                </div>
+                <div class="attachment attachment-pdf">
+                    <div class="attachment-label">Claude-Understanding state space models.pdf <a href="attachments/Claude-Understanding state space models.pdf" target="_blank" class="download-link">Open in new tab</a></div>
+                    <iframe src="attachments/Claude-Understanding state space models.pdf" loading="lazy"></iframe>
+                </div>
+                    <div class="attachment attachment-text">
+                        <div class="attachment-label">special participation E_ 1.txt <a href="attachments/special participation E_ 1.txt" target="_blank" class="download-link">Download</a></div>
+                        <pre><code>﻿You are a Socratic tutor for a deep learning course. Your role is to test the student&#x27;s understanding by asking probing questions and identifying gaps or misconceptions in their explanations.
+
+
+## Course topics for reference:
+- Optimization: implicit regularization, SGD, momentum, Adam, taking a locally linear perspective, and what is a feature anyway, insights from induced matrix norms, MuON
+- muP: maximal update parameteriation
+- Conv-nets: basics, ResNets, fully convolutional nets and U-nets
+- Pooling/Downsampling, Data Augmentation, Normalization Layers, Dropout
+- Graph Neural Nets, DiffPool
+- RNNs, Self-Supervision, State-Space Models
+- Attention, Transformers
+- In-context learning, prompting and PEFT: Soft-prompting and LoRA, Transfer Learning, Meta-Learning
+- Generative Models: VAEs, Diffusion
+- Post-training: RLVR, RLHF
+
+
+## Your approach:
+1. When the student explains a concept, listen carefully for:
+   - Imprecise or incorrect terminology
+   - Missing key components or assumptions
+   - Logical gaps in reasoning
+   - Oversimplifications that miss important nuances
+   - Confusion between related but distinct concepts
+
+
+2. Ask pointed follow-up questions that:
+   - Target the weakest part of their explanation
+   - Push them to be more precise
+   - Expose edge cases or exceptions they haven&#x27;t considered
+   - Ask how this concept relates to other topics in the course
+
+
+3. Occasionally ask &quot;How confident are you in that?&quot; before probing further—this helps surface areas of uncertainty the student is already aware of.
+
+
+## Question progression:
+1. First, verify they understand the basic definition and intuition
+2. Then, ask about the mechanics (how does it actually work?)
+3. Then, ask about edge cases or failure modes (when does this break down?)
+4. Finally, ask about connections to other topics
+
+
+## Example probing questions:
+- &quot;You said X—what happens if we change Y?&quot;
+- &quot;How would you distinguish this from [related concept]?&quot;
+- &quot;Why do we need this? What problem does it solve?&quot;
+- &quot;Can you give me a concrete example with numbers?&quot;
+- &quot;What assumptions are we making here?&quot;
+
+
+## When the student gets something wrong:
+- Don&#x27;t immediately correct them—first ask a question that helps them discover the error
+- If they&#x27;re stuck after 1-2 attempts, provide a clear explanation referencing the lecture notes in this project
+- Explain *why* the misconception is common or tempting
+
+
+## When the student says &quot;I don&#x27;t know&quot; or gets stuck:
+- Give a small hint rather than the full answer
+- Ask them to reason through it step by step
+- Only after 2-3 attempts, explain fully and then ask a follow-up question to check their understanding
+
+
+## Guidelines:
+- Be encouraging but rigorous—the goal is genuine understanding, not validation
+- Ask one question at a time
+- When you do correct, tie your explanation back to specific content from the lecture notes in this project
+- After testing core understanding, ask at least one question connecting the topic to other course concepts
+
+
+## After the probing is complete:
+Offer to summarize:
+- What the student understood well
+- What misconceptions were uncovered
+- Key connections to other topics they should review
+
+
+When the student provides a topic, ask them to explain it to you. Then begin probing their understanding.</code></pre>
+                    </div></div>
+    </div>
+</body>
+</html>

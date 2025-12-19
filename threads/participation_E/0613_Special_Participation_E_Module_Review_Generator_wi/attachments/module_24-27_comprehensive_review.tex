@@ -1,0 +1,251 @@
+\documentclass[11pt]{article}
+\usepackage{amsmath, amssymb, amsfonts}
+\usepackage[margin=1in]{geometry}
+\usepackage{algorithm}
+\usepackage{algpseudocode}
+\usepackage{url}
+
+\newcommand{\E}{\mathbb{E}}
+\newcommand{\grad}{\nabla}
+\newcommand{\KL}{\text{KL}}
+\newcommand{\Tr}{\text{Tr}}
+
+\title{Module Review: Generative Models and Post-Training of Neural Networks}
+\author{}
+\date{}
+
+\begin{document}
+\maketitle
+
+\section{Introduction to Generative Modeling}
+
+\subsection{The Goal of Generative Models}
+Generative models aim to learn the underlying distribution of a training dataset to generate new, similar data samples \textit{(Lecture 24)}. This can be framed as sampling from an unknown data distribution, where the model learns a parameterized approximation of this distribution. There are two primary settings:
+\begin{enumerate}
+    \item \textbf{Unconditional Generation}: The model takes a source of randomness (e.g., a vector sampled from a Gaussian distribution) and produces a new, unconstrained example \textit{(Lecture 24)}. 
+    \[ \text{Randomness} \rightarrow G \rightarrow \text{New Example} \]
+    \item \textbf{Conditional Generation}: The model takes both randomness and a conditioning input (e.g., a text prompt, class label) to produce an example consistent with the condition \textit{(Lecture 24)}. This is the more common and practical setting for applications like text-to-image models and large language models (LLMs).
+    \[ (\text{Conditioning}, \text{Randomness}) \rightarrow G \rightarrow \text{New Example} \]
+\end{enumerate}
+
+\subsection{Why Simple Approaches Fail}
+To appreciate modern generative models, it is useful to understand why more intuitive approaches are insufficient \textit{(Lecture 24)}.
+
+\subsubsection{Gradient Ascent on a Classifier}
+A naive idea is to use a pre-trained classifier. To generate a "cat" image, one could start with random noise and perform gradient ascent on the classifier's "cat" score \textit{(Lecture 24)}.
+
+This fails due to the \textbf{Manifold Hypothesis}, which posits that natural data (like images of cats) lies on a thin, low-dimensional manifold within the high-dimensional space of all possible pixel values \textit{(Lecture 24)}. Starting from random noise, which is far off-manifold, gradient ascent does not guide the image onto the manifold. Instead, it finds an adversarial example—an image that looks like noise to a human but maximally excites the classifier's internal features for "cat" \textit{(Lecture 24)}.
+
+\subsubsection{Standard Autoencoders}
+An autoencoder consists of an encoder $E$ that maps data $x$ to a low-dimensional latent code $z$, and a decoder $D$ that reconstructs $\hat{x}$ from $z$ \textit{(Lecture 24)}. A generative approach might be to sample a random $z$ and feed it to the decoder.
+
+This fails because the decoder is only trained on the specific, structured submanifold of latent codes produced by the encoder for the training data. Sampling a random $z$ from a simple distribution like a Gaussian will almost certainly result in a point that is off this submanifold. The decoder, having never seen such a code, will produce a poor or nonsensical output. This is a problem of extrapolation \textit{(Lecture 24)}.
+
+\section{Variational Autoencoders (VAEs)}
+VAEs are a type of generative model that extends the autoencoder framework to create a structured latent space suitable for generation \textit{(Lecture 24)}.
+
+\subsection{Core Idea and Architecture}
+The goal of a VAE is to make the decoder robust to variations in the latent code $z$ \textit{(Lecture 24)}. This is achieved by introducing randomness into the encoding process and regularizing the structure of the latent space.
+
+The VAE architecture modifies the standard autoencoder:
+\begin{enumerate}
+    \item The \textbf{encoder} $E$ takes an input $x$ and outputs the parameters of a probability distribution over the latent space, typically a Gaussian with mean $\mu_Q(x)$ and covariance $\Sigma_Q(x)$. This distribution is denoted $Q(z|x)$ \textit{(Lecture 24)}.
+    \item A latent vector $z$ is \textbf{sampled} from this distribution: $z \sim Q(z|x) = \mathcal{N}(\mu_Q(x), \Sigma_Q(x))$ \textit{(Lecture 24)}.
+    \item The \textbf{decoder} $D$ takes the sampled $z$ and reconstructs the output $\hat{x}$ \textit{(Lecture 24)}.
+\end{enumerate}
+This process is illustrated in a problem from discussion \textit{(Discussion 13, Problem 2a)}. The problem asks to draw a block diagram of a VAE, which would show an input $x$ passing through a "Probabilistic Encoder" to produce parameters $\mu$ and $\sigma$, from which a latent vector $z$ is sampled (using a source of noise $\epsilon$). This $z$ is then passed to a "Probabilistic Decoder" to produce the reconstruction $\hat{x}$.
+
+\subsection{The VAE Loss Function}
+The VAE is trained by minimizing a combined loss function that balances reconstruction quality with latent space regularity \textit{(Lecture 24)}.
+\[ L_{total} = L_{reconstruction} + \beta \cdot L_{distributional} \]
+\begin{enumerate}
+    \item \textbf{Reconstruction Loss}: Measures the difference between the original input $x$ and the reconstruction $\hat{x}$, e.g., using Mean Squared Error: $\|x - \hat{x}\|^2$ \textit{(Lecture 24)}.
+    \item \textbf{Distributional Loss}: A regularizer that forces the distribution $Q(z|x)$ produced by the encoder to be close to a chosen prior distribution $P(z)$, from which we will sample during generation. A standard choice for the prior is $\mathcal{N}(0, I)$. This loss is typically measured by the Kullback-Leibler (KL) divergence, $D_{\KL}(Q(z|x) \| P(z))$ \textit{(Lecture 24)}.
+\end{enumerate}
+The overall loss function is often written as the negative Evidence Lower Bound (ELBO) \textit{(Discussion 13, Problem 2b)}.
+\[ L_{VAE}(x) = \E_{z \sim Q(z|x)}[\log p(x|z)] - D_{\KL}(Q(z|x) \| P(z)) \]
+Here, the first term is the expected log-likelihood of the reconstruction (reconstruction loss), and the second is the KL divergence (regularization loss).
+
+\subsubsection{Kullback-Leibler (KL) Divergence}
+The KL divergence measures the dissimilarity between two probability distributions, $Q$ and $P$ \textit{(Lecture 24)}. For discrete distributions, it is defined as:
+\[ D_{\KL}(P\|Q) = \sum_x P(x) \log \frac{P(x)}{Q(x)} \]
+It is asymmetric, meaning $D_{\KL}(P\|Q) \neq D_{\KL}(Q\|P)$ in general \textit{(Lecture 24, Discussion 12, Problem 1a)}. In VAEs, we use $D_{\KL}(Q(z|x) \| P(z))$, which penalizes the encoder for producing latent codes that are unlikely under our desired prior $P(z)$ \textit{(Lecture 24)}.
+
+The KL divergence can be expressed in terms of entropy $H(P)$ and cross-entropy $H(P,Q)$ \textit{(Discussion 12, Problem 1b)}.
+\[ D_{\KL}(P\|Q) = H(P,Q) - H(P) = \left( -\sum_x P(x) \log Q(x) \right) - \left( -\sum_x P(x) \log P(x) \right) \]
+
+\textbf{Practice Problem: KL Divergence} \textit{(Discussion 12, Problem 1a)}
+Let $p(x) = \begin{cases} 0.5 & \text{when } x=1 \\ 0.5 & \text{when } x=-1 \end{cases}$ and $q(x) = \begin{cases} 0.1 & \text{when } x=1 \\ 0.9 & \text{when } x=-1 \end{cases}$. Show that $D_{\KL}(p\|q) \neq D_{\KL}(q\|p)$.
+
+\textit{Solution:}
+\begin{align*}
+    D_{\KL}(p\|q) &= 0.5 \times \log \frac{0.5}{0.1} + 0.5 \times \log \frac{0.5}{0.9} \approx 0.74 \\
+    D_{\KL}(q\|p) &= 0.1 \times \log \frac{0.1}{0.5} + 0.9 \times \log \frac{0.9}{0.5} \approx 0.53
+\end{align*}
+Since $0.74 \neq 0.53$, the KL divergence is not symmetric.
+
+For a Gaussian encoder distribution $Q(z|x) = \mathcal{N}(\mu_Q, \Sigma_Q)$ and a standard normal prior $P(z) = \mathcal{N}(0, I_k)$, the KL divergence has a convenient closed-form solution that can be used directly in the loss function \textit{(Lecture 24)}:
+\[ D_{\KL}(\mathcal{N}(\mu_Q, \Sigma_Q) \| \mathcal{N}(0, I_k)) = \frac{1}{2} \left( \Tr(\Sigma_Q) + \mu_Q^T \mu_Q - k - \log \det(\Sigma_Q) \right) \]
+
+\subsection{The Reparameterization Trick}
+To train a VAE with SGD, we need to backpropagate through the sampling step $z \sim Q(z|x)$, which is a stochastic operation. The reparameterization trick makes this possible by isolating the randomness \textit{(Lecture 24)}.
+
+Instead of sampling $z$ directly, we first sample a random vector $\vec{v}$ from a fixed standard normal distribution $\mathcal{N}(0, I_k)$. Then, $z$ is computed as a deterministic function of the encoder outputs and this random noise \textit{(Lecture 24)}:
+\[ \vec{z} = \vec{\mu}_Q + \Sigma_Q^{1/2} \vec{v}, \quad \text{where } \vec{v} \sim \mathcal{N}(0, I_k) \]
+In this formulation, gradients can flow back through the deterministic computations to update the encoder's parameters ($\mu_Q, \Sigma_Q$), while the random noise $\vec{v}$ is treated as a non-differentiable input to the model \textit{(Lecture 24)}.
+
+\subsection{The Information Bottleneck and Generation}
+The two loss terms in a VAE create an \textbf{information bottleneck} \textit{(Lecture 24, Discussion 13, Problem 2c)}. The reconstruction loss encourages the encoder to pack as much information about $x$ into $z$ as possible. In contrast, the KL divergence loss pushes $z$'s distribution toward the simple, uninformative prior, which discards information about the specific input $x$. This tension forces the model to learn a compressed representation that captures only the most essential features \textit{(Discussion 13, Problem 2d)}.
+
+At generation time, the encoder is discarded. We sample a latent vector $z$ directly from the prior distribution, $z \sim P(z) = \mathcal{N}(0, I)$, and pass it through the trained decoder $D$ to generate a new data sample $\hat{x}$ \textit{(Lecture 24, Discussion 13, Problem 2e)}.
+
+\section{Diffusion Models}
+Diffusion models are a class of generative models that have achieved state-of-the-art results, particularly in image generation. They operate by learning to reverse a gradual noising process \textit{(Lecture 26)}.
+
+\subsection{Core Idea}
+The core idea is to define a two-stage process \textit{(Lectures 26, 27)}:
+\begin{enumerate}
+    \item \textbf{Forward (Diffusion) Process}: This is a fixed, non-learned process that gradually adds noise to a data sample $x_0$ over a sequence of time steps $t=1, \dots, T$. This creates a Markov chain of increasingly noisy samples $x_1, x_2, \dots, x_T$. If $T$ is large enough, $x_T$ becomes indistinguishable from pure noise (e.g., $\mathcal{N}(0, I)$) \textit{(Lecture 26)}.
+    \[ x_0 \rightarrow x_1 \rightarrow x_2 \rightarrow \dots \rightarrow x_T \]
+    \item \textbf{Reverse (Generative) Process}: The model learns to reverse this process. Starting from pure noise $x_T$, it iteratively denoises the sample step-by-step to produce a clean sample $\hat{x}_0$ \textit{(Lectures 26, 27)}.
+    \[ \hat{x}_0 \leftarrow \hat{x}_1 \leftarrow \dots \leftarrow x_T \]
+\end{enumerate}
+
+\subsection{The Forward Process}
+The forward process is defined by a sequence of conditional probabilities, where each step adds a small amount of Gaussian noise \textit{(Lecture 26)}.
+\[ p(x_t|x_{t-1}) = \mathcal{N}(x_t; \sqrt{1-\beta_t}x_{t-1}, \beta_t I) \]
+The sequence of variances $\{\beta_t\}_{t=1}^T$ is called the "noise schedule." A key property is that we can sample $x_t$ directly from $x_0$ in a closed form, which is crucial for efficient training \textit{(HW 13, Problem 4a)}. Let $\alpha_t = 1 - \beta_t$ and $\bar{\alpha}_t = \prod_{i=1}^t \alpha_i$. Then:
+\[ q(x_t|x_0) = \mathcal{N}(x_t; \sqrt{\bar{\alpha}_t}x_0, (1 - \bar{\alpha}_t)I) \]
+
+\textbf{Conceptual Example: Binary Diffusion} \textit{(Discussion 13, Problem 1)}
+To build intuition, consider a diffusion process for binary images where pixels are $\{+1, -1\}$. At each step, for each pixel, we flip its value with a small probability $\delta$. As the number of steps $t \to \infty$, the probability of any given pixel having been replaced by a fresh random coin flip approaches 1. Therefore, the final image $Y_T$ becomes a collection of i.i.d. fair coin flips, analogous to pure noise.
+
+\subsection{The Reverse Process}
+The goal is to learn the reverse transitions $p(x_{t-1}|x_t)$. A key theoretical result is that if the forward step noise is small and Gaussian, the reverse conditional is also approximately Gaussian \textit{(Lectures 26, 27)}.
+\[ p(x_{t-1} | x_t) \approx \mathcal{N}(x_{t-1}; \vec{\mu}_{\theta}(x_t, t), \sigma_t^2 I) \]
+The variance $\sigma_t^2$ can be fixed based on the noise schedule. The main task is to train a neural network (often a U-Net) to predict the mean $\vec{\mu}_{\theta}(x_t, t)$ given the noisy image $x_t$ and the timestep $t$ \textit{(Lecture 26)}.
+
+\subsubsection{Training the Denoising Model}
+The model is trained to predict the mean of the reverse step. As shown in the continuous-time limit, this mean is related to the \textbf{score function} $\nabla_{x_t} \log p_t(x_t)$ \textit{(Lecture 27)}.
+\[ \mu(x_t) = x_t + \sigma_t^2 \Delta t \nabla_{x_t} \log p_t(x_t) \]
+In practice, this is equivalent to predicting the noise $\epsilon$ that was added to $x_0$ to get $x_t$, or predicting the original clean image $x_0$ itself \textit{(Lecture 26)}. Training proceeds as follows \textit{(Lecture 26)}:
+\begin{enumerate}
+    \item Sample a clean image $x_0$ from the dataset.
+    \item Sample a random timestep $t \in \{1, \dots, T\}$.
+    \item Sample noise $\epsilon \sim \mathcal{N}(0, I)$ and create the noisy image $x_t = \sqrt{\bar{\alpha}_t}x_0 + \sqrt{1-\bar{\alpha}_t}\epsilon$.
+    \item Train the network $\epsilon_\theta(x_t, t)$ to predict the noise $\epsilon$ using a simple loss, like Mean Squared Error: $\|\epsilon_\theta(x_t, t) - \epsilon\|^2$.
+\end{enumerate}
+
+\subsection{Generation: DDPM vs. DDIM}
+Once trained, the model can generate new samples by starting with noise and running the reverse process. There are two main approaches.
+
+\subsubsection{Stochastic Sampling (DDPM)}
+Denoising Diffusion Probabilistic Models (DDPM) simulate the stochastic reverse process \textit{(Lecture 27)}.
+\begin{enumerate}
+    \item Start with pure noise: $x_T \sim \mathcal{N}(0, I)$.
+    \item For $t = T, \dots, 1$:
+    \begin{itemize}
+        \item Predict the mean $\mu_\theta(x_t, t)$ using the trained network.
+        \item Sample the next step: $x_{t-1} \sim \mathcal{N}(\mu_\theta(x_t, t), \sigma_t^2 I)$.
+    \end{itemize}
+    \item The final result $x_0$ is the generated sample.
+\end{enumerate}
+
+\subsubsection{Deterministic Sampling (DDIM)}
+Denoising Diffusion Implicit Models (DDIM) observe that we only need to match the marginal distributions $p_t(x_t)$, not the full joint distribution of the reverse path. This allows for a deterministic path from noise to data \textit{(Lecture 27)}. The DDIM update rule can be viewed as taking a step in the direction of the predicted clean image $x_0$:
+\[ \hat{x}_{t-\Delta t} = \sqrt{\bar{\alpha}_{t-\Delta t}} \hat{x}_{0|t} + \sqrt{1 - \bar{\alpha}_{t-\Delta t}} \cdot \frac{x_t - \sqrt{\bar{\alpha}_t} \hat{x}_{0|t}}{\sqrt{1-\bar{\alpha}_t}} \]
+where $\hat{x}_{0|t}$ is the model's prediction of $x_0$ given $x_t$. This process is deterministic and often allows for faster sampling with fewer steps than DDPM \textit{(Lecture 27)}. From a theoretical perspective, DDIM learns a velocity field for an Ordinary Differential Equation (ODE) that flows points from the noise distribution to the data manifold \textit{(Lecture 27)}.
+
+\textbf{Practice Problem: DDPM/DDIM Math} \textit{(HW 13, Problem 1)}
+This problem explores the DDPM and DDIM updates in detail under simplifying assumptions, asking to derive variances and update rules. For example, it shows that the conditional mean of $x_{t-\Delta t}$ given $x_t$ for a process starting from a Gaussian is $\mathbb{E}[x_{t-\Delta t} | x_t] = \frac{\sigma^2(t-\Delta t)}{\sigma^2 t} x_t$. This is the ideal denoiser in this simple case, and both DDPM and DDIM steps are designed to approximate this behavior.
+
+\section{Post-Training of Large Language Models (LLMs)}
+After pre-training on a vast text corpus, LLMs undergo several stages of post-training to align their behavior with human instructions and preferences \textit{(Lecture 26)}.
+
+\subsection{Supervised Fine-Tuning (SFT)}
+SFT is the first step, where the pre-trained model is fine-tuned on a smaller, high-quality dataset of instruction-response pairs \textit{(Lectures 24, 25)}.
+\begin{itemize}
+    \item \textbf{Masked Loss}: The standard cross-entropy loss is applied, but only on the tokens of the response. The loss for the prompt tokens is masked to zero. This teaches the model the format of answering questions without unlearning its general language model capabilities \textit{(Lecture 25)}.
+    \item \textbf{Chain-of-Thought (CoT)}: A key discovery was that prompting models to "think step by step" improves performance on reasoning tasks. SFT datasets now often include these intermediate reasoning steps to train the model to produce more deliberative outputs \textit{(Lectures 24, 25)}.
+\end{itemize}
+
+\subsubsection{Challenge: Catastrophic Forgetting}
+A major challenge in fine-tuning is \textbf{catastrophic forgetting}: the tendency of a model to lose performance on previously learned tasks when trained on a new one \textit{(Discussion 12, Problem 2)}. This happens when the parameter updates for the new task move the model's weights far away from the optimal region for the old tasks.
+
+\textbf{Practice Problem: Fine-Tuning Strategies} \textit{(Discussion 12, Problem 2b)}
+This problem compares three strategies for learning a new task while retaining old knowledge:
+\begin{enumerate}
+    \item \textbf{Frozen Feature Extraction}: Freeze the base model and train a new head for the new task. Good for old task performance, but can be suboptimal for the new task.
+    \item \textbf{Full Fine-Tuning}: Train the entire model on the new task. Best performance on the new task in most cases, but high risk of catastrophic forgetting (bad for old task performance).
+    \item \textbf{Joint Training}: Train on a mix of old and new data. Good for both, but requires storing and re-using old data, which can be infeasible.
+\end{enumerate}
+
+A modern solution to this problem is \textbf{Parameter-Efficient Fine-Tuning (PEFT)}, such as Low-Rank Adaptation (LoRA). LoRA freezes the pre-trained weights and injects small, trainable low-rank matrices into the model. This significantly reduces the number of trainable parameters, mitigating forgetting and reducing computational cost \textit{(HW 11, Problem 1)}.
+
+\section{Improving LLM Performance via Inference}
+Beyond training, performance can be improved by using more computation at inference time \textit{(Lectures 24, 25)}.
+
+\subsection{Basic Test-Time Compute Techniques}
+\begin{itemize}
+    \item \textbf{Prompt Engineering}: Modifying the prompt to elicit better behavior, e.g., adding "Think step by step" \textit{(Lecture 25)}.
+    \item \textbf{Best-of-N Sampling}: Generate $N$ different responses to a prompt (using non-zero temperature) and select the best one using a criterion like majority vote, highest sequence probability, or an external judge model \textit{(Lectures 24, 25)}.
+\end{itemize}
+
+\subsection{Advanced Sampling: Reasoning with Sampling}
+This approach posits that high-quality reasoning sequences often have higher probability under the base model. Therefore, we can improve performance by sampling from a "sharpened" distribution that upweights these high-probability sequences \textit{(Lecture 25)}. We sample from a modified distribution:
+\[ p_{\text{desired}}(\vec{x}) \propto [p_{\text{base}}(\vec{x})]^\alpha \quad \text{for } \alpha > 1 \]
+This is fundamentally different from low-temperature sampling, as it considers the probability of the entire sequence, not just the next token, requiring non-trivial sampling methods like MCMC \textit{(Lecture 25)}. The \textbf{Power Sampling} algorithm uses MCMC to generate samples from this intractable distribution, showing performance competitive with models that have undergone extensive RL fine-tuning \textit{(Lecture 25)}.
+
+\section{Improving LLM Performance via Reinforcement Learning}
+RL provides a powerful framework for fine-tuning LLMs based on complex, non-differentiable rewards, such as human preferences or task success.
+
+\subsection{RL with Verifiable Rewards (RLVR)}
+When an automated "autograder" exists for a task (e.g., checking a math answer or running unit tests), we can use RLVR \textit{(Lectures 25, 26)}. The ScaleRL paper proposes a robust RL objective \textit{(Lectures 25, 26)}:
+\[ J_{\text{ScaleRL}}(\theta) = \E_{x \sim D, \{y_i\} \sim \pi_{\text{gen}}} \left[ \frac{1}{|G|} \frac{1}{\sum |y_g|} \sum_{i=1}^G \sum_{t=1}^{|y_i|} \text{sg}\left(\min(\rho_{i,t}, \epsilon)\right) \hat{A}_i^{\text{norm}} \log \pi_{\text{train}}^\theta(y_{i,t} | y_{i,<t}) \right] \]
+Key components include:
+\begin{itemize}
+    \item \textbf{REINFORCE Structure}: The loss has the form $\E[R \cdot \grad \log \pi]$, where the reward signal is the normalized advantage $\hat{A}_i^{\text{norm}}$ \textit{(Lecture 25)}.
+    \item \textbf{Normalized Advantage}: $\hat{A}_i^{\text{norm}} = (r_i - \bar{r})/\sigma_r$. Subtracting the batch mean reward $\bar{r}$ provides a baseline, rewarding generations better than average and penalizing those worse. Normalizing by the standard deviation $\sigma_r$ stabilizes training \textit{(Lecture 25)}.
+    \item \textbf{Importance Sampling}: The ratio $\rho_{i,t} = \pi_{\text{train}}/\pi_{\text{gen}}$ corrects for the mismatch between the policy being trained and the (older) policy used to generate the data \textit{(Lecture 25)}.
+    \item \textbf{Clipping and Stop Gradient}: The `sg` (stop gradient) on $\rho_{i,t}$ prevents incorrect gradients. Clipping prevents the importance weights from vanishing or exploding, improving stability \textit{(Lectures 25, 26)}.
+\end{itemize}
+
+\subsection{Reinforcement Learning from Human Feedback (RLHF)}
+When rewards are not automatically verifiable, we use human feedback. The standard RLHF pipeline has three stages \textit{(Lecture 26, HW 13, Problem 2)}:
+\begin{enumerate}
+    \item \textbf{SFT}: Fine-tune a base model on instruction-response data.
+    \item \textbf{Reward Modeling}: Collect human preference data (e.g., which of two responses is better). Train a separate reward model (RM) to predict which response a human would prefer.
+    \item \textbf{RL Fine-Tuning}: Use the trained RM as the reward function to fine-tune the SFT model using an RL algorithm like PPO.
+\end{enumerate}
+During RL fine-tuning, a KL-divergence penalty is added to prevent the policy from deviating too far from the original SFT model, mitigating catastrophic forgetting \textit{(Lecture 26)}. The objective is:
+\[ \max_{\pi} \E_{y \sim \pi(\cdot|x)} [r(x,y)] - \beta D_{\KL}[\pi \| \pi_{\text{ref}}] \]
+The optimal policy for this objective has a specific form \textit{(Lecture 26, HW 13, Problem 2b)}:
+\[ \pi^*(y|x) = \frac{1}{Z(x)} \pi_{\text{ref}}(y|x) \exp\left(\frac{1}{\beta} r(x,y)\right) \]
+This shows that the optimal policy re-weights the reference policy's distribution to favor outputs with higher rewards.
+
+\subsection{Direct Preference Optimization (DPO)}
+DPO is a more recent method that bypasses the need for an explicit reward model, learning directly from preference data \textit{(Lecture 26)}. Given preference triplets $(x, y_w, y_l)$, where $y_w$ is the preferred (winner) response and $y_l$ is the dispreferred (loser) response, DPO optimizes the following loss \textit{(Lecture 26, HW 13, Problem 2e)}:
+\[ \mathcal{L}_{\text{DPO}}(\pi_{\theta}; \pi_{\text{ref}}) = -\E_{(x, y_w, y_l) \sim D} \left[ \log \sigma \left( \beta \log \frac{\pi_{\theta}(y_w|x)}{\pi_{\text{ref}}(y_w|x)} - \beta \log \frac{\pi_{\theta}(y_l|x)}{\pi_{\text{ref}}(y_l|x)} \right) \right] \]
+where $\sigma$ is the sigmoid function. This loss is derived by substituting the optimal policy form from the KL-regularized RL objective into the Bradley-Terry model for pairwise preferences and formulating a maximum likelihood objective \textit{(HW 13, Problem 2c-e)}. The term inside the sigmoid is the difference in rewards for the winner and loser under an \textit{implicit} reward model defined by the policy change: $\hat{r}(x, y) = \beta \log(\pi_\theta(y|x) / \pi_{\text{ref}}(y|x))$ \textit{(Lecture 26)}. This provides a stable, direct way to optimize for human preferences.
+
+\section{General Techniques and Related Concepts}
+
+\subsection{Generalizable Ideas from VAEs}
+The development of VAEs introduced several powerful, broadly applicable techniques \textit{(Lecture 24)}:
+\begin{enumerate}
+    \item \textbf{KL Divergence as a Regularizer}: A general method to encourage an internal distribution of a network to match a target prior.
+    \item \textbf{The Reparameterization Trick}: A fundamental technique for backpropagating through stochastic nodes in a computation graph.
+    \item \textbf{Stochasticity in SGD}: Treating model-induced randomness (like sampling $z$) as another source of stochasticity, similar to mini-batch sampling, which SGD can handle.
+\end{enumerate}
+
+\subsection{Application: Quantization-Aware Training (QAT)}
+Quantization reduces the numerical precision of a model's weights (e.g., from float32 to int8) to save memory and speed up inference. Naively quantizing a trained model can hurt performance \textit{(Lecture 24)}.
+
+QAT trains the model to be robust to quantization from the start. This is done using a \textbf{straight-through estimator} \textit{(Lecture 24)}.
+\begin{itemize}
+    \item \textbf{Forward Pass}: Weights are quantized (a non-differentiable rounding operation) before use.
+    \item \textbf{Backward Pass}: During backpropagation, the gradient is passed through the quantization step as if it were the identity function.
+\end{itemize}
+This allows the model to learn weights that are naturally close to the quantization levels, preserving performance \textit{(Lecture 24)}. This works because neural networks are inherently robust to small amounts of noise, and the quantization error can be seen as structured noise \textit{(HW 11, Problem 7b)}.
+
+\end{document}

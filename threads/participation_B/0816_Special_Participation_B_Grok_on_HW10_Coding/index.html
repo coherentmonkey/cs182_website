@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Special Participation B: Grok on HW10 Coding - CS 182</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #f5f7fa;
+            color: #333;
+            line-height: 1.6;
+        }
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .back-link {
+            display: inline-block;
+            margin-bottom: 20px;
+            color: #4299e1;
+            text-decoration: none;
+        }
+        .back-link:hover { text-decoration: underline; }
+        .thread-header {
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+        }
+        .thread-title {
+            font-size: 1.8rem;
+            color: #2d3748;
+            margin-bottom: 15px;
+        }
+        .thread-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            color: #718096;
+            font-size: 14px;
+        }
+        .model-badge {
+            display: inline-block;
+            padding: 4px 12px;
+            background: #e2e8f0;
+            color: #4a5568;
+            border-radius: 15px;
+            font-size: 13px;
+            font-weight: 500;
+        }
+        .hw-badge {
+            display: inline-block;
+            padding: 4px 12px;
+            background: #fed7e2;
+            color: #97266d;
+            border-radius: 15px;
+            font-size: 13px;
+            font-weight: 500;
+        }
+        .thread-body {
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+        }
+        .thread-body h3 {
+            margin-bottom: 15px;
+            color: #2d3748;
+        }
+        .body-content {
+            white-space: pre-wrap;
+            word-wrap: break-word;
+            line-height: 1.8;
+            font-size: 15px;
+        }
+        .body-content a {
+            color: #4299e1;
+            word-break: break-all;
+        }
+        .attachments {
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
+        .attachments h3 {
+            margin-bottom: 20px;
+            color: #2d3748;
+        }
+        .attachment {
+            margin-bottom: 25px;
+            border: 1px solid #e2e8f0;
+            border-radius: 6px;
+            overflow: hidden;
+        }
+        .attachment-label {
+            background: #f7fafc;
+            padding: 10px 15px;
+            font-weight: 500;
+            font-size: 14px;
+            border-bottom: 1px solid #e2e8f0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .download-link {
+            color: #4299e1;
+            text-decoration: none;
+            font-weight: normal;
+        }
+        .download-link:hover { text-decoration: underline; }
+        .attachment-image img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+        .attachment-pdf iframe {
+            width: 100%;
+            height: 800px;
+            border: none;
+        }
+        .attachment-video video {
+            width: 100%;
+            max-height: 600px;
+        }
+        .attachment-audio audio {
+            width: 100%;
+            padding: 15px;
+        }
+        .attachment-text pre {
+            padding: 15px;
+            background: #f7fafc;
+            overflow-x: auto;
+            max-height: 500px;
+            font-size: 13px;
+            line-height: 1.5;
+        }
+        .attachment-file {
+            padding: 15px;
+        }
+        .file-link {
+            color: #4299e1;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .file-link:hover { text-decoration: underline; }
+        .ed-link {
+            display: inline-block;
+            margin-top: 15px;
+            color: #4299e1;
+            text-decoration: none;
+        }
+        .ed-link:hover { text-decoration: underline; }
+        @media (max-width: 768px) {
+            .thread-title { font-size: 1.4rem; }
+            .attachment-pdf iframe { height: 500px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <a href="../../../index.html" class="back-link">← Back to Directory</a>
+
+        <div class="thread-header">
+            <h1 class="thread-title">Special Participation B: Grok on HW10 Coding</h1>
+            <div class="thread-meta">
+                <span>By Sarvagya Somvanshi</span>
+                <span>2025-12-11</span>
+                <span class="hw-badge">HW10</span>
+                <span class="model-badge">Grok</span>
+            </div>
+            <a href="https://edstem.org/us/courses/84647/discussion/7449937" target="_blank" class="ed-link">View on Ed Stem →</a>
+        </div>
+
+        <div class="thread-body">
+            <div class="body-content">I prompted Grok Code to solve the coding portion of Homework 10 (HW 10b), which involved hand-designing Transformer weights, implementing a Transformer from scratch in PyTorch, and training an Early Exit ResNet. 
+
+The models performance was slightly worse than I expected, while it generated syntactically correct code, often times it struggled with architectural foresight and engineering robustness. It committed fundamental PyTorch errors (broadcasting, memory layout) and required me to paste error logs multiple times to guide it toward a working solution. Often times, it tried to change the entire structure of code which I had to shut down. Hence I had to manually ask it only change TODOs and even then, at certain attempts it tried to change the entire codebase.
+
+Question 1: The model effectively &quot;one-shot&quot; the logic for these problems as expected and It correctly used scaled identity matrices and positional masks to solve the identity and copy tasks.
+
+Question 2: This section was a significant struggle, characterized by a series of failures, reprompts and asking it to solve the code again. In the first Scaled Dot product function,  It immediately introduced a bug by messing up the padding mask dimensions, causing a broadcasting crash. It then failed to reshape batch and head dimensions correctly, trying to pass 4D tensors to a function expecting 3D inputs. Finally, it tried to use .view() on a transposed (non-contiguous) tensor and only switched to .reshape() after I pasted the entire RuntimeError dump. Finally, it also guessed the  wrong LayerNorm placement. This question was a bit frustrating to work through as I expected the model to solve after only 1 follow through. At the end, it was able to give a cohesive answer but it was clear a lot of times that the model was guessing.
+
+Question 3: In this question, as expected the model was able to  successfully implement the adaptive inference logic, using entropy tolerance to exit early
+
+
+
+Overall, while the model was able to work through the problem, I expected Question 2 to be less of a challenge that it ended up being. Here are my logs with annotations and final notebooks:</div>
+        </div>
+
+        <div class="attachments">
+                <div class="attachment attachment-pdf">
+                    <div class="attachment-label">hw10_b.pdf <a href="attachments/hw10_b.pdf" target="_blank" class="download-link">Open in new tab</a></div>
+                    <iframe src="attachments/hw10_b.pdf" loading="lazy"></iframe>
+                </div></div>
+    </div>
+</body>
+</html>

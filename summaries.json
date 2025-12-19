@@ -1,0 +1,3382 @@
+{
+  "participation_A": {
+    "by_hw": {
+      "HW2": {
+        "thread_count": 12,
+        "sentiment": "positive",
+        "strengths": [
+          "Q2: Grok one-shotted the problem and provided a logical thought process.",
+          "Q5: Grok one-shotted the problem after proper context was provided.",
+          "Q1: Kimi provided a correct and full solution on the first part of the problem."
+        ],
+        "weaknesses": [
+          "Q5: Kimi struggled with explicit relationships among rows or columns but managed to reason spatially.",
+          "Q2: Kimi hallucinated a version of the problem and needed correction to arrive at the right solution.",
+          "Q3: no specific mention of struggles or failures"
+        ]
+      },
+      "HW1": {
+        "thread_count": 12,
+        "sentiment": "mixed",
+        "strengths": [
+          "Q1: produced correct answer immediately for straightforward conceptual question",
+          "Q3: demonstrated strong reasoning in sequential tasks with correct final answer"
+        ],
+        "weaknesses": [
+          "Q3: struggled with eigenvalues and discriminant, provided incorrect answers",
+          "Q5: over-mathematized explanation questions instead of summarizing intuitively",
+          "Q2: lacked justification in some answers and needed prompting for clarity"
+        ]
+      },
+      "HW3": {
+        "thread_count": 12,
+        "sentiment": "positive",
+        "strengths": [
+          "Q1: handled Gaussian policy-gradient well with correct derivation",
+          "Q4C: clear explanation of using the chain rule",
+          "Q4: Provided a correct interpretation of p\u03b8\u200b:X\u2192\u0394(X) after clarification."
+        ],
+        "weaknesses": [
+          "Q2: hallucinated the definition of the RMS matrix norm and derived incorrect order",
+          "Q5: hallucinated information and failed to provide accurate results"
+        ]
+      },
+      "HW0": {
+        "thread_count": 16,
+        "sentiment": "positive",
+        "strengths": [
+          "Q2: The model correctly grasped the problem and provided a rigorous proof.",
+          "Q4: The model accurately extracted the essence of the subproblems and provided correct answers.",
+          "Q1: provided a correct and complete solution on the first attempt"
+        ],
+        "weaknesses": [
+          "Q3: The model initially failed to use the derivative of MSE and needed hints to solve the subproblems.",
+          "Q5: The model struggled with subproblem d, failing to analyze it comprehensively due to its unique design.",
+          "Q1: struggled with left vs. right multiplication"
+        ]
+      },
+      "HW8": {
+        "thread_count": 16,
+        "sentiment": "mixed",
+        "strengths": [
+          "Q1: all parts were correct including derivations and conceptual analyses",
+          "Q3: correct mathematical derivations and determined range for lambda",
+          "Q4: correct on first try with step-by-step solution"
+        ],
+        "weaknesses": [
+          "Q2: struggled with conceptual understanding and provided incorrect answers",
+          "Q5: hallucinated information and failed to provide a coherent response",
+          "Q1C: incorrectly suggested FFT based convolution instead of direct conv with parallel matrix operations"
+        ]
+      },
+      "HW10": {
+        "thread_count": 13,
+        "sentiment": "positive",
+        "strengths": [
+          "Q1: correctly derived the Linear Attention mechanism using Random Fourier Features",
+          "Q3: accurately identified the decomposition of the Softmax kernel into Query/Key norms and the Gaussian term",
+          "Q2: provided detailed and accurate responses to all questions about the FaceNet paper"
+        ],
+        "weaknesses": [
+          "Q2: incorrect answer on kernelized attention with random features",
+          "Q5: none, as the model successfully addressed the counter-intuitive discrepancy",
+          "Q1: struggled with computing the computational cost, showing less accuracy"
+        ]
+      },
+      "HW5": {
+        "thread_count": 13,
+        "sentiment": "positive",
+        "strengths": [
+          "Q1: provided a full solution with correct implementation",
+          "Q3: one-shot correct solution with granular steps for calculations",
+          "Q2: correct final answers despite unnecessary steps"
+        ],
+        "weaknesses": [
+          "Q2: incorrect response that required manual correction due to hallucination",
+          "Q5: struggled with clarity, providing extra fluff around the final answer"
+        ]
+      },
+      "HW7": {
+        "thread_count": 13,
+        "sentiment": "positive",
+        "strengths": [
+          "Q1: delivered accurate, well-reasoned solution",
+          "Q3: maintained logical flow despite variable naming inconsistencies",
+          "Q8: provided mostly correct answers with clear explanations"
+        ],
+        "weaknesses": [
+          "Q5: hallucinated information, failed to provide accurate answer",
+          "Q2: did not match the official solution on the first attempt",
+          "Q7: zero-shot but only reasonable answers instead of one"
+        ]
+      },
+      "HW11": {
+        "thread_count": 10,
+        "sentiment": "positive",
+        "strengths": [
+          "Q1: model provided a correct and detailed solution with clear intermediate steps",
+          "Q3: model effectively explained the underlying concepts in a pedagogical manner",
+          "Q2: provided a detailed explanation of the matrix math"
+        ],
+        "weaknesses": [
+          "Q2: model struggled with multi-part questions, leading to cluttered and incomplete answers",
+          "Q5: model skipped parts of subquestions in larger context prompts",
+          "Q6: provided short responses and incomplete answers"
+        ]
+      },
+      "HW6": {
+        "thread_count": 13,
+        "sentiment": "positive",
+        "strengths": [
+          "Q2: one-shotted most subparts correctly with minimal guidance",
+          "Q3: provided an excellent and completely accurate response, correctly solving every part of the problem",
+          "Q1: produced answers essentially identical to the official solution on the first try"
+        ],
+        "weaknesses": [
+          "Q2: struggled with structural redundancy and poor formatting, making it hard to parse the information",
+          "Q3: struggled with parsing the image of the graph and got a connection wrong",
+          "Q5: Struggled with visual extraction from the PDF, particularly with graph topology."
+        ]
+      },
+      "HW9": {
+        "thread_count": 16,
+        "sentiment": "positive",
+        "strengths": [
+          "Q1: produced correct expectations and reasoning about softmax vs. argmax",
+          "Q3: correctly identified tensor shapes and roles in multi-head attention implementation",
+          "Q4: correct fill in the blank coding and close memory complexity answer"
+        ],
+        "weaknesses": [
+          "Q2: incorrect solution with inconsistency in the answer presentation",
+          "Q5: struggled due to formatting issues from LaTeX copy/paste error",
+          "Q6: struggled with details, needed prompting for coefficients and matrix transpositions, hallucinated about definitions"
+        ]
+      },
+      "HW13": {
+        "thread_count": 7,
+        "sentiment": "positive",
+        "strengths": [
+          "Q1: nailed the warm-up questions with basic probability manipulation",
+          "Q3: provided correct solutions for straightforward calculus problems",
+          "Q2A: correctly interpreted the standard RLHF objective and KL constraints"
+        ],
+        "weaknesses": [
+          "Q2: made mathematical errors and circular reasoning",
+          "Q5: struggled with tracking multiple variables and lost coherence in later parts"
+        ]
+      },
+      "HW12": {
+        "thread_count": 10,
+        "sentiment": "positive",
+        "strengths": [
+          "Q2: Deep intuition for KL divergence and valid counter-example",
+          "Q1: correct understanding of std = 1 for tied embeddings and clean explanation about variance scaling",
+          "Q3: provided clear explanations of encoder, autoencoder, VAE, and noise injection; correctly identified roles of q and p in VAE loss."
+        ],
+        "weaknesses": [
+          "Q3: struggled with labeling terms in the loss function until prompted; could not interpret a graph independently.",
+          "Q5: no specific mention of failure, but implied need for multiple attempts",
+          "Q2: surface-level explanation without deeper understanding or exploration of other constructions"
+        ]
+      },
+      "HW4": {
+        "thread_count": 9,
+        "sentiment": "mixed",
+        "strengths": [
+          "Q1: Qwen provided a correct and full solution on the non-coding problems.",
+          "Q3: provided correct computation solution",
+          "Q7: Qwen expertly navigated and explained the matrix calculus."
+        ],
+        "weaknesses": [
+          "Q2: Qwen struggled to arrive at the correct answer, needing multiple attempts.",
+          "Q5: hallucinated information leading to confusion",
+          "Q3: Grok changed its mind on part d, leading to confusion and an incorrect initial approach."
+        ]
+      }
+    },
+    "by_model_hw": {
+      "Grok|HW2": {
+        "thread_count": 1,
+        "model": "Grok",
+        "sentiment": "mixed",
+        "strengths": [
+          "Ability to reason through problems and arrive at correct answers with clear prompts.",
+          "Fast response time when provided with clear context."
+        ],
+        "weaknesses": [
+          "Struggles with formatting issues, particularly with LaTeX and screenshots.",
+          "Difficulty in understanding nuanced details without explicit guidance."
+        ]
+      },
+      "Claude|HW1": {
+        "thread_count": 2,
+        "model": "Claude",
+        "sentiment": "mixed",
+        "strengths": [
+          "Q1: solved subproblems correctly on first try, familiar math patterns",
+          "able to provide full solutions for many questions",
+          "capable of offering additional explanations and insights",
+          "structurally correct solutions"
+        ],
+        "weaknesses": [
+          "Q5: hallucinated intermediate steps, made-up explanations",
+          "struggled with complex calculations and concepts",
+          "hallucinated answers and provided incorrect information",
+          "frequent subtle mathematical errors"
+        ]
+      },
+      "Kimi|HW3": {
+        "thread_count": 1,
+        "model": "Kimi",
+        "sentiment": "positive",
+        "strengths": [
+          "strong mathematical derivation reasoning",
+          "clear communication in responses"
+        ],
+        "weaknesses": [
+          "issues with visual understanding and interpretation",
+          "tendency to provide formulae without adequate reasoning"
+        ]
+      },
+      "Gemini|HW0": {
+        "thread_count": 3,
+        "model": "Gemini",
+        "sentiment": "positive",
+        "strengths": [
+          "Q1: used the 1\u03d5(x)>0 indicator instead of messy piecewise cases",
+          "Q3: gemini related different subparts and explained concepts accurately",
+          "High accuracy on classic problems",
+          "Ability to extract core ideas from complex figures",
+          "strong on mechanical math"
+        ],
+        "weaknesses": [
+          "Q5: The model struggled with subproblem d, failing to analyze it comprehensively due to its unique design.",
+          "Struggles with unseen or unique problems",
+          "May hallucinate when multiple figures are input in one chat",
+          "struggles with qualitative reasoning"
+        ]
+      },
+      "Llama|HW0": {
+        "thread_count": 1,
+        "model": "Llama",
+        "sentiment": "negative",
+        "strengths": [
+          "showed decent progress on math steps"
+        ],
+        "weaknesses": [
+          "vagueness in explanations",
+          "fixation on topics instead of direct answers"
+        ]
+      },
+      "GPT|HW8": {
+        "thread_count": 4,
+        "model": "GPT",
+        "sentiment": "mixed",
+        "strengths": [
+          "Q1: provided a clear and accurate explanation",
+          "Q3: generated a comprehensive solution with relevant examples",
+          "ability to generate detailed explanations",
+          "quickly provides relevant examples",
+          "high accuracy in providing correct answers"
+        ],
+        "weaknesses": [
+          "Q2: struggled with using input size variable in time complexity",
+          "Q5: hallucinated information and failed to provide a coherent response",
+          "tendency to hallucinate information",
+          "struggles with accuracy on complex questions",
+          "often ignores specific format instructions"
+        ]
+      },
+      "Grok|HW3": {
+        "thread_count": 1,
+        "model": "Grok",
+        "sentiment": "positive",
+        "strengths": [
+          "high accuracy with hints",
+          "ability to adjust based on feedback"
+        ],
+        "weaknesses": [
+          "verbosity in responses",
+          "tendency to hallucinate or lose focus"
+        ]
+      },
+      "GPT|HW3": {
+        "thread_count": 3,
+        "model": "GPT",
+        "sentiment": "positive",
+        "strengths": [
+          "Q1: successfully one shotted with good reasoning",
+          "Q3: effectively processed image data for a correct solution",
+          "able to provide comprehensive reasoning",
+          "capable of course-correcting with feedback",
+          "effective at solving problems"
+        ],
+        "weaknesses": [
+          "Q2: hallucinated the definition of the RMS matrix norm and derived incorrect order",
+          "Q5: initially guessed incorrectly but corrected after feedback",
+          "struggles with less publicly available material",
+          "can hallucinate definitions or concepts",
+          "declines in performance after initial failures"
+        ]
+      },
+      "Mistral|HW10": {
+        "thread_count": 1,
+        "model": "Mistral",
+        "sentiment": "mixed",
+        "strengths": [
+          "strong on standard derivations",
+          "good at post-hoc analysis and admitting mistakes"
+        ],
+        "weaknesses": [
+          "weak on fine-grained complexity and algorithmic details",
+          "overconfident in incorrect answers"
+        ]
+      },
+      "Gemini|HW10": {
+        "thread_count": 3,
+        "model": "Gemini",
+        "sentiment": "positive",
+        "strengths": [
+          "Q1: correctly derived the Linear Attention mechanism using Random Fourier Features",
+          "strong at summarizing key details from dense articles and papers",
+          "quick and accurate responses for specific questions",
+          "exceptional proficiency in advanced mathematical derivations"
+        ],
+        "weaknesses": [
+          "Q2: no specific failure mentioned",
+          "provides shallow responses for general or analytical questions",
+          "takes longer and requires more iterations for coding-related queries",
+          "struggles with conceptual questions and factual accuracy"
+        ]
+      },
+      "Claude|HW0": {
+        "thread_count": 2,
+        "model": "Claude",
+        "sentiment": "positive",
+        "strengths": [
+          "Q3: Provided a full and correct solution with clear formatting.",
+          "Ability to understand prompts easily and respond accurately.",
+          "Generated well-structured solutions resembling rigorous academic papers.",
+          "ability to provide correct solutions in one attempt"
+        ],
+        "weaknesses": [
+          "Q5: Hallucinated information and provided an incorrect response.",
+          "Occasional inaccuracies requiring multiple attempts.",
+          "Tendency to hallucinate information in some responses.",
+          "tendency to provide overly lengthy explanations"
+        ]
+      },
+      "GPT|HW5": {
+        "thread_count": 5,
+        "model": "GPT",
+        "sentiment": "positive",
+        "strengths": [
+          "Q1: provided a full solution with correct implementation",
+          "Q3: accurately derived and implemented expected methods",
+          "strong in structured prompts and clear goals",
+          "effective in mathematical explanations and coding",
+          "powerful understanding of CNN topics"
+        ],
+        "weaknesses": [
+          "Q2: offered high-level guidance instead of finished code",
+          "Q5: required multiple attempts to arrive at a solution",
+          "struggled with vague prompts leading to inaccuracies",
+          "needed nudges for specific implementation details",
+          "occasional inaccuracies in answers"
+        ]
+      },
+      "GPT|HW7": {
+        "thread_count": 4,
+        "model": "GPT",
+        "sentiment": "positive",
+        "strengths": [
+          "Q1: consistently one-shotted every problem",
+          "Q3: one-shot success with in-depth clarification",
+          "high-level conceptual explanations",
+          "mathematical computation abilities",
+          "understands complex concepts well"
+        ],
+        "weaknesses": [
+          "Q5: needed multiple attempts for clarification",
+          "resistance to correction",
+          "occasional inaccuracies",
+          "sometimes skips important steps"
+        ]
+      },
+      "GPT|HW11": {
+        "thread_count": 2,
+        "model": "GPT",
+        "sentiment": "positive",
+        "strengths": [
+          "Q1: model provided a correct and detailed solution with clear intermediate steps",
+          "Q3: model effectively explained the underlying concepts in a pedagogical manner",
+          "accurate and reliable across explanations",
+          "shows real conceptual understanding",
+          "strong technical understanding across various deep learning topics"
+        ],
+        "weaknesses": [
+          "issues with coverage in large context prompts",
+          "inconsistency in answering multi-part questions when given all at once"
+        ]
+      },
+      "DeepSeek|HW1": {
+        "thread_count": 2,
+        "model": "DeepSeek",
+        "sentiment": "mixed",
+        "strengths": [
+          "Q1: provided a correct and complete solution on the first attempt",
+          "Q3: accurately addressed the question with a well-structured response",
+          "high accuracy on computational tasks",
+          "ability to follow step-by-step instructions",
+          "strong in generating coherent and relevant responses"
+        ],
+        "weaknesses": [
+          "Q2: gave an incorrect answer and required multiple attempts to clarify",
+          "struggles with ambiguous questions",
+          "makes unacknowledged assumptions that can lead to incorrect answers",
+          "struggles with complex or ambiguous questions"
+        ]
+      },
+      "GPT|HW10": {
+        "thread_count": 4,
+        "model": "GPT",
+        "sentiment": "mixed",
+        "strengths": [
+          "Q1: one-shot solved with correct derivations for kernelized linear attention",
+          "strong at explaining abstract theory",
+          "good at retaining context after corrections",
+          "consistently interprets questions without clarification"
+        ],
+        "weaknesses": [
+          "Q5: hallucinated data from the FaceNet paper, mixing up parameters and FLOPs.",
+          "Q2: Over-confidence on unknown experiment outputs",
+          "difficulty with specific details and computational complexity",
+          "tendency to hallucinate data",
+          "struggles with visual data interpretation"
+        ]
+      },
+      "GPT|HW6": {
+        "thread_count": 3,
+        "model": "GPT",
+        "sentiment": "positive",
+        "strengths": [
+          "Q2: one-shot correct answer for the majority of the question",
+          "Q3: provided a full solution despite needing some clarifications",
+          "generally accurate reasoning and explanations",
+          "logically consistent answers even when diverging from official solutions",
+          "capable of providing correct answers with minimal prompts"
+        ],
+        "weaknesses": [
+          "Q2: imprecise language in the explanation of the max function",
+          "long response times",
+          "tendency to produce overly verbose solutions",
+          "imprecise language in explanations"
+        ]
+      },
+      "GPT|HW2": {
+        "thread_count": 2,
+        "model": "GPT",
+        "sentiment": "positive",
+        "strengths": [
+          "Q1: correct interpretation of the problem despite initial parsing error",
+          "good at providing correct solutions",
+          "able to adapt and correct minor errors",
+          "high accuracy on most questions"
+        ],
+        "weaknesses": [
+          "occasionally misinterprets specific terms",
+          "prone to formatting issues in LaTeX",
+          "occasional misconceptions"
+        ]
+      },
+      "GPT|HW9": {
+        "thread_count": 3,
+        "model": "GPT",
+        "sentiment": "positive",
+        "strengths": [
+          "Q1: one-shot correct solution with detailed steps",
+          "Q4: one-shot correct solution with organized explanation",
+          "accurate in providing solutions",
+          "able to follow instructions and skip irrelevant questions",
+          "good algebraic intuition"
+        ],
+        "weaknesses": [
+          "Q2: hesitant and provided guidance instead of a direct answer",
+          "Q5: not mentioned in the report, assumed failure",
+          "hesitant to engage due to academic integrity concerns",
+          "repetitive in scanning the PDF for questions",
+          "defaulting to familiar formulas without checking"
+        ]
+      },
+      "GPT|HW13": {
+        "thread_count": 2,
+        "model": "GPT",
+        "sentiment": "mixed",
+        "strengths": [
+          "Q1: nailed the warm-up questions with basic probability manipulation",
+          "strong at basic calculations and probability distributions",
+          "quick to generate answers for simpler questions",
+          "quick problem-solving for straightforward questions"
+        ],
+        "weaknesses": [
+          "Q2: made mathematical errors and circular reasoning",
+          "Q5: struggled with tracking multiple variables and lost coherence in later parts",
+          "fails to acknowledge uncertainty and often hallucinates answers",
+          "loses track of assumptions and variables in complex problems",
+          "difficulty with long and complex questions"
+        ]
+      },
+      "GPT|HW1": {
+        "thread_count": 2,
+        "model": "GPT",
+        "sentiment": "positive",
+        "strengths": [
+          "Q1: produced correct answer immediately for straightforward conceptual question",
+          "Q3: demonstrated strong reasoning in sequential tasks with correct final answer",
+          "strong mathematical reasoning",
+          "effective conditional reasoning with hints",
+          "ability to provide correct and detailed answers"
+        ],
+        "weaknesses": [
+          "Q2: lacked justification in some answers and needed prompting for clarity",
+          "Q5: over-mathematized explanation questions instead of summarizing intuitively",
+          "tendency to oversimplify complex problems",
+          "overly rigorous in explanations",
+          "tendency to skip intermediate steps or justification"
+        ]
+      },
+      "GPT|HW12": {
+        "thread_count": 3,
+        "model": "GPT",
+        "sentiment": "positive",
+        "strengths": [
+          "capable of solving straightforward questions",
+          "able to generate working diagrams",
+          "very good at re-explaining core concepts"
+        ],
+        "weaknesses": [
+          "Q3: struggled with labeling terms in the loss function until prompted; could not interpret a graph independently.",
+          "Q5: failed to solve initially due to forgetting homework contents",
+          "struggles with context retention",
+          "has difficulty interpreting visual data accurately",
+          "overconfident on complexity questions"
+        ]
+      },
+      "GPT|HW4": {
+        "thread_count": 2,
+        "model": "GPT",
+        "sentiment": "mixed",
+        "strengths": [
+          "Q1: generated accurate answer for conceptual question",
+          "Q3: provided correct computation solution",
+          "capable of providing correct answers in one prompt",
+          "generally quick response time on most questions",
+          "generates accurate answers for conceptual questions"
+        ],
+        "weaknesses": [
+          "Q2: answer was incorrect and required multiple attempts",
+          "Q5: hallucinated information leading to confusion",
+          "struggled with numerical problems",
+          "occasionally produced incorrect or hallucinated information",
+          "occasionally uses unconventional conventions"
+        ]
+      },
+      "GPT|HW0": {
+        "thread_count": 3,
+        "model": "GPT",
+        "sentiment": "mixed",
+        "strengths": [
+          "Q3: generated a thorough explanation with clear reasoning",
+          "strong understanding of fundamental ML/math concepts",
+          "ability to explain reasoning clearly",
+          "can arrive at correct solutions"
+        ],
+        "weaknesses": [
+          "Q2: gave an incorrect answer and required multiple attempts to correct",
+          "Q5: hallucinated information and did not provide a valid solution",
+          "struggles with complex or nuanced questions",
+          "tendency to hallucinate information",
+          "struggles with graphical intuition"
+        ]
+      },
+      "Claude|HW12": {
+        "thread_count": 2,
+        "model": "Claude",
+        "sentiment": "mixed",
+        "strengths": [
+          "Q1: correct understanding of std = 1 for tied embeddings and clean explanation about variance scaling",
+          "correct reasoning",
+          "ability to one-shot every question",
+          "strong in algebraic and mechanical reasoning"
+        ],
+        "weaknesses": [
+          "Q2: surface-level explanation without deeper understanding or exploration of other constructions",
+          "lack of pedagogical value",
+          "explanations may not help confused students",
+          "tends to provide shallow intuition on conceptual questions"
+        ]
+      },
+      "Claude|HW8": {
+        "thread_count": 2,
+        "model": "Claude",
+        "sentiment": "mixed",
+        "strengths": [
+          "Q3: provided correct and insightful solution",
+          "generally provides correct answers in one attempt",
+          "capable of solving complex parts of problems",
+          "generally reliable in providing correct answers"
+        ],
+        "weaknesses": [
+          "Q2: incorrect final result despite correct critical path length",
+          "can overthink and add unnecessary details",
+          "may struggle with finalizing answers correctly",
+          "struggled with specific types of problems (path length)"
+        ]
+      },
+      "Claude|HW7": {
+        "thread_count": 2,
+        "model": "Claude",
+        "sentiment": "mixed",
+        "strengths": [
+          "Q3: one-shot correct solution on PCA vs. autoencoder equivalence",
+          "strong problem-solving ability on straightforward questions",
+          "quick response time for simple queries",
+          "strong in linear algebra manipulations"
+        ],
+        "weaknesses": [
+          "struggles with complex or nuanced problems",
+          "tendency to hallucinate details when unsure"
+        ]
+      },
+      "Claude|HW3": {
+        "thread_count": 2,
+        "model": "Claude",
+        "sentiment": "positive",
+        "strengths": [
+          "autonomous derivation of complex proofs",
+          "structured chain-of-thought reasoning",
+          "provides clear and detailed explanations"
+        ],
+        "weaknesses": [
+          "occasionally makes calculation errors",
+          "can overlook specific details in complex problems"
+        ]
+      },
+      "Claude|HW9": {
+        "thread_count": 1,
+        "model": "Claude",
+        "sentiment": "positive",
+        "strengths": [
+          "strong at various types of questions including algebra and arithmetic",
+          "organized thoughts well and provided thorough answers"
+        ],
+        "weaknesses": [
+          "occasionally skipped steps in work",
+          "needed re-prompting for minor clarifications"
+        ]
+      },
+      "Claude|HW5": {
+        "thread_count": 2,
+        "model": "Claude",
+        "sentiment": "positive",
+        "strengths": [
+          "Q1: All parts correct with clear explanations.",
+          "High accuracy in solving complex problems.",
+          "Ability to provide additional context and insights.",
+          "consistency in straightforward problems"
+        ],
+        "weaknesses": [
+          "struggles with long-horizon tasks",
+          "tends to complicate solutions unnecessarily"
+        ]
+      },
+      "Claude|HW10": {
+        "thread_count": 2,
+        "model": "Claude",
+        "sentiment": "positive",
+        "strengths": [
+          "Q1: provided correct and detailed solution on the first attempt",
+          "accurate interpretation of complex diagrams and text",
+          "ability to ground answers in relevant research content",
+          "consistently correct answers"
+        ],
+        "weaknesses": [
+          "some explanations lacked depth",
+          "could benefit from more intuitive elaboration",
+          "explanations can be verbose"
+        ]
+      },
+      "Claude|HW4": {
+        "thread_count": 1,
+        "model": "Claude",
+        "sentiment": "mixed",
+        "strengths": [
+          "strong conceptual understanding",
+          "ability to generate first-draft solutions"
+        ],
+        "weaknesses": [
+          "struggles with notation conventions",
+          "difficulty tracking interactions of multiple scaling factors"
+        ]
+      },
+      "Claude|HW2": {
+        "thread_count": 1,
+        "model": "Claude",
+        "sentiment": "positive",
+        "strengths": [
+          "robust mathematical symbolic reasoning",
+          "never makes computational errors"
+        ],
+        "weaknesses": [
+          "tends to over-complicate solutions",
+          "needs guidance for optimal solution paths"
+        ]
+      },
+      "Claude|HW6": {
+        "thread_count": 2,
+        "model": "Claude",
+        "sentiment": "positive",
+        "strengths": [
+          "Q1: detailed and accurate response on molecular graphs",
+          "strong reliability on formal reasoning",
+          "effective conceptual explanations",
+          "strong at mathematical proofs"
+        ],
+        "weaknesses": [
+          "tendency toward verbosity",
+          "occasional stylistic redundancy",
+          "hallucination of details when visual context is missing"
+        ]
+      },
+      "DeepSeek|HW7": {
+        "thread_count": 2,
+        "model": "DeepSeek",
+        "sentiment": "positive",
+        "strengths": [
+          "Q1: delivered accurate, well-reasoned solution",
+          "Q3: maintained logical flow despite variable naming inconsistencies",
+          "ability to solve multiple parts in a single prompt",
+          "strong reasoning capabilities",
+          "concise and direct answers"
+        ],
+        "weaknesses": [
+          "Q2: incorrect solution, needed multiple attempts",
+          "Q5: hallucinated information, failed to provide accurate answer",
+          "struggles with accessing web links",
+          "can hallucinate information when context is unclear",
+          "occasional inconsistencies in variable naming"
+        ]
+      },
+      "DeepSeek|HW10": {
+        "thread_count": 2,
+        "model": "DeepSeek",
+        "sentiment": "positive",
+        "strengths": [
+          "Q1: solved with perfect accuracy and clear reasoning",
+          "Q3: solved with perfect accuracy and clear reasoning",
+          "effective chain-of-thought reasoning",
+          "ability to identify relevant information",
+          "excellent OCR capabilities"
+        ],
+        "weaknesses": [
+          "Q2: incorrect solution after multiple attempts",
+          "Q5: hallucinated information leading to an incorrect answer",
+          "struggles with complex problems",
+          "occasional hallucination of facts",
+          "occasional hallucination of information"
+        ]
+      },
+      "DeepSeek|HW9": {
+        "thread_count": 2,
+        "model": "DeepSeek",
+        "sentiment": "positive",
+        "strengths": [
+          "Q1: solved correctly with one-shot prompting",
+          "Q3: provided a full solution accurately",
+          "able to one-shot most problems",
+          "self-checking responses for accuracy",
+          "strong performance on non-coding questions"
+        ],
+        "weaknesses": [
+          "Q2: incorrect answer after multiple attempts",
+          "occasionally misreads problem details",
+          "becomes less verbose in later parts of complex problems",
+          "sensitivity to prompt phrasing"
+        ]
+      },
+      "DeepSeek|HW3": {
+        "thread_count": 1,
+        "model": "DeepSeek",
+        "sentiment": "positive",
+        "strengths": [
+          "strong mathematical problem-solving",
+          "effective information retrieval and synthesis"
+        ],
+        "weaknesses": [
+          "inaccuracy in some problem-solving",
+          "tendency to hallucinate information"
+        ]
+      },
+      "DeepSeek|HW11": {
+        "thread_count": 1,
+        "model": "DeepSeek",
+        "sentiment": "positive",
+        "strengths": [
+          "concise answers",
+          "ability to recognize and correct nonsensical prompts"
+        ],
+        "weaknesses": [
+          "numerical calculation errors",
+          "notation inconsistencies"
+        ]
+      },
+      "DeepSeek|HW13": {
+        "thread_count": 1,
+        "model": "DeepSeek",
+        "sentiment": "positive",
+        "strengths": [
+          "strong proficiency in theoretical machine learning questions",
+          "thorough and well-reasoned responses"
+        ],
+        "weaknesses": [
+          "longer reasoning time compared to other agents",
+          "occasionally requires human verification for rigor"
+        ]
+      },
+      "DeepSeek|HW2": {
+        "thread_count": 1,
+        "model": "DeepSeek",
+        "sentiment": "positive",
+        "strengths": [
+          "capable reasoning for technical questions",
+          "follows a structured thought process similar to proof writing"
+        ],
+        "weaknesses": [
+          "occasionally misses small details",
+          "can hallucinate or provide incorrect answers on complex problems"
+        ]
+      },
+      "DeepSeek|HW5": {
+        "thread_count": 1,
+        "model": "DeepSeek",
+        "sentiment": "positive",
+        "strengths": [
+          "strong at providing explanations",
+          "capable of self-examination and understanding context"
+        ],
+        "weaknesses": [
+          "cannot handle multi-modal inputs",
+          "ambiguous prompts increase processing time"
+        ]
+      },
+      "DeepSeek|HW6": {
+        "thread_count": 1,
+        "model": "DeepSeek",
+        "sentiment": "positive",
+        "strengths": [
+          "can one-shot most conceptual, math-heavy parts",
+          "follows structured prompts well, making reasoning transparent"
+        ],
+        "weaknesses": [
+          "fails to catch deeper mistakes despite self-checks",
+          "has issues with convention mismatches and graph misreads"
+        ]
+      },
+      "DeepSeek|HW8": {
+        "thread_count": 2,
+        "model": "DeepSeek",
+        "sentiment": "mixed",
+        "strengths": [
+          "strong reasoning and explanatory abilities",
+          "adequate conversational and correction capabilities",
+          "Able to parse complex expressions and equations"
+        ],
+        "weaknesses": [
+          "Q5: hallucinated and provided an incorrect solution",
+          "ineffective self-checking mechanism",
+          "weak error-localization ability",
+          "Struggled with specific problem types requiring nuanced understanding"
+        ]
+      },
+      "DeepSeek|HW0": {
+        "thread_count": 3,
+        "model": "DeepSeek",
+        "sentiment": "mixed",
+        "strengths": [
+          "Q3: correct mathematical derivation with full reasoning",
+          "produced correct solutions for early questions",
+          "followed structured reasoning format initially",
+          "strong grasp of linear algebra and vector calculus concepts"
+        ],
+        "weaknesses": [
+          "Q5: stopped mid-response due to length but completed successfully after reminders",
+          "declined format adherence in longer responses",
+          "stopped mid-response due to token limits",
+          "struggles with depth of derivation on complex multi-variable updates"
+        ]
+      },
+      "Gemini|HW9": {
+        "thread_count": 4,
+        "model": "Gemini",
+        "sentiment": "positive",
+        "strengths": [
+          "Q1: one-shotted and provided a correct, full solution",
+          "Q3: model easily solved fill-in-the-blank coding question one-shot",
+          "quick response time",
+          "ability to provide detailed explanations and conceptual recaps",
+          "accurate on general transformer-related questions"
+        ],
+        "weaknesses": [
+          "Q2: incorrect solution with inconsistency in the answer presentation",
+          "Q5: struggled due to formatting issues from LaTeX copy/paste error",
+          "issues with formatting from LaTeX",
+          "occasional inconsistencies in solutions",
+          "confusion on specific terms and notation"
+        ]
+      },
+      "Gemini|HW6": {
+        "thread_count": 3,
+        "model": "Gemini",
+        "sentiment": "positive",
+        "strengths": [
+          "Q1: Successfully solved mathematical derivations in one attempt.",
+          "Q3: mostly interpreted the graph and table correctly, one-shotted all but the last subpart",
+          "Strong reasoning capabilities in mathematical proofs.",
+          "Ability to adapt and create solutions (e.g., writing a Python script) when faced with challenges.",
+          "able to reason about errors and self-correct"
+        ],
+        "weaknesses": [
+          "Q2: Needed prompting for a more thorough answer on the analogy table.",
+          "Q5: Struggled with visual extraction from the PDF, particularly with graph topology.",
+          "Struggles with visual interpretation tasks and formatting.",
+          "Requires additional guidance for specific conceptual connections.",
+          "struggles with visual interpretation in complex graphs"
+        ]
+      },
+      "Gemini|HW8": {
+        "thread_count": 3,
+        "model": "Gemini",
+        "sentiment": "positive",
+        "strengths": [
+          "Q1: all parts were correct including derivations and conceptual analyses",
+          "Q3: correct mathematical derivations and determined range for lambda",
+          "strong performance on analytical and conceptual questions",
+          "ability to derive correct mathematical solutions",
+          "precision in mathematical reasoning"
+        ],
+        "weaknesses": [
+          "Q2: needed multiple attempts to reach the correct answer",
+          "Q5: hallucinated information, leading to confusion",
+          "struggles with extracting specific information from provided documents",
+          "inability to identify optimal computational paths",
+          "occasional incorrect answers"
+        ]
+      },
+      "Gemini|HW5": {
+        "thread_count": 2,
+        "model": "Gemini",
+        "sentiment": "mixed",
+        "strengths": [
+          "Q1: correct execution of convolution filter construction",
+          "strong understanding of core concepts",
+          "clear, step-by-step explanations",
+          "good parsing of information from screenshots"
+        ],
+        "weaknesses": [
+          "occasional computational inaccuracies",
+          "incomplete treatment of subtle details",
+          "tends to provide overly complicated solutions"
+        ]
+      },
+      "Gemini|HW2": {
+        "thread_count": 4,
+        "model": "Gemini",
+        "sentiment": "positive",
+        "strengths": [
+          "Q1: one-shot correct analytical solution for penalized linear improvement",
+          "Q3: arrived at the correct answer after initial response without needing extensive hints",
+          "capable of providing correct answers on first attempts",
+          "able to follow hints to arrive at correct solutions",
+          "high accuracy in theoretical problem-solving"
+        ],
+        "weaknesses": [
+          "Q2: made a logical error leading to an incorrect final answer despite good reasoning",
+          "Q5: produced a partially correct answer relying too much on specific examples from the prompt",
+          "occasionally makes logical or mathematical errors",
+          "struggles with LaTeX formatting, leading to readability issues",
+          "tendency to use hedging language"
+        ]
+      },
+      "Gemini|HW1": {
+        "thread_count": 4,
+        "model": "Gemini",
+        "sentiment": "positive",
+        "strengths": [
+          "Q1: answered fully correctly without further guidance",
+          "Q3: produced geometric interpretations correctly and in a single attempt",
+          "ability to provide detailed justifications",
+          "high accuracy on many problems",
+          "includes intermediate steps in derivations"
+        ],
+        "weaknesses": [
+          "Q2: incorrect answer and needed multiple attempts",
+          "Q5: hallucinated or provided incorrect answers",
+          "tendency to misinterpret problem statements",
+          "failure to adapt responses based on feedback",
+          "sometimes lacks conciseness"
+        ]
+      },
+      "Gemini|HW7": {
+        "thread_count": 1,
+        "model": "Gemini",
+        "sentiment": "positive",
+        "strengths": [
+          "intuitive explanations for complex concepts",
+          "ability to provide alternative approaches to problems"
+        ],
+        "weaknesses": [
+          "lack of rigor in math-intensive questions",
+          "occasionally requires additional prompting to connect solutions"
+        ]
+      },
+      "Gemini|HW3": {
+        "thread_count": 3,
+        "model": "Gemini",
+        "sentiment": "mixed",
+        "strengths": [
+          "Q1: handled Gaussian policy-gradient well with correct derivation",
+          "Q4: Provided a correct interpretation of p\u03b8\u200b:X\u2192\u0394(X) after clarification.",
+          "effective at handling complex mathematical derivations",
+          "accurate in summarizing specific content when prompted",
+          "excellent for computational and mathematical deep-learning questions"
+        ],
+        "weaknesses": [
+          "Q2: chose a wrong cost model for tensor rematerialization",
+          "Q5: hallucinated and did not address the specific sub-questions",
+          "concise explanations often lack broader context",
+          "struggles with implementation-style questions without guidance",
+          "incorrect assumptions leading to wrong solutions"
+        ]
+      },
+      "Gemini|HW12": {
+        "thread_count": 2,
+        "model": "Gemini",
+        "sentiment": "positive",
+        "strengths": [
+          "Q1: Correctly identified and fixed the 'peaked softmax' issue in Transformer code.",
+          "Q3: Accurately constructed the computational graph for the Reparameterization Trick and traced gradient flows.",
+          "Strong theoretical grounding in deep learning concepts.",
+          "Excellent multimodal reasoning and visual interpretation capabilities.",
+          "strong domain knowledge in deep learning"
+        ],
+        "weaknesses": [
+          "potential struggles with visual interpretation",
+          "lack of clarity on certain problem areas"
+        ]
+      },
+      "Gemini|HW4": {
+        "thread_count": 2,
+        "model": "Gemini",
+        "sentiment": "positive",
+        "strengths": [
+          "Q1: correct solution with full reasoning",
+          "improved performance compared to Gemini 2.5 Pro",
+          "quickly fixed mistakes when prompted",
+          "self-critique and correction ability"
+        ],
+        "weaknesses": [
+          "occasional reading mistakes",
+          "minor understandable errors",
+          "prone to misreading problems"
+        ]
+      },
+      "Gemini|HW13": {
+        "thread_count": 2,
+        "model": "Gemini",
+        "sentiment": "positive",
+        "strengths": [
+          "Q2A: correctly interpreted the standard RLHF objective and KL constraints",
+          "Q2B: executed the algebraic 'cancellation trick' effectively",
+          "high accuracy in theoretical derivations",
+          "clear and structured explanations of concepts",
+          "high accuracy in mathematical derivations"
+        ],
+        "weaknesses": []
+      },
+      "Gemini|HW11": {
+        "thread_count": 2,
+        "model": "Gemini",
+        "sentiment": "positive",
+        "strengths": [
+          "Q1: identified main idea correctly and provided thorough solution",
+          "Q3: answered thoroughly and correctly, arguably better than HW solutions",
+          "high accuracy in intuitive and qualitative answers",
+          "error-free mathematical calculations",
+          "provides thorough and detailed solutions"
+        ],
+        "weaknesses": [
+          "limited performance on complex proofs",
+          "potential for long answers if not managed",
+          "struggles with context length when handling multiple questions"
+        ]
+      },
+      "Grok|HW9": {
+        "thread_count": 3,
+        "model": "Grok",
+        "sentiment": "mixed",
+        "strengths": [
+          "Q1: produced correct expectations and reasoning about softmax vs. argmax",
+          "Q3: correctly identified tensor shapes and roles in multi-head attention implementation",
+          "strong at one-shot answers for standard material",
+          "effective for implementation-style questions",
+          "ability to parse and recall information effectively"
+        ],
+        "weaknesses": [
+          "Q2: glossed over distinctions in big-O compute and memory access",
+          "less reliable on detailed complexity and memory analysis",
+          "tends to provide vague explanations with confidence",
+          "struggles with multiple choice questions"
+        ]
+      },
+      "Grok|HW8": {
+        "thread_count": 1,
+        "model": "Grok",
+        "sentiment": "positive",
+        "strengths": [
+          "strong in algebraic reasoning",
+          "accurate in conceptual understanding"
+        ],
+        "weaknesses": [
+          "struggles with complexity analysis",
+          "occasionally hallucinates details"
+        ]
+      },
+      "Grok|HW12": {
+        "thread_count": 1,
+        "model": "Grok",
+        "sentiment": "positive",
+        "strengths": [
+          "Strong conceptual understanding",
+          "Ability to provide detailed explanations and derivations"
+        ],
+        "weaknesses": []
+      },
+      "Grok|HW0": {
+        "thread_count": 1,
+        "model": "Grok",
+        "sentiment": "positive",
+        "strengths": [
+          "reliable analytical reasoning",
+          "one-shot correctness for most problems"
+        ],
+        "weaknesses": [
+          "sensitivity to complex problem structures",
+          "struggles with ambiguity"
+        ]
+      },
+      "Grok|HW10": {
+        "thread_count": 1,
+        "model": "Grok",
+        "sentiment": "positive",
+        "strengths": [
+          "strong mathematical reasoning",
+          "reliable retrieval capabilities"
+        ],
+        "weaknesses": [
+          "tendency to rely on general knowledge when specific data is missing",
+          "initial inaccuracies in conceptual analysis"
+        ]
+      },
+      "Grok|HW4": {
+        "thread_count": 1,
+        "model": "Grok",
+        "sentiment": "mixed",
+        "strengths": [
+          "Grok can accurately interpret and analyze visual inputs like screenshots and matrices.",
+          "It is capable of providing detailed explanations and background information."
+        ],
+        "weaknesses": [
+          "Grok sometimes presents conflicting solutions, which can be confusing.",
+          "It may require corrections or multiple attempts to arrive at the correct answer."
+        ]
+      },
+      "Grok|HW5": {
+        "thread_count": 1,
+        "model": "Grok",
+        "sentiment": "positive",
+        "strengths": [
+          "strong conceptual intuition",
+          "clarity in explanations"
+        ],
+        "weaknesses": [
+          "occasional over-explanation",
+          "lack of emphasis on certain steps"
+        ]
+      },
+      "DeepSeek|HW4": {
+        "thread_count": 1,
+        "model": "DeepSeek",
+        "sentiment": "positive",
+        "strengths": [
+          "performs well on conceptual and numerical reasoning",
+          "better context retention with images or PDFs"
+        ],
+        "weaknesses": [
+          "loses context easily with purely textual prompts",
+          "degraded performance in purely textual formats"
+        ]
+      },
+      "Grok|HW7": {
+        "thread_count": 1,
+        "model": "Grok",
+        "sentiment": "positive",
+        "strengths": [
+          "great performance on multiple-choice questions",
+          "clear explanations for open-ended problems"
+        ],
+        "weaknesses": [
+          "difficulty with proof problems",
+          "needs hints for problem-solving"
+        ]
+      },
+      "Grok|HW6": {
+        "thread_count": 1,
+        "model": "Grok",
+        "sentiment": "mixed",
+        "strengths": [
+          "strong mathematical correctness",
+          "advanced domain knowledge"
+        ],
+        "weaknesses": [
+          "poor organization and structure",
+          "ambiguity in notation"
+        ]
+      },
+      "Kimi|HW11": {
+        "thread_count": 1,
+        "model": "Kimi",
+        "sentiment": "positive",
+        "strengths": [
+          "high reasoning ability",
+          "accurate in handling conceptual and numerical problems"
+        ],
+        "weaknesses": [
+          "OCR errors on matrix inputs",
+          "misinterpretation of ambiguous prompts"
+        ]
+      },
+      "Kimi|HW1": {
+        "thread_count": 1,
+        "model": "Kimi",
+        "sentiment": "positive",
+        "strengths": [
+          "high one-shot accuracy",
+          "complete step-by-step derivations"
+        ],
+        "weaknesses": [
+          "long thinking time",
+          "occasionally struggles with multiple interpretations"
+        ]
+      },
+      "Kimi|HW2": {
+        "thread_count": 1,
+        "model": "Kimi",
+        "sentiment": "positive",
+        "strengths": [
+          "Good intuition and reasoning about gradient operations.",
+          "Ability to provide step-by-step solutions and corrections effectively."
+        ],
+        "weaknesses": [
+          "Tendency to hallucinate under certain conditions.",
+          "Struggles with explicitly stating relationships in complex scenarios."
+        ]
+      },
+      "Kimi|HW9": {
+        "thread_count": 1,
+        "model": "Kimi",
+        "sentiment": "positive",
+        "strengths": [
+          "high accuracy on one-shot questions",
+          "ability to provide justifications for answers"
+        ],
+        "weaknesses": [
+          "struggles with more complex or longer questions",
+          "occasionally provides slightly incorrect answers requiring clarification"
+        ]
+      },
+      "Kimi|HW8": {
+        "thread_count": 1,
+        "model": "Kimi",
+        "sentiment": "positive",
+        "strengths": [
+          "zero-shot performance",
+          "consistency in providing correct answers"
+        ],
+        "weaknesses": []
+      },
+      "Kimi|HW5": {
+        "thread_count": 1,
+        "model": "Kimi",
+        "sentiment": "positive",
+        "strengths": [
+          "high accuracy on non-coding questions",
+          "ability to self-correct and maintain focus after user prompts"
+        ],
+        "weaknesses": [
+          "tendency to hallucinate or go off-topic",
+          "excessive verbosity that can obscure the main answer"
+        ]
+      },
+      "Kimi|HW6": {
+        "thread_count": 1,
+        "model": "Kimi",
+        "sentiment": "positive",
+        "strengths": [
+          "strong reasoning capability",
+          "correct alignment with expected solutions"
+        ],
+        "weaknesses": [
+          "produces over-engineered answers when simpler ones are expected",
+          "does not always verify provided diagrams or datasets"
+        ]
+      },
+      "Kimi|HW7": {
+        "thread_count": 1,
+        "model": "Kimi",
+        "sentiment": "mixed",
+        "strengths": [
+          "able to provide correct answers quickly",
+          "effective at summarizing technical content"
+        ],
+        "weaknesses": [
+          "sometimes makes unjustified logical leaps",
+          "hallucinates when lacking information"
+        ]
+      },
+      "Llama|HW11": {
+        "thread_count": 1,
+        "model": "Llama",
+        "sentiment": "mixed",
+        "strengths": [
+          "accurate problem statement reproduction",
+          "correct answers on proof-based questions"
+        ],
+        "weaknesses": [
+          "struggles with complex calculations and approximations",
+          "context retention issues leading to short responses"
+        ]
+      },
+      "Mistral|HW0": {
+        "thread_count": 1,
+        "model": "Mistral",
+        "sentiment": "positive",
+        "strengths": [
+          "strong expertise in linear algebra",
+          "ability to simplify complex concepts"
+        ],
+        "weaknesses": [
+          "inability to parse visual elements",
+          "difficulty reasoning about graphical representations"
+        ]
+      },
+      "Mistral|HW4": {
+        "thread_count": 1,
+        "model": "Mistral",
+        "sentiment": "mixed",
+        "strengths": [
+          "structured and methodical in responses",
+          "able to correct mistakes with prompting"
+        ],
+        "weaknesses": [
+          "struggles with conventions and assumptions",
+          "occasionally fails to read questions correctly from the PDF"
+        ]
+      },
+      "Mistral|HW7": {
+        "thread_count": 1,
+        "model": "Mistral",
+        "sentiment": "mixed",
+        "strengths": [
+          "performs well on multiple choice questions",
+          "provides coherent explanations for conceptual questions"
+        ],
+        "weaknesses": [
+          "struggles with longer mathematical questions",
+          "requires re-prompting for detailed derivations"
+        ]
+      },
+      "Mistral|HW12": {
+        "thread_count": 1,
+        "model": "Mistral",
+        "sentiment": "mixed",
+        "strengths": [
+          "high accuracy on straightforward questions",
+          "ability to handle visual and numerical reasoning"
+        ],
+        "weaknesses": [
+          "tendency to hallucinate when information is insufficient",
+          "lack of self-awareness in recognizing when it cannot answer"
+        ]
+      },
+      "Mistral|HW3": {
+        "thread_count": 1,
+        "model": "Mistral",
+        "sentiment": "mixed",
+        "strengths": [
+          "high accuracy on straightforward questions",
+          "ability to provide full solutions"
+        ],
+        "weaknesses": [
+          "struggles with external references and context",
+          "issues with numerical counting and minor calculations"
+        ]
+      },
+      "Mistral|HW5": {
+        "thread_count": 1,
+        "model": "Mistral",
+        "sentiment": "mixed",
+        "strengths": [
+          "generally arrives at correct answers",
+          "can provide full solutions"
+        ],
+        "weaknesses": [
+          "struggles with context retention",
+          "sometimes requires further prompting"
+        ]
+      },
+      "Mistral|HW11": {
+        "thread_count": 1,
+        "model": "Mistral",
+        "sentiment": "mixed",
+        "strengths": [
+          "reliable one-shot answers for conceptual queries",
+          "correct methodology application"
+        ],
+        "weaknesses": [
+          "minimal showing of work",
+          "hallucination of external facts"
+        ]
+      },
+      "Mistral|HW1": {
+        "thread_count": 1,
+        "model": "Mistral",
+        "sentiment": "mixed",
+        "strengths": [
+          "good mathematical reasoning for non-matrix computations",
+          "improved performance after feedback on errors"
+        ],
+        "weaknesses": [
+          "struggles with matrix calculations",
+          "misunderstands requests for corrections"
+        ]
+      },
+      "Mistral|HW2": {
+        "thread_count": 1,
+        "model": "Mistral",
+        "sentiment": "mixed",
+        "strengths": [
+          "strong linguistic fluency",
+          "confidence in responses"
+        ],
+        "weaknesses": [
+          "limited flexibility",
+          "struggles with original mathematical derivation"
+        ]
+      },
+      "Mistral|HW6": {
+        "thread_count": 1,
+        "model": "Mistral",
+        "sentiment": "mixed",
+        "strengths": [
+          "demonstrates clear mathematical analysis",
+          "considers multiple options for problem-solving"
+        ],
+        "weaknesses": [
+          "struggles with extracting information from diagrams",
+          "fails to provide reasoning for visual analysis"
+        ]
+      },
+      "Mistral|HW8": {
+        "thread_count": 1,
+        "model": "Mistral",
+        "sentiment": "mixed",
+        "strengths": [
+          "strong performance on computational and mathematical questions",
+          "able to explain correct solutions after being provided with staff solutions"
+        ],
+        "weaknesses": [
+          "difficulty with complex conceptual problems",
+          "struggled to adapt to hints and correct its approach once committed to an incorrect answer"
+        ]
+      },
+      "Mistral|HW9": {
+        "thread_count": 1,
+        "model": "Mistral",
+        "sentiment": "positive",
+        "strengths": [
+          "zero arithmetic errors across calculations",
+          "perfect PyTorch einsum notation"
+        ],
+        "weaknesses": [
+          "explanations lacking when instructed to provide only answers",
+          "initial refusal to give direct answers without pedagogical approach"
+        ]
+      },
+      "Claude|HW11": {
+        "thread_count": 1,
+        "model": "Claude",
+        "sentiment": "positive",
+        "strengths": [
+          "strong in conceptual understanding",
+          "provides detailed explanations"
+        ],
+        "weaknesses": [
+          "occasionally makes small errors",
+          "can struggle with assumptions"
+        ]
+      },
+      "Perplexity|HW8": {
+        "thread_count": 1,
+        "model": "Perplexity",
+        "sentiment": "positive",
+        "strengths": [
+          "strong at routine linear algebra",
+          "capable of self-diagnosis and correction under pressure"
+        ],
+        "weaknesses": [
+          "tends to produce plausible-sounding but incorrect derivations without prompting",
+          "may lack rigor in complex arguments initially"
+        ]
+      },
+      "Qwen|HW6": {
+        "thread_count": 1,
+        "model": "Qwen",
+        "sentiment": "mixed",
+        "strengths": [
+          "capable of problem re-stating to find solutions",
+          "balances multiple perspectives and performs sanity checks"
+        ],
+        "weaknesses": [
+          "unable to interpret images leading to hallucinations",
+          "does not seek clarification when incorrect"
+        ]
+      },
+      "Qwen|HW12": {
+        "thread_count": 1,
+        "model": "Qwen",
+        "sentiment": "positive",
+        "strengths": [
+          "quick and accurate responses for straightforward questions",
+          "ability to identify key components in complex questions"
+        ],
+        "weaknesses": [
+          "struggles with visual data interpretation",
+          "can generate incorrect reasoning or scenarios not present in the question"
+        ]
+      },
+      "Qwen|HW13": {
+        "thread_count": 1,
+        "model": "Qwen",
+        "sentiment": "positive",
+        "strengths": [
+          "strong contextual awareness",
+          "rigorous mathematical detail and logical reasoning"
+        ],
+        "weaknesses": []
+      },
+      "Qwen|HW4": {
+        "thread_count": 1,
+        "model": "Qwen",
+        "sentiment": "mixed",
+        "strengths": [
+          "Good at explaining complex concepts like matrix calculus.",
+          "Can eventually arrive at correct answers with some prompting."
+        ],
+        "weaknesses": [
+          "Struggles with reasoning and often second-guesses itself.",
+          "Requires multiple attempts for some problems to arrive at the correct solution."
+        ]
+      },
+      "Qwen|HW7": {
+        "thread_count": 1,
+        "model": "Qwen",
+        "sentiment": "positive",
+        "strengths": [
+          "strong context retention",
+          "accurate retrieval of problem statements"
+        ],
+        "weaknesses": [
+          "difficulty with sophisticated mathematical operations",
+          "tendency to misinterpret specific terminology"
+        ]
+      },
+      "Qwen|HW8": {
+        "thread_count": 1,
+        "model": "Qwen",
+        "sentiment": "positive",
+        "strengths": [
+          "strong at multiple choice questions",
+          "generally accurate in straightforward tasks"
+        ],
+        "weaknesses": [
+          "difficulty with complex reasoning",
+          "inability to provide full solutions in some cases"
+        ]
+      },
+      "Qwen|HW9": {
+        "thread_count": 1,
+        "model": "Qwen",
+        "sentiment": "positive",
+        "strengths": [
+          "quickly solves multi-part questions",
+          "understands questions despite formatting issues"
+        ],
+        "weaknesses": [
+          "sometimes requires nudging for specific answers",
+          "may struggle with initial attempts on complex questions"
+        ]
+      },
+      "Qwen|HW11": {
+        "thread_count": 1,
+        "model": "Qwen",
+        "sentiment": "mixed",
+        "strengths": [
+          "good at high-level conceptual explanations",
+          "can provide correct answers with reasoning on many questions"
+        ],
+        "weaknesses": [
+          "makes small but critical mathematical errors",
+          "often lacks self-awareness of its own uncertainties"
+        ]
+      },
+      "Qwen|HW0": {
+        "thread_count": 1,
+        "model": "Qwen",
+        "sentiment": "positive",
+        "strengths": [
+          "generally provides correct answers in one attempt",
+          "minimal misconceptions or hallucinations"
+        ],
+        "weaknesses": [
+          "often skips detailed steps in solutions",
+          "struggles with visual representations and ASCII art"
+        ]
+      },
+      "Qwen|HW2": {
+        "thread_count": 1,
+        "model": "Qwen",
+        "sentiment": "positive",
+        "strengths": [
+          "capable of solving problems correctly in one attempt",
+          "able to improve with provided corrections"
+        ],
+        "weaknesses": [
+          "occasionally hallucinates minor details",
+          "initial performance can be hindered by lack of context"
+        ]
+      },
+      "Kimi|HW0": {
+        "thread_count": 1,
+        "model": "Kimi",
+        "sentiment": "mixed",
+        "strengths": [
+          "clear conceptual explanations",
+          "ability to recognize high-level patterns"
+        ],
+        "weaknesses": [
+          "skips steps in reasoning",
+          "requires explicit instructions for detailed derivations"
+        ]
+      },
+      "Claude|HW13": {
+        "thread_count": 1,
+        "model": "Claude",
+        "sentiment": "positive",
+        "strengths": [
+          "strong in providing full solutions",
+          "good at explaining complex concepts"
+        ],
+        "weaknesses": [
+          "occasionally skips intermediate steps",
+          "may struggle with detailed algebraic derivations"
+        ]
+      }
+    }
+  },
+  "participation_B": {
+    "by_hw": {
+      "HW5": {
+        "thread_count": 14,
+        "sentiment": "positive",
+        "strengths": [
+          "Q5: achieved 100% one-shot success on standard implementation tasks like Na\u00efve Convolution and Max Pooling",
+          "Q6: successfully iterated to an architecture within parameter count constraint on the third try",
+          "Q1: produced a clean, fully correct, and idiomatic PyTorch implementation"
+        ],
+        "weaknesses": [
+          "Q6: inverted analysis of model_dropout and model_no_dropout plots, leading to a hallucinated narrative",
+          "Q2: generated the wrong output twice and did not recognize the errors",
+          "Q5: hallucinated information, failed to provide correct modifications"
+        ]
+      },
+      "HW1": {
+        "thread_count": 13,
+        "sentiment": "positive",
+        "strengths": [
+          "Q1: Mistral inserted the correct code block and provided a short explanation while respecting constraints.",
+          "Q3: Mistral successfully modified the learning rate after receiving clarifying hints."
+        ],
+        "weaknesses": [
+          "Q2: Partially correct implementation without background knowledge, used different coefficient.",
+          "Q5: Mistral's first attempt did not adhere to the specified constraints.",
+          "Q3I: Overconfident prediction about momentum's performance without testing."
+        ]
+      },
+      "HW6": {
+        "thread_count": 7,
+        "sentiment": "mixed",
+        "strengths": [
+          "Q5: accurately handled tasks such as adding self-loops to the adjacency matrix and generating the feature input matrix.",
+          "Q1: produced a highly structured and syntactically correct solution on the first attempt",
+          "Q3: implementation of the forward pass and symmetric normalization was mathematically accurate"
+        ],
+        "weaknesses": [
+          "Q5: Deepseek struggled with the large context of the ZKC problem, leading to overcomplication and longer inference time.",
+          "Q2: failed to correctly derive the gradients for the graph structure during backpropagation"
+        ]
+      },
+      "HW4": {
+        "thread_count": 16,
+        "sentiment": "positive",
+        "strengths": [
+          "Q5: correctly defined average-filtering and Laplacian kernels using NumPy",
+          "Q6: provided strong insights on architecture/hyperparameter trade-offs",
+          "Q1: Llama 4 excelled in coding parts, demonstrating strong understanding of PyTorch conventions.",
+          "strong performance on coding tasks"
+        ],
+        "weaknesses": [
+          "Q2: The hyperparameter tuning question was challenging, requiring multiple attempts and ultimately failing.",
+          "Q5: Llama struggled with context when not provided enough or the right information.",
+          "Q6: provided poorer configurations and attempted to suggest extra parameters beyond the scope"
+        ]
+      },
+      "HW3": {
+        "thread_count": 14,
+        "sentiment": "mixed",
+        "strengths": [
+          "Q2A: provided a correct solution on the first attempt",
+          "Q1: correctly identified the RMS\u2192RMS induced norm and derived the correct relation",
+          "Q3: implemented the SimpleAdamMuP optimizer with proper scaling and justified the factors accurately"
+        ],
+        "weaknesses": [
+          "Q2: incorrect per-weight multiplier implementation due to mixing up details",
+          "Q3: contained several mathematical mistakes and did not follow instructions properly",
+          "Q2D: initially provided incorrect scaling factor and struggled with reasoning"
+        ]
+      },
+      "HW10": {
+        "thread_count": 15,
+        "sentiment": "mixed",
+        "strengths": [
+          "Q1: produced a fully vectorized implementation that matched the reference solution",
+          "Q3: successfully implemented adaptive inference logic using entropy tolerance",
+          "Q2: produced mostly correct code for basic transformer and simple attention patterns"
+        ],
+        "weaknesses": [
+          "Q2: struggled with padding mask dimensions and tensor reshaping, leading to multiple failures and incorrect guesses",
+          "Q5: model needed multiple attempts to generate a valid solution",
+          "Q1: struggled with trivial boilerplate imports"
+        ]
+      },
+      "HW8": {
+        "thread_count": 16,
+        "sentiment": "positive",
+        "strengths": [
+          "Q1: Core implementation logic for all four functions was correct and complete.",
+          "Q3: provided a detailed and accurate walkthrough of the divide-and-conquer kernel construction",
+          "Q2: Divide-and-conquer kernel construction algorithm was successfully implemented."
+        ],
+        "weaknesses": [
+          "Q2: Failed to produce correct GPU convolution implementations, mis-specifying kernels and indexing.",
+          "Q5: Incorrectly claimed equivalence of faulty convolution implementations despite significant differences.",
+          "Q3: Data type mismatch caused a TypeError with NumPy arrays instead of PyTorch tensors."
+        ]
+      },
+      "HW2": {
+        "thread_count": 12,
+        "sentiment": "positive",
+        "strengths": [
+          "Q3: Implementing gradient ascent step (gd_step), Monte-Carlo smoothing (smoothed_f) - one-shot, correct solution.",
+          "Q4: justified alternate implementation of momentum correctly",
+          "Q1: Qwen3-MAX provided a correct solution for the coding problem regarding deep neural networks."
+        ],
+        "weaknesses": [
+          "Q6: struggled with the specific implementation details of estimators",
+          "Q5: The model failed to request necessary context from the original files, leading to incomplete solutions.",
+          "Q2: The model ignored specific parameters like delta and did not maintain tx and ty in the function as instructed."
+        ]
+      },
+      "HW7": {
+        "thread_count": 9,
+        "sentiment": "positive",
+        "strengths": [
+          "Q1: Correct implementation of RNNLayer and RecurrentRegressionModel with appropriate loss function and gradient visualizer.",
+          "Q3: Accurate handling of denoising and masked autoencoders with proper evaluation and plotting helpers."
+        ],
+        "weaknesses": [
+          "Q2: Incorrect adjacency sign in the Graph-Clustering task, leading to flawed spectral clustering.",
+          "Q5: failed to implement the masked autoencoder due to issues with random initialization"
+        ]
+      },
+      "HW11": {
+        "thread_count": 7,
+        "sentiment": "mixed",
+        "strengths": [
+          "Q3: one-shot solved the problem accurately without hallucinations.",
+          "Q4: successfully completed todos for scaling laws, pruning, and quantization",
+          "Q1: identified and corrected errors in the single attention head function"
+        ],
+        "weaknesses": [
+          "Q4: hallucinated context from general knowledge instead of sticking to provided materials.",
+          "Q2: generated code that repeatedly failed to pass test cases without external guidance",
+          "Q5: used unsafe .data operations and had a minor typo"
+        ]
+      },
+      "HW9": {
+        "thread_count": 12,
+        "sentiment": "mixed",
+        "strengths": [
+          "Q1: Successfully identifies causal relationships in attention (e.g., 'ran' attends to 'dog').",
+          "Q3: Kimi improved performance with fewer images and hints, leading to correct interpretations."
+        ],
+        "weaknesses": [
+          "Q5: Repeats incorrect connections (e.g., 'it' and 'party') and fails to provide varied responses.",
+          "Q1: Kimi struggled to choose appropriate images and failed to visualize correctly.",
+          "Q2: Hallucinates attention behavior not reflected in visuals (e.g., claims about 'Mr.' attending to 'his', 'party', 'election')."
+        ]
+      },
+      "HW12": {
+        "thread_count": 11,
+        "sentiment": "positive",
+        "strengths": [
+          "Q4: Deepseek was able to complete the coding problem with minimal intervention and arrived at the correct answer after some prompting.",
+          "Q1: The AI generated correct code for the Reparameterization Trick and ELBO objective on the first attempt.",
+          "Q3: The AI provided deep insights into meta-learning after receiving text-based context."
+        ],
+        "weaknesses": [
+          "Q1: Deepseek struggled to identify and use functions from imported packages, leading to incorrect outputs initially.",
+          "Q2: It required multiple attempts and corrections to output the mean instead of distributions.",
+          "Q5: struggled with theoretical derivations, resulting in mixed performance.",
+          "may struggle with more complex problems"
+        ]
+      },
+      "HW0": {
+        "thread_count": 12,
+        "sentiment": "positive",
+        "strengths": [
+          "Q6: successfully solved with a 90% one-shot success rate",
+          "Q1: one-shot solution for forward pass, backward pass, relu forward pass, relu backward pass",
+          "Q3: successfully trained both shallow and deep networks after tuning hyperparameters"
+        ],
+        "weaknesses": [
+          "Q2: incorrect implementation of backpropagation logic, needed multiple attempts",
+          "Q5: hallucinated code for FullyConnectedNet, failed to produce valid output",
+          "Q6: broke down and refused to edit files after initial success"
+        ]
+      }
+    },
+    "by_model_hw": {
+      "Gemini|HW5": {
+        "thread_count": 4,
+        "model": "Gemini",
+        "sentiment": "mixed",
+        "strengths": [
+          "Q5: performed well on subparts with solid conceptual depth and accurate interpretations",
+          "Q6: correctly executed the full forward and backward propagation steps for batch normalization",
+          "accurate and stable for standard neural network tasks",
+          "strong ability to produce syntactically correct code on the first try",
+          "maintained perfect internal consistency"
+        ],
+        "weaknesses": [
+          "Q6: failed to incorporate dropout into the fully connected network",
+          "Q5: claimed to complete the function but made no changes",
+          "lacks flexibility and creative reasoning for architectural modifications",
+          "overreliance on re-importing modules and limited architectural creativity",
+          "overconfidence on subtle theoretical points"
+        ]
+      },
+      "Gemini|HW1": {
+        "thread_count": 2,
+        "model": "Gemini",
+        "sentiment": "positive",
+        "strengths": [
+          "Q1: provided a correct and full solution with reasoning about optimization dynamics",
+          "Q3: provided a new learning rate and implemented gradient descent with momentum",
+          "able to generate code snippets effectively",
+          "can adapt code based on user feedback",
+          "ability to reason about optimization dynamics"
+        ],
+        "weaknesses": [
+          "Q2: needed multiple attempts to add an if check for i == 0",
+          "Q5: hallucinated information leading to an incorrect approach",
+          "initial solutions may lack completeness",
+          "requires user prompts for corrections and improvements",
+          "tendency to hallucinate information"
+        ]
+      },
+      "Claude|HW5": {
+        "thread_count": 2,
+        "model": "Claude",
+        "sentiment": "positive",
+        "strengths": [
+          "Strong on both implementation and conceptual explanation.",
+          "No hand-holding needed - gave complete working implementations from function signatures alone.",
+          "internal code verification & self-correction"
+        ],
+        "weaknesses": [
+          "multimodal/visual failures",
+          "math hallucinations"
+        ]
+      },
+      "Grok|HW6": {
+        "thread_count": 1,
+        "model": "Grok",
+        "sentiment": "positive",
+        "strengths": [
+          "good at zero-shot coding problems",
+          "able to correct itself with additional context"
+        ],
+        "weaknesses": [
+          "struggles with vague prompts",
+          "may make incorrect assumptions about data"
+        ]
+      },
+      "Cursor|HW4": {
+        "thread_count": 1,
+        "model": "Cursor",
+        "sentiment": "positive",
+        "strengths": [
+          "strong vision capabilities for interpreting visualizations",
+          "ability to provide relevant outside information for learning"
+        ],
+        "weaknesses": []
+      },
+      "Grok|HW3": {
+        "thread_count": 1,
+        "model": "Grok",
+        "sentiment": "mixed",
+        "strengths": [
+          "capable of completing straightforward coding tasks",
+          "understands basic concepts of muP and learning rate adjustments"
+        ],
+        "weaknesses": [
+          "struggles with complex calculations and nuanced details",
+          "may hallucinate information when searching for implementation details"
+        ]
+      },
+      "GPT|HW3": {
+        "thread_count": 4,
+        "model": "GPT",
+        "sentiment": "positive",
+        "strengths": [
+          "Q1: provided correct scaling factor guidance for fan-in normalization",
+          "Q3: model generated correct and detailed answers after running code",
+          "provides good explanations for answers",
+          "self-questioning leads to deeper insights",
+          "effective debugging guidance"
+        ],
+        "weaknesses": [
+          "Q2D: initially provided incorrect scaling factor and struggled with reasoning",
+          "Q2: mixed up fan-in \u221a scaling and \u03bcP 1/n scaling multiple times",
+          "confusion with specific definitions",
+          "initial incorrect answers requiring clarification",
+          "confusion between similar concepts"
+        ]
+      },
+      "DeepSeek|HW10": {
+        "thread_count": 2,
+        "model": "DeepSeek",
+        "sentiment": "mixed",
+        "strengths": [
+          "Q1: model provided a correct and full solution",
+          "Q3: model demonstrated effective text extraction and analysis",
+          "ability to extract and analyze text from files",
+          "capability to produce formatted answers",
+          "strong coding abilities"
+        ],
+        "weaknesses": [
+          "Q2: incorrect solution requiring multiple attempts",
+          "Q5: model needed multiple attempts to generate a valid solution",
+          "inconsistency in generating correct solutions",
+          "tendency to hallucinate or provide incorrect information",
+          "lacks reasoning ability for predicting execution outcomes"
+        ]
+      },
+      "Gemini|HW8": {
+        "thread_count": 3,
+        "model": "Gemini",
+        "sentiment": "positive",
+        "strengths": [
+          "Q2: used a recursive approach for coding SSM Forward that produced correct results",
+          "provides clean, formatted code",
+          "offers thorough analysis and explanations of code",
+          "Effective at translating mathematical definitions into code."
+        ],
+        "weaknesses": [
+          "Q2: made a mistake in convolution forward pass and needed a prompt to correct",
+          "takes significant time for processing even simple questions",
+          "occasionally makes mistakes that require user intervention",
+          "Struggles with complexity analysis and cost evaluation."
+        ]
+      },
+      "Claude|HW4": {
+        "thread_count": 3,
+        "model": "Claude",
+        "sentiment": "positive",
+        "strengths": [
+          "Q1: provided correct and full solution on the first try",
+          "strong coding ability",
+          "effective interaction with attached files",
+          "able to provide necessary context for complex questions"
+        ],
+        "weaknesses": [
+          "Q2: struggled with determining optimal hyperparameters, needed multiple attempts",
+          "Q5: hallucinated information and failed to provide a valid solution",
+          "unexpected generation of markdown files",
+          "potential misunderstanding of user prompts",
+          "difficulty with visual information interpretation"
+        ]
+      },
+      "GPT|HW2": {
+        "thread_count": 3,
+        "model": "GPT",
+        "sentiment": "positive",
+        "strengths": [
+          "Q3: provided a reasonable interpretation of plots despite complexity",
+          "Q4: justified alternate implementation of momentum correctly",
+          "capable of providing mathematical justifications",
+          "able to interpret complex visual data effectively",
+          "quickly generates correct coding solutions"
+        ],
+        "weaknesses": [
+          "Q6: struggled with the specific implementation details of estimators",
+          "Q5: did not have any specific mention of failure, but implied challenges with certain choices",
+          "made questionable implementation choices",
+          "sometimes deviated from expected methods without clear reasoning",
+          "occasionally makes mistakes"
+        ]
+      },
+      "GPT|HW7": {
+        "thread_count": 4,
+        "model": "GPT",
+        "sentiment": "mixed",
+        "strengths": [
+          "Q1: Correct implementation of RNNLayer and RecurrentRegressionModel with appropriate loss function and gradient visualizer.",
+          "Q3: Accurate handling of denoising and masked autoencoders with proper evaluation and plotting helpers.",
+          "High proficiency in implementing complex neural network architectures.",
+          "Ability to provide nuanced responses to ethical considerations.",
+          "Strong understanding of RNN and Autoencoder architectures."
+        ],
+        "weaknesses": [
+          "Q2: Incorrect adjacency sign in the Graph-Clustering task, leading to flawed spectral clustering.",
+          "Q5: incorrect statement about classifier effectiveness",
+          "Struggles with mathematical accuracy in specific contexts.",
+          "Inconsistencies in naming conventions leading to potential confusion.",
+          "Struggles with specific details in Graph-Clustering implementation."
+        ]
+      },
+      "GPT|HW11": {
+        "thread_count": 1,
+        "model": "GPT",
+        "sentiment": "positive",
+        "strengths": [
+          "accurate coding solutions",
+          "ability to refactor and improve code"
+        ],
+        "weaknesses": [
+          "tendency to hallucinate information",
+          "excessive verbosity in explanations"
+        ]
+      },
+      "GPT|HW10": {
+        "thread_count": 2,
+        "model": "GPT",
+        "sentiment": "positive",
+        "strengths": [
+          "Q3: correctly diagnosed RuntimeError and provided specific solution",
+          "exceptional coding fluency",
+          "strong numerical intuition",
+          "consistently interprets questions correctly"
+        ],
+        "weaknesses": [
+          "Q5: needed multiple attempts to arrive at the correct answer",
+          "requires human intervention for environment-specific issues",
+          "struggles with trivial tasks",
+          "occasionally provides incorrect solutions initially"
+        ]
+      },
+      "GPT|HW5": {
+        "thread_count": 3,
+        "model": "GPT",
+        "sentiment": "positive",
+        "strengths": [
+          "Q1: produced a clean, fully correct, and idiomatic PyTorch implementation",
+          "Q3: noted architectural and dimensional constraints, anticipating potential pitfalls",
+          "strong reliability in coding tasks",
+          "ability to connect logic between different files",
+          "ability to provide clear coding solutions"
+        ],
+        "weaknesses": [
+          "difficulty with complex code and specific numerical outputs",
+          "tendency to make mistakes when deriving results from complex scenarios"
+        ]
+      },
+      "GPT|HW9": {
+        "thread_count": 2,
+        "model": "GPT",
+        "sentiment": "mixed",
+        "strengths": [
+          "produced well-justified interpretations",
+          "identified relevant visualizations effectively",
+          "strong conceptual understanding"
+        ],
+        "weaknesses": [
+          "frequently modified questions incorrectly",
+          "responses often included excessive detail",
+          "minor omissions in detail"
+        ]
+      },
+      "GPT|HW1": {
+        "thread_count": 2,
+        "model": "GPT",
+        "sentiment": "mixed",
+        "strengths": [
+          "effective at writing self-contained algorithm blocks",
+          "valid implementation despite differing from class style",
+          "Strong understanding of optimization theory"
+        ],
+        "weaknesses": [
+          "struggled with contextual understanding of problem intent",
+          "exhibited semantic misinterpretation and contextual blindness",
+          "Formatting and integration issues with provided templates"
+        ]
+      },
+      "GPT|HW12": {
+        "thread_count": 3,
+        "model": "GPT",
+        "sentiment": "positive",
+        "strengths": [
+          "capable of solving coding questions with provided context",
+          "able to generate functional code that runs successfully",
+          "follows instructions strictly"
+        ],
+        "weaknesses": [
+          "struggles with brevity in written explanations",
+          "may misinterpret the requirements of non-coding questions",
+          "Struggled with understanding the underlying codebase for VAE"
+        ]
+      },
+      "GPT|HW4": {
+        "thread_count": 4,
+        "model": "GPT",
+        "sentiment": "positive",
+        "strengths": [
+          "Q1: one-shot completion of coding question",
+          "Q3: one-shot completion of coding question",
+          "clear explanations of topics",
+          "ability to solve coding problems accurately",
+          "consistently infers details from context"
+        ],
+        "weaknesses": [
+          "Q2: incorrect response requiring multiple attempts",
+          "Q5: needed multiple attempts",
+          "long reasoning time",
+          "occasional hallucination",
+          "may not need high reasoning mode for all tasks"
+        ]
+      },
+      "GPT|HW0": {
+        "thread_count": 3,
+        "model": "GPT",
+        "sentiment": "mixed",
+        "strengths": [
+          "Q1: one-shot solution for forward pass, backward pass, relu forward pass, relu backward pass",
+          "provides clear explanations",
+          "handles questions effectively in one attempt",
+          "Able to provide correct solutions for simpler coding tasks"
+        ],
+        "weaknesses": [
+          "Takes a long time to generate responses",
+          "Can overcomplicate solutions instead of providing simpler fixes",
+          "lacks intuition regarding training dynamics"
+        ]
+      },
+      "GPT|HW6": {
+        "thread_count": 1,
+        "model": "GPT",
+        "sentiment": "mixed",
+        "strengths": [
+          "Ability to revise and improve solutions based on user feedback",
+          "Effective at handling structured, fill-in-the-blank style questions"
+        ],
+        "weaknesses": [
+          "Struggles with dimensionality issues in matrix operations",
+          "Can misinterpret class definitions leading to errors"
+        ]
+      },
+      "Claude|HW12": {
+        "thread_count": 2,
+        "model": "Claude",
+        "sentiment": "positive",
+        "strengths": [
+          "good grasp of homework specifications",
+          "produces sensible outputs and clean code",
+          "ability to provide clear explanations"
+        ],
+        "weaknesses": [
+          "may struggle with more complex problems",
+          "potential for hallucination in answers"
+        ]
+      },
+      "Claude|HW7": {
+        "thread_count": 2,
+        "model": "Claude",
+        "sentiment": "positive",
+        "strengths": [
+          "Q1: fully correct coding question with detailed reasoning",
+          "Q3: one-shotted with correct implementation, debugged effectively",
+          "one-shot capability on most questions",
+          "ability to run and debug its own code using context clues",
+          "strong performance on coding questions"
+        ],
+        "weaknesses": [
+          "struggles with hyperparameter tuning",
+          "requires guidance for complex adjustments",
+          "none identified in the report"
+        ]
+      },
+      "Claude|HW10": {
+        "thread_count": 2,
+        "model": "Claude",
+        "sentiment": "mixed",
+        "strengths": [
+          "Q3: correct and detailed coding solution with multiple versions generated",
+          "capable of solving problems in one shot",
+          "adaptable to different coding conventions",
+          "accurate on conceptual questions"
+        ],
+        "weaknesses": [
+          "Q2: struggled with identifying errors in code after multiple attempts",
+          "struggles with optional or more complex problems",
+          "cannot run unit tests for verification",
+          "difficulty with complex coding problems"
+        ]
+      },
+      "Claude|HW0": {
+        "thread_count": 1,
+        "model": "Claude",
+        "sentiment": "positive",
+        "strengths": [
+          "high accuracy in coding tasks",
+          "effective with default prompts"
+        ],
+        "weaknesses": []
+      },
+      "Claude|HW6": {
+        "thread_count": 2,
+        "model": "Claude",
+        "sentiment": "positive",
+        "strengths": [
+          "Q1: correctly analyzed cell outputs and provided accurate answers",
+          "ability to analyze and interpret outputs",
+          "capability to answer related questions accurately",
+          "strong at reconstructing textbook-level intent"
+        ],
+        "weaknesses": [
+          "unreliable at satisfying precise implementation constraints",
+          "tends to invent details and restructure code"
+        ]
+      },
+      "Claude|HW1": {
+        "thread_count": 1,
+        "model": "Claude",
+        "sentiment": "mixed",
+        "strengths": [
+          "Good explanations of concepts related to momentum and convergence.",
+          "Quick error recovery when initial suggestions failed."
+        ],
+        "weaknesses": [
+          "Q3I: Overconfident prediction about momentum's performance without testing.",
+          "Cannot guess hyperparameters without running experiments.",
+          "Overconfident predictions based on theoretical reasoning."
+        ]
+      },
+      "Claude|HW2": {
+        "thread_count": 1,
+        "model": "Claude",
+        "sentiment": "mixed",
+        "strengths": [
+          "ability to implement standard deep learning algorithms correctly",
+          "quick translation of formulas into code"
+        ],
+        "weaknesses": [
+          "poor instruction-following and adherence to prompts",
+          "tendency to make unnecessary modifications without justification"
+        ]
+      },
+      "Claude|HW9": {
+        "thread_count": 2,
+        "model": "Claude",
+        "sentiment": "mixed",
+        "strengths": [
+          "effective at interpreting structured textual summaries",
+          "capable of providing rich and well-structured answers when given clear descriptions",
+          "Ability to generate alternative solutions when direct interaction is not possible."
+        ],
+        "weaknesses": [
+          "Q2: Cursor struggled to render visualizations and relied on numerical attention weights, which led to inaccuracies.",
+          "poor at extracting patterns directly from images",
+          "incomplete answers on conceptual questions without specific prompts",
+          "Inability to render visualizations, affecting the accuracy of the analysis."
+        ]
+      },
+      "Claude|HW8": {
+        "thread_count": 3,
+        "model": "Claude",
+        "sentiment": "positive",
+        "strengths": [
+          "Q1: Core implementation logic for all four functions was correct and complete.",
+          "Good intuition about parallelism vs. computational complexity trade-offs.",
+          "Quickly adapted when given corrective feedback.",
+          "Competent at implementing and explaining CPU code with modest prompting."
+        ],
+        "weaknesses": [
+          "Tendency to over-specify complexity bounds before simplifying.",
+          "Did not initially catch the NumPy/PyTorch inconsistency.",
+          "Struggled with GPU convolution implementations, leading to incorrect results."
+        ]
+      },
+      "Cursor|HW5": {
+        "thread_count": 1,
+        "model": "Cursor",
+        "sentiment": "mixed",
+        "strengths": [
+          "better at handling file operations",
+          "ability to read file structures"
+        ],
+        "weaknesses": [
+          "struggles with overly complex file structures",
+          "not effective for broad tasks involving many files"
+        ]
+      },
+      "Cursor|HW2": {
+        "thread_count": 1,
+        "model": "Cursor",
+        "sentiment": "mixed",
+        "strengths": [
+          "Strong at code generation and reasoning.",
+          "Effective with well-specified mathematical problems."
+        ],
+        "weaknesses": [
+          "Less reliable with questions requiring visual output or plot analysis.",
+          "Tends to overstate its capabilities regarding code execution and plot review."
+        ]
+      },
+      "Cursor|HW10": {
+        "thread_count": 1,
+        "model": "Cursor",
+        "sentiment": "positive",
+        "strengths": [
+          "consistency in code performance",
+          "strong understanding of common coding structures"
+        ],
+        "weaknesses": [
+          "limited understanding of niche library functions",
+          "lack of comments in code"
+        ]
+      },
+      "Cursor|HW1": {
+        "thread_count": 1,
+        "model": "Cursor",
+        "sentiment": "positive",
+        "strengths": [
+          "effective at connecting logical, numerical, and visual reasoning",
+          "provides clear explanations for conceptual understanding"
+        ],
+        "weaknesses": [
+          "unable to run cells autonomously in Jupyter notebook",
+          "requires more hand-holding towards the end of assignments"
+        ]
+      },
+      "Cursor|HW12": {
+        "thread_count": 1,
+        "model": "Cursor",
+        "sentiment": "positive",
+        "strengths": [
+          "One-shot capability in generating correct code",
+          "Strong mathematical accuracy and understanding of VAE formulation"
+        ],
+        "weaknesses": []
+      },
+      "Cursor|HW6": {
+        "thread_count": 1,
+        "model": "Cursor",
+        "sentiment": "positive",
+        "strengths": [
+          "outputs accurate code",
+          "offers helpful explanations"
+        ],
+        "weaknesses": [
+          "minor mistakes in network setup",
+          "occasionally lacks depth in certain implementations"
+        ]
+      },
+      "DeepSeek|HW2": {
+        "thread_count": 1,
+        "model": "DeepSeek",
+        "sentiment": "positive",
+        "strengths": [
+          "Effective implementation of complex concepts",
+          "Ability to provide clear visualizations and explanations"
+        ],
+        "weaknesses": []
+      },
+      "DeepSeek|HW1": {
+        "thread_count": 1,
+        "model": "DeepSeek",
+        "sentiment": "positive",
+        "strengths": [
+          "good at providing explanations",
+          "capable of correcting itself with feedback"
+        ],
+        "weaknesses": [
+          "struggled with specific implementation details",
+          "needed more context for better performance"
+        ]
+      },
+      "DeepSeek|HW4": {
+        "thread_count": 2,
+        "model": "DeepSeek",
+        "sentiment": "mixed",
+        "strengths": [
+          "Q5: one-shotted the code with little explanation",
+          "good at executing coding tasks",
+          "quickly generates correct code",
+          "good at explaining key concepts"
+        ],
+        "weaknesses": [
+          "weaker at providing conceptual depth",
+          "explanations are often lacking",
+          "lack of visual observation capabilities"
+        ]
+      },
+      "DeepSeek|HW9": {
+        "thread_count": 1,
+        "model": "DeepSeek",
+        "sentiment": "positive",
+        "strengths": [
+          "strong pattern identification",
+          "thorough explanations"
+        ],
+        "weaknesses": [
+          "occasional hallucination",
+          "misalignment in pattern strength expectations"
+        ]
+      },
+      "DeepSeek|HW12": {
+        "thread_count": 1,
+        "model": "DeepSeek",
+        "sentiment": "positive",
+        "strengths": [
+          "Capable of completing multi-step coding tasks",
+          "Effective in deep thinking mode"
+        ],
+        "weaknesses": [
+          "Struggles to utilize functions not explicitly listed in the input",
+          "Requires prompting to make connections with imported functions"
+        ]
+      },
+      "DeepSeek|HW11": {
+        "thread_count": 1,
+        "model": "DeepSeek",
+        "sentiment": "mixed",
+        "strengths": [
+          "able to identify and correct errors when provided with specific feedback",
+          "capable of completing tasks when given clear instructions"
+        ],
+        "weaknesses": [
+          "Q2: generated code that repeatedly failed to pass test cases without external guidance",
+          "struggles with complex problems without sufficient guidance",
+          "may generate incorrect code that requires multiple iterations to fix"
+        ]
+      },
+      "DeepSeek|HW8": {
+        "thread_count": 1,
+        "model": "DeepSeek",
+        "sentiment": "positive",
+        "strengths": [
+          "strong reasoning and coding abilities",
+          "excellent handling of tensor operations and device management"
+        ],
+        "weaknesses": []
+      },
+      "DeepSeek|HW3": {
+        "thread_count": 1,
+        "model": "DeepSeek",
+        "sentiment": "mixed",
+        "strengths": [
+          "strong theoretical grasp",
+          "clean implementation"
+        ],
+        "weaknesses": [
+          "less self-consistent in final answers",
+          "needs prompting to verify its logic"
+        ]
+      },
+      "GPT|HW8": {
+        "thread_count": 2,
+        "model": "GPT",
+        "sentiment": "positive",
+        "strengths": [
+          "Q1: one-shot correct implementation of SSM",
+          "Q3: accurate analysis of runtime graphs in one-shot",
+          "strong reasoning ability with graphs",
+          "capable of introspection and self-correction when given feedback",
+          "effective at generating correct code in one attempt"
+        ],
+        "weaknesses": [
+          "Q2: struggled with initial convolution implementation, needed assistance",
+          "Q5: no specific mention of failure, but implied need for multiple attempts",
+          "initial mistakes in complex implementations",
+          "may require external input for correction",
+          "slower processing due to deliberate reasoning"
+        ]
+      },
+      "Gemini|HW3": {
+        "thread_count": 2,
+        "model": "Gemini",
+        "sentiment": "mixed",
+        "strengths": [
+          "provides clean and concise solutions",
+          "offers good mathematical intuition in explanations",
+          "accurate in understanding and implementing learning rate scaling"
+        ],
+        "weaknesses": [
+          "Q2: incorrect per-weight multiplier implementation due to mixing up details",
+          "struggles with applying concepts outside typical formulations",
+          "creates hacky solutions instead of logically correct answers",
+          "struggles with nuanced details in implementation"
+        ]
+      },
+      "Gemini|HW0": {
+        "thread_count": 3,
+        "model": "Gemini",
+        "sentiment": "positive",
+        "strengths": [
+          "Q1: produced correct Python code with a clear plan",
+          "Q3: successfully trained both shallow and deep networks after tuning hyperparameters",
+          "quickly suggested next functions",
+          "provided detailed comments explaining code",
+          "strong understanding of neural-network components"
+        ],
+        "weaknesses": [
+          "Q2: struggled with incorrect implementation requiring multiple attempts",
+          "Q5: troubleshooting was often brute-force rather than reasoning-driven",
+          "occasionally hallucinated requirements",
+          "may struggle with complex problems",
+          "needs careful oversight for correctness and completeness"
+        ]
+      },
+      "Gemini|HW2": {
+        "thread_count": 3,
+        "model": "Gemini",
+        "sentiment": "positive",
+        "strengths": [
+          "Q1: provided a correct and complete solution on the first attempt",
+          "Q3: effectively resolved runtime errors with clear explanations",
+          "high accuracy in algorithm implementation",
+          "consistent code style with the provided codebase",
+          "strong analytical capabilities"
+        ],
+        "weaknesses": [
+          "Q2: struggled with logic errors, requiring multiple attempts to correct",
+          "Q5: hallucinated information leading to incorrect conclusions",
+          "minor differences in hyperparameter choices",
+          "some implementation details varied from staff solutions",
+          "occasionally struggles with logic errors"
+        ]
+      },
+      "Gemini|HW9": {
+        "thread_count": 3,
+        "model": "Gemini",
+        "sentiment": "positive",
+        "strengths": [
+          "Q1: Correctly answered conceptual questions (a-d) on the first attempt",
+          "Q3: Accurate predictions about visualizations in the notebook",
+          "Concise responses that go beyond basic interpretability",
+          "Impressive computer vision skills in interpreting visualizations",
+          "good knowledge of transformer architectures"
+        ],
+        "weaknesses": [
+          "Q5: Slightly wrong about expected appearance of untrained weights (chaotic vs equal attention)",
+          "Q2: struggled with observation-based questions and provided irrelevant details",
+          "Minor inaccuracies in specific predictions",
+          "Relied on guesses for unseen visualizations",
+          "tendency to give long, textbook-like answers"
+        ]
+      },
+      "Gemini|HW10": {
+        "thread_count": 3,
+        "model": "Gemini",
+        "sentiment": "mixed",
+        "strengths": [
+          "Q1: produced a fully vectorized implementation that matched the reference solution",
+          "handles clear specifications well",
+          "produces functionally aligned solutions",
+          "Good with non-specific variable names"
+        ],
+        "weaknesses": [
+          "Q2: incorrect solution requiring multiple attempts",
+          "Struggles with code synthesis and complex multi-line sections",
+          "Requires substantial human debugging and scaffolding",
+          "less concise than staff solutions"
+        ]
+      },
+      "Gemini|HW11": {
+        "thread_count": 1,
+        "model": "Gemini",
+        "sentiment": "positive",
+        "strengths": [
+          "capable of handling most programming requirements",
+          "provides runnable code for most problems"
+        ],
+        "weaknesses": [
+          "sometimes misinterprets problem requirements",
+          "can produce lengthy code and explanations"
+        ]
+      },
+      "Gemini|HW4": {
+        "thread_count": 2,
+        "model": "Gemini",
+        "sentiment": "positive",
+        "strengths": [
+          "ability to provide one-shot solutions",
+          "capability to remember corrections and apply them",
+          "ability to understand dataset definitions"
+        ],
+        "weaknesses": [
+          "misunderstanding of code structure leading to initial errors",
+          "limitations with long code inputs",
+          "needed multiple attempts for hyperparameter tuning"
+        ]
+      },
+      "Gemini|HW12": {
+        "thread_count": 1,
+        "model": "Gemini",
+        "sentiment": "mixed",
+        "strengths": [
+          "High technical competence in implementing machine learning algorithms.",
+          "Ability to synthesize context from multiple files effectively."
+        ],
+        "weaknesses": [
+          "Inability to process visual data from Jupyter Notebooks.",
+          "Dependence on user-provided context for theoretical insights."
+        ]
+      },
+      "Grok|HW8": {
+        "thread_count": 1,
+        "model": "Grok",
+        "sentiment": "positive",
+        "strengths": [
+          "strong at explaining implementation logic",
+          "effective as a coding assistant"
+        ],
+        "weaknesses": [
+          "required careful checking for subtle implementation details",
+          "sometimes lacked rigor in complexity discussions"
+        ]
+      },
+      "Grok|HW11": {
+        "thread_count": 1,
+        "model": "Grok",
+        "sentiment": "mixed",
+        "strengths": [
+          "solid grasp of high-level algorithmic structure",
+          "ability to translate specifications into clean code"
+        ],
+        "weaknesses": [
+          "recurring issues with precision and edge-case handling",
+          "needs careful human review and debugging"
+        ]
+      },
+      "Grok|HW10": {
+        "thread_count": 2,
+        "model": "Grok",
+        "sentiment": "mixed",
+        "strengths": [
+          "can produce correct code with detailed guidance",
+          "capable of understanding complex tasks when provided with context",
+          "generated syntactically correct code"
+        ],
+        "weaknesses": [
+          "Q2: struggled with padding mask dimensions and tensor reshaping, leading to multiple failures and incorrect guesses",
+          "struggles with direct instructions without context",
+          "prone to hallucinations and errors in code interpretation",
+          "committed fundamental PyTorch errors"
+        ]
+      },
+      "Grok|HW9": {
+        "thread_count": 1,
+        "model": "Grok",
+        "sentiment": "mixed",
+        "strengths": [
+          "Good at visual reasoning and inferring relationships from attention plots.",
+          "Demonstrates understanding of key concepts like bidirectional attention and the role of [CLS] token."
+        ],
+        "weaknesses": [
+          "Tends to hallucinate and reinforce incorrect information through repetition.",
+          "Struggles with contextual awareness, leading to biased responses."
+        ]
+      },
+      "Grok|HW1": {
+        "thread_count": 2,
+        "model": "Grok",
+        "sentiment": "mixed",
+        "strengths": [
+          "Grok performs well on simple coding questions.",
+          "It generates correct solutions for established concepts like GD and GD with momentum."
+        ],
+        "weaknesses": [
+          "Q2: Grok introduced new variables that caused later code to fail due to parameter mismatch.",
+          "Grok struggles with adhering to specific homework templates.",
+          "Grok needs clear guidance when notation differs from convention.",
+          "Grok does not behave like a human in terms of code reusability and parameter tweaking."
+        ]
+      },
+      "Grok|HW5": {
+        "thread_count": 1,
+        "model": "Grok",
+        "sentiment": "negative",
+        "strengths": [],
+        "weaknesses": [
+          "struggles with bug correction",
+          "rarely provides correct one-shot solutions"
+        ]
+      },
+      "Grok|HW7": {
+        "thread_count": 1,
+        "model": "Grok",
+        "sentiment": "positive",
+        "strengths": [
+          "fast response time",
+          "ability to provide correct solutions with minimal context"
+        ],
+        "weaknesses": [
+          "tendency to hallucinate or produce incorrect outputs",
+          "sometimes requires direct troubleshooting to achieve correct answers"
+        ]
+      },
+      "Kimi|HW11": {
+        "thread_count": 1,
+        "model": "Kimi",
+        "sentiment": "mixed",
+        "strengths": [
+          "very fast at answering",
+          "performed well on LM-Arena leaderboards"
+        ],
+        "weaknesses": [
+          "lacks deep understanding of complex coding problems",
+          "struggles with reasoning and debugging"
+        ]
+      },
+      "Grok|HW0": {
+        "thread_count": 1,
+        "model": "Grok",
+        "sentiment": "positive",
+        "strengths": [
+          "strong performance on straightforward coding tasks",
+          "ability to explain solutions clearly"
+        ],
+        "weaknesses": [
+          "limited performance on tasks requiring data access",
+          "difficulty with more complex or nuanced problems"
+        ]
+      },
+      "Windsurf|HW1": {
+        "thread_count": 1,
+        "model": "Windsurf",
+        "sentiment": "positive",
+        "strengths": [
+          "capable of finding correct solutions",
+          "able to adapt and correct mistakes upon prompting"
+        ],
+        "weaknesses": [
+          "initial misinterpretation of parameters",
+          "tendency to introduce ambiguity in solutions"
+        ]
+      },
+      "Mistral|HW10": {
+        "thread_count": 1,
+        "model": "Mistral",
+        "sentiment": "mixed",
+        "strengths": [
+          "good at generating plausible starter code for standard components",
+          "able to reproduce common patterns seen in training"
+        ],
+        "weaknesses": [
+          "unreliable for complex, specification-heavy parts",
+          "provides generic explanations that lack depth"
+        ]
+      },
+      "Windsurf|HW4": {
+        "thread_count": 1,
+        "model": "Windsurf",
+        "sentiment": "positive",
+        "strengths": [
+          "capable of solving simple problems effectively",
+          "able to generate high-performing configurations with some guidance"
+        ],
+        "weaknesses": [
+          "Q6: provided poorer configurations and attempted to suggest extra parameters beyond the scope",
+          "requires prompting for more complex problems",
+          "sometimes hallucinates or suggests irrelevant configurations"
+        ]
+      },
+      "Llama|HW4": {
+        "thread_count": 1,
+        "model": "Llama",
+        "sentiment": "positive",
+        "strengths": [
+          "Strong performance on coding tasks",
+          "Good at analyzing outputs from images"
+        ],
+        "weaknesses": [
+          "Struggles with hyperparameter tuning requiring guesswork",
+          "Sensitive to context provided"
+        ]
+      },
+      "DeepSeek|HW6": {
+        "thread_count": 1,
+        "model": "DeepSeek",
+        "sentiment": "mixed",
+        "strengths": [
+          "Capable of solving new tasks with generally correct algorithms.",
+          "Produces answers followed by detailed explanations."
+        ],
+        "weaknesses": [
+          "Struggles with large context and may overcomplicate problems.",
+          "Lacks multimodal capability, leading to difficulties in understanding certain questions."
+        ]
+      },
+      "Kimi|HW1": {
+        "thread_count": 1,
+        "model": "Kimi",
+        "sentiment": "positive",
+        "strengths": [
+          "Can solve non-trivial coding questions involving optimization algorithms.",
+          "Strong multimodal consistency."
+        ],
+        "weaknesses": [
+          "Performance heavily relies on background knowledge.",
+          "Subtle differences in implementation without context."
+        ]
+      },
+      "Kimi|HW9": {
+        "thread_count": 1,
+        "model": "Kimi",
+        "sentiment": "mixed",
+        "strengths": [
+          "In-context learning capabilities improved performance over time.",
+          "Ability to process specific images when provided with guidance."
+        ],
+        "weaknesses": [
+          "Difficulty processing multiple images simultaneously.",
+          "Initial confusion without sufficient context or hints."
+        ]
+      },
+      "Kimi|HW4": {
+        "thread_count": 1,
+        "model": "Kimi",
+        "sentiment": "positive",
+        "strengths": [
+          "long context window for capturing essential information",
+          "ability to produce correct code and accurate theoretical answers"
+        ],
+        "weaknesses": [
+          "occasionally sidetracked and wrote code without explicit user input",
+          "needed small nudges to stay on track"
+        ]
+      },
+      "Kimi|HW0": {
+        "thread_count": 1,
+        "model": "Kimi",
+        "sentiment": "positive",
+        "strengths": [
+          "Kimi excels at standard coding tasks.",
+          "Kimi can follow step-by-step guidance effectively."
+        ],
+        "weaknesses": [
+          "Kimi struggles with parameter tuning.",
+          "Kimi has difficulty with complex or non-standard problems."
+        ]
+      },
+      "Kimi|HW10": {
+        "thread_count": 1,
+        "model": "Kimi",
+        "sentiment": "mixed",
+        "strengths": [
+          "fast and concise with easy parts",
+          "provides smaller code changes rather than full code"
+        ],
+        "weaknesses": [
+          "struggles with complex problems requiring multiple attempts",
+          "limited in generating new approaches after initial failures"
+        ]
+      },
+      "Kimi|HW5": {
+        "thread_count": 1,
+        "model": "Kimi",
+        "sentiment": "positive",
+        "strengths": [
+          "clear explanations for code",
+          "high accuracy on short TODOs"
+        ],
+        "weaknesses": [
+          "difficulty with error recognition",
+          "struggles with hyperparameter tuning"
+        ]
+      },
+      "Kimi|HW7": {
+        "thread_count": 1,
+        "model": "Kimi",
+        "sentiment": "positive",
+        "strengths": [
+          "able to one-shot solutions for most tasks",
+          "effective in achieving good accuracy with minor adjustments"
+        ],
+        "weaknesses": [
+          "struggled with tasks requiring deeper context or complex implementations",
+          "failed to handle specific coding nuances like random initialization"
+        ]
+      },
+      "Kimi|HW12": {
+        "thread_count": 1,
+        "model": "Kimi",
+        "sentiment": "positive",
+        "strengths": [
+          "strong code-generation ability",
+          "can implement multi-step neural-network logic with minimal guidance"
+        ],
+        "weaknesses": [
+          "tendency to choose the mathematically correct form but wrong reduction",
+          "requires supervision to catch small mistakes"
+        ]
+      },
+      "Mistral|HW8": {
+        "thread_count": 1,
+        "model": "Mistral",
+        "sentiment": "mixed",
+        "strengths": [
+          "high one-shot success rate for core coding tasks",
+          "ability to handle straightforward implementation tasks effectively"
+        ],
+        "weaknesses": [
+          "struggles with conceptually nuanced problems",
+          "requires human guidance to correct misconceptions"
+        ]
+      },
+      "Mistral|HW3": {
+        "thread_count": 1,
+        "model": "Mistral",
+        "sentiment": "mixed",
+        "strengths": [
+          "capable of understanding and implementing norms without prompt engineering",
+          "able to arrive at correct solutions after prompt adjustments"
+        ],
+        "weaknesses": [
+          "struggles with adhering to original implementations",
+          "tends to hallucinate or create unnecessary variables"
+        ]
+      },
+      "Mistral|HW11": {
+        "thread_count": 1,
+        "model": "Mistral",
+        "sentiment": "mixed",
+        "strengths": [
+          "excellent at straightforward coding tasks",
+          "produces accurate conceptual explanations"
+        ],
+        "weaknesses": [
+          "struggles with complex tensor manipulations",
+          "can hallucinate and forget previous attempts"
+        ]
+      },
+      "Mistral|HW2": {
+        "thread_count": 1,
+        "model": "Mistral",
+        "sentiment": "positive",
+        "strengths": [
+          "high accuracy for one-liners",
+          "clear explanations and summaries of code"
+        ],
+        "weaknesses": [
+          "could improve code clarity",
+          "struggles without necessary context or files"
+        ]
+      },
+      "Mistral|HW0": {
+        "thread_count": 1,
+        "model": "Mistral",
+        "sentiment": "positive",
+        "strengths": [
+          "strong coding capabilities",
+          "ability to explain concepts clearly"
+        ],
+        "weaknesses": [
+          "struggles with parameter optimization",
+          "can misinterpret hints"
+        ]
+      },
+      "Mistral|HW1": {
+        "thread_count": 1,
+        "model": "Mistral",
+        "sentiment": "mixed",
+        "strengths": [
+          "strong pattern-matching abilities",
+          "effective code generation for well-defined tasks"
+        ],
+        "weaknesses": [
+          "struggles with fine-grained constraint adherence",
+          "requires human intervention for clarification"
+        ]
+      },
+      "Mistral|HW4": {
+        "thread_count": 1,
+        "model": "Mistral",
+        "sentiment": "positive",
+        "strengths": [
+          "strong conceptual understanding of CNNs",
+          "effective in hyperparameter tuning"
+        ],
+        "weaknesses": [
+          "struggled with strict coding constraints",
+          "initial adaptation issues"
+        ]
+      },
+      "Mistral|HW9": {
+        "thread_count": 1,
+        "model": "Mistral",
+        "sentiment": "mixed",
+        "strengths": [
+          "well-organized and structured responses",
+          "correct terminology used"
+        ],
+        "weaknesses": [
+          "no unique observations from specific visualizations",
+          "failure to mention visual elements like line colors and thickness"
+        ]
+      },
+      "Mistral|HW5": {
+        "thread_count": 1,
+        "model": "Mistral",
+        "sentiment": "positive",
+        "strengths": [
+          "capable of generating correct code with full solutions when provided with complete context",
+          "effective in hyperparameter tuning and achieving desired outcomes"
+        ],
+        "weaknesses": [
+          "may struggle with more complex tasks or those requiring iterative refinement",
+          "potential for hallucinations if context is not comprehensive"
+        ]
+      },
+      "Claude|HW3": {
+        "thread_count": 1,
+        "model": "Claude",
+        "sentiment": "positive",
+        "strengths": [
+          "Quickly translates abstract ideas into runnable code",
+          "Effectively handles device-specific adaptations"
+        ],
+        "weaknesses": [
+          "Occasionally proposes multiple reasonable solutions, causing confusion",
+          "May struggle with complex mathematical concepts like SVD support"
+        ]
+      },
+      "Perplexity|HW3": {
+        "thread_count": 1,
+        "model": "Perplexity",
+        "sentiment": "mixed",
+        "strengths": [
+          "quick response time",
+          "generally accurate solutions"
+        ],
+        "weaknesses": [
+          "needed follow-up prompting",
+          "occasionally incomplete answers"
+        ]
+      },
+      "Perplexity|HW8": {
+        "thread_count": 1,
+        "model": "Perplexity",
+        "sentiment": "positive",
+        "strengths": [
+          "strong coding abilities",
+          "better performance compared to other models like Qwen"
+        ],
+        "weaknesses": [
+          "tendency to hallucinate on interpretation questions",
+          "confidence in answering without sufficient information"
+        ]
+      },
+      "Perplexity|HW12": {
+        "thread_count": 1,
+        "model": "Perplexity",
+        "sentiment": "positive",
+        "strengths": [
+          "quick response time",
+          "ability to understand clearly labeled tasks"
+        ],
+        "weaknesses": [
+          "not specifically designed for coding tasks",
+          "may struggle with more complex problems"
+        ]
+      },
+      "Qwen|HW10": {
+        "thread_count": 1,
+        "model": "Qwen",
+        "sentiment": "positive",
+        "strengths": [
+          "understands coding tasks well",
+          "produces correct results efficiently"
+        ],
+        "weaknesses": [
+          "occasionally makes minor mistakes",
+          "struggles with specific device assignments"
+        ]
+      },
+      "Qwen|HW8": {
+        "thread_count": 1,
+        "model": "Qwen",
+        "sentiment": "positive",
+        "strengths": [
+          "ability to generate correct solutions quickly",
+          "effective handling of straightforward coding tasks"
+        ],
+        "weaknesses": [
+          "struggles with complex problems requiring deeper reasoning",
+          "tendency to hallucinate information when uncertain"
+        ]
+      },
+      "Qwen|HW9": {
+        "thread_count": 1,
+        "model": "Qwen",
+        "sentiment": "negative",
+        "strengths": [
+          "provides detailed explanations",
+          "draws from general knowledge of transformer architecture"
+        ],
+        "weaknesses": [
+          "frequently hallucinates data from graphs",
+          "does not effectively analyze complex graph patterns"
+        ]
+      },
+      "Qwen|HW3": {
+        "thread_count": 1,
+        "model": "Qwen",
+        "sentiment": "negative",
+        "strengths": [
+          "decent ability to analyze plots"
+        ],
+        "weaknesses": [
+          "poor coding ability",
+          "struggles to recover from errors"
+        ]
+      },
+      "Qwen|HW1": {
+        "thread_count": 1,
+        "model": "Qwen",
+        "sentiment": "positive",
+        "strengths": [
+          "high accuracy in one-shot responses",
+          "minimal misconceptions or hallucinations"
+        ],
+        "weaknesses": [
+          "struggles with context passing",
+          "occasionally requires multiple prompts for complex tasks"
+        ]
+      },
+      "Qwen|HW2": {
+        "thread_count": 1,
+        "model": "Qwen",
+        "sentiment": "mixed",
+        "strengths": [
+          "Capable of generating code solutions for specific coding tasks.",
+          "Can handle multiple requests sequentially."
+        ],
+        "weaknesses": [
+          "Inconsistent with variable naming and coding conventions.",
+          "Tends to ignore specific instructions and context from prompts."
+        ]
+      },
+      "Qwen|HW5": {
+        "thread_count": 1,
+        "model": "Qwen",
+        "sentiment": "positive",
+        "strengths": [
+          "step-by-step reasoning",
+          "effective double-checking of answers"
+        ],
+        "weaknesses": [
+          "occasional hallucination of information",
+          "difficulty with complex problem-solving"
+        ]
+      },
+      "Other|HW3": {
+        "thread_count": 1,
+        "model": "Other",
+        "sentiment": "positive",
+        "strengths": [
+          "adaptive and flexible",
+          "generates well-structured code"
+        ],
+        "weaknesses": [
+          "tends to spiral into chaos with incremental changes",
+          "assumes control beyond specified TODO blocks"
+        ]
+      },
+      "Claude|HW11": {
+        "thread_count": 1,
+        "model": "Claude",
+        "sentiment": "mixed",
+        "strengths": [
+          "solid understanding of machine learning concepts",
+          "produces expected outputs correctly"
+        ],
+        "weaknesses": [
+          "code quality issues such as duplication and magic numbers",
+          "lack of comprehensive documentation and comments"
+        ]
+      },
+      "DeepSeek|HW0": {
+        "thread_count": 1,
+        "model": "DeepSeek",
+        "sentiment": "mixed",
+        "strengths": [
+          "strong in generating vectorized Numpy code",
+          "effective at solving straightforward coding tasks"
+        ],
+        "weaknesses": [
+          "struggles with complex backpropagation logic",
+          "prone to hallucinations in more intricate problems"
+        ]
+      },
+      "Grok|HW12": {
+        "thread_count": 1,
+        "model": "Grok",
+        "sentiment": "positive",
+        "strengths": [
+          "demonstrated device-agnostic coding practices",
+          "prioritized user instructions over general training data bias"
+        ],
+        "weaknesses": [
+          "struggled with theoretical aspects",
+          "inconsistent performance on non-coding tasks"
+        ]
+      },
+      "Kimi|HW6": {
+        "thread_count": 1,
+        "model": "Kimi",
+        "sentiment": "mixed",
+        "strengths": [
+          "strong one-shot capability",
+          "accurate handling of matrix dimensionality with NumPy"
+        ],
+        "weaknesses": [
+          "mathematical error in the backward_pass function",
+          "lack of inline comments for mathematical derivation"
+        ]
+      },
+      "Windsurf|HW0": {
+        "thread_count": 1,
+        "model": "Windsurf",
+        "sentiment": "mixed",
+        "strengths": [
+          "able to provide correct solutions on first attempt",
+          "capable of editing relevant files initially"
+        ],
+        "weaknesses": [
+          "Q6: broke down and refused to edit files after initial success",
+          "prone to hallucinations",
+          "inconsistent performance leading to breakdowns"
+        ]
+      },
+      "Windsurf|HW7": {
+        "thread_count": 1,
+        "model": "Windsurf",
+        "sentiment": "mixed",
+        "strengths": [
+          "handles self-contained tasks well",
+          "correctly implements specific algorithms"
+        ],
+        "weaknesses": [
+          "struggles with context-based tasks",
+          "misinterprets task requirements"
+        ]
+      },
+      "Windsurf|HW8": {
+        "thread_count": 2,
+        "model": "Windsurf",
+        "sentiment": "positive",
+        "strengths": [
+          "ability to self-correct with feedback",
+          "capable of generating production-quality code",
+          "High accuracy in translating algorithms to code."
+        ],
+        "weaknesses": [
+          "difficulty with precise tensor mechanics",
+          "initial code not directly runnable",
+          "Tendency for excessive verbosity in explanations."
+        ]
+      },
+      "Windsurf|HW3": {
+        "thread_count": 1,
+        "model": "Windsurf",
+        "sentiment": "mixed",
+        "strengths": [
+          "visually appealing display",
+          "smooth interface experience"
+        ],
+        "weaknesses": [
+          "limited mathematical reasoning capabilities",
+          "frequent hallucinations and inaccuracies"
+        ]
+      },
+      "Cursor|HW8": {
+        "thread_count": 1,
+        "model": "Cursor",
+        "sentiment": "positive",
+        "strengths": [
+          "ability to navigate challenges without giving up",
+          "capability to generate complete solutions in one attempt"
+        ],
+        "weaknesses": [
+          "occasional inaccuracies in text-based question responses",
+          "tendency to require multiple attempts for code refinement"
+        ]
+      },
+      "Grok|HW2": {
+        "thread_count": 1,
+        "model": "Grok",
+        "sentiment": "positive",
+        "strengths": [
+          "ability to solve problems in one shot",
+          "generally provides correct and complete solutions"
+        ],
+        "weaknesses": [
+          "occasional hallucination of code",
+          "modifications outside the intended areas"
+        ]
+      }
+    }
+  }
+}

@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Special Participation E: AI Assisted Annotations - CS 182</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #f5f7fa;
+            color: #333;
+            line-height: 1.6;
+        }
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .back-link {
+            display: inline-block;
+            margin-bottom: 20px;
+            color: #4299e1;
+            text-decoration: none;
+        }
+        .back-link:hover { text-decoration: underline; }
+        .thread-header {
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+        }
+        .thread-title {
+            font-size: 1.8rem;
+            color: #2d3748;
+            margin-bottom: 15px;
+        }
+        .thread-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            color: #718096;
+            font-size: 14px;
+        }
+        .model-badge {
+            display: inline-block;
+            padding: 4px 12px;
+            background: #e2e8f0;
+            color: #4a5568;
+            border-radius: 15px;
+            font-size: 13px;
+            font-weight: 500;
+        }
+        .hw-badge {
+            display: inline-block;
+            padding: 4px 12px;
+            background: #fed7e2;
+            color: #97266d;
+            border-radius: 15px;
+            font-size: 13px;
+            font-weight: 500;
+        }
+        .thread-body {
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+        }
+        .thread-body h3 {
+            margin-bottom: 15px;
+            color: #2d3748;
+        }
+        .body-content {
+            white-space: pre-wrap;
+            word-wrap: break-word;
+            line-height: 1.8;
+            font-size: 15px;
+        }
+        .body-content a {
+            color: #4299e1;
+            word-break: break-all;
+        }
+        .attachments {
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
+        .attachments h3 {
+            margin-bottom: 20px;
+            color: #2d3748;
+        }
+        .attachment {
+            margin-bottom: 25px;
+            border: 1px solid #e2e8f0;
+            border-radius: 6px;
+            overflow: hidden;
+        }
+        .attachment-label {
+            background: #f7fafc;
+            padding: 10px 15px;
+            font-weight: 500;
+            font-size: 14px;
+            border-bottom: 1px solid #e2e8f0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .download-link {
+            color: #4299e1;
+            text-decoration: none;
+            font-weight: normal;
+        }
+        .download-link:hover { text-decoration: underline; }
+        .attachment-image img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+        .attachment-pdf iframe {
+            width: 100%;
+            height: 800px;
+            border: none;
+        }
+        .attachment-video video {
+            width: 100%;
+            max-height: 600px;
+        }
+        .attachment-audio audio {
+            width: 100%;
+            padding: 15px;
+        }
+        .attachment-text pre {
+            padding: 15px;
+            background: #f7fafc;
+            overflow-x: auto;
+            max-height: 500px;
+            font-size: 13px;
+            line-height: 1.5;
+        }
+        .attachment-file {
+            padding: 15px;
+        }
+        .file-link {
+            color: #4299e1;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .file-link:hover { text-decoration: underline; }
+        .ed-link {
+            display: inline-block;
+            margin-top: 15px;
+            color: #4299e1;
+            text-decoration: none;
+        }
+        .ed-link:hover { text-decoration: underline; }
+        @media (max-width: 768px) {
+            .thread-title { font-size: 1.4rem; }
+            .attachment-pdf iframe { height: 500px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <a href="../../../index.html" class="back-link">← Back to Directory</a>
+
+        <div class="thread-header">
+            <h1 class="thread-title">Special Participation E: AI Assisted Annotations</h1>
+            <div class="thread-meta">
+                <span>By Jason Trinh</span>
+                <span>2025-11-25</span>
+                
+                <span class="model-badge">GPT</span>
+            </div>
+            <a href="https://edstem.org/us/courses/84647/discussion/7363141" target="_blank" class="ed-link">View on Ed Stem →</a>
+        </div>
+
+        <div class="thread-body">
+            <div class="body-content">When trying to use LLMs to study from CS182 lecture notes, hws, or readings, I was constantly switching between three things: the PDF viewer, an LLM tab, and my own notes. I had to copy-paste text or screenshots into the model, read the answer, then flip back to the PDF and try to remember which part it was referring to, which became a really tedious process. And oftentimes, a week later, I don&#x27;t remember where I had the conversation with the LLM. So I decided to put everything into a single tool.
+
+<a href="https://jaizunt.github.io/pdf_analyzer/" target="_blank" rel="noopener noreferrer">https://jaizunt.github.io/pdf_analyzer/</a>
+
+
+
+I built PDF Analyzer, a small web tool that lets you:
+
+Upload any PDF (lecture notes, papers, homework solutions, etc.).
+
+Highlight text or crop a region of a page (e.g., a figure or equation).
+
+Ask an LLM (Gemini / GPT / Claude) to explain or summarize that exact snippet (or you can enter your own custom prompt).
+
+Attach your own notes, and then
+
+Export everything back into an annotated PDF (with sticky notes as the annoations [these don&#x27;t render latex]) or a .json “study session” you can re-load later.
+
+It uses a system prompt tailored towards providing a comprehensive response related to Deep Learning.
+
+In using this tool, it seems like the response that the LLM provides often results in long and extensive explanations. This is both good and bad (notes are supposed to be concise, but thorough explanations are helpful in understanding the material better). There could be some way of resolving this via a highly specific system prompt that forces the LLM to be as concise as possible (the system prompt I have currently is some form of that, but it seems to deviate from the instructions a little). Additionally, as you will see in some of my example files, there are some cases where it hallucinates (even on the newer models - GPT 5.1). 
+
+I have attached below a video of me using it and annotations of examples.</div>
+        </div>
+
+        <div class="attachments">
+                <div class="attachment attachment-video">
+                    <div class="attachment-label">Annotations_Video.mp4</div>
+                    <video controls preload="metadata">
+                        <source src="attachments/Annotations_Video.mp4">
+                        Your browser does not support video playback.
+                    </video>
+                </div>
+                <div class="attachment attachment-pdf">
+                    <div class="attachment-label">gnn_notes_annotated.pdf <a href="attachments/gnn_notes_annotated.pdf" target="_blank" class="download-link">Open in new tab</a></div>
+                    <iframe src="attachments/gnn_notes_annotated.pdf" loading="lazy"></iframe>
+                </div>
+                <div class="attachment attachment-pdf">
+                    <div class="attachment-label">polar_annotated.pdf <a href="attachments/polar_annotated.pdf" target="_blank" class="download-link">Open in new tab</a></div>
+                    <iframe src="attachments/polar_annotated.pdf" loading="lazy"></iframe>
+                </div></div>
+    </div>
+</body>
+</html>

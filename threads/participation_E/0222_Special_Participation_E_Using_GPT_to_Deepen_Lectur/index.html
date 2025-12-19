@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Special Participation E: Using GPT to Deepen Lecture Understanding - CS 182</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #f5f7fa;
+            color: #333;
+            line-height: 1.6;
+        }
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .back-link {
+            display: inline-block;
+            margin-bottom: 20px;
+            color: #4299e1;
+            text-decoration: none;
+        }
+        .back-link:hover { text-decoration: underline; }
+        .thread-header {
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+        }
+        .thread-title {
+            font-size: 1.8rem;
+            color: #2d3748;
+            margin-bottom: 15px;
+        }
+        .thread-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            color: #718096;
+            font-size: 14px;
+        }
+        .model-badge {
+            display: inline-block;
+            padding: 4px 12px;
+            background: #e2e8f0;
+            color: #4a5568;
+            border-radius: 15px;
+            font-size: 13px;
+            font-weight: 500;
+        }
+        .hw-badge {
+            display: inline-block;
+            padding: 4px 12px;
+            background: #fed7e2;
+            color: #97266d;
+            border-radius: 15px;
+            font-size: 13px;
+            font-weight: 500;
+        }
+        .thread-body {
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+        }
+        .thread-body h3 {
+            margin-bottom: 15px;
+            color: #2d3748;
+        }
+        .body-content {
+            white-space: pre-wrap;
+            word-wrap: break-word;
+            line-height: 1.8;
+            font-size: 15px;
+        }
+        .body-content a {
+            color: #4299e1;
+            word-break: break-all;
+        }
+        .attachments {
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
+        .attachments h3 {
+            margin-bottom: 20px;
+            color: #2d3748;
+        }
+        .attachment {
+            margin-bottom: 25px;
+            border: 1px solid #e2e8f0;
+            border-radius: 6px;
+            overflow: hidden;
+        }
+        .attachment-label {
+            background: #f7fafc;
+            padding: 10px 15px;
+            font-weight: 500;
+            font-size: 14px;
+            border-bottom: 1px solid #e2e8f0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .download-link {
+            color: #4299e1;
+            text-decoration: none;
+            font-weight: normal;
+        }
+        .download-link:hover { text-decoration: underline; }
+        .attachment-image img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+        .attachment-pdf iframe {
+            width: 100%;
+            height: 800px;
+            border: none;
+        }
+        .attachment-video video {
+            width: 100%;
+            max-height: 600px;
+        }
+        .attachment-audio audio {
+            width: 100%;
+            padding: 15px;
+        }
+        .attachment-text pre {
+            padding: 15px;
+            background: #f7fafc;
+            overflow-x: auto;
+            max-height: 500px;
+            font-size: 13px;
+            line-height: 1.5;
+        }
+        .attachment-file {
+            padding: 15px;
+        }
+        .file-link {
+            color: #4299e1;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .file-link:hover { text-decoration: underline; }
+        .ed-link {
+            display: inline-block;
+            margin-top: 15px;
+            color: #4299e1;
+            text-decoration: none;
+        }
+        .ed-link:hover { text-decoration: underline; }
+        @media (max-width: 768px) {
+            .thread-title { font-size: 1.4rem; }
+            .attachment-pdf iframe { height: 500px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <a href="../../../index.html" class="back-link">← Back to Directory</a>
+
+        <div class="thread-header">
+            <h1 class="thread-title">Special Participation E: Using GPT to Deepen Lecture Understanding</h1>
+            <div class="thread-meta">
+                <span>By Ben Yu</span>
+                <span>2025-11-04</span>
+                
+                <span class="model-badge">GPT</span>
+            </div>
+            <a href="https://edstem.org/us/courses/84647/discussion/7249718" target="_blank" class="ed-link">View on Ed Stem →</a>
+        </div>
+
+        <div class="thread-body">
+            <div class="body-content">What I built:
+
+During lectures, I used ChatGPT as an interactive study partner rather than a passive note tool.
+Whenever a concept felt unclear, I would pause the lecture, take a screenshot, and ask a precise question in my EECS 182 project space. Each numbered thread (Week #) became a mini-lab where I clarified equations, verified derivations, and then reinterpreted AI’s explanation directly into my written lecture notes:
+
+For example (image below), in Week 9&#x27;s lecture, I used GPT as my study partner to clarify the concept of Fast Fourier Transform on State Space Models, which was barely mentioned on during lecture. This way I can freely choose to dive deeper into specific concepts while learning the broad picture from the lecture.
+
+
+
+Example Conversation — Lecture 9: Hidden-State Independence
+
+Trace Link: <a href="https://chatgpt.com/g/g-p-68b1f76ecfb8819191ec5b17c4fdd059-cs-182/shared/c/68feaa70-8378-8333-a027-5935fdf14461?owner_user_id=user-AdVlGKTV9Sn7SdTqllGbrt2G" target="_blank" rel="noopener noreferrer">https://chatgpt.com/g/g-p-68b1f76ecfb8819191ec5b17c4fdd059-cs-182/shared/c/68feaa70-8378-8333-a027-5935fdf14461?owner_user_id=user-AdVlGKTV9Sn7SdTqllGbrt2G</a>
+
+One of My Question: “So the point (of use block diagonal matrix B in state space calculation) is to make hidden states independent?”
+
+AI-Guided Insights: Correlated hidden states introduce redundancy and unstable gradients, because each state begins to carry overlapping information about the sequence. By using block diagonal matrices, each hidden unit evolves as a unique information channel, making the system more stable and interpretable by decoupling the updates of different state components, because independent states yield better gradient flow, improved generalization, and a cleaner mapping between model structure and learned function.
+
+Verification:
+I implemented diag_unrolled_ssm_forward and diag_conv_ssm_forward to confirm the theory, and their outputs matched within 1e-6 and reproduced the predicted runtime behavior -- linear in T for recurrence, nearly constant on GPU for convolution.
+
+After each exchange, I try to reexplain the idea in my handwritten notes, converting the long AI reasoning into a concise conceptual summary that I could review quickly before exams.
+
+Comments:
+
+Positives (What Worked Well):
+
+Immediate conceptual clarification: AI interaction let me elaborate on lecture ideas in real time rather than waiting for Ed Forum or office-hour responses.
+
+Reduced TA load: Routine clarifications that might have required staff input were handled independently, keeping my questions tightly scoped to lecture material.
+
+Deeper integration: Reading the AI’s full reasoning line by line forced me to engage with the derivations more carefully than a static answer key would have.
+
+Negatives (Limitations and Effort Required):
+
+Scope uncertainty: The AI occasionally referenced material outside the intended EECS 182 syllabus, requiring me to filter which concepts were truly in scope.
+
+Potential over-explanation: Responses sometimes included extra theoretical context that, while interesting, risked obscuring the specific idea being tested.
+
+Future Improvements:
+
+Structured project workflow: As outlined in my companion submission “Special Participation E: AI-Enhanced Learning with ChatGPT Project Mode,” we can formalize a workflow where each thread explicitly records lecture context, question scope, and verified outcomes.
+
+This process exemplifies how AI can enhance learning when guided by course scope, topical context, and consistent self-reflection.</div>
+        </div>
+
+        <div class="attachments">
+                <div class="attachment attachment-image">
+                    <div class="attachment-label">image_1_MOPsugkwHHt4DRZL9dIWgPNZ.png</div>
+                    <img src="attachments/image_1_MOPsugkwHHt4DRZL9dIWgPNZ.png" alt="image_1_MOPsugkwHHt4DRZL9dIWgPNZ.png" loading="lazy">
+                </div></div>
+    </div>
+</body>
+</html>

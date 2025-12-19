@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Special Participation E:  Deep Dives: Generating Step-by-Step Derivations and Intuitive Explanations - CS 182</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #f5f7fa;
+            color: #333;
+            line-height: 1.6;
+        }
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .back-link {
+            display: inline-block;
+            margin-bottom: 20px;
+            color: #4299e1;
+            text-decoration: none;
+        }
+        .back-link:hover { text-decoration: underline; }
+        .thread-header {
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+        }
+        .thread-title {
+            font-size: 1.8rem;
+            color: #2d3748;
+            margin-bottom: 15px;
+        }
+        .thread-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            color: #718096;
+            font-size: 14px;
+        }
+        .model-badge {
+            display: inline-block;
+            padding: 4px 12px;
+            background: #e2e8f0;
+            color: #4a5568;
+            border-radius: 15px;
+            font-size: 13px;
+            font-weight: 500;
+        }
+        .hw-badge {
+            display: inline-block;
+            padding: 4px 12px;
+            background: #fed7e2;
+            color: #97266d;
+            border-radius: 15px;
+            font-size: 13px;
+            font-weight: 500;
+        }
+        .thread-body {
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+        }
+        .thread-body h3 {
+            margin-bottom: 15px;
+            color: #2d3748;
+        }
+        .body-content {
+            white-space: pre-wrap;
+            word-wrap: break-word;
+            line-height: 1.8;
+            font-size: 15px;
+        }
+        .body-content a {
+            color: #4299e1;
+            word-break: break-all;
+        }
+        .attachments {
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
+        .attachments h3 {
+            margin-bottom: 20px;
+            color: #2d3748;
+        }
+        .attachment {
+            margin-bottom: 25px;
+            border: 1px solid #e2e8f0;
+            border-radius: 6px;
+            overflow: hidden;
+        }
+        .attachment-label {
+            background: #f7fafc;
+            padding: 10px 15px;
+            font-weight: 500;
+            font-size: 14px;
+            border-bottom: 1px solid #e2e8f0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .download-link {
+            color: #4299e1;
+            text-decoration: none;
+            font-weight: normal;
+        }
+        .download-link:hover { text-decoration: underline; }
+        .attachment-image img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+        .attachment-pdf iframe {
+            width: 100%;
+            height: 800px;
+            border: none;
+        }
+        .attachment-video video {
+            width: 100%;
+            max-height: 600px;
+        }
+        .attachment-audio audio {
+            width: 100%;
+            padding: 15px;
+        }
+        .attachment-text pre {
+            padding: 15px;
+            background: #f7fafc;
+            overflow-x: auto;
+            max-height: 500px;
+            font-size: 13px;
+            line-height: 1.5;
+        }
+        .attachment-file {
+            padding: 15px;
+        }
+        .file-link {
+            color: #4299e1;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .file-link:hover { text-decoration: underline; }
+        .ed-link {
+            display: inline-block;
+            margin-top: 15px;
+            color: #4299e1;
+            text-decoration: none;
+        }
+        .ed-link:hover { text-decoration: underline; }
+        @media (max-width: 768px) {
+            .thread-title { font-size: 1.4rem; }
+            .attachment-pdf iframe { height: 500px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <a href="../../../index.html" class="back-link">← Back to Directory</a>
+
+        <div class="thread-header">
+            <h1 class="thread-title">Special Participation E:  Deep Dives: Generating Step-by-Step Derivations and Intuitive Explanations</h1>
+            <div class="thread-meta">
+                <span>By Andrea Lou</span>
+                <span>2025-12-11</span>
+                
+                <span class="model-badge">DeepSeek</span>
+            </div>
+            <a href="https://edstem.org/us/courses/84647/discussion/7451948" target="_blank" class="ed-link">View on Ed Stem →</a>
+        </div>
+
+        <div class="thread-body">
+            <div class="body-content">From my special participation A, I realized that Deepseek often assumes certain knowledge when solving problems that students might not be familiar or comfortable with. Even when asked to provide full reasoning steps, it often abbreviates sentences or provides abridged logic, despite producing the correct answer. 
+
+I continued my discussion with Deepseek to generate more tutor-like, explanatory learning resources based off of the following 3 different prompting strategies:
+
+1) &quot;Map out every concept I should know or review before working on this assignment. For example, create a prerequisite knowledge map for fully understanding Ridge Regression as MAP estimation, including linear algebra, probability, and optimization. For each learning module, list the key concepts, common misunderstandings, and 3 exercises to build those skills.&quot;
+
+Goal: I wanted a concept map for a student looking to enter the course, and use it to get a good idea of where their foundational understanding is lacking.
+
+2) &quot;Explain a core concept of this homework, assuming I have NO prior knowledge. For example, explain the MAP interpretation of Ridge Regression as if I have not taken probability theory. Explicitly state every assumption and every distribution identity you rely on. At the end, list all the mathematical tools you used so I can review them.&quot;
+
+Goal: Targeted focus on a single topic, and aggregate resources for learning that topic.
+
+3) &quot;Go over the assignment again, and identify derivation heavy concepts. For example, walk through the MAP estimation derivation for W step-by-step. For each line, explain why the step is valid. Do not compress steps. Annotate each operation with the identity, theorem, or fact used.&quot;
+
+Goal: Get the model to provide verbose answers equal to or better than the provided staff solution, and tie it to core course concepts.
+
+To use this for future assignments, paste in the three prompts above based on the intended use case.
+
+
+
+Full annotated log (starts at the end of the first page, first section was the setup for the assignment):
+
+Annotations corresponding to the three prompts above:
+
+1) I thought the breakdown into Linear Algebra → Optimization → Probability → Neural Networks → Matrix Identities → Numerical Issues was great for my understanding of the concepts. The misunderstandings section was also surprisingly helpful, followed by some good practice into the related topics. Some issues however, it provided additional materials outside the scope of what I asked for, for example the Woodbury identity and a week long plan of study. Deepseek seemed to hallucinate the scope of my prompt, and add additional information not requested. As another example, it provides pseudo-inverse identities not directly needed to answer the homework questions.
+
+2) Deepseek generated an analogy for Ridge Regression that I thought was great for building intuition, comparing it to a &quot;skeptical detective&quot;. I haven&#x27;t had any LLM do this for me without being directly prompted, so I wondered if it was pulling from an article on the internet, but searching &quot;skeptical detective ridge regression&quot; generated no results. It was also able to extend the analogy to other types of &quot;detectives&quot; to explain other core concepts like Bayes Theorem. Overall, it was great at explaining MAP without requiring prior probability theory, and also made sure to note assumptions that were missing from its initial solve. Some drawbacks: I remember how important the bias-variance tradeoff was stressed in CS189, however this explanation only touches upon it in passing. Additionally, the explanation is great for scalar intuition but doesn&#x27;t translate to the matrix notation used in homework/lecture. 
+
+3) This time the derivations for the assignment were very thorough, walking through concepts like MAP estimation, vector calculus, ridge regression, and ReLU updates step by step. I liked that they explicitly started from the Gaussian prior and likelihood, applied Bayes’ theorem, and carefully simplified the log posterior to show how it naturally leads to the ridge regression objective. The vector calculus section was especially clear, showing how the derivative of x^TAx comes from the product and chain rules and matrix-vector multiplication. The ridge solution via normal equations was also nicely broken down, expanding norms, taking derivatives, and solving for W while explicitly noting symmetry and positive definiteness. For ReLU, the elbow location updates were handled carefully, including the inactive regions where gradients are zero, which I thought was glossed over in other explanations. Each step called out the exact identity or rule being used which made the derivation very rigorous. One minor drawback is that while the derivations are mathematically complete, they are very very dense and might be intimidating for students without a more intuitive framing.</div>
+        </div>
+
+        <div class="attachments">
+                <div class="attachment attachment-pdf">
+                    <div class="attachment-label">Deepseek_learning_resource.pdf <a href="attachments/Deepseek_learning_resource.pdf" target="_blank" class="download-link">Open in new tab</a></div>
+                    <iframe src="attachments/Deepseek_learning_resource.pdf" loading="lazy"></iframe>
+                </div></div>
+    </div>
+</body>
+</html>

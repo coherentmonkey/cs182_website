@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Special Participation E: Misconception Explorer - CS 182</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #f5f7fa;
+            color: #333;
+            line-height: 1.6;
+        }
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .back-link {
+            display: inline-block;
+            margin-bottom: 20px;
+            color: #4299e1;
+            text-decoration: none;
+        }
+        .back-link:hover { text-decoration: underline; }
+        .thread-header {
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+        }
+        .thread-title {
+            font-size: 1.8rem;
+            color: #2d3748;
+            margin-bottom: 15px;
+        }
+        .thread-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            color: #718096;
+            font-size: 14px;
+        }
+        .model-badge {
+            display: inline-block;
+            padding: 4px 12px;
+            background: #e2e8f0;
+            color: #4a5568;
+            border-radius: 15px;
+            font-size: 13px;
+            font-weight: 500;
+        }
+        .hw-badge {
+            display: inline-block;
+            padding: 4px 12px;
+            background: #fed7e2;
+            color: #97266d;
+            border-radius: 15px;
+            font-size: 13px;
+            font-weight: 500;
+        }
+        .thread-body {
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+        }
+        .thread-body h3 {
+            margin-bottom: 15px;
+            color: #2d3748;
+        }
+        .body-content {
+            white-space: pre-wrap;
+            word-wrap: break-word;
+            line-height: 1.8;
+            font-size: 15px;
+        }
+        .body-content a {
+            color: #4299e1;
+            word-break: break-all;
+        }
+        .attachments {
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
+        .attachments h3 {
+            margin-bottom: 20px;
+            color: #2d3748;
+        }
+        .attachment {
+            margin-bottom: 25px;
+            border: 1px solid #e2e8f0;
+            border-radius: 6px;
+            overflow: hidden;
+        }
+        .attachment-label {
+            background: #f7fafc;
+            padding: 10px 15px;
+            font-weight: 500;
+            font-size: 14px;
+            border-bottom: 1px solid #e2e8f0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .download-link {
+            color: #4299e1;
+            text-decoration: none;
+            font-weight: normal;
+        }
+        .download-link:hover { text-decoration: underline; }
+        .attachment-image img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+        .attachment-pdf iframe {
+            width: 100%;
+            height: 800px;
+            border: none;
+        }
+        .attachment-video video {
+            width: 100%;
+            max-height: 600px;
+        }
+        .attachment-audio audio {
+            width: 100%;
+            padding: 15px;
+        }
+        .attachment-text pre {
+            padding: 15px;
+            background: #f7fafc;
+            overflow-x: auto;
+            max-height: 500px;
+            font-size: 13px;
+            line-height: 1.5;
+        }
+        .attachment-file {
+            padding: 15px;
+        }
+        .file-link {
+            color: #4299e1;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .file-link:hover { text-decoration: underline; }
+        .ed-link {
+            display: inline-block;
+            margin-top: 15px;
+            color: #4299e1;
+            text-decoration: none;
+        }
+        .ed-link:hover { text-decoration: underline; }
+        @media (max-width: 768px) {
+            .thread-title { font-size: 1.4rem; }
+            .attachment-pdf iframe { height: 500px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <a href="../../../index.html" class="back-link">← Back to Directory</a>
+
+        <div class="thread-header">
+            <h1 class="thread-title">Special Participation E: Misconception Explorer</h1>
+            <div class="thread-meta">
+                <span>By Kabir Shah</span>
+                <span>2025-12-06</span>
+                
+                <span class="model-badge">GPT</span>
+            </div>
+            <a href="https://edstem.org/us/courses/84647/discussion/7419470" target="_blank" class="ed-link">View on Ed Stem →</a>
+        </div>
+
+        <div class="thread-body">
+            <div class="body-content">I found that often times after lecture I&#x27;ll have some idea cemented in my head, only to much later find out that one of the basic assumptions I had made was wrong. To try and alleviate this, I thought it would be useful to have a &quot;Misconception Explorer&quot; prompt where you can engage with an LLM by giving it lecture notes and having it probe you with examples and questions that test common misconceptions. Here&#x27;s the prompt:
+
+You are my Misconception Explorer.
+
+I will paste the full text of a PDF of lecture notes. Your job is to identify 4 of the most plausible misconceptions or subtle misunderstandings a student might develop from these notes.
+
+For each of the four selected misconceptions, do the following INTERACTIVELY:
+• Ask me a question that probes whether I fall for the misconception or understand the concept correctly.
+• Wait for my answer before revealing the explanation.
+• After I answer, explain:
+    - Whether my answer reflects the misconception.
+    - The correct reasoning.
+    - Why the misconception is tempting.
+
+Important behavior rules:
+• Do NOT state, hint at, or describe the misconception before presenting the probing question. Only reveal the misconception after I answer the question.
+• Do NOT rush through all four misconceptions at once. Present them ONE AT A TIME.
+• After finishing the full explanation for one misconception, ask if I am ready for the next.
+• Keep each example small, focused, and tied directly to content in the PDF.
+• If the notes are ambiguous, state this explicitly.
+• Avoid introducing concepts not present in the PDF unless needed for correction, and mark such additions clearly.
+
+Begin by asking me to paste the lecture notes PDF text.
+After I paste it, start with Question #1.
+
+
+I had to iterate on it many times because it would often start brainstorming misconceptions before asking me about them, kind of defeating the purpose of it. I found that the &quot;important behavior rules&quot; were crucial to preventing this type of behavior and ensuring that the model first asks you the questions before talking about the misconception it might be testing. I ran it through Lecture 19 (transformers, positional embeddings), and here&#x27;s what I got:
+
+I found that it was actually pretty good and taught me a few new things: (1) that embeddings and unembeddings can use the same weight matrix and don&#x27;t necessarily need to be separate projections (and GPT-2 does this!) and (2) RoPE can encode absolute position information implicitly.
+
+Some of the questions it asked were really easy or kind of arbitrary, but they did attempt to test some kind of misconception which I thought was cool. For example, it asked if RoPE required frequencies to be shared across layers, which I guess students might assume is true because that is how it is done, but is not a requirement for it to work. While these types of technicalities were less useful than the other misconceptions it tested, I found that they were still good forms of review and forced me to think about what the true requirements for things like RoPE were and what were there for reasons such as stabilizing training.
+
+I found in my use that it didn&#x27;t hallucinate much but it is very limited to the quality of the notes that you give it, especially since the prompt asks it to stay grounded to the content of the notes you give it. So it will often be very specific to the lecture. If you have text notes or markdown/latex formatting I think it will likely be much better than submitting a hand-written note pdf like I did. Overall, I think this is a pretty useful tool and can help you wrap your head around the trickier deep learning concepts by testing more subtle &quot;edge cases&quot; of the concepts covered in lecture.</div>
+        </div>
+
+        <div class="attachments">
+                <div class="attachment attachment-pdf">
+                    <div class="attachment-label">Misconception exploration process.pdf <a href="attachments/Misconception exploration process.pdf" target="_blank" class="download-link">Open in new tab</a></div>
+                    <iframe src="attachments/Misconception exploration process.pdf" loading="lazy"></iframe>
+                </div></div>
+    </div>
+</body>
+</html>

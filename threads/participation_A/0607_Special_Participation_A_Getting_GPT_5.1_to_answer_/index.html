@@ -1,0 +1,2818 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Special Participation A: Getting GPT 5.1 to answer Homework 12 - CS 182</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #f5f7fa;
+            color: #333;
+            line-height: 1.6;
+        }
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .back-link {
+            display: inline-block;
+            margin-bottom: 20px;
+            color: #4299e1;
+            text-decoration: none;
+        }
+        .back-link:hover { text-decoration: underline; }
+        .thread-header {
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+        }
+        .thread-title {
+            font-size: 1.8rem;
+            color: #2d3748;
+            margin-bottom: 15px;
+        }
+        .thread-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            color: #718096;
+            font-size: 14px;
+        }
+        .model-badge {
+            display: inline-block;
+            padding: 4px 12px;
+            background: #e2e8f0;
+            color: #4a5568;
+            border-radius: 15px;
+            font-size: 13px;
+            font-weight: 500;
+        }
+        .hw-badge {
+            display: inline-block;
+            padding: 4px 12px;
+            background: #fed7e2;
+            color: #97266d;
+            border-radius: 15px;
+            font-size: 13px;
+            font-weight: 500;
+        }
+        .thread-body {
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+        }
+        .thread-body h3 {
+            margin-bottom: 15px;
+            color: #2d3748;
+        }
+        .body-content {
+            white-space: pre-wrap;
+            word-wrap: break-word;
+            line-height: 1.8;
+            font-size: 15px;
+        }
+        .body-content a {
+            color: #4299e1;
+            word-break: break-all;
+        }
+        .attachments {
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
+        .attachments h3 {
+            margin-bottom: 20px;
+            color: #2d3748;
+        }
+        .attachment {
+            margin-bottom: 25px;
+            border: 1px solid #e2e8f0;
+            border-radius: 6px;
+            overflow: hidden;
+        }
+        .attachment-label {
+            background: #f7fafc;
+            padding: 10px 15px;
+            font-weight: 500;
+            font-size: 14px;
+            border-bottom: 1px solid #e2e8f0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .download-link {
+            color: #4299e1;
+            text-decoration: none;
+            font-weight: normal;
+        }
+        .download-link:hover { text-decoration: underline; }
+        .attachment-image img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+        .attachment-pdf iframe {
+            width: 100%;
+            height: 800px;
+            border: none;
+        }
+        .attachment-video video {
+            width: 100%;
+            max-height: 600px;
+        }
+        .attachment-audio audio {
+            width: 100%;
+            padding: 15px;
+        }
+        .attachment-text pre {
+            padding: 15px;
+            background: #f7fafc;
+            overflow-x: auto;
+            max-height: 500px;
+            font-size: 13px;
+            line-height: 1.5;
+        }
+        .attachment-file {
+            padding: 15px;
+        }
+        .file-link {
+            color: #4299e1;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .file-link:hover { text-decoration: underline; }
+        .ed-link {
+            display: inline-block;
+            margin-top: 15px;
+            color: #4299e1;
+            text-decoration: none;
+        }
+        .ed-link:hover { text-decoration: underline; }
+        @media (max-width: 768px) {
+            .thread-title { font-size: 1.4rem; }
+            .attachment-pdf iframe { height: 500px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <a href="../../../index.html" class="back-link">← Back to Directory</a>
+
+        <div class="thread-header">
+            <h1 class="thread-title">Special Participation A: Getting GPT 5.1 to answer Homework 12</h1>
+            <div class="thread-meta">
+                <span>By Sriram Srivatsan</span>
+                <span>2025-12-08</span>
+                <span class="hw-badge">HW12</span>
+                <span class="model-badge">GPT</span>
+            </div>
+            <a href="https://edstem.org/us/courses/84647/discussion/7425035" target="_blank" class="ed-link">View on Ed Stem →</a>
+        </div>
+
+        <div class="thread-body">
+            <div class="body-content">I got OpenAI&#x27;s GPT 5.1 model to answer questions 1, 2, and 4 in homework 12. Overall, it seems that this model is able to answer questions about the material extremely accurately, and sometimes it even notes that specific ambiguities exist within the questions themselves. This is quite interesting, because it solved parts of question 2 that I wasn&#x27;t able to approach myself without getting guidance from some of its answers.
+
+Here is the writeup: 
+
+Here is the chat history: 
+
+And the solutions and ambiguities it noted in for the homework:</div>
+        </div>
+
+        <div class="attachments">
+                    <div class="attachment attachment-text">
+                        <div class="attachment-label">chat_history.md <a href="attachments/chat_history.md" target="_blank" class="download-link">Download</a></div>
+                        <pre><code># Solving written homework assignment
+_Exported on 12/7/2025 at 06:39:40 PST from Cursor (2.1.49)_
+
+Model: GPT 5.1
+---
+
+**User**
+
+Please read instructions.txt as to what I&#x27;m doing right now. Essentially, I&#x27;m going to get you to solve the written parts of this homework assignment.
+
+---
+
+**Cursor**
+
+I’ll first read `instructions.txt` to understand the constraints/expectations, then I’ll confirm how we’ll handle the written parts of the homework.
+
+Got it. You’re using this homework to study how well a modern LLM (me) can handle the non-coding/written parts, including where I struggle or hallucinate.
+
+When you’re ready, send me:
+- Either the specific questions (copied from `hw13.pdf`) you want help with, or
+- Clear screenshots/snips of the written questions, along with any constraints (e.g., “don’t just give the final answer; show reasoning a certain way”).
+
+I’ll:
+- Try to “one-shot” where reasonable, but I’ll flag uncertainty and possible pitfalls.
+- Make my reasoning explicit so you can later annotate where I was confident vs. shaky, and where you had to “drag” me.
+
+---
+
+**User**
+
+Let&#x27;s take a look at question 1 first. Here is the entire question copy pasted, please fix the formatting yourself. 
+
+
+
+I would like you to solve all parts and put the solution in markdown under problem1sol. Put the equations in latex within the markdown, and annotate uncertaintly and shaky reasoning.
+
+---
+
+**Cursor**
+
+I’ll pull the text for Question 1 out of `hw13.pdf`, then create a detailed LaTeX-formatted solution in `problem1sol.md` with explicit notes on uncertainty or shaky steps.
+
+I can’t read `hw13.pdf` directly (it’s binary in this environment), and your message doesn’t actually contain the text of Question 1 yet.
+
+Please:
+- Paste the full text of **Question 1** (all subparts) from the PDF into your next message, even if the formatting is messy.
+- Then I’ll:
+  - Clean up the formatting.
+  - Solve every part with equations in LaTeX.
+  - Explicitly mark any **uncertainty / shaky reasoning** in the `problem1sol.md` markdown file.
+
+---
+
+**User**
+
+DDPM/DDIM Fun: From a Gaussian
+
+Consider generative diffusion models under the simplifying assumption that the target distribution we wish
+
+to sample from is a Gaussian with zero mean and small variance σ2, where σ2 ≪ 1. The forward process is
+
+defined to run from time t = 0 to t = 1.
+
+Suppose the forward diffusion process starts at X0 ∼ N (0, σ2) and at each small interval of length ∆t adds
+
+independent Gaussian noise with mean zero and variance ∆t ≪ σ2.
+
+(a) What is the distribution of X1?
+
+(HINT: Remember, you can think of ∆t = 1
+
+T for some large T and X1 as the final result after doing T
+
+steps of adding independent Gaussian noise to the initial realization of X0.)
+
+(b) Looking at the forward diffusion process around time t, what are the marginal distributions of
+
+Xt−∆t and Xt?
+
+(c) In the previous part, the conditional distribution of (Xt−∆t|Xt = xt) ∼ N
+
+ σ2+t−∆t
+
+σ2+t xt, (σ2+t−∆t)∆t
+
+σ2+t
+
+
+
+.
+
+Simplify and approximate the variance (σ2+t−∆t)∆t
+
+σ2+t of this conditional distribution when ∆t ≪
+
+σ2 ≪ 1.
+
+(d) This part asks you to see what happens if you try to do reverse denoising naively without applying
+
+stochastic noise at each reverse diffusion step. Suppose we start with a sample X1 ∼ N (0, 1) and
+
+iteratively apply only the conditional mean mapping backward to time t = 0 to get a sample of bX0.
+
+What is the resulting distribution of bX0? Remember that ∆t ≪ σ2 ≪ 1 if you want to make any
+
+approximations or to interpret the result. Show your work.
+
+(HINT 1: Consider T = 1
+
+∆t and construct the appropriate product to see how the final bX0 is dis-
+
+tributed. Do you notice any telescoping?)
+
+(HINT 2: You can use the information given in the next part to check your work here.)
+
+(e) In the previous part, you should have found that bX0 has far too little variance if you don’t add inde-
+
+pendent stochastic noise along the way in DDPM-style reverse diffusion.
+
+Let T = 1
+
+∆t . Suppose now that we add independent N (0, ∆t) noise at each of T reverse diffusion
+
+steps. It turns out that
+
+Var( bX0) = σ2
+
+σ2 + 1
+
+!2
+
++ ∆t
+
+T −1X
+
+k=0
+
+σ2
+
+σ2 + k∆t
+
+!2
+
+. (1)
+
+Take the limit ∆t → 0 and write Var( bX0) involving an integral assuming 0 &lt; ∆t ≪ σ2 ≪ 1. And
+
+then evaluate it approximately.
+
+(HINT 1: For evaluating the integral, R 1
+
+(1+t)2 dt = C − 1
+
+1+t .)
+
+(HINT 2: You know that the answer should come out to be close to our desired variance of σ2 and you
+
+can use that to check your work.)
+
+Homework 13, © Faculty teaching EECS 182, Fall 2025. All Rights Reserved. This may not be publicly shared without explicit permission. 1
+
+Homework 13 @ 2025-12-03 22:16:54-08:00
+
+(f) Notice that the conditional mean step in DDPM is approximately a ∆t/t step toward the ideal predictor
+
+bX∗
+
+0 = σ2
+
+σ2+t Xt. Namely that
+
+bXDDPM
+
+t−∆t = bxt + ∆t
+
+t ( bX∗
+
+0 − bxt) + noise =
+
+
+
+1 − ∆t
+
+σ2 + t
+
+
+
+bxt + noise
+
+This can be incrementally viewed as a deterministic DDPM step of − ∆t
+
+σ2+t xt together with a noise
+
+step.
+
+DDIM takes no noise step, but a smaller time-varying deterministic step:
+
+xDDIM
+
+t−∆t = xt + η(t, ∆t)(deterministic DDPM step) with η(t, ∆t) =
+
+√t
+
+√t − ∆t + √t
+
+Describe briefly, if you were simply given a dataset of samples s1, s2, . . . , sn drawn from the same
+
+distribution as our desired X0 distribution, how you would train a neural network to estimate the
+
+function g(xt, t) that in this case, turns out to be σ2
+
+σ2+t xt in analytic form. Specifically, what are the
+
+inputs to the neural net, how do you generate a batch of them, and how would you compute a
+
+loss on the outputs of the neural net for running an optimization algorithm like AdamW to set the
+
+parameters of the neural net?
+
+(g) Assuming you had exact analytic form access to g(xt, t) = σ2
+
+σ2+t xt in the previous part, approximate
+
+the DDIM step for ∆t ≪ t, with no assumption about σ2 vs t.
+
+(HINT: Use the fact that ∆t ≪ t to approximate η(t, ∆t) as an appropriate constant.)
+
+(h) Compute bX0 from the random sample bX1 (drawn from N (0, 1)) by applying all T = 1
+
+∆t DDIM steps
+
+from the previous part and expressing the total contraction as a product. Then turn it into a sum via
+
+logarithms and take the ∆t → 0 limit, using integrals as needed to evaluate the resulting distribution
+
+for bX0. Show your work.
+
+(HINT 1: You know that the answer is supposed to be approximately N  0, σ2 under our assumption
+
+that σ2 ≪ 1. Use this to check your work.)
+
+(HINT 2: Remember ln(1 − x) ≈ −x if 0 &lt; x ≪ 1.)
+
+(HINT 3: The log of a limit is the limit of logs.)
+
+---
+
+**Cursor**
+
+```markdown
+## Problem 1: DDPM/DDIM Fun – From a Gaussian
+
+We assume \(X_0 \sim \mathcal N(0,\sigma^2)\) with \(\sigma^2 \ll 1\), and that in the forward diffusion process from \(t=0\) to \(t=1\), each small interval of length \(\Delta t\) adds independent Gaussian noise \(\mathcal N(0,\Delta t)\). Hence, over time \(t\), the added noise has total variance \(t\), and
+\[
+X_t = X_0 + \text{(Gaussian noise of variance } t\text{)} \sim \mathcal N(0,\sigma^2 + t).
+\]
+
+### (a) Distribution of \(X_1\)
+
+At time \(t=1\), the total noise variance added is \(1\), independent of \(X_0\). Thus
+\[
+X_1 \sim \mathcal N(0,\sigma^2 + 1).
+\]
+Since \(\sigma^2 \ll 1\), this is approximately \(\mathcal N(0,1)\), but the exact answer is \(\mathcal N(0,\sigma^2 + 1)\).
+
+### (b) Marginal distributions of \(X_{t-\Delta t}\) and \(X_t\)
+
+By the same reasoning, at time \(t-\Delta t\) we have
+\[
+X_{t-\Delta t} \sim \mathcal N\bigl(0,\,\sigma^2 + t - \Delta t\bigr),
+\]
+and at time \(t\),
+\[
+X_t \sim \mathcal N\bigl(0,\,\sigma^2 + t\bigr).
+\]
+
+### (c) Approximate variance of \(X_{t-\Delta t}\mid X_t=x_t\)
+
+We are given
+\[
+\bigl(X_{t-\Delta t} \mid X_t = x_t\bigr) \sim \mathcal N\!\left(
+  \frac{\sigma^2 + t - \Delta t}{\sigma^2 + t}\,x_t,\;
+  \frac{(\sigma^2 + t - \Delta t)\,\Delta t}{\sigma^2 + t}
+\right).
+\]
+Let \(A = \sigma^2 + t\). Then the variance term is
+\[
+\frac{(\sigma^2 + t - \Delta t)\,\Delta t}{\sigma^2 + t}
+  = \frac{(A - \Delta t)\,\Delta t}{A}
+  = \Delta t\left(1 - \frac{\Delta t}{A}\right).
+\]
+Using \(\Delta t \ll \sigma^2 \ll 1\) implies \(\Delta t \ll A\), so \(\Delta t/A \ll 1\), and we can approximate
+\[
+\frac{(\sigma^2 + t - \Delta t)\,\Delta t}{\sigma^2 + t}
+  \approx \Delta t.
+\]
+
+**Answer:** The conditional variance is approximately \(\Delta t\).
+
+**Uncertainty note:** The approximation \(\Delta t \ll \sigma^2\) is used to drop the \(O(\Delta t^2 / (\sigma^2 + t))\) term; this is standard in diffusion limits.
+
+### (d) Naive reverse denoising using only the conditional mean
+
+The conditional mean mapping for a single backward step from \(t\) to \(t-\Delta t\) is
+\[
+\mathbb E\bigl[X_{t-\Delta t} \mid X_t = x_t\bigr]
+  = \frac{\sigma^2 + t - \Delta t}{\sigma^2 + t}\,x_t
+  = \left(1 - \frac{\Delta t}{\sigma^2 + t}\right)x_t.
+\]
+Define the deterministic factor
+\[
+m(t) = \frac{\sigma^2 + t - \Delta t}{\sigma^2 + t}
+      = \frac{\sigma^2 + t - \Delta t}{\sigma^2 + t}.
+\]
+We start from \(X_1 \sim \mathcal N(0,1)\) and repeatedly apply this mean mapping backwards in \(T = 1/\Delta t\) steps: \(t_k = k\Delta t\), \(k = 1,\dots,T\). The step from \(t_k\) to \(t_{k-1}\) multiplies by
+\[
+m(t_k) = \frac{\sigma^2 + t_k - \Delta t}{\sigma^2 + t_k}
+        = \frac{\sigma^2 + (k-1)\Delta t}{\sigma^2 + k\Delta t}.
+\]
+Thus the overall contraction factor from \(t=1\) to \(t=0\) is
+\[
+C_{\text{naive}}
+  = \prod_{k=1}^{T}
+    \frac{\sigma^2 + (k-1)\Delta t}{\sigma^2 + k\Delta t}.
+\]
+This telescopes:
+\[
+C_{\text{naive}}
+  = \frac{\sigma^2 + 0\cdot\Delta t}{\sigma^2 + T\Delta t}
+  = \frac{\sigma^2}{\sigma^2 + 1}.
+\]
+Therefore, the naive reverse sample is
+\[
+\hat X_0 = C_{\text{naive}} X_1 = \frac{\sigma^2}{\sigma^2 + 1} X_1.
+\]
+Since \(X_1 \sim \mathcal N(0,1)\), we get
+\[
+\hat X_0 \sim \mathcal N\!\left(0,\left(\frac{\sigma^2}{\sigma^2 + 1}\right)^2\right).
+\]
+For \(\sigma^2 \ll 1\), this variance is approximately \(\sigma^4 \ll \sigma^2\), i.e. **far too small** compared to the desired variance \(\sigma^2\).
+
+### (e) Adding stochastic noise at each reverse step: variance in the \(\Delta t \to 0\) limit
+
+We are given that with independent \(\mathcal N(0,\Delta t)\) noise added at each of the \(T=1/\Delta t\) reverse steps, the variance of \(\hat X_0\) is
+\[
+\operatorname{Var}(\hat X_0)
+  = \left(\frac{\sigma^2}{\sigma^2 + 1}\right)^2
+    + \Delta t \sum_{k=0}^{T-1}
+      \left(\frac{\sigma^2}{\sigma^2 + k\Delta t}\right)^2.
+\tag{1}
+\]
+We take \(\Delta t \to 0\) with \(T = 1/\Delta t\) and approximate the sum by an integral:
+\[
+\Delta t \sum_{k=0}^{T-1}
+  \left(\frac{\sigma^2}{\sigma^2 + k\Delta t}\right)^2
+  \;\xrightarrow[\Delta t \to 0]{}\;
+  \int_0^1 \left(\frac{\sigma^2}{\sigma^2 + t}\right)^2 dt.
+\]
+So, in the limit,
+\[
+\operatorname{Var}(\hat X_0)
+  \approx
+  \left(\frac{\sigma^2}{\sigma^2 + 1}\right)^2
+  + \int_0^1 \left(\frac{\sigma^2}{\sigma^2 + t}\right)^2 dt.
+\]
+Evaluate the integral:
+\[
+\int_0^1 \left(\frac{\sigma^2}{\sigma^2 + t}\right)^2 dt
+  = \int_0^1 \frac{\sigma^4}{(\sigma^2 + t)^2} \, dt.
+\]
+Let \(u = \sigma^2 + t\), so \(du = dt\), and when \(t=0\), \(u = \sigma^2\); when \(t=1\), \(u = \sigma^2 + 1\). Then
+\[
+\int_0^1 \frac{\sigma^4}{(\sigma^2 + t)^2} \, dt
+  = \sigma^4 \int_{\sigma^2}^{\sigma^2 + 1} \frac{1}{u^2} du
+  = \sigma^4\left[-\frac{1}{u}\right]_{\sigma^2}^{\sigma^2 + 1}
+  = \sigma^4\left(\frac{1}{\sigma^2} - \frac{1}{\sigma^2 + 1}\right).
+\]
+Simplify:
+\[
+\int_0^1 \left(\frac{\sigma^2}{\sigma^2 + t}\right)^2 dt
+  = \sigma^2 - \frac{\sigma^4}{\sigma^2 + 1}.
+\]
+Thus,
+\[
+\operatorname{Var}(\hat X_0)
+  \approx
+  \left(\frac{\sigma^2}{\sigma^2 + 1}\right)^2
+  + \sigma^2 - \frac{\sigma^4}{\sigma^2 + 1}.
+\]
+For \(\sigma^2 \ll 1\), the dominant term is \(\sigma^2\), and the remaining terms are \(O(\sigma^4)\). Therefore,
+\[
+\operatorname{Var}(\hat X_0) \approx \sigma^2
+\]
+up to small corrections of order \(\sigma^4\).
+
+**Uncertainty note:** The passage from the discrete sum to the integral and the dropping of \(O(\sigma^4)\) terms are standard continuum/perturbative approximations; for very small but not infinitesimal \(\sigma^2\), the result will be very close but not exactly equal to \(\sigma^2\).
+
+### (f) Training a neural network to approximate \(g(x_t,t) = \dfrac{\sigma^2}{\sigma^2 + t} x_t\)
+
+We are given only samples \(s_i\) drawn from the distribution of \(X_0\).
+
+**Inputs to the network:**
+- An input pair \((x_t, t)\), where:
+  - \(x_t\) is a noisy version of a data sample \(s\) at time \(t\),
+  - \(t\) is the (scalar) time, typically encoded (e.g., via positional/time embedding) and concatenated to the input.
+
+**How to generate a training batch:**
+1. Sample a minibatch of data points \(s_1,\dots,s_B\) from the dataset (these play the role of \(X_0\)).
+2. For each \(s_i\), sample a time \(t_i \sim \mathrm{Uniform}(0,1)\).
+3. For each \(s_i,t_i\), sample a forward-noise variable \(\epsilon_i \sim \mathcal N(0,1)\) and construct
+   \[
+   x_{t_i} = s_i + \sqrt{t_i}\,\epsilon_i,
+   \]
+   which matches the forward process \(X_t \mid X_0 = s_i \sim \mathcal N(s_i,t_i)\).
+4. Feed \((x_{t_i}, t_i)\) into the neural net \(g_\theta\) to obtain a prediction \(g_\theta(x_{t_i}, t_i)\).
+
+**Loss function:**
+- Since \(g(x_t,t) = \mathbb E[X_0 \mid X_t=x_t]\), a natural training target is the original clean sample \(s_i = X_0\).
+- Use an MSE loss to encourage \(g_\theta\) to approximate the conditional mean:
+  \[
+  \mathcal L(\theta)
+    = \mathbb E_{s,t,\epsilon}
+      \bigl[
+        \| g_\theta(x_t,t) - s \|^2
+      \bigr].
+  \]
+- In practice, approximate the expectation by an average over the minibatch, and then apply an optimizer like AdamW to minimize \(\mathcal L(\theta)\).
+
+In this toy Gaussian case, the optimal \(g_\theta\) converges to the analytic form \(g(x_t,t) = \frac{\sigma^2}{\sigma^2 + t} x_t\).
+
+**Uncertainty note:** I am following the standard DDPM training formulation (predicting clean \(X_0\) from \((x_t,t)\)); equivalently, one could train to predict the noise \(\epsilon\). Both choices would recover the same conditional mean in this 1D Gaussian setting.
+
+### (g) Approximate DDIM step for \(\Delta t \ll t\)
+
+We are told that DDIM takes a smaller deterministic step:
+\[
+x^{\mathrm{DDIM}}_{t-\Delta t}
+  = x_t + \eta(t,\Delta t)\,\bigl(\text{deterministic DDPM step}\bigr),
+\]
+where the deterministic DDPM step is
+\[
+\Delta x_{\text{DDPM}} = -\frac{\Delta t}{\sigma^2 + t}\,x_t,
+\]
+and
+\[
+\eta(t,\Delta t)
+  = \frac{\sqrt{t}}{\sqrt{t-\Delta t} + \sqrt{t}}.
+\]
+
+For \(\Delta t \ll t\), we approximate
+\[
+\sqrt{t-\Delta t}
+  \approx \sqrt{t} - \frac{\Delta t}{2\sqrt{t}},
+\]
+so the denominator is
+\[
+\sqrt{t-\Delta t} + \sqrt{t}
+  \approx 2\sqrt{t} - \frac{\Delta t}{2\sqrt{t}}
+  = 2\sqrt{t}\left(1 - \frac{\Delta t}{4t}\right).
+\]
+Hence
+\[
+\eta(t,\Delta t)
+  = \frac{\sqrt{t}}{\sqrt{t-\Delta t} + \sqrt{t}}
+  \approx \frac{\sqrt{t}}{2\sqrt{t}\left(1 - \frac{\Delta t}{4t}\right)}
+  \approx \frac{1}{2},
+\]
+up to corrections of order \(\Delta t/t\).
+
+Plugging this into the DDIM update:
+\[
+x^{\mathrm{DDIM}}_{t-\Delta t}
+  \approx x_t + \frac{1}{2}\left(-\frac{\Delta t}{\sigma^2 + t} x_t\right)
+  = \left(1 - \frac{\Delta t}{2(\sigma^2 + t)}\right)x_t.
+\]
+
+**Answer:** For \(\Delta t \ll t\), the approximate DDIM step is
+\[
+x^{\mathrm{DDIM}}_{t-\Delta t}
+  \approx \left(1 - \frac{\Delta t}{2(\sigma^2 + t)}\right)x_t.
+\]
+
+**Uncertainty note:** The exact form of \(\eta(t,\Delta t)\) in the PDF is slightly ambiguous after text extraction; I have interpreted it as \(\eta(t,\Delta t)=\frac{\sqrt{t}}{\sqrt{t-\Delta t}+\sqrt{t}}\), which is dimensionally consistent and yields the standard small-\(\Delta t\) approximation \(\eta\approx \tfrac12\).
+
+### (h) Distribution of \(\hat X_0\) after all DDIM steps
+
+We now apply the DDIM step from part (g) repeatedly from \(t=1\) back to \(t=0\), starting from \(\hat X_1 \sim \mathcal N(0,1)\). Using the approximate multiplicative factor from (g), the step from time \(t\) to \(t-\Delta t\) multiplies by
+\[
+r(t) = 1 - \frac{\Delta t}{2(\sigma^2 + t)}.
+\]
+Let \(t_k = k\Delta t\), \(k=1,\dots,T\) with \(T=1/\Delta t\). Then
+\[
+\hat X_0
+  = \hat X_1 \prod_{k=1}^{T} r(t_k)
+  \approx \hat X_1
+   \prod_{k=1}^{T}
+   \left(1 - \frac{\Delta t}{2(\sigma^2 + t_k)}\right).
+\]
+Define the total contraction factor
+\[
+C_{\mathrm{DDIM}}
+  = \prod_{k=1}^{T}
+   \left(1 - \frac{\Delta t}{2(\sigma^2 + t_k)}\right).
+\]
+Take logarithms and use \(\ln(1 - x) \approx -x\) for \(0 &lt; x \ll 1\) (with \(\Delta t \ll \sigma^2 + t_k\)):
+\[
+\ln C_{\mathrm{DDIM}}
+  \approx \sum_{k=1}^{T}
+   \ln\left(1 - \frac{\Delta t}{2(\sigma^2 + t_k)}\right)
+  \approx -\sum_{k=1}^{T}
+     \frac{\Delta t}{2(\sigma^2 + t_k)}.
+\]
+As \(\Delta t \to 0\), the Riemann sum becomes an integral:
+\[
+\ln C_{\mathrm{DDIM}}
+  \xrightarrow[\Delta t \to 0]{}
+  -\frac{1}{2} \int_0^1 \frac{dt}{\sigma^2 + t}
+  = -\frac{1}{2}\left[\ln(\sigma^2 + t)\right]_0^1
+  = -\frac{1}{2}\bigl(\ln(\sigma^2 + 1) - \ln(\sigma^2)\bigr).
+\]
+Therefore,
+\[
+C_{\mathrm{DDIM}}
+  = \exp\left(-\frac{1}{2}\bigl(\ln(\sigma^2 + 1) - \ln(\sigma^2)\bigr)\right)
+  = \left(\frac{\sigma^2}{\sigma^2 + 1}\right)^{1/2}.
+\]
+Hence
+\[
+\hat X_0 = C_{\mathrm{DDIM}} \hat X_1,
+\]
+and since \(\hat X_1 \sim \mathcal N(0,1)\),
+\[
+\hat X_0 \sim \mathcal N\!\left(0,\,C_{\mathrm{DDIM}}^2\right)
+  = \mathcal N\!\left(0,\,\frac{\sigma^2}{\sigma^2 + 1}\right).
+\]
+For \(\sigma^2 \ll 1\), this variance is
+\[
+\frac{\sigma^2}{\sigma^2 + 1} \approx \sigma^2,
+\]
+so DDIM with this choice of step size and added noise approximately recovers the correct variance of the target distribution \(X_0\).
+
+**Uncertainty note:** The approximation uses (i) the small-\(\Delta t\) expansion of \(\ln(1-x)\), and (ii) the continuum limit that turns the product into an exponential of an integral. Both are standard in analyzing diffusion-type discretizations; residual errors are \(O(\Delta t)\) and vanish as \(\Delta t \to 0\).
+
+
+```
+
+### Problem 1 status
+
+- **All parts (a)–(h) are now solved** in `problem1sol.md` using markdown with LaTeX for equations.
+- I’ve **explicitly annotated uncertainty/shaky reasoning** in parts (c), (e), (f), (g), and (h) wherever approximations, continuum limits, or an ambiguous PDF expression were used.
+
+If you’d like, I can next go through and make a very short “executive summary” of how often I used approximations, where the main potential pitfalls are, or rewrite any part in a more step-by-step way for your Ed post.
+
+---
+
+**User**
+
+In a similar fashion, solve question 2:
+
+
+
+2. Honey, Where’s My Reward Model?
+
+In the standard Reinforcement Learning from Human Feedback (RLHF) pipeline like in Ziegler et al, there
+
+are usually three phases:
+
+1 SFT: We perform Supervised Fine-Tuning (SFT) on a pre-trained LM using a dataset of high-quality
+
+demonstrations (e.g., summarization, sentiment analysis, etc.) to obtain a model πSFT.
+
+2 Reward Modeling: Next, we use the SFT model to generate pairs of answers (y1, y2) ∼ πSFT(y | x)
+
+for various prompts x. Human labelers rank these pairs, producing a dataset of preferences D =
+
+{(x(i), y(i)
+
+w , y(i)
+
+l )}N
+
+i=1, where yw denotes the preferred (winning) output and yl the dispreferred (losing)
+
+output amongst (y1, y2), respectively. Crucially, we assume these preferences are generated by some
+
+latent (hidden) reward model r∗(x, y), which we do not have access to. Instead, we parameterize a
+
+proxy reward model rϕ(x, y) to approximate it. However, we face a challenge: How do we model these
+
+preferences, which are inherently discrete (yw ≻ yl), using a reward model that outputs continuous
+
+scalars?
+
+Homework 13, © Faculty teaching EECS 182, Fall 2025. All Rights Reserved. This may not be publicly shared without explicit permission. 2
+
+Homework 13 @ 2025-12-03 22:16:54-08:00
+
+To bridge this gap, we employ the Bradley-Terry (BT) model. The BT model assumes that the prob-
+
+ability of a human preferring one response over another is given by the sigmoid of the difference in
+
+their latent rewards:
+
+p∗(yw ≻ yl|x) = σ(r∗(x, yw) − r∗(x, yl)) = exp r∗(x, yw)
+
+exp r∗(x, yw) + exp r∗(x, yl)
+
+This formulation allows us to frame preference learning as a binary classification problem because it
+
+treats the reward difference as a logit: if r∗(x, yw) is significantly higher than r∗(x, yl), the sigmoid
+
+outputs a probability near 1, matching the “label” that yw is the winner. As a result, we can estimate the
+
+parameters ϕ via Maximum Likelihood Estimation (MLE) by minimizing the negative log-likelihood
+
+loss:
+
+LR(ϕ) = −E(x,yw ,yl)∼D
+
+log σ(rϕ(x, yw) − rϕ(x, yl))
+
+In the context of LMs, r∗(x, y) is often initialized from the SFT model πSFT(y | x) with the ad-
+
+dition of a classification head to produce a single scalar prediction for the reward value. Further-
+
+more, to ensure a reward function with lower variance, prior works normalize the rewards, such that
+
+E(x,y)∼D[rϕ(x, y)] = 0 for all x.
+
+3 RL Fine-Tuning: Finally, we use learned reward function as feedback to the language model. The
+
+optimization problem is formulated as
+
+max
+
+πθ
+
+Ex∼D,y∼πθ (y|x)
+
+rϕ(x, y) − βDKL[πθ(y | x)∥πref (y | x)]
+
+where β is a parameter controlling the deviatation from the base reference policy πref , namely the
+
+initial SFT model πSFT. In practice, the language model policy πθ is also initialized to πSFT. Due
+
+to the discrete nature of language generation, the objective is not differentiable so it is typically opti-
+
+mized using reinforcement learning. The standard approach has been to construct the reward function
+
+r(x, y) = rϕ(x, y) − β(log πθ(y | x) − log πref (y | x)), and maximize using PPO.
+
+Unfortunately, this three-step process is brittle and computationally expensive. This where Direct Preference
+
+Optimization (DPO) comes in.
+
+In this problem, you will derive Direct Preference Optimization (DPO), a method introduced by Rafailov
+
+et al. that provides a simple yet effective approach for policy optimization using preferences directly.
+
+(a) As a warm up, find the optimal p∗ for the optimization problem:
+
+min
+
+p∈P DKL(p∥q)
+
+where
+
+DKL(p∥q) = Ex∼p(x) log
+
+ p(x)
+
+q(x)
+
+
+
+= X
+
+x
+
+p(x) log
+
+ p(x)
+
+q(x)
+
+
+
+≥ 0
+
+is the KL divergence of p from q.
+
+(b) As discussed earlier, we wish to find a language model policy πθ that maximizes the expected reward
+
+while preventing the model from drifting too far from the reference model:
+
+max
+
+πθ
+
+Ex∼D,y∼πθ (y|x)
+
+rϕ(x, y) − βDKL[πθ(y | x)∥πref (y | x)]
+
+Homework 13, © Faculty teaching EECS 182, Fall 2025. All Rights Reserved. This may not be publicly shared without explicit permission. 3
+
+Homework 13 @ 2025-12-03 22:16:54-08:00
+
+Show that the optimal solution πθ∗ (y | x) takes the form:
+
+πθ∗ (y|x) = 1
+
+Z(x) πref (y | x) exp
+
+ 1
+
+β rϕ(x, y)
+
+
+
+where Z(x) = P
+
+y πref (y | x) exp
+
+ 1
+
+β rϕ(x, y)
+
+
+
+is the partition function.
+
+(c) Even though we’ve obtained the optimal policy πθ∗ (y | x), this particular representation of it is hard
+
+to utilize in practice. Why? Hint: How large can the output space Y be?
+
+(d) Using the expression for the optimal policy πθ∗ derived in part (b), express the reward function rϕ(x, y)
+
+in terms of πθ∗ , πref , and Z(x).
+
+(e) With this reparametrization of rϕ(x, y), substitute it into the Bradley-Terry model to obtain the prob-
+
+ability of human preference data in terms of the optimal policy. Furthermore, show that the partition
+
+function Z(x) cancels out in your computation. Why is this desirable?
+
+Now that we have the probability of human preference data in terms of the optimal policy rather than the
+
+reward model, we can formulate the Maximum Likelihood objective for the parameterized policy πθ
+
+LDPO(πθ; πref ) = −E(x,yw ,yl)∼D
+
+&quot;
+
+log σ
+
+
+
+β log πθ(yw | x)
+
+πref (yw | x) − β log πθ(yl | x)
+
+πref (yl | x)
+
+#
+
+which is exactly the result we wanted!
+
+Recall the complex RLHF pipeline we started with: SFT → Reward Modeling → RL Fine-Tuning. By
+
+deriving the equation above, we have bypassed the need for an explicit reward model rϕ(x, y) and the RL
+
+loop entirely. Instead, we are fitting an implicit reward model (defined by the log-ratio of our policy and the
+
+reference) using a simple binary cross-entropy loss.
+
+Crucially, because we derived this objective by algebraically solving for the reward in part (c), the policy
+
+πθ that minimizes this loss is guaranteed to be the optimal policy for that implicit reward function. We have
+
+thus reduced the RLHF pipeline to a standard supervised classification problem!
+
+(f) To verify how this optimization works in practice, let the implicit reward be defined as ˆrθ(x, y) =
+
+β log πθ (y|x)
+
+πref (y|x) . Derive the gradient of the DPO loss with respect to the parameters θ, i.e., ∇θLDPO.
+
+Afterwards, interpret the role of the weighting term σ(ˆrθ(x, yl) − ˆrθ(x, yw)) in the ∇θLDPO. Does the
+
+gradient update the model more when it is correct, or when it is incorrect?
+
+Hint: Recall that σ′(z) = σ(z)(1 − σ(z)) = σ(z)σ(−z).
+
+(g) Throughout this problem, we have worked with the Bradley-Terry model to model human preferences.
+
+However, in many real-world scenarios, labelers rank multiple model outputs y1, . . . , yK rather than
+
+just comparing pairs. This is modeled by the Plackett-Luce model, which is a generalization of the
+
+Bradley-Terry model. In a similar fashion, the PL model stipulates that when presented with a set
+
+of possible choices, people prefer a choice with a probability prportional to the value of some latent
+
+reward function for that choice. In our context, when presented with a prompt x and a set of K
+
+answers y1, . . . , yK ∼ πSFT(y | x), a user would output a permutation τ : {1, . . . , K} → {1, . . . , K}
+
+indicating the preferred order of the choices. The probability of observing this ranking is given by:
+
+pθ∗ (τ |y1, . . . , yK , x) =
+
+KY
+
+k=1
+
+exp
+
+
+
+rϕ(x, yτ (k))
+
+
+
+PK
+
+j=k exp
+
+
+
+rϕ(x, yτ (j))
+
+
+
+Homework 13, © Faculty teaching EECS 182, Fall 2025. All Rights Reserved. This may not be publicly shared without explicit permission. 4
+
+Homework 13 @ 2025-12-03 22:16:54-08:00
+
+Using the implicit reward parameterization derived in part (d) (rϕ(x, y) = β log πθ∗ (y|x)
+
+πref (y|x) +β log Z(x)),
+
+show that the partition function Z(x) cancels out here as well. Write the final Plackett-Luce probability
+
+solely in terms of πθ∗ and πref .
+
+Once you’ve written out that final probability, assuming we have access to a dataset D = {(τ (i), x(i), {yi
+
+j }K
+
+j=1)}N
+
+i=1
+
+of prompts and user-specified rankings, we can use a parameterized model and optimize this objective
+
+with maximum-likelihood:
+
+LDPO(πθ; πref ) = −E(τ,y1,...,yK ,xτ )∼D
+
+
+
+log σ β log πθ(yτ (k) | x)
+
+πref (yτ (k) | x) − β log πθ(yτ (j)|x)
+
+πref (yτ (j)|x)
+
+!
+
+
+
+
+
+---
+
+**Cursor**
+
+I’ll write a full LaTeX-formatted solution for all parts of Question 2 into a new `problem2sol.md` file, mirroring the style of `problem1sol.md` and clearly flagging any approximations or subtle reasoning steps.
+
+```markdown
+## Problem 2: Honey, Where’s My Reward Model?
+
+We work through all parts (a)–(g), using the notation from the problem.
+
+---
+
+### (a) Optimal \(p^\*\) for \(\min_{p \in \mathcal P} D_{\mathrm{KL}}(p\|q)\)
+
+Recall
+\[
+D_{\mathrm{KL}}(p\|q)
+  = \sum_x p(x)\log\frac{p(x)}{q(x)} \ge 0.
+\]
+By Gibbs’ inequality, \(D_{\mathrm{KL}}(p\|q) \ge 0\) with equality **if and only if** \(p(x) = q(x)\) for all \(x\) (on the support where \(q(x) &gt; 0\)).
+Therefore, the minimizer is
+\[
+p^\*(x) = q(x)\quad\text{for all }x.
+\]
+
+**Uncertainty note:** This relies on the standard inequality \(\sum_x p(x)\log\frac{p(x)}{q(x)} \ge 0\); a full proof uses convexity of \(\log\) or Jensen’s inequality.
+
+---
+
+### (b) Optimal policy \(\pi_\theta^\*(y\mid x)\) with KL regularization
+
+For a fixed prompt \(x\), define the objective over distributions \(\pi(\cdot\mid x)\) on responses \(y\):
+\[
+J_x(\pi)
+  = \mathbb E_{y\sim\pi(\cdot\mid x)}[r_\phi(x,y)]
+    - \beta D_{\mathrm{KL}}(\pi(\cdot\mid x)\,\|\,\pi_{\mathrm{ref}}(\cdot\mid x)).
+\]
+Write out the expectation and KL explicitly:
+\[
+J_x(\pi)
+  = \sum_y \pi(y\mid x) r_\phi(x,y)
+    - \beta \sum_y \pi(y\mid x)
+      \log\frac{\pi(y\mid x)}{\pi_{\mathrm{ref}}(y\mid x)}.
+\]
+Rearrange the terms by factoring out \(-\beta\):
+\[
+J_x(\pi)
+  = -\beta \sum_y \pi(y\mid x)
+     \log\frac{\pi(y\mid x)}
+               {\pi_{\mathrm{ref}}(y\mid x)\exp\left(\tfrac{1}{\beta}r_\phi(x,y)\right)}
+  + \beta \log Z(x),
+\]
+where we have introduced
+\[
+Z(x)
+  = \sum_y \pi_{\mathrm{ref}}(y\mid x)\exp\left(\tfrac{1}{\beta}r_\phi(x,y)\right),
+\]
+and used the fact that
+\[
+\sum_y \pi(y\mid x) \left[
+  r_\phi(x,y) - \beta \log \pi_{\mathrm{ref}}(y\mid x)
+\right]
+  = \beta \sum_y \pi(y\mid x)
+    \log\bigl(\pi_{\mathrm{ref}}(y\mid x)e^{r_\phi(x,y)/\beta}\bigr).
+\]
+Define the “Boltzmannized” reference distribution
+\[
+\tilde\pi(y\mid x)
+  = \frac{1}{Z(x)}\,
+    \pi_{\mathrm{ref}}(y\mid x)\exp\left(\tfrac{1}{\beta}r_\phi(x,y)\right).
+\]
+Then
+\[
+J_x(\pi)
+  = -\beta\,D_{\mathrm{KL}}(\pi(\cdot\mid x)\,\|\,\tilde\pi(\cdot\mid x))
+    + \beta\log Z(x).
+\]
+Since \(\beta &gt; 0\) and KL is minimized when \(\pi = \tilde\pi\), the maximizing policy is
+\[
+\pi_\theta^\*(y\mid x)
+  = \tilde\pi(y\mid x)
+  = \frac{1}{Z(x)}\,
+    \pi_{\mathrm{ref}}(y\mid x)\exp\left(\tfrac{1}{\beta}r_\phi(x,y)\right),
+\]
+with
+\[
+Z(x) = \sum_y \pi_{\mathrm{ref}}(y\mid x)\exp\left(\tfrac{1}{\beta}r_\phi(x,y)\right).
+\]
+
+This matches the desired form.
+
+---
+
+### (c) Why is \(\pi_\theta^\*(y\mid x)\) hard to use directly?
+
+The expression
+\[
+\pi_\theta^\*(y\mid x)
+  = \frac{1}{Z(x)}\,\pi_{\mathrm{ref}}(y\mid x)
+    \exp\left(\tfrac{1}{\beta}r_\phi(x,y)\right)
+\]
+requires knowledge of the **partition function**
+\[
+Z(x) = \sum_y \pi_{\mathrm{ref}}(y\mid x)\exp\left(\tfrac{1}{\beta}r_\phi(x,y)\right),
+\]
+which is a sum over the entire output space \(\mathcal Y\).
+
+In the language modeling setting, \(\mathcal Y\) is the set of all possible text sequences (potentially of unbounded length), which is astronomically large. Computing this sum exactly is intractable, and even approximating it well can be very expensive. Hence, although the closed form is conceptually nice, it is not directly practical for large LMs.
+
+---
+
+### (d) Expressing \(r_\phi(x,y)\) in terms of \(\pi_\theta^\*\), \(\pi_{\mathrm{ref}}\), and \(Z(x)\)
+
+From part (b), for any \(x,y\),
+\[
+\pi_\theta^\*(y\mid x)
+  = \frac{1}{Z(x)}\,\pi_{\mathrm{ref}}(y\mid x)
+    \exp\left(\tfrac{1}{\beta}r_\phi(x,y)\right).
+\]
+Take logs:
+\[
+\log \pi_\theta^\*(y\mid x)
+  = \log \pi_{\mathrm{ref}}(y\mid x)
+    + \frac{1}{\beta}r_\phi(x,y)
+    - \log Z(x).
+\]
+Solve for \(r_\phi(x,y)\):
+\[
+r_\phi(x,y)
+  = \beta\Bigl(\log \pi_\theta^\*(y\mid x)
+               - \log \pi_{\mathrm{ref}}(y\mid x)
+               + \log Z(x)\Bigr).
+\]
+Equivalently,
+\[
+r_\phi(x,y)
+  = \beta \log \frac{\pi_\theta^\*(y\mid x)}{\pi_{\mathrm{ref}}(y\mid x)}
+    + \beta \log Z(x).
+\]
+
+This is the **implicit reward parametrization** used later.
+
+---
+
+### (e) Bradley–Terry probability in terms of the optimal policy and cancellation of \(Z(x)\)
+
+The Bradley–Terry model says
+\[
+p^\*(y_w \succ y_l\mid x)
+  = \sigma\bigl(r_\phi(x,y_w) - r_\phi(x,y_l)\bigr).
+\]
+Using the expression from part (d):
+\[
+r_\phi(x,y)
+  = \beta \log\frac{\pi_\theta^\*(y\mid x)}{\pi_{\mathrm{ref}}(y\mid x)}
+    + \beta\log Z(x).
+\]
+Therefore
+\[
+\begin{aligned}
+r_\phi(x,y_w) - r_\phi(x,y_l)
+  &amp;= \beta \log\frac{\pi_\theta^\*(y_w\mid x)}{\pi_{\mathrm{ref}}(y_w\mid x)}
+     + \beta\log Z(x) \\
+  &amp;\quad
+     - \Bigl[
+          \beta \log\frac{\pi_\theta^\*(y_l\mid x)}{\pi_{\mathrm{ref}}(y_l\mid x)}
+          + \beta\log Z(x)
+       \Bigr] \\
+  &amp;= \beta \log\frac{\pi_\theta^\*(y_w\mid x)}{\pi_{\mathrm{ref}}(y_w\mid x)}
+     - \beta \log\frac{\pi_\theta^\*(y_l\mid x)}{\pi_{\mathrm{ref}}(y_l\mid x)}.
+\end{aligned}
+\]
+The \(\beta\log Z(x)\) terms **cancel**.
+
+Thus,
+\[
+p^\*(y_w \succ y_l\mid x)
+  = \sigma\!\left(
+      \beta \log\frac{\pi_\theta^\*(y_w\mid x)}{\pi_{\mathrm{ref}}(y_w\mid x)}
+      - \beta \log\frac{\pi_\theta^\*(y_l\mid x)}{\pi_{\mathrm{ref}}(y_l\mid x)}
+    \right).
+\]
+
+This leads to the DPO maximum-likelihood objective over a parameterized policy \(\pi_\theta\) (replacing \(\pi_\theta^\*\) with \(\pi_\theta\)):
+\[
+L_{\mathrm{DPO}}(\pi_\theta;\pi_{\mathrm{ref}})
+  = -\mathbb E_{(x,y_w,y_l)\sim\mathcal D}
+    \left[
+      \log \sigma\!\left(
+        \beta \log\frac{\pi_\theta(y_w\mid x)}{\pi_{\mathrm{ref}}(y_w\mid x)}
+        - \beta \log\frac{\pi_\theta(y_l\mid x)}{\pi_{\mathrm{ref}}(y_l\mid x)}
+      \right)
+    \right].
+\]
+
+**Why is cancellation of \(Z(x)\) desirable?**
+- We no longer need to compute or approximate the partition function \(Z(x)\), which would require a sum over all possible outputs \(y\).
+- The objective depends only on log-density ratios between the current policy and the reference policy at the **observed** samples \(y_w, y_l\), making training feasible.
+
+**Uncertainty note:** The main subtlety is treating the target \(\pi_\theta^\*\) as a stand-in for the parameterized \(\pi_\theta\) we actually optimize; in practice we just plug \(\pi_\theta\) into this form and do MLE.
+
+---
+
+### (f) Gradient of the DPO loss and role of the weighting term
+
+Define the implicit reward
+\[
+\hat r_\theta(x,y)
+  = \beta \log\frac{\pi_\theta(y\mid x)}{\pi_{\mathrm{ref}}(y\mid x)}.
+\]
+For a single preference data point \((x,y_w,y_l)\), the DPO loss term is
+\[
+\ell(\theta; x,y_w,y_l)
+  = -\log \sigma\!\left(
+      \hat r_\theta(x,y_w) - \hat r_\theta(x,y_l)
+    \right).
+\]
+Let
+\[
+z
+  = \hat r_\theta(x,y_w) - \hat r_\theta(x,y_l).
+\]
+Then
+\[
+\ell(\theta) = -\log \sigma(z).
+\]
+Differentiate w.r.t. \(z\):
+\[
+\frac{d\ell}{dz}
+  = -\frac{1}{\sigma(z)}\sigma&#x27;(z)
+  = -\frac{1}{\sigma(z)}\sigma(z)\sigma(-z)
+  = -\sigma(-z).
+\]
+But \(\sigma(-z) = 1 - \sigma(z)\), so
+\[
+\frac{d\ell}{dz}
+  = \sigma(z) - 1
+  = -\sigma(-z).
+\]
+Using the chain rule,
+\[
+\nabla_\theta \ell
+  = \frac{d\ell}{dz}\,\nabla_\theta z
+  = (\sigma(z) - 1)
+    \Bigl(\nabla_\theta \hat r_\theta(x,y_w)
+          - \nabla_\theta \hat r_\theta(x,y_l)\Bigr).
+\]
+We can equivalently rewrite this using \(\sigma(-z)\):
+\[
+\nabla_\theta \ell
+  = \sigma(-z)\Bigl(
+      \nabla_\theta \hat r_\theta(x,y_l)
+      - \nabla_\theta \hat r_\theta(x,y_w)
+    \Bigr),
+\]
+since \(\sigma(-z) = 1 - \sigma(z)\).
+
+Recall \(\hat r_\theta(x,y) = \beta \log \pi_\theta(y\mid x) - \beta \log \pi_{\mathrm{ref}}(y\mid x)\), and \(\pi_{\mathrm{ref}}\) is fixed, so
+\[
+\nabla_\theta \hat r_\theta(x,y)
+  = \beta \nabla_\theta \log \pi_\theta(y\mid x).
+\]
+Thus, for a single data point,
+\[
+\begin{aligned}
+\nabla_\theta \ell
+  &amp;= \sigma\bigl(\hat r_\theta(x,y_l) - \hat r_\theta(x,y_w)\bigr)\,
+     \beta\bigl(
+       \nabla_\theta \log \pi_\theta(y_l\mid x)
+       - \nabla_\theta \log \pi_\theta(y_w\mid x)
+     \bigr) \\
+  &amp;= \beta\,\sigma\bigl(\hat r_\theta(x,y_l) - \hat r_\theta(x,y_w)\bigr)\,
+     \Bigl(
+       \nabla_\theta \log \pi_\theta(y_l\mid x)
+       - \nabla_\theta \log \pi_\theta(y_w\mid x)
+     \Bigr).
+\end{aligned}
+\]
+Averaging over the dataset gives \(\nabla_\theta L_{\mathrm{DPO}}\).
+
+**Interpretation of the weighting term \(\sigma(\hat r_\theta(x,y_l) - \hat r_\theta(x,y_w))\):**
+- If the model is already **correct and confident**, then
+  \(\hat r_\theta(x,y_w) \gg \hat r_\theta(x,y_l)\), so
+  \(\hat r_\theta(x,y_l) - \hat r_\theta(x,y_w) \ll 0\) and
+  \(\sigma(\hat r_\theta(x,y_l) - \hat r_\theta(x,y_w)) \approx 0\).
+  The gradient is tiny: the model is barely updated.
+- If the model is **wrong or uncertain**, then
+  \(\hat r_\theta(x,y_l) \gtrsim \hat r_\theta(x,y_w)\), so the argument of \(\sigma(\cdot)\) is near or above zero, and the value of \(\sigma(\cdot)\) is moderate to large (around \(0.5\)–\(1\)).
+  The gradient magnitude is large, strongly pushing \(\log \pi_\theta(y_w\mid x)\) up and \(\log \pi_\theta(y_l\mid x)\) down.
+
+So the DPO gradient updates the model **more when it is incorrect or insufficiently confident**, and less when it already agrees with the human preference.
+
+**Uncertainty note:** The sign manipulations and use of \(\sigma&#x27;(z)=\sigma(z)\sigma(-z)\) are a bit algebraic; I have double-checked that the final gradient pushes probability mass toward \(y_w\) and away from \(y_l\) when the model underestimates the preference for \(y_w\).
+
+---
+
+### (g) Plackett–Luce model and cancellation of \(Z(x)\)
+
+The Plackett–Luce model for rankings \(\tau\) of \(K\) candidates \(\{y_1,\dots,y_K\}\) is
+\[
+p_{\theta^\*}(\tau\mid y_1,\dots,y_K,x)
+  = \prod_{k=1}^K
+    \frac{\exp\bigl(r_\phi(x,y_{\tau(k)})\bigr)}
+         {\sum_{j=k}^K \exp\bigl(r_\phi(x,y_{\tau(j)})\bigr)}.
+\]
+Using the implicit reward parametrization from part (d),
+\[
+r_\phi(x,y)
+  = \beta \log \frac{\pi_{\theta^\*}(y\mid x)}{\pi_{\mathrm{ref}}(y\mid x)}
+    + \beta \log Z(x).
+\]
+Then for any candidate \(y\),
+\[
+\exp\bigl(r_\phi(x,y)\bigr)
+  = \exp\Bigl(
+      \beta \log \frac{\pi_{\theta^\*}(y\mid x)}{\pi_{\mathrm{ref}}(y\mid x)}
+      + \beta \log Z(x)
+    \Bigr)
+  = Z(x)^\beta
+    \left(\frac{\pi_{\theta^\*}(y\mid x)}{\pi_{\mathrm{ref}}(y\mid x)}\right)^\beta.
+\]
+Plugging into the PL formula, each numerator becomes
+\[
+Z(x)^\beta
+\left(\frac{\pi_{\theta^\*}(y_{\tau(k)}\mid x)}{\pi_{\mathrm{ref}}(y_{\tau(k)}\mid x)}\right)^\beta,
+\]
+and each denominator is
+\[
+\sum_{j=k}^K Z(x)^\beta
+  \left(\frac{\pi_{\theta^\*}(y_{\tau(j)}\mid x)}{\pi_{\mathrm{ref}}(y_{\tau(j)}\mid x)}\right)^\beta
+  = Z(x)^\beta
+    \sum_{j=k}^K
+      \left(\frac{\pi_{\theta^\*}(y_{\tau(j)}\mid x)}{\pi_{\mathrm{ref}}(y_{\tau(j)}\mid x)}\right)^\beta.
+\]
+Thus the factor \(Z(x)^\beta\) cancels in each fraction, giving
+\[
+p_{\theta^\*}(\tau\mid y_1,\dots,y_K,x)
+  = \prod_{k=1}^K
+    \frac{
+      \left(\dfrac{\pi_{\theta^\*}(y_{\tau(k)}\mid x)}{\pi_{\mathrm{ref}}(y_{\tau(k)}\mid x)}\right)^\beta
+    }{
+      \sum_{j=k}^K
+        \left(\dfrac{\pi_{\theta^\*}(y_{\tau(j)}\mid x)}{\pi_{\mathrm{ref}}(y_{\tau(j)}\mid x)}\right)^\beta
+    }.
+\]
+This is the Plackett–Luce probability written solely in terms of \(\pi_{\theta^\*}\) and \(\pi_{\mathrm{ref}}\), with **no explicit dependence** on \(Z(x)\).
+
+**Why is this desirable?**
+- Just as in the pairwise BT case, we can now perform maximum-likelihood training of a parameterized policy \(\pi_\theta\) using observed rankings without ever computing \(Z(x)\).
+- The objective depends only on **ratios** of probabilities under \(\pi_\theta\) and \(\pi_{\mathrm{ref}}\) for the finitely many candidates in each ranking, making learning tractable even when the full output space is huge.
+
+**Uncertainty note:** The algebra is straightforward exponent/log manipulation; the main subtlety is confirming that \(Z(x)^\beta\) is the same factor for all candidates and hence cancels in each softmax-like term.
+
+
+```
+
+### Problem 2 status
+
+- **All parts (a)–(g) are now solved** in `problem2sol.md` in markdown with LaTeX, closely paralleling the DPO derivation in the prompt.
+- I’ve **explicitly marked uncertainty/shaky reasoning** where relevant (mainly around standard inequalities and algebraic/log-exp manipulations), but most of this derivation is exact and algebraic rather than approximate.
+
+If you want, I can next give you a short prose summary of how DPO replaces RLHF’s reward model + RL loop with a supervised objective, for your later writeup.
+
+---
+
+**User**
+
+In a similar way, please solve question 4
+
+4. Diffusion Models
+
+Previously in discussion, we considered sampling from a discrete distribution. Let’s now see how iteratively
+
+adding Gaussian noise to a data point leads to a noisy sequence, and how the reverse process refines noise
+
+to generate realistic samples.
+
+The classes of generative models we’ve considered so far (VAEs, GANs), typically introduce some sort of
+
+bottleneck (latent representation z) that captures the essence of the high-dimensional sample space (x). An
+
+alternate view of representing probability distributions p(x) is by reasoning about the score function i.e. the
+
+gradient of the log probability density function ∇x log p(x).
+
+Given a data point sampled from a real data distribution x0 ∼ q(x), let us define a forward diffusion process
+
+iteratively adding small amount of Gaussian noise to the sample in T steps, producing a sequence of noisy
+
+samples x1, ..xT .
+
+q(xt|xt−1) = N (xt; p1 − βtxt−1, βtI) q(x1:T |x0) =
+
+TY
+
+t=1
+
+q(xt|xt−1) (2)
+
+The data sample x0 gradually loses its distinguishable features as the step t becomes larger. Eventually
+
+when T → ∞, xT is equivalent to an isotropic Gaussian distribution. (You can assume x0 is Gaussian).
+
+To generative model is therefore the reverse diffusion process, where we sample noise from an isotropic
+
+Gaussian, and iteratively refine it towards a realistic sample by reasoning about q(xt−1|xt).
+
+(a) Anytime Sampling from Intermediate Distributions
+
+Given x0 and the stochastic process in eq. (2), show that there exists a closed form distribution for
+
+sampling directly at the tth time-step of the form
+
+q(xt|x0) = N (xt; √αtx0, (1 − αt)I)
+
+(b) Reversing the Diffusion Process
+
+Reversing the diffusion process from real to noise would allow us to sample from the real data dis-
+
+tribution. In particular, we would want to draw samples from q(xt−1|xt). Show that given x0, the
+
+reverse conditional probability distribution is tractable and given by
+
+q(xt−1|xt, x0) = N (xt−1; µ(xt, x0), ˆβtI)
+
+(Hint: Use Bayes Rule on eq. (2) , assuming that x0 is drawn from Gaussian q(x))
+
+---
+
+**Cursor**
+
+```markdown
+## Problem 4: Diffusion Models
+
+We are given a forward diffusion process over \(T\) steps:
+\[
+q(x_t \mid x_{t-1}) = \mathcal N\!\bigl(x_t;\,\sqrt{1-\beta_t}\,x_{t-1},\,\beta_t I\bigr),
+\qquad
+q(x_{1:T}\mid x_0) = \prod_{t=1}^T q(x_t\mid x_{t-1}),
+\]
+where \(0 &lt; \beta_t &lt; 1\) are small noise variances and \(x_0 \sim q(x)\) (assumed Gaussian).
+Define
+\[
+\alpha_t \coloneqq \prod_{s=1}^t (1-\beta_s),\qquad \alpha_0 \coloneqq 1.
+\]
+This is the usual DDPM notation. We treat all covariances as isotropic (\(\propto I\)).
+
+---
+
+### (a) Anytime sampling from intermediate distributions \(q(x_t\mid x_0)\)
+
+**Goal:** Show that there is a closed-form expression
+\[
+q(x_t\mid x_0) = \mathcal N\!\bigl(x_t;\,\sqrt{\alpha_t}\,x_0,\,(1-\alpha_t)I\bigr).
+\]
+
+We prove this by induction on \(t\).
+
+#### Base case \(t=1\)
+
+From the forward kernel,
+\[
+q(x_1\mid x_0) = \mathcal N\!\bigl(x_1;\,\sqrt{1-\beta_1}\,x_0,\,\beta_1 I\bigr).
+\]
+By definition, \(\alpha_1 = 1-\beta_1\), so
+\[
+q(x_1\mid x_0)
+  = \mathcal N\!\bigl(x_1;\,\sqrt{\alpha_1}\,x_0,\,(1-\alpha_1)I\bigr),
+\]
+which matches the desired form.
+
+#### Inductive step
+
+Assume for some \(t-1 \ge 1\) that
+\[
+q(x_{t-1}\mid x_0)
+  = \mathcal N\!\bigl(x_{t-1};\,\sqrt{\alpha_{t-1}}\,x_0,\,(1-\alpha_{t-1})I\bigr).
+\]
+We want \(q(x_t\mid x_0)\).
+
+We have
+\[
+q(x_t\mid x_0)
+  = \int q(x_t\mid x_{t-1})\,q(x_{t-1}\mid x_0)\,dx_{t-1},
+\]
+where
+\[
+q(x_t\mid x_{t-1})
+  = \mathcal N\!\bigl(x_t;\,\sqrt{1-\beta_t}\,x_{t-1},\,\beta_t I\bigr).
+\]
+This is the distribution of a linear–Gaussian transformation of a Gaussian:
+\[
+x_{t-1}\mid x_0 \sim
+  \mathcal N\!\bigl(\sqrt{\alpha_{t-1}}\,x_0,\,(1-\alpha_{t-1})I\bigr),
+\]
+and
+\[
+x_t = \sqrt{1-\beta_t}\,x_{t-1} + \epsilon_t,\qquad
+\epsilon_t \sim \mathcal N(0,\beta_t I),\ \epsilon_t\perp x_{t-1}.
+\]
+Therefore \(x_t\mid x_0\) is also Gaussian with
+\[
+\mathbb E[x_t\mid x_0]
+  = \sqrt{1-\beta_t}\,\mathbb E[x_{t-1}\mid x_0]
+  = \sqrt{1-\beta_t}\,\sqrt{\alpha_{t-1}}\,x_0
+  = \sqrt{\alpha_{t-1}(1-\beta_t)}\,x_0
+  = \sqrt{\alpha_t}\,x_0,
+\]
+where we used \(\alpha_t = \alpha_{t-1}(1-\beta_t)\).
+
+For the covariance:
+\[
+\begin{aligned}
+\mathrm{Var}(x_t\mid x_0)
+  &amp;= (1-\beta_t)\,\mathrm{Var}(x_{t-1}\mid x_0) + \beta_t I \\
+  &amp;= (1-\beta_t)\,(1-\alpha_{t-1})I + \beta_t I \\
+  &amp;= \bigl(1 - \beta_t - \alpha_{t-1} + \alpha_{t-1}\beta_t + \beta_t\bigr)I \\
+  &amp;= \bigl(1 - \alpha_{t-1}(1-\beta_t)\bigr)I
+   = (1-\alpha_t)I.
+\end{aligned}
+\]
+So
+\[
+q(x_t\mid x_0)
+  = \mathcal N\!\bigl(x_t;\,\sqrt{\alpha_t}\,x_0,\,(1-\alpha_t)I\bigr),
+\]
+which completes the induction.
+
+**Conclusion:** For all \(t\),
+\[
+q(x_t\mid x_0)
+  = \mathcal N\!\bigl(x_t;\,\sqrt{\alpha_t}\,x_0,\,(1-\alpha_t)I\bigr).
+\]
+
+**Uncertainty note:** This derivation assumes the forward kernel is precisely \(q(x_t\mid x_{t-1}) = \mathcal N(x_t;\sqrt{1-\beta_t}x_{t-1},\beta_t I)\); the original PDF text had minor formatting artifacts, but this is the standard DDPM setup.
+
+---
+
+### (b) Reverse conditional \(q(x_{t-1}\mid x_t, x_0)\)
+
+We want the reverse conditional distribution
+\[
+q(x_{t-1}\mid x_t, x_0),
+\]
+which, by Bayes’ rule and the Markov structure, is proportional to
+\[
+q(x_t\mid x_{t-1})\,q(x_{t-1}\mid x_0).
+\]
+
+From part (a),
+\[
+q(x_{t-1}\mid x_0)
+  = \mathcal N\!\bigl(x_{t-1};\,\sqrt{\alpha_{t-1}}\,x_0,\,(1-\alpha_{t-1})I\bigr),
+\]
+and the forward kernel is
+\[
+q(x_t\mid x_{t-1})
+  = \mathcal N\!\bigl(x_t;\,\sqrt{1-\beta_t}\,x_{t-1},\,\beta_t I\bigr).
+\]
+Both are Gaussians in \(x_{t-1}\) with isotropic covariances, so their product is also Gaussian in \(x_{t-1}\).
+
+#### Computing the reverse variance \(\hat\beta_t\)
+
+Write
+\[
+q(x_{t-1}\mid x_0)
+  \propto \exp\left(
+    -\frac{1}{2(1-\alpha_{t-1})}\,\|x_{t-1}-\sqrt{\alpha_{t-1}}\,x_0\|^2
+  \right),
+\]
+and
+\[
+q(x_t\mid x_{t-1})
+  \propto \exp\left(
+    -\frac{1}{2\beta_t}\,\|x_t-\sqrt{1-\beta_t}\,x_{t-1}\|^2
+  \right).
+\]
+Multiplying gives
+\[
+q(x_{t-1}\mid x_t,x_0)
+  \propto \exp\bigl(-\tfrac12 x_{t-1}^\top A x_{t-1} + b^\top x_{t-1} + \text{const}\bigr),
+\]
+with precision matrix
+\[
+A = \frac{1-\beta_t}{\beta_t}I + \frac{1}{1-\alpha_{t-1}}I
+  = \left(\frac{1-\beta_t}{\beta_t} + \frac{1}{1-\alpha_{t-1}}\right)I.
+\]
+We can identify the reverse covariance as
+\[
+\hat\beta_t I = A^{-1},
+\qquad
+\hat\beta_t
+  = \left(
+       \frac{1-\beta_t}{\beta_t}
+       + \frac{1}{1-\alpha_{t-1}}
+    \right)^{-1}.
+\]
+Simplify the scalar:
+\[
+\begin{aligned}
+\frac{1}{\hat\beta_t}
+  &amp;= \frac{1-\beta_t}{\beta_t} + \frac{1}{1-\alpha_{t-1}} \\
+  &amp;= \frac{(1-\beta_t)(1-\alpha_{t-1}) + \beta_t}
+          {\beta_t(1-\alpha_{t-1})} \\
+  &amp;= \frac{1 - \alpha_{t-1} + \alpha_{t-1}\beta_t}
+          {\beta_t(1-\alpha_{t-1})} \\
+  &amp;= \frac{1 - \alpha_{t-1}(1-\beta_t)}
+          {\beta_t(1-\alpha_{t-1})}
+   = \frac{1-\alpha_t}{\beta_t(1-\alpha_{t-1})},
+\end{aligned}
+\]
+using \(\alpha_t = \alpha_{t-1}(1-\beta_t)\).
+Thus
+\[
+\hat\beta_t
+  = \frac{\beta_t(1-\alpha_{t-1})}{1-\alpha_t}.
+\]
+
+#### Computing the reverse mean \(\mu(x_t,x_0)\)
+
+The mean of a Gaussian with precision \(A\) is \(A^{-1}b = \hat\beta_t b\), where \(b\) is the linear coefficient in the exponent.
+
+From the product:
+- The term from \(q(x_{t-1}\mid x_0)\) contributes
+  \[
+  \frac{\sqrt{\alpha_{t-1}}}{1-\alpha_{t-1}}\,x_0
+  \]
+  to \(b\).
+- The term from \(q(x_t\mid x_{t-1})\) is
+  \[
+  -\frac{1}{2\beta_t}
+    \|x_t-\sqrt{1-\beta_t}\,x_{t-1}\|^2
+  = -\frac{1}{2\beta_t}
+    \bigl(
+      \|x_t\|^2
+      + (1-\beta_t)\|x_{t-1}\|^2
+      - 2\sqrt{1-\beta_t}\,x_t^\top x_{t-1}
+    \bigr),
+  \]
+  which contributes
+  \[
+  \frac{\sqrt{1-\beta_t}}{\beta_t}\,x_t
+  \]
+  to \(b\).
+
+So
+\[
+b
+  = \frac{\sqrt{1-\beta_t}}{\beta_t}\,x_t
+    + \frac{\sqrt{\alpha_{t-1}}}{1-\alpha_{t-1}}\,x_0.
+\]
+Therefore,
+\[
+\mu(x_t,x_0)
+  = \hat\beta_t\,b
+  = \hat\beta_t
+    \left(
+      \frac{\sqrt{1-\beta_t}}{\beta_t}\,x_t
+      + \frac{\sqrt{\alpha_{t-1}}}{1-\alpha_{t-1}}\,x_0
+    \right).
+\]
+Using \(\hat\beta_t = \dfrac{\beta_t(1-\alpha_{t-1})}{1-\alpha_t}\), we can rewrite this as
+\[
+\mu(x_t,x_0)
+  = \frac{\sqrt{1-\beta_t}(1-\alpha_{t-1})}{1-\alpha_t}\,x_t
+    + \frac{\sqrt{\alpha_{t-1}}\beta_t}{1-\alpha_t}\,x_0.
+\]
+This is the standard DDPM reverse mean conditioned on both \(x_t\) and \(x_0\).
+
+#### Final reverse distribution
+
+Putting the pieces together:
+\[
+q(x_{t-1}\mid x_t,x_0)
+  = \mathcal N\!\bigl(x_{t-1};\,\mu(x_t,x_0),\,\hat\beta_t I\bigr),
+\]
+where
+\[
+\hat\beta_t
+  = \frac{\beta_t(1-\alpha_{t-1})}{1-\alpha_t},
+\]
+and
+\[
+\mu(x_t,x_0)
+  = \frac{\sqrt{1-\beta_t}(1-\alpha_{t-1})}{1-\alpha_t}\,x_t
+    + \frac{\sqrt{\alpha_{t-1}}\beta_t}{1-\alpha_t}\,x_0.
+\]
+
+**Uncertainty note:** The main algebraic steps are (i) multiplying two Gaussians with isotropic covariances and (ii) simplifying the scalar expression for \(\hat\beta_t\) using \(\alpha_t=\alpha_{t-1}(1-\beta_t)\). The resulting formulas match standard DDPM reverse-conditionals when expressed in terms of \(\alpha_t\) and \(\beta_t\).
+
+
+```
+
+### Problem 4 status
+
+- **Parts (a) and (b) are fully solved** in `problem4sol.md` with LaTeX and explicit formulas for:
+  - \(q(x_t \mid x_0) = \mathcal N(\sqrt{\alpha_t} x_0, (1-\alpha_t)I)\) via an induction over the forward process.
+  - \(q(x_{t-1} \mid x_t, x_0) = \mathcal N(\mu(x_t,x_0), \hat\beta_t I)\) via Bayes’ rule / Gaussian product, with
+    \(\hat\beta_t = \frac{\beta_t(1-\alpha_{t-1})}{1-\alpha_t}\) and a standard DDPM-form mean.
+- I’ve **flagged the only subtle assumption** (the exact forward kernel form from the PDF) and noted that the resulting formulas match standard DDPM derivations.
+
+</code></pre>
+                    </div>
+                    <div class="attachment attachment-text">
+                        <div class="attachment-label">problem1sol.md <a href="attachments/problem1sol.md" target="_blank" class="download-link">Download</a></div>
+                        <pre><code>## Problem 1: DDPM/DDIM Fun – From a Gaussian
+
+We assume \(X_0 \sim \mathcal N(0,\sigma^2)\) with \(\sigma^2 \ll 1\), and that in the forward diffusion process from \(t=0\) to \(t=1\), each small interval of length \(\Delta t\) adds independent Gaussian noise \(\mathcal N(0,\Delta t)\). Hence, over time \(t\), the added noise has total variance \(t\), and
+\[
+X_t = X_0 + \text{(Gaussian noise of variance } t\text{)} \sim \mathcal N(0,\sigma^2 + t).
+\]
+
+### (a) Distribution of \(X_1\)
+
+At time \(t=1\), the total noise variance added is \(1\), independent of \(X_0\). Thus
+\[
+X_1 \sim \mathcal N(0,\sigma^2 + 1).
+\]
+Since \(\sigma^2 \ll 1\), this is approximately \(\mathcal N(0,1)\), but the exact answer is \(\mathcal N(0,\sigma^2 + 1)\).
+
+### (b) Marginal distributions of \(X_{t-\Delta t}\) and \(X_t\)
+
+By the same reasoning, at time \(t-\Delta t\) we have
+\[
+X_{t-\Delta t} \sim \mathcal N\bigl(0,\,\sigma^2 + t - \Delta t\bigr),
+\]
+and at time \(t\),
+\[
+X_t \sim \mathcal N\bigl(0,\,\sigma^2 + t\bigr).
+\]
+
+### (c) Approximate variance of \(X_{t-\Delta t}\mid X_t=x_t\)
+
+We are given
+\[
+\bigl(X_{t-\Delta t} \mid X_t = x_t\bigr) \sim \mathcal N\!\left(
+  \frac{\sigma^2 + t - \Delta t}{\sigma^2 + t}\,x_t,\;
+  \frac{(\sigma^2 + t - \Delta t)\,\Delta t}{\sigma^2 + t}
+\right).
+\]
+Let \(A = \sigma^2 + t\). Then the variance term is
+\[
+\frac{(\sigma^2 + t - \Delta t)\,\Delta t}{\sigma^2 + t}
+  = \frac{(A - \Delta t)\,\Delta t}{A}
+  = \Delta t\left(1 - \frac{\Delta t}{A}\right).
+\]
+Using \(\Delta t \ll \sigma^2 \ll 1\) implies \(\Delta t \ll A\), so \(\Delta t/A \ll 1\), and we can approximate
+\[
+\frac{(\sigma^2 + t - \Delta t)\,\Delta t}{\sigma^2 + t}
+  \approx \Delta t.
+\]
+
+**Answer:** The conditional variance is approximately \(\Delta t\).
+
+**Uncertainty note:** The approximation \(\Delta t \ll \sigma^2\) is used to drop the \(O(\Delta t^2 / (\sigma^2 + t))\) term; this is standard in diffusion limits.
+
+### (d) Naive reverse denoising using only the conditional mean
+
+The conditional mean mapping for a single backward step from \(t\) to \(t-\Delta t\) is
+\[
+\mathbb E\bigl[X_{t-\Delta t} \mid X_t = x_t\bigr]
+  = \frac{\sigma^2 + t - \Delta t}{\sigma^2 + t}\,x_t
+  = \left(1 - \frac{\Delta t}{\sigma^2 + t}\right)x_t.
+\]
+Define the deterministic factor
+\[
+m(t) = \frac{\sigma^2 + t - \Delta t}{\sigma^2 + t}
+      = \frac{\sigma^2 + t - \Delta t}{\sigma^2 + t}.
+\]
+We start from \(X_1 \sim \mathcal N(0,1)\) and repeatedly apply this mean mapping backwards in \(T = 1/\Delta t\) steps: \(t_k = k\Delta t\), \(k = 1,\dots,T\). The step from \(t_k\) to \(t_{k-1}\) multiplies by
+\[
+m(t_k) = \frac{\sigma^2 + t_k - \Delta t}{\sigma^2 + t_k}
+        = \frac{\sigma^2 + (k-1)\Delta t}{\sigma^2 + k\Delta t}.
+\]
+Thus the overall contraction factor from \(t=1\) to \(t=0\) is
+\[
+C_{\text{naive}}
+  = \prod_{k=1}^{T}
+    \frac{\sigma^2 + (k-1)\Delta t}{\sigma^2 + k\Delta t}.
+\]
+This telescopes:
+\[
+C_{\text{naive}}
+  = \frac{\sigma^2 + 0\cdot\Delta t}{\sigma^2 + T\Delta t}
+  = \frac{\sigma^2}{\sigma^2 + 1}.
+\]
+Therefore, the naive reverse sample is
+\[
+\hat X_0 = C_{\text{naive}} X_1 = \frac{\sigma^2}{\sigma^2 + 1} X_1.
+\]
+Since \(X_1 \sim \mathcal N(0,1)\), we get
+\[
+\hat X_0 \sim \mathcal N\!\left(0,\left(\frac{\sigma^2}{\sigma^2 + 1}\right)^2\right).
+\]
+For \(\sigma^2 \ll 1\), this variance is approximately \(\sigma^4 \ll \sigma^2\), i.e. **far too small** compared to the desired variance \(\sigma^2\).
+
+### (e) Adding stochastic noise at each reverse step: variance in the \(\Delta t \to 0\) limit
+
+We are given that with independent \(\mathcal N(0,\Delta t)\) noise added at each of the \(T=1/\Delta t\) reverse steps, the variance of \(\hat X_0\) is
+\[
+\operatorname{Var}(\hat X_0)
+  = \left(\frac{\sigma^2}{\sigma^2 + 1}\right)^2
+    + \Delta t \sum_{k=0}^{T-1}
+      \left(\frac{\sigma^2}{\sigma^2 + k\Delta t}\right)^2.
+\tag{1}
+\]
+We take \(\Delta t \to 0\) with \(T = 1/\Delta t\) and approximate the sum by an integral:
+\[
+\Delta t \sum_{k=0}^{T-1}
+  \left(\frac{\sigma^2}{\sigma^2 + k\Delta t}\right)^2
+  \;\xrightarrow[\Delta t \to 0]{}\;
+  \int_0^1 \left(\frac{\sigma^2}{\sigma^2 + t}\right)^2 dt.
+\]
+So, in the limit,
+\[
+\operatorname{Var}(\hat X_0)
+  \approx
+  \left(\frac{\sigma^2}{\sigma^2 + 1}\right)^2
+  + \int_0^1 \left(\frac{\sigma^2}{\sigma^2 + t}\right)^2 dt.
+\]
+Evaluate the integral:
+\[
+\int_0^1 \left(\frac{\sigma^2}{\sigma^2 + t}\right)^2 dt
+  = \int_0^1 \frac{\sigma^4}{(\sigma^2 + t)^2} \, dt.
+\]
+Let \(u = \sigma^2 + t\), so \(du = dt\), and when \(t=0\), \(u = \sigma^2\); when \(t=1\), \(u = \sigma^2 + 1\). Then
+\[
+\int_0^1 \frac{\sigma^4}{(\sigma^2 + t)^2} \, dt
+  = \sigma^4 \int_{\sigma^2}^{\sigma^2 + 1} \frac{1}{u^2} du
+  = \sigma^4\left[-\frac{1}{u}\right]_{\sigma^2}^{\sigma^2 + 1}
+  = \sigma^4\left(\frac{1}{\sigma^2} - \frac{1}{\sigma^2 + 1}\right).
+\]
+Simplify:
+\[
+\int_0^1 \left(\frac{\sigma^2}{\sigma^2 + t}\right)^2 dt
+  = \sigma^2 - \frac{\sigma^4}{\sigma^2 + 1}.
+\]
+Thus,
+\[
+\operatorname{Var}(\hat X_0)
+  \approx
+  \left(\frac{\sigma^2}{\sigma^2 + 1}\right)^2
+  + \sigma^2 - \frac{\sigma^4}{\sigma^2 + 1}.
+\]
+For \(\sigma^2 \ll 1\), the dominant term is \(\sigma^2\), and the remaining terms are \(O(\sigma^4)\). Therefore,
+\[
+\operatorname{Var}(\hat X_0) \approx \sigma^2
+\]
+up to small corrections of order \(\sigma^4\).
+
+**Uncertainty note:** The passage from the discrete sum to the integral and the dropping of \(O(\sigma^4)\) terms are standard continuum/perturbative approximations; for very small but not infinitesimal \(\sigma^2\), the result will be very close but not exactly equal to \(\sigma^2\).
+
+### (f) Training a neural network to approximate \(g(x_t,t) = \dfrac{\sigma^2}{\sigma^2 + t} x_t\)
+
+We are given only samples \(s_i\) drawn from the distribution of \(X_0\).
+
+**Inputs to the network:**
+- An input pair \((x_t, t)\), where:
+  - \(x_t\) is a noisy version of a data sample \(s\) at time \(t\),
+  - \(t\) is the (scalar) time, typically encoded (e.g., via positional/time embedding) and concatenated to the input.
+
+**How to generate a training batch:**
+1. Sample a minibatch of data points \(s_1,\dots,s_B\) from the dataset (these play the role of \(X_0\)).
+2. For each \(s_i\), sample a time \(t_i \sim \mathrm{Uniform}(0,1)\).
+3. For each \(s_i,t_i\), sample a forward-noise variable \(\epsilon_i \sim \mathcal N(0,1)\) and construct
+   \[
+   x_{t_i} = s_i + \sqrt{t_i}\,\epsilon_i,
+   \]
+   which matches the forward process \(X_t \mid X_0 = s_i \sim \mathcal N(s_i,t_i)\).
+4. Feed \((x_{t_i}, t_i)\) into the neural net \(g_\theta\) to obtain a prediction \(g_\theta(x_{t_i}, t_i)\).
+
+**Loss function:**
+- Since \(g(x_t,t) = \mathbb E[X_0 \mid X_t=x_t]\), a natural training target is the original clean sample \(s_i = X_0\).
+- Use an MSE loss to encourage \(g_\theta\) to approximate the conditional mean:
+  \[
+  \mathcal L(\theta)
+    = \mathbb E_{s,t,\epsilon}
+      \bigl[
+        \| g_\theta(x_t,t) - s \|^2
+      \bigr].
+  \]
+- In practice, approximate the expectation by an average over the minibatch, and then apply an optimizer like AdamW to minimize \(\mathcal L(\theta)\).
+
+In this toy Gaussian case, the optimal \(g_\theta\) converges to the analytic form \(g(x_t,t) = \frac{\sigma^2}{\sigma^2 + t} x_t\).
+
+**Uncertainty note:** I am following the standard DDPM training formulation (predicting clean \(X_0\) from \((x_t,t)\)); equivalently, one could train to predict the noise \(\epsilon\). Both choices would recover the same conditional mean in this 1D Gaussian setting.
+
+### (g) Approximate DDIM step for \(\Delta t \ll t\)
+
+We are told that DDIM takes a smaller deterministic step:
+\[
+x^{\mathrm{DDIM}}_{t-\Delta t}
+  = x_t + \eta(t,\Delta t)\,\bigl(\text{deterministic DDPM step}\bigr),
+\]
+where the deterministic DDPM step is
+\[
+\Delta x_{\text{DDPM}} = -\frac{\Delta t}{\sigma^2 + t}\,x_t,
+\]
+and
+\[
+\eta(t,\Delta t)
+  = \frac{\sqrt{t}}{\sqrt{t-\Delta t} + \sqrt{t}}.
+\]
+
+For \(\Delta t \ll t\), we approximate
+\[
+\sqrt{t-\Delta t}
+  \approx \sqrt{t} - \frac{\Delta t}{2\sqrt{t}},
+\]
+so the denominator is
+\[
+\sqrt{t-\Delta t} + \sqrt{t}
+  \approx 2\sqrt{t} - \frac{\Delta t}{2\sqrt{t}}
+  = 2\sqrt{t}\left(1 - \frac{\Delta t}{4t}\right).
+\]
+Hence
+\[
+\eta(t,\Delta t)
+  = \frac{\sqrt{t}}{\sqrt{t-\Delta t} + \sqrt{t}}
+  \approx \frac{\sqrt{t}}{2\sqrt{t}\left(1 - \frac{\Delta t}{4t}\right)}
+  \approx \frac{1}{2},
+\]
+up to corrections of order \(\Delta t/t\).
+
+Plugging this into the DDIM update:
+\[
+x^{\mathrm{DDIM}}_{t-\Delta t}
+  \approx x_t + \frac{1}{2}\left(-\frac{\Delta t}{\sigma^2 + t} x_t\right)
+  = \left(1 - \frac{\Delta t}{2(\sigma^2 + t)}\right)x_t.
+\]
+
+**Answer:** For \(\Delta t \ll t\), the approximate DDIM step is
+\[
+x^{\mathrm{DDIM}}_{t-\Delta t}
+  \approx \left(1 - \frac{\Delta t}{2(\sigma^2 + t)}\right)x_t.
+\]
+
+**Uncertainty note:** The exact form of \(\eta(t,\Delta t)\) in the PDF is slightly ambiguous after text extraction; I have interpreted it as \(\eta(t,\Delta t)=\frac{\sqrt{t}}{\sqrt{t-\Delta t}+\sqrt{t}}\), which is dimensionally consistent and yields the standard small-\(\Delta t\) approximation \(\eta\approx \tfrac12\).
+
+### (h) Distribution of \(\hat X_0\) after all DDIM steps
+
+We now apply the DDIM step from part (g) repeatedly from \(t=1\) back to \(t=0\), starting from \(\hat X_1 \sim \mathcal N(0,1)\). Using the approximate multiplicative factor from (g), the step from time \(t\) to \(t-\Delta t\) multiplies by
+\[
+r(t) = 1 - \frac{\Delta t}{2(\sigma^2 + t)}.
+\]
+Let \(t_k = k\Delta t\), \(k=1,\dots,T\) with \(T=1/\Delta t\). Then
+\[
+\hat X_0
+  = \hat X_1 \prod_{k=1}^{T} r(t_k)
+  \approx \hat X_1
+   \prod_{k=1}^{T}
+   \left(1 - \frac{\Delta t}{2(\sigma^2 + t_k)}\right).
+\]
+Define the total contraction factor
+\[
+C_{\mathrm{DDIM}}
+  = \prod_{k=1}^{T}
+   \left(1 - \frac{\Delta t}{2(\sigma^2 + t_k)}\right).
+\]
+Take logarithms and use \(\ln(1 - x) \approx -x\) for \(0 &lt; x \ll 1\) (with \(\Delta t \ll \sigma^2 + t_k\)):
+\[
+\ln C_{\mathrm{DDIM}}
+  \approx \sum_{k=1}^{T}
+   \ln\left(1 - \frac{\Delta t}{2(\sigma^2 + t_k)}\right)
+  \approx -\sum_{k=1}^{T}
+     \frac{\Delta t}{2(\sigma^2 + t_k)}.
+\]
+As \(\Delta t \to 0\), the Riemann sum becomes an integral:
+\[
+\ln C_{\mathrm{DDIM}}
+  \xrightarrow[\Delta t \to 0]{}
+  -\frac{1}{2} \int_0^1 \frac{dt}{\sigma^2 + t}
+  = -\frac{1}{2}\left[\ln(\sigma^2 + t)\right]_0^1
+  = -\frac{1}{2}\bigl(\ln(\sigma^2 + 1) - \ln(\sigma^2)\bigr).
+\]
+Therefore,
+\[
+C_{\mathrm{DDIM}}
+  = \exp\left(-\frac{1}{2}\bigl(\ln(\sigma^2 + 1) - \ln(\sigma^2)\bigr)\right)
+  = \left(\frac{\sigma^2}{\sigma^2 + 1}\right)^{1/2}.
+\]
+Hence
+\[
+\hat X_0 = C_{\mathrm{DDIM}} \hat X_1,
+\]
+and since \(\hat X_1 \sim \mathcal N(0,1)\),
+\[
+\hat X_0 \sim \mathcal N\!\left(0,\,C_{\mathrm{DDIM}}^2\right)
+  = \mathcal N\!\left(0,\,\frac{\sigma^2}{\sigma^2 + 1}\right).
+\]
+For \(\sigma^2 \ll 1\), this variance is
+\[
+\frac{\sigma^2}{\sigma^2 + 1} \approx \sigma^2,
+\]
+so DDIM with this choice of step size and added noise approximately recovers the correct variance of the target distribution \(X_0\).
+
+**Uncertainty note:** The approximation uses (i) the small-\(\Delta t\) expansion of \(\ln(1-x)\), and (ii) the continuum limit that turns the product into an exponential of an integral. Both are standard in analyzing diffusion-type discretizations; residual errors are \(O(\Delta t)\) and vanish as \(\Delta t \to 0\).
+
+
+</code></pre>
+                    </div>
+                    <div class="attachment attachment-text">
+                        <div class="attachment-label">problem2sol.md <a href="attachments/problem2sol.md" target="_blank" class="download-link">Download</a></div>
+                        <pre><code>## Problem 2: Honey, Where’s My Reward Model?
+
+We work through all parts (a)–(g), using the notation from the problem.
+
+---
+
+### (a) Optimal \(p^\*\) for \(\min_{p \in \mathcal P} D_{\mathrm{KL}}(p\|q)\)
+
+Recall
+\[
+D_{\mathrm{KL}}(p\|q)
+  = \sum_x p(x)\log\frac{p(x)}{q(x)} \ge 0.
+\]
+By Gibbs’ inequality, \(D_{\mathrm{KL}}(p\|q) \ge 0\) with equality **if and only if** \(p(x) = q(x)\) for all \(x\) (on the support where \(q(x) &gt; 0\)).
+Therefore, the minimizer is
+\[
+p^\*(x) = q(x)\quad\text{for all }x.
+\]
+
+**Uncertainty note:** This relies on the standard inequality \(\sum_x p(x)\log\frac{p(x)}{q(x)} \ge 0\); a full proof uses convexity of \(\log\) or Jensen’s inequality.
+
+---
+
+### (b) Optimal policy \(\pi_\theta^\*(y\mid x)\) with KL regularization
+
+For a fixed prompt \(x\), define the objective over distributions \(\pi(\cdot\mid x)\) on responses \(y\):
+\[
+J_x(\pi)
+  = \mathbb E_{y\sim\pi(\cdot\mid x)}[r_\phi(x,y)]
+    - \beta D_{\mathrm{KL}}(\pi(\cdot\mid x)\,\|\,\pi_{\mathrm{ref}}(\cdot\mid x)).
+\]
+Write out the expectation and KL explicitly:
+\[
+J_x(\pi)
+  = \sum_y \pi(y\mid x) r_\phi(x,y)
+    - \beta \sum_y \pi(y\mid x)
+      \log\frac{\pi(y\mid x)}{\pi_{\mathrm{ref}}(y\mid x)}.
+\]
+Rearrange the terms by factoring out \(-\beta\):
+\[
+J_x(\pi)
+  = -\beta \sum_y \pi(y\mid x)
+     \log\frac{\pi(y\mid x)}
+               {\pi_{\mathrm{ref}}(y\mid x)\exp\left(\tfrac{1}{\beta}r_\phi(x,y)\right)}
+  + \beta \log Z(x),
+\]
+where we have introduced
+\[
+Z(x)
+  = \sum_y \pi_{\mathrm{ref}}(y\mid x)\exp\left(\tfrac{1}{\beta}r_\phi(x,y)\right),
+\]
+and used the fact that
+\[
+\sum_y \pi(y\mid x) \left[
+  r_\phi(x,y) - \beta \log \pi_{\mathrm{ref}}(y\mid x)
+\right]
+  = \beta \sum_y \pi(y\mid x)
+    \log\bigl(\pi_{\mathrm{ref}}(y\mid x)e^{r_\phi(x,y)/\beta}\bigr).
+\]
+Define the “Boltzmannized” reference distribution
+\[
+\tilde\pi(y\mid x)
+  = \frac{1}{Z(x)}\,
+    \pi_{\mathrm{ref}}(y\mid x)\exp\left(\tfrac{1}{\beta}r_\phi(x,y)\right).
+\]
+Then
+\[
+J_x(\pi)
+  = -\beta\,D_{\mathrm{KL}}(\pi(\cdot\mid x)\,\|\,\tilde\pi(\cdot\mid x))
+    + \beta\log Z(x).
+\]
+Since \(\beta &gt; 0\) and KL is minimized when \(\pi = \tilde\pi\), the maximizing policy is
+\[
+\pi_\theta^\*(y\mid x)
+  = \tilde\pi(y\mid x)
+  = \frac{1}{Z(x)}\,
+    \pi_{\mathrm{ref}}(y\mid x)\exp\left(\tfrac{1}{\beta}r_\phi(x,y)\right),
+\]
+with
+\[
+Z(x) = \sum_y \pi_{\mathrm{ref}}(y\mid x)\exp\left(\tfrac{1}{\beta}r_\phi(x,y)\right).
+\]
+
+This matches the desired form.
+
+---
+
+### (c) Why is \(\pi_\theta^\*(y\mid x)\) hard to use directly?
+
+The expression
+\[
+\pi_\theta^\*(y\mid x)
+  = \frac{1}{Z(x)}\,\pi_{\mathrm{ref}}(y\mid x)
+    \exp\left(\tfrac{1}{\beta}r_\phi(x,y)\right)
+\]
+requires knowledge of the **partition function**
+\[
+Z(x) = \sum_y \pi_{\mathrm{ref}}(y\mid x)\exp\left(\tfrac{1}{\beta}r_\phi(x,y)\right),
+\]
+which is a sum over the entire output space \(\mathcal Y\).
+
+In the language modeling setting, \(\mathcal Y\) is the set of all possible text sequences (potentially of unbounded length), which is astronomically large. Computing this sum exactly is intractable, and even approximating it well can be very expensive. Hence, although the closed form is conceptually nice, it is not directly practical for large LMs.
+
+---
+
+### (d) Expressing \(r_\phi(x,y)\) in terms of \(\pi_\theta^\*\), \(\pi_{\mathrm{ref}}\), and \(Z(x)\)
+
+From part (b), for any \(x,y\),
+\[
+\pi_\theta^\*(y\mid x)
+  = \frac{1}{Z(x)}\,\pi_{\mathrm{ref}}(y\mid x)
+    \exp\left(\tfrac{1}{\beta}r_\phi(x,y)\right).
+\]
+Take logs:
+\[
+\log \pi_\theta^\*(y\mid x)
+  = \log \pi_{\mathrm{ref}}(y\mid x)
+    + \frac{1}{\beta}r_\phi(x,y)
+    - \log Z(x).
+\]
+Solve for \(r_\phi(x,y)\):
+\[
+r_\phi(x,y)
+  = \beta\Bigl(\log \pi_\theta^\*(y\mid x)
+               - \log \pi_{\mathrm{ref}}(y\mid x)
+               + \log Z(x)\Bigr).
+\]
+Equivalently,
+\[
+r_\phi(x,y)
+  = \beta \log \frac{\pi_\theta^\*(y\mid x)}{\pi_{\mathrm{ref}}(y\mid x)}
+    + \beta \log Z(x).
+\]
+
+This is the **implicit reward parametrization** used later.
+
+---
+
+### (e) Bradley–Terry probability in terms of the optimal policy and cancellation of \(Z(x)\)
+
+The Bradley–Terry model says
+\[
+p^\*(y_w \succ y_l\mid x)
+  = \sigma\bigl(r_\phi(x,y_w) - r_\phi(x,y_l)\bigr).
+\]
+Using the expression from part (d):
+\[
+r_\phi(x,y)
+  = \beta \log\frac{\pi_\theta^\*(y\mid x)}{\pi_{\mathrm{ref}}(y\mid x)}
+    + \beta\log Z(x).
+\]
+Therefore
+\[
+\begin{aligned}
+r_\phi(x,y_w) - r_\phi(x,y_l)
+  &amp;= \beta \log\frac{\pi_\theta^\*(y_w\mid x)}{\pi_{\mathrm{ref}}(y_w\mid x)}
+     + \beta\log Z(x) \\
+  &amp;\quad
+     - \Bigl[
+          \beta \log\frac{\pi_\theta^\*(y_l\mid x)}{\pi_{\mathrm{ref}}(y_l\mid x)}
+          + \beta\log Z(x)
+       \Bigr] \\
+  &amp;= \beta \log\frac{\pi_\theta^\*(y_w\mid x)}{\pi_{\mathrm{ref}}(y_w\mid x)}
+     - \beta \log\frac{\pi_\theta^\*(y_l\mid x)}{\pi_{\mathrm{ref}}(y_l\mid x)}.
+\end{aligned}
+\]
+The \(\beta\log Z(x)\) terms **cancel**.
+
+Thus,
+\[
+p^\*(y_w \succ y_l\mid x)
+  = \sigma\!\left(
+      \beta \log\frac{\pi_\theta^\*(y_w\mid x)}{\pi_{\mathrm{ref}}(y_w\mid x)}
+      - \beta \log\frac{\pi_\theta^\*(y_l\mid x)}{\pi_{\mathrm{ref}}(y_l\mid x)}
+    \right).
+\]
+
+This leads to the DPO maximum-likelihood objective over a parameterized policy \(\pi_\theta\) (replacing \(\pi_\theta^\*\) with \(\pi_\theta\)):
+\[
+L_{\mathrm{DPO}}(\pi_\theta;\pi_{\mathrm{ref}})
+  = -\mathbb E_{(x,y_w,y_l)\sim\mathcal D}
+    \left[
+      \log \sigma\!\left(
+        \beta \log\frac{\pi_\theta(y_w\mid x)}{\pi_{\mathrm{ref}}(y_w\mid x)}
+        - \beta \log\frac{\pi_\theta(y_l\mid x)}{\pi_{\mathrm{ref}}(y_l\mid x)}
+      \right)
+    \right].
+\]
+
+**Why is cancellation of \(Z(x)\) desirable?**
+- We no longer need to compute or approximate the partition function \(Z(x)\), which would require a sum over all possible outputs \(y\).
+- The objective depends only on log-density ratios between the current policy and the reference policy at the **observed** samples \(y_w, y_l\), making training feasible.
+
+**Uncertainty note:** The main subtlety is treating the target \(\pi_\theta^\*\) as a stand-in for the parameterized \(\pi_\theta\) we actually optimize; in practice we just plug \(\pi_\theta\) into this form and do MLE.
+
+---
+
+### (f) Gradient of the DPO loss and role of the weighting term
+
+Define the implicit reward
+\[
+\hat r_\theta(x,y)
+  = \beta \log\frac{\pi_\theta(y\mid x)}{\pi_{\mathrm{ref}}(y\mid x)}.
+\]
+For a single preference data point \((x,y_w,y_l)\), the DPO loss term is
+\[
+\ell(\theta; x,y_w,y_l)
+  = -\log \sigma\!\left(
+      \hat r_\theta(x,y_w) - \hat r_\theta(x,y_l)
+    \right).
+\]
+Let
+\[
+z
+  = \hat r_\theta(x,y_w) - \hat r_\theta(x,y_l).
+\]
+Then
+\[
+\ell(\theta) = -\log \sigma(z).
+\]
+Differentiate w.r.t. \(z\):
+\[
+\frac{d\ell}{dz}
+  = -\frac{1}{\sigma(z)}\sigma&#x27;(z)
+  = -\frac{1}{\sigma(z)}\sigma(z)\sigma(-z)
+  = -\sigma(-z).
+\]
+But \(\sigma(-z) = 1 - \sigma(z)\), so
+\[
+\frac{d\ell}{dz}
+  = \sigma(z) - 1
+  = -\sigma(-z).
+\]
+Using the chain rule,
+\[
+\nabla_\theta \ell
+  = \frac{d\ell}{dz}\,\nabla_\theta z
+  = (\sigma(z) - 1)
+    \Bigl(\nabla_\theta \hat r_\theta(x,y_w)
+          - \nabla_\theta \hat r_\theta(x,y_l)\Bigr).
+\]
+We can equivalently rewrite this using \(\sigma(-z)\):
+\[
+\nabla_\theta \ell
+  = \sigma(-z)\Bigl(
+      \nabla_\theta \hat r_\theta(x,y_l)
+      - \nabla_\theta \hat r_\theta(x,y_w)
+    \Bigr),
+\]
+since \(\sigma(-z) = 1 - \sigma(z)\).
+
+Recall \(\hat r_\theta(x,y) = \beta \log \pi_\theta(y\mid x) - \beta \log \pi_{\mathrm{ref}}(y\mid x)\), and \(\pi_{\mathrm{ref}}\) is fixed, so
+\[
+\nabla_\theta \hat r_\theta(x,y)
+  = \beta \nabla_\theta \log \pi_\theta(y\mid x).
+\]
+Thus, for a single data point,
+\[
+\begin{aligned}
+\nabla_\theta \ell
+  &amp;= \sigma\bigl(\hat r_\theta(x,y_l) - \hat r_\theta(x,y_w)\bigr)\,
+     \beta\bigl(
+       \nabla_\theta \log \pi_\theta(y_l\mid x)
+       - \nabla_\theta \log \pi_\theta(y_w\mid x)
+     \bigr) \\
+  &amp;= \beta\,\sigma\bigl(\hat r_\theta(x,y_l) - \hat r_\theta(x,y_w)\bigr)\,
+     \Bigl(
+       \nabla_\theta \log \pi_\theta(y_l\mid x)
+       - \nabla_\theta \log \pi_\theta(y_w\mid x)
+     \Bigr).
+\end{aligned}
+\]
+Averaging over the dataset gives \(\nabla_\theta L_{\mathrm{DPO}}\).
+
+**Interpretation of the weighting term \(\sigma(\hat r_\theta(x,y_l) - \hat r_\theta(x,y_w))\):**
+- If the model is already **correct and confident**, then
+  \(\hat r_\theta(x,y_w) \gg \hat r_\theta(x,y_l)\), so
+  \(\hat r_\theta(x,y_l) - \hat r_\theta(x,y_w) \ll 0\) and
+  \(\sigma(\hat r_\theta(x,y_l) - \hat r_\theta(x,y_w)) \approx 0\).
+  The gradient is tiny: the model is barely updated.
+- If the model is **wrong or uncertain**, then
+  \(\hat r_\theta(x,y_l) \gtrsim \hat r_\theta(x,y_w)\), so the argument of \(\sigma(\cdot)\) is near or above zero, and the value of \(\sigma(\cdot)\) is moderate to large (around \(0.5\)–\(1\)).
+  The gradient magnitude is large, strongly pushing \(\log \pi_\theta(y_w\mid x)\) up and \(\log \pi_\theta(y_l\mid x)\) down.
+
+So the DPO gradient updates the model **more when it is incorrect or insufficiently confident**, and less when it already agrees with the human preference.
+
+**Uncertainty note:** The sign manipulations and use of \(\sigma&#x27;(z)=\sigma(z)\sigma(-z)\) are a bit algebraic; I have double-checked that the final gradient pushes probability mass toward \(y_w\) and away from \(y_l\) when the model underestimates the preference for \(y_w\).
+
+---
+
+### (g) Plackett–Luce model and cancellation of \(Z(x)\)
+
+The Plackett–Luce model for rankings \(\tau\) of \(K\) candidates \(\{y_1,\dots,y_K\}\) is
+\[
+p_{\theta^\*}(\tau\mid y_1,\dots,y_K,x)
+  = \prod_{k=1}^K
+    \frac{\exp\bigl(r_\phi(x,y_{\tau(k)})\bigr)}
+         {\sum_{j=k}^K \exp\bigl(r_\phi(x,y_{\tau(j)})\bigr)}.
+\]
+Using the implicit reward parametrization from part (d),
+\[
+r_\phi(x,y)
+  = \beta \log \frac{\pi_{\theta^\*}(y\mid x)}{\pi_{\mathrm{ref}}(y\mid x)}
+    + \beta \log Z(x).
+\]
+Then for any candidate \(y\),
+\[
+\exp\bigl(r_\phi(x,y)\bigr)
+  = \exp\Bigl(
+      \beta \log \frac{\pi_{\theta^\*}(y\mid x)}{\pi_{\mathrm{ref}}(y\mid x)}
+      + \beta \log Z(x)
+    \Bigr)
+  = Z(x)^\beta
+    \left(\frac{\pi_{\theta^\*}(y\mid x)}{\pi_{\mathrm{ref}}(y\mid x)}\right)^\beta.
+\]
+Plugging into the PL formula, each numerator becomes
+\[
+Z(x)^\beta
+\left(\frac{\pi_{\theta^\*}(y_{\tau(k)}\mid x)}{\pi_{\mathrm{ref}}(y_{\tau(k)}\mid x)}\right)^\beta,
+\]
+and each denominator is
+\[
+\sum_{j=k}^K Z(x)^\beta
+  \left(\frac{\pi_{\theta^\*}(y_{\tau(j)}\mid x)}{\pi_{\mathrm{ref}}(y_{\tau(j)}\mid x)}\right)^\beta
+  = Z(x)^\beta
+    \sum_{j=k}^K
+      \left(\frac{\pi_{\theta^\*}(y_{\tau(j)}\mid x)}{\pi_{\mathrm{ref}}(y_{\tau(j)}\mid x)}\right)^\beta.
+\]
+Thus the factor \(Z(x)^\beta\) cancels in each fraction, giving
+\[
+p_{\theta^\*}(\tau\mid y_1,\dots,y_K,x)
+  = \prod_{k=1}^K
+    \frac{
+      \left(\dfrac{\pi_{\theta^\*}(y_{\tau(k)}\mid x)}{\pi_{\mathrm{ref}}(y_{\tau(k)}\mid x)}\right)^\beta
+    }{
+      \sum_{j=k}^K
+        \left(\dfrac{\pi_{\theta^\*}(y_{\tau(j)}\mid x)}{\pi_{\mathrm{ref}}(y_{\tau(j)}\mid x)}\right)^\beta
+    }.
+\]
+This is the Plackett–Luce probability written solely in terms of \(\pi_{\theta^\*}\) and \(\pi_{\mathrm{ref}}\), with **no explicit dependence** on \(Z(x)\).
+
+**Why is this desirable?**
+- Just as in the pairwise BT case, we can now perform maximum-likelihood training of a parameterized policy \(\pi_\theta\) using observed rankings without ever computing \(Z(x)\).
+- The objective depends only on **ratios** of probabilities under \(\pi_\theta\) and \(\pi_{\mathrm{ref}}\) for the finitely many candidates in each ranking, making learning tractable even when the full output space is huge.
+
+**Uncertainty note:** The algebra is straightforward exponent/log manipulation; the main subtlety is confirming that \(Z(x)^\beta\) is the same factor for all candidates and hence cancels in each softmax-like term.
+
+
+</code></pre>
+                    </div>
+                    <div class="attachment attachment-text">
+                        <div class="attachment-label">problem4sol.md <a href="attachments/problem4sol.md" target="_blank" class="download-link">Download</a></div>
+                        <pre><code>## Problem 4: Diffusion Models
+
+We are given a forward diffusion process over \(T\) steps:
+\[
+q(x_t \mid x_{t-1}) = \mathcal N\!\bigl(x_t;\,\sqrt{1-\beta_t}\,x_{t-1},\,\beta_t I\bigr),
+\qquad
+q(x_{1:T}\mid x_0) = \prod_{t=1}^T q(x_t\mid x_{t-1}),
+\]
+where \(0 &lt; \beta_t &lt; 1\) are small noise variances and \(x_0 \sim q(x)\) (assumed Gaussian).
+Define
+\[
+\alpha_t \coloneqq \prod_{s=1}^t (1-\beta_s),\qquad \alpha_0 \coloneqq 1.
+\]
+This is the usual DDPM notation. We treat all covariances as isotropic (\(\propto I\)).
+
+---
+
+### (a) Anytime sampling from intermediate distributions \(q(x_t\mid x_0)\)
+
+**Goal:** Show that there is a closed-form expression
+\[
+q(x_t\mid x_0) = \mathcal N\!\bigl(x_t;\,\sqrt{\alpha_t}\,x_0,\,(1-\alpha_t)I\bigr).
+\]
+
+We prove this by induction on \(t\).
+
+#### Base case \(t=1\)
+
+From the forward kernel,
+\[
+q(x_1\mid x_0) = \mathcal N\!\bigl(x_1;\,\sqrt{1-\beta_1}\,x_0,\,\beta_1 I\bigr).
+\]
+By definition, \(\alpha_1 = 1-\beta_1\), so
+\[
+q(x_1\mid x_0)
+  = \mathcal N\!\bigl(x_1;\,\sqrt{\alpha_1}\,x_0,\,(1-\alpha_1)I\bigr),
+\]
+which matches the desired form.
+
+#### Inductive step
+
+Assume for some \(t-1 \ge 1\) that
+\[
+q(x_{t-1}\mid x_0)
+  = \mathcal N\!\bigl(x_{t-1};\,\sqrt{\alpha_{t-1}}\,x_0,\,(1-\alpha_{t-1})I\bigr).
+\]
+We want \(q(x_t\mid x_0)\).
+
+We have
+\[
+q(x_t\mid x_0)
+  = \int q(x_t\mid x_{t-1})\,q(x_{t-1}\mid x_0)\,dx_{t-1},
+\]
+where
+\[
+q(x_t\mid x_{t-1})
+  = \mathcal N\!\bigl(x_t;\,\sqrt{1-\beta_t}\,x_{t-1},\,\beta_t I\bigr).
+\]
+This is the distribution of a linear–Gaussian transformation of a Gaussian:
+\[
+x_{t-1}\mid x_0 \sim
+  \mathcal N\!\bigl(\sqrt{\alpha_{t-1}}\,x_0,\,(1-\alpha_{t-1})I\bigr),
+\]
+and
+\[
+x_t = \sqrt{1-\beta_t}\,x_{t-1} + \epsilon_t,\qquad
+\epsilon_t \sim \mathcal N(0,\beta_t I),\ \epsilon_t\perp x_{t-1}.
+\]
+Therefore \(x_t\mid x_0\) is also Gaussian with
+\[
+\mathbb E[x_t\mid x_0]
+  = \sqrt{1-\beta_t}\,\mathbb E[x_{t-1}\mid x_0]
+  = \sqrt{1-\beta_t}\,\sqrt{\alpha_{t-1}}\,x_0
+  = \sqrt{\alpha_{t-1}(1-\beta_t)}\,x_0
+  = \sqrt{\alpha_t}\,x_0,
+\]
+where we used \(\alpha_t = \alpha_{t-1}(1-\beta_t)\).
+
+For the covariance:
+\[
+\begin{aligned}
+\mathrm{Var}(x_t\mid x_0)
+  &amp;= (1-\beta_t)\,\mathrm{Var}(x_{t-1}\mid x_0) + \beta_t I \\
+  &amp;= (1-\beta_t)\,(1-\alpha_{t-1})I + \beta_t I \\
+  &amp;= \bigl(1 - \beta_t - \alpha_{t-1} + \alpha_{t-1}\beta_t + \beta_t\bigr)I \\
+  &amp;= \bigl(1 - \alpha_{t-1}(1-\beta_t)\bigr)I
+   = (1-\alpha_t)I.
+\end{aligned}
+\]
+So
+\[
+q(x_t\mid x_0)
+  = \mathcal N\!\bigl(x_t;\,\sqrt{\alpha_t}\,x_0,\,(1-\alpha_t)I\bigr),
+\]
+which completes the induction.
+
+**Conclusion:** For all \(t\),
+\[
+q(x_t\mid x_0)
+  = \mathcal N\!\bigl(x_t;\,\sqrt{\alpha_t}\,x_0,\,(1-\alpha_t)I\bigr).
+\]
+
+**Uncertainty note:** This derivation assumes the forward kernel is precisely \(q(x_t\mid x_{t-1}) = \mathcal N(x_t;\sqrt{1-\beta_t}x_{t-1},\beta_t I)\); the original PDF text had minor formatting artifacts, but this is the standard DDPM setup.
+
+---
+
+### (b) Reverse conditional \(q(x_{t-1}\mid x_t, x_0)\)
+
+We want the reverse conditional distribution
+\[
+q(x_{t-1}\mid x_t, x_0),
+\]
+which, by Bayes’ rule and the Markov structure, is proportional to
+\[
+q(x_t\mid x_{t-1})\,q(x_{t-1}\mid x_0).
+\]
+
+From part (a),
+\[
+q(x_{t-1}\mid x_0)
+  = \mathcal N\!\bigl(x_{t-1};\,\sqrt{\alpha_{t-1}}\,x_0,\,(1-\alpha_{t-1})I\bigr),
+\]
+and the forward kernel is
+\[
+q(x_t\mid x_{t-1})
+  = \mathcal N\!\bigl(x_t;\,\sqrt{1-\beta_t}\,x_{t-1},\,\beta_t I\bigr).
+\]
+Both are Gaussians in \(x_{t-1}\) with isotropic covariances, so their product is also Gaussian in \(x_{t-1}\).
+
+#### Computing the reverse variance \(\hat\beta_t\)
+
+Write
+\[
+q(x_{t-1}\mid x_0)
+  \propto \exp\left(
+    -\frac{1}{2(1-\alpha_{t-1})}\,\|x_{t-1}-\sqrt{\alpha_{t-1}}\,x_0\|^2
+  \right),
+\]
+and
+\[
+q(x_t\mid x_{t-1})
+  \propto \exp\left(
+    -\frac{1}{2\beta_t}\,\|x_t-\sqrt{1-\beta_t}\,x_{t-1}\|^2
+  \right).
+\]
+Multiplying gives
+\[
+q(x_{t-1}\mid x_t,x_0)
+  \propto \exp\bigl(-\tfrac12 x_{t-1}^\top A x_{t-1} + b^\top x_{t-1} + \text{const}\bigr),
+\]
+with precision matrix
+\[
+A = \frac{1-\beta_t}{\beta_t}I + \frac{1}{1-\alpha_{t-1}}I
+  = \left(\frac{1-\beta_t}{\beta_t} + \frac{1}{1-\alpha_{t-1}}\right)I.
+\]
+We can identify the reverse covariance as
+\[
+\hat\beta_t I = A^{-1},
+\qquad
+\hat\beta_t
+  = \left(
+       \frac{1-\beta_t}{\beta_t}
+       + \frac{1}{1-\alpha_{t-1}}
+    \right)^{-1}.
+\]
+Simplify the scalar:
+\[
+\begin{aligned}
+\frac{1}{\hat\beta_t}
+  &amp;= \frac{1-\beta_t}{\beta_t} + \frac{1}{1-\alpha_{t-1}} \\
+  &amp;= \frac{(1-\beta_t)(1-\alpha_{t-1}) + \beta_t}
+          {\beta_t(1-\alpha_{t-1})} \\
+  &amp;= \frac{1 - \alpha_{t-1} + \alpha_{t-1}\beta_t}
+          {\beta_t(1-\alpha_{t-1})} \\
+  &amp;= \frac{1 - \alpha_{t-1}(1-\beta_t)}
+          {\beta_t(1-\alpha_{t-1})}
+   = \frac{1-\alpha_t}{\beta_t(1-\alpha_{t-1})},
+\end{aligned}
+\]
+using \(\alpha_t = \alpha_{t-1}(1-\beta_t)\).
+Thus
+\[
+\hat\beta_t
+  = \frac{\beta_t(1-\alpha_{t-1})}{1-\alpha_t}.
+\]
+
+#### Computing the reverse mean \(\mu(x_t,x_0)\)
+
+The mean of a Gaussian with precision \(A\) is \(A^{-1}b = \hat\beta_t b\), where \(b\) is the linear coefficient in the exponent.
+
+From the product:
+- The term from \(q(x_{t-1}\mid x_0)\) contributes
+  \[
+  \frac{\sqrt{\alpha_{t-1}}}{1-\alpha_{t-1}}\,x_0
+  \]
+  to \(b\).
+- The term from \(q(x_t\mid x_{t-1})\) is
+  \[
+  -\frac{1}{2\beta_t}
+    \|x_t-\sqrt{1-\beta_t}\,x_{t-1}\|^2
+  = -\frac{1}{2\beta_t}
+    \bigl(
+      \|x_t\|^2
+      + (1-\beta_t)\|x_{t-1}\|^2
+      - 2\sqrt{1-\beta_t}\,x_t^\top x_{t-1}
+    \bigr),
+  \]
+  which contributes
+  \[
+  \frac{\sqrt{1-\beta_t}}{\beta_t}\,x_t
+  \]
+  to \(b\).
+
+So
+\[
+b
+  = \frac{\sqrt{1-\beta_t}}{\beta_t}\,x_t
+    + \frac{\sqrt{\alpha_{t-1}}}{1-\alpha_{t-1}}\,x_0.
+\]
+Therefore,
+\[
+\mu(x_t,x_0)
+  = \hat\beta_t\,b
+  = \hat\beta_t
+    \left(
+      \frac{\sqrt{1-\beta_t}}{\beta_t}\,x_t
+      + \frac{\sqrt{\alpha_{t-1}}}{1-\alpha_{t-1}}\,x_0
+    \right).
+\]
+Using \(\hat\beta_t = \dfrac{\beta_t(1-\alpha_{t-1})}{1-\alpha_t}\), we can rewrite this as
+\[
+\mu(x_t,x_0)
+  = \frac{\sqrt{1-\beta_t}(1-\alpha_{t-1})}{1-\alpha_t}\,x_t
+    + \frac{\sqrt{\alpha_{t-1}}\beta_t}{1-\alpha_t}\,x_0.
+\]
+This is the standard DDPM reverse mean conditioned on both \(x_t\) and \(x_0\).
+
+#### Final reverse distribution
+
+Putting the pieces together:
+\[
+q(x_{t-1}\mid x_t,x_0)
+  = \mathcal N\!\bigl(x_{t-1};\,\mu(x_t,x_0),\,\hat\beta_t I\bigr),
+\]
+where
+\[
+\hat\beta_t
+  = \frac{\beta_t(1-\alpha_{t-1})}{1-\alpha_t},
+\]
+and
+\[
+\mu(x_t,x_0)
+  = \frac{\sqrt{1-\beta_t}(1-\alpha_{t-1})}{1-\alpha_t}\,x_t
+    + \frac{\sqrt{\alpha_{t-1}}\beta_t}{1-\alpha_t}\,x_0.
+\]
+
+**Uncertainty note:** The main algebraic steps are (i) multiplying two Gaussians with isotropic covariances and (ii) simplifying the scalar expression for \(\hat\beta_t\) using \(\alpha_t=\alpha_{t-1}(1-\beta_t)\). The resulting formulas match standard DDPM reverse-conditionals when expressed in terms of \(\alpha_t\) and \(\beta_t\).
+
+
+</code></pre>
+                    </div>
+                    <div class="attachment attachment-text">
+                        <div class="attachment-label">writeup.md <a href="attachments/writeup.md" target="_blank" class="download-link">Download</a></div>
+                        <pre><code>## Summary
+
+Writeup structure provided using an LLM, this includes formatting and points to talk about. However, the content and verification was done manually.
+
+For this participation I used the modern LLM listed in `model.txt` (GPT 5.1) on the **non‑coding** parts of HW13, specifically Problems 1, 2, and 4. I then checked its written solutions in `problem1sol.md`, `problem2sol.md`, and `problem4sol.md` against the exact problem statements and against standard results from diffusion models and RLHF / DPO theory. Overall, the answers are mathematically correct and well‑reasoned, and I did not find any clear “classic” hallucinations like making up new definitions or theorems.
+
+In terms of “one‑shot” performance, the model was able to give full multi‑step solutions for all subparts of Problems 1, 2, and 4 in a single pass. I did not have to correct any major algebra or logic. Most of my “checking work” was just verifying each step by hand, not fixing mistakes. So for this homework, the LLM basically solved the theory questions on its own, with only very minor approximation comments that I would clean up if I were writing it myself.
+
+## Problem 1: DDPM/DDIM Fun – From a Gaussian
+
+- **(a) and (b): marginal distributions**
+  - The solution says \(X_t \sim \mathcal N(0,\sigma^2 + t)\), so \(X_1 \sim \mathcal N(0,\sigma^2+1)\), and similarly \(X_{t-\Delta t} \sim \mathcal N(0,\sigma^2 + t - \Delta t)\).
+  - This exactly matches what you get by summing independent Gaussian noise of total variance \(t\), so this part is correct and standard, not a hallucination.
+
+- **(c): approximate conditional variance**
+  - The homework gives a conditional Gaussian formula for \(X_{t-\Delta t} \mid X_t\). The LLM takes the variance term \(\frac{(\sigma^2 + t - \Delta t)\,\Delta t}{\sigma^2 + t}\) and uses \(\Delta t \ll \sigma^2\) to approximate it as just \(\Delta t\).
+  - This is a normal small‑step approximation: it’s literally expanding \((A-\Delta t)/A = 1 - \Delta t/A\) and throwing away the \(O(\Delta t^2)\) term. This is mathematically fine and matches how diffusion limits are usually derived.
+
+- **(d): naïve reverse denoising using only the mean**
+  - The solution multiplies by a deterministic factor at each reverse step, shows that the product telescopes, and gets an overall contraction factor \(C_{\text{naive}} = \frac{\sigma^2}{\sigma^2 + 1}\).
+  - This telescoping product is correct: \(\prod_k \frac{\sigma^2 + (k-1)\Delta t}{\sigma^2 + k\Delta t} = \frac{\sigma^2}{\sigma^2+1}\).
+  - From there it correctly concludes that \(\operatorname{Var}(\hat X_0)\) is roughly \(\sigma^4\), which is much smaller than the desired \(\sigma^2\). This matches the known fact that purely deterministic reverse diffusion over‑contracts the distribution.
+
+- **(e): adding stochastic noise at each reverse step**
+  - The given variance expression and the Riemann‑sum‑to‑integral limit are handled correctly.
+  - I re‑did the integral \(\int_0^1 \left(\frac{\sigma^2}{\sigma^2 + t}\right)^2 dt\), and the LLM’s answer \(\sigma^2 - \frac{\sigma^4}{\sigma^2+1}\) is right.
+  - When you combine that with the first term, the total variance is \(\sigma^2\) minus a tiny correction of order \(\sigma^6\). The solution just says “up to \(O(\sigma^4)\) terms,” which is slightly loose but directionally fine. This is nitpicking, not a conceptual error.
+
+- **(f): training a neural net to approximate \(g(x_t, t)\)**
+  - The setup (sample \(s \sim X_0\), sample \(t\), add \(\sqrt t\,\epsilon\), feed \((x_t,t)\) into a network, use MSE against the clean \(s\)) is exactly the standard DDPM style of training a denoiser / conditional mean estimator.
+  - There is no made‑up objective here; it lines up with what you see in diffusion model papers and lecture notes.
+
+- **(g): approximate DDIM step**
+  - The solution uses the DDIM formula from the problem statement and approximates the coefficient \(\eta(t,\Delta t) = \frac{\sqrt t}{\sqrt{t-\Delta t}+\sqrt t}\) for small \(\Delta t\), ending up with roughly a factor of \(1/2\) and a step
+    \[
+    x^{\mathrm{DDIM}}_{t-\Delta t} \approx \left(1 - \frac{\Delta t}{2(\sigma^2 + t)}\right)x_t.
+    \]
+  - The algebraic approximation (Taylor expanding \(\sqrt{t-\Delta t}\)) is correct, and the exact form of \(\eta(t,\Delta t)\) matches the homework text, so there is no guesswork here.
+
+- **(h): variance after all DDIM steps**
+  - It treats each reverse step as multiplying by a factor \(r(t)\), turns the product into an exponential of an integral, and finds that \(\hat X_0 \sim \mathcal N\!\bigl(0,\,\frac{\sigma^2}{\sigma^2+1}\bigr)\), which is \(\approx \mathcal N(0,\sigma^2)\) when \(\sigma^2 \ll 1\).
+  - This logic is correct and matches the idea that DDIM with the right scaling approximately recovers the target variance.
+
+The reasoning is solid, the approximations are standard, and the only “iffy” part is interpreting the exact DDIM coefficient from a fuzzy PDF. I would not call this a real hallucination; it is more like a reasonable assumption in the face of messy formatting.
+
+## Problem 2: Honey, Where’s My Reward Model?
+
+- **(a): minimize \(D_{\mathrm{KL}}(p\|q)\)**
+  - The solution just quotes Gibbs’ inequality and says the minimum is at \(p^\* = q\). That is exactly right and standard.
+
+- **(b): optimal KL‑regularized policy**
+  - It rewrites the objective into a form involving a KL divergence to a “Boltzmannized” distribution
+    \(\tilde\pi(y\mid x) \propto \pi_{\mathrm{ref}}(y\mid x)\exp(r_\phi(x,y)/\beta)\).
+  - The algebra is standard: factor out \(-\beta\), introduce a normalizing constant \(Z(x)\), and show that maximizing the objective is equivalent to minimizing a KL to \(\tilde\pi\).
+  - The final answer
+    \[
+    \pi_\theta^\*(y\mid x) = \frac{1}{Z(x)} \pi_{\mathrm{ref}}(y\mid x)\exp\left(\frac{1}{\beta}r_\phi(x,y)\right)
+    \]
+    is exactly the usual result in the DPO and RLHF literature. No hallucination here.
+
+- **(c): why \(\pi_\theta^\*\) is hard to use directly**
+  - It correctly points out that \(Z(x)\) is a sum over all possible outputs \(y\), which is intractable for language models.
+  - This is the standard reason this closed form is not directly used.
+
+- **(d): express \(r_\phi\) in terms of \(\pi_\theta^\*\), \(\pi_{\mathrm{ref}}\), and \(Z(x)\)**
+  - They take logs of the expression from (b) and solve for \(r_\phi\). The algebra checks out:
+    \[
+    r_\phi(x,y) = \beta \log \frac{\pi_\theta^\*(y\mid x)}{\pi_{\mathrm{ref}}(y\mid x)} + \beta \log Z(x).
+    \]
+  - This is exactly the implicit reward parametrization used in DPO.
+
+- **(e): Bradley–Terry model and cancellation of \(Z(x)\)**
+  - They plug the expression for \(r_\phi\) into the BT model \(p(y_w \succ y_l\mid x) = \sigma(r_\phi(x,y_w)-r_\phi(x,y_l))\).
+  - The derivation correctly shows that the \(\beta\log Z(x)\) terms cancel, leaving only log‑ratios of \(\pi_\theta^\*/\pi_{\mathrm{ref}}\) for the two specific responses.
+  - This matches how DPO avoids computing \(Z(x)\).
+
+- **(f): gradient of the DPO loss**
+  - They differentiate \(-\log \sigma(z)\) where \(z = \hat r_\theta(x,y_w)-\hat r_\theta(x,y_l)\), and then use the chain rule.
+  - The final gradient expression, plus the interpretation (“updates are large when the model is wrong or unsure, and small when it already prefers \(y_w\) strongly”), matches the DPO paper and is correct.
+
+- **(g): Plackett–Luce rankings and cancellation of \(Z(x)\)**
+  - They start from the PL formula for rankings, plug in \(r_\phi\) expressed via \(\pi_{\theta^\*}/\pi_{\mathrm{ref}}\), and show that the common factor \(Z(x)^\beta\) cancels between numerator and denominator in each term.
+  - The resulting expression depends only on probability ratios, which is exactly the point of using this form.
+
+Everything lines up with the known DPO / BT / PL theory. The derivations are standard and consistent, and I did not see any hallucinated concepts or bogus formulas.
+
+## Problem 4: Diffusion Models
+
+- **(a): anytime sampling \(q(x_t\mid x_0)\)**
+  - The solution proves by induction that
+    \[
+    q(x_t\mid x_0) = \mathcal N\!\bigl(x_t;\,\sqrt{\alpha_t}\,x_0,\,(1-\alpha_t)I\bigr),
+    \]
+    where \(\alpha_t = \prod_{s=1}^t (1-\beta_s)\).
+  - The base case and the inductive step are both correct. The mean and variance calculations match exactly what you get from repeatedly applying linear‑Gaussian transitions.
+  - This is the standard “closed form” used in all DDPM papers, so this part is clearly correct and not hallucinated.
+
+- **(b): reverse conditional \(q(x_{t-1}\mid x_t,x_0)\)**
+  - It multiplies two Gaussians in \(x_{t-1}\) (one from the forward kernel, one from the prior \(q(x_{t-1}\mid x_0)\)) and derives a Gaussian with a certain mean and variance.
+  - The expression for the reverse variance
+    \[
+    \hat\beta_t = \frac{\beta_t(1-\alpha_{t-1})}{1-\alpha_t}
+    \]
+    is exactly the one used in DDPM derivations.
+  - The mean
+    \[
+    \mu(x_t,x_0) = \frac{\sqrt{1-\beta_t}(1-\alpha_{t-1})}{1-\alpha_t}\,x_t
+      + \frac{\sqrt{\alpha_{t-1}}\beta_t}{1-\alpha_t}\,x_0
+    \]
+    also matches the known formula.
+  - The algebra for combining precisions and linear terms is correct.
+
+The solution matches the canonical DDPM derivations. I don’t see hallucinations in the parts that are present.
+
+## Observations about the LLM’s behavior, misconceptions, and hallucinations
+  - For the three problems I checked, GPT 5.1 produced complete multi‑step solutions for all listed subparts in one shot.
+  - I did not need follow‑up prompts to fix logic or to push it toward the right formulas. The work it produced is already acceptable as a final solution, maybe with tiny cosmetic edits.
+  - It is very good at recalling standard results (e.g., DDPM closed forms, KL/Boltzmann derivations, DPO gradients) and then filling in missing algebra steps.
+  - It keeps the notation consistent across a long derivation, and it tends to explain what it is doing, which makes it easier to audit.
+  - It also sometimes adds short “uncertainty notes” where it flags an approximation or a possible ambiguity; this is actually helpful for spotting where I should double‑check.
+  - I did not see any clear mathematical hallucinations (like totally wrong formulas or invented algorithms) in these solutions.
+  - The only thing I would nitpick is a slightly loose statement about the order of small terms in Problem 1(e), but that is just approximate error bookkeeping, not a conceptual misunderstanding.
+  - For this homework, GPT 5.1 basically behaves like a strong student who has already seen diffusion models and DPO before.
+  - It one‑shots the questions, does the right algebra, and only makes very minor approximations that I would correct if I were polishing the writeup.
+  - The main lesson for me is that for theory questions like these, the LLM can do almost all the work, but I still need to read carefully and verify each step instead of blindly trusting the output.
+
+
+</code></pre>
+                    </div></div>
+    </div>
+</body>
+</html>

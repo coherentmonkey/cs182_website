@@ -1,0 +1,587 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Deep Learning Optimizer Visualization</title>
+    <!-- Load Plotly.js -->
+    <script src="https://cdn.plot.ly/plotly-2.24.1.min.js"></script>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            height: 100vh;
+            background-color: #f4f4f9;
+            overflow: hidden;
+        }
+
+        /* --- SIDEBAR --- */
+        #controls {
+            width: 340px;
+            background-color: #2c3e50;
+            color: #ecf0f1;
+            display: flex;
+            flex-direction: column;
+            box-shadow: 2px 0 5px rgba(0,0,0,0.2);
+            z-index: 10;
+            flex-shrink: 0;
+        }
+
+        .scroll-area {
+            padding: 20px;
+            overflow-y: auto;
+            flex-grow: 1;
+        }
+
+        h2, h3 { margin-top: 0; font-weight: 600; }
+        h2 { font-size: 1.4rem; color: #fff; margin-bottom: 5px; }
+        h3 { font-size: 0.95rem; margin-top: 20px; border-bottom: 1px solid #485f78; padding-bottom: 5px; color: #bdc3c7; }
+
+        .control-group { margin-bottom: 15px; }
+        label { display: flex; justify-content: space-between; font-size: 0.85rem; margin-bottom: 5px; }
+        input[type=range] { width: 100%; cursor: pointer; accent-color: #3498db; }
+
+        .btn-group { display: flex; flex-direction: column; gap: 10px; margin-top: 25px; margin-bottom: 15px; }
+        .row-btns { display: flex; gap: 10px; }
+        
+        button {
+            flex: 1;
+            padding: 12px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: bold;
+            font-size: 1rem;
+            transition: transform 0.1s, opacity 0.2s;
+        }
+        button:active { transform: scale(0.98); }
+        #btn-start { background-color: #27ae60; color: white; }
+        #btn-start:hover { background-color: #2ecc71; }
+        #btn-reset { background-color: #c0392b; color: white; }
+        #btn-reset:hover { background-color: #e74c3c; }
+        #btn-math { background-color: #8e44ad; color: white; margin-top: 5px; font-size: 0.9rem;}
+        #btn-math:hover { background-color: #9b59b6; }
+
+        /* Stats Table */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: 20px 1fr 1fr;
+            gap: 5px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.8rem;
+            background: rgba(0,0,0,0.3);
+            padding: 10px;
+            border-radius: 5px;
+            margin-bottom: 15px;
+        }
+        .dot { width: 10px; height: 10px; border-radius: 50%; align-self: center; }
+
+        /* --- STATUS BOX --- */
+        #status-panel {
+            background-color: #34495e;
+            border-top: 4px solid #f1c40f; /* Accent color */
+            padding: 20px;
+            min-height: 180px;
+            box-shadow: 0 -2px 10px rgba(0,0,0,0.2);
+        }
+        #status-title {
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: #f1c40f;
+            margin-bottom: 10px;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        #status-text {
+            font-size: 0.9rem;
+            line-height: 1.5;
+            color: #ecf0f1;
+        }
+        .highlight { color: #f1c40f; font-weight: bold; }
+        .bad { color: #e74c3c; font-weight: bold; }
+        .good { color: #2ecc71; font-weight: bold; }
+
+        /* --- CHART --- */
+        #chart-container {
+            flex-grow: 1;
+            position: relative;
+            background: white;
+        }
+
+        /* --- MATH MODAL --- */
+        .modal {
+            display: none; 
+            position: fixed; 
+            z-index: 100; 
+            left: 0;
+            top: 0;
+            width: 100%; 
+            height: 100%; 
+            overflow: auto; 
+            background-color: rgba(0,0,0,0.6); 
+            backdrop-filter: blur(2px);
+        }
+        .modal-content {
+            background-color: #fefefe;
+            margin: 5% auto; 
+            padding: 25px;
+            border: 1px solid #888;
+            width: 80%;
+            max-width: 800px; /* Widened for better reading */
+            border-radius: 8px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: #333;
+        }
+        .close-btn {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+        .close-btn:hover { color: #000; }
+        
+        .math-section { margin-bottom: 25px; border-bottom: 1px solid #eee; padding-bottom: 15px; }
+        .math-section:last-child { border-bottom: none; }
+        .formula {
+            background: #f0f2f5;
+            padding: 10px;
+            border-radius: 4px;
+            font-family: 'Times New Roman', Times, serif;
+            font-size: 1.1rem;
+            text-align: center;
+            margin: 10px 0;
+            border-left: 4px solid #3498db;
+        }
+        .variable-list { font-size: 0.9rem; margin-top: 5px; line-height: 1.6; }
+        .var-name { font-weight: bold; color: #2c3e50; font-family: 'Times New Roman', serif; font-style: italic;}
+    </style>
+</head>
+<body>
+
+    <!-- SIDEBAR -->
+    <div id="controls">
+        <div class="scroll-area">
+            <h2>Optimizer Race</h2>
+            <p style="font-size: 0.85rem; color: #bdc3c7; margin-bottom: 20px;">
+                Visualizing convergence on the Rosenbrock "Banana" function.
+            </p>
+
+            <!-- STATS -->
+            <div class="stats-grid">
+                <div></div><div><strong>Loss</strong></div><div><strong>Iter</strong></div>
+                
+                <div class="dot" style="background:red;"></div>
+                <div id="loss-sgd">0.00</div><div id="iter-count">0</div>
+
+                <div class="dot" style="background:blue;"></div>
+                <div id="loss-mom">0.00</div><div></div>
+
+                <div class="dot" style="background:lime;"></div>
+                <div id="loss-adam">0.00</div><div></div>
+            </div>
+
+            <!-- INPUTS -->
+            <h3>Global Parameters</h3>
+            <div class="control-group">
+                <label>Learning Rate (&alpha;) <span id="val-lr">0.002</span></label>
+                <input type="range" id="lr" min="0.0001" max="0.006" step="0.0001" value="0.002">
+            </div>
+
+            <h3>Momentum (Blue)</h3>
+            <div class="control-group">
+                <label>Beta (&gamma;) <span id="val-mom">0.9</span></label>
+                <input type="range" id="momentum" min="0.0" max="0.99" step="0.01" value="0.9">
+            </div>
+
+            <h3>Adam (Green)</h3>
+            <div class="control-group">
+                <label>Beta 1 <span id="val-b1">0.9</span></label>
+                <input type="range" id="beta1" min="0.5" max="0.999" step="0.001" value="0.9">
+            </div>
+            <div class="control-group">
+                <label>Beta 2 <span id="val-b2">0.999</span></label>
+                <input type="range" id="beta2" min="0.5" max="0.9999" step="0.0001" value="0.999">
+            </div>
+
+            <div class="btn-group">
+                <div class="row-btns">
+                    <button id="btn-start" onclick="toggleAnimation()">Start Race</button>
+                    <button id="btn-reset" onclick="resetSimulation()">Reset</button>
+                </div>
+                <button id="btn-math" onclick="toggleMathModal()">Math & Theory</button>
+            </div>
+        </div>
+
+        <!-- LIVE ANALYSIS PANEL -->
+        <div id="status-panel">
+            <div id="status-title">
+                <svg width="16" height="16" fill="currentColor" viewBox="0 0 16 16"><path d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16zm.93-9.412-1 4.705c-.07.34.029.533.304.533.194 0 .487-.07.686-.246l-.088.416c-.287.346-.92.598-1.465.598-.703 0-1.002-.422-.808-1.319l.738-3.468c.064-.293.006-.399-.287-.47l-.451-.081.082-.381 2.29-.287zM8 5.5a1 1 0 1 1 0-2 1 1 0 0 1 0 2z"/></svg>
+                Live Analysis
+            </div>
+            <div id="status-text">
+                Welcome! This visualization shows why standard SGD struggles on complex surfaces. <br><br>
+                Adjust the <span class="highlight">Learning Rate</span> above, then click <strong>Start Race</strong> to begin.
+            </div>
+        </div>
+    </div>
+
+    <!-- MAIN CHART -->
+    <div id="chart-container">
+        <div id="plot" style="width: 100%; height: 100%;"></div>
+    </div>
+
+    <!-- MATH MODAL -->
+    <div id="math-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="toggleMathModal()">&times;</span>
+            <h2 style="color: #2c3e50; border-bottom: 2px solid #3498db; padding-bottom: 10px;">Optimization: The Math Behind the Magic</h2>
+            
+            <div class="math-section">
+                <h3>1. Why Momentum beats SGD</h3>
+                <p><strong>The Problem:</strong> In "ravines" (like this function), the surface is steep on the sides but flat along the bottom. SGD oscillates across the steep sides because the gradient &nabla;L is huge in the vertical direction.</p>
+                <div class="formula">
+                    v<sub>t</sub> = &gamma; v<sub>t-1</sub> - &alpha; &nabla;L(w<sub>t</sub>)
+                </div>
+                <p style="font-size: 0.9rem; margin-top: 10px;">
+                    <strong>Understanding Beta/Gamma (&gamma;):</strong> This parameter acts as "friction" or memory.
+                    <br>&bull; <strong>High &gamma; (0.9):</strong> The agent keeps 90% of its previous speed. It's like a heavy truck; it punches through small bumps but takes longer to turn.
+                    <br>&bull; <strong>Low &gamma; (0.5):</strong> The agent keeps only 50% of its speed. It's lighter and changes direction faster but gets stuck more easily.
+                </p>
+                <p style="font-size: 0.9rem; margin-top: 10px;"><strong>The Result:</strong> 
+                <br>&bull; <strong>Vertical Direction:</strong> Gradients flip signs (+, -, +, -). Summing them causes cancellation ($1 + (-1) = 0$). The oscillation dampens.
+                <br>&bull; <strong>Horizontal Direction:</strong> Gradients are small but consistent (+, +, +). Summing them builds velocity, accelerating down the valley.</p>
+            </div>
+
+            <div class="math-section">
+                <h3>2. Why Adam usually beats Momentum</h3>
+                <p><strong>The Problem:</strong> Momentum relies on a global Learning Rate (&alpha;). If the valley gets flatter, it slows down. If the gradient gets steeper, it can overshoot dangerously.</p>
+                <div class="formula">
+                    Step &approx; &alpha; &middot; m<sub>t</sub> / &radic;v<sub>t</sub>
+                </div>
+                <p style="font-size: 0.9rem; margin-top: 10px;">
+                    <strong>Understanding Adam's Betas:</strong> Adam keeps two separate histories.
+                    <br>&bull; <strong>&beta;<sub>1</sub> (Momentum):</strong> Tracks the <em>direction</em> (mean). Usually 0.9.
+                    <br>&bull; <strong>&beta;<sub>2</sub> (Scaling):</strong> Tracks the <em>magnitude/volatility</em> (variance). Usually 0.999.
+                    <br><strong>What changing &beta;<sub>2</sub> does:</strong> If you lower &beta;<sub>2</sub> (e.g., to 0.9), Adam forgets historical volatility faster. This makes it adapt to "new" terrain steepness very aggressively, which can sometimes be unstable.
+                </p>
+                <p style="font-size: 0.9rem; margin-top: 10px;"><strong>The Math:</strong> Adam divides the momentum (m<sub>t</sub>) by the root mean square of gradients (&radic;v<sub>t</sub>).
+                <br>&bull; <strong>Steep Slopes:</strong> Gradient is large &rarr; &radic;v<sub>t</sub> is large &rarr; Step size decreases (Stabilizing).
+                <br>&bull; <strong>Flat Valleys:</strong> Gradient is tiny &rarr; &radic;v<sub>t</sub> is tiny &rarr; Step size increases (Accelerating).
+                </p>
+            </div>
+
+            <div class="math-section" style="background: #e8f6f3; padding: 15px; border-radius: 5px; border: 1px solid #d1f2eb;">
+                <h3 style="margin-top: 0; color: #16a085;">🧪 Try These Parameters</h3>
+                <ul style="font-size: 0.9rem; padding-left: 20px;">
+                    <li style="margin-bottom: 8px;">
+                        <strong>Show SGD Fail:</strong> Set <code>LR = 0.005</code>. <br>
+                        <em>Result:</em> SGD explodes/oscillates violently. Adam handles it easily because it normalizes the large gradients.
+                    </li>
+                    <li>
+                        <strong>Show Momentum Physics:</strong> Set <code>LR = 0.001</code>, <code>Momentum = 0.95</code>.<br>
+                        <em>Result:</em> Momentum builds up massive speed and actually overshoots the target before swinging back (like a pendulum). Adam stops precisely.
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // --- 1. CONFIGURATION & STATE ---
+        const CONFIG = {
+            startX: -1.5,
+            startY: 2.0,
+            range: { x: [-2, 2], y: [-1, 3] },
+            stepsPerFrame: 5, 
+            epsilon: 1e-8
+        };
+
+        let isRunning = false;
+        let animationId = null;
+        let iteration = 0;
+        
+        let historySGD = { dx: 0, dy: 0, oscCount: 0 };
+
+        let agents = {
+            sgd: { x: 0, y: 0, pathX: [], pathY: [], loss: 0 },
+            mom: { x: 0, y: 0, vx: 0, vy: 0, pathX: [], pathY: [], loss: 0 },
+            adam: { x: 0, y: 0, mX: 0, mY: 0, vX: 0, vY: 0, pathX: [], pathY: [], loss: 0 }
+        };
+
+        // --- 2. MATH: ROSENBROCK FUNCTION ---
+        function getLoss(x, y) {
+            return Math.pow(1 - x, 2) + 100 * Math.pow(y - x * x, 2);
+        }
+
+        function getGradients(x, y) {
+            const dx = -2 * (1 - x) - 400 * x * (y - x * x);
+            const dy = 200 * (y - x * x);
+            return { dx, dy };
+        }
+
+        // --- 3. UI REFERENCES ---
+        const ui = {
+            lr: document.getElementById('lr'),
+            mom: document.getElementById('momentum'),
+            b1: document.getElementById('beta1'),
+            b2: document.getElementById('beta2'),
+            btn: document.getElementById('btn-start'),
+            iter: document.getElementById('iter-count'),
+            lossSGD: document.getElementById('loss-sgd'),
+            lossMom: document.getElementById('loss-mom'),
+            lossAdam: document.getElementById('loss-adam'),
+            status: document.getElementById('status-text'),
+            modal: document.getElementById('math-modal')
+        };
+
+        // --- 4. INTERACTION & EXPLANATION ---
+        function toggleMathModal() {
+            const modal = ui.modal;
+            if (modal.style.display === "block") {
+                modal.style.display = "none";
+            } else {
+                modal.style.display = "block";
+            }
+        }
+
+        // Close modal when clicking outside
+        window.onclick = function(event) {
+            if (event.target == ui.modal) {
+                ui.modal.style.display = "none";
+            }
+        }
+
+        function updateStatusBox() {
+            if (!isRunning && iteration === 0) return;
+
+            let msg = "";
+            const sgdLoss = agents.sgd.loss;
+            const adamLoss = agents.adam.loss;
+            const momLoss = agents.mom.loss;
+
+            if (iteration < 20) {
+                ui.status.innerHTML = "<strong>Early Phase:</strong> All agents move quickly down the steep gradient. Note how Momentum (Blue) builds up speed.";
+                return;
+            }
+
+            let isOscillating = historySGD.oscCount > 5;
+            if (isOscillating) {
+                msg += "<span class='bad'>Warning: SGD Oscillation!</span><br>SGD is bouncing off the valley walls. The gradient is steep perpendicular to the path. <br><em>Try lowering Learning Rate or adding Momentum.</em><br><br>";
+            } else {
+                msg += "SGD is descending slowly. <br><br>";
+            }
+
+            if (adamLoss < momLoss && adamLoss < sgdLoss) {
+                msg += "<span class='good'>Adam is winning.</span><br>Adam's adaptive learning rate scales down the step size in the steep direction (vertical) and scales it up in the flat direction (horizontal).";
+            } else if (momLoss < adamLoss) {
+                msg += "<span class='good'>Momentum is leading.</span><br>The accumulated velocity vector is helping it plow through the flat valley floor.";
+            }
+
+            if (adamLoss < 0.1) {
+                msg = "<span class='good'>Target Acquired!</span><br>Adam has successfully navigated the curve. Notice how it didn't need a tiny learning rate to be stable.";
+            }
+
+            ui.status.innerHTML = msg;
+        }
+
+        ui.lr.addEventListener('input', (e) => {
+            ui.status.innerHTML = `<strong>Learning Rate (${e.target.value}):</strong><br>Determines step size. <br>Too high = Oscillation/Divergence.<br>Too low = Slow convergence.`;
+            document.getElementById('val-lr').innerText = e.target.value;
+        });
+        ui.mom.addEventListener('input', (e) => {
+            ui.status.innerHTML = `<strong>Momentum (${e.target.value}):</strong><br>Like a heavy ball rolling down a hill. Helps dampen oscillations and pass through local minima.`;
+            document.getElementById('val-mom').innerText = e.target.value;
+        });
+        ui.b1.addEventListener('input', (e) => {
+             document.getElementById('val-b1').innerText = e.target.value;
+        });
+        ui.b2.addEventListener('input', (e) => {
+             document.getElementById('val-b2').innerText = e.target.value;
+        });
+
+
+        // --- 5. CORE OPTIMIZATION LOOP ---
+        function step() {
+            const lr = parseFloat(ui.lr.value);
+            const beta = parseFloat(ui.mom.value);
+            const b1 = parseFloat(ui.b1.value);
+            const b2 = parseFloat(ui.b2.value);
+            
+            iteration++;
+
+            // SGD
+            let g = getGradients(agents.sgd.x, agents.sgd.y);
+            if (Math.sign(g.dx) !== Math.sign(historySGD.dx)) historySGD.oscCount++;
+            else historySGD.oscCount = Math.max(0, historySGD.oscCount - 1);
+            historySGD.dx = g.dx;
+
+            agents.sgd.x -= lr * g.dx;
+            agents.sgd.y -= lr * g.dy;
+            agents.sgd.pathX.push(agents.sgd.x);
+            agents.sgd.pathY.push(agents.sgd.y);
+            agents.sgd.loss = getLoss(agents.sgd.x, agents.sgd.y);
+
+            // MOMENTUM
+            g = getGradients(agents.mom.x, agents.mom.y);
+            agents.mom.vx = beta * agents.mom.vx - lr * g.dx;
+            agents.mom.vy = beta * agents.mom.vy - lr * g.dy;
+            agents.mom.x += agents.mom.vx;
+            agents.mom.y += agents.mom.vy;
+            agents.mom.pathX.push(agents.mom.x);
+            agents.mom.pathY.push(agents.mom.y);
+            agents.mom.loss = getLoss(agents.mom.x, agents.mom.y);
+
+            // ADAM
+            g = getGradients(agents.adam.x, agents.adam.y);
+            
+            agents.adam.mX = b1 * agents.adam.mX + (1 - b1) * g.dx;
+            agents.adam.mY = b1 * agents.adam.mY + (1 - b1) * g.dy;
+            
+            agents.adam.vX = b2 * agents.adam.vX + (1 - b2) * (g.dx * g.dx);
+            agents.adam.vY = b2 * agents.adam.vY + (1 - b2) * (g.dy * g.dy);
+            
+            let mHatX = agents.adam.mX / (1 - Math.pow(b1, iteration));
+            let mHatY = agents.adam.mY / (1 - Math.pow(b1, iteration));
+            let vHatX = agents.adam.vX / (1 - Math.pow(b2, iteration));
+            let vHatY = agents.adam.vY / (1 - Math.pow(b2, iteration));
+
+            agents.adam.x -= lr * mHatX / (Math.sqrt(vHatX) + CONFIG.epsilon);
+            agents.adam.y -= lr * mHatY / (Math.sqrt(vHatY) + CONFIG.epsilon);
+            
+            agents.adam.pathX.push(agents.adam.x);
+            agents.adam.pathY.push(agents.adam.y);
+            agents.adam.loss = getLoss(agents.adam.x, agents.adam.y);
+        }
+
+        function updateDisplay() {
+            ui.iter.innerText = iteration;
+            ui.lossSGD.innerText = agents.sgd.loss.toFixed(4);
+            ui.lossMom.innerText = agents.mom.loss.toFixed(4);
+            ui.lossAdam.innerText = agents.adam.loss.toFixed(4);
+
+            Plotly.extendTraces('plot', {
+                x: [[agents.sgd.x], [agents.mom.x], [agents.adam.x]],
+                y: [[agents.sgd.y], [agents.mom.y], [agents.adam.y]]
+            }, [1, 2, 3]);
+        }
+
+        function animate() {
+            if (!isRunning) return;
+            for(let i=0; i<CONFIG.stepsPerFrame; i++) {
+                step();
+            }
+            updateDisplay();
+            if (iteration % (CONFIG.stepsPerFrame * 10) === 0) {
+                updateStatusBox();
+            }
+            animationId = requestAnimationFrame(animate);
+        }
+
+        function toggleAnimation() {
+            if (isRunning) {
+                isRunning = false;
+                cancelAnimationFrame(animationId);
+                ui.btn.innerText = "Resume Race";
+                ui.btn.style.backgroundColor = "#f39c12"; 
+            } else {
+                isRunning = true;
+                ui.btn.innerText = "Pause";
+                ui.btn.style.backgroundColor = "#e67e22"; 
+                animate();
+            }
+        }
+
+        function resetSimulation() {
+            isRunning = false;
+            cancelAnimationFrame(animationId);
+            ui.btn.innerText = "Start Race";
+            ui.btn.style.backgroundColor = "#27ae60"; 
+            iteration = 0;
+            historySGD = { dx: 0, dy: 0, oscCount: 0 };
+
+            agents.sgd = { x: CONFIG.startX, y: CONFIG.startY, pathX: [CONFIG.startX], pathY: [CONFIG.startY], loss: getLoss(CONFIG.startX, CONFIG.startY) };
+            agents.mom = { x: CONFIG.startX, y: CONFIG.startY, vx: 0, vy: 0, pathX: [CONFIG.startX], pathY: [CONFIG.startY], loss: getLoss(CONFIG.startX, CONFIG.startY) };
+            agents.adam = { x: CONFIG.startX, y: CONFIG.startY, mX: 0, mY: 0, vX: 0, vY: 0, pathX: [CONFIG.startX], pathY: [CONFIG.startY], loss: getLoss(CONFIG.startX, CONFIG.startY) };
+
+            initPlot();
+            ui.iter.innerText = "0";
+            ui.lossSGD.innerText = "0.00";
+            ui.lossMom.innerText = "0.00";
+            ui.lossAdam.innerText = "0.00";
+            ui.status.innerHTML = "Welcome! This visualization shows why standard SGD struggles on complex surfaces. <br><br>Adjust the <span class='highlight'>Learning Rate</span> above, then click <strong>Start Race</strong> to begin.";
+        }
+
+        // --- 6. PLOT INITIALIZATION ---
+        function generateContourData() {
+            let x = [], y = [], z = [];
+            let n = 100;
+            let xStep = (CONFIG.range.x[1] - CONFIG.range.x[0]) / n;
+            let yStep = (CONFIG.range.y[1] - CONFIG.range.y[0]) / n;
+
+            for (let i = 0; i <= n; i++) x.push(CONFIG.range.x[0] + i * xStep);
+            for (let i = 0; i <= n; i++) y.push(CONFIG.range.y[0] + i * yStep);
+
+            for (let j = 0; j < y.length; j++) {
+                let row = [];
+                for (let i = 0; i < x.length; i++) {
+                    row.push(Math.log(getLoss(x[i], y[j]) + 1));
+                }
+                z.push(row);
+            }
+            return { x, y, z };
+        }
+
+        function initPlot() {
+            const data = generateContourData();
+
+            const contourTrace = {
+                z: data.z, x: data.x, y: data.y,
+                type: 'contour',
+                colorscale: 'Viridis',
+                ncontours: 40,
+                contours: { showlabels: false },
+                hoverinfo: 'none',
+                opacity: 0.6
+            };
+
+            const traceStyle = {
+                mode: 'lines+markers', type: 'scatter',
+                marker: { size: 8 }, line: { width: 3 }
+            };
+
+            const sgdTrace = { ...traceStyle, x: [CONFIG.startX], y: [CONFIG.startY], name: 'SGD', line: { color: 'red' }, marker: { color: 'red' } };
+            const momTrace = { ...traceStyle, x: [CONFIG.startX], y: [CONFIG.startY], name: 'Momentum', line: { color: 'blue' }, marker: { color: 'blue' } };
+            const adamTrace = { ...traceStyle, x: [CONFIG.startX], y: [CONFIG.startY], name: 'Adam', line: { color: 'lime' }, marker: { color: 'lime' } };
+            
+            const targetTrace = {
+                x: [1], y: [1], mode: 'markers', type: 'scatter', name: 'Global Min',
+                marker: { symbol: 'star', color: 'gold', size: 15, line: {color: 'black', width: 1} }
+            };
+
+            const layout = {
+                title: 'Loss Surface (Rosenbrock)',
+                xaxis: { range: CONFIG.range.x, title: 'X' },
+                yaxis: { range: CONFIG.range.y, title: 'Y' },
+                showlegend: true,
+                legend: { x: 0, y: 1, bgcolor: 'rgba(255,255,255,0.7)' },
+                margin: { l: 50, r: 20, t: 40, b: 40 }
+            };
+
+            Plotly.newPlot('plot', [contourTrace, sgdTrace, momTrace, adamTrace, targetTrace], layout, { responsive: true });
+        }
+
+        window.onload = () => {
+            initPlot();
+            resetSimulation();
+        };
+
+    </script>
+</body>
+</html>

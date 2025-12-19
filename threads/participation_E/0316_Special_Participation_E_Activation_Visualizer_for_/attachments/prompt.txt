@@ -1,0 +1,243 @@
+You are an expert full-stack engineer + ML educator. Build a web app called “Backprop Visualizer” that lets users visually explore forward and backward passes for many neural architectures. The app should be educational, mathematically precise, and interactive like a modern diagramming tool.
+
+
+
+Core goal
+
+Given a neural network architecture (either preset or inferred from a user-uploaded diagram), generate an interactive horizontal, tree-like computational graph on an infinite, pannable/zoomable canvas (Lucidchart/Miro style) that shows:
+
+
+
+Forward pass transformations through each layer
+
+Backward pass (backprop) paths, gradients, and expressions
+
+The link between symbolic notation and real numeric examples
+
+Inputs
+
+Support two ways to choose an architecture:
+
+
+
+A) Preset architectures
+
+Provide a library of selectable templates with editable hyperparameters:
+
+
+
+MLP / fully connected nets
+
+CNNs (Conv → BN/LN → ReLU → Pool)
+
+ResNets (skip connections)
+
+Transformers: attention blocks, multi-head attention, MLP/FFN, residuals, layer norm
+
+Simple RNN/GRU/LSTM (optional but nice)
+
+
+
+Each preset should load with a default tiny numerical example (batch size 1–2, small dims) so numeric gradients are computable instantly.
+
+B) User-uploaded architecture image
+
+Let the user upload a diagram/screenshot of a model. Use a vision model to:
+
+
+
+detect + label layers used (Conv, Linear, Attn, Norm, Residual, etc.)
+
+extract rough connectivity order
+
+allow user to confirm/edit inferred architecture before graph generation
+
+
+
+If inference is uncertain, show candidate parses rather than guessing silently.
+
+Backprop engine (symbolic + numeric)
+
+Implement an underlying differentiation engine that supports forward/backward rules for:
+
+
+
+Linear/MLP layers (weights, biases)
+
+Convolution layers (with stride/padding)
+
+Attention (Q,K,V projections; softmax; multi-head combine)
+
+LayerNorm
+
+BatchNorm (train vs eval)
+
+Residual/skip connections
+
+Common activations: ReLU, GELU, sigmoid, tanh, softmax
+
+Losses: MSE, cross entropy, NLL
+
+Engine requirements:
+
+
+
+Use autodiff internally (e.g., PyTorch/JAX/TF) to validate numeric gradients.
+
+Also produce symbolic gradient expressions in LaTeX form.
+
+Provide gradient outputs for each parameter and intermediate node.
+
+Display shapes at every node (e.g., (B, d_model)).
+
+Allow toggling between scalar view (single neuron path) and tensor view (vectorized).
+
+Graph/canvas UI
+
+Main canvas:
+
+
+
+Infinite canvas with smooth pan/zoom, minimap, snap-to-grid.
+
+Graph layout is left-to-right horizontal.
+
+Nodes represent operations/layers; edges represent tensors.
+
+Each node shows:
+
+layer name + type
+
+input/output shapes
+
+forward equation (LaTeX)
+
+optional numeric output
+
+Interactivity:
+
+
+
+Hover over any parameter (W, b, γ, β, QKV, etc.) → highlight:
+
+the full backward path contributing to its gradient
+
+intermediate gradient values/expressions along the path
+
+Clicking a node pins a side panel with:
+
+forward details
+
+backward local derivative
+
+numeric example (with compact “compressed work” steps)
+
+Toggle buttons:
+
+Show/hide forward pass
+
+Show/hide backward pass
+
+Symbolic vs numeric vs both
+
+Simplified vs full expression
+
+Tooltips on edges show tensor name, value summary (mean/std), and gradient summary.
+
+Side/top panels
+
+Have a “Parameters/Variables panel” anchored top or side:
+
+
+
+Lists all params grouped by layer
+
+Each row shows:
+
+parameter symbol
+
+shape
+
+current numeric value (editable)
+
+gradient (symbolic LaTeX + numeric)
+
+Searching/filtering by layer/param name.
+
+Numeric examples
+
+When numeric mode is enabled:
+
+
+
+Use small, deterministic random seeds or user-editable values.
+
+Compute forward values and gradients live.
+
+For each gradient shown, include a collapsible “compressed work” trace:
+
+only key algebra steps, not full expansion
+
+highlight chain rule structure.
+
+Export / sharing
+
+Export canvas as PNG/SVG/PDF.
+
+Export LaTeX derivation for selected subgraph.
+
+Save/share model configs via JSON.
+
+Architecture editor
+
+Provide a simple editor:
+
+
+
+Add/remove/reorder layers
+
+Edit hyperparams (dims, heads, kernel size, norm eps, etc.)
+
+Instant re-layout + recompute.
+
+Tech expectations
+
+Modern frontend with React/TypeScript (or similar) and a canvas graph library (e.g., React Flow, Konva, PixiJS, or custom).
+
+Backend in Python (FastAPI) or Node; whichever is simpler.
+
+Use KaTeX/MathJax for LaTeX rendering.
+
+Keep everything fast; computations should stay under ~100ms for small examples.
+
+UX polish
+
+Clean, minimal UI, dark mode.
+
+Smooth animations for highlighting paths.
+
+Friendly empty states and examples.
+
+Add a short interactive tutorial overlay.
+
+Validation
+
+Compare gradients from your symbolic engine against autodiff numerics for random small models.
+
+Unit test each layer’s backward rule.
+
+Deliverables
+
+Provide:
+
+
+
+Full code (frontend + backend)
+
+Clear file structure and setup instructions
+
+Explanation of design choices
+
+A few demo presets (MLP, small CNN, tiny Transformer block)
+
+If you need to make assumptions, choose reasonable defaults and document them. The final product should feel like an educational and interactive Lucidchart for backpropagation.

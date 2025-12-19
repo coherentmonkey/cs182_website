@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Special Participation E: How to Use Perplexity Learn - CS 182</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #f5f7fa;
+            color: #333;
+            line-height: 1.6;
+        }
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .back-link {
+            display: inline-block;
+            margin-bottom: 20px;
+            color: #4299e1;
+            text-decoration: none;
+        }
+        .back-link:hover { text-decoration: underline; }
+        .thread-header {
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+        }
+        .thread-title {
+            font-size: 1.8rem;
+            color: #2d3748;
+            margin-bottom: 15px;
+        }
+        .thread-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            color: #718096;
+            font-size: 14px;
+        }
+        .model-badge {
+            display: inline-block;
+            padding: 4px 12px;
+            background: #e2e8f0;
+            color: #4a5568;
+            border-radius: 15px;
+            font-size: 13px;
+            font-weight: 500;
+        }
+        .hw-badge {
+            display: inline-block;
+            padding: 4px 12px;
+            background: #fed7e2;
+            color: #97266d;
+            border-radius: 15px;
+            font-size: 13px;
+            font-weight: 500;
+        }
+        .thread-body {
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+        }
+        .thread-body h3 {
+            margin-bottom: 15px;
+            color: #2d3748;
+        }
+        .body-content {
+            white-space: pre-wrap;
+            word-wrap: break-word;
+            line-height: 1.8;
+            font-size: 15px;
+        }
+        .body-content a {
+            color: #4299e1;
+            word-break: break-all;
+        }
+        .attachments {
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
+        .attachments h3 {
+            margin-bottom: 20px;
+            color: #2d3748;
+        }
+        .attachment {
+            margin-bottom: 25px;
+            border: 1px solid #e2e8f0;
+            border-radius: 6px;
+            overflow: hidden;
+        }
+        .attachment-label {
+            background: #f7fafc;
+            padding: 10px 15px;
+            font-weight: 500;
+            font-size: 14px;
+            border-bottom: 1px solid #e2e8f0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .download-link {
+            color: #4299e1;
+            text-decoration: none;
+            font-weight: normal;
+        }
+        .download-link:hover { text-decoration: underline; }
+        .attachment-image img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+        .attachment-pdf iframe {
+            width: 100%;
+            height: 800px;
+            border: none;
+        }
+        .attachment-video video {
+            width: 100%;
+            max-height: 600px;
+        }
+        .attachment-audio audio {
+            width: 100%;
+            padding: 15px;
+        }
+        .attachment-text pre {
+            padding: 15px;
+            background: #f7fafc;
+            overflow-x: auto;
+            max-height: 500px;
+            font-size: 13px;
+            line-height: 1.5;
+        }
+        .attachment-file {
+            padding: 15px;
+        }
+        .file-link {
+            color: #4299e1;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .file-link:hover { text-decoration: underline; }
+        .ed-link {
+            display: inline-block;
+            margin-top: 15px;
+            color: #4299e1;
+            text-decoration: none;
+        }
+        .ed-link:hover { text-decoration: underline; }
+        @media (max-width: 768px) {
+            .thread-title { font-size: 1.4rem; }
+            .attachment-pdf iframe { height: 500px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <a href="../../../index.html" class="back-link">← Back to Directory</a>
+
+        <div class="thread-header">
+            <h1 class="thread-title">Special Participation E: How to Use Perplexity Learn</h1>
+            <div class="thread-meta">
+                <span>By Martin Alvarez-Kuglen</span>
+                <span>2025-12-11</span>
+                
+                <span class="model-badge">Perplexity</span>
+            </div>
+            <a href="https://edstem.org/us/courses/84647/discussion/7448365" target="_blank" class="ed-link">View on Ed Stem →</a>
+        </div>
+
+        <div class="thread-body">
+            <div class="body-content">Using Perplexity Pro &quot;Learn&quot; Mode for Active Deep Learning Study
+
+A Practical Guide for CS/ML Students
+
+Introduction: Why Active AI Learning Beats Passive Reading
+
+Traditional lecture prep looks like this: you read notes, hope you understand, and only discover gaps when you hit the homework. It is well known that paired study is a great way to learn, but sometimes it can be difficult to find a partner. Perplexity Pro&#x27;s &quot;Learn&quot; mode fixes this, it becomes an interactive study partner that adapts to your confusion in real time.
+
+This guide shows you how to use that tool effectively by walking through a real example: working through a lecture on Graph Neural Networks. I&#x27;ll show you the patterns I used, where they worked, where they didn&#x27;t, and how you can adapt them for your own courses.
+
+Core principle: The tool is best when you treat it as a conversation with a study partner, not a textbook. Ask clarifying questions. Restate concepts. Push back on claims. This transforms passive reading into active understanding.
+
+Getting Started: Set Your Learning Goal
+
+Before you open Perplexity, be clear about what you want.
+
+When I started, I said: &quot;I would like to understand this lecture material better for my deep learning class. This lecture is on graph neural networks, can you please review the lecture notes and give me a broad overview of the material covered?&quot;
+
+The AI responded with a structured list of topics and then asked a critical question back: &quot;Before we go deeper into any of these, what are your learning goals with this material (e.g., doing well on exams, implementing a GNN for research, understanding theory connections to Transformers)?&quot;
+
+What I learned: Be specific about your goal. Are you prepping for an exam? Building intuition before homework? Reproducing a paper? This changes the context and therefore how the AI scaffolds explanations. I said I wanted to understand the lecture, and that became my north star—the AI kept explanations grounded in the lecture&#x27;s framing, not abstract textbook definitions.
+
+The Dialogue Loop: How to Ask Questions
+
+Step 1: Ask for a High-Level Explanation
+
+Start broad. Don&#x27;t jump into minutiae.
+
+Example: &quot;How do CNNs relate to GNNs?&quot;
+
+The AI will give you a few paragraphs. At this point, you&#x27;re just absorbing the shape of the idea.
+
+Step 2: Identify Your Confusion
+
+Read the explanation. What feels unclear? Not the whole thing—one specific thing.
+
+Example: I thought &quot;the GNN operates on the entire graph&quot; meant something different than &quot;the CNN kernel slides over patches.&quot; So I asked: &quot;In a CNN, the &#x27;graph&#x27; is the kernel, but this gets ran over an entire image. For a GNN, if the &#x27;graph&#x27; is the kernel, then what is the image?&quot;
+
+This is crucial. Don&#x27;t ask vague questions like &quot;Can you explain this better?&quot; Instead, pin down the exact point of confusion.
+
+Step 3: Have the AI Sharpen the Answer
+
+The AI will either clarify directly or ask you a question back to diagnose the gap.
+
+Example response: The AI said: &quot;The entire graph is the input to the GNN, not just a &#x27;kernel&#x27; like in CNNs... all nodes and edges are processed simultaneously, with each node updating its representation based on information from its neighbors in the graph.&quot;
+
+That direct correction—entire graph as input, not local patches—unlocked further questions.
+
+Step 4: Restate the Concept in Your Own Words
+
+This is non-negotiable. Don&#x27;t skip this.
+
+My restatement: &quot;So each node receives information from its neighbors like in a CNN kernel. So if we have a graph with nodes and edges, does that mean that each node has the same function applied to it?&quot;
+
+The AI will then validate or correct your restatement. This catches misunderstandings before they calcify. If it is wrong, ask it to self-diagnose its mistakes and correct itself.
+
+Step 5: Ask &quot;Why&quot; or &quot;How&quot;—Push Deeper
+
+Once you have the shape of an idea, push for deeper understanding.
+
+Example: After learning that all nodes use the same update rule, I asked: &quot;Why do we want to share the same parameters across all nodes, instead of giving each node its own separate parameters?&quot;
+
+The AI gave me three reasons: (1) efficiency, (2) generalization to variable graph sizes, (3) respecting permutation symmetry. This &quot;why&quot; transformed a technical detail into conceptual understanding.
+
+Pattern Recognition: Asking the Right Follow-Up Questions
+
+As you work through material, use these question types:
+
+Clarification Questions
+
+Form: &quot;When you say X, do you mean Y or Z?&quot;
+
+Example: &quot;When you say the aggregation must be permutation-invariant, do you mean it shouldn&#x27;t depend on the order I list my neighbors?&quot;
+
+Use this to nail down terminology and avoid semantic drift.
+
+Restatement Checks
+
+Form: &quot;So if I understand correctly, the idea is [restate]. Is that right?&quot;
+
+Example: &quot;So weight-sharing means every node applies the same function, but nodes end up different because they have different inputs (features + neighborhoods). Is that right?&quot;
+
+This allows self-verification of the understanding. If you are wrong, the AI will tend to point it out. Remember, you can both be wrong, but overall I have found that AI is better at pointing out your mistakes than it is at being right about things.
+
+Generalization Questions
+
+Form: &quot;Does this principle apply to X as well? What about edge case Y?&quot;
+
+Example: &quot;Does this only apply to undirected graphs? What if I have directed or weighted edges?&quot;
+
+These push you from memorizing one example to understanding the principle.
+
+Comparison Questions
+
+Form: &quot;How is X different from Y?&quot;
+
+Example: &quot;Why does only f have an activation function in this design? Why not g as well?&quot;
+
+When the AI answers, you get both immediate context (the lecture&#x27;s design choice) and broader understanding (modern alternatives like GraphSAGE).
+
+Intuition Questions
+
+Form: &quot;Why would I care about X? Why is it useful?&quot;
+
+Example: &quot;Why is permutation invariance important for graph neural networks?&quot;
+
+My answer: &quot;If we tried to force a specific graph topology into the network, that would make it not very useful... so instead we want to learn a function which works for many graph topologies.&quot;
+
+The AI validated this and sharpened my language. These intuition checks are gold—they separate deep understanding from surface-level facts.
+
+When the AI Struggles: Recognition and Recovery
+
+The AI isn&#x27;t perfect. Here&#x27;s how to recognize and fix common issues:
+
+Issue 1: Circular or Vague Explanations
+
+What happens: The AI re-explains the same concept in different words without addressing your confusion.
+
+Example: Early on, I asked about input scope (entire graph vs. local patches). The AI gave a vague answer about &quot;the GNN operates directly on the full graph structure.&quot; I still didn&#x27;t understand.
+
+How I fixed it: I asked a more specific question: &quot;In a CNN, the kernel slides over the image. For a GNN, if the kernel is the GNN layer, what is the image?&quot;
+
+Lesson: When answers feel circular, ask a more specific question with a concrete analogy.
+
+Issue 2: False Confidence on Details
+
+What happens: The AI confidently states something that might be wrong or oversimplified.
+
+Example: Early on, it tried to map GNNs to CNNs. The AI initially went along with this analogy.
+
+How I fixed it: I challenged its confidence and asked an inquisitive question to help it self-diagnose its mistakes.
+
+Lesson: Verify claims by asking follow-up questions. Cross-check with the lecture afterward.
+
+Key Takeaways
+
+Ask specific questions. &quot;Can you explain this better?&quot; gets nowhere. &quot;When you say X, do you mean Y?&quot; gets everywhere.
+
+Restate concepts in your own words. This is non-negotiable verification. Don&#x27;t skip it.
+
+Push for depth with &quot;why&quot; and &quot;how&quot; questions. Separate surface understanding from real comprehension.
+
+Be willing to push back. If an explanation feels imprecise or wrong, say so. Your intuition matters.
+
+Cross-check with other material. The AI is a study partner, not the source of truth. The lecture notes and textbooks are your ground truth.
+
+Recognize the AI&#x27;s limitations. Great for conceptual understanding. You&#x27;ll need to supplement with implementation, papers, and problem sets.
+
+Use this as pre-homework prep, not a replacement for thinking. Work through the lecture with the AI before you see the problem set. Then do the homework by hand yourself.
+
+See conversation:</div>
+        </div>
+
+        <div class="attachments">
+                <div class="attachment attachment-pdf">
+                    <div class="attachment-label">special_participation_E.pdf <a href="attachments/special_participation_E.pdf" target="_blank" class="download-link">Open in new tab</a></div>
+                    <iframe src="attachments/special_participation_E.pdf" loading="lazy"></iframe>
+                </div></div>
+    </div>
+</body>
+</html>

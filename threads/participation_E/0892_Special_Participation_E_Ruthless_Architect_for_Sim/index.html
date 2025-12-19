@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Special Participation E: Ruthless Architect for Simulating a Design Review - CS 182</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #f5f7fa;
+            color: #333;
+            line-height: 1.6;
+        }
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .back-link {
+            display: inline-block;
+            margin-bottom: 20px;
+            color: #4299e1;
+            text-decoration: none;
+        }
+        .back-link:hover { text-decoration: underline; }
+        .thread-header {
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+        }
+        .thread-title {
+            font-size: 1.8rem;
+            color: #2d3748;
+            margin-bottom: 15px;
+        }
+        .thread-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            color: #718096;
+            font-size: 14px;
+        }
+        .model-badge {
+            display: inline-block;
+            padding: 4px 12px;
+            background: #e2e8f0;
+            color: #4a5568;
+            border-radius: 15px;
+            font-size: 13px;
+            font-weight: 500;
+        }
+        .hw-badge {
+            display: inline-block;
+            padding: 4px 12px;
+            background: #fed7e2;
+            color: #97266d;
+            border-radius: 15px;
+            font-size: 13px;
+            font-weight: 500;
+        }
+        .thread-body {
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+        }
+        .thread-body h3 {
+            margin-bottom: 15px;
+            color: #2d3748;
+        }
+        .body-content {
+            white-space: pre-wrap;
+            word-wrap: break-word;
+            line-height: 1.8;
+            font-size: 15px;
+        }
+        .body-content a {
+            color: #4299e1;
+            word-break: break-all;
+        }
+        .attachments {
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
+        .attachments h3 {
+            margin-bottom: 20px;
+            color: #2d3748;
+        }
+        .attachment {
+            margin-bottom: 25px;
+            border: 1px solid #e2e8f0;
+            border-radius: 6px;
+            overflow: hidden;
+        }
+        .attachment-label {
+            background: #f7fafc;
+            padding: 10px 15px;
+            font-weight: 500;
+            font-size: 14px;
+            border-bottom: 1px solid #e2e8f0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .download-link {
+            color: #4299e1;
+            text-decoration: none;
+            font-weight: normal;
+        }
+        .download-link:hover { text-decoration: underline; }
+        .attachment-image img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+        .attachment-pdf iframe {
+            width: 100%;
+            height: 800px;
+            border: none;
+        }
+        .attachment-video video {
+            width: 100%;
+            max-height: 600px;
+        }
+        .attachment-audio audio {
+            width: 100%;
+            padding: 15px;
+        }
+        .attachment-text pre {
+            padding: 15px;
+            background: #f7fafc;
+            overflow-x: auto;
+            max-height: 500px;
+            font-size: 13px;
+            line-height: 1.5;
+        }
+        .attachment-file {
+            padding: 15px;
+        }
+        .file-link {
+            color: #4299e1;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .file-link:hover { text-decoration: underline; }
+        .ed-link {
+            display: inline-block;
+            margin-top: 15px;
+            color: #4299e1;
+            text-decoration: none;
+        }
+        .ed-link:hover { text-decoration: underline; }
+        @media (max-width: 768px) {
+            .thread-title { font-size: 1.4rem; }
+            .attachment-pdf iframe { height: 500px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <a href="../../../index.html" class="back-link">← Back to Directory</a>
+
+        <div class="thread-header">
+            <h1 class="thread-title">Special Participation E: Ruthless Architect for Simulating a Design Review</h1>
+            <div class="thread-meta">
+                <span>By Subhash Prasad</span>
+                <span>2025-12-11</span>
+                
+                <span class="model-badge">Claude</span>
+            </div>
+            <a href="https://edstem.org/us/courses/84647/discussion/7451982" target="_blank" class="ed-link">View on Ed Stem →</a>
+        </div>
+
+        <div class="thread-body">
+            <div class="body-content">For my Special Participation E submission, I created a &quot;Design Review Simulator&quot; using Claude 4.5 Sonnet. Instead of using an LLM as a passive tutor, I prompted it to act as a &quot;Ruthless Senior Principal Engineer&quot; that evaluates architectural proposals relating to specific lecture notes. My goal was to see whether the model could catch mathematical misconceptions that are subtle, and be strict when necessary. As a learning strategy, I believe that making mistakes and learning why they&#x27;re wrong is better than just reading the right answer over and over, and this tool helps with that.
+
+PROMPT
+&quot;Role: You are a &quot;Ruthless Senior Principal Engineer&quot; at a top AI research lab. Your job is to conduct design reviews for Junior Engineers (students).
+
+Context: I have uploaded lecture notes from my Deep Learning course. You must use the specific constraints, math, and theory provided in these notes to evaluate my proposals.
+
+Task: I will propose a specific architectural choice, hyperparameter setting, or training strategy (e.g., &quot;I want to use a 100-layer network with Sigmoid activations and vanilla SGD&quot;).
+
+Your Response Guidelines:
+
+Identify the Failure Mode: Immediately predict exactly how this will fail (e.g., &quot;Vanishing Gradients,&quot; &quot;Exploding Gradients,&quot; &quot;Saddle Point Stagnation,&quot; &quot;Dead ReLUs&quot;).
+
+The &quot;Why&quot; (Math/Theory): Explain why it fails using the mathematical concepts found in the uploaded notes (e.g., refer to the derivative of the activation function, the eigenvalues of the Hessian, or the variance of the weights).
+
+The Fix: Briefly propose the modern standard solution (e.g., &quot;Switch to ReLU and He Initialization&quot;).
+
+Tone: Be professional but critical. Do not accept &quot;okay&quot; answers. If a choice is theoretically unsound, reject it.&quot;
+
+I then fed the model the notes from Lecture 24 and Lecture 25.
+
+QUESTIONS
+I fed the model three &quot;bad&quot; ideas and one &quot;trick&quot; good idea to test it&#x27;s capabilities.
+
+ANNOTATED CONVERSATION
+<a href="https://drive.google.com/file/d/1ajpHHrPwikii7zW0Z4uWFA64NCQVjbxS/view?usp=sharing" target="_blank" rel="noopener noreferrer">https://drive.google.com/file/d/1ajpHHrPwikii7zW0Z4uWFA64NCQVjbxS/view?usp=sharing</a>
+
+OBSERVATIONS
+The model distinguished between low-temperature sampling and power sampling. It correctly cited the inequality $\sum (p^\alpha) \neq (\sum p)^\alpha$ to explain why the proposed &quot;temperature = $1/\alpha$&quot; shortcut isn&#x27;t mathematically valid. This is subtle, but the lecture context forced the model to be rigorous.
+
+When I proposed QAT using the STE, I expected the model to reject it because step functions are non-differentiable. However, it correctly identified that this is a valid &quot;trick&quot; encouraged by Lecture 24.
+
+The model correctly identified that removing the clipping in ScaleRL/RLVR would lead to infinite variance in the gradient estimator. It linked this to the &quot;Trust Region&quot; concepts in PPO, which is a relatively deep connection I wasn&#x27;t expecting.</div>
+        </div>
+
+        
+    </div>
+</body>
+</html>

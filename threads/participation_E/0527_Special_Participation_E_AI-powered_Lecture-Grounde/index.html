@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Special Participation E: AI-powered Lecture-Grounded Learning Assistant - CS 182</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #f5f7fa;
+            color: #333;
+            line-height: 1.6;
+        }
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .back-link {
+            display: inline-block;
+            margin-bottom: 20px;
+            color: #4299e1;
+            text-decoration: none;
+        }
+        .back-link:hover { text-decoration: underline; }
+        .thread-header {
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+        }
+        .thread-title {
+            font-size: 1.8rem;
+            color: #2d3748;
+            margin-bottom: 15px;
+        }
+        .thread-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            color: #718096;
+            font-size: 14px;
+        }
+        .model-badge {
+            display: inline-block;
+            padding: 4px 12px;
+            background: #e2e8f0;
+            color: #4a5568;
+            border-radius: 15px;
+            font-size: 13px;
+            font-weight: 500;
+        }
+        .hw-badge {
+            display: inline-block;
+            padding: 4px 12px;
+            background: #fed7e2;
+            color: #97266d;
+            border-radius: 15px;
+            font-size: 13px;
+            font-weight: 500;
+        }
+        .thread-body {
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+        }
+        .thread-body h3 {
+            margin-bottom: 15px;
+            color: #2d3748;
+        }
+        .body-content {
+            white-space: pre-wrap;
+            word-wrap: break-word;
+            line-height: 1.8;
+            font-size: 15px;
+        }
+        .body-content a {
+            color: #4299e1;
+            word-break: break-all;
+        }
+        .attachments {
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
+        .attachments h3 {
+            margin-bottom: 20px;
+            color: #2d3748;
+        }
+        .attachment {
+            margin-bottom: 25px;
+            border: 1px solid #e2e8f0;
+            border-radius: 6px;
+            overflow: hidden;
+        }
+        .attachment-label {
+            background: #f7fafc;
+            padding: 10px 15px;
+            font-weight: 500;
+            font-size: 14px;
+            border-bottom: 1px solid #e2e8f0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .download-link {
+            color: #4299e1;
+            text-decoration: none;
+            font-weight: normal;
+        }
+        .download-link:hover { text-decoration: underline; }
+        .attachment-image img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+        .attachment-pdf iframe {
+            width: 100%;
+            height: 800px;
+            border: none;
+        }
+        .attachment-video video {
+            width: 100%;
+            max-height: 600px;
+        }
+        .attachment-audio audio {
+            width: 100%;
+            padding: 15px;
+        }
+        .attachment-text pre {
+            padding: 15px;
+            background: #f7fafc;
+            overflow-x: auto;
+            max-height: 500px;
+            font-size: 13px;
+            line-height: 1.5;
+        }
+        .attachment-file {
+            padding: 15px;
+        }
+        .file-link {
+            color: #4299e1;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .file-link:hover { text-decoration: underline; }
+        .ed-link {
+            display: inline-block;
+            margin-top: 15px;
+            color: #4299e1;
+            text-decoration: none;
+        }
+        .ed-link:hover { text-decoration: underline; }
+        @media (max-width: 768px) {
+            .thread-title { font-size: 1.4rem; }
+            .attachment-pdf iframe { height: 500px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <a href="../../../index.html" class="back-link">← Back to Directory</a>
+
+        <div class="thread-header">
+            <h1 class="thread-title">Special Participation E: AI-powered Lecture-Grounded Learning Assistant</h1>
+            <div class="thread-meta">
+                <span>By Angelina Zhang</span>
+                <span>2025-12-06</span>
+                
+                <span class="model-badge">GPT</span>
+            </div>
+            <a href="https://edstem.org/us/courses/84647/discussion/7418341" target="_blank" class="ed-link">View on Ed Stem →</a>
+        </div>
+
+        <div class="thread-body">
+            <div class="body-content">Motivations
+
+For this participation, I wanted a tool that lets us search lecture content directly, rather than relying on Google or LLM answers that may drift outside the course scope. YouTube transcripts exist, but scrolling through them is slow and the text often contains errors. I wanted something that behaves like a lightweight retrieval engine for the class: whenever I ask a question, it would point me to the exact timestamp where the professor discussed that topic and provide me something that are discussed in class. 
+
+How It Works
+
+The system works by turning timestamped transcripts into searchable embedding chunks. The script build_index.py parses each transcript, recognizes timestamp lines, and converts the text between timestamps into a segment. Each segment is embedded using the OpenAI text-embedding-3-small model, and all segments with lecture ID, timestamp, and embedding, are stored in a JSON index. The second script, search_segments.py, embeds your question the same way and computes cosine similarity against every segment embedding. It then returns the most relevant timestamps, along with short snippets so you can quickly revisit the exact moment in the lecture where the concept appears. All transcripts can be pasted directly from YouTube’s “Show Transcript” feature, although I do not include real transcript data in the repository due to privacy. I also added a chat-generation stage on top of retrieval: once segments are retrieved, the tool feeds them into a structured “Lecture-Grounded Learning Assistant” prompt. The prompt asks the LLM to generate:
+
+a summary of the professor’s explanation based only on retrieved text,
+
+an analogy,
+
+a worked-out example,
+
+a quiz, and
+
+common misconceptions.
+
+Because the retrieved segments are shown alongside the generated answer, students can directly check whether the model’s claims are supported. This design makes hallucination auditable, rather than hidden.
+
+Instructions for Use
+
+To run the system, you place your transcript .txt files in data/transcripts/, run python build_index.py once to generate embeddings, and then run python search_segments.py to start an interactive question prompt. You can ask any conceptual question (“Where did we derive the SGD update rule?”), and the tool returns the closest matches with similarity scores. This essentially converts the entire set of lecture videos into a searchable study resource that you can navigate much more efficiently than by scanning full recordings. You can find these code here: <a href="https://github.com/Angelinaaaaaaaaaaaa/lecture_finder" target="_blank" rel="noopener noreferrer">https://github.com/Angelinaaaaaaaaaaaa/lecture_finder</a>
+
+AI Interaction Trace
+
+During development, I used LLMs as a brainstorming partner for parsing logic and embedding retrieval. Many suggestions were helpful but required verification. For example, the model initially suggested a timestamp regex that incorrectly matched numbers appearing inside sentences, causing segmentation errors; refining this required repeated testing. When I asked about similarity search, it recommended a full vector database, which turned out unnecessary and even slower for my dataset size. I ultimately implemented cosine similarity in pure Python after finding dimension mismatches that the model failed to warn me about. These debugging steps gave me a practical understanding of segmentation design and retrieval pipelines.
+
+After building the system, I used it to generate lecture-grounded answers on top of retrieval and then produced a fully annotated interaction trace examining when the model stayed faithful and when it drifted. That detailed analysis is here:
+<a href="https://docs.google.com/document/d/1E9v3ftDCaUzSqYOheHOa6nt6H15Fh3dkzKJ-28ntDM8/edit?usp=sharing" target="_blank" rel="noopener noreferrer">https://docs.google.com/document/d/1E9v3ftDCaUzSqYOheHOa6nt6H15Fh3dkzKJ-28ntDM8/edit?usp=sharing</a>
+
+To give a concrete example from the trace: when asking “Why do we need Adam instead of SGD with momentum?”, the model retrieved only high-level lecture snippets but then added details (e.g., per-parameter learning rate adaptation) that were true but did not appear in the retrieved parts. This is a typical “gap-filling” behavior: retrieval reduces hallucination, but when evidence is shallow, the model backfills using prior knowledge.
+
+Summary of Findings (LLM Behavior Under Retrieval)
+My central takeaway of this project is:
+
+Retrieval does not eliminate hallucination; it changes the failure mode and makes hallucinations auditable.
+
+Some patterns I observed:
+
+Without retrieval, the model freely produces generic textbook derivations, sometimes attributing them incorrectly to the professor.
+
+With retrieval, the model becomes noticeably more grounded. For example, when I asked about the SGD derivation, it explicitly admitted that the derivation was not present in the retrieved segments. This is a major improvement over the unconstrained setting.
+
+However, when retrieved segments are shallow (e.g., for Adam vs. momentum), the model begins “filling in missing gaps” using prior knowledge. This produces highly plausible but not necessarily lecture-accurate explanations.
+
+Retrieval helps identify where the model is speculating, because you can scroll up and check whether each claim has transcript evidence.
+
+As a result, students can audit the model rather than trusting it blindly; retrieval gives us the ground truth reference.
+
+
+The system already implements the retrieval part of a RAG pipeline, and the structured teaching prompt acts as a lightweight generation stage. Future improvements could include adding lecture-slide images, integrating structured notes from classmates, or building a web UI where students can search visually instead of using the terminal. I’m aware this is only a small prototype, and a full RAG system integrated into a teaching agent like TAI would be much more powerful. But I think this is a useful first step toward that direction. Let me know if you want to extend it!</div>
+        </div>
+
+        
+    </div>
+</body>
+</html>

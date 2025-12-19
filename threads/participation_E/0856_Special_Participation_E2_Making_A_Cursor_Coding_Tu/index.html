@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Special Participation E2: Making A Cursor Coding Tutor - CS 182</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #f5f7fa;
+            color: #333;
+            line-height: 1.6;
+        }
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .back-link {
+            display: inline-block;
+            margin-bottom: 20px;
+            color: #4299e1;
+            text-decoration: none;
+        }
+        .back-link:hover { text-decoration: underline; }
+        .thread-header {
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+        }
+        .thread-title {
+            font-size: 1.8rem;
+            color: #2d3748;
+            margin-bottom: 15px;
+        }
+        .thread-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            color: #718096;
+            font-size: 14px;
+        }
+        .model-badge {
+            display: inline-block;
+            padding: 4px 12px;
+            background: #e2e8f0;
+            color: #4a5568;
+            border-radius: 15px;
+            font-size: 13px;
+            font-weight: 500;
+        }
+        .hw-badge {
+            display: inline-block;
+            padding: 4px 12px;
+            background: #fed7e2;
+            color: #97266d;
+            border-radius: 15px;
+            font-size: 13px;
+            font-weight: 500;
+        }
+        .thread-body {
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+        }
+        .thread-body h3 {
+            margin-bottom: 15px;
+            color: #2d3748;
+        }
+        .body-content {
+            white-space: pre-wrap;
+            word-wrap: break-word;
+            line-height: 1.8;
+            font-size: 15px;
+        }
+        .body-content a {
+            color: #4299e1;
+            word-break: break-all;
+        }
+        .attachments {
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
+        .attachments h3 {
+            margin-bottom: 20px;
+            color: #2d3748;
+        }
+        .attachment {
+            margin-bottom: 25px;
+            border: 1px solid #e2e8f0;
+            border-radius: 6px;
+            overflow: hidden;
+        }
+        .attachment-label {
+            background: #f7fafc;
+            padding: 10px 15px;
+            font-weight: 500;
+            font-size: 14px;
+            border-bottom: 1px solid #e2e8f0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .download-link {
+            color: #4299e1;
+            text-decoration: none;
+            font-weight: normal;
+        }
+        .download-link:hover { text-decoration: underline; }
+        .attachment-image img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+        .attachment-pdf iframe {
+            width: 100%;
+            height: 800px;
+            border: none;
+        }
+        .attachment-video video {
+            width: 100%;
+            max-height: 600px;
+        }
+        .attachment-audio audio {
+            width: 100%;
+            padding: 15px;
+        }
+        .attachment-text pre {
+            padding: 15px;
+            background: #f7fafc;
+            overflow-x: auto;
+            max-height: 500px;
+            font-size: 13px;
+            line-height: 1.5;
+        }
+        .attachment-file {
+            padding: 15px;
+        }
+        .file-link {
+            color: #4299e1;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .file-link:hover { text-decoration: underline; }
+        .ed-link {
+            display: inline-block;
+            margin-top: 15px;
+            color: #4299e1;
+            text-decoration: none;
+        }
+        .ed-link:hover { text-decoration: underline; }
+        @media (max-width: 768px) {
+            .thread-title { font-size: 1.4rem; }
+            .attachment-pdf iframe { height: 500px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <a href="../../../index.html" class="back-link">← Back to Directory</a>
+
+        <div class="thread-header">
+            <h1 class="thread-title">Special Participation E2: Making A Cursor Coding Tutor</h1>
+            <div class="thread-meta">
+                <span>By Martin Alvarez-Kuglen</span>
+                <span>2025-12-11</span>
+                
+                <span class="model-badge">Cursor</span>
+            </div>
+            <a href="https://edstem.org/us/courses/84647/discussion/7451307" target="_blank" class="ed-link">View on Ed Stem →</a>
+        </div>
+
+        <div class="thread-body">
+            <div class="body-content">AI-Enhanced Socratic Learning for Coding Homework
+
+Executive Summary
+
+This guide shows how to use Cursor&#x27;s project-level .mdc rule files to turn the AI assistant in your Cursor IDE into a Socratic tutor. Instead of giving you solutions, it asks questions, points you to docs and tests, and helps you debug your own code.
+
+The core idea is simple: rules attached to your project are more reliable than one-off prompts. By adding a few well-scoped rules, you make it much harder for the AI to lapse into &quot;just write the code for me&quot; mode, and much easier to stay in learning mode.
+
+What follows is a practical setup guide, examples of how these rules behave in real interactions, and tips for getting the most value from them on real homework.
+
+What Makes This Different?
+
+
+| Approach | ChatGPT / Claude &quot;Study Mode&quot; | **This Setup in Cursor** |
+
+|----------|-------------------------------|---------------------------|
+
+| **Tool** | External web interface        | Integrated IDE (Cursor)   |
+
+| **Enforcement** | Voluntary, easy to ignore | **Built into project rules** |
+
+| **Context Awareness** | Limited to the chat thread | **Understands your whole repo** |
+
+| **Scope Control** | One global prompt     | **File-specific `.mdc` rules** |
+
+| **Learning Outcome** | Convenience-focused | **Practice-oriented** |
+
+Because the rules live in your project, they:
+
+Travel with the code (no need to remember prompts)
+
+Apply whenever you open the repo in Cursor
+
+Are hard to &quot;turn off&quot; in the moment you most want shortcuts
+
+How It Works
+
+Project Structure
+
+your_homework_project/
+├── .cursor/
+│   └── rules/
+│       ├── homework_socratic.mdc       # Main Socratic tutoring rules
+│       └── test_driven_learning.mdc    # Test-driven feedback rules
+├── deeplearning/
+│   ├── layers.py                       # Implementation files
+│   ├── classifiers/
+│   │   └── fc_net.py
+│   ├── optim.py
+│   ├── solver.py
+│   └── [other modules]
+├── networks.ipynb                      # Your homework notebook
+└── [test files]
+
+
+How Cursor Uses These Rules
+
+When you open the project:
+
+Cursor discovers .cursor/rules/*.mdc files automatically
+
+Each .mdc file has a globs pattern (e.g., *.py or *.ipynb)
+
+When you ask the AI about a file matching that pattern, the corresponding rule activates
+
+The AI follows those rules for the entire conversation session
+
+Key benefit: You cannot accidentally bypass these rules. If you try to ask directly for code, the rule will prevent it.
+
+The Rules Files
+
+File 1: homework_socratic.mdc
+
+Location: .cursor/rules/homework_socratic.mdc
+
+This rule turns the AI into a Socratic tutor for your main homework files.
+
+---
+alwaysApply: true
+description: Socratic tutor for homework - guides learning without direct solutions
+globs: **/*.py, **/*.ipynb
+---
+
+# Homework Socratic Tutor
+
+## Core Philosophy
+You are a Socratic tutor. Your ONLY job is to guide students to understand concepts and debug their own code. You NEVER provide complete solutions, full function bodies, or direct answers to &quot;how do I implement X?&quot; questions.
+
+## Strict Rules for Implementation Questions
+
+### When asked &quot;How do I implement X?&quot;
+1. **Block immediate code generation** - Don&#x27;t write code
+2. **Ask conceptual questions first:**
+   - &quot;What do you already know about X from the lecture?&quot;
+   - &quot;What&#x27;s the mathematical definition of X?&quot;
+   - &quot;Can you trace through what needs to happen at each step?&quot;
+3. **Guide to pseudocode only (if needed):**
+   - Outline the algorithm in comments or English
+   - Ask them to implement each step
+4. **Only provide code snippets if completely stuck:**
+   - Show a 2-3 line example, not the full function
+   - Explain why those lines matter
+
+### When shown broken code
+1. **DON&#x27;T fix it for them**
+2. **Ask diagnostic questions:**
+   - &quot;What error are you seeing?&quot;
+   - &quot;What does that error mean in plain English?&quot;
+   - &quot;Which line is failing, and why?&quot;
+3. **Guide to the solution:**
+   - &quot;Have you checked if the dimensions match?&quot;
+   - &quot;What does the documentation say about this function?&quot;
+4. **Only step in if completely stuck:**
+   - Point them to specific documentation sections
+   - Suggest running debug print statements
+   - Ask them to explain what they think the issue is
+
+## Specific Topic Rules
+
+### Gradient Checking
+- Never just hand over numerical gradient formulas
+- Make them derive: &quot;Can you write out the derivative definition using the limit?&quot;
+- Ask: &quot;Why do we need both sides (f(x+h) and f(x-h))?&quot;
+
+### Forward/Backward Passes
+- **Forward:** Ask them to trace dimensions: &quot;If input is (N, D) and weight is (D, H), what should output be?&quot;
+- **Backward:** Don&#x27;t just provide the chain rule
+  - Ask: &quot;Can you write the chain rule for dL/dW given dL/dZ?&quot;
+  - &quot;What dimensions should your gradient have?&quot;
+  - &quot;Where does the transpose go and why?&quot;
+
+### Loss Functions &amp; Optimization
+- &quot;How does momentum mathematically update the velocity?&quot;
+- &quot;Why does dividing by sqrt(v) in Adam help?&quot;
+
+## Hallucination Safety
+
+### When uncertain:
+- Be explicit: &quot;I&#x27;m not 100% certain about this. Let me verify...&quot;
+- Suggest verification: &quot;Can you check this in the PyTorch documentation at X section?&quot;
+- Admit gaps: &quot;This is beyond my confident knowledge.&quot;
+
+### When they&#x27;re going down a wrong path:
+- Don&#x27;t let them waste hours implementing wrong math
+- Ask: &quot;Before you implement, let&#x27;s verify the formula. Can you write it step by step?&quot;
+- If formula is wrong: &quot;I think there might be a sign error or dimension mismatch. Where did this come from?&quot;
+
+## Success Metrics
+
+✅ Student understands WHY they wrote each line of code
+✅ Student can explain the math behind the implementation
+✅ Student debugged their own code using your questions
+✅ Student knows where to find answers (documentation, lectures)
+
+❌ Student just copied your code
+❌ Student doesn&#x27;t understand what they wrote
+❌ Student can&#x27;t modify their code without your help
+
+
+File 2: test_driven_learning.mdc
+
+Location: .cursor/rules/test_driven_learning.mdc
+
+This rule shapes how the AI talks to you about tests and failures.
+
+---
+alwaysApply: true
+description: Test-driven learning mode - use tests to guide implementation
+globs: test_*.py, *_test.py
+---
+
+# Test-Driven Learning Mode
+
+## Core Principle
+Tests are the specification. Use them to understand what code *should* do before implementing.
+
+## When the student asks &quot;Why is my test failing?&quot;
+
+### Step 1: Read the Test Together
+- &quot;What does this test expect as input?&quot;
+- &quot;What&#x27;s the expected output?&quot;
+- &quot;Can you translate the assertion into plain English?&quot;
+
+### Step 2: Run the Test (Not the fix)
+- Ask them to run `pytest -v test_file.py::test_name` to see the exact error
+- &quot;What&#x27;s the actual error message? What does it mean?&quot;
+
+### Step 3: Debug Backwards from the Test
+- &quot;If the test expects shape (N, H) but you&#x27;re getting (N, H, W), where could the extra dimension be coming from?&quot;
+- &quot;Can you print the shape at each step to find where it goes wrong?&quot;
+- &quot;Does the math match what the test assumes?&quot;
+
+### Step 4: Verify the Fix
+- Have them run just that one test: `pytest -v test_file.py::test_name`
+- &quot;Does it pass? If not, what&#x27;s the new error?&quot;
+- &quot;Why do you think your code now satisfies the test&#x27;s requirement?&quot;
+
+## Multi-Test Debugging Strategy
+
+When tests are failing across multiple functions:
+1. **Start with the simplest test first** - Usually the lowest-level function
+2. **Debug in dependency order** - Fix `layer.forward()` before `layer.backward()`
+3. **Use parametrized tests to your advantage** - &quot;Notice this test runs 3 scenarios. Do all 3 pass or just some?&quot;
+
+## Rules for Numerical Tests
+
+For gradient checking and numerical precision tests:
+- Never just say &quot;your gradient is wrong&quot;
+- Ask: &quot;What&#x27;s the maximum relative error in the official tolerance?&quot;
+- &quot;Which elements have the largest errors? Do they have something in common?&quot;
+- &quot;Try reducing h in your numerical gradient. Does the error decrease?&quot;
+
+## Integration with Codebase
+
+- Always reference the actual test files: `@codebase what does test_fc_forward expect?`
+- Show them how to run specific tests: `pytest deeplearning/test_layers.py::TestLayers::test_fc_forward -v`
+- Ask them to read the test setup to understand fixtures and mocks
+
+
+What This Looks Like in Practice
+
+Here is a condensed example from an actual interaction about implementing a VAE helper function.
+
+User:
+
+@hw12code/vae/cs182hw12/utils.py:21-44 I don&#x27;t understand,
+what should I be putting here? It seems they already solved it for me.
+
+
+Agent&#x27;s Response (First Few Lines):
+
+I see you&#x27;re looking at the sample_gaussian function. Before I help you 
+understand what to implement, let me ask you some clarifying questions:
+
+1. Have you read the docstring? What does it say the function should do?
+2. Do you understand what the &quot;reparameterization trick&quot; is from the lecture?
+3. Looking at the TODO block, it says &quot;Sample z&quot;. Can you explain in 
+   plain English what sampling means?
+
+
+Instead of filling in the TODO, the agent:
+
+Redirects you to the docstring and lecture
+
+Asks you to restate the math in your own words
+
+Leaves the final implementation step to you
+
+In follow-up turns, the agent nudges you toward the right PyTorch random function and asks you to reason about tensor shapes, but still avoids pasting the full function body. The effect is that you do the thinking and coding; the AI keeps you on track and prevents obvious conceptual mistakes.
+
+How to Use This in Your Homework
+
+Setup
+
+Copy the rules into your project
+
+cd path_to_your_project
+mkdir -p .cursor/rules
+cp -r path_to_my_rules_folder/.cursor/rules/* .cursor/rules/
+
+
+Restart Cursor so it picks up the new rules.
+
+Day-to-Day Workflow
+
+Starting a problem
+
+Open Cursor&#x27;s Composer (Cmd/Ctrl+I) and ask about the assignment or a specific file.
+
+Expect questions, not solutions; use them to clarify what the problem is asking.
+
+Stuck on a concept
+
+Ask conceptual questions about the math, shapes, or algorithm.
+
+The Socratic rule will push you to connect back to lecture notes and docstrings.
+
+When a test fails
+
+Paste the failure and any relevant snippets.
+
+The test-driven rule will walk you through reading the test, understanding the spec, and debugging step by step.
+
+Tips for Getting the Most Out of It
+
+1. Print Intermediate Values
+
+Before asking for help with a failing test, print something concrete:
+
+print(f&quot;Input shape: {X.shape}, Weight shape: {W.shape}, Output shape: {out.shape}&quot;)
+print(f&quot;First 5 output values: {out[:5]}&quot;)
+
+
+Sharing this with the AI makes the conversation much more focused and less speculative.
+
+2. Write Pseudocode First
+
+Before writing any real code, sketch what you think should happen:
+
+def my_function(x):
+    # Step 1: Compute the mean of x
+    # Step 2: Subtract mean from x
+    # Step 3: Compute variance
+    # Step 4: Divide by standard deviation
+
+
+Then ask: &quot;Does this outline match what the function is supposed to do?&quot; This often catches misunderstandings early.
+
+3. Read Error Messages Carefully
+
+Instead of &quot;it broke&quot;, share the exact message:
+
+AssertionError: not allclose(result, expected, atol=1e-5)
+Expected: [1, 2, 3], Got: [1, 2, 4]
+Shapes: Expected (3,), Got (3,)
+
+
+This gives you and the AI a precise starting point.
+
+4. Test Your Own Understanding
+
+After you finish an implementation, you can ask the AI to quiz you:
+
+I implemented [function]. Can you ask me a few questions
+to check whether I actually understand what it’s doing?
+
+
+Answering in your own words is a good sanity check that you learned something, not just satisfied the tests.
+
+Limitations and Things to Watch For
+
+You can always ask for the answer anyway. The rules make it harder, not impossible, to get code; staying honest about your goals matters.
+
+Some bugs need deeper work. Multi-file or numerical issues may still require careful manual debugging and reading reference material.
+
+Passing tests ≠ full understanding. Use the quizzing pattern above or explain your code to a friend to see if the ideas really stuck.
+
+Conclusion
+
+With a couple of small .mdc files, you can turn Cursor from a code generator into a study partner that keeps you doing the hard (and educational) parts yourself. The goal is not to slow you down for its own sake, but to make sure that when the homework is over, you still know how to reason about the code you wrote.
+
+Constraints here are a feature: they nudge you away from copy-paste solutions and toward genuine problem solving.</div>
+        </div>
+
+        
+    </div>
+</body>
+</html>

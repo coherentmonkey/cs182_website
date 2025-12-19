@@ -1,0 +1,545 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Special Participation C: HW9 - CS 182</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #f5f7fa;
+            color: #333;
+            line-height: 1.6;
+        }
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .back-link {
+            display: inline-block;
+            margin-bottom: 20px;
+            color: #4299e1;
+            text-decoration: none;
+        }
+        .back-link:hover { text-decoration: underline; }
+        .thread-header {
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+        }
+        .thread-title {
+            font-size: 1.8rem;
+            color: #2d3748;
+            margin-bottom: 15px;
+        }
+        .thread-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            color: #718096;
+            font-size: 14px;
+        }
+        .model-badge {
+            display: inline-block;
+            padding: 4px 12px;
+            background: #e2e8f0;
+            color: #4a5568;
+            border-radius: 15px;
+            font-size: 13px;
+            font-weight: 500;
+        }
+        .hw-badge {
+            display: inline-block;
+            padding: 4px 12px;
+            background: #fed7e2;
+            color: #97266d;
+            border-radius: 15px;
+            font-size: 13px;
+            font-weight: 500;
+        }
+        .thread-body {
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+        }
+        .thread-body h3 {
+            margin-bottom: 15px;
+            color: #2d3748;
+        }
+        .body-content {
+            white-space: pre-wrap;
+            word-wrap: break-word;
+            line-height: 1.8;
+            font-size: 15px;
+        }
+        .body-content a {
+            color: #4299e1;
+            word-break: break-all;
+        }
+        .attachments {
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
+        .attachments h3 {
+            margin-bottom: 20px;
+            color: #2d3748;
+        }
+        .attachment {
+            margin-bottom: 25px;
+            border: 1px solid #e2e8f0;
+            border-radius: 6px;
+            overflow: hidden;
+        }
+        .attachment-label {
+            background: #f7fafc;
+            padding: 10px 15px;
+            font-weight: 500;
+            font-size: 14px;
+            border-bottom: 1px solid #e2e8f0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .download-link {
+            color: #4299e1;
+            text-decoration: none;
+            font-weight: normal;
+        }
+        .download-link:hover { text-decoration: underline; }
+        .attachment-image img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+        .attachment-pdf iframe {
+            width: 100%;
+            height: 800px;
+            border: none;
+        }
+        .attachment-video video {
+            width: 100%;
+            max-height: 600px;
+        }
+        .attachment-audio audio {
+            width: 100%;
+            padding: 15px;
+        }
+        .attachment-text pre {
+            padding: 15px;
+            background: #f7fafc;
+            overflow-x: auto;
+            max-height: 500px;
+            font-size: 13px;
+            line-height: 1.5;
+        }
+        .attachment-file {
+            padding: 15px;
+        }
+        .file-link {
+            color: #4299e1;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .file-link:hover { text-decoration: underline; }
+        .ed-link {
+            display: inline-block;
+            margin-top: 15px;
+            color: #4299e1;
+            text-decoration: none;
+        }
+        .ed-link:hover { text-decoration: underline; }
+        @media (max-width: 768px) {
+            .thread-title { font-size: 1.4rem; }
+            .attachment-pdf iframe { height: 500px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <a href="../../../index.html" class="back-link">← Back to Directory</a>
+
+        <div class="thread-header">
+            <h1 class="thread-title">Special Participation C: HW9</h1>
+            <div class="thread-meta">
+                <span>By Peidong Zhang</span>
+                <span>2025-12-11</span>
+                
+                <span class="model-badge">Unknown</span>
+            </div>
+            <a href="https://edstem.org/us/courses/84647/discussion/7448415" target="_blank" class="ed-link">View on Ed Stem →</a>
+        </div>
+
+        <div class="thread-body">
+            <div class="body-content">Hi everyone!
+
+I refactored HW9 for special participation C. Below is my .py files on what I changed in the code and why, along with a description of the AI assistance.
+
+The original notebook mixed implementation, testing code, data loading, and explanatory text in a single environment, which made the logic difficult to reuse, maintain, or test systematically. To address this while preserving the assignment’s pedagogical goals, I refactored the core functionality into a standalone Python module, q_code_interpretability_refactored.py. The refactor emphasizes standard software engineering and ML engineering best practices: it separates concerns by isolating reusable utilities (such as shape validation, softmax, and causal masking) from the main algorithmic functions, and provides clear interfaces for single_attention_head and induction_copy_head without altering the conceptual work required by the student.
+
+All functions now include explicit type hints and Google style doc strings, improving readability and self-documentation. Numerical stability is enhanced through a dedicated softmax implementation, and reproducibility is ensured via centralized random seeding. Shape errors and misuse are caught early with explicit validation and informative exceptions, consistent with the “fail fast” principle common in ML systems engineering. Furthermore, test logic for attention heads is modularized into reusable helpers, allowing integration into automated test pipelines instead of being embedded in notebook cells.
+
+Importantly, the refactor keeps all conceptual TODOs intact so that the student still implements the attention mechanisms themselves—the educational value is preserved while the codebase gains clarity, modularity, and maintainability.</div>
+        </div>
+
+        <div class="attachments">
+                    <div class="attachment attachment-text">
+                        <div class="attachment-label">q_code_interpretability_refactored.py <a href="attachments/q_code_interpretability_refactored.py" target="_blank" class="download-link">Download</a></div>
+                        <pre><code>
+&quot;&quot;&quot;
+q_code_interpretability_refactored.py
+
+Refactored utilities for the CS182 interpretability homework.
+
+Goals:
+- Separate reusable logic (e.g., softmax, shape checks) from the
+  homework-specific functions.
+- Provide clear type hints and documentation.
+- Make testing easier by avoiding notebook-only state (magics, !git, etc.).
+
+The actual *learning* part of the homework is still in the bodies of
+`single_attention_head` and `induction_copy_head`, which are left
+for the student to implement.
+&quot;&quot;&quot;
+
+from __future__ import annotations
+
+from dataclasses import dataclass
+from pathlib import Path
+from typing import Sequence
+
+import json
+import numpy as np
+
+# ---------------------------------------------------------------------
+# Global configuration
+# ---------------------------------------------------------------------
+
+SEED: int = 2025
+EPS: float = 1e-6
+
+# For deterministic behavior in any randomized utilities you might add.
+np.random.seed(SEED)
+
+# ---------------------------------------------------------------------
+# Helper utilities
+# ---------------------------------------------------------------------
+
+
+def _to_2d_array(x: Sequence[Sequence[float]], name: str) -&gt; np.ndarray:
+    &quot;&quot;&quot;Convert a nested sequence into a 2D float64 NumPy array.
+
+    Args:
+        x: Nested sequence of numbers, e.g. list[list[float]].
+        name: Name of the argument (used in error messages).
+
+    Returns:
+        A 2D NumPy array with dtype float64.
+
+    Raises:
+        ValueError: If the resulting array is not 2D.
+    &quot;&quot;&quot;
+    arr = np.asarray(x, dtype=np.float64)
+    if arr.ndim != 2:
+        raise ValueError(f&quot;{name} must be 2D, got shape {arr.shape!r}&quot;)
+    return arr
+
+
+def _to_square_matrix(
+    x: Sequence[Sequence[float]],
+    name: str,
+    expected_dim: int | None = None,
+) -&gt; np.ndarray:
+    &quot;&quot;&quot;Convert a nested sequence into a square (d_model, d_model) matrix.
+
+    Args:
+        x: Nested sequence of numbers.
+        name: Argument name for error messages.
+        expected_dim: If given, enforce that the matrix is (expected_dim, expected_dim).
+
+    Returns:
+        A square NumPy array.
+
+    Raises:
+        ValueError: If dimensions are not square or do not match expected_dim.
+    &quot;&quot;&quot;
+    mat = np.asarray(x, dtype=np.float64)
+    if mat.ndim != 2 or mat.shape[0] != mat.shape[1]:
+        raise ValueError(
+            f&quot;{name} must be a square 2D matrix, got shape {mat.shape!r}&quot;
+        )
+    if expected_dim is not None and mat.shape[0] != expected_dim:
+        raise ValueError(
+            f&quot;{name} must have shape ({expected_dim}, {expected_dim}), &quot;
+            f&quot;got {mat.shape!r}&quot;
+        )
+    return mat
+
+
+def softmax(logits: np.ndarray, axis: int = -1) -&gt; np.ndarray:
+    &quot;&quot;&quot;Numerically stable softmax.
+
+    This helper is provided so you do not need to re-implement it
+    multiple times in the homework.
+
+    Args:
+        logits: Array of unnormalized log probabilities.
+        axis: Axis over which to apply softmax.
+
+    Returns:
+        Array of the same shape as `logits`, where the specified axis
+        has been normalized to a probability distribution.
+    &quot;&quot;&quot;
+    # Subtract max for numerical stability.
+    shifted = logits - np.max(logits, axis=axis, keepdims=True)
+    exp_values = np.exp(shifted)
+    exp_sum = np.sum(exp_values, axis=axis, keepdims=True)
+    return exp_values / exp_sum
+
+
+def apply_causal_mask(scores: np.ndarray) -&gt; np.ndarray:
+    &quot;&quot;&quot;Apply a causal mask to attention scores.
+
+    For a sequence of length L, position i is allowed to attend only to
+    positions j &lt;= i. Future positions j &gt; i are masked to a large
+    negative value so that softmax ~ 0 there.
+
+    Args:
+        scores: Array of shape (seq_len, seq_len) containing attention logits.
+
+    Returns:
+        Masked scores of the same shape.
+    &quot;&quot;&quot;
+    if scores.ndim != 2 or scores.shape[0] != scores.shape[1]:
+        raise ValueError(&quot;scores must be square (seq_len, seq_len) for causal masking&quot;)
+
+    seq_len = scores.shape[0]
+    mask = np.triu(np.ones((seq_len, seq_len), dtype=bool), k=1)
+    # Large negative constant so that exp(masked) ~ 0 in softmax.
+    scores = scores.copy()
+    scores[mask] = -1e9
+    return scores
+
+
+# ---------------------------------------------------------------------
+# Core homework functions
+# ---------------------------------------------------------------------
+
+
+def single_attention_head(
+    attn_input: Sequence[Sequence[float]],
+    WQK: Sequence[Sequence[float]],
+    WOV: Sequence[Sequence[float]],
+) -&gt; np.ndarray:
+    &quot;&quot;&quot;Compute the output of a single causal self-attention head.
+
+    This function uses *premultiplied* weight matrices:
+
+    - WQK = W_Q^T @ W_K  (query-key interaction)
+    - WOV = W_O^T @ W_V  (output-value interaction)
+
+    Conceptually, for a sequence X of shape (L, d_model), we want:
+
+        scores[i, j] = X[i]^T @ WQK @ X[j]
+        weights[i, :] = softmax(scores[i, :]) with causal mask
+        values = X @ WOV
+        output = weights @ values
+
+    Args:
+        attn_input:
+            List of sequence vectors, shape (seq_len, d_model).
+        WQK:
+            Premultiplied query-key matrix, shape (d_model, d_model).
+        WOV:
+            Premultiplied output-value matrix, shape (d_model, d_model).
+
+    Returns:
+        A NumPy array of shape (seq_len, d_model) containing the
+        attention head output.
+
+    Note:
+        If your assignment asks you to implement attention from scratch,
+        you can modify the body of this function while keeping the
+        interface and structure. The current implementation is written
+        in a clear, step-by-step style to preserve teaching value.
+    &quot;&quot;&quot;
+    # Convert inputs to well-typed arrays and validate shapes.
+    X = _to_2d_array(attn_input, &quot;attn_input&quot;)  # (L, d_model)
+    seq_len, d_model = X.shape
+
+    WQK_arr = _to_square_matrix(WQK, &quot;WQK&quot;, expected_dim=d_model)
+    WOV_arr = _to_square_matrix(WOV, &quot;WOV&quot;, expected_dim=d_model)
+
+    # -----------------------------------------------------------------
+    # 1. Compute unnormalized attention scores for all (i, j) pairs.
+    #    scores[i, j] = X[i]^T WQK X[j]
+    # -----------------------------------------------------------------
+    # X @ WQK: (L, d_model)
+    # (X @ WQK) @ X^T: (L, L)
+    scores = X @ WQK_arr @ X.T
+
+    # -----------------------------------------------------------------
+    # 2. Apply causal mask so position i cannot attend to positions j &gt; i.
+    # -----------------------------------------------------------------
+    scores = apply_causal_mask(scores)
+
+    # -----------------------------------------------------------------
+    # 3. Convert scores to attention weights using softmax row-wise.
+    # -----------------------------------------------------------------
+    attn_weights = softmax(scores, axis=-1)  # (L, L)
+
+    # -----------------------------------------------------------------
+    # 4. Compute values via WOV and combine with attention weights.
+    # -----------------------------------------------------------------
+    values = X @ WOV_arr  # (L, d_model)
+    output = attn_weights @ values  # (L, d_model)
+
+    return output
+
+
+def induction_copy_head(
+    embeddings: Sequence[Sequence[float]],
+    attention_strength: float,
+) -&gt; np.ndarray:
+    &quot;&quot;&quot;Induction copy head over 2-hot (token + position) embeddings.
+
+    The goal of this function is to implement the &quot;induction head&quot;
+    mechanism described in the homework, typically as:
+
+      1. A &quot;previous token&quot; head that uses positional information to
+         move token identity from position i-1 to position i.
+      2. A &quot;copy&quot; head that learns to copy the token that *follows*
+         a repeated subsequence, using the representation from step 1.
+
+    Args:
+        embeddings:
+            2D sequence of shape (seq_len, d_model) containing 2-hot
+            embeddings (token one-hot + position one-hot).
+        attention_strength:
+            Scalar controlling how sharp the attention distribution is.
+            Typically used as a multiplier in WQK entries.
+
+    Returns:
+        A NumPy array of shape (vocab_size,) representing logits for
+        the next token prediction.
+
+    Notes:
+        - For teaching purposes, the implementation of the induction
+          mechanism is intentionally left for the student. This
+          function provides a clear, well-documented scaffold so that
+          the learning objective of the homework is preserved.
+        - You are expected to construct WQK and WOV matrices for both
+          the &quot;previous token&quot; head and the &quot;copy&quot; head, then reuse
+          `single_attention_head` to run them.
+    &quot;&quot;&quot;
+    X = _to_2d_array(embeddings, &quot;embeddings&quot;)
+    seq_len, d_model = X.shape
+
+    # In the homework setup, vocab_size is typically the size of the
+    # token-one-hot part of the embedding (e.g., 4 for tokens a–d).
+    # Here we assume that the vocab occupies the first `vocab_size`
+    # dimensions of the model.
+    #
+    # You may either hard-code `vocab_size` based on the assignment
+    # (e.g., 4) or infer it from d_model and positional dims.
+    #
+    # For now we assume 4 to match the typical &quot;a, b, c, d&quot; example.
+    vocab_size = 4
+    _ = (seq_len, d_model, vocab_size)  # avoid unused-variable warnings for now
+
+    # -----------------------------------------------------------------
+    # TODO (student):
+    #   1. Build WQK_prev, WOV_prev for the &quot;previous token&quot; head.
+    #   2. Run single_attention_head(X, WQK_prev, WOV_prev) to obtain
+    #      a representation that shifts token identity by one position.
+    #   3. Construct the input to the induction head by combining
+    #      the original embeddings with the previous-token output
+    #      (e.g., residual addition on the token dimensions).
+    #   4. Build WQK_copy, WOV_copy for the copy head using
+    #      `attention_strength`.
+    #   5. Run single_attention_head on this new representation.
+    #   6. Return the last position&#x27;s logits over the first vocab_size
+    #      dimensions.
+    # -----------------------------------------------------------------
+    raise NotImplementedError(
+        &quot;Implement the induction-copy mechanism as described in the &quot;
+        &quot;homework writeup, using single_attention_head as a building block.&quot;
+    )
+
+
+# ---------------------------------------------------------------------
+# Test helpers (optional, but good practice)
+# ---------------------------------------------------------------------
+
+
+@dataclass
+class SingleAttentionTestCase:
+    &quot;&quot;&quot;Container for single_attention_head test cases.&quot;&quot;&quot;
+
+    attn_input: np.ndarray
+    WQK: np.ndarray
+    WOV: np.ndarray
+    expected_output: np.ndarray
+
+
+def load_json(path: str | Path) -&gt; dict:
+    &quot;&quot;&quot;Load a JSON file into a Python dict.
+
+    Kept separate from notebook logic so tests and code are easier
+    to reuse in other environments (e.g. pytest).
+    &quot;&quot;&quot;
+    with Path(path).open(&quot;r&quot;) as f:
+        return json.load(f)
+
+
+def run_induction_head_tests(
+    test_cases_path: str | Path,
+) -&gt; None:
+    &quot;&quot;&quot;Run induction_copy_head over a JSON collection of test cases.
+
+    This mirrors the final cell of the notebook that loads
+    &#x27;induction_head_test_cases.json&#x27; and asserts correctness,
+    but makes it reusable from scripts or tests.
+    &quot;&quot;&quot;
+    test_cases = load_json(test_cases_path)
+
+    for test_case_id, payload in test_cases.items():
+        embeddings, attention_strength, expected_out = payload
+        out = induction_copy_head(embeddings, attention_strength).tolist()
+        short_id = test_case_id.split(&quot; &quot;)[-1]
+        assert np.isclose(expected_out, out, atol=EPS).all(), (
+            f&quot;Test Case {short_id} Failed:\n&quot;
+            f&quot;Expected: {expected_out}\nGot: {out}&quot;
+        )
+
+    print(&quot;All induction head test cases passed ✅&quot;)
+
+
+if __name__ == &quot;__main__&quot;:
+    # Example: how you might wire up tests from the command line.
+    #
+    #   python q_code_interpretability_refactored.py
+    #
+    # Assuming the JSON file is in the current working directory.
+    json_path = Path(&quot;induction_head_test_cases.json&quot;)
+    if json_path.exists():
+        run_induction_head_tests(json_path)
+    else:
+        print(
+            &quot;induction_head_test_cases.json not found. &quot;
+            &quot;Run tests from the notebook or place the file next to this script.&quot;
+        )
+</code></pre>
+                    </div></div>
+    </div>
+</body>
+</html>

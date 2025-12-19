@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Special Participation B: ChatGPT-5.1 on HW6 Coding Questions - CS 182</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #f5f7fa;
+            color: #333;
+            line-height: 1.6;
+        }
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .back-link {
+            display: inline-block;
+            margin-bottom: 20px;
+            color: #4299e1;
+            text-decoration: none;
+        }
+        .back-link:hover { text-decoration: underline; }
+        .thread-header {
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+        }
+        .thread-title {
+            font-size: 1.8rem;
+            color: #2d3748;
+            margin-bottom: 15px;
+        }
+        .thread-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            color: #718096;
+            font-size: 14px;
+        }
+        .model-badge {
+            display: inline-block;
+            padding: 4px 12px;
+            background: #e2e8f0;
+            color: #4a5568;
+            border-radius: 15px;
+            font-size: 13px;
+            font-weight: 500;
+        }
+        .hw-badge {
+            display: inline-block;
+            padding: 4px 12px;
+            background: #fed7e2;
+            color: #97266d;
+            border-radius: 15px;
+            font-size: 13px;
+            font-weight: 500;
+        }
+        .thread-body {
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+        }
+        .thread-body h3 {
+            margin-bottom: 15px;
+            color: #2d3748;
+        }
+        .body-content {
+            white-space: pre-wrap;
+            word-wrap: break-word;
+            line-height: 1.8;
+            font-size: 15px;
+        }
+        .body-content a {
+            color: #4299e1;
+            word-break: break-all;
+        }
+        .attachments {
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
+        .attachments h3 {
+            margin-bottom: 20px;
+            color: #2d3748;
+        }
+        .attachment {
+            margin-bottom: 25px;
+            border: 1px solid #e2e8f0;
+            border-radius: 6px;
+            overflow: hidden;
+        }
+        .attachment-label {
+            background: #f7fafc;
+            padding: 10px 15px;
+            font-weight: 500;
+            font-size: 14px;
+            border-bottom: 1px solid #e2e8f0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .download-link {
+            color: #4299e1;
+            text-decoration: none;
+            font-weight: normal;
+        }
+        .download-link:hover { text-decoration: underline; }
+        .attachment-image img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+        .attachment-pdf iframe {
+            width: 100%;
+            height: 800px;
+            border: none;
+        }
+        .attachment-video video {
+            width: 100%;
+            max-height: 600px;
+        }
+        .attachment-audio audio {
+            width: 100%;
+            padding: 15px;
+        }
+        .attachment-text pre {
+            padding: 15px;
+            background: #f7fafc;
+            overflow-x: auto;
+            max-height: 500px;
+            font-size: 13px;
+            line-height: 1.5;
+        }
+        .attachment-file {
+            padding: 15px;
+        }
+        .file-link {
+            color: #4299e1;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .file-link:hover { text-decoration: underline; }
+        .ed-link {
+            display: inline-block;
+            margin-top: 15px;
+            color: #4299e1;
+            text-decoration: none;
+        }
+        .ed-link:hover { text-decoration: underline; }
+        @media (max-width: 768px) {
+            .thread-title { font-size: 1.4rem; }
+            .attachment-pdf iframe { height: 500px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <a href="../../../index.html" class="back-link">← Back to Directory</a>
+
+        <div class="thread-header">
+            <h1 class="thread-title">Special Participation B: ChatGPT-5.1 on HW6 Coding Questions</h1>
+            <div class="thread-meta">
+                <span>By Jacqueline Thibault</span>
+                <span>2025-12-10</span>
+                <span class="hw-badge">HW6</span>
+                <span class="model-badge">GPT</span>
+            </div>
+            <a href="https://edstem.org/us/courses/84647/discussion/7442409" target="_blank" class="ed-link">View on Ed Stem →</a>
+        </div>
+
+        <div class="thread-body">
+            <div class="body-content">Special participation B: ChatGPT-5.1 on HW 6 Coding questions.
+
+There were five ipynb files in Hw6’s coding assignment. I kept each question in a separate ChatGPT-5.1 tab to maintain better context within each conversation.
+
+For GPUMemory.ipynb, there was nothing to modify other than running cells and looking at the output, so it didn’t make sense to run this through an LLM.
+
+For q_coding_muon.ipynb, the LLM initially assumed X was square, and wrote code accordingly:
+
+```
+
+for _ in range(num_iters):
+
+ # Newton–Schulz cubic orthogonalization step:
+
+ # X &lt;- (3X - X^3) / 2
+
+ X3 = torch.matmul(X, torch.matmul(X, X))
+
+ X = (3 * X - X3) / 2
+
+```
+
+ However, these dimensions led to:
+
+RuntimeError: mat1 and mat2 shapes cannot be multiplied (32x27 and 32x27)
+
+Upon telling the LLM about this, it revised its answer to:
+
+```
+
+for _ in range(num_iters):
+
+ # Implement X^3 in a way that works for rectangular X:
+
+ # X^3 ≈ X (X^T X), which has the same effect on singular values
+
+ X3 = X @ (X.mT @ X)
+
+ # Newton–Schulz cubic step: X &lt;- (3X - X^3) / 2
+
+ X = (3 * X - X3) / 2
+
+```
+
+The resulting code was as expected.
+
+Link to the conversation: <a href="https://chatgpt.com/share/69389a42-a1f4-800f-88ab-7494a9f6a2b3" target="_blank" rel="noopener noreferrer">https://chatgpt.com/share/69389a42-a1f4-800f-88ab-7494a9f6a2b3</a>
+
+Annotated Trace: 
+
+Q_zkc.ipynb: 
+
+ Was able to one-shot quite well; I am not surprised by this because the questions are set up nicely from a pedagogical perspective, with “fill in the blank” style code sections throughout. It was also able to answer the question about the plots and respond thoroughly to my follow up questions.
+
+Link to the conversation: <a href="https://chatgpt.com/share/69389a5c-21c0-800f-98aa-9d10cd9eb451" target="_blank" rel="noopener noreferrer">https://chatgpt.com/share/69389a5c-21c0-800f-98aa-9d10cd9eb451</a>
+
+Annotated Trace: 
+
+Tensorboard.ipynb: 
+
+ Similar to as in the q_coding_muon.ipynb, the LLM had difficulty with matching dimensionality. I dropped in the one-shot code it suggested, and upon calling run() I got:
+
+RuntimeError: mat1 and mat2 shapes cannot be multiplied (12288x32 and 3072x2048)
+
+This error is more drastic than the previous matmul mismatch. I asked ChatGPT-5.1 to fix its error, and it realized that it needed to first flatten the images. I then pasted and ran the new code, which revealed some other small errors that I had to rerun through the LLM. I asked it also specifically for hyperparameter suggestions, and it returned some more code that did indeed yield better results than the initial 2-epoch run. More info in the trace.
+
+Link to the conversation: <a href="https://chatgpt.com/share/69389a70-db80-800f-9d6f-4593965786b7" target="_blank" rel="noopener noreferrer">https://chatgpt.com/share/69389a70-db80-800f-9d6f-4593965786b7</a>
+
+Annotated trace:
+
+Wandb.ipynb:
+
+Upon pasting the first output from ChatGPT-5.1, i ran into an AttributeError, because in ResNetClassifier it defined an init function, first calling super().__init()
+
+Which was interpreted incorrectly. Upon asking ChatGPT-5.1 what this was about, it discovered its error and recommended me to change it to the correct version, super().__init__()
+
+However, this attribute error is stemming from architectures.py, which I did not modify. Fixing these, and paying attention to the LLM’s response about when to resize the images, I was able to get a satisfactory result that ran on wandb, though both test and train accuracies weren’t that high after 3 epochs (~61%).
+
+Link to the conversation: <a href="https://chatgpt.com/share/69389a87-fc68-800f-a430-cf1c8ddd533c" target="_blank" rel="noopener noreferrer">https://chatgpt.com/share/69389a87-fc68-800f-a430-cf1c8ddd533c</a>
+
+Annotated trace:</div>
+        </div>
+
+        <div class="attachments">
+                <div class="attachment attachment-pdf">
+                    <div class="attachment-label">Special participation B_ ChatGPT-5.1 - Google Docs.pdf <a href="attachments/Special participation B_ ChatGPT-5.1 - Google Docs.pdf" target="_blank" class="download-link">Open in new tab</a></div>
+                    <iframe src="attachments/Special participation B_ ChatGPT-5.1 - Google Docs.pdf" loading="lazy"></iframe>
+                </div>
+                <div class="attachment attachment-pdf">
+                    <div class="attachment-label">specialb tensorboard.pdf <a href="attachments/specialb tensorboard.pdf" target="_blank" class="download-link">Open in new tab</a></div>
+                    <iframe src="attachments/specialb tensorboard.pdf" loading="lazy"></iframe>
+                </div>
+                <div class="attachment attachment-pdf">
+                    <div class="attachment-label">wandb specialb.pdf <a href="attachments/wandb specialb.pdf" target="_blank" class="download-link">Open in new tab</a></div>
+                    <iframe src="attachments/wandb specialb.pdf" loading="lazy"></iframe>
+                </div>
+                <div class="attachment attachment-pdf">
+                    <div class="attachment-label">zkcchat.pdf <a href="attachments/zkcchat.pdf" target="_blank" class="download-link">Open in new tab</a></div>
+                    <iframe src="attachments/zkcchat.pdf" loading="lazy"></iframe>
+                </div></div>
+    </div>
+</body>
+</html>

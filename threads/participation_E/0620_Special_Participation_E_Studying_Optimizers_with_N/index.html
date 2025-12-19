@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Special Participation E: Studying Optimizers with NotebookLM - CS 182</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #f5f7fa;
+            color: #333;
+            line-height: 1.6;
+        }
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .back-link {
+            display: inline-block;
+            margin-bottom: 20px;
+            color: #4299e1;
+            text-decoration: none;
+        }
+        .back-link:hover { text-decoration: underline; }
+        .thread-header {
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+        }
+        .thread-title {
+            font-size: 1.8rem;
+            color: #2d3748;
+            margin-bottom: 15px;
+        }
+        .thread-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            color: #718096;
+            font-size: 14px;
+        }
+        .model-badge {
+            display: inline-block;
+            padding: 4px 12px;
+            background: #e2e8f0;
+            color: #4a5568;
+            border-radius: 15px;
+            font-size: 13px;
+            font-weight: 500;
+        }
+        .hw-badge {
+            display: inline-block;
+            padding: 4px 12px;
+            background: #fed7e2;
+            color: #97266d;
+            border-radius: 15px;
+            font-size: 13px;
+            font-weight: 500;
+        }
+        .thread-body {
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+        }
+        .thread-body h3 {
+            margin-bottom: 15px;
+            color: #2d3748;
+        }
+        .body-content {
+            white-space: pre-wrap;
+            word-wrap: break-word;
+            line-height: 1.8;
+            font-size: 15px;
+        }
+        .body-content a {
+            color: #4299e1;
+            word-break: break-all;
+        }
+        .attachments {
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
+        .attachments h3 {
+            margin-bottom: 20px;
+            color: #2d3748;
+        }
+        .attachment {
+            margin-bottom: 25px;
+            border: 1px solid #e2e8f0;
+            border-radius: 6px;
+            overflow: hidden;
+        }
+        .attachment-label {
+            background: #f7fafc;
+            padding: 10px 15px;
+            font-weight: 500;
+            font-size: 14px;
+            border-bottom: 1px solid #e2e8f0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .download-link {
+            color: #4299e1;
+            text-decoration: none;
+            font-weight: normal;
+        }
+        .download-link:hover { text-decoration: underline; }
+        .attachment-image img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+        .attachment-pdf iframe {
+            width: 100%;
+            height: 800px;
+            border: none;
+        }
+        .attachment-video video {
+            width: 100%;
+            max-height: 600px;
+        }
+        .attachment-audio audio {
+            width: 100%;
+            padding: 15px;
+        }
+        .attachment-text pre {
+            padding: 15px;
+            background: #f7fafc;
+            overflow-x: auto;
+            max-height: 500px;
+            font-size: 13px;
+            line-height: 1.5;
+        }
+        .attachment-file {
+            padding: 15px;
+        }
+        .file-link {
+            color: #4299e1;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .file-link:hover { text-decoration: underline; }
+        .ed-link {
+            display: inline-block;
+            margin-top: 15px;
+            color: #4299e1;
+            text-decoration: none;
+        }
+        .ed-link:hover { text-decoration: underline; }
+        @media (max-width: 768px) {
+            .thread-title { font-size: 1.4rem; }
+            .attachment-pdf iframe { height: 500px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <a href="../../../index.html" class="back-link">← Back to Directory</a>
+
+        <div class="thread-header">
+            <h1 class="thread-title">Special Participation E: Studying Optimizers with NotebookLM</h1>
+            <div class="thread-meta">
+                <span>By Nikhil Mathihalli</span>
+                <span>2025-12-08</span>
+                
+                <span class="model-badge">NotebookLM</span>
+            </div>
+            <a href="https://edstem.org/us/courses/84647/discussion/7426886" target="_blank" class="ed-link">View on Ed Stem →</a>
+        </div>
+
+        <div class="thread-body">
+            <div class="body-content">For the &quot;AI-enhanced learning tools&quot; option, I explored NotebookLM to study the recent lectures on Optimizers. My goal was to create an active alternative to traditional pre-reading/post-reading by having the AI synthesize the lecture recordings, notes, and homework solutions into a cohesive study guide.
+
+I uploaded the YouTube lecture audio recordings alongside the raw lecture notes. NotebookLM was able to &quot;listen&quot; to the lectures and cross-reference them with the written notes.
+
+One of the coolest features was generating visual aids to structure my learning before diving into the weeds.
+
+The Mind Map: I asked it to generate a mind map immediately1. This gave me a hierarchy of concepts—linking Taylor Expansions to Lazy Training, and Initialization to RMS Norms—which acted as a roadmap for what questions I needed to ask.
+
+The Slideshow: I asked it to create a slideshow explaining optimizer concepts with visuals. It generated a dense, informed presentation in about 5 minutes. While the visuals were AI-generated, the structure helped me verify if I could explain the concepts linearly.
+
+Through trial and error, I found a &quot;Drill-Down&quot; strategy worked best:
+
+Start Broad: I began with, &quot;Can you give me an overview of ALL the concepts... generate a roadmap&quot;. This forced the model to establish context.
+
+Select &amp; Zoom: Instead of letting it ramble, I picked specific nodes from its roadmap: &quot;Let&#x27;s start with the lazy training assumption. What is it, and why is it important?&quot;
+
+Comparative Analysis: For distinct lists, I asked for comparative breakdowns: &quot;Can you go over every initialization... advantages/disadvantages to each?&quot; This yielded structured tables rather than walls of text.
+
+While the high-level summaries were coherent, the model often flattened subtle mathematical distinctions. I have annotated these in the attached PDF, but here are the key warnings:
+
+Oversimplifications: The model correctly identified that parameters move by small amounts in training, but it implied that gradient features are fixed features simply because of the assumption. It failed to clarify that this is a specific regime (Kernel/NTK) and not how realistic modern &quot;feature learning&quot; regimes work
+
+Bias Initialization Depth: The model listed strategies like &quot;initialize at 0&quot; or &quot;0.01&quot; but completely lacked the reasoning for why (e.g., why zero bias doesn&#x27;t cause symmetry issues like zero weights do)
+
+Missing Geometric Intuition: When explaining algorithms like SignSGD, it gave the formula but missed the geometric intuition (that infinity norm constraints lead to coordinate-wise updates)
+
+Conclusion
+
+NotebookLM is a powerful &quot;active reading&quot; partner, especially for synthesizing multimodal sources (audio + text). However, it struggles with the deep &quot;why&quot; behind some mathematical proofs. Overall, I think it&#x27;s extremely useful for learning large amounts of content in a structured yet quick manner.
+
+
+
+Trace:</div>
+        </div>
+
+        <div class="attachments">
+                <div class="attachment attachment-pdf">
+                    <div class="attachment-label">NotebookLM Chat.pdf <a href="attachments/NotebookLM Chat.pdf" target="_blank" class="download-link">Open in new tab</a></div>
+                    <iframe src="attachments/NotebookLM Chat.pdf" loading="lazy"></iframe>
+                </div></div>
+    </div>
+</body>
+</html>

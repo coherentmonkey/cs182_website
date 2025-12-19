@@ -1,0 +1,819 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Special Participation E: Gemini 3 Pro for Optimization Visualizations - CS 182</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #f5f7fa;
+            color: #333;
+            line-height: 1.6;
+        }
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .back-link {
+            display: inline-block;
+            margin-bottom: 20px;
+            color: #4299e1;
+            text-decoration: none;
+        }
+        .back-link:hover { text-decoration: underline; }
+        .thread-header {
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+        }
+        .thread-title {
+            font-size: 1.8rem;
+            color: #2d3748;
+            margin-bottom: 15px;
+        }
+        .thread-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            color: #718096;
+            font-size: 14px;
+        }
+        .model-badge {
+            display: inline-block;
+            padding: 4px 12px;
+            background: #e2e8f0;
+            color: #4a5568;
+            border-radius: 15px;
+            font-size: 13px;
+            font-weight: 500;
+        }
+        .hw-badge {
+            display: inline-block;
+            padding: 4px 12px;
+            background: #fed7e2;
+            color: #97266d;
+            border-radius: 15px;
+            font-size: 13px;
+            font-weight: 500;
+        }
+        .thread-body {
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+        }
+        .thread-body h3 {
+            margin-bottom: 15px;
+            color: #2d3748;
+        }
+        .body-content {
+            white-space: pre-wrap;
+            word-wrap: break-word;
+            line-height: 1.8;
+            font-size: 15px;
+        }
+        .body-content a {
+            color: #4299e1;
+            word-break: break-all;
+        }
+        .attachments {
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
+        .attachments h3 {
+            margin-bottom: 20px;
+            color: #2d3748;
+        }
+        .attachment {
+            margin-bottom: 25px;
+            border: 1px solid #e2e8f0;
+            border-radius: 6px;
+            overflow: hidden;
+        }
+        .attachment-label {
+            background: #f7fafc;
+            padding: 10px 15px;
+            font-weight: 500;
+            font-size: 14px;
+            border-bottom: 1px solid #e2e8f0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .download-link {
+            color: #4299e1;
+            text-decoration: none;
+            font-weight: normal;
+        }
+        .download-link:hover { text-decoration: underline; }
+        .attachment-image img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+        .attachment-pdf iframe {
+            width: 100%;
+            height: 800px;
+            border: none;
+        }
+        .attachment-video video {
+            width: 100%;
+            max-height: 600px;
+        }
+        .attachment-audio audio {
+            width: 100%;
+            padding: 15px;
+        }
+        .attachment-text pre {
+            padding: 15px;
+            background: #f7fafc;
+            overflow-x: auto;
+            max-height: 500px;
+            font-size: 13px;
+            line-height: 1.5;
+        }
+        .attachment-file {
+            padding: 15px;
+        }
+        .file-link {
+            color: #4299e1;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .file-link:hover { text-decoration: underline; }
+        .ed-link {
+            display: inline-block;
+            margin-top: 15px;
+            color: #4299e1;
+            text-decoration: none;
+        }
+        .ed-link:hover { text-decoration: underline; }
+        @media (max-width: 768px) {
+            .thread-title { font-size: 1.4rem; }
+            .attachment-pdf iframe { height: 500px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <a href="../../../index.html" class="back-link">← Back to Directory</a>
+
+        <div class="thread-header">
+            <h1 class="thread-title">Special Participation E: Gemini 3 Pro for Optimization Visualizations</h1>
+            <div class="thread-meta">
+                <span>By Tyler Pham</span>
+                <span>2025-12-08</span>
+                
+                <span class="model-badge">Gemini</span>
+            </div>
+            <a href="https://edstem.org/us/courses/84647/discussion/7429794" target="_blank" class="ed-link">View on Ed Stem →</a>
+        </div>
+
+        <div class="thread-body">
+            <div class="body-content">I had Gemini 3 Pro build an interactive HTML site with Plotly to visualize how SGD, Momentum, and Adam navigate a difficult loss function because I often get confused about how changing their parameters like beta affects their end result. You can use sliding bars to tweak hyperparameters like the learning rate and beta values to see how it affects convergence.
+
+Even though I understand the intuition and motivation behind Momentum and Adam, I wanted to see more mathematical simulations where I could change the parameters and observe why Adam is so stable.
+
+Artifact (The HTML Site):
+
+Observations:
+
+When I asked the AI to explain the math inside the tool, it generated complex LaTeX equations. However, it failed to realize that a standard HTML browser cannot render LaTeX without a library like MathJax. It hallucinated a capability the file didn&#x27;t have. I had to force it to rewrite the math using standard HTML entities.
+
+Gemini 3 Pro (which has Thinking) is a lot more concise compared to other models I&#x27;ve used like GPT 5 Thinking. When I asked it to explain more about the math behind Adam and Momentum, it&#x27;s analysis was extremely short even when I told it to be detailed. This may have been due to already-high token count from the HTML.
+
+I noticed Momentum was consistently beating Adam in the simulation. I thought this was a bug. Gemini correctly explained that this is a feature, not a bug. In a noiseless deterministic function (like this simulation), Momentum acts like a race car without a speed limit. Adam, designed for real noisy data, normalizes the gradients, effectively enforcing a &quot;speed limit&quot; for stability.
+
+Initial Prompt:
+
+I want to create an interactive educational tool for my Deep Learning class to visualize the differences between SGD, Momentum, and Adam optimization. Please write a self-contained, single-file HTML/Javascript application (using a library like Plotly.js or a simple Canvas API) that does the following: The Environment: Render a 2D Contour Plot of a &#x27;tricky&#x27; loss function where SGD typically struggles (oscillates) but Adam/Momentum succeeds. The Agents: Implement three &#x27;agents&#x27; starting at the same point:
+
+SGD (Red dot/line)
+
+Momentum (Blue dot/line)
+
+Adam (Green dot/line) The Controls: Sidebar controls with sliders for:
+
+Learning Rate ($\alpha$)
+
+Momentum ($\beta$ or $\gamma$)
+
+Adam parameters ($\beta_1$, $\beta_2$) Animation: A &#x27;Start/Reset&#x27; button. When clicked, the agents should animate their path step-by-step down the gradient. Technical Constraints:
+
+Do not use external CSS/JS files; embed everything in the or .
+
+Show a live legend updating the current $(x, y)$ and Loss value for each optimizer.
+
+
+
+Annotated Trace:</div>
+        </div>
+
+        <div class="attachments">
+                <div class="attachment attachment-pdf">
+                    <div class="attachment-label">gemini-chat.2025-12-08.pdf <a href="attachments/gemini-chat.2025-12-08.pdf" target="_blank" class="download-link">Open in new tab</a></div>
+                    <iframe src="attachments/gemini-chat.2025-12-08.pdf" loading="lazy"></iframe>
+                </div>
+                    <div class="attachment attachment-text">
+                        <div class="attachment-label">optimization_race.html <a href="attachments/optimization_race.html" target="_blank" class="download-link">Download</a></div>
+                        <pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+&lt;head&gt;
+    &lt;meta charset=&quot;UTF-8&quot;&gt;
+    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;
+    &lt;title&gt;Deep Learning Optimizer Visualization&lt;/title&gt;
+    &lt;!-- Load Plotly.js --&gt;
+    &lt;script src=&quot;https://cdn.plot.ly/plotly-2.24.1.min.js&quot;&gt;&lt;/script&gt;
+    &lt;style&gt;
+        body {
+            font-family: &#x27;Segoe UI&#x27;, Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            height: 100vh;
+            background-color: #f4f4f9;
+            overflow: hidden;
+        }
+
+        /* --- SIDEBAR --- */
+        #controls {
+            width: 340px;
+            background-color: #2c3e50;
+            color: #ecf0f1;
+            display: flex;
+            flex-direction: column;
+            box-shadow: 2px 0 5px rgba(0,0,0,0.2);
+            z-index: 10;
+            flex-shrink: 0;
+        }
+
+        .scroll-area {
+            padding: 20px;
+            overflow-y: auto;
+            flex-grow: 1;
+        }
+
+        h2, h3 { margin-top: 0; font-weight: 600; }
+        h2 { font-size: 1.4rem; color: #fff; margin-bottom: 5px; }
+        h3 { font-size: 0.95rem; margin-top: 20px; border-bottom: 1px solid #485f78; padding-bottom: 5px; color: #bdc3c7; }
+
+        .control-group { margin-bottom: 15px; }
+        label { display: flex; justify-content: space-between; font-size: 0.85rem; margin-bottom: 5px; }
+        input[type=range] { width: 100%; cursor: pointer; accent-color: #3498db; }
+
+        .btn-group { display: flex; flex-direction: column; gap: 10px; margin-top: 25px; margin-bottom: 15px; }
+        .row-btns { display: flex; gap: 10px; }
+        
+        button {
+            flex: 1;
+            padding: 12px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: bold;
+            font-size: 1rem;
+            transition: transform 0.1s, opacity 0.2s;
+        }
+        button:active { transform: scale(0.98); }
+        #btn-start { background-color: #27ae60; color: white; }
+        #btn-start:hover { background-color: #2ecc71; }
+        #btn-reset { background-color: #c0392b; color: white; }
+        #btn-reset:hover { background-color: #e74c3c; }
+        #btn-math { background-color: #8e44ad; color: white; margin-top: 5px; font-size: 0.9rem;}
+        #btn-math:hover { background-color: #9b59b6; }
+
+        /* Stats Table */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: 20px 1fr 1fr;
+            gap: 5px;
+            font-family: &#x27;Courier New&#x27;, monospace;
+            font-size: 0.8rem;
+            background: rgba(0,0,0,0.3);
+            padding: 10px;
+            border-radius: 5px;
+            margin-bottom: 15px;
+        }
+        .dot { width: 10px; height: 10px; border-radius: 50%; align-self: center; }
+
+        /* --- STATUS BOX --- */
+        #status-panel {
+            background-color: #34495e;
+            border-top: 4px solid #f1c40f; /* Accent color */
+            padding: 20px;
+            min-height: 180px;
+            box-shadow: 0 -2px 10px rgba(0,0,0,0.2);
+        }
+        #status-title {
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: #f1c40f;
+            margin-bottom: 10px;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        #status-text {
+            font-size: 0.9rem;
+            line-height: 1.5;
+            color: #ecf0f1;
+        }
+        .highlight { color: #f1c40f; font-weight: bold; }
+        .bad { color: #e74c3c; font-weight: bold; }
+        .good { color: #2ecc71; font-weight: bold; }
+
+        /* --- CHART --- */
+        #chart-container {
+            flex-grow: 1;
+            position: relative;
+            background: white;
+        }
+
+        /* --- MATH MODAL --- */
+        .modal {
+            display: none; 
+            position: fixed; 
+            z-index: 100; 
+            left: 0;
+            top: 0;
+            width: 100%; 
+            height: 100%; 
+            overflow: auto; 
+            background-color: rgba(0,0,0,0.6); 
+            backdrop-filter: blur(2px);
+        }
+        .modal-content {
+            background-color: #fefefe;
+            margin: 5% auto; 
+            padding: 25px;
+            border: 1px solid #888;
+            width: 80%;
+            max-width: 800px; /* Widened for better reading */
+            border-radius: 8px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+            font-family: &#x27;Segoe UI&#x27;, Tahoma, Geneva, Verdana, sans-serif;
+            color: #333;
+        }
+        .close-btn {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+        .close-btn:hover { color: #000; }
+        
+        .math-section { margin-bottom: 25px; border-bottom: 1px solid #eee; padding-bottom: 15px; }
+        .math-section:last-child { border-bottom: none; }
+        .formula {
+            background: #f0f2f5;
+            padding: 10px;
+            border-radius: 4px;
+            font-family: &#x27;Times New Roman&#x27;, Times, serif;
+            font-size: 1.1rem;
+            text-align: center;
+            margin: 10px 0;
+            border-left: 4px solid #3498db;
+        }
+        .variable-list { font-size: 0.9rem; margin-top: 5px; line-height: 1.6; }
+        .var-name { font-weight: bold; color: #2c3e50; font-family: &#x27;Times New Roman&#x27;, serif; font-style: italic;}
+    &lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+
+    &lt;!-- SIDEBAR --&gt;
+    &lt;div id=&quot;controls&quot;&gt;
+        &lt;div class=&quot;scroll-area&quot;&gt;
+            &lt;h2&gt;Optimizer Race&lt;/h2&gt;
+            &lt;p style=&quot;font-size: 0.85rem; color: #bdc3c7; margin-bottom: 20px;&quot;&gt;
+                Visualizing convergence on the Rosenbrock &quot;Banana&quot; function.
+            &lt;/p&gt;
+
+            &lt;!-- STATS --&gt;
+            &lt;div class=&quot;stats-grid&quot;&gt;
+                &lt;div&gt;&lt;/div&gt;&lt;div&gt;&lt;strong&gt;Loss&lt;/strong&gt;&lt;/div&gt;&lt;div&gt;&lt;strong&gt;Iter&lt;/strong&gt;&lt;/div&gt;
+                
+                &lt;div class=&quot;dot&quot; style=&quot;background:red;&quot;&gt;&lt;/div&gt;
+                &lt;div id=&quot;loss-sgd&quot;&gt;0.00&lt;/div&gt;&lt;div id=&quot;iter-count&quot;&gt;0&lt;/div&gt;
+
+                &lt;div class=&quot;dot&quot; style=&quot;background:blue;&quot;&gt;&lt;/div&gt;
+                &lt;div id=&quot;loss-mom&quot;&gt;0.00&lt;/div&gt;&lt;div&gt;&lt;/div&gt;
+
+                &lt;div class=&quot;dot&quot; style=&quot;background:lime;&quot;&gt;&lt;/div&gt;
+                &lt;div id=&quot;loss-adam&quot;&gt;0.00&lt;/div&gt;&lt;div&gt;&lt;/div&gt;
+            &lt;/div&gt;
+
+            &lt;!-- INPUTS --&gt;
+            &lt;h3&gt;Global Parameters&lt;/h3&gt;
+            &lt;div class=&quot;control-group&quot;&gt;
+                &lt;label&gt;Learning Rate (&amp;alpha;) &lt;span id=&quot;val-lr&quot;&gt;0.002&lt;/span&gt;&lt;/label&gt;
+                &lt;input type=&quot;range&quot; id=&quot;lr&quot; min=&quot;0.0001&quot; max=&quot;0.006&quot; step=&quot;0.0001&quot; value=&quot;0.002&quot;&gt;
+            &lt;/div&gt;
+
+            &lt;h3&gt;Momentum (Blue)&lt;/h3&gt;
+            &lt;div class=&quot;control-group&quot;&gt;
+                &lt;label&gt;Beta (&amp;gamma;) &lt;span id=&quot;val-mom&quot;&gt;0.9&lt;/span&gt;&lt;/label&gt;
+                &lt;input type=&quot;range&quot; id=&quot;momentum&quot; min=&quot;0.0&quot; max=&quot;0.99&quot; step=&quot;0.01&quot; value=&quot;0.9&quot;&gt;
+            &lt;/div&gt;
+
+            &lt;h3&gt;Adam (Green)&lt;/h3&gt;
+            &lt;div class=&quot;control-group&quot;&gt;
+                &lt;label&gt;Beta 1 &lt;span id=&quot;val-b1&quot;&gt;0.9&lt;/span&gt;&lt;/label&gt;
+                &lt;input type=&quot;range&quot; id=&quot;beta1&quot; min=&quot;0.5&quot; max=&quot;0.999&quot; step=&quot;0.001&quot; value=&quot;0.9&quot;&gt;
+            &lt;/div&gt;
+            &lt;div class=&quot;control-group&quot;&gt;
+                &lt;label&gt;Beta 2 &lt;span id=&quot;val-b2&quot;&gt;0.999&lt;/span&gt;&lt;/label&gt;
+                &lt;input type=&quot;range&quot; id=&quot;beta2&quot; min=&quot;0.5&quot; max=&quot;0.9999&quot; step=&quot;0.0001&quot; value=&quot;0.999&quot;&gt;
+            &lt;/div&gt;
+
+            &lt;div class=&quot;btn-group&quot;&gt;
+                &lt;div class=&quot;row-btns&quot;&gt;
+                    &lt;button id=&quot;btn-start&quot; onclick=&quot;toggleAnimation()&quot;&gt;Start Race&lt;/button&gt;
+                    &lt;button id=&quot;btn-reset&quot; onclick=&quot;resetSimulation()&quot;&gt;Reset&lt;/button&gt;
+                &lt;/div&gt;
+                &lt;button id=&quot;btn-math&quot; onclick=&quot;toggleMathModal()&quot;&gt;Math &amp; Theory&lt;/button&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+
+        &lt;!-- LIVE ANALYSIS PANEL --&gt;
+        &lt;div id=&quot;status-panel&quot;&gt;
+            &lt;div id=&quot;status-title&quot;&gt;
+                &lt;svg width=&quot;16&quot; height=&quot;16&quot; fill=&quot;currentColor&quot; viewBox=&quot;0 0 16 16&quot;&gt;&lt;path d=&quot;M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16zm.93-9.412-1 4.705c-.07.34.029.533.304.533.194 0 .487-.07.686-.246l-.088.416c-.287.346-.92.598-1.465.598-.703 0-1.002-.422-.808-1.319l.738-3.468c.064-.293.006-.399-.287-.47l-.451-.081.082-.381 2.29-.287zM8 5.5a1 1 0 1 1 0-2 1 1 0 0 1 0 2z&quot;/&gt;&lt;/svg&gt;
+                Live Analysis
+            &lt;/div&gt;
+            &lt;div id=&quot;status-text&quot;&gt;
+                Welcome! This visualization shows why standard SGD struggles on complex surfaces. &lt;br&gt;&lt;br&gt;
+                Adjust the &lt;span class=&quot;highlight&quot;&gt;Learning Rate&lt;/span&gt; above, then click &lt;strong&gt;Start Race&lt;/strong&gt; to begin.
+            &lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;!-- MAIN CHART --&gt;
+    &lt;div id=&quot;chart-container&quot;&gt;
+        &lt;div id=&quot;plot&quot; style=&quot;width: 100%; height: 100%;&quot;&gt;&lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;!-- MATH MODAL --&gt;
+    &lt;div id=&quot;math-modal&quot; class=&quot;modal&quot;&gt;
+        &lt;div class=&quot;modal-content&quot;&gt;
+            &lt;span class=&quot;close-btn&quot; onclick=&quot;toggleMathModal()&quot;&gt;&amp;times;&lt;/span&gt;
+            &lt;h2 style=&quot;color: #2c3e50; border-bottom: 2px solid #3498db; padding-bottom: 10px;&quot;&gt;Optimization: The Math Behind the Magic&lt;/h2&gt;
+            
+            &lt;div class=&quot;math-section&quot;&gt;
+                &lt;h3&gt;1. Why Momentum beats SGD&lt;/h3&gt;
+                &lt;p&gt;&lt;strong&gt;The Problem:&lt;/strong&gt; In &quot;ravines&quot; (like this function), the surface is steep on the sides but flat along the bottom. SGD oscillates across the steep sides because the gradient &amp;nabla;L is huge in the vertical direction.&lt;/p&gt;
+                &lt;div class=&quot;formula&quot;&gt;
+                    v&lt;sub&gt;t&lt;/sub&gt; = &amp;gamma; v&lt;sub&gt;t-1&lt;/sub&gt; - &amp;alpha; &amp;nabla;L(w&lt;sub&gt;t&lt;/sub&gt;)
+                &lt;/div&gt;
+                &lt;p style=&quot;font-size: 0.9rem; margin-top: 10px;&quot;&gt;
+                    &lt;strong&gt;Understanding Beta/Gamma (&amp;gamma;):&lt;/strong&gt; This parameter acts as &quot;friction&quot; or memory.
+                    &lt;br&gt;&amp;bull; &lt;strong&gt;High &amp;gamma; (0.9):&lt;/strong&gt; The agent keeps 90% of its previous speed. It&#x27;s like a heavy truck; it punches through small bumps but takes longer to turn.
+                    &lt;br&gt;&amp;bull; &lt;strong&gt;Low &amp;gamma; (0.5):&lt;/strong&gt; The agent keeps only 50% of its speed. It&#x27;s lighter and changes direction faster but gets stuck more easily.
+                &lt;/p&gt;
+                &lt;p style=&quot;font-size: 0.9rem; margin-top: 10px;&quot;&gt;&lt;strong&gt;The Result:&lt;/strong&gt; 
+                &lt;br&gt;&amp;bull; &lt;strong&gt;Vertical Direction:&lt;/strong&gt; Gradients flip signs (+, -, +, -). Summing them causes cancellation ($1 + (-1) = 0$). The oscillation dampens.
+                &lt;br&gt;&amp;bull; &lt;strong&gt;Horizontal Direction:&lt;/strong&gt; Gradients are small but consistent (+, +, +). Summing them builds velocity, accelerating down the valley.&lt;/p&gt;
+            &lt;/div&gt;
+
+            &lt;div class=&quot;math-section&quot;&gt;
+                &lt;h3&gt;2. Why Adam usually beats Momentum&lt;/h3&gt;
+                &lt;p&gt;&lt;strong&gt;The Problem:&lt;/strong&gt; Momentum relies on a global Learning Rate (&amp;alpha;). If the valley gets flatter, it slows down. If the gradient gets steeper, it can overshoot dangerously.&lt;/p&gt;
+                &lt;div class=&quot;formula&quot;&gt;
+                    Step &amp;approx; &amp;alpha; &amp;middot; m&lt;sub&gt;t&lt;/sub&gt; / &amp;radic;v&lt;sub&gt;t&lt;/sub&gt;
+                &lt;/div&gt;
+                &lt;p style=&quot;font-size: 0.9rem; margin-top: 10px;&quot;&gt;
+                    &lt;strong&gt;Understanding Adam&#x27;s Betas:&lt;/strong&gt; Adam keeps two separate histories.
+                    &lt;br&gt;&amp;bull; &lt;strong&gt;&amp;beta;&lt;sub&gt;1&lt;/sub&gt; (Momentum):&lt;/strong&gt; Tracks the &lt;em&gt;direction&lt;/em&gt; (mean). Usually 0.9.
+                    &lt;br&gt;&amp;bull; &lt;strong&gt;&amp;beta;&lt;sub&gt;2&lt;/sub&gt; (Scaling):&lt;/strong&gt; Tracks the &lt;em&gt;magnitude/volatility&lt;/em&gt; (variance). Usually 0.999.
+                    &lt;br&gt;&lt;strong&gt;What changing &amp;beta;&lt;sub&gt;2&lt;/sub&gt; does:&lt;/strong&gt; If you lower &amp;beta;&lt;sub&gt;2&lt;/sub&gt; (e.g., to 0.9), Adam forgets historical volatility faster. This makes it adapt to &quot;new&quot; terrain steepness very aggressively, which can sometimes be unstable.
+                &lt;/p&gt;
+                &lt;p style=&quot;font-size: 0.9rem; margin-top: 10px;&quot;&gt;&lt;strong&gt;The Math:&lt;/strong&gt; Adam divides the momentum (m&lt;sub&gt;t&lt;/sub&gt;) by the root mean square of gradients (&amp;radic;v&lt;sub&gt;t&lt;/sub&gt;).
+                &lt;br&gt;&amp;bull; &lt;strong&gt;Steep Slopes:&lt;/strong&gt; Gradient is large &amp;rarr; &amp;radic;v&lt;sub&gt;t&lt;/sub&gt; is large &amp;rarr; Step size decreases (Stabilizing).
+                &lt;br&gt;&amp;bull; &lt;strong&gt;Flat Valleys:&lt;/strong&gt; Gradient is tiny &amp;rarr; &amp;radic;v&lt;sub&gt;t&lt;/sub&gt; is tiny &amp;rarr; Step size increases (Accelerating).
+                &lt;/p&gt;
+            &lt;/div&gt;
+
+            &lt;div class=&quot;math-section&quot; style=&quot;background: #e8f6f3; padding: 15px; border-radius: 5px; border: 1px solid #d1f2eb;&quot;&gt;
+                &lt;h3 style=&quot;margin-top: 0; color: #16a085;&quot;&gt;🧪 Try These Parameters&lt;/h3&gt;
+                &lt;ul style=&quot;font-size: 0.9rem; padding-left: 20px;&quot;&gt;
+                    &lt;li style=&quot;margin-bottom: 8px;&quot;&gt;
+                        &lt;strong&gt;Show SGD Fail:&lt;/strong&gt; Set &lt;code&gt;LR = 0.005&lt;/code&gt;. &lt;br&gt;
+                        &lt;em&gt;Result:&lt;/em&gt; SGD explodes/oscillates violently. Adam handles it easily because it normalizes the large gradients.
+                    &lt;/li&gt;
+                    &lt;li&gt;
+                        &lt;strong&gt;Show Momentum Physics:&lt;/strong&gt; Set &lt;code&gt;LR = 0.001&lt;/code&gt;, &lt;code&gt;Momentum = 0.95&lt;/code&gt;.&lt;br&gt;
+                        &lt;em&gt;Result:&lt;/em&gt; Momentum builds up massive speed and actually overshoots the target before swinging back (like a pendulum). Adam stops precisely.
+                    &lt;/li&gt;
+                &lt;/ul&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;script&gt;
+        // --- 1. CONFIGURATION &amp; STATE ---
+        const CONFIG = {
+            startX: -1.5,
+            startY: 2.0,
+            range: { x: [-2, 2], y: [-1, 3] },
+            stepsPerFrame: 5, 
+            epsilon: 1e-8
+        };
+
+        let isRunning = false;
+        let animationId = null;
+        let iteration = 0;
+        
+        let historySGD = { dx: 0, dy: 0, oscCount: 0 };
+
+        let agents = {
+            sgd: { x: 0, y: 0, pathX: [], pathY: [], loss: 0 },
+            mom: { x: 0, y: 0, vx: 0, vy: 0, pathX: [], pathY: [], loss: 0 },
+            adam: { x: 0, y: 0, mX: 0, mY: 0, vX: 0, vY: 0, pathX: [], pathY: [], loss: 0 }
+        };
+
+        // --- 2. MATH: ROSENBROCK FUNCTION ---
+        function getLoss(x, y) {
+            return Math.pow(1 - x, 2) + 100 * Math.pow(y - x * x, 2);
+        }
+
+        function getGradients(x, y) {
+            const dx = -2 * (1 - x) - 400 * x * (y - x * x);
+            const dy = 200 * (y - x * x);
+            return { dx, dy };
+        }
+
+        // --- 3. UI REFERENCES ---
+        const ui = {
+            lr: document.getElementById(&#x27;lr&#x27;),
+            mom: document.getElementById(&#x27;momentum&#x27;),
+            b1: document.getElementById(&#x27;beta1&#x27;),
+            b2: document.getElementById(&#x27;beta2&#x27;),
+            btn: document.getElementById(&#x27;btn-start&#x27;),
+            iter: document.getElementById(&#x27;iter-count&#x27;),
+            lossSGD: document.getElementById(&#x27;loss-sgd&#x27;),
+            lossMom: document.getElementById(&#x27;loss-mom&#x27;),
+            lossAdam: document.getElementById(&#x27;loss-adam&#x27;),
+            status: document.getElementById(&#x27;status-text&#x27;),
+            modal: document.getElementById(&#x27;math-modal&#x27;)
+        };
+
+        // --- 4. INTERACTION &amp; EXPLANATION ---
+        function toggleMathModal() {
+            const modal = ui.modal;
+            if (modal.style.display === &quot;block&quot;) {
+                modal.style.display = &quot;none&quot;;
+            } else {
+                modal.style.display = &quot;block&quot;;
+            }
+        }
+
+        // Close modal when clicking outside
+        window.onclick = function(event) {
+            if (event.target == ui.modal) {
+                ui.modal.style.display = &quot;none&quot;;
+            }
+        }
+
+        function updateStatusBox() {
+            if (!isRunning &amp;&amp; iteration === 0) return;
+
+            let msg = &quot;&quot;;
+            const sgdLoss = agents.sgd.loss;
+            const adamLoss = agents.adam.loss;
+            const momLoss = agents.mom.loss;
+
+            if (iteration &lt; 20) {
+                ui.status.innerHTML = &quot;&lt;strong&gt;Early Phase:&lt;/strong&gt; All agents move quickly down the steep gradient. Note how Momentum (Blue) builds up speed.&quot;;
+                return;
+            }
+
+            let isOscillating = historySGD.oscCount &gt; 5;
+            if (isOscillating) {
+                msg += &quot;&lt;span class=&#x27;bad&#x27;&gt;Warning: SGD Oscillation!&lt;/span&gt;&lt;br&gt;SGD is bouncing off the valley walls. The gradient is steep perpendicular to the path. &lt;br&gt;&lt;em&gt;Try lowering Learning Rate or adding Momentum.&lt;/em&gt;&lt;br&gt;&lt;br&gt;&quot;;
+            } else {
+                msg += &quot;SGD is descending slowly. &lt;br&gt;&lt;br&gt;&quot;;
+            }
+
+            if (adamLoss &lt; momLoss &amp;&amp; adamLoss &lt; sgdLoss) {
+                msg += &quot;&lt;span class=&#x27;good&#x27;&gt;Adam is winning.&lt;/span&gt;&lt;br&gt;Adam&#x27;s adaptive learning rate scales down the step size in the steep direction (vertical) and scales it up in the flat direction (horizontal).&quot;;
+            } else if (momLoss &lt; adamLoss) {
+                msg += &quot;&lt;span class=&#x27;good&#x27;&gt;Momentum is leading.&lt;/span&gt;&lt;br&gt;The accumulated velocity vector is helping it plow through the flat valley floor.&quot;;
+            }
+
+            if (adamLoss &lt; 0.1) {
+                msg = &quot;&lt;span class=&#x27;good&#x27;&gt;Target Acquired!&lt;/span&gt;&lt;br&gt;Adam has successfully navigated the curve. Notice how it didn&#x27;t need a tiny learning rate to be stable.&quot;;
+            }
+
+            ui.status.innerHTML = msg;
+        }
+
+        ui.lr.addEventListener(&#x27;input&#x27;, (e) =&gt; {
+            ui.status.innerHTML = `&lt;strong&gt;Learning Rate (${e.target.value}):&lt;/strong&gt;&lt;br&gt;Determines step size. &lt;br&gt;Too high = Oscillation/Divergence.&lt;br&gt;Too low = Slow convergence.`;
+            document.getElementById(&#x27;val-lr&#x27;).innerText = e.target.value;
+        });
+        ui.mom.addEventListener(&#x27;input&#x27;, (e) =&gt; {
+            ui.status.innerHTML = `&lt;strong&gt;Momentum (${e.target.value}):&lt;/strong&gt;&lt;br&gt;Like a heavy ball rolling down a hill. Helps dampen oscillations and pass through local minima.`;
+            document.getElementById(&#x27;val-mom&#x27;).innerText = e.target.value;
+        });
+        ui.b1.addEventListener(&#x27;input&#x27;, (e) =&gt; {
+             document.getElementById(&#x27;val-b1&#x27;).innerText = e.target.value;
+        });
+        ui.b2.addEventListener(&#x27;input&#x27;, (e) =&gt; {
+             document.getElementById(&#x27;val-b2&#x27;).innerText = e.target.value;
+        });
+
+
+        // --- 5. CORE OPTIMIZATION LOOP ---
+        function step() {
+            const lr = parseFloat(ui.lr.value);
+            const beta = parseFloat(ui.mom.value);
+            const b1 = parseFloat(ui.b1.value);
+            const b2 = parseFloat(ui.b2.value);
+            
+            iteration++;
+
+            // SGD
+            let g = getGradients(agents.sgd.x, agents.sgd.y);
+            if (Math.sign(g.dx) !== Math.sign(historySGD.dx)) historySGD.oscCount++;
+            else historySGD.oscCount = Math.max(0, historySGD.oscCount - 1);
+            historySGD.dx = g.dx;
+
+            agents.sgd.x -= lr * g.dx;
+            agents.sgd.y -= lr * g.dy;
+            agents.sgd.pathX.push(agents.sgd.x);
+            agents.sgd.pathY.push(agents.sgd.y);
+            agents.sgd.loss = getLoss(agents.sgd.x, agents.sgd.y);
+
+            // MOMENTUM
+            g = getGradients(agents.mom.x, agents.mom.y);
+            agents.mom.vx = beta * agents.mom.vx - lr * g.dx;
+            agents.mom.vy = beta * agents.mom.vy - lr * g.dy;
+            agents.mom.x += agents.mom.vx;
+            agents.mom.y += agents.mom.vy;
+            agents.mom.pathX.push(agents.mom.x);
+            agents.mom.pathY.push(agents.mom.y);
+            agents.mom.loss = getLoss(agents.mom.x, agents.mom.y);
+
+            // ADAM
+            g = getGradients(agents.adam.x, agents.adam.y);
+            
+            agents.adam.mX = b1 * agents.adam.mX + (1 - b1) * g.dx;
+            agents.adam.mY = b1 * agents.adam.mY + (1 - b1) * g.dy;
+            
+            agents.adam.vX = b2 * agents.adam.vX + (1 - b2) * (g.dx * g.dx);
+            agents.adam.vY = b2 * agents.adam.vY + (1 - b2) * (g.dy * g.dy);
+            
+            let mHatX = agents.adam.mX / (1 - Math.pow(b1, iteration));
+            let mHatY = agents.adam.mY / (1 - Math.pow(b1, iteration));
+            let vHatX = agents.adam.vX / (1 - Math.pow(b2, iteration));
+            let vHatY = agents.adam.vY / (1 - Math.pow(b2, iteration));
+
+            agents.adam.x -= lr * mHatX / (Math.sqrt(vHatX) + CONFIG.epsilon);
+            agents.adam.y -= lr * mHatY / (Math.sqrt(vHatY) + CONFIG.epsilon);
+            
+            agents.adam.pathX.push(agents.adam.x);
+            agents.adam.pathY.push(agents.adam.y);
+            agents.adam.loss = getLoss(agents.adam.x, agents.adam.y);
+        }
+
+        function updateDisplay() {
+            ui.iter.innerText = iteration;
+            ui.lossSGD.innerText = agents.sgd.loss.toFixed(4);
+            ui.lossMom.innerText = agents.mom.loss.toFixed(4);
+            ui.lossAdam.innerText = agents.adam.loss.toFixed(4);
+
+            Plotly.extendTraces(&#x27;plot&#x27;, {
+                x: [[agents.sgd.x], [agents.mom.x], [agents.adam.x]],
+                y: [[agents.sgd.y], [agents.mom.y], [agents.adam.y]]
+            }, [1, 2, 3]);
+        }
+
+        function animate() {
+            if (!isRunning) return;
+            for(let i=0; i&lt;CONFIG.stepsPerFrame; i++) {
+                step();
+            }
+            updateDisplay();
+            if (iteration % (CONFIG.stepsPerFrame * 10) === 0) {
+                updateStatusBox();
+            }
+            animationId = requestAnimationFrame(animate);
+        }
+
+        function toggleAnimation() {
+            if (isRunning) {
+                isRunning = false;
+                cancelAnimationFrame(animationId);
+                ui.btn.innerText = &quot;Resume Race&quot;;
+                ui.btn.style.backgroundColor = &quot;#f39c12&quot;; 
+            } else {
+                isRunning = true;
+                ui.btn.innerText = &quot;Pause&quot;;
+                ui.btn.style.backgroundColor = &quot;#e67e22&quot;; 
+                animate();
+            }
+        }
+
+        function resetSimulation() {
+            isRunning = false;
+            cancelAnimationFrame(animationId);
+            ui.btn.innerText = &quot;Start Race&quot;;
+            ui.btn.style.backgroundColor = &quot;#27ae60&quot;; 
+            iteration = 0;
+            historySGD = { dx: 0, dy: 0, oscCount: 0 };
+
+            agents.sgd = { x: CONFIG.startX, y: CONFIG.startY, pathX: [CONFIG.startX], pathY: [CONFIG.startY], loss: getLoss(CONFIG.startX, CONFIG.startY) };
+            agents.mom = { x: CONFIG.startX, y: CONFIG.startY, vx: 0, vy: 0, pathX: [CONFIG.startX], pathY: [CONFIG.startY], loss: getLoss(CONFIG.startX, CONFIG.startY) };
+            agents.adam = { x: CONFIG.startX, y: CONFIG.startY, mX: 0, mY: 0, vX: 0, vY: 0, pathX: [CONFIG.startX], pathY: [CONFIG.startY], loss: getLoss(CONFIG.startX, CONFIG.startY) };
+
+            initPlot();
+            ui.iter.innerText = &quot;0&quot;;
+            ui.lossSGD.innerText = &quot;0.00&quot;;
+            ui.lossMom.innerText = &quot;0.00&quot;;
+            ui.lossAdam.innerText = &quot;0.00&quot;;
+            ui.status.innerHTML = &quot;Welcome! This visualization shows why standard SGD struggles on complex surfaces. &lt;br&gt;&lt;br&gt;Adjust the &lt;span class=&#x27;highlight&#x27;&gt;Learning Rate&lt;/span&gt; above, then click &lt;strong&gt;Start Race&lt;/strong&gt; to begin.&quot;;
+        }
+
+        // --- 6. PLOT INITIALIZATION ---
+        function generateContourData() {
+            let x = [], y = [], z = [];
+            let n = 100;
+            let xStep = (CONFIG.range.x[1] - CONFIG.range.x[0]) / n;
+            let yStep = (CONFIG.range.y[1] - CONFIG.range.y[0]) / n;
+
+            for (let i = 0; i &lt;= n; i++) x.push(CONFIG.range.x[0] + i * xStep);
+            for (let i = 0; i &lt;= n; i++) y.push(CONFIG.range.y[0] + i * yStep);
+
+            for (let j = 0; j &lt; y.length; j++) {
+                let row = [];
+                for (let i = 0; i &lt; x.length; i++) {
+                    row.push(Math.log(getLoss(x[i], y[j]) + 1));
+                }
+                z.push(row);
+            }
+            return { x, y, z };
+        }
+
+        function initPlot() {
+            const data = generateContourData();
+
+            const contourTrace = {
+                z: data.z, x: data.x, y: data.y,
+                type: &#x27;contour&#x27;,
+                colorscale: &#x27;Viridis&#x27;,
+                ncontours: 40,
+                contours: { showlabels: false },
+                hoverinfo: &#x27;none&#x27;,
+                opacity: 0.6
+            };
+
+            const traceStyle = {
+                mode: &#x27;lines+markers&#x27;, type: &#x27;scatter&#x27;,
+                marker: { size: 8 }, line: { width: 3 }
+            };
+
+            const sgdTrace = { ...traceStyle, x: [CONFIG.startX], y: [CONFIG.startY], name: &#x27;SGD&#x27;, line: { color: &#x27;red&#x27; }, marker: { color: &#x27;red&#x27; } };
+            const momTrace = { ...traceStyle, x: [CONFIG.startX], y: [CONFIG.startY], name: &#x27;Momentum&#x27;, line: { color: &#x27;blue&#x27; }, marker: { color: &#x27;blue&#x27; } };
+            const adamTrace = { ...traceStyle, x: [CONFIG.startX], y: [CONFIG.startY], name: &#x27;Adam&#x27;, line: { color: &#x27;lime&#x27; }, marker: { color: &#x27;lime&#x27; } };
+            
+            const targetTrace = {
+                x: [1], y: [1], mode: &#x27;markers&#x27;, type: &#x27;scatter&#x27;, name: &#x27;Global Min&#x27;,
+                marker: { symbol: &#x27;star&#x27;, color: &#x27;gold&#x27;, size: 15, line: {color: &#x27;black&#x27;, width: 1} }
+            };
+
+            const layout = {
+                title: &#x27;Loss Surface (Rosenbrock)&#x27;,
+                xaxis: { range: CONFIG.range.x, title: &#x27;X&#x27; },
+                yaxis: { range: CONFIG.range.y, title: &#x27;Y&#x27; },
+                showlegend: true,
+                legend: { x: 0, y: 1, bgcolor: &#x27;rgba(255,255,255,0.7)&#x27; },
+                margin: { l: 50, r: 20, t: 40, b: 40 }
+            };
+
+            Plotly.newPlot(&#x27;plot&#x27;, [contourTrace, sgdTrace, momTrace, adamTrace, targetTrace], layout, { responsive: true });
+        }
+
+        window.onload = () =&gt; {
+            initPlot();
+            resetSimulation();
+        };
+
+    &lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+                    </div></div>
+    </div>
+</body>
+</html>

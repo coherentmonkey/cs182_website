@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Special Participation E: Muon - CS 182</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #f5f7fa;
+            color: #333;
+            line-height: 1.6;
+        }
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .back-link {
+            display: inline-block;
+            margin-bottom: 20px;
+            color: #4299e1;
+            text-decoration: none;
+        }
+        .back-link:hover { text-decoration: underline; }
+        .thread-header {
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+        }
+        .thread-title {
+            font-size: 1.8rem;
+            color: #2d3748;
+            margin-bottom: 15px;
+        }
+        .thread-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            color: #718096;
+            font-size: 14px;
+        }
+        .model-badge {
+            display: inline-block;
+            padding: 4px 12px;
+            background: #e2e8f0;
+            color: #4a5568;
+            border-radius: 15px;
+            font-size: 13px;
+            font-weight: 500;
+        }
+        .hw-badge {
+            display: inline-block;
+            padding: 4px 12px;
+            background: #fed7e2;
+            color: #97266d;
+            border-radius: 15px;
+            font-size: 13px;
+            font-weight: 500;
+        }
+        .thread-body {
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+        }
+        .thread-body h3 {
+            margin-bottom: 15px;
+            color: #2d3748;
+        }
+        .body-content {
+            white-space: pre-wrap;
+            word-wrap: break-word;
+            line-height: 1.8;
+            font-size: 15px;
+        }
+        .body-content a {
+            color: #4299e1;
+            word-break: break-all;
+        }
+        .attachments {
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
+        .attachments h3 {
+            margin-bottom: 20px;
+            color: #2d3748;
+        }
+        .attachment {
+            margin-bottom: 25px;
+            border: 1px solid #e2e8f0;
+            border-radius: 6px;
+            overflow: hidden;
+        }
+        .attachment-label {
+            background: #f7fafc;
+            padding: 10px 15px;
+            font-weight: 500;
+            font-size: 14px;
+            border-bottom: 1px solid #e2e8f0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .download-link {
+            color: #4299e1;
+            text-decoration: none;
+            font-weight: normal;
+        }
+        .download-link:hover { text-decoration: underline; }
+        .attachment-image img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+        .attachment-pdf iframe {
+            width: 100%;
+            height: 800px;
+            border: none;
+        }
+        .attachment-video video {
+            width: 100%;
+            max-height: 600px;
+        }
+        .attachment-audio audio {
+            width: 100%;
+            padding: 15px;
+        }
+        .attachment-text pre {
+            padding: 15px;
+            background: #f7fafc;
+            overflow-x: auto;
+            max-height: 500px;
+            font-size: 13px;
+            line-height: 1.5;
+        }
+        .attachment-file {
+            padding: 15px;
+        }
+        .file-link {
+            color: #4299e1;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .file-link:hover { text-decoration: underline; }
+        .ed-link {
+            display: inline-block;
+            margin-top: 15px;
+            color: #4299e1;
+            text-decoration: none;
+        }
+        .ed-link:hover { text-decoration: underline; }
+        @media (max-width: 768px) {
+            .thread-title { font-size: 1.4rem; }
+            .attachment-pdf iframe { height: 500px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <a href="../../../index.html" class="back-link">← Back to Directory</a>
+
+        <div class="thread-header">
+            <h1 class="thread-title">Special Participation E: Muon</h1>
+            <div class="thread-meta">
+                <span>By Reyna Liu</span>
+                <span>2025-12-08</span>
+                
+                <span class="model-badge">GPT</span>
+            </div>
+            <a href="https://edstem.org/us/courses/84647/discussion/7427555" target="_blank" class="ed-link">View on Ed Stem →</a>
+        </div>
+
+        <div class="thread-body">
+            <div class="body-content">For this Special Participation E, I made an interactive Muon tutor using a custom prompt for ChatGPT’s Study Mode. The goal was to turn Muon (Momentum Orthogonalized by Newton–Schulz) into a single coherent story that lines up with the lecture content: starting from Shampoo and semi-orthogonal updates, then moving through Newton–Schulz style iterations, odd polynomials, normalization, and finally the full Muon update rule.
+
+The tutor is designed to complement pre-lecture or post-lecture reading: instead of passively skimming notes, you interact with the model in a guided way, and it is forced (by the prompt) to:
+
+stay on one narrative arc (the “approximate (UV^\top)” story),
+
+explain each subtopic with intuition → light math → tiny example → concept check,
+
+not move on until you answer its question.
+
+Prompt
+
+You are my tutor for the Muon optimizer (“Momentum Orthogonalized by Newton–Schulz”) and the optimization ideas behind it in modern deep learning.
+
+I want this to be an interactive tutoring session. In every reply:
+
+- Keep your answer focused and reasonably short (about 3–6 short paragraphs).
+
+- Do not move on to the next topic until I say so.
+
+- Always end your message by asking me a specific question (for example: “Does this make sense?” or a small concept-check question), and then wait for my reply.
+
+The overall story I want to learn is:
+
+How Muon approximates an “ideal” semi-orthogonal update direction (like what Shampoo would give with SVD), but does it cheaply using Newton–Schulz style iterations and polynomials that operate on singular values, plus a momentum-like accumulator.
+
+Please organize everything as one coherent narrative, not a bag of tricks.
+
+Step 1: Short big-picture intro
+
+First response:
+
+1. In at most 2 short paragraphs, explain:
+
+ - What problem Muon is trying to solve:
+
+ - Shampoo-style methods want to precondition gradients using information like singular values / curvature, but exact SVD-based updates are too expensive.
+
+ - We would like an update direction that behaves like “U Vᵀ” from an SVD, i.e., semi-orthogonal and not dominated by large singular values.
+
+ - The core idea of Muon in one or two sentences:
+
+ - Muon keeps a momentum-like running matrix, then repeatedly applies a simple polynomial transformation (a Newton–Schulz–style iteration) so that its singular values are pushed toward 1, approximating that semi-orthogonal “U Vᵀ” direction without doing a full SVD.
+
+2. Then give a brief roadmap (4–7 bullet points) of the main pieces of the story, all explicitly framed as supporting Muon, for example:
+
+ - From “optimizer recipe” with a chosen norm to the idea of spectral norm and semi-orthogonal updates.
+
+ - Shampoo and “Shampoo without accumulation” as the starting conceptual algorithm.
+
+ - Why computing the exact SVD-based direction is too expensive, and why an approximate direction is good enough.
+
+ - Newton–Schulz–style iterations as a way to adjust singular values toward 1.
+
+ - Odd polynomials that operate on singular values while keeping singular vectors fixed, and why that matters.
+
+ - Stability issues: why we need to normalize by something like the Frobenius norm so that singular values start in the right range and iterations don’t blow up.
+
+ - The final Muon update: momentum buffer, orthogonalization via polynomial iterations, weight update, and how the choice of polynomial coefficients affects behavior.
+
+End your first reply by asking me one short question to check my high-level understanding.
+
+After I respond, start with the first item in the roadmap (semi-orthogonal / spectral-norm view). Follow the roadmap in order.
+
+Step 2: For each part of the story
+
+When we are on a given part of the roadmap, teach it in four layers, but keep each message compact.
+
+1. Intuition tied to Muon
+
+ - In 1–2 short paragraphs, explain the idea in plain language and explicitly say how it supports Muon’s overall goal:
+
+ - Approximating a well-conditioned, semi-orthogonal update direction.
+
+ - Making steps more uniform across directions instead of being dominated by the largest singular value.
+
+ - Doing this without paying the full SVD cost.
+
+2. Key formal setup
+
+ - Introduce only the minimal notation you need, such as:
+
+ - A weight matrix and its gradient.
+
+ - The idea that you can factor a matrix into singular vectors and singular values.
+
+ - A momentum-like buffer that accumulates gradient information over time.
+
+ - A simple iteration that applies a polynomial in the matrix (for example, a combination of a linear term and a cubic term) to reshape singular values.
+
+ - Describe what each object means verbally (for example, “this buffer stores a smoothed version of recent gradients”, “this transformation tries to make all singular values close to 1 so the matrix behaves like a semi-orthogonal matrix”).
+
+ - You may show a very small symbolic expression or a short iteration rule, but keep it high-level and do not dump long formulas.
+
+3. Tiny numerical or conceptual example
+
+ - Give one very small example to illustrate the effect:
+
+ - For instance, a 2×2 matrix whose singular values are very different, and describe qualitatively what happens when you apply one or two polynomial iterations to it (the large singular value goes down, the small one goes up, etc.).
+
+ - Or a toy picture of “before” vs. “after” for singular values, and how that makes the update more uniform across directions.
+
+ - Keep this example to a few lines.
+
+4. Quick understanding check
+
+ - Ask me 1–2 short questions related to this part:
+
+ - At least one conceptual “why” question (for example: “Why is it good if all singular values are close to 1?” or “Why do we want a polynomial that keeps singular vectors but changes singular values?”).
+
+ - Optionally, a tiny computational or thought experiment question (for example: “What might go wrong if the singular values start out too large before applying the iteration?”).
+
+ - Then stop and wait for my answer.
+
+After, briefly remind me what the next stop in the Muon story is, and then proceed.
+
+Step 3: Muon-centered wrap-up
+
+When I say I’m ready to review or summarize:
+
+- Give a compact summary that keeps Muon at the center, explaining how:
+
+ - Starting from an “optimizer recipe” with a chosen norm leads to preferring semi-orthogonal directions (like U Vᵀ).
+
+ - Shampoo (and its non-accumulating variant) motivates this direction but is too expensive if done with an exact SVD.
+
+ - Newton–Schulz–style polynomial iterations let us approximate “replace all singular values by 1” using only matrix multiplications.
+
+ - Normalizing by something like the Frobenius norm ensures the singular values start in a safe range so the iterations stay stable.
+
+ - Muon wraps this into a practical algorithm: maintain a momentum buffer, apply a few iterations of a chosen polynomial to orthogonalize it, then use that to update the weights.
+
+Throughout the conversation, keep answers reasonably short, interactive, and always connected back to the central Muon story, so that the whole interaction feels like a focused tutoring session.
+
+Link to conversation:
+
+<a href="https://chatgpt.com/share/6933ad42-7bf4-8007-b500-f1bc59851bee" target="_blank" rel="noopener noreferrer">https://chatgpt.com/share/6933ad42-7bf4-8007-b500-f1bc59851bee</a>
+
+Assessment
+
+The good:
+
+Conceptually, the model’s output is very close to the actual lecture storyline. It correctly emphasized:
+
+The role of (UV^\top) as the “semi-orthogonal ideal” direction.
+
+
+
+The connection between Shampoo and this ideal (a hypothetical “Shampoo without accumulation” step).
+
+
+
+The idea that Newton–Schulz–like odd polynomials act as scalar functions on singular values, while preserving the singular vectors.
+
+
+
+The importance of normalizing the buffer so the polynomial iteration doesn’t blow up or collapse.
+
+I didn’t spot any major conceptual contradictions with the lecture. The main approximations were in the toy numerical examples (e.g., saying a singular value might move from 0.01 to “something like 0.2-0.5” after one step without actually computing it). That’s not “wrong” in a dangerous way, but it’s clearly hand-wavy.
+
+The bad:
+
+Repetitive concept checks.
+It kept asking essentially the same question in slightly different forms: “Why is it good if singular values are close to 1?” “Why do we want a well-conditioned update?” “Why is it useful that singular vectors stay the same?”
+These questions are reasonable the first time; by the third time, it felt redundant and didn’t add new understanding.
+
+
+
+Hand-wavy numbers in examples.
+In a few places it invented specific numeric values like “after one step this might be around 0.2-0.5” without actually computing the polynomial. This is minor, but it’s a reminder: whenever it gives specific numbers in these toy examples, treat them as qualitative (direction of change) rather than precise quantitative claims.
+
+
+
+Behavior when the user can’t really answer its questions.
+The prompt forces it to ask me a “concept check” every turn, but it doesn’t actually check my answers or detect if I’m confused. In our interaction it basically replied “Exactly” to everything and then continued. So if a student can’t answer, or answers something half-baked, the model will not push back on its own. The student has to explicitly tell the model to explain. It’s too “polite”to be a real grader for students.
+
+
+
+Overall, though, the interaction did not hallucinate big structural facts. The misbehavior was more minor.
+
+How this could help with learning
+
+In practice, this tool works well as a pre- or post-lecture companion:
+
+Before the lecture, we can run through Part 1-3 to get the high-level picture of “why semi-orthogonal,” “how Shampoo motivates the ideal,” and “why approximate is enough,” so we’re not seeing those ideas for the first time in class.
+
+After the lecture, we can use Parts 4-7 to re-derive the Newton–Schulz connection, the odd polynomial behavior, the normalization step, and the final Muon update rule, while the model keeps quizzing us.
+
+It can function as a self-paced interactive reading that is much closer to our actual lecture content than a random internet explanation. The main caveats are:
+
+Be aware it may ask very similar concept checks multiple times.
+
+Treat any made-up numbers in the tiny examples as qualitative intuition, not exact math.
+
+Remember it doesn’t really grade your answers. If you’re lost, you need to tell it explicitly to slow down or re-explain.
+
+Use it to structure understanding, but verify key equations and details against the lecture itself if you care about full rigor.</div>
+        </div>
+
+        
+    </div>
+</body>
+</html>

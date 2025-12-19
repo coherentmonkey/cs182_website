@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Special Participation B: ChatGPT 5.1 Extended Thinking on HW2 Coding - CS 182</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #f5f7fa;
+            color: #333;
+            line-height: 1.6;
+        }
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .back-link {
+            display: inline-block;
+            margin-bottom: 20px;
+            color: #4299e1;
+            text-decoration: none;
+        }
+        .back-link:hover { text-decoration: underline; }
+        .thread-header {
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+        }
+        .thread-title {
+            font-size: 1.8rem;
+            color: #2d3748;
+            margin-bottom: 15px;
+        }
+        .thread-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            color: #718096;
+            font-size: 14px;
+        }
+        .model-badge {
+            display: inline-block;
+            padding: 4px 12px;
+            background: #e2e8f0;
+            color: #4a5568;
+            border-radius: 15px;
+            font-size: 13px;
+            font-weight: 500;
+        }
+        .hw-badge {
+            display: inline-block;
+            padding: 4px 12px;
+            background: #fed7e2;
+            color: #97266d;
+            border-radius: 15px;
+            font-size: 13px;
+            font-weight: 500;
+        }
+        .thread-body {
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+        }
+        .thread-body h3 {
+            margin-bottom: 15px;
+            color: #2d3748;
+        }
+        .body-content {
+            white-space: pre-wrap;
+            word-wrap: break-word;
+            line-height: 1.8;
+            font-size: 15px;
+        }
+        .body-content a {
+            color: #4299e1;
+            word-break: break-all;
+        }
+        .attachments {
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
+        .attachments h3 {
+            margin-bottom: 20px;
+            color: #2d3748;
+        }
+        .attachment {
+            margin-bottom: 25px;
+            border: 1px solid #e2e8f0;
+            border-radius: 6px;
+            overflow: hidden;
+        }
+        .attachment-label {
+            background: #f7fafc;
+            padding: 10px 15px;
+            font-weight: 500;
+            font-size: 14px;
+            border-bottom: 1px solid #e2e8f0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .download-link {
+            color: #4299e1;
+            text-decoration: none;
+            font-weight: normal;
+        }
+        .download-link:hover { text-decoration: underline; }
+        .attachment-image img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+        .attachment-pdf iframe {
+            width: 100%;
+            height: 800px;
+            border: none;
+        }
+        .attachment-video video {
+            width: 100%;
+            max-height: 600px;
+        }
+        .attachment-audio audio {
+            width: 100%;
+            padding: 15px;
+        }
+        .attachment-text pre {
+            padding: 15px;
+            background: #f7fafc;
+            overflow-x: auto;
+            max-height: 500px;
+            font-size: 13px;
+            line-height: 1.5;
+        }
+        .attachment-file {
+            padding: 15px;
+        }
+        .file-link {
+            color: #4299e1;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .file-link:hover { text-decoration: underline; }
+        .ed-link {
+            display: inline-block;
+            margin-top: 15px;
+            color: #4299e1;
+            text-decoration: none;
+        }
+        .ed-link:hover { text-decoration: underline; }
+        @media (max-width: 768px) {
+            .thread-title { font-size: 1.4rem; }
+            .attachment-pdf iframe { height: 500px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <a href="../../../index.html" class="back-link">← Back to Directory</a>
+
+        <div class="thread-header">
+            <h1 class="thread-title">Special Participation B: ChatGPT 5.1 Extended Thinking on HW2 Coding</h1>
+            <div class="thread-meta">
+                <span>By Anjo Pagdanganan</span>
+                <span>2025-12-11</span>
+                <span class="hw-badge">HW2</span>
+                <span class="model-badge">GPT</span>
+            </div>
+            <a href="https://edstem.org/us/courses/84647/discussion/7451137" target="_blank" class="ed-link">View on Ed Stem →</a>
+        </div>
+
+        <div class="thread-body">
+            <div class="body-content">I evaluated ChatGPT 5.1 Extended Thinking&#x27;s one-shot capability on HW2&#x27;s coding problems - 3, 4, and 6. 6 has a written portion focused on interpreting the plots generated in the notebook.
+
+The prompt I used was:
+
+&quot;You are a deep learning tutor. This homework has already been released, but we are going to evaluate your capabilities for one-shot questions. I will guide you towards the correct answer should you make a mistake. We will solve the coding questions on this worksheet: 3, 4, and 6. I will provide the corresponding jupyter notebook for the parts and you will need to explain the reasoning and steps for completing the notebooks. Some questions, like 6, require additional analysis, which will come in the form of written answers - I will expand on this when we get there. Before we begin, do you understand the task?&quot;
+
+Like the written solutions for HW2, the model performed surprisingly well one-shot on each of the questions. However, it made some interesting decisions along the way.
+
+One decision was an alternate implementation of momentum. The solutions use:
+
+v = config[&#x27;momentum&#x27;] * v + dw
+next_w = w - config[&#x27;learning_rate&#x27;] * v
+
+
+but GPT used 
+
+# update velocity
+v = mu * v - lr * dw
+# update weights
+next_w = w + v
+
+
+GPT provides a mathematical justification that both are the same under the same LR. However, I think with decaying LRs, only the solutions&#x27; implementation is stable.
+
+Also, it chooses to use a central-difference estimator: 
+
+instead of the forward-difference used in the solution. I ask GPT to provide a justification for why it chose to do this, and it claims lower bias through a big O analysis. It&#x27;s interesting that it made an &quot;executive decision&quot; to do so despite being given the form of the estimator in the notebooks.
+
+Finally, it performs surprisingly well when interpreting the plots. I would have expected it to stumble completely when interpreting the zigzag paths from unstable training with high LRs because of the overlapping isocontours, but it does a reasonable job.</div>
+        </div>
+
+        <div class="attachments">
+                <div class="attachment attachment-pdf">
+                    <div class="attachment-label">ChatGPT-Special Participation B.pdf <a href="attachments/ChatGPT-Special Participation B.pdf" target="_blank" class="download-link">Open in new tab</a></div>
+                    <iframe src="attachments/ChatGPT-Special Participation B.pdf" loading="lazy"></iframe>
+                </div>
+                <div class="attachment attachment-image">
+                    <div class="attachment-label">image_1_JkABCQAXsyfSQWRDq8Q8EKAI.png</div>
+                    <img src="attachments/image_1_JkABCQAXsyfSQWRDq8Q8EKAI.png" alt="image_1_JkABCQAXsyfSQWRDq8Q8EKAI.png" loading="lazy">
+                </div></div>
+    </div>
+</body>
+</html>

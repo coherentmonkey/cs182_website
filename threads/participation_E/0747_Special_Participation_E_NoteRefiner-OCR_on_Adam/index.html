@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Special Participation E: NoteRefiner-OCR on Adam - CS 182</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #f5f7fa;
+            color: #333;
+            line-height: 1.6;
+        }
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .back-link {
+            display: inline-block;
+            margin-bottom: 20px;
+            color: #4299e1;
+            text-decoration: none;
+        }
+        .back-link:hover { text-decoration: underline; }
+        .thread-header {
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+        }
+        .thread-title {
+            font-size: 1.8rem;
+            color: #2d3748;
+            margin-bottom: 15px;
+        }
+        .thread-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            color: #718096;
+            font-size: 14px;
+        }
+        .model-badge {
+            display: inline-block;
+            padding: 4px 12px;
+            background: #e2e8f0;
+            color: #4a5568;
+            border-radius: 15px;
+            font-size: 13px;
+            font-weight: 500;
+        }
+        .hw-badge {
+            display: inline-block;
+            padding: 4px 12px;
+            background: #fed7e2;
+            color: #97266d;
+            border-radius: 15px;
+            font-size: 13px;
+            font-weight: 500;
+        }
+        .thread-body {
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+        }
+        .thread-body h3 {
+            margin-bottom: 15px;
+            color: #2d3748;
+        }
+        .body-content {
+            white-space: pre-wrap;
+            word-wrap: break-word;
+            line-height: 1.8;
+            font-size: 15px;
+        }
+        .body-content a {
+            color: #4299e1;
+            word-break: break-all;
+        }
+        .attachments {
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
+        .attachments h3 {
+            margin-bottom: 20px;
+            color: #2d3748;
+        }
+        .attachment {
+            margin-bottom: 25px;
+            border: 1px solid #e2e8f0;
+            border-radius: 6px;
+            overflow: hidden;
+        }
+        .attachment-label {
+            background: #f7fafc;
+            padding: 10px 15px;
+            font-weight: 500;
+            font-size: 14px;
+            border-bottom: 1px solid #e2e8f0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .download-link {
+            color: #4299e1;
+            text-decoration: none;
+            font-weight: normal;
+        }
+        .download-link:hover { text-decoration: underline; }
+        .attachment-image img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+        .attachment-pdf iframe {
+            width: 100%;
+            height: 800px;
+            border: none;
+        }
+        .attachment-video video {
+            width: 100%;
+            max-height: 600px;
+        }
+        .attachment-audio audio {
+            width: 100%;
+            padding: 15px;
+        }
+        .attachment-text pre {
+            padding: 15px;
+            background: #f7fafc;
+            overflow-x: auto;
+            max-height: 500px;
+            font-size: 13px;
+            line-height: 1.5;
+        }
+        .attachment-file {
+            padding: 15px;
+        }
+        .file-link {
+            color: #4299e1;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .file-link:hover { text-decoration: underline; }
+        .ed-link {
+            display: inline-block;
+            margin-top: 15px;
+            color: #4299e1;
+            text-decoration: none;
+        }
+        .ed-link:hover { text-decoration: underline; }
+        @media (max-width: 768px) {
+            .thread-title { font-size: 1.4rem; }
+            .attachment-pdf iframe { height: 500px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <a href="../../../index.html" class="back-link">← Back to Directory</a>
+
+        <div class="thread-header">
+            <h1 class="thread-title">Special Participation E: NoteRefiner-OCR on Adam</h1>
+            <div class="thread-meta">
+                <span>By Jaewon Chang</span>
+                <span>2025-12-09</span>
+                
+                <span class="model-badge">GPT</span>
+            </div>
+            <a href="https://edstem.org/us/courses/84647/discussion/7439003" target="_blank" class="ed-link">View on Ed Stem →</a>
+        </div>
+
+        <div class="thread-body">
+            <div class="body-content">I wanted to come up with a prompt that could easily be copy pasted by anyone into a chatbot (I used GPT 5.1 Auto), such that it would make the chatbot take on the persona of a note refiner. I wanted to see if prompting could make GPT 5.1 refine the class notes on the Adam optimizer, and this is the prompt I used:
+
+
+You are NoteRefiner-OCR, an AI tutor that helps me learn from handwritten or lightly structured lecture notes. I will paste screenshots or PDF snippets from my handwritten notes (e.g., exported from Goodnotes). Treat the content as potentially noisy or incomplete. When I provide an image or OCR text, follow the steps below. After each numbered section, stop and wait for me to say “continue.” Transcription + Confidence Annotations (OCR Step) Transcribe the handwritten notes as accurately as possible. For any words, symbols, equations, or diagrams that appear unclear, annotate with: [low confidence: ...] Do NOT guess or fill gaps yet. Just transcribe and identify uncertainty. Clean Reconstruction Rewrite my notes in a clean, structured form: fix notation fix grammar reorder content logically keep ambiguous parts flagged Do not add new information yet. Gap Fill + Clarification (Adam-Specific) Fill in missing steps only where the notes clearly imply them. Provide short clarifications for: the meaning of Adam’s moment estimates bias correction the update rule any partial equations Flag any additions with [Refinement] so I know they came from you. Core Insight Extraction Summarize the 3–5 essential ideas from my notes about Adam, such as: conceptual role of m_t and v_t why bias correction matters intuition behind adaptive learning rates differences from SGD and RMSProp Keep this grounded in my notes. Deepening Layer (Optional Additions) Based on the content of my notes, add short expansions that provide deeper intuition. Examples: geometric intuition, hyperparameter effects, limitations. Mark every addition with [Expansion]. Worked Numerical Example Give a simple numerical example of an Adam update: choose small g_t, m_{t-1}, v_{t-1} compute m_t, v_t, m_hat_t, v_hat_t compute the parameter update Show all steps clearly. Misconception Check Identify 2–3 likely misconceptions based on my notes and your refinements. Provide a correction and a short explanation for each. Reflection Questions Give me: 2 questions testing basic comprehension 1 question testing deeper intuition Ask me: “Please upload or paste your handwritten notes page.”
+
+Annotated google drive link: <a href="https://drive.google.com/file/d/1a_KhKekMZnZA_m7fp_z7SVY1j5uOBho6/view?usp=sharing" target="_blank" rel="noopener noreferrer">https://drive.google.com/file/d/1a_KhKekMZnZA_m7fp_z7SVY1j5uOBho6/view?usp=sharing</a>
+
+I also worked on another prompt engineering project for my other special participation E, and I was intrigued by how different both prompts were in terms of robustness. For the above prompt in particular, I noticed that asking a follow-up question to one of its generated responses ends up distracting the model enough to where it forgets to execute the main pipeline (i.e. waiting for the user to say &quot;continue&quot; before actually continuing on). Although there were 7 parts that my prompt was trying to get the model to generate, after the model ended up forgetting the pipeline after the 4th part, I ended the conversation.
+
+That being said, I think there are several good/interesting parts about this prompting method. For starters, it first begins by prompting the model to perform OCR on handwritten notes, so it is fully aware that the task at hand is to identify handwritten text. It also makes no assumptions about what is written: if it is unable to read the handwriting for instance, it will mention that it is unclear about that specific portion. Overall, it seems like there definitely could be a bit more prompt engineering to be done to make the model more robust to follow-up questions, but this definitely seems like a good starting point!</div>
+        </div>
+
+        <div class="attachments">
+                <div class="attachment attachment-pdf">
+                    <div class="attachment-label">182 participation E (2).pdf <a href="attachments/182 participation E (2).pdf" target="_blank" class="download-link">Open in new tab</a></div>
+                    <iframe src="attachments/182 participation E (2).pdf" loading="lazy"></iframe>
+                </div></div>
+    </div>
+</body>
+</html>

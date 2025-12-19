@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Special Participation A: Deepseek on HW 11 - CS 182</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #f5f7fa;
+            color: #333;
+            line-height: 1.6;
+        }
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .back-link {
+            display: inline-block;
+            margin-bottom: 20px;
+            color: #4299e1;
+            text-decoration: none;
+        }
+        .back-link:hover { text-decoration: underline; }
+        .thread-header {
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+        }
+        .thread-title {
+            font-size: 1.8rem;
+            color: #2d3748;
+            margin-bottom: 15px;
+        }
+        .thread-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            color: #718096;
+            font-size: 14px;
+        }
+        .model-badge {
+            display: inline-block;
+            padding: 4px 12px;
+            background: #e2e8f0;
+            color: #4a5568;
+            border-radius: 15px;
+            font-size: 13px;
+            font-weight: 500;
+        }
+        .hw-badge {
+            display: inline-block;
+            padding: 4px 12px;
+            background: #fed7e2;
+            color: #97266d;
+            border-radius: 15px;
+            font-size: 13px;
+            font-weight: 500;
+        }
+        .thread-body {
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+        }
+        .thread-body h3 {
+            margin-bottom: 15px;
+            color: #2d3748;
+        }
+        .body-content {
+            white-space: pre-wrap;
+            word-wrap: break-word;
+            line-height: 1.8;
+            font-size: 15px;
+        }
+        .body-content a {
+            color: #4299e1;
+            word-break: break-all;
+        }
+        .attachments {
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
+        .attachments h3 {
+            margin-bottom: 20px;
+            color: #2d3748;
+        }
+        .attachment {
+            margin-bottom: 25px;
+            border: 1px solid #e2e8f0;
+            border-radius: 6px;
+            overflow: hidden;
+        }
+        .attachment-label {
+            background: #f7fafc;
+            padding: 10px 15px;
+            font-weight: 500;
+            font-size: 14px;
+            border-bottom: 1px solid #e2e8f0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .download-link {
+            color: #4299e1;
+            text-decoration: none;
+            font-weight: normal;
+        }
+        .download-link:hover { text-decoration: underline; }
+        .attachment-image img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+        .attachment-pdf iframe {
+            width: 100%;
+            height: 800px;
+            border: none;
+        }
+        .attachment-video video {
+            width: 100%;
+            max-height: 600px;
+        }
+        .attachment-audio audio {
+            width: 100%;
+            padding: 15px;
+        }
+        .attachment-text pre {
+            padding: 15px;
+            background: #f7fafc;
+            overflow-x: auto;
+            max-height: 500px;
+            font-size: 13px;
+            line-height: 1.5;
+        }
+        .attachment-file {
+            padding: 15px;
+        }
+        .file-link {
+            color: #4299e1;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .file-link:hover { text-decoration: underline; }
+        .ed-link {
+            display: inline-block;
+            margin-top: 15px;
+            color: #4299e1;
+            text-decoration: none;
+        }
+        .ed-link:hover { text-decoration: underline; }
+        @media (max-width: 768px) {
+            .thread-title { font-size: 1.4rem; }
+            .attachment-pdf iframe { height: 500px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <a href="../../../index.html" class="back-link">← Back to Directory</a>
+
+        <div class="thread-header">
+            <h1 class="thread-title">Special Participation A: Deepseek on HW 11</h1>
+            <div class="thread-meta">
+                <span>By Daniel Kao</span>
+                <span>2025-12-08</span>
+                <span class="hw-badge">HW11</span>
+                <span class="model-badge">DeepSeek</span>
+            </div>
+            <a href="https://edstem.org/us/courses/84647/discussion/7426560" target="_blank" class="ed-link">View on Ed Stem →</a>
+        </div>
+
+        <div class="thread-body">
+            <div class="body-content">Link to the annotated transcript
+
+For this special participation, I used Deepseek 3.2 in DeepThink mode to solve the written portions of Homework 11. In my initial prompt I gave the model the full context of the entire homework file, and asked it to solve each question one by one, and offered corrections and directions when the LLM got a part wrong. This was not often necessary as Deepseek was able to one-shot the vast majority of the problems here.
+
+Most of the misconceptions or hallucinations in the model are in its numerical calculations and an incorrect assumptions of the givens in a problem. What was interesting was that the Deepseek model seems to actively avoid this sort of numerical calculation error by leaving answers unsimplified, forcing the user to use a deterministic calculation method to compute the final answer. The answers also often displayed notation inconsistencies such as changing variable names. Though the final result was still correct and interpretable, this may not always be the case, especially when the number of variables in a problem is large. 
+
+I was particularly intrigued by the model&#x27;s focus on conciseness, even when given a more abstract question that has a lot of runway for verbosity. This contrasts my experience with other LLMs like Gemini and ChatGPT, which tend to go into great detail about a problem&#x27;s context and the justification for their answer. This is not to say whether one chatbot is superior, but rather a difference in philosophy: is it better to give an answer that includes more context and detail, to the detriment of interpretability, or is it better to give an answer that is concise and straigthforward, to the detriment of nuance and context?
+
+Finally, I note a mistake I made when prompting the LLM, where I asked for elaboration on the wrong question. Rather than answer the question, the LLM was able to recognize that the question was nonsensical and hypothesized that I had mistyped my question. It then independently reasoned the intended question and answered based on that. To me, this represents a level of resistance to hallucinations, where the model is able to recognize when the framework it is given is faulty, and thus it is best to either not answer, or restructure the question to be well-formed.
+
+Link to LLM trace</div>
+        </div>
+
+        
+    </div>
+</body>
+</html>

@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Special Participation E: In-Progress Concept Helper for CS182 Learning - CS 182</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #f5f7fa;
+            color: #333;
+            line-height: 1.6;
+        }
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .back-link {
+            display: inline-block;
+            margin-bottom: 20px;
+            color: #4299e1;
+            text-decoration: none;
+        }
+        .back-link:hover { text-decoration: underline; }
+        .thread-header {
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+        }
+        .thread-title {
+            font-size: 1.8rem;
+            color: #2d3748;
+            margin-bottom: 15px;
+        }
+        .thread-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            color: #718096;
+            font-size: 14px;
+        }
+        .model-badge {
+            display: inline-block;
+            padding: 4px 12px;
+            background: #e2e8f0;
+            color: #4a5568;
+            border-radius: 15px;
+            font-size: 13px;
+            font-weight: 500;
+        }
+        .hw-badge {
+            display: inline-block;
+            padding: 4px 12px;
+            background: #fed7e2;
+            color: #97266d;
+            border-radius: 15px;
+            font-size: 13px;
+            font-weight: 500;
+        }
+        .thread-body {
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+        }
+        .thread-body h3 {
+            margin-bottom: 15px;
+            color: #2d3748;
+        }
+        .body-content {
+            white-space: pre-wrap;
+            word-wrap: break-word;
+            line-height: 1.8;
+            font-size: 15px;
+        }
+        .body-content a {
+            color: #4299e1;
+            word-break: break-all;
+        }
+        .attachments {
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
+        .attachments h3 {
+            margin-bottom: 20px;
+            color: #2d3748;
+        }
+        .attachment {
+            margin-bottom: 25px;
+            border: 1px solid #e2e8f0;
+            border-radius: 6px;
+            overflow: hidden;
+        }
+        .attachment-label {
+            background: #f7fafc;
+            padding: 10px 15px;
+            font-weight: 500;
+            font-size: 14px;
+            border-bottom: 1px solid #e2e8f0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .download-link {
+            color: #4299e1;
+            text-decoration: none;
+            font-weight: normal;
+        }
+        .download-link:hover { text-decoration: underline; }
+        .attachment-image img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+        .attachment-pdf iframe {
+            width: 100%;
+            height: 800px;
+            border: none;
+        }
+        .attachment-video video {
+            width: 100%;
+            max-height: 600px;
+        }
+        .attachment-audio audio {
+            width: 100%;
+            padding: 15px;
+        }
+        .attachment-text pre {
+            padding: 15px;
+            background: #f7fafc;
+            overflow-x: auto;
+            max-height: 500px;
+            font-size: 13px;
+            line-height: 1.5;
+        }
+        .attachment-file {
+            padding: 15px;
+        }
+        .file-link {
+            color: #4299e1;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .file-link:hover { text-decoration: underline; }
+        .ed-link {
+            display: inline-block;
+            margin-top: 15px;
+            color: #4299e1;
+            text-decoration: none;
+        }
+        .ed-link:hover { text-decoration: underline; }
+        @media (max-width: 768px) {
+            .thread-title { font-size: 1.4rem; }
+            .attachment-pdf iframe { height: 500px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <a href="../../../index.html" class="back-link">← Back to Directory</a>
+
+        <div class="thread-header">
+            <h1 class="thread-title">Special Participation E: In-Progress Concept Helper for CS182 Learning</h1>
+            <div class="thread-meta">
+                <span>By William Li</span>
+                <span>2025-12-06</span>
+                
+                <span class="model-badge">GPT</span>
+            </div>
+            <a href="https://edstem.org/us/courses/84647/discussion/7415561" target="_blank" class="ed-link">View on Ed Stem →</a>
+        </div>
+
+        <div class="thread-body">
+            <div class="body-content">In this special participation, I explored how we can use AI tools to give us guided hints, rather than directly giving us the answers to a problem. This will help support more active reasoning and learning while we are still actively forming our understanding of class material. 
+
+Here is the prompt that I started out with:
+ROLE: You are an AI learning coach for CS182 concepts (deep learning + society).
+
+When I provide:
+- A question about course material
+- My current in-progress reasoning
+- Optionally, a note about what I am confused about
+You must:
+
+- NOT provide a final answer
+
+- Ask up to 3 guiding questions that help me think
+
+- Highlight unclear or incorrect reasoning with gentle hints
+
+- Encourage me to revise my understanding first
+
+- Only summarize or explain fully *after* I try again
+
+Maintain correctness, avoid hallucination, and support metacognition.
+
+
+I tried this out with questions from homework 9 with a solution partly filled in (although any questions from any source would do). 
+
+First, I tried out the prompt for HW9 Q1, which is a relatively simple calculation question, and for the most part the model was able to use the images I sent of my work to discern where I was in the problem. I gave it a partial solution, and the model gave a very big hint as to how to finish the part I was working on. Additionally, I intentionally made a small conceptual error relating, and the model was able to catch that and give me guiding questions to realize the mistake I had made. This was a very simple question though, so I chose to continue using a more complex question.
+
+I then tried a more computationally complicated question from homework 4, and it was also able to help a lot in deriving the answer. When my answer wasn’t in the form of the official solutions exactly, I prompted the model saying that maybe my answer wasn’t exactly right or is too complicated looking, and the model made the pattern recognition needed to simplify my answer to the official solution’s answer. 
+
+Overall, this experiment showed that AI can be genuinely helpful when framed as a guided learning partner rather than a solution engine. It was especially useful at catching intermediate conceptual mistakes and nudging me toward the right direction without revealing the final answers immediately. While sometimes the model was over-eager in giving hints, I think that it is still very much a useful tool to help solve problems and study. Some suggestions to using this is to make sure that when you send your written work to the model, try to keep it in the proper orientation, and not have the text be too small, especially if handwriting isn’t the best. 
+
+Trace: <a href="https://chatgpt.com/share/69348099-8d98-8001-b717-d316a6897a8b" target="_blank" rel="noopener noreferrer">https://chatgpt.com/share/69348099-8d98-8001-b717-d316a6897a8b</a>
+
+Annotated Trace:</div>
+        </div>
+
+        <div class="attachments">
+                <div class="attachment attachment-pdf">
+                    <div class="attachment-label">CS182 learning coach (1).pdf <a href="attachments/CS182 learning coach (1).pdf" target="_blank" class="download-link">Open in new tab</a></div>
+                    <iframe src="attachments/CS182 learning coach (1).pdf" loading="lazy"></iframe>
+                </div></div>
+    </div>
+</body>
+</html>

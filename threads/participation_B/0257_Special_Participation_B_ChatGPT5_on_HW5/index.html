@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Special Participation B: ChatGPT5 on HW5 - CS 182</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #f5f7fa;
+            color: #333;
+            line-height: 1.6;
+        }
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .back-link {
+            display: inline-block;
+            margin-bottom: 20px;
+            color: #4299e1;
+            text-decoration: none;
+        }
+        .back-link:hover { text-decoration: underline; }
+        .thread-header {
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+        }
+        .thread-title {
+            font-size: 1.8rem;
+            color: #2d3748;
+            margin-bottom: 15px;
+        }
+        .thread-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            color: #718096;
+            font-size: 14px;
+        }
+        .model-badge {
+            display: inline-block;
+            padding: 4px 12px;
+            background: #e2e8f0;
+            color: #4a5568;
+            border-radius: 15px;
+            font-size: 13px;
+            font-weight: 500;
+        }
+        .hw-badge {
+            display: inline-block;
+            padding: 4px 12px;
+            background: #fed7e2;
+            color: #97266d;
+            border-radius: 15px;
+            font-size: 13px;
+            font-weight: 500;
+        }
+        .thread-body {
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+        }
+        .thread-body h3 {
+            margin-bottom: 15px;
+            color: #2d3748;
+        }
+        .body-content {
+            white-space: pre-wrap;
+            word-wrap: break-word;
+            line-height: 1.8;
+            font-size: 15px;
+        }
+        .body-content a {
+            color: #4299e1;
+            word-break: break-all;
+        }
+        .attachments {
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
+        .attachments h3 {
+            margin-bottom: 20px;
+            color: #2d3748;
+        }
+        .attachment {
+            margin-bottom: 25px;
+            border: 1px solid #e2e8f0;
+            border-radius: 6px;
+            overflow: hidden;
+        }
+        .attachment-label {
+            background: #f7fafc;
+            padding: 10px 15px;
+            font-weight: 500;
+            font-size: 14px;
+            border-bottom: 1px solid #e2e8f0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .download-link {
+            color: #4299e1;
+            text-decoration: none;
+            font-weight: normal;
+        }
+        .download-link:hover { text-decoration: underline; }
+        .attachment-image img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+        .attachment-pdf iframe {
+            width: 100%;
+            height: 800px;
+            border: none;
+        }
+        .attachment-video video {
+            width: 100%;
+            max-height: 600px;
+        }
+        .attachment-audio audio {
+            width: 100%;
+            padding: 15px;
+        }
+        .attachment-text pre {
+            padding: 15px;
+            background: #f7fafc;
+            overflow-x: auto;
+            max-height: 500px;
+            font-size: 13px;
+            line-height: 1.5;
+        }
+        .attachment-file {
+            padding: 15px;
+        }
+        .file-link {
+            color: #4299e1;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .file-link:hover { text-decoration: underline; }
+        .ed-link {
+            display: inline-block;
+            margin-top: 15px;
+            color: #4299e1;
+            text-decoration: none;
+        }
+        .ed-link:hover { text-decoration: underline; }
+        @media (max-width: 768px) {
+            .thread-title { font-size: 1.4rem; }
+            .attachment-pdf iframe { height: 500px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <a href="../../../index.html" class="back-link">← Back to Directory</a>
+
+        <div class="thread-header">
+            <h1 class="thread-title">Special Participation B: ChatGPT5 on HW5</h1>
+            <div class="thread-meta">
+                <span>By Ruizhe Song</span>
+                <span>2025-11-09</span>
+                <span class="hw-badge">HW5</span>
+                <span class="model-badge">GPT</span>
+            </div>
+            <a href="https://edstem.org/us/courses/84647/discussion/7280264" target="_blank" class="ed-link">View on Ed Stem →</a>
+        </div>
+
+        <div class="thread-body">
+            <div class="body-content">I interactively engaged ChatGPT5 on the coding parts of Homework 5. Overall, the model was able to provide correct code implementations in almost every problem, even if it ignore some small points such as inverse a possible singular matrix, it can fix the bug with the error information easily.
+
+Strategies: I first clarified the main role that GPT was expected to perform and illustrated the evaluation rubrics for its answers. Then, I do the following steps:
+
+Step 1: Provide Gemini with problem background and basic description.
+
+Step 2: Give the necessary code for it to implement or the output of a cell for it to analyze.
+
+Step 3: Collect the answers and give it feedback. If the answer was incorrect, or have small bugs inside, I provide hints to guide it to fix the original answer, and repeat until the response was correct or it seems to have no chance of fixing it.
+
+Step 4: Repeat Steps 1–3 for all homework problems.
+
+Core Observations:
+
+1. ChatGPT has wonderful code completion ability even its prompt is only based on part of the whole JupyterNotebook. Almost all the generated codes are correct at the first time and can easily run on the colab homework. 
+
+2. ChatGPT also have great debug ability simply with the hints from the error information of the code cell’s output. There was a time when it generated a singular matrix and tried to inverse it. And it quickly fixed the problem by modifying the line causing the matrix to be singular.
+
+3. ChatGPT can even answer some questions which requires the result from the code cell, though it can’t actually run it. In other words, it generates the correct answer which should be output by the correctly implemented code cell. As an LLM, this is amazing.
+
+4. However, when I keep testing the ability listed above, GPT began to make some mistakes especially when the question is related to a specific number. I think GPT can derive some simple code cell’s output from a mathematical way, like solving a written problem. But can not handle complex codes.
+
+For the code analysis questions, I provided GPT with some curve images which are necessary. And GPT can derive good intuition from the results such as the loss curve.
+
+Here&#x27;s my chatting log: <a href="https://chatgpt.com/share/691038f2-af08-800f-bc33-ed03352ab4c0" target="_blank" rel="noopener noreferrer">https://chatgpt.com/share/691038f2-af08-800f-bc33-ed03352ab4c0</a>
+
+And the simplified pdf version with my comments:</div>
+        </div>
+
+        <div class="attachments">
+                <div class="attachment attachment-pdf">
+                    <div class="attachment-label">hw5-participationB-ChatGPT5-comments.pdf <a href="attachments/hw5-participationB-ChatGPT5-comments.pdf" target="_blank" class="download-link">Open in new tab</a></div>
+                    <iframe src="attachments/hw5-participationB-ChatGPT5-comments.pdf" loading="lazy"></iframe>
+                </div></div>
+    </div>
+</body>
+</html>

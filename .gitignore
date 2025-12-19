@@ -1,0 +1,14 @@
+# Environment and cache
+.env
+__pycache__/
+*.pyc
+
+# Python scripts (not needed for static site)
+*.py
+
+# Intermediate data files (not needed for static site)
+analysis_cache.json
+notable_threads_*.json
+participation_e_categories.json
+thread_topics.json
+topic_rankings.json

@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Special Participation E: Full AI-generated LaTeX Course Notes - CS 182</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #f5f7fa;
+            color: #333;
+            line-height: 1.6;
+        }
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .back-link {
+            display: inline-block;
+            margin-bottom: 20px;
+            color: #4299e1;
+            text-decoration: none;
+        }
+        .back-link:hover { text-decoration: underline; }
+        .thread-header {
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+        }
+        .thread-title {
+            font-size: 1.8rem;
+            color: #2d3748;
+            margin-bottom: 15px;
+        }
+        .thread-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            color: #718096;
+            font-size: 14px;
+        }
+        .model-badge {
+            display: inline-block;
+            padding: 4px 12px;
+            background: #e2e8f0;
+            color: #4a5568;
+            border-radius: 15px;
+            font-size: 13px;
+            font-weight: 500;
+        }
+        .hw-badge {
+            display: inline-block;
+            padding: 4px 12px;
+            background: #fed7e2;
+            color: #97266d;
+            border-radius: 15px;
+            font-size: 13px;
+            font-weight: 500;
+        }
+        .thread-body {
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+        }
+        .thread-body h3 {
+            margin-bottom: 15px;
+            color: #2d3748;
+        }
+        .body-content {
+            white-space: pre-wrap;
+            word-wrap: break-word;
+            line-height: 1.8;
+            font-size: 15px;
+        }
+        .body-content a {
+            color: #4299e1;
+            word-break: break-all;
+        }
+        .attachments {
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
+        .attachments h3 {
+            margin-bottom: 20px;
+            color: #2d3748;
+        }
+        .attachment {
+            margin-bottom: 25px;
+            border: 1px solid #e2e8f0;
+            border-radius: 6px;
+            overflow: hidden;
+        }
+        .attachment-label {
+            background: #f7fafc;
+            padding: 10px 15px;
+            font-weight: 500;
+            font-size: 14px;
+            border-bottom: 1px solid #e2e8f0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .download-link {
+            color: #4299e1;
+            text-decoration: none;
+            font-weight: normal;
+        }
+        .download-link:hover { text-decoration: underline; }
+        .attachment-image img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+        .attachment-pdf iframe {
+            width: 100%;
+            height: 800px;
+            border: none;
+        }
+        .attachment-video video {
+            width: 100%;
+            max-height: 600px;
+        }
+        .attachment-audio audio {
+            width: 100%;
+            padding: 15px;
+        }
+        .attachment-text pre {
+            padding: 15px;
+            background: #f7fafc;
+            overflow-x: auto;
+            max-height: 500px;
+            font-size: 13px;
+            line-height: 1.5;
+        }
+        .attachment-file {
+            padding: 15px;
+        }
+        .file-link {
+            color: #4299e1;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .file-link:hover { text-decoration: underline; }
+        .ed-link {
+            display: inline-block;
+            margin-top: 15px;
+            color: #4299e1;
+            text-decoration: none;
+        }
+        .ed-link:hover { text-decoration: underline; }
+        @media (max-width: 768px) {
+            .thread-title { font-size: 1.4rem; }
+            .attachment-pdf iframe { height: 500px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <a href="../../../index.html" class="back-link">← Back to Directory</a>
+
+        <div class="thread-header">
+            <h1 class="thread-title">Special Participation E: Full AI-generated LaTeX Course Notes</h1>
+            <div class="thread-meta">
+                <span>By Jason Lee</span>
+                <span>2025-12-17</span>
+                
+                <span class="model-badge">Unknown</span>
+            </div>
+            <a href="https://edstem.org/us/courses/84647/discussion/7476069" target="_blank" class="ed-link">View on Ed Stem →</a>
+        </div>
+
+        <div class="thread-body">
+            <div class="body-content">I used Jameson&#x27;s lecture note converter to convert the handwritten course notes to LaTeX for all 27 lectures. I can&#x27;t find his post otherwise I&#x27;d mention it to give him credit. Basically it uses the following Python code and combines the lecture slides with the YouTube audio transcript. I slightly modified his code to not paste the API key directly in the script and instead use dotenv:
+
+I also elegantly formatted them in a more note-like structure with a table of contents, custom headers and section numbers corresponding to the lecture number.
+
+Here&#x27;s the notes if you want to pass them down to your friends who take the course in the future. I can get you the .tex files if you&#x27;re interested as well.</div>
+        </div>
+
+        <div class="attachments">
+                <div class="attachment attachment-pdf">
+                    <div class="attachment-label">182_lectures_0_to_9.pdf <a href="attachments/182_lectures_0_to_9.pdf" target="_blank" class="download-link">Open in new tab</a></div>
+                    <iframe src="attachments/182_lectures_0_to_9.pdf" loading="lazy"></iframe>
+                </div>
+                <div class="attachment attachment-pdf">
+                    <div class="attachment-label">182_lectures_10_to_19.pdf <a href="attachments/182_lectures_10_to_19.pdf" target="_blank" class="download-link">Open in new tab</a></div>
+                    <iframe src="attachments/182_lectures_10_to_19.pdf" loading="lazy"></iframe>
+                </div>
+                <div class="attachment attachment-pdf">
+                    <div class="attachment-label">182_lectures_20_to_27.pdf <a href="attachments/182_lectures_20_to_27.pdf" target="_blank" class="download-link">Open in new tab</a></div>
+                    <iframe src="attachments/182_lectures_20_to_27.pdf" loading="lazy"></iframe>
+                </div>
+                    <div class="attachment attachment-text">
+                        <div class="attachment-label">generate.py <a href="attachments/generate.py" target="_blank" class="download-link">Download</a></div>
+                        <pre><code>from io import BytesIO
+from google import genai
+from google.genai.types import Part
+from pdf2image import convert_from_path
+from tqdm import tqdm
+from dotenv import load_dotenv
+import os
+
+load_dotenv()
+
+def pdf_to_images(pdf_path):
+    print(f&quot;Converting PDF to images: {pdf_path}&quot;)
+    images = convert_from_path(pdf_path, dpi=300)
+    print(f&quot;Successfully converted {len(images)} pages to images&quot;)
+    
+    return images
+
+def read_transcript(txt_path):
+    with open(txt_path, &#x27;r&#x27;, encoding=&#x27;utf-8&#x27;) as f:
+        content = f.read()
+    print(f&quot;Successfully read transcript from {txt_path}&quot;)
+    
+    return content
+
+def image_to_bytes(image):
+    buffered = BytesIO()
+    image.save(buffered, format=&quot;PNG&quot;)
+
+    return buffered.getvalue()
+
+def call_gemini_api(images, transcript, GEMINI_API_KEY):
+    client = genai.Client(api_key=GEMINI_API_KEY)
+    
+    prompt = &quot;&quot;&quot;
+    Attached are the lecture video transcript and slides for CS 182, Deep Neural Networks. 
+    I want you to:
+
+    1. clean up the transcript, adjusting any typos
+    2. think about how the transcript aligns with the notes
+    3. create comprehensive notes that cover the entire lecture, such that I can read it and obtain the same information as watching the lecture
+    
+    Output the notes ONLY in academic latex format. 
+    Do not include any other text or formatting. 
+    As much content from the slides as possible should be included in the notes, supplemented by the transcript. 
+    Do not include images in the output, and don&#x27;t include a date.
+
+    Here is the transcript:
+
+    &quot;&quot;&quot; + transcript
+    
+    print(&quot;Attaching images to prompt...&quot;)
+    contents = [prompt]
+    for image in tqdm(images):
+        image_bytes = image_to_bytes(image)
+        contents.append(
+            Part.from_bytes(
+                data=image_bytes,
+                mime_type=&quot;image/png&quot;
+            )
+        )
+    
+    print(&quot;Calling Gemini API...&quot;)
+
+    response = client.models.generate_content(
+        model=&quot;gemini-2.5-pro&quot;,
+        contents=contents
+    )
+    result = response.text
+    print(&quot;Successfully received response from Gemini API&quot;)
+
+    return result
+
+def clean_latex_output(content):
+    content = content.lstrip()
+    if content.startswith(&quot;```latex&quot;):
+        content = content[8:].lstrip()
+    elif content.startswith(&quot;```&quot;):
+        content = content[3:].lstrip()
+    
+    content = content.rstrip()
+    if content.endswith(&quot;```&quot;):
+        content = content[:-3].rstrip()
+    
+    return content
+
+def save_latex_output(content, output_path):
+    content = clean_latex_output(content)
+    
+    with open(output_path, &#x27;w&#x27;, encoding=&#x27;utf-8&#x27;) as f:
+        f.write(content)
+    print(f&quot;Successfully saved LaTeX output to {output_path}&quot;)
+
+
+if __name__ == &quot;__main__&quot;:
+    lec = &quot;4&quot;
+
+    # List of PDF files for this lecture (can be one or multiple)
+    PDF_FILES = [
+        f&quot;pdfs/{lec}.pdf&quot;
+    ]
+
+    TXT_FILE = &quot;transcripts/&quot; + lec + &quot;.txt&quot;
+    OUTPUT_FILE = &quot;latex/&quot; + lec + &quot;.tex&quot;
+    GEMINI_API_KEY = os.environ[&quot;GOOGLE_API_KEY&quot;]
+
+    # Convert all PDFs to images and combine them
+    all_images = []
+    for pdf_file in PDF_FILES:
+        images = pdf_to_images(pdf_file)
+        all_images.extend(images)
+
+    print(f&quot;Total images from all PDFs: {len(all_images)}&quot;)
+
+    transcript = read_transcript(TXT_FILE)
+
+    latex_content = call_gemini_api(all_images, transcript, GEMINI_API_KEY)
+
+    save_latex_output(latex_content, OUTPUT_FILE)</code></pre>
+                    </div></div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Special Participation E: Staff Notebook Deep-Dive &amp; Code Review Tutor using ChatGPT Study Mode - CS 182</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #f5f7fa;
+            color: #333;
+            line-height: 1.6;
+        }
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .back-link {
+            display: inline-block;
+            margin-bottom: 20px;
+            color: #4299e1;
+            text-decoration: none;
+        }
+        .back-link:hover { text-decoration: underline; }
+        .thread-header {
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+        }
+        .thread-title {
+            font-size: 1.8rem;
+            color: #2d3748;
+            margin-bottom: 15px;
+        }
+        .thread-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            color: #718096;
+            font-size: 14px;
+        }
+        .model-badge {
+            display: inline-block;
+            padding: 4px 12px;
+            background: #e2e8f0;
+            color: #4a5568;
+            border-radius: 15px;
+            font-size: 13px;
+            font-weight: 500;
+        }
+        .hw-badge {
+            display: inline-block;
+            padding: 4px 12px;
+            background: #fed7e2;
+            color: #97266d;
+            border-radius: 15px;
+            font-size: 13px;
+            font-weight: 500;
+        }
+        .thread-body {
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+        }
+        .thread-body h3 {
+            margin-bottom: 15px;
+            color: #2d3748;
+        }
+        .body-content {
+            white-space: pre-wrap;
+            word-wrap: break-word;
+            line-height: 1.8;
+            font-size: 15px;
+        }
+        .body-content a {
+            color: #4299e1;
+            word-break: break-all;
+        }
+        .attachments {
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
+        .attachments h3 {
+            margin-bottom: 20px;
+            color: #2d3748;
+        }
+        .attachment {
+            margin-bottom: 25px;
+            border: 1px solid #e2e8f0;
+            border-radius: 6px;
+            overflow: hidden;
+        }
+        .attachment-label {
+            background: #f7fafc;
+            padding: 10px 15px;
+            font-weight: 500;
+            font-size: 14px;
+            border-bottom: 1px solid #e2e8f0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .download-link {
+            color: #4299e1;
+            text-decoration: none;
+            font-weight: normal;
+        }
+        .download-link:hover { text-decoration: underline; }
+        .attachment-image img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+        .attachment-pdf iframe {
+            width: 100%;
+            height: 800px;
+            border: none;
+        }
+        .attachment-video video {
+            width: 100%;
+            max-height: 600px;
+        }
+        .attachment-audio audio {
+            width: 100%;
+            padding: 15px;
+        }
+        .attachment-text pre {
+            padding: 15px;
+            background: #f7fafc;
+            overflow-x: auto;
+            max-height: 500px;
+            font-size: 13px;
+            line-height: 1.5;
+        }
+        .attachment-file {
+            padding: 15px;
+        }
+        .file-link {
+            color: #4299e1;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .file-link:hover { text-decoration: underline; }
+        .ed-link {
+            display: inline-block;
+            margin-top: 15px;
+            color: #4299e1;
+            text-decoration: none;
+        }
+        .ed-link:hover { text-decoration: underline; }
+        @media (max-width: 768px) {
+            .thread-title { font-size: 1.4rem; }
+            .attachment-pdf iframe { height: 500px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <a href="../../../index.html" class="back-link">← Back to Directory</a>
+
+        <div class="thread-header">
+            <h1 class="thread-title">Special Participation E: Staff Notebook Deep-Dive &amp; Code Review Tutor using ChatGPT Study Mode</h1>
+            <div class="thread-meta">
+                <span>By Faiaz Khan</span>
+                <span>2025-11-28</span>
+                
+                <span class="model-badge">GPT</span>
+            </div>
+            <a href="https://edstem.org/us/courses/84647/discussion/7372401" target="_blank" class="ed-link">View on Ed Stem →</a>
+        </div>
+
+        <div class="thread-body">
+            <div class="body-content">What this is:
+We often get staff solution notebooks that are 100% correct but not necessarily the best examples of Python or ML engineering practices. I made a reusable prompt that turns ChatGPT  into:
+
+a tutor that explains the solution code,
+
+a Socratic “what if we changed this line?” partner, and
+
+a code reviewer that critiques style, structure, and engineering practices.
+
+How to use it:
+
+Open ChatGPT and enable Study Mode.
+
+Start a new chat and upload the .ipynb with the staff solution.
+
+Paste the big prompt below.
+
+Optionally tell it your comfort level with Python / ML.
+
+Let it walk you through:
+
+an overview of the problem and solution,
+
+interactive what-if questions about code changes,
+
+and a software-engineering critique plus suggested refactors.
+
+Prompt:
+
+You are an AI tutor and code reviewer for a Jupyter notebook that contains:
+
+- a coding / ML problem,
+- and the staff-provided solution (and possibly some tests or helper code).
+
+Your goals:
+(1) Help me deeply understand the staff solution.
+(2) Actively quiz me with “what-if” code modification questions.
+(3) Critique the solution as a piece of software / ML engineering, not just as a correct answer.
+
+I will upload a .ipynb file. Please work in the following phases.
+
+########################
+PHASE 0 — ORIENT YOURSELF
+########################
+
+After reading the notebook:
+
+1. Identify and briefly summarize:
+   - The **problem statement** (in your own words).
+   - Where the **main staff solution** lives (e.g., which cell / which function).
+   - Any **supporting code** (helpers, tests, imports, plotting, etc.).
+
+2. Output a short overview like:
+
+   - Problem: [...]
+   - Main solution entry point: [...]
+   - Key helper functions: [...]
+   - Tests / demo cells: [...]
+
+If anything is ambiguous, say so instead of guessing.
+
+########################
+PHASE 1 — EXPLAIN THE SOLUTION
+########################
+
+Assume I am a student who:
+- knows basic Python,
+- is familiar with lists/dicts/functions/loops,
+- but may *not* know the specific algorithm or ML technique yet.
+
+Do the following:
+
+1. **High-level explanation (3–7 sentences)**  
+   - What is the core idea of the solution?
+   - What algorithm / pattern does it implement (e.g., DP, DFS, greedy, training loop, etc.)?
+
+2. **Guided code walkthrough**  
+   - Walk through the main solution function or cell **top-down**.
+   - Group lines into logical chunks instead of line-by-line noise.
+   - For each chunk, explain:
+     - what it does,
+     - why it’s needed,
+     - how it connects to the problem definition.
+
+3. **Complexity / behavior**  
+   - State the time and space complexity if meaningful.
+   - Mention any tradeoffs (e.g., readability vs performance, memory vs speed).
+
+Keep this phase mostly explanatory, with occasional quick checks like:
+&gt; “Can you tell me in your own words what this loop is doing before I explain it?”
+
+########################
+PHASE 2 — INTERACTIVE “WHAT IF?” QUESTIONS
+########################
+
+Now I want you to test and deepen my understanding by asking questions about code changes.
+
+1. Ask **3–6 “what if” questions** such as:
+   - “What do you think happens if we remove this condition?”
+   - “If we change this list to a set, how does that affect correctness and complexity?”
+   - “What if we change the iteration order here?”
+   - “What if we initialize this variable differently?”
+
+2. For each question:
+   - Wait for my answer first.
+   - Then:
+     - say what *would* actually happen (behavior / correctness / performance),
+     - and tie it back to the underlying concept or invariant.
+
+3. Start with simpler changes (e.g., altering a constant or print) and
+   move toward more subtle ones (e.g., off-by-one edges, shared mutable state, ML training details).
+
+If the code involves randomness or ML training:
+- Ask at least one question about seeds, reproducibility, or how hyperparameters show up in the code.
+
+########################
+PHASE 3 — SOFTWARE / ML ENGINEERING CRITIQUE
+########################
+
+Now critique the staff solution as if you were a senior software or ML engineer reviewing it.
+
+1. **Style &amp; Pythonic-ness**
+   - Comment on:
+     - naming (variables, functions),
+     - function length and cohesion,
+     - use of built-in functions / libraries,
+     - avoiding repetition,
+     - clarity vs cleverness.
+   - Point out at least 3–5 concrete improvements, such as:
+     - “This nested if could be simplified.”
+     - “This magic number should be a named constant.”
+     - “This could use a context manager / list comprehension / enumerate, etc.”
+
+2. **Structure &amp; modularity**
+   - Is the solution written as one big cell, or decomposed into testable functions?
+   - Could it benefit from:
+     - helper functions,
+     - separating pure logic from I/O,
+     - or separating data loading / config from core algorithm?
+
+3. **Documentation &amp; comments**
+   - Are there docstrings or comments explaining key decisions?
+   - Suggest where short comments or docstrings would significantly improve readability.
+   - Optionally sketch an example docstring for the main function (using a standard style like NumPy or Google style).
+
+4. **Testing &amp; edge cases**
+   - Does the notebook include tests or sample runs?
+   - What edge cases might be missing?
+   - Propose **3–5 simple test cases** that would be good to add (in plain English or as Python snippets).
+
+5. **ML engineering (if applicable)**
+   - If the notebook includes any training/eval code:
+     - Comment on:
+       - seeding / reproducibility,
+       - separation of config (hyperparameters) from code,
+       - logging / metrics,
+       - handling of train/val/test,
+       - use of vectorization vs for-loops.
+     - Suggest at least a couple of improvements (e.g., “move these constants to a config dict,” “use a random seed,” etc.).
+
+6. **Concrete improved snippet(s)**
+   - Choose ONE small function or core block from the staff solution.
+   - Show:
+     - “Original version” (copied and possibly shortened)
+     - “Improved version” (your more Pythonic / maintainable rewrite)
+   - Explain in 3–5 bullets what changed and why it’s better (clarity, safety, extensibility, etc.).
+
+IMPORTANT:
+- Do NOT rewrite the entire notebook unless I explicitly ask.
+- Focus on *illustrative* improvements that a student can learn from.
+
+########################
+PHASE 4 — SUMMARY &amp; ACTIONABLE NEXT STEPS
+########################
+
+Finish by giving me:
+
+1. A **conceptual summary**:
+   - 3–6 bullets summarizing:
+     - the algorithm / method used,
+     - the key ideas in the implementation,
+     - and the main software-engineering lessons.
+
+2. A **mini checklist** of things I could do on my own:
+   - e.g., 
+     - “Refactor the main function into two helpers,”
+     - “Add tests for these edge cases,”
+     - “Rewrite this loop using a more Pythonic construct.”
+
+3. Ask me:
+   - “Which part of this notebook do you feel you understand the least?”
+   - “Do you want to zoom in further on a particular function or cell?”
+
+########################
+STYLE &amp; SAFETY
+########################
+
+- Be direct but encouraging; assume I am capable of understanding serious critique.
+- Don’t just say “this is bad”; explain *why* and how to improve it.
+- If you are inferring intent that is not explicit in the notebook, make that clear:
+  &gt; “I’m inferring that this function is meant to do X based on Y; if that’s wrong, let’s adjust.”
+- Avoid hallucinating details that don’t appear in the notebook. If something is unclear, say so.
+
+
+
+My annotated chat:
+I tried this on the staff solution for Homework 7 RNN LSTM implementation. Here’s my annotated chat trace (PDF):
+
+<a href="https://chatgpt.com/share/69295e36-3fd4-8010-9710-56a0c2e28752" target="_blank" rel="noopener noreferrer">https://chatgpt.com/share/69295e36-3fd4-8010-9710-56a0c2e28752</a>
+ In the annotations I point out:
+
+where the AI gave good explanations,
+
+where its code critiques matched or conflicted with what our course emphasizes,
+
+and where it hallucinated or misread the notebook.</div>
+        </div>
+
+        <div class="attachments">
+                <div class="attachment attachment-pdf">
+                    <div class="attachment-label">RNN LSTM implementation.pdf <a href="attachments/RNN LSTM implementation.pdf" target="_blank" class="download-link">Open in new tab</a></div>
+                    <iframe src="attachments/RNN LSTM implementation.pdf" loading="lazy"></iframe>
+                </div></div>
+    </div>
+</body>
+</html>

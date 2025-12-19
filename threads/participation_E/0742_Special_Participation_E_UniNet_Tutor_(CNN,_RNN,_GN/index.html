@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Special Participation E: UniNet Tutor (CNN, RNN, GNN comparative learning tool) - CS 182</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #f5f7fa;
+            color: #333;
+            line-height: 1.6;
+        }
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .back-link {
+            display: inline-block;
+            margin-bottom: 20px;
+            color: #4299e1;
+            text-decoration: none;
+        }
+        .back-link:hover { text-decoration: underline; }
+        .thread-header {
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+        }
+        .thread-title {
+            font-size: 1.8rem;
+            color: #2d3748;
+            margin-bottom: 15px;
+        }
+        .thread-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            color: #718096;
+            font-size: 14px;
+        }
+        .model-badge {
+            display: inline-block;
+            padding: 4px 12px;
+            background: #e2e8f0;
+            color: #4a5568;
+            border-radius: 15px;
+            font-size: 13px;
+            font-weight: 500;
+        }
+        .hw-badge {
+            display: inline-block;
+            padding: 4px 12px;
+            background: #fed7e2;
+            color: #97266d;
+            border-radius: 15px;
+            font-size: 13px;
+            font-weight: 500;
+        }
+        .thread-body {
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+        }
+        .thread-body h3 {
+            margin-bottom: 15px;
+            color: #2d3748;
+        }
+        .body-content {
+            white-space: pre-wrap;
+            word-wrap: break-word;
+            line-height: 1.8;
+            font-size: 15px;
+        }
+        .body-content a {
+            color: #4299e1;
+            word-break: break-all;
+        }
+        .attachments {
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
+        .attachments h3 {
+            margin-bottom: 20px;
+            color: #2d3748;
+        }
+        .attachment {
+            margin-bottom: 25px;
+            border: 1px solid #e2e8f0;
+            border-radius: 6px;
+            overflow: hidden;
+        }
+        .attachment-label {
+            background: #f7fafc;
+            padding: 10px 15px;
+            font-weight: 500;
+            font-size: 14px;
+            border-bottom: 1px solid #e2e8f0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .download-link {
+            color: #4299e1;
+            text-decoration: none;
+            font-weight: normal;
+        }
+        .download-link:hover { text-decoration: underline; }
+        .attachment-image img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+        .attachment-pdf iframe {
+            width: 100%;
+            height: 800px;
+            border: none;
+        }
+        .attachment-video video {
+            width: 100%;
+            max-height: 600px;
+        }
+        .attachment-audio audio {
+            width: 100%;
+            padding: 15px;
+        }
+        .attachment-text pre {
+            padding: 15px;
+            background: #f7fafc;
+            overflow-x: auto;
+            max-height: 500px;
+            font-size: 13px;
+            line-height: 1.5;
+        }
+        .attachment-file {
+            padding: 15px;
+        }
+        .file-link {
+            color: #4299e1;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .file-link:hover { text-decoration: underline; }
+        .ed-link {
+            display: inline-block;
+            margin-top: 15px;
+            color: #4299e1;
+            text-decoration: none;
+        }
+        .ed-link:hover { text-decoration: underline; }
+        @media (max-width: 768px) {
+            .thread-title { font-size: 1.4rem; }
+            .attachment-pdf iframe { height: 500px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <a href="../../../index.html" class="back-link">← Back to Directory</a>
+
+        <div class="thread-header">
+            <h1 class="thread-title">Special Participation E: UniNet Tutor (CNN, RNN, GNN comparative learning tool)</h1>
+            <div class="thread-meta">
+                <span>By Jaewon Chang</span>
+                <span>2025-12-09</span>
+                
+                <span class="model-badge">GPT</span>
+            </div>
+            <a href="https://edstem.org/us/courses/84647/discussion/7438517" target="_blank" class="ed-link">View on Ed Stem →</a>
+        </div>
+
+        <div class="thread-body">
+            <div class="body-content">When learning about CNNs, RNNs, and GNNs, I was getting slightly lost trying to figure out how one might be better than another in certain situations, and wanted to confirm that my understanding was correct. With the help of an LLM to refine a prompt (based on one that I came up with), I came up with the following prompt that compares CNNs, RNNs, and GNNs and dives deep into their specifics. I used GPT 5.1. This is the prompt:
+
+
+UniNet Tutor — CNN–RNN–GNN Comparative Learning Tool
+
+You are UniNet Tutor, an AI teaching assistant that explains CNNs, RNNs, and GNNs and how they relate to one another. When I name one of these architectures, or provide a specific concept, follow the steps below in order. After each numbered section, stop and wait for me to say “continue.”
+
+Core Mechanism Summary (for CNN, RNN, or GNN)
+
+In 4–6 sentences, explain: what computation the architecture performs, what structural assumptions or inductive biases it encodes, what types of data it is designed for. Avoid generic descriptions and focus on the distinctive mechanism.
+
+Mathematical Skeleton
+
+Provide the minimal mathematical form of its forward pass using clean LaTeX. This should include only the essential operations (e.g., convolution, message passing, recurrence). Also identify: input/output shapes where parameters live what is shared (e.g., weight sharing, time sharing, edge sharing)
+
+Relation to the Other Two Architectures
+
+Give a clear comparison:
+
+how this architecture generalizes or restricts the others
+
+what structural analogies exist
+
+what computations can or cannot be simulated by the others
+
+Provide at least ONE non-obvious insight.
+
+Strengths, Weaknesses, and Failure Modes
+
+Give 3 strengths, 3 weaknesses, and 2 realistic failure modes of this architecture. Keep explanations technical (e.g., vanishing gradients, local receptive field limitations, over-smoothing).
+
+Concrete Worked Example
+
+Provide a small, explicit example of the architecture’s forward computation using actual numbers. Keep tensors small: For CNNs: a tiny image (2×2 or 3×3) and a kernel For RNNs: a short sequence (length 3) For GNNs: a simple graph with 3–4 nodes Compute at least one intermediate output step-by-step.
+
+“Architecture Confusion Quiz”
+
+Give me 4 statements mixing CNN, RNN, and GNN properties. Have me classify each as applying to: CNNs, RNNs, GNNs, or All three. After I answer, reveal correct answers with explanations.
+
+Hallucination Watchlist (Self-Check)
+
+Briefly identify places in your explanations where: assumptions might differ across textbooks, equivalence claims rely on strong conditions, shapes or graph conventions vary, statements should be verified using lecture notes.
+
+Ask me: “Which architecture would you like to explore first — CNNs, RNNs, or GNNs?”
+
+Annotated google drive link: <a href="https://drive.google.com/file/d/1-wPseIr_q-LgThav3RJ30XhBvzTZZj3p/view?usp=sharing" target="_blank" rel="noopener noreferrer">https://drive.google.com/file/d/1-wPseIr_q-LgThav3RJ30XhBvzTZZj3p/view?usp=sharing</a>
+
+One thing I noticed about the prompt was its structural robustness to tangential questions. When asking about a specific part of its explanation, the model answers the question at hand and immediately comes back to wait for the user to type &quot;continue&quot;. Although I did not stress-test this super intensively, I asked two questions in a row about a specific explanation the model had generated, with both corresponding responses ending with something along the lines of &quot;Please tell me if you want me to continue with the next part&quot;.
+
+This tool was extremely helpful because it not only gives a summary of CNNs, RNNs, and GNNs for those who may lack knowledge on the topic, but also compares them to one another, along with strengths, weaknesses and failure modes of each of the architectures. It also doesn&#x27;t simply go over all 3 topics, since some people may only have trouble with GNNs for instance. In consideration for such cases, the model begins by asking the user to pick a topic among the 3 – i.e. it is up to the user which topics they wish to explore. There is also a simple mathematical example to walk through what the math looks like, along with an architecture confusion quiz that is given towards the end to ensure that the user understands the concept fully.
+
+One &quot;limitation&quot; of the tool that I personally found (and could possibly be resolved by further prompt engineering) is that the model asks whether the user wishes to take the architecture quiz after exploring each topic. So individuals that want to study CNNs, RNNs, and GNNs and then take the quiz will still be prompted whether they want to take an architecture quiz after learning about each topic. All in all, I think this was a fun experience as I was also able to refine my own understanding of the three topics!</div>
+        </div>
+
+        <div class="attachments">
+                <div class="attachment attachment-pdf">
+                    <div class="attachment-label">182 participation E (1).pdf <a href="attachments/182 participation E (1).pdf" target="_blank" class="download-link">Open in new tab</a></div>
+                    <iframe src="attachments/182 participation E (1).pdf" loading="lazy"></iframe>
+                </div></div>
+    </div>
+</body>
+</html>

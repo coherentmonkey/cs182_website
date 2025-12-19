@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Special Participation E: Gemini as an Interactive study tool! - CS 182</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #f5f7fa;
+            color: #333;
+            line-height: 1.6;
+        }
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .back-link {
+            display: inline-block;
+            margin-bottom: 20px;
+            color: #4299e1;
+            text-decoration: none;
+        }
+        .back-link:hover { text-decoration: underline; }
+        .thread-header {
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+        }
+        .thread-title {
+            font-size: 1.8rem;
+            color: #2d3748;
+            margin-bottom: 15px;
+        }
+        .thread-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            color: #718096;
+            font-size: 14px;
+        }
+        .model-badge {
+            display: inline-block;
+            padding: 4px 12px;
+            background: #e2e8f0;
+            color: #4a5568;
+            border-radius: 15px;
+            font-size: 13px;
+            font-weight: 500;
+        }
+        .hw-badge {
+            display: inline-block;
+            padding: 4px 12px;
+            background: #fed7e2;
+            color: #97266d;
+            border-radius: 15px;
+            font-size: 13px;
+            font-weight: 500;
+        }
+        .thread-body {
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+        }
+        .thread-body h3 {
+            margin-bottom: 15px;
+            color: #2d3748;
+        }
+        .body-content {
+            white-space: pre-wrap;
+            word-wrap: break-word;
+            line-height: 1.8;
+            font-size: 15px;
+        }
+        .body-content a {
+            color: #4299e1;
+            word-break: break-all;
+        }
+        .attachments {
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
+        .attachments h3 {
+            margin-bottom: 20px;
+            color: #2d3748;
+        }
+        .attachment {
+            margin-bottom: 25px;
+            border: 1px solid #e2e8f0;
+            border-radius: 6px;
+            overflow: hidden;
+        }
+        .attachment-label {
+            background: #f7fafc;
+            padding: 10px 15px;
+            font-weight: 500;
+            font-size: 14px;
+            border-bottom: 1px solid #e2e8f0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .download-link {
+            color: #4299e1;
+            text-decoration: none;
+            font-weight: normal;
+        }
+        .download-link:hover { text-decoration: underline; }
+        .attachment-image img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+        .attachment-pdf iframe {
+            width: 100%;
+            height: 800px;
+            border: none;
+        }
+        .attachment-video video {
+            width: 100%;
+            max-height: 600px;
+        }
+        .attachment-audio audio {
+            width: 100%;
+            padding: 15px;
+        }
+        .attachment-text pre {
+            padding: 15px;
+            background: #f7fafc;
+            overflow-x: auto;
+            max-height: 500px;
+            font-size: 13px;
+            line-height: 1.5;
+        }
+        .attachment-file {
+            padding: 15px;
+        }
+        .file-link {
+            color: #4299e1;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .file-link:hover { text-decoration: underline; }
+        .ed-link {
+            display: inline-block;
+            margin-top: 15px;
+            color: #4299e1;
+            text-decoration: none;
+        }
+        .ed-link:hover { text-decoration: underline; }
+        @media (max-width: 768px) {
+            .thread-title { font-size: 1.4rem; }
+            .attachment-pdf iframe { height: 500px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <a href="../../../index.html" class="back-link">← Back to Directory</a>
+
+        <div class="thread-header">
+            <h1 class="thread-title">Special Participation E: Gemini as an Interactive study tool!</h1>
+            <div class="thread-meta">
+                <span>By Divya Ramesh</span>
+                <span>2025-12-02</span>
+                
+                <span class="model-badge">Gemini</span>
+            </div>
+            <a href="https://edstem.org/us/courses/84647/discussion/7386885" target="_blank" class="ed-link">View on Ed Stem →</a>
+        </div>
+
+        <div class="thread-body">
+            <div class="body-content">Special Participation E:
+
+Now that finals are creeping up, I thought I’d try to create a resource to make a study guide for lectures. After a bit of research online I discovered that Gemini 3 Pro had one of the better OCR handwriting detections (<a href="https://research.aimultiple.com/handwriting-recognition/" target="_blank" rel="noopener noreferrer">https://research.aimultiple.com/handwriting-recognition/</a> was one of the sources confirming this), so I decided to upload the lecture notes for lecture 6 into Gemini 3 Pro and let it analyze, and create a study guide. The prompts I used can be found in my chat log! Gemini has canvas mode, which allows for a very organized output, making the study guide color coded and clean. I also had it summarize as well as come up with practice problems. I made it analyze what was directly in the notes only, to try to minimize hallucinations. I instructed it to summarize key concepts, rewrite equations clearly, convert diagrams into textual descriptions, and provide intuition in bullet points. For each concept, it generated a short comprehension question, a tiny derivation for me to work through, and an example scenario showing how the concept applies in practice.
+
+Additionally, I set it up to simulate optimizer dynamics, shape transformations, scaling factor effects, Newton-Schulz iterations, and orthogonalization steps using small toy matrices so I could verify everything myself. Whenever the notes were incomplete or ambiguous, the model flagged them and asked for clarification rather than inventing facts. From here, a user can ask the LLM to fill in the gaps or ignore them. I mostly chose to ignore, because staying as close as possible to the notes would minimize hallucinations. 
+
+The result was a structured, section-by-section study guide that covers MuP, Muon, scaling laws, parameterization, and theoretical analysis topics from the lecture. It also included clear alerts for potential inconsistencies or OCR errors, so I can focus on the parts that need human verification. This approach let me interactively test my understanding and run simulations in a controlled way, essentially turning the lecture notes into a hands-on learning tool.
+
+Overall, using Gemini 3 Pro in this targeted, verification-focused way allowed me to generate a high-quality study resource while minimizing hallucinations, making it an effective tool for preparing for finals. Also, it would let me know when there were sections unclear in the lecture notes so I could further prompt the LLM on this. 
+
+I also turned on learning mode and asked Gemini to walk me through the worksheet, where it gave me hints when I needed them on worksheet problems, and if I was right/wrong it gave me feedback and a bit of background information to ensure I understood. Also, I asked it to walk me through simulations at the end and it actually did walk me through step by step of a problem, and I find this tool incredibly helpful!! The simulations/toy problems especially helped my lock down important lecture concepts.
+
+I’ve tested on a few lectures and it has worked amazingly, feel free to check it out! I’m attaching both the worksheet and the chat log below, the chat log is annotated, the worksheet is just for reference!
+
+Lecture 6:
+
+Chat log:
+
+<a href="https://drive.google.com/file/d/1egKs92MvXNTsvbv6E6RqEZwsXCIDM6cK/view?usp=sharing" target="_blank" rel="noopener noreferrer">https://drive.google.com/file/d/1egKs92MvXNTsvbv6E6RqEZwsXCIDM6cK/view?usp=sharing</a>
+
+Worksheet:
+
+<a href="https://drive.google.com/file/d/1sl9c8k6Ghc4mZHDwVVriRR5bmkqH8p3p/view?usp=sharing" target="_blank" rel="noopener noreferrer">https://drive.google.com/file/d/1sl9c8k6Ghc4mZHDwVVriRR5bmkqH8p3p/view?usp=sharing</a></div>
+        </div>
+
+        
+    </div>
+</body>
+</html>

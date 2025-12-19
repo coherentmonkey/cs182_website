@@ -1,0 +1,175 @@
+\documentclass[11pt]{article}
+\usepackage{amsmath, amssymb, amsfonts}
+\usepackage{geometry}
+\geometry{a4paper, margin=1in}
+\usepackage{bm}
+
+\title{CS 182 Lecture 2: Optimization}
+\author{Deep Neural Networks}
+
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\E}{\mathbb{E}}
+\newcommand{\mat}[1]{\mathbf{#1}}
+\newcommand{\norm}[1]{\left\lVert#1\right\rVert}
+
+\begin{document}
+\maketitle
+
+\section{Implicit Regularization of Gradient Descent}
+
+\subsection{Recap: Geometry and Convergence of Gradient Descent}
+From the previous lecture, we analyzed the convergence of Gradient Descent (GD) for linear regression (least squares). A key takeaway is that the geometric properties of the loss function are critical for determining practical hyperparameters, such as the learning rate.
+
+For the least squares problem, the convergence of GD is guaranteed if the learning rate $\eta$ satisfies:
+\begin{equation}
+    \eta < \frac{1}{\lambda_{\max}(\mat{X}^T \mat{X})} = \frac{1}{\sigma_{\max}^2(\mat{X})}
+\end{equation}
+where $\lambda_{\max}$ is the largest eigenvalue and $\sigma_{\max}$ is the largest singular value. The rate of convergence is determined by the condition number of $\mat{X}^T\mat{X}$, which is the ratio $\frac{\lambda_{\max}}{\lambda_{\min}} = \left(\frac{\sigma_{\max}}{\sigma_{\min}}\right)^2$.
+
+This concept generalizes beyond quadratic loss functions. Properties like \textbf{L-smoothness} and \textbf{$\mu$-strong convexity} provide upper and lower quadratic bounds on general loss functions, allowing us to extend these geometric intuitions. The convergence rate in these more general cases depends on the ratio $L/\mu$.
+
+\subsection{Ridge Regression in the SVD Basis}
+To understand regularization, we analyze Ridge Regression. The solution to the Ridge objective is given by:
+\begin{equation}
+    \vec{w}_{*} = (\mat{X}^T \mat{X} + \lambda \mat{I})^{-1} \mat{X}^T \vec{y}
+\end{equation}
+An equivalent form, known as the kernel form, is $\vec{w}_{*} = \mat{X}^T (\mat{X} \mat{X}^T + \lambda \mat{I})^{-1} \vec{y}$.
+
+Let's analyze the solution in the basis defined by the Singular Value Decomposition (SVD) of the data matrix $\mat{X}$. Let $\mat{X} = \mat{U} \mat{\Sigma} \mat{V}^T$. Substituting this into the solution for $\vec{w}_{*}$:
+\begin{align*}
+    \vec{w}_{*} &= ((\mat{U}\mat{\Sigma}\mat{V}^T)^T (\mat{U}\mat{\Sigma}\mat{V}^T) + \lambda \mat{I})^{-1} (\mat{U}\mat{\Sigma}\mat{V}^T)^T \vec{y} \\
+    &= (\mat{V}\mat{\Sigma}^T\mat{U}^T \mat{U}\mat{\Sigma}\mat{V}^T + \lambda \mat{V}\mat{V}^T)^{-1} \mat{V}\mat{\Sigma}^T\mat{U}^T \vec{y} \quad (\text{since } \mat{I} = \mat{V}\mat{V}^T) \\
+    &= (\mat{V}(\mat{\Sigma}^T\mat{\Sigma} + \lambda \mat{I})\mat{V}^T)^{-1} \mat{V}\mat{\Sigma}^T\mat{U}^T \vec{y} \quad (\text{since } \mat{U}^T\mat{U} = \mat{I}) \\
+    &= \mat{V}(\mat{\Sigma}^T\mat{\Sigma} + \lambda \mat{I})^{-1}\mat{V}^T \mat{V}\mat{\Sigma}^T\mat{U}^T \vec{y} \\
+    &= \mat{V}(\mat{\Sigma}^T\mat{\Sigma} + \lambda \mat{I})^{-1}\mat{\Sigma}^T\mat{U}^T \vec{y}
+\end{align*}
+The matrix $(\mat{\Sigma}^T\mat{\Sigma} + \lambda \mat{I})$ is a diagonal matrix with diagonal entries $\sigma_i^2 + \lambda$. Its inverse is also diagonal with entries $1/(\sigma_i^2 + \lambda)$. This allows us to express the solution as a sum over the singular components:
+\begin{equation}
+    \vec{w}_{*} = \sum_{i=1}^{\text{rank}(\mat{X})} \vec{v}_i \left( \frac{\sigma_i}{\sigma_i^2 + \lambda} \right) (\vec{u}_i^T \vec{y})
+\end{equation}
+Here, $\vec{v}_i$ and $\vec{u}_i$ are the right and left singular vectors, respectively. The term $\vec{u}_i^T \vec{y}$ is a scalar projection.
+
+The behavior of the solution is governed by the scaling factor $\frac{\sigma_i}{\sigma_i^2 + \lambda}$:
+\begin{itemize}
+    \item If $\lambda \gg \sigma_i^2$ (i.e., for directions with small singular values), the scaling factor approaches 0. The components of the solution in these directions are suppressed.
+    \item If $\sigma_i^2 \gg \lambda$ (i.e., for directions with large singular values), the scaling factor is approximately $\frac{\sigma_i}{\sigma_i^2} = \frac{1}{\sigma_i}$.
+\end{itemize}
+Small singular values correspond to directions of low variance in the data. Ridge regularization, therefore, prevents the model from fitting patterns in these low-variance directions, which are often dominated by noise. This is how Ridge helps prevent overfitting.
+
+\subsection{Gradient Descent and Early Stopping}
+The standard Gradient Descent update for least squares is:
+\begin{equation}
+    \vec{w}_{t+1} = \vec{w}_t - 2\eta \mat{X}^T(\mat{X}\vec{w}_t - \vec{y})
+\end{equation}
+An important observation is that the update step $\Delta \vec{w}_t$ is always in the column space of $\mat{X}^T$, which is the row space of $\mat{X}$ (the span of the data). If initialized at $\vec{w}_0 = \vec{0}$, the solution $\vec{w}_t$ will always remain in the span of the data.
+
+For comparison, the GD update for the Ridge objective includes a term often called \textbf{weight decay}:
+\begin{equation}
+    \vec{w}_{t+1} = (1 - 2\eta\lambda)\vec{w}_t - 2\eta \mat{X}^T(\mat{X}\vec{w}_t - \vec{y})
+\end{equation}
+The term $(1 - 2\eta\lambda)$ shrinks the weights at each step.
+
+Now, let's analyze the standard GD update in the SVD basis. Let $\tilde{\vec{w}}_t = \mat{V}^T \vec{w}_t$ be the weights in the new basis.
+\begin{align*}
+    \mat{V}^T\vec{w}_{t+1} &= \mat{V}^T\vec{w}_t - 2\eta \mat{V}^T (\mat{V}\mat{\Sigma}^T\mat{U}^T)(\mat{U}\mat{\Sigma}\mat{V}^T \vec{w}_t - \vec{y}) \\
+    \tilde{\vec{w}}_{t+1} &= \tilde{\vec{w}}_t - 2\eta \mat{\Sigma}^T\mat{U}^T(\mat{U}\mat{\Sigma}\tilde{\vec{w}}_t - \vec{y}) \\
+    \tilde{\vec{w}}_{t+1} &= \tilde{\vec{w}}_t - 2\eta \mat{\Sigma}^T(\mat{\Sigma}\tilde{\vec{w}}_t - \mat{U}^T\vec{y})
+\end{align*}
+Since $\mat{\Sigma}^T\mat{\Sigma}$ is diagonal, the system decouples. For the $i$-th component:
+\begin{equation}
+    \tilde{w}_{t+1,i} = \tilde{w}_{t,i} - 2\eta \sigma_i^2 \tilde{w}_{t,i} + 2\eta \sigma_i (\vec{u}_i^T \vec{y}) = (1 - 2\eta\sigma_i^2)\tilde{w}_{t,i} + 2\eta\sigma_i \tilde{y}_i
+\end{equation}
+The effective step size in the direction of the $i$-th singular vector is proportional to $\sigma_i^2$. This means:
+\begin{itemize}
+    \item GD takes large steps in directions corresponding to large singular values.
+    \item GD takes small steps in directions corresponding to small singular values.
+\end{itemize}
+This leads to the concept of \textbf{Early Stopping}. Gradient Descent will first converge rapidly along the high-variance directions. If we stop the algorithm before it has fully converged, it will not have had enough time to move significantly in the low-variance directions. This effectively prevents the model from fitting the noise in the data, achieving a similar regularizing effect as Ridge regression. This phenomenon is known as the \textbf{implicit regularization} of gradient descent.
+
+\section{Stochastic Gradient Descent (SGD)}
+\subsection{Motivation and Algorithm}
+While GD is effective for convex problems, training deep neural networks involves non-convex loss landscapes. Furthermore, GD is computationally expensive for large datasets, as it requires computing the gradient over the entire dataset for a single update.
+
+Stochastic Gradient Descent (SGD) addresses these issues. It assumes the loss function can be decomposed into a sum over individual data points:
+\begin{equation}
+    f(\theta) = \frac{1}{n} \sum_{i=1}^n f_i(\theta)
+\end{equation}
+Instead of computing the full gradient $\nabla f(\theta)$, SGD computes the gradient on a small, randomly sampled subset of the data called a \textbf{mini-batch}, $\mathcal{B}$. The update rule is:
+\begin{equation}
+    \theta_{t+1} = \theta_t - \eta \frac{1}{|\mathcal{B}|} \sum_{i \in \mathcal{B}} \nabla f_i(\theta_t)
+\end{equation}
+The gradient estimate is noisy but unbiased, assuming the mini-batch is sampled uniformly at random:
+\begin{equation}
+    \E_{i \sim \text{Uniform}}[\nabla f_i(\theta)] = \nabla f(\theta)
+\end{equation}
+
+\subsection{Properties of SGD}
+\begin{itemize}
+    \item \textbf{Computationally Efficient:} Each step is much faster than a full GD step.
+    \item \textbf{Noise helps escape local minima:} The stochasticity in the gradient estimate can help the optimization process escape sharp local minima or saddle points and find better, flatter minima, which often leads to better generalization.
+    \item \textbf{Convergence:} Traditional optimization theory suggests that for SGD to converge, the learning rate $\eta$ must decrease over time (a learning rate schedule). However, in the context of deep learning (often over-parameterized models), SGD can converge even with a constant step size.
+\end{itemize}
+
+\section{Momentum}
+\subsection{Motivation: Oscillations in Gradient Descent}
+The learning rate $\eta$ for GD is limited by the largest singular value, $\sigma_{\max}$. This choice of $\eta$ can lead to very slow convergence in directions with smaller singular values. If we try to increase $\eta$ to speed up convergence, the update term for the largest singular values, $(1-2\eta\sigma_{\max}^2)$, can become negative, causing oscillations in the optimization path. The goal is to accelerate convergence while damping these oscillations.
+
+\subsection{The Momentum Update}
+A common technique to smooth oscillations is averaging. Instead of a simple moving average, which is memory-intensive, we can use an exponentially decaying average of past gradients. This is the idea behind momentum. It introduces a "velocity" or "state" variable, $\vec{z}$, that accumulates a history of gradients.
+
+The momentum update consists of two steps:
+\begin{align}
+    \vec{z}_{k+1} &= \beta \vec{z}_k + \nabla f(\vec{w}_k) \quad \text{(A common variant of the update)}\\
+    \vec{w}_{k+1} &= \vec{w}_k - \eta \vec{z}_{k+1}
+\end{align}
+Alternatively, using the exponential moving average form:
+\begin{align}
+    \vec{z}_{k+1} &= \beta \vec{z}_k + (1-\beta) \nabla f(\vec{w}_k), \quad \text{with } \vec{z}_0 = \vec{0} \\
+    \vec{w}_{k+1} &= \vec{w}_k - \eta \vec{z}_{k+1}
+\end{align}
+Here, $\beta \in [0,1)$ is the momentum parameter. If we expand the recurrence for $\vec{z}_k$, we see it is an exponentially weighted average of past gradients:
+\begin{equation}
+    \vec{z}_k = (1-\beta)\sum_{i=0}^{k-1} \beta^{k-1-i} \nabla f(\vec{w}_i)
+\end{equation}
+The most recent gradients receive the highest weight.
+
+\textbf{Intuition:} Momentum acts like a ball rolling down a hill. It builds up speed in directions of consistent gradient and smooths out directions where the gradient oscillates. This has two main benefits:
+\begin{enumerate}
+    \item It smooths the optimization trajectory, especially for SGD where gradients are noisy.
+    \item It can provably accelerate convergence. For convex quadratic problems, GD's convergence rate depends on the condition number $\kappa$, while momentum's rate depends on $\sqrt{\kappa}$, which is a significant improvement.
+\end{enumerate}
+The main drawback is the introduction of a new hyperparameter, $\beta$, that needs to be tuned.
+
+\section{Analysis of SGD Convergence}
+We will now set up a proof to show that SGD can converge with a constant step size in a specific setting.
+
+\subsection{Problem Setup}
+Consider an underdetermined linear system $\mat{X}\vec{w} = \vec{y}$, where $\mat{X} \in \R^{n \times d}$ with $d > n$ (a "wide" matrix) and $\mat{X}$ has full row rank. There are infinitely many solutions. Let $\vec{w}_{*}$ be the minimum-norm solution. We will analyze SGD with batch size 1, initialized at $\vec{w}_0 = \vec{0}$.
+
+We transform the problem by considering the error vector $\vec{q}_t = \vec{w}_t - \vec{w}_{*}$. The system becomes $\mat{X}\vec{q} = \vec{0}$.
+The loss function for the original problem is $L(\vec{w}) = \frac{1}{2}\norm{\mat{X}\vec{w}-\vec{y}}^2$. In the error space, we are trying to solve $\mat{X}\vec{q}=\vec{0}$.
+
+Using the SVD of $\mat{X}$, we can show that the dynamics of SGD are confined to the row space of $\mat{X}$. We can therefore reduce the problem from $d$ dimensions to $n$ dimensions, analyzing an equivalent square system $\tilde{\mat{X}}\vec{z} = \vec{0}$, where $\vec{z} \in \R^n$.
+
+The loss can be expressed as $L(\vec{z}) = \norm{\tilde{\mat{X}}\vec{z}}^2 = \vec{z}^T \tilde{\mat{X}}^T \tilde{\mat{X}} \vec{z}$. The SGD update for batch size 1 (sampling the $I_t$-th data point) in this reduced space is:
+\begin{equation}
+    \vec{z}_{t+1} = \vec{z}_t - 2\eta \tilde{\vec{x}}_{I_t} (\tilde{\vec{x}}_{I_t}^T \vec{z}_t)
+\end{equation}
+where $\tilde{\vec{x}}_{I_t}$ is the $I_t$-th row of $\tilde{\mat{X}}$.
+
+\subsection{Proof Strategy via a Lyapunov Function}
+To prove that the loss $L(\vec{z}_t)$ converges to 0, we can use a technique analogous to a Lyapunov function in control theory. We want to show that the expected loss decreases at every step. Specifically, we want to establish a contraction:
+\begin{equation}
+    \E[L(\vec{z}_{t+1}) | \vec{z}_t] \le (1 - C) L(\vec{z}_t)
+\end{equation}
+for some constant $C > 0$. If this holds, the expected loss follows a geometric progression and must converge to zero.
+
+To analyze $\E[L(\vec{z}_{t+1})]$, we can write:
+\begin{align*}
+    L(\vec{z}_{t+1}) &= \norm{\tilde{\mat{X}}(\vec{z}_t + (\vec{z}_{t+1} - \vec{z}_t))}^2 \\
+    &= \norm{\tilde{\mat{X}}\vec{z}_t}^2 + 2(\tilde{\mat{X}}\vec{z}_t)^T \tilde{\mat{X}}(\vec{z}_{t+1} - \vec{z}_t) + \norm{\tilde{\mat{X}}(\vec{z}_{t+1} - \vec{z}_t)}^2 \\
+    &= L(\vec{z}_t) + \text{Term A} + \text{Term B}
+\end{align*}
+The proof, to be continued, would involve taking the expectation of Term A and Term B and showing that their sum is negative and proportional to $L(\vec{z}_t)$, leading to the desired contraction.
+
+\end{document}

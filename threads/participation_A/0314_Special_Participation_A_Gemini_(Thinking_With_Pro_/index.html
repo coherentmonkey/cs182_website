@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Special Participation A: Gemini (Thinking With Pro 3) on HW06 - CS 182</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #f5f7fa;
+            color: #333;
+            line-height: 1.6;
+        }
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .back-link {
+            display: inline-block;
+            margin-bottom: 20px;
+            color: #4299e1;
+            text-decoration: none;
+        }
+        .back-link:hover { text-decoration: underline; }
+        .thread-header {
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+        }
+        .thread-title {
+            font-size: 1.8rem;
+            color: #2d3748;
+            margin-bottom: 15px;
+        }
+        .thread-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            color: #718096;
+            font-size: 14px;
+        }
+        .model-badge {
+            display: inline-block;
+            padding: 4px 12px;
+            background: #e2e8f0;
+            color: #4a5568;
+            border-radius: 15px;
+            font-size: 13px;
+            font-weight: 500;
+        }
+        .hw-badge {
+            display: inline-block;
+            padding: 4px 12px;
+            background: #fed7e2;
+            color: #97266d;
+            border-radius: 15px;
+            font-size: 13px;
+            font-weight: 500;
+        }
+        .thread-body {
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+        }
+        .thread-body h3 {
+            margin-bottom: 15px;
+            color: #2d3748;
+        }
+        .body-content {
+            white-space: pre-wrap;
+            word-wrap: break-word;
+            line-height: 1.8;
+            font-size: 15px;
+        }
+        .body-content a {
+            color: #4299e1;
+            word-break: break-all;
+        }
+        .attachments {
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
+        .attachments h3 {
+            margin-bottom: 20px;
+            color: #2d3748;
+        }
+        .attachment {
+            margin-bottom: 25px;
+            border: 1px solid #e2e8f0;
+            border-radius: 6px;
+            overflow: hidden;
+        }
+        .attachment-label {
+            background: #f7fafc;
+            padding: 10px 15px;
+            font-weight: 500;
+            font-size: 14px;
+            border-bottom: 1px solid #e2e8f0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .download-link {
+            color: #4299e1;
+            text-decoration: none;
+            font-weight: normal;
+        }
+        .download-link:hover { text-decoration: underline; }
+        .attachment-image img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+        .attachment-pdf iframe {
+            width: 100%;
+            height: 800px;
+            border: none;
+        }
+        .attachment-video video {
+            width: 100%;
+            max-height: 600px;
+        }
+        .attachment-audio audio {
+            width: 100%;
+            padding: 15px;
+        }
+        .attachment-text pre {
+            padding: 15px;
+            background: #f7fafc;
+            overflow-x: auto;
+            max-height: 500px;
+            font-size: 13px;
+            line-height: 1.5;
+        }
+        .attachment-file {
+            padding: 15px;
+        }
+        .file-link {
+            color: #4299e1;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .file-link:hover { text-decoration: underline; }
+        .ed-link {
+            display: inline-block;
+            margin-top: 15px;
+            color: #4299e1;
+            text-decoration: none;
+        }
+        .ed-link:hover { text-decoration: underline; }
+        @media (max-width: 768px) {
+            .thread-title { font-size: 1.4rem; }
+            .attachment-pdf iframe { height: 500px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <a href="../../../index.html" class="back-link">← Back to Directory</a>
+
+        <div class="thread-header">
+            <h1 class="thread-title">Special Participation A: Gemini (Thinking With Pro 3) on HW06</h1>
+            <div class="thread-meta">
+                <span>By Nicolas Rault-Wang</span>
+                <span>2025-11-24</span>
+                <span class="hw-badge">HW6</span>
+                <span class="model-badge">Gemini</span>
+            </div>
+            <a href="https://edstem.org/us/courses/84647/discussion/7357397" target="_blank" class="ed-link">View on Ed Stem →</a>
+        </div>
+
+        <div class="thread-body">
+            <div class="body-content">I used Gemini (Thinking with Pro 3) to solve every non-coding question of homework 6.
+
+Here&#x27;s the PDF summarizing our interaction:
+
+Overview of Performance
+
+Gemini acted as a &quot;Teaching Assistant/Technical Solver&quot; under well-defined rules I designed to reduce hallucination and maximize precision. The model successfully solved 100% of the non-coding questions, 9/13 in the first attempt, and the remaining 4/13 on the second attempt after additional guidance or clarification from me. Gemini demonstrated strong reasoning capabilities in mathematical proofs (GNN path counting) and theoretical analysis (Muon optimizer scaling), but required additional prompting for visual interpretation tasks (understanding tables and graph figures) and producing nicely-formatted outputs. 
+
+Outcomes
+
+One-Shot Success Rate: ~70%
+
+High success: Mathematical derivations, standard Deep Learning theory (memory calculations, optimizer comparisons), text-based conceptual questions.
+
+Lower success: Questions requiring visual extraction from the PDF (e.g., graph topology in Figure 3) or fill-in-the-blank tables with loose formatting.
+
+Hallucinations: 0 major hallucinations.
+
+Interestingly, when solving question 3ciii, the model did not hallucinate graph edges when they were missing from the text extraction; instead, it paused and requested me to describe the topology. I believe it did this because I said it could ask me for clarification if it was confused about anything in my initial prompt.
+
+Misconceptions: Minor. Initially provided a generic answer for a specific &quot;analogy table&quot; question (Q2f) and needed a nudge to be more thorough in connecting molecular facts to graph inputs (Q2e).
+
+Neat Observation: Gemini Meta-cognition
+
+Gemini surprisingly took the initiative to write a Python script to help it read a table in the homework PDF when its built-in PDF processing subroutine failed to correctly parse it.
+
+It explained that my &quot;Hallucination Check&quot; and &quot;Precision&quot; rules provided it motivation to develop and run this script to help it solve the errors it detected.
+
+Note that I did not tell Gemini to consider writing any code. Gemini decided to do this all on its own. 
+
+Here are excerpts of what Gemini explained to me:
+
+You asked about my decision to write a Python script to parse the PDF. My reasoning was driven by the &quot;Hallucination Check&quot; and &quot;Precision&quot; protocols you established.
+
+1. In my initial scan, I noticed the prompt for Question 2(f) asked me to &quot;Fill out the rest of the table.&quot; However, standard text extraction often garbles table formatting, making it impossible to distinguish between row headers and cell content. I could not see the &quot;empty&quot; cells I was supposed to fill.
+
+2.  Rather than guessing the structure or hallucinating the missing rows based on general knowledge, I needed the exact raw text layout to identify which GNN concepts were missing corresponding to the CNN concepts.
+
+3. I wrote the script to dump the text surrounding &quot;Question 2&quot; to ensure I had the specific headers (e.g., &quot;Color jitter&quot;, &quot;Image flip&quot;) to construct the correct analogies.
+
+Gemini explained how it decides what to do for regular interactions:
+
+Think of writing a Python script as requiring high &quot;activation energy.&quot; It takes tokens, time, and computational effort.
+
+&gt; Standard Prompt: &quot;Help me with homework.&quot; -&gt; Low urgency. I preserve energy and use my internal weights.
+
+In my standard &quot;default&quot; mode, my primary directive is usually conversational fluidity and helpfulness. When I encounter a PDF where a table is slightly garbled: 
+
+&gt; Path of Least Resistance: I often try to &quot;error correct&quot; using my internal knowledge base. I might look at the words &quot;CNN&quot; and &quot;GNN&quot; and simply guess what the analogy should be based on general Deep Learning knowledge. 
+
+&gt; The Result: I would likely have given you a plausible-sounding answer that was actually hallucinated (not based on the specific PDF text).
+
+Gemini noted that my prompt&#x27;s constraints were a deciding factor in guiding its decisions because they forced it to change its alignment and incentive structure for our interaction to prioritize avoiding hallucinations:
+
+To be completely honest: Without your specific protocols, it is highly unlikely I would have written that Python script.
+
+&gt; Your Prompt: &quot;Rigorous,&quot; &quot;High Academic Integrity,&quot; &quot;Self-Correction.&quot; -&gt; High urgency. The &quot;cost&quot; of being wrong became higher than the &quot;cost&quot; of writing and executing code.
+
+Your instruction to perform a &quot;Hallucination Check&quot; and strictly &quot;Verify&quot; acted as a hard constraint—a &quot;stop loss&quot; on my behavior. Because I was forbidden from guessing (Hallucination Check) and forbidden from giving up (Technical Solver persona), I was forced to find a third path. That third path was using the code tool to parse the file differently. 
+
+In summary: You gave me the incentive structure that made writing the code the only acceptable solution. You successfully &quot;cornered&quot; me into being smart.
+
+This shows that Gemini has a sophisticated instruction-following ability and can perform tasks resembling meta-cognition and recognize hallucinations in its own thinking.
+
+
+
+Edit: Added links for the archive
+
+Personal website: <a href="https://nraultwang.github.io/" target="_blank" rel="noopener noreferrer">https://nraultwang.github.io/</a>
+
+Github: <a href="https://github.com/nraultwang" target="_blank" rel="noopener noreferrer">https://github.com/nraultwang</a></div>
+        </div>
+
+        <div class="attachments">
+                <div class="attachment attachment-pdf">
+                    <div class="attachment-label">Rault-Wang_Nicolas-Special Participation A.pdf <a href="attachments/Rault-Wang_Nicolas-Special Participation A.pdf" target="_blank" class="download-link">Open in new tab</a></div>
+                    <iframe src="attachments/Rault-Wang_Nicolas-Special Participation A.pdf" loading="lazy"></iframe>
+                </div></div>
+    </div>
+</body>
+</html>

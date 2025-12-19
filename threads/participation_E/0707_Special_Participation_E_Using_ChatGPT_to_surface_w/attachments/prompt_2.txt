@@ -1,0 +1,18 @@
+Now act as the instructor for this course.
+
+Job 1:
+Answer each of the seven questions in at most five sentences. Use the uploaded material as your main source. Add outside background only when absolutely necessary.
+
+Job 2:
+Compare your answer for each question with my answer in my previous message.
+For each question:
+- Say whether my answer is fully correct, partially correct, or incorrect.
+- In two or three sentences explain what I did well and what I missed or got wrong.
+- If I missed something important or said something inaccurate, provide a corrected or improved version.
+
+Job 3:
+Be explicit when going beyond the uploaded material.
+Any time you use information that is not directly supported by the notes, begin the sentence with: EXTRA BACKGROUND.
+If the material does not give enough information to answer a question confidently, say: Not answerable from the notes, and explain what additional information would be needed.
+
+Stay grounded in the uploaded material, avoid guessing, and be honest about uncertainty.

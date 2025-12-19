@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Special Participation B: Claude Sonnet 4.5 for HW1 Coding Sections - CS 182</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #f5f7fa;
+            color: #333;
+            line-height: 1.6;
+        }
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .back-link {
+            display: inline-block;
+            margin-bottom: 20px;
+            color: #4299e1;
+            text-decoration: none;
+        }
+        .back-link:hover { text-decoration: underline; }
+        .thread-header {
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+        }
+        .thread-title {
+            font-size: 1.8rem;
+            color: #2d3748;
+            margin-bottom: 15px;
+        }
+        .thread-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            color: #718096;
+            font-size: 14px;
+        }
+        .model-badge {
+            display: inline-block;
+            padding: 4px 12px;
+            background: #e2e8f0;
+            color: #4a5568;
+            border-radius: 15px;
+            font-size: 13px;
+            font-weight: 500;
+        }
+        .hw-badge {
+            display: inline-block;
+            padding: 4px 12px;
+            background: #fed7e2;
+            color: #97266d;
+            border-radius: 15px;
+            font-size: 13px;
+            font-weight: 500;
+        }
+        .thread-body {
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+        }
+        .thread-body h3 {
+            margin-bottom: 15px;
+            color: #2d3748;
+        }
+        .body-content {
+            white-space: pre-wrap;
+            word-wrap: break-word;
+            line-height: 1.8;
+            font-size: 15px;
+        }
+        .body-content a {
+            color: #4299e1;
+            word-break: break-all;
+        }
+        .attachments {
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
+        .attachments h3 {
+            margin-bottom: 20px;
+            color: #2d3748;
+        }
+        .attachment {
+            margin-bottom: 25px;
+            border: 1px solid #e2e8f0;
+            border-radius: 6px;
+            overflow: hidden;
+        }
+        .attachment-label {
+            background: #f7fafc;
+            padding: 10px 15px;
+            font-weight: 500;
+            font-size: 14px;
+            border-bottom: 1px solid #e2e8f0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .download-link {
+            color: #4299e1;
+            text-decoration: none;
+            font-weight: normal;
+        }
+        .download-link:hover { text-decoration: underline; }
+        .attachment-image img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+        .attachment-pdf iframe {
+            width: 100%;
+            height: 800px;
+            border: none;
+        }
+        .attachment-video video {
+            width: 100%;
+            max-height: 600px;
+        }
+        .attachment-audio audio {
+            width: 100%;
+            padding: 15px;
+        }
+        .attachment-text pre {
+            padding: 15px;
+            background: #f7fafc;
+            overflow-x: auto;
+            max-height: 500px;
+            font-size: 13px;
+            line-height: 1.5;
+        }
+        .attachment-file {
+            padding: 15px;
+        }
+        .file-link {
+            color: #4299e1;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .file-link:hover { text-decoration: underline; }
+        .ed-link {
+            display: inline-block;
+            margin-top: 15px;
+            color: #4299e1;
+            text-decoration: none;
+        }
+        .ed-link:hover { text-decoration: underline; }
+        @media (max-width: 768px) {
+            .thread-title { font-size: 1.4rem; }
+            .attachment-pdf iframe { height: 500px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <a href="../../../index.html" class="back-link">← Back to Directory</a>
+
+        <div class="thread-header">
+            <h1 class="thread-title">Special Participation B: Claude Sonnet 4.5 for HW1 Coding Sections</h1>
+            <div class="thread-meta">
+                <span>By Elizabeth Weaver</span>
+                <span>2025-12-10</span>
+                <span class="hw-badge">HW1</span>
+                <span class="model-badge">Claude</span>
+            </div>
+            <a href="https://edstem.org/us/courses/84647/discussion/7445063" target="_blank" class="ed-link">View on Ed Stem →</a>
+        </div>
+
+        <div class="thread-body">
+            <div class="body-content">Hi everyone!
+
+For option (B) of the special participation assignment, I documented my interactions with Claude while completing the coding portions of HW1. I used Claude Exporter to export the conversation (Claude does not provide a method to export to PDF) and added annotations in red to highlight where Claude helped vs. where it fell short.
+
+Summary of the Interaction
+
+I used Claude for two homework questions:
+
+Question 3 (Parts h &amp; i): Gradient Descent with Momentum
+
+Part h: How does σi (the eigenvalues) influence the gradients and parameters updates?
+
+Part i: Comparing gradient descent and gradient descent with momentum, which one converges faster for this task? Why?
+
+This problem involved implementing 2 TODO sections, then interpreting the results to come up with these written answers.
+
+Question 2k: SGD Convergence with Feature Augmentation
+
+Analyzing a provided Jupyter notebook on ridge regression
+
+Reporting observations about convergence rates
+
+Question 3h &amp; 3i: Gradient Descent with Momentum
+
+First TODO:
+
+For the first TODO (implementing the momentum update), Claude immediately provided the correct formula:
+
+smoothed_grad = beta * smoothed_grad + (1 - beta) * grad
+
+This was straightforward. The exponential moving average is a standard formula, and Claude had no trouble with it.
+
+Second TODO:
+
+For the second TODO (choosing a larger learning rate for momentum), Claude confidently suggested:
+
+stepsize_new = 5e-4 # Increased from 1e-4 to 5e-4 (5x larger)
+
+Claude&#x27;s reasoning was sound: &quot;Momentum allows us to use larger learning rates because it dampens oscillations.&quot; It even predicted: &quot;Dimension 0 will show a much larger gap between methods — momentum will converge MUCH faster.&quot;
+
+What actually happened: The optimization diverged catastrophically.
+
+Final loss exploded
+
+Gradients exploded
+
+Parameters shot up
+
+It wasn’t slow convergence, but numerical explosion.
+
+Adapting TODO 2 with new information:
+
+After showing Claude the divergent results, it immediately recognized the problem:
+
+&quot;No, these results are not what I expected at all! The learning rate of 5e-4 is way too large and caused the momentum method to diverge catastrophically.&quot;
+
+Claude then suggested a more conservative learning rate:
+
+stepsize_new = 2e-4 # 2x larger, not 5x
+
+This worked perfectly. The plots showed exactly the expected behavior (momentum converging ~7 orders of magnitude faster than plain GD).
+
+Written Questions
+
+After the experiments succeeded, Claude provided comprehensive answers to the written questions:
+
+&quot;How does σᵢ (the eigenvalues) influence gradients and parameter updates?&quot; Claude correctly explained how larger eigenvalues produce larger gradients and cause oscillations, while smaller eigenvalues lead to slow convergence. It grounded the explanation in the experimental observations (dimension 0 vs dimension 1 behavior).
+
+&quot;Which method converges faster and why?&quot; Claude explained momentum&#x27;s advantages: damping oscillations in high-curvature directions, accelerating progress in low-curvature directions, and enabling larger learning rates
+
+Question 2k: SGD Convergence with Feature Augmentation
+
+For this question, I gave Claude a complete Jupyter notebook (no TODOs to fill in) and asked it to analyze the convergence rate observations.
+
+What Claude Did Well:
+
+Claude correctly identified all three curves in the plot:
+
+Feature Augmented (blue): Exponential convergence
+
+Original Ridge (orange): Exponential convergence until hitting a noise floor
+
+No Noise/No Regularization (green): Fastest convergence to machine precision
+
+Claude explained the key mechanism: feature augmentation increases the minimum eigenvalue, improving the condition number and enabling stable convergence with constant step sizes.
+
+The Answer:
+
+Claude&#x27;s summary was accurate: feature augmentation enables SGD with constant step sizes to achieve exponential convergence to high precision, while explicit ridge regularization converges exponentially only until reaching a noise floor. The practical implication is that feature augmentation is superior when you want high-precision solutions, while explicit regularization naturally stops at an appropriate level for generalization.
+
+No Iteration Needed:
+
+Unlike Q3, this question required no back-and-forth. Claude analyzed the provided notebook and plots correctly on the first try. This makes sense: the task was interpretation of given results, not prediction of what would happen with untested hyperparameters.
+
+Critical Annotations
+
+Where Claude Helped:
+
+Correct implementation of standard algorithms (Q3h): The momentum update formula was immediately correct
+
+Good explanations of concepts: Claude&#x27;s explanations of why momentum helps (damping oscillations, accelerating in flat directions) were accurate and pedagogically useful
+
+Interpreting experimental results (Q3i, Q2k): Claude correctly analyzed plots after each run, explaining what the gradient/parameter/loss curves meant
+
+Written question answers (Q3i): Claude provided comprehensive, well-structured answers grounded in experimental observations
+
+Quick error recovery (Q3i): When the first hyperparameter failed, Claude immediately recognized the problem and suggested a fix
+
+First-try success on interpretation tasks (Q2k): When given complete results to analyze (rather than code to write), Claude got it right immediately
+
+Where Claude Fell Short:
+
+Cannot guess hyperparameters without running experiments (Q3i): This is the key takeaway. Claude gave a confident, theoretically-motivated suggestion (5e-4) that completely failed in practice. The model couldn&#x27;t know that this specific problem&#x27;s eigenvalue structure would cause instability at that learning rate.
+
+Overconfident predictions (Q3i): Claude said &quot;Dimension 0 will show a much larger gap... momentum will converge MUCH faster&quot;. This would have been true at a stable learning rate, but the prediction was useless because the learning rate was wrong.
+
+My annotation from the chat:
+
+&quot;Claude gives good explanations here again, and details what it expects to see by running this code. However, when running the code that it gives, instead the run diverges. Claude therefore does not guess the learning rate correctly. It seems that although the model is very powerful, it can&#x27;t guess the correct hyperparameters without running the experiments (similarly to us).&quot;
+
+Key Takeaways
+
+LLMs are great at implementing known algorithms (Q3h): Standard formulas, update rules, and boilerplate code are reliably correct.
+
+LLMs cannot substitute for running experiments (Q3i): Hyperparameter tuning requires empirical feedback. Claude&#x27;s theoretically-motivated guess (5x learning rate) failed badly; the working value (2x) could only be found by iteration.
+
+LLMs excel at interpretation (Q2k, Q3i): Once given actual outputs (plots, loss values, gradient magnitudes), Claude correctly diagnosed problems and explained results. Q2k required zero iteration because it was purely interpretive.
+
+The human-in-the-loop is essential for prediction tasks: For Q3i, I needed to:
+
+Run the code myself
+
+Recognize that &quot;loss = 1e55&quot; meant something went wrong
+
+Feed the results back to Claude
+
+Iterate until convergence
+
+Without this loop, I would have submitted divergent code with confident but wrong explanations.
+
+LLMs can adapt quickly: Claude&#x27;s second suggestion (2e-4) was immediately successful. The model doesn&#x27;t stubbornly defend wrong answers when shown evidence.
+
+Task type matters: Q3i (predict → run → iterate) required multiple rounds. Q2k (interpret given results) succeeded immediately. The distinction is whether Claude needs to predict outcomes or explain them.
+
+How I Recorded the Interaction
+
+For anyone wondering how to document LLM interactions for this assignment:
+
+Claude Exporter: Chrome extension that exports Claude conversations to PDF/Markdown
+
+Added annotations in red: Used a PDF editor to add my commentary on what worked vs. what failed
+
+Included all intermediate outputs: Screenshots of plots and numerical outputs at each iteration were crucial for showing where Claude&#x27;s suggestions failed
+
+This approach captures the iterative nature of the interaction, which is hard to show with just a final transcript.
+
+Hope this is a useful case study! The key lesson for me was that LLMs are powerful collaborators but not substitutes for empirical experimentation.
+
+I also provided the intermediate notebook outputs I gave to Claude below, for question 3h,i. For question 2k, I just ran the notebook all the way through.</div>
+        </div>
+
+        <div class="attachments">
+                <div class="attachment attachment-pdf">
+                    <div class="attachment-label">claude_hw1_annotated.pdf <a href="attachments/claude_hw1_annotated.pdf" target="_blank" class="download-link">Open in new tab</a></div>
+                    <iframe src="attachments/claude_hw1_annotated.pdf" loading="lazy"></iframe>
+                </div>
+                <div class="attachment attachment-pdf">
+                    <div class="attachment-label">q_sgd_momentum_analysis.ipynb_again_q2.pdf <a href="attachments/q_sgd_momentum_analysis.ipynb_again_q2.pdf" target="_blank" class="download-link">Open in new tab</a></div>
+                    <iframe src="attachments/q_sgd_momentum_analysis.ipynb_again_q2.pdf" loading="lazy"></iframe>
+                </div>
+                <div class="attachment attachment-pdf">
+                    <div class="attachment-label">q_sgd_momentum_analysis.ipynb_q1_filled.pdf <a href="attachments/q_sgd_momentum_analysis.ipynb_q1_filled.pdf" target="_blank" class="download-link">Open in new tab</a></div>
+                    <iframe src="attachments/q_sgd_momentum_analysis.ipynb_q1_filled.pdf" loading="lazy"></iframe>
+                </div>
+                <div class="attachment attachment-pdf">
+                    <div class="attachment-label">q_sgd_momentum_analysis.ipynb_q2.pdf <a href="attachments/q_sgd_momentum_analysis.ipynb_q2.pdf" target="_blank" class="download-link">Open in new tab</a></div>
+                    <iframe src="attachments/q_sgd_momentum_analysis.ipynb_q2.pdf" loading="lazy"></iframe>
+                </div></div>
+    </div>
+</body>
+</html>

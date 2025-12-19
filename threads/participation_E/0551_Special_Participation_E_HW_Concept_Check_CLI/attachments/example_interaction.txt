@@ -1,0 +1,77 @@
+python concept_cli_app.py
+Select a homework:
+  [1] hw0
+  [2] hw1
+  [3] hw2
+  [4] hw3
+  [5] hw4
+  [6] hw5
+  [7] hw6
+  [8] hw7
+  [9] hw8
+  [10] hw9
+  [11] hw10
+  [12] hw11
+  [13] hw12
+  [14] hw13
+  [q] Quit / back
+> 2
+Select a question from hw1:
+  [1] 1
+  [2] 2
+  [3] 3
+  [4] 4
+  [5] 5
+  [6] 6
+  [7] 7
+  [q] Quit / back
+> 3
+
+============================================================
+Homework hw1 - Question 3 - Concept check 1/3
+------------------------------------------------------------
+Conceptual question:
+How does adding momentum modify the convergence behavior of gradient descent, particularly in terms of allowable learning rates and convergence speed?
+
+Commands: [h] hint  [a] ideal answer  [r] respond  [n] next  [p] previous  [b] back to question menu  [q] quit
+> r
+
+Type your answer (single line, be concise):
+> momentum enables faster convergence by taking larger steps when their is a decisive gradien step. at the same time, the range of allowable learning rates is the same.   
+
+Step 1 evaluation: partially_correct
+Feedback: The student correctly notes that momentum enables faster convergence by taking larger steps when the gradient direction is consistent. However, they incorrectly state that the range of allowable learning rates remains the same; in fact, momentum often allows for larger learning rates without divergence due to its smoothing effect.
+
+Follow-up question:
+Can you explain how momentum helps to dampen oscillations during gradient descent?
+Your answer to the follow-up (press Enter to skip and end evaluation):
+> momentum is a rolling average in a sense. thus, if the sign of the gradient is changing heavily, the net effect will cancel out in some sense
+
+Step 2 evaluation: partially_correct
+Feedback: The student correctly identifies that momentum acts like a rolling average and can reduce the effect of rapidly changing gradient signs, which helps dampen oscillations. However, the answer does not explicitly mention how this allows for larger learning rates or accelerates convergence speed, which are key aspects of the ideal answer.
+
+Follow-up question:
+Can you explain how using momentum allows for larger learning rates and speeds up convergence compared to standard gradient descent?
+Your answer to the follow-up (press Enter to skip and end evaluation):
+> Larger gradients for a similar reason as above. The learning rate is not purely dependent on the gradient in the current timestamp.
+
+Step 3 evaluation: partially_correct
+Feedback: The student correctly notes that momentum involves averaging gradients over time and that the update is not solely dependent on the current gradient. However, the explanation is vague and does not clearly connect how this averaging stabilizes updates, allows larger learning rates, or accelerates convergence by damping oscillations and improving conditioning.
+
+Commands: [h] hint  [a] ideal answer  [r] respond  [n] next  [p] previous  [b] back to question menu  [q] quit
+> a
+
+Ideal answer:
+Momentum averages gradients over iterations, which can stabilize updates and allow for larger learning rates without causing divergence. This smoothing can accelerate convergence by effectively damping oscillations and improving conditioning, enabling faster progress compared to standard gradient descent.
+
+Commands: [h] hint  [a] ideal answer  [r] respond  [n] next  [p] previous  [b] back to question menu  [q] quit
+> n
+
+============================================================
+Homework hw1 - Question 3 - Concept check 2/3
+------------------------------------------------------------
+Conceptual question:
+Why is the analysis of the 2×2 system matrix R_i important in understanding gradient descent with momentum, and what does the nature of its eigenvalues (real, repeated, complex) tell us about stability?
+
+Commands: [h] hint  [a] ideal answer  [r] respond  [n] next  [p] previous  [b] back to question menu  [q] quit
+> 

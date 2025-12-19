@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Participation B Gemini HW5 - CS 182</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #f5f7fa;
+            color: #333;
+            line-height: 1.6;
+        }
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .back-link {
+            display: inline-block;
+            margin-bottom: 20px;
+            color: #4299e1;
+            text-decoration: none;
+        }
+        .back-link:hover { text-decoration: underline; }
+        .thread-header {
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+        }
+        .thread-title {
+            font-size: 1.8rem;
+            color: #2d3748;
+            margin-bottom: 15px;
+        }
+        .thread-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            color: #718096;
+            font-size: 14px;
+        }
+        .model-badge {
+            display: inline-block;
+            padding: 4px 12px;
+            background: #e2e8f0;
+            color: #4a5568;
+            border-radius: 15px;
+            font-size: 13px;
+            font-weight: 500;
+        }
+        .hw-badge {
+            display: inline-block;
+            padding: 4px 12px;
+            background: #fed7e2;
+            color: #97266d;
+            border-radius: 15px;
+            font-size: 13px;
+            font-weight: 500;
+        }
+        .thread-body {
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+        }
+        .thread-body h3 {
+            margin-bottom: 15px;
+            color: #2d3748;
+        }
+        .body-content {
+            white-space: pre-wrap;
+            word-wrap: break-word;
+            line-height: 1.8;
+            font-size: 15px;
+        }
+        .body-content a {
+            color: #4299e1;
+            word-break: break-all;
+        }
+        .attachments {
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
+        .attachments h3 {
+            margin-bottom: 20px;
+            color: #2d3748;
+        }
+        .attachment {
+            margin-bottom: 25px;
+            border: 1px solid #e2e8f0;
+            border-radius: 6px;
+            overflow: hidden;
+        }
+        .attachment-label {
+            background: #f7fafc;
+            padding: 10px 15px;
+            font-weight: 500;
+            font-size: 14px;
+            border-bottom: 1px solid #e2e8f0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .download-link {
+            color: #4299e1;
+            text-decoration: none;
+            font-weight: normal;
+        }
+        .download-link:hover { text-decoration: underline; }
+        .attachment-image img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+        .attachment-pdf iframe {
+            width: 100%;
+            height: 800px;
+            border: none;
+        }
+        .attachment-video video {
+            width: 100%;
+            max-height: 600px;
+        }
+        .attachment-audio audio {
+            width: 100%;
+            padding: 15px;
+        }
+        .attachment-text pre {
+            padding: 15px;
+            background: #f7fafc;
+            overflow-x: auto;
+            max-height: 500px;
+            font-size: 13px;
+            line-height: 1.5;
+        }
+        .attachment-file {
+            padding: 15px;
+        }
+        .file-link {
+            color: #4299e1;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .file-link:hover { text-decoration: underline; }
+        .ed-link {
+            display: inline-block;
+            margin-top: 15px;
+            color: #4299e1;
+            text-decoration: none;
+        }
+        .ed-link:hover { text-decoration: underline; }
+        @media (max-width: 768px) {
+            .thread-title { font-size: 1.4rem; }
+            .attachment-pdf iframe { height: 500px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <a href="../../../index.html" class="back-link">← Back to Directory</a>
+
+        <div class="thread-header">
+            <h1 class="thread-title">Participation B Gemini HW5</h1>
+            <div class="thread-meta">
+                <span>By Bruno Vieira</span>
+                <span>2025-10-15</span>
+                <span class="hw-badge">HW5</span>
+                <span class="model-badge">Gemini</span>
+            </div>
+            <a href="https://edstem.org/us/courses/84647/discussion/7134659" target="_blank" class="ed-link">View on Ed Stem →</a>
+        </div>
+
+        <div class="thread-body">
+            <div class="body-content">The chat log with commentary is attached above with all the code Gemini suggested.
+
+Reflection:
+
+For Q5, Gemini performed surprisingly well — the problem itself was fairly straightforward, with most of the code already scaffolded in the notebook, so it didn’t have to handle much structural uncertainty. Because I used Gemini inside Colab, it had full access to the notebook’s context and previous cells, which definitely helped it “one-shot” nearly all the subparts correctly. The conceptual depth was solid. It provided well-reasoned explanations of dropout and different variants of gradient descent, and it even interpreted the loss graphs in part D accurately. Where Gemini did particularly well was in connecting the observed training behavior to the theoretical effects of dropout like reducing over-reliance on specific features like the “cheating features”, improving generalization, and stabilizing updates. However, its answers sometimes felt overly verbose and repetitive, often rephrasing the same idea multiple times without adding much substance. It’s clear Gemini does well with low-complexity, well-defined prompts that rely on standard neural network concepts, but it still struggles to be concise or to offer creative insights beyond textbook explanations.
+
+Q6 was more complex, and Gemini’s performance was mixed, especially since I had to switch from Colab (with contextual code cells) to the browser version, meaning it didn’t have the same continuity since a lot of the coding was done on .py files instead on a notebook like Q5. For the batch normalization implementation, though, it was genuinely impressive where Gemini inferred missing details like using batch statistics for the forward pass without explicit instruction, and it correctly executed the full forward and backward propagation steps. It’s unclear whether it derived the math itself or simply recalled a learned pattern, but either way, it achieved the correct result. However, when asked to modify the fully connected network to include dropout, it completely failed where it essentially reprinted the same model without incorporating dropout at all, as if it didn’t register the change request. This suggests Gemini’s weakness in applying structural modifications to existing code, especially when they require integrating a new mechanism into a preexisting design. It seems more comfortable regenerating code from scratch than adapting it thoughtfully.
+
+For the spatial batch normalization section, Gemini’s inline import was technically correct but unnecessary where a habit that made the code less clean and showed an overreliance on re-importing modules. The implementation itself worked, but the approach was not the smoothest and not very well thought before it gave me the code in the chat. Similarly, in the CNN design question, the model it proposed was overly shallow and minimalistic for CIFAR-scale data. While Gemini was very receptive to feedback and quickly acknowledged that a deeper network would be better, it didn’t independently propose parameter or structural improvements, indicating limited architectural creativity. I suggested it use another convolution layer to pick up more information and it followed instructions well but didn’t demonstrate the capacity to think beyond them.
+
+Overall, Gemini was accurate, stable, and efficient for standard or moderately complex neural network tasks, especially those that map directly to known architectures or formulas. It showed good conceptual understanding and a strong ability to produce syntactically correct code on the first try. However, it lacked flexibility and creative reasoning when the task demanded architectural innovation or modification of existing code. It’s great at execution and explanation, but not yet capable of adapting in nuanced, design-heavy tasks where intuition and experimentation matter most.</div>
+        </div>
+
+        <div class="attachments">
+                <div class="attachment attachment-pdf">
+                    <div class="attachment-label">CS_182_Participation_B_HW5_Gemini.pdf <a href="attachments/CS_182_Participation_B_HW5_Gemini.pdf" target="_blank" class="download-link">Open in new tab</a></div>
+                    <iframe src="attachments/CS_182_Participation_B_HW5_Gemini.pdf" loading="lazy"></iframe>
+                </div></div>
+    </div>
+</body>
+</html>

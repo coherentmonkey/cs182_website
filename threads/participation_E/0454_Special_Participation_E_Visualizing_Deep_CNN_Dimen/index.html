@@ -1,0 +1,705 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Special Participation E: Visualizing Deep CNN Dimensions &amp; Architecture with Gemini3Pro and Manim - CS 182</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #f5f7fa;
+            color: #333;
+            line-height: 1.6;
+        }
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .back-link {
+            display: inline-block;
+            margin-bottom: 20px;
+            color: #4299e1;
+            text-decoration: none;
+        }
+        .back-link:hover { text-decoration: underline; }
+        .thread-header {
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+        }
+        .thread-title {
+            font-size: 1.8rem;
+            color: #2d3748;
+            margin-bottom: 15px;
+        }
+        .thread-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            color: #718096;
+            font-size: 14px;
+        }
+        .model-badge {
+            display: inline-block;
+            padding: 4px 12px;
+            background: #e2e8f0;
+            color: #4a5568;
+            border-radius: 15px;
+            font-size: 13px;
+            font-weight: 500;
+        }
+        .hw-badge {
+            display: inline-block;
+            padding: 4px 12px;
+            background: #fed7e2;
+            color: #97266d;
+            border-radius: 15px;
+            font-size: 13px;
+            font-weight: 500;
+        }
+        .thread-body {
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+        }
+        .thread-body h3 {
+            margin-bottom: 15px;
+            color: #2d3748;
+        }
+        .body-content {
+            white-space: pre-wrap;
+            word-wrap: break-word;
+            line-height: 1.8;
+            font-size: 15px;
+        }
+        .body-content a {
+            color: #4299e1;
+            word-break: break-all;
+        }
+        .attachments {
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
+        .attachments h3 {
+            margin-bottom: 20px;
+            color: #2d3748;
+        }
+        .attachment {
+            margin-bottom: 25px;
+            border: 1px solid #e2e8f0;
+            border-radius: 6px;
+            overflow: hidden;
+        }
+        .attachment-label {
+            background: #f7fafc;
+            padding: 10px 15px;
+            font-weight: 500;
+            font-size: 14px;
+            border-bottom: 1px solid #e2e8f0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .download-link {
+            color: #4299e1;
+            text-decoration: none;
+            font-weight: normal;
+        }
+        .download-link:hover { text-decoration: underline; }
+        .attachment-image img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+        .attachment-pdf iframe {
+            width: 100%;
+            height: 800px;
+            border: none;
+        }
+        .attachment-video video {
+            width: 100%;
+            max-height: 600px;
+        }
+        .attachment-audio audio {
+            width: 100%;
+            padding: 15px;
+        }
+        .attachment-text pre {
+            padding: 15px;
+            background: #f7fafc;
+            overflow-x: auto;
+            max-height: 500px;
+            font-size: 13px;
+            line-height: 1.5;
+        }
+        .attachment-file {
+            padding: 15px;
+        }
+        .file-link {
+            color: #4299e1;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .file-link:hover { text-decoration: underline; }
+        .ed-link {
+            display: inline-block;
+            margin-top: 15px;
+            color: #4299e1;
+            text-decoration: none;
+        }
+        .ed-link:hover { text-decoration: underline; }
+        @media (max-width: 768px) {
+            .thread-title { font-size: 1.4rem; }
+            .attachment-pdf iframe { height: 500px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <a href="../../../index.html" class="back-link">← Back to Directory</a>
+
+        <div class="thread-header">
+            <h1 class="thread-title">Special Participation E: Visualizing Deep CNN Dimensions &amp; Architecture with Gemini3Pro and Manim</h1>
+            <div class="thread-meta">
+                <span>By Tin Yau</span>
+                <span>2025-12-04</span>
+                
+                <span class="model-badge">Gemini</span>
+            </div>
+            <a href="https://edstem.org/us/courses/84647/discussion/7405548" target="_blank" class="ed-link">View on Ed Stem →</a>
+        </div>
+
+        <div class="thread-body">
+            <div class="body-content">I&#x27;ve always found the dimensional transformations in CNNs (tensors changing shapes) to be the hardest part to visualize mentally. Inspired by the 3b1b approach, I utilized Gemini to build a Manim script that visualizes the complete lifecycle of a signal in a Deep CNN, specifically focusing on the concepts from Lecture 8.
+
+
+
+The Workflow
+
+I fed the lecture slides to Gemini and asked it to generate a script that explains the mathematical justification for CNNs visually. Instead of generic animations, I prompted it to focus on specific &quot;Core Topics&quot; derived from the lecture notes.
+
+Topic Focus Prompt
+
+Here is the prompt logic I used to generate the scene:
+
+&quot;Create a comprehensive animation named DeepCNNLecture that visualizes:
+
+Sparsity &amp; Locality: Contrast Fully Connected layers with Convolutional layers to show parameter efficiency.
+
+2. Volumetric Convolution: Visualize how an $H \times W \times 3$ RGB input interacts with $3 \times 3 \times 3$ filters 2.
+
+3. Spatial Arithmetic: Visually prove how Zero-Padding preserves dimensions 3and how Stride drives downsampling 4.
+
+4. Deep Architecture: Build a 2.5D VGG-style stack to show the trade-off between spatial size and depth, ending with a Flatten operation 5.&quot;
+
+The Result
+
+The script generates a continuous 7-part video. You can build it using the attached file:
+
+manim -pqh CNN_lecture.py 
+
+(I have attached the generated video and the source code below).
+
+Benefits &amp; Insights
+
+Through this visualization process, I realized several key pedagogical advantages:
+
+Enhanced Intuitive Understanding: The animation provides a tangible way to grasp the otherwise abstract tensor transformations and feature map evolutions. Compared to static text or formulas 6, visual motion helps learners develop spatial reasoning intuition, making it easier to see how inputs progressively shrink, deepen, and flatten through the network.
+
+Bridging Cross‑Disciplinary Communication: These visualizations make it possible for learners without a strong mathematical background to comprehend key structural ideas like &quot;Volumes&quot; and &quot;Receptive Fields&quot;. By reducing reliance on symbolic derivations, the video serves as a language‑agnostic medium for instruction.
+
+Improved Pedagogical Engagement: Animating the &quot;flow of a signal through the network&quot; turns an abstract lecture into a more interactive experience. The dynamic color transitions and step-by-step highlights (e.g., showing exactly which pixels contribute to a convolution sum) significantly boost attention on the core mechanics.
+
+Technical Reflections
+
+2.5D vs 3D: True 3D rendering in Manim is computationally heavy. I prompted Gemini to create &quot;Pseudo-3D&quot; layers (stacking 2D shapes with offsets) to visualize the Depth of the feature maps efficiently.
+
+Debugging: LLMs often confuse Manim parameters (e.g., passing font_size to next_to methods). I iteratively refined the code to decouple object creation from positioning to fix these TypeErrors.</div>
+        </div>
+
+        <div class="attachments">
+                    <div class="attachment attachment-text">
+                        <div class="attachment-label">CNN_lecture.py <a href="attachments/CNN_lecture.py" target="_blank" class="download-link">Download</a></div>
+                        <pre><code>from manim import *
+import numpy as np
+
+def create_stacked_grid(rows, cols, num_channels, cell_size=0.5, spacing=0.2):
+    channels = VGroup()
+    colors = [RED, GREEN, BLUE]
+    
+    for k in range(num_channels):
+        grid = VGroup()
+        color = colors[k % 3]
+        for r in range(rows):
+            for c in range(cols):
+                sq = Square(side_length=cell_size, color=color, fill_opacity=0.2)
+                sq.move_to(np.array([c*cell_size, -r*cell_size, 0]))
+                grid.add(sq)
+        
+        shift_vec = np.array([k*spacing, k*spacing, 0])
+        grid.shift(shift_vec)
+        channels.add(grid)
+        
+    return channels
+
+class DeepCNNLecture(Scene):
+    def construct(self):
+        self.intro_motivation()
+
+        self.basic_convolution()
+        
+        self.rgb_convolution()
+        
+        self.padding_demonstration()
+        
+        self.stride_demonstration()
+        
+        self.pooling_layer()
+
+        self.deep_architecture()
+
+    # --- Part 1 ---
+    def intro_motivation(self):
+        title = Text(&quot;Lecture 8: Deep CNNs&quot;, font_size=48)
+        subtitle = Text(&quot;From Fully Connected to Sparse &amp; Deep&quot;, font_size=32, color=BLUE)
+        subtitle.next_to(title, DOWN)
+        
+        self.play(Write(title), FadeIn(subtitle))
+        self.wait(1)
+        self.play(FadeOut(title), FadeOut(subtitle))
+        
+        grid = VGroup(*[Square(side_length=0.2, color=GRAY, stroke_width=1) for _ in range(100)])
+        grid.arrange_in_grid(10, 10, buff=0)
+        grid.move_to(LEFT * 3)
+        
+        hidden = VGroup(*[Dot(radius=0.08, color=GREEN) for _ in range(10)]).arrange(DOWN, buff=0.3)
+        hidden.move_to(RIGHT * 3)
+        
+        edge_group = VGroup()
+        for i in range(20): 
+            for h in hidden:
+                l = Line(grid[i].get_center(), h.get_center(), stroke_width=0.1, color=GRAY, stroke_opacity=0.5)
+                edge_group.add(l)
+        
+        txt_fc = Text(&quot;Fully Connected: Too Many Parameters!&quot;, font_size=24, color=RED)
+        txt_fc.to_edge(UP)
+        
+        self.play(Create(grid), Create(hidden))
+        self.play(Create(edge_group), run_time=2)
+        self.play(Write(txt_fc))
+        self.wait(1)
+        
+        txt_conv = Text(&quot;Convolution: Local Connectivity (Locality)&quot;, font_size=24, color=GREEN)
+        txt_conv.to_edge(UP)
+        
+        local_edges = VGroup()
+        target_h = hidden[4]
+        center_indices = [33,34,35, 43,44,45, 53,54,55]
+        
+        rect = SurroundingRectangle(VGroup(*[grid[i] for i in center_indices]), color=YELLOW)
+        
+        for i in center_indices:
+            l = Line(grid[i].get_center(), target_h.get_center(), stroke_width=2, color=YELLOW)
+            local_edges.add(l)
+            
+        self.play(
+            FadeOut(edge_group),
+            Transform(txt_fc, txt_conv),
+            Create(rect),
+            Create(local_edges)
+        )
+        self.wait(2)
+        self.clear()
+
+    # --- Part 2 ---
+    def basic_convolution(self):
+        title = Text(&quot;Recap: 2D Convolution&quot;, font_size=36)
+        title.to_edge(UP)
+        self.add(title)
+        
+        grid = VGroup(*[Square(side_length=0.6, color=BLUE) for _ in range(25)]).arrange_in_grid(5, 5, buff=0)
+        grid.move_to(LEFT * 2)
+        
+        kernel_rect = Square(side_length=0.6*3, color=YELLOW, stroke_width=4)
+        kernel_rect.move_to(grid[0].get_center() + np.array([0.6, -0.6, 0]))
+        
+        out_grid = VGroup(*[Square(side_length=0.6, color=GREEN) for _ in range(9)]).arrange_in_grid(3, 3, buff=0)
+        out_grid.move_to(RIGHT * 3)
+        
+        arrow = Arrow(grid.get_right(), out_grid.get_left(), color=WHITE)
+        
+        # 使用 Text 替代 MathTex 避免 LaTeX 错误
+        formula = Text(&quot;y = sum(x * w) + b&quot;, font_size=24)
+        formula.next_to(arrow, UP)
+        
+        self.play(Create(grid), Create(out_grid), GrowArrow(arrow), Write(formula))
+        self.play(Create(kernel_rect))
+        
+        centers = [
+            grid[0].get_center() + np.array([0.6, -0.6, 0]),
+            grid[1].get_center() + np.array([0.6, -0.6, 0]),
+            grid[2].get_center() + np.array([0.6, -0.6, 0]),
+        ]
+        
+        for i, center in enumerate(centers):
+            self.play(kernel_rect.animate.move_to(center), run_time=0.3)
+            self.play(out_grid[i].animate.set_fill(GREEN, opacity=0.5), run_time=0.2)
+        
+        self.wait(1)
+        self.clear()
+
+    # --- Part 3 ---
+    def rgb_convolution(self):
+        title = Text(&quot;Multi-Channel (RGB) Convolution&quot;, font_size=36)
+        title.to_edge(UP)
+        
+        input_volume = create_stacked_grid(5, 5, 3, cell_size=0.5, spacing=0.3)
+        input_volume.move_to(LEFT * 4)
+        
+        input_label = Text(&quot;Input Volume (5x5x3)&quot;, font_size=20)
+        input_label.next_to(input_volume, DOWN)
+        
+        kernel_volume = create_stacked_grid(3, 3, 3, cell_size=0.5, spacing=0.3)
+        kernel_volume.move_to(LEFT * 0.5)
+        
+        kernel_label = Text(&quot;Kernel / Filter (3x3x3)&quot;, font_size=20)
+        kernel_label.next_to(kernel_volume, DOWN)
+        
+        feature_map = VGroup(*[Square(side_length=0.5, color=WHITE) for _ in range(9)]).arrange_in_grid(3, 3, buff=0)
+        feature_map.move_to(RIGHT * 4)
+        
+        output_label = Text(&quot;Feature Map (3x3x1)&quot;, font_size=20)
+        output_label.next_to(feature_map, DOWN)
+        
+        conv_sym = Text(&quot;*&quot;, font_size=60).move_to((input_volume.get_right() + kernel_volume.get_left()) / 2)
+        eq_sym = Text(&quot;=&quot;, font_size=60).move_to((kernel_volume.get_right() + feature_map.get_left()) / 2)
+        
+        self.play(Write(title))
+        self.play(
+            FadeIn(input_volume), Write(input_label),
+            FadeIn(kernel_volume), Write(kernel_label),
+            Write(conv_sym), Write(eq_sym),
+            Create(feature_map), Write(output_label)
+        )
+        self.wait(1)
+        
+        explanation = Text(&quot;Sum across ALL channels&quot;, font_size=28, color=YELLOW)
+        explanation.to_edge(DOWN)
+        self.play(Write(explanation))
+        
+        highlights = VGroup()
+        for i in range(3):
+            layer = input_volume[i]
+            indices = [0,1,2, 5,6,7, 10,11,12]
+            for idx in indices:
+                hl_sq = layer[idx].copy().set_color(YELLOW).set_stroke(width=3)
+                highlights.add(hl_sq)
+        
+        self.play(Create(highlights))
+        self.wait(0.5)
+        
+        lines = VGroup()
+        lines.add(Line(highlights.get_right(), kernel_volume.get_left(), color=YELLOW))
+        lines.add(Line(kernel_volume.get_right(), feature_map[0].get_left(), color=YELLOW))
+        
+        self.play(Create(lines))
+        self.play(feature_map[0].animate.set_fill(GREEN, 0.8))
+        
+        self.wait(2)
+        self.clear()
+
+    # --- Part 4 ---
+    def padding_demonstration(self):
+        title = Text(&quot;Padding: Preserving Dimensions&quot;, font_size=36)
+        title.to_edge(UP)
+        self.play(Write(title))
+        
+        cell_size = 0.8
+        padded_grid = VGroup()
+        full_size = 6
+        
+        for r in range(full_size):
+            for c in range(full_size):
+                sq = Square(side_length=cell_size, stroke_width=2)
+                if 1 &lt;= r &lt;= 4 and 1 &lt;= c &lt;= 4:
+                    sq.set_color(BLUE).set_fill(BLUE, 0.5)
+                else:
+                    sq.set_color(GRAY).set_fill(GRAY, 0.2)
+                    zero = Text(&quot;0&quot;, font_size=20, color=GRAY).move_to(sq.get_center())
+                    sq.add(zero)
+                
+                sq.move_to(np.array([c*cell_size, -r*cell_size, 0]))
+                padded_grid.add(sq)
+                
+        padded_grid.center()
+        self.play(Create(padded_grid))
+        
+        label_pad = Text(&quot;Zero Padding (p=1)&quot;, font_size=24, color=GRAY)
+        label_pad.next_to(padded_grid, DOWN)
+        self.play(Write(label_pad))
+        
+        kernel = Square(side_length=cell_size*3, color=YELLOW, stroke_width=4)
+        start_center = padded_grid[full_size + 1].get_center()
+        kernel.move_to(start_center)
+        
+        txt_same = Text(&#x27;&quot;Same&quot; Padding: Output size = Input size&#x27;, font_size=24, color=YELLOW)
+        txt_same.to_edge(DOWN)
+        
+        self.play(Create(kernel), Write(txt_same))
+        self.wait(1)
+        
+        self.play(kernel.animate.shift(RIGHT * cell_size), run_time=0.5)
+        self.wait(1)
+        self.clear()
+
+    # --- Part 5 ---
+    def stride_demonstration(self):
+        title = Text(&quot;Stride: Downsampling&quot;, font_size=36)
+        title.to_edge(UP)
+        self.add(title)
+        
+        cell_size = 0.6
+        grid = VGroup(*[Square(side_length=cell_size, color=BLUE) for _ in range(49)]).arrange_in_grid(7, 7, buff=0)
+        grid.move_to(LEFT * 3)
+        
+        kernel = Square(side_length=cell_size*3, color=YELLOW, stroke_width=4)
+        start_pos = grid[8].get_center()
+        kernel.move_to(start_pos)
+        
+        out_grid = VGroup(*[Square(side_length=cell_size, color=GREEN) for _ in range(9)]).arrange_in_grid(3, 3, buff=0.2)
+        out_grid.move_to(RIGHT * 3)
+        
+        label_stride = Text(&quot;Stride = 2&quot;, font_size=28, color=YELLOW)
+        label_stride.next_to(grid, DOWN)
+        
+        self.play(Create(grid), Create(out_grid), Write(label_stride), Create(kernel))
+        
+        output_idx = 0
+        for r in range(0, 5, 2): 
+            for c in range(0, 5, 2): 
+                center_idx = (r+1)*7 + (c+1)
+                target = grid[center_idx].get_center()
+                self.play(kernel.animate.move_to(target), run_time=0.2)
+                self.play(out_grid[output_idx].animate.set_fill(GREEN, 0.8), run_time=0.1)
+                output_idx += 1
+                
+        self.wait(1)
+        self.clear()
+
+    # --- Part 6 ---
+    def pooling_layer(self):
+        title = Text(&quot;Pooling Layer (Max Pooling)&quot;, font_size=36)
+        title.to_edge(UP)
+        self.add(title)
+        
+        vals = np.random.randint(1, 9, (4,4))
+        grid = VGroup()
+        cell_size = 0.8
+        for r in range(4):
+            for c in range(4):
+                s = Square(side_length=cell_size, color=BLUE)
+                n = Text(str(vals[r][c]), font_size=24).move_to(s)
+                g = VGroup(s, n).move_to(np.array([c*cell_size, -r*cell_size, 0]))
+                grid.add(g)
+        grid.center().shift(LEFT * 3)
+        
+        out_grid = VGroup(*[Square(side_length=cell_size, color=ORANGE) for _ in range(4)]).arrange_in_grid(2, 2, buff=0.2)
+        out_grid.move_to(RIGHT * 3)
+        
+        self.play(Create(grid), Create(out_grid))
+        
+        colors = [RED, YELLOW, PURPLE, PINK]
+        idx = 0
+        for r in range(0, 4, 2):
+            for c in range(0, 4, 2):
+                group = VGroup()
+                sub_vals = []
+                for i in range(2):
+                    for j in range(2):
+                        flat_idx = (r+i)*4 + (c+j)
+                        group.add(grid[flat_idx][0])
+                        sub_vals.append(vals[r+i][c+j])
+                
+                self.play(group.animate.set_fill(colors[idx], 0.5), run_time=0.3)
+                m = max(sub_vals)
+                res = Text(str(m), font_size=24).move_to(out_grid[idx])
+                self.play(Write(res))
+                idx += 1
+                
+        self.wait(1)
+        self.clear()
+
+    # --- Part 7: 
+    def deep_architecture(self):
+        title = Text(&quot;Deep CNN Architecture (VGG-Style)&quot;, font_size=40)
+        title.to_edge(UP)
+        
+        subtitle = Text(&quot;Feature Extraction -&gt; Flattening -&gt; Classification&quot;, font_size=24, color=GRAY)
+        subtitle.next_to(title, DOWN)
+        
+        self.play(Write(title), FadeIn(subtitle))
+        self.wait(1)
+
+        layers_config = [
+            {&quot;h&quot;: 3.5, &quot;d&quot;: 0.2, &quot;col&quot;: BLUE, &quot;lbl&quot;: &quot;Input\n224x224x3&quot;},
+            {&quot;h&quot;: 3.0, &quot;d&quot;: 0.6, &quot;col&quot;: RED, &quot;lbl&quot;: &quot;Conv1\n55x55x96&quot;},
+            {&quot;h&quot;: 1.5, &quot;d&quot;: 0.6, &quot;col&quot;: ORANGE, &quot;lbl&quot;: &quot;Pool1\n27x27x96&quot;},
+            {&quot;h&quot;: 1.2, &quot;d&quot;: 1.0, &quot;col&quot;: RED, &quot;lbl&quot;: &quot;Conv2\n13x13x256&quot;},
+            {&quot;h&quot;: 0.6, &quot;d&quot;: 1.0, &quot;col&quot;: ORANGE, &quot;lbl&quot;: &quot;Pool2\n6x6x256&quot;},
+        ]
+
+        previous_layer = None
+        layer_mobjects = []
+        start_x = -5.5
+        
+        for i, config in enumerate(layers_config):
+            layer_obj = self.create_3d_layer(
+                height=config[&quot;h&quot;], 
+                width=0.2, 
+                depth=config[&quot;d&quot;], 
+                color=config[&quot;col&quot;]
+            )
+            
+            if previous_layer is None:
+                layer_obj.move_to(np.array([start_x, 0, 0]))
+            else:
+                layer_obj.next_to(previous_layer, RIGHT, buff=1.2)
+            
+            label = Text(config[&quot;lbl&quot;], font_size=16, line_spacing=1.2)
+            label.next_to(layer_obj, DOWN, buff=0.3)
+            
+            if previous_layer is not None:
+                l_points = self.get_layer_corners(previous_layer, &quot;right&quot;)
+                r_points = self.get_layer_corners(layer_obj, &quot;left&quot;)
+                connectors = VGroup(
+                    DashedLine(l_points[0], r_points[0], color=GRAY, stroke_opacity=0.3),
+                    DashedLine(l_points[1], r_points[1], color=GRAY, stroke_opacity=0.3)
+                )
+                self.play(Create(connectors), run_time=0.5)
+            
+            self.play(FadeIn(layer_obj), Write(label), run_time=0.8)
+            previous_layer = layer_obj
+            layer_mobjects.append(layer_obj)
+        
+        brace_features = Brace(VGroup(*layer_mobjects), UP, buff=0.5)
+        text_features = Text(&quot;Feature Learning&quot;, font_size=20)
+        text_features.next_to(brace_features, UP)
+        
+        self.play(GrowFromCenter(brace_features), FadeIn(text_features))
+        self.wait(1)
+
+        flatten_vector = Rectangle(height=3.5, width=0.15, color=WHITE, fill_opacity=0.8)
+        flatten_vector.next_to(previous_layer, RIGHT, buff=1.5)
+        
+        flatten_label = Text(&quot;Flatten&quot;, font_size=16)
+        flatten_label.next_to(flatten_vector, DOWN, buff=0.3)
+        
+        last_3d_layer = layer_mobjects[-1]
+        
+        dots = VGroup(*[Dot(color=WHITE, radius=0.03) for _ in range(20)])
+        dots.move_to(last_3d_layer.get_center())
+        self.play(
+            dots.animate.arrange(DOWN, buff=0.05).move_to(flatten_vector.get_center()),
+            ReplacementTransform(last_3d_layer.copy(), flatten_vector),
+            Write(flatten_label),
+            run_time=1.5
+        )
+        self.remove(dots)
+        
+        arrow_flat = Arrow(last_3d_layer.get_right(), flatten_vector.get_left(), color=YELLOW, buff=0.1)
+        self.play(Create(arrow_flat))
+
+        fc1 = Rectangle(height=3.5, width=0.15, color=GREEN, fill_opacity=0.5)
+        fc1.next_to(flatten_vector, RIGHT, buff=0.8)
+        
+        fc1_lbl = Text(&quot;FC\n4096&quot;, font_size=16)
+        fc1_lbl.next_to(fc1, DOWN, buff=0.3)
+        
+        output = Rectangle(height=1.0, width=0.15, color=PURPLE, fill_opacity=0.8)
+        output.next_to(fc1, RIGHT, buff=0.8)
+        
+        output_lbl = Text(&quot;Softmax\n1000&quot;, font_size=16)
+        output_lbl.next_to(output, DOWN, buff=0.3)
+        
+        conn_fc = Line(flatten_vector.get_right(), fc1.get_left(), color=GRAY, stroke_opacity=0.5)
+        conn_out = Line(fc1.get_right(), output.get_left(), color=GRAY, stroke_opacity=0.5)
+        
+        self.play(
+            Create(fc1), Write(fc1_lbl), Create(conn_fc),
+            Create(output), Write(output_lbl), Create(conn_out)
+        )
+        
+        brace_class = Brace(VGroup(flatten_vector, fc1, output), UP, buff=0.5)
+        text_class = Text(&quot;Classification&quot;, font_size=20)
+        text_class.next_to(brace_class, UP)
+        
+        self.play(GrowFromCenter(brace_class), FadeIn(text_class))
+        
+        tracer = Dot(color=YELLOW, radius=0.08)
+        tracer.move_to(layer_mobjects[0].get_left())
+        
+        path = VMobject()
+        path.set_points_as_corners([
+            layer_mobjects[0].get_center(),
+            layer_mobjects[1].get_center(),
+            layer_mobjects[2].get_center(),
+            layer_mobjects[3].get_center(),
+            layer_mobjects[4].get_center(),
+            flatten_vector.get_center(),
+            fc1.get_center(),
+            output.get_center()
+        ])
+        
+        self.play(
+            MoveAlongPath(tracer, path),
+            run_time=3,
+            rate_func=linear
+        )
+        self.play(Flash(output, color=YELLOW, flash_radius=0.5))
+        self.wait(2)
+
+    def create_3d_layer(self, height, width, depth, color):
+        front_face = Rectangle(height=height, width=width, color=color, fill_opacity=0.4, stroke_width=2)
+        offset_vec = np.array([depth * 0.5, depth * 0.3, 0])
+        
+        c1 = front_face.get_corner(UR)
+        c2 = front_face.get_corner(DR)
+        c3 = c2 + offset_vec
+        c4 = c1 + offset_vec
+        side_face = Polygon(c1, c2, c3, c4, color=color, fill_opacity=0.6, stroke_width=1)
+        
+        c1 = front_face.get_corner(UL)
+        c2 = front_face.get_corner(UR)
+        c3 = c2 + offset_vec
+        c4 = c1 + offset_vec
+        top_face = Polygon(c1, c2, c3, c4, color=color, fill_opacity=0.5, stroke_width=1)
+        
+        return VGroup(front_face, side_face, top_face)
+
+    def get_layer_corners(self, layer_group, side=&quot;right&quot;):
+        front_rect = layer_group[0]
+        if side == &quot;right&quot;:
+            return [front_rect.get_corner(UR), front_rect.get_corner(DR)]
+        else:
+            return [front_rect.get_corner(UL), front_rect.get_corner(DL)]</code></pre>
+                    </div>
+                <div class="attachment attachment-video">
+                    <div class="attachment-label">DeepCNNLecture.mp4</div>
+                    <video controls preload="metadata">
+                        <source src="attachments/DeepCNNLecture.mp4">
+                        Your browser does not support video playback.
+                    </video>
+                </div></div>
+    </div>
+</body>
+</html>

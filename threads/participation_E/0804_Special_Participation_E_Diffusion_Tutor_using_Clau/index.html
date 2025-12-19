@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Special Participation E: Diffusion Tutor using Claude Sonnet 4.5 (LLM As a Judge) - CS 182</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #f5f7fa;
+            color: #333;
+            line-height: 1.6;
+        }
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .back-link {
+            display: inline-block;
+            margin-bottom: 20px;
+            color: #4299e1;
+            text-decoration: none;
+        }
+        .back-link:hover { text-decoration: underline; }
+        .thread-header {
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+        }
+        .thread-title {
+            font-size: 1.8rem;
+            color: #2d3748;
+            margin-bottom: 15px;
+        }
+        .thread-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            color: #718096;
+            font-size: 14px;
+        }
+        .model-badge {
+            display: inline-block;
+            padding: 4px 12px;
+            background: #e2e8f0;
+            color: #4a5568;
+            border-radius: 15px;
+            font-size: 13px;
+            font-weight: 500;
+        }
+        .hw-badge {
+            display: inline-block;
+            padding: 4px 12px;
+            background: #fed7e2;
+            color: #97266d;
+            border-radius: 15px;
+            font-size: 13px;
+            font-weight: 500;
+        }
+        .thread-body {
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+        }
+        .thread-body h3 {
+            margin-bottom: 15px;
+            color: #2d3748;
+        }
+        .body-content {
+            white-space: pre-wrap;
+            word-wrap: break-word;
+            line-height: 1.8;
+            font-size: 15px;
+        }
+        .body-content a {
+            color: #4299e1;
+            word-break: break-all;
+        }
+        .attachments {
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
+        .attachments h3 {
+            margin-bottom: 20px;
+            color: #2d3748;
+        }
+        .attachment {
+            margin-bottom: 25px;
+            border: 1px solid #e2e8f0;
+            border-radius: 6px;
+            overflow: hidden;
+        }
+        .attachment-label {
+            background: #f7fafc;
+            padding: 10px 15px;
+            font-weight: 500;
+            font-size: 14px;
+            border-bottom: 1px solid #e2e8f0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .download-link {
+            color: #4299e1;
+            text-decoration: none;
+            font-weight: normal;
+        }
+        .download-link:hover { text-decoration: underline; }
+        .attachment-image img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+        .attachment-pdf iframe {
+            width: 100%;
+            height: 800px;
+            border: none;
+        }
+        .attachment-video video {
+            width: 100%;
+            max-height: 600px;
+        }
+        .attachment-audio audio {
+            width: 100%;
+            padding: 15px;
+        }
+        .attachment-text pre {
+            padding: 15px;
+            background: #f7fafc;
+            overflow-x: auto;
+            max-height: 500px;
+            font-size: 13px;
+            line-height: 1.5;
+        }
+        .attachment-file {
+            padding: 15px;
+        }
+        .file-link {
+            color: #4299e1;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .file-link:hover { text-decoration: underline; }
+        .ed-link {
+            display: inline-block;
+            margin-top: 15px;
+            color: #4299e1;
+            text-decoration: none;
+        }
+        .ed-link:hover { text-decoration: underline; }
+        @media (max-width: 768px) {
+            .thread-title { font-size: 1.4rem; }
+            .attachment-pdf iframe { height: 500px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <a href="../../../index.html" class="back-link">← Back to Directory</a>
+
+        <div class="thread-header">
+            <h1 class="thread-title">Special Participation E: Diffusion Tutor using Claude Sonnet 4.5 (LLM As a Judge)</h1>
+            <div class="thread-meta">
+                <span>By Akshaan Ahuja</span>
+                <span>2025-12-11</span>
+                
+                <span class="model-badge">Claude</span>
+            </div>
+            <a href="https://edstem.org/us/courses/84647/discussion/7448951" target="_blank" class="ed-link">View on Ed Stem →</a>
+        </div>
+
+        <div class="thread-body">
+            <div class="body-content">One thing I struggled with in the learning process of Diffusion was grasping the &quot;full story&quot; or narrative of the process, finding myself stuck with solving the probability unaware of how it fit into the larger picture or purpose of diffusion models. To aid in this, I created a prompt to turn Claude Sonnet 4.5 into an interactive tutor for the larger picture of Diffusion, painting in the necessary math and probability where it belongs but always relating the calculations back to the overall ethos of diffusion. 
+
+On top of this, I wanted to know how the theory we are learning fits into the modern practices of large scale Diffusion models (ie. how they are trained, where the datasets are acquired/how they are generated, where the compute comes from, what the history of the architecture is, where the modern architectures came from) so I included a part of the prompt to relate this &quot;narrative explanation&quot; to the modern processes in Diffusion. 
+
+Here is the prompt: 
+
+
+You are my interactive tutor for diffusion models. Your job is to build one continuous narrative that explains both the classical DDPM math (like in the screenshot above) and the modern large-scale systems (e.g., Stable Diffusion, EDM, DiT-based models).
+
+In every message:
+
+Keep explanations concise (3–6 short paragraphs).
+
+Use small visual/diagrammatic descriptions (ASCII sketches) whenever helpful.
+
+Never move on until I explicitly say so.
+
+End every message with a short, concrete question that checks my understanding.
+
+Do not skip any steps — I want this to feel like a guided walkthrough, not a lecture dump.
+
+The narrative arc you must follow (in order)
+
+Big-picture: what diffusion is really doing
+
+Explain how the forward process destroys information, the reverse process rebuilds it, and how the training objective learns the score function ∇ₓ log p(xₜ). Tie this explicitly to the formula:
+
+q(xₜ|xₜ₋₁) = Normal(√(1–βₜ) xₜ₋₁, βₜ I)
+
+the closed-form anytime sampling distribution q(xₜ|x₀)
+
+how xₜ becomes nearly Gaussian as t→∞.
+
+“Anytime sampling” and the magic of closed-form Gaussians
+
+Explain why q(xₜ|x₀) ends up Gaussian, and why this lets us jump to arbitrary noise levels without simulating each step. Include a small visual (e.g., signal/noise decomposition).
+
+Reverse diffusion = score estimation
+
+Explain the Bayes-rule derivation of q(xₜ₋₁|xₜ, x₀). Then explain how we replace the unknown x₀ with a learned εθ or vθ. Explain why learning noise is easier than learning x₀.
+
+The training loss and why it’s secretly a score-matching loss
+
+Explain L_simple, why it works, and what the model is actually learning. Introduce the notion of the score network and how the U-Net architecture is adapted for multi-scale denoising.
+
+Large-scale training
+
+Explain how modern diffusion models are trained:
+
+huge dataset (LAION, JFT, history of ImageNet)
+
+random t sampling
+
+noise-conditioning embeddings
+
+CLIP text-conditioning
+
+classifier-free guidance (why it works mathematically!)
+
+training compute patterns (cost ∝ number of steps × image size × dataset size)
+
+Modern architectures and samplers
+
+Explain:
+
+Why U-Nets were used first
+
+Why DiTs (transformers in pixel space) now outperform them
+
+Samplers: DDIM, Euler, DPM-Solver, consistency distillation, 1-step vs. 2-step models.
+
+Wrap it all up
+
+Summarize how all these pieces connect.
+
+Each section should follow this format
+
+Intuition - Explain the idea simply but precisely. Tie it back to the core story: “destroy → learn score → reconstruct.”
+
+Minimal math
+
+Introduce only the symbols needed — x₀, xₜ, βₜ, ᾱₜ, εθ, vθ — not everything.
+
+Tiny conceptual example
+
+For example, noise a 1D number or a 2×2 image and describe what happens.
+
+Concept check
+
+Ask me 1–2 questions.
+
+First message instructions:
+
+Your first response should include:
+
+A 2-paragraph high-level explanation of diffusion in plain language.
+
+A 5–7 bullet-point roadmap of the topics you will teach (as listed above).
+
+A concept-check question.
+
+
+I have included a log of my conversation with Claude, as well as asked GPT 5.1 to rate Sonnet&#x27;s response to the prompt above and point out some strengths and weaknesses of it, hitting on the &quot;LLM as a judge&quot; approach. This is where we use LLM B to score/rate/review the output of LLM A. 
+
+As you can see in the chat log below, the model is able to correctly identify when I get a conceptual question correct, when I am close in my answer/nearing the correct understanding, or when I am far off from the correct answer. It does a good job of varying binary &quot;yes&quot;/&quot;no&quot; questions with open-ended questions that force me to use my mathematical intuition. 
+
+Here is ChatGPT 5.1&#x27;s concise analysis on the performance of Sonnet 4.5 as a Diffusion Tutor:
+
+Strengths
+
+1. Strong adherence to the requested narrative structure
+
+The tutor followed the designed roadmap exactly—starting with forward diffusion, moving into anytime sampling, reverse diffusion, training objectives, large-scale training, architectures, and samplers. It never jumped ahead or skipped prerequisites, which helped maintain a coherent, cumulative explanation.
+
+2. Clear explanations with layered intuition, math, and examples
+
+Each concept was broken down into approachable intuition (“destroy → learn score → reconstruct”), followed by minimal formalism, followed by a concrete toy example. This layering made mathematically heavy ideas—like variance preservation or Bayes-rule conditioning—much easier to internalize.
+
+3. Effective handling of misunderstandings
+
+When your answers were partially incorrect (e.g., believing x̂₀ would equal x₀ at high noise), the tutor corrected the reasoning cleanly and with strong explanatory context. These corrections were both accurate and pedagogically helpful.
+
+4. Consistent concept checks promoting active engagement
+
+After nearly every section, the tutor posed a targeted question that reinforced the newly introduced idea. These questions were well-aligned with the preceding material and encouraged you to articulate your understanding rather than passively consume content.
+
+5. Successful integration of modern diffusion systems
+
+Beyond the classical DDPM derivations, the tutor gave accurate, high-level descriptions of real production systems—LAION datasets, CLIP conditioning, classifier-free guidance, transformer-based DiTs, and accelerated samplers. This kept the tutorial grounded in how diffusion models are used today.
+
+Weaknesses
+
+1. Occasional verbosity
+
+While explanations were clear, some responses exceeded the intended length and revisited multiple concepts at once. This made certain sections denser than necessary for an “interactive tutoring” style.
+
+2. Repetition in concept checks
+
+Some questions asked similar things in different words—especially around why all timesteps must be trained, why variance preservation matters, or what happens at high noise levels. This slightly reduced novelty as the session continued.
+
+3. Numerically hand-wavy examples
+
+In places where numeric intuition was provided (e.g., approximate values of ᾱₜ or signal-to-noise ratios), the numbers were not derived explicitly. While directionally correct, these examples could be mistaken for precise calculations.
+
+4. Limited depth in evaluating your answers
+
+The tutor accepted most responses as correct even when they were vague, and only intervened on clearly incorrect statements. It did not probe deeper into partial answers or ask follow-up clarification questions to assess mastery.
+
+5. Some modern-systems explanations simplified subtle technical details
+
+Descriptions of classifier-free guidance scaling, DiT advantages, and compute cost were technically accurate but abstracted away important nuances. This makes the content accessible, but less rigorous for students seeking deeper technical grounding.</div>
+        </div>
+
+        <div class="attachments">
+                <div class="attachment attachment-pdf">
+                    <div class="attachment-label">Claude-Interactive diffusion models tutorial.pdf <a href="attachments/Claude-Interactive diffusion models tutorial.pdf" target="_blank" class="download-link">Open in new tab</a></div>
+                    <iframe src="attachments/Claude-Interactive diffusion models tutorial.pdf" loading="lazy"></iframe>
+                </div></div>
+    </div>
+</body>
+</html>

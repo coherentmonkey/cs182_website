@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Special Participation E: A Visualizer for Optimizers - CS 182</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #f5f7fa;
+            color: #333;
+            line-height: 1.6;
+        }
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .back-link {
+            display: inline-block;
+            margin-bottom: 20px;
+            color: #4299e1;
+            text-decoration: none;
+        }
+        .back-link:hover { text-decoration: underline; }
+        .thread-header {
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+        }
+        .thread-title {
+            font-size: 1.8rem;
+            color: #2d3748;
+            margin-bottom: 15px;
+        }
+        .thread-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            color: #718096;
+            font-size: 14px;
+        }
+        .model-badge {
+            display: inline-block;
+            padding: 4px 12px;
+            background: #e2e8f0;
+            color: #4a5568;
+            border-radius: 15px;
+            font-size: 13px;
+            font-weight: 500;
+        }
+        .hw-badge {
+            display: inline-block;
+            padding: 4px 12px;
+            background: #fed7e2;
+            color: #97266d;
+            border-radius: 15px;
+            font-size: 13px;
+            font-weight: 500;
+        }
+        .thread-body {
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+        }
+        .thread-body h3 {
+            margin-bottom: 15px;
+            color: #2d3748;
+        }
+        .body-content {
+            white-space: pre-wrap;
+            word-wrap: break-word;
+            line-height: 1.8;
+            font-size: 15px;
+        }
+        .body-content a {
+            color: #4299e1;
+            word-break: break-all;
+        }
+        .attachments {
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
+        .attachments h3 {
+            margin-bottom: 20px;
+            color: #2d3748;
+        }
+        .attachment {
+            margin-bottom: 25px;
+            border: 1px solid #e2e8f0;
+            border-radius: 6px;
+            overflow: hidden;
+        }
+        .attachment-label {
+            background: #f7fafc;
+            padding: 10px 15px;
+            font-weight: 500;
+            font-size: 14px;
+            border-bottom: 1px solid #e2e8f0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .download-link {
+            color: #4299e1;
+            text-decoration: none;
+            font-weight: normal;
+        }
+        .download-link:hover { text-decoration: underline; }
+        .attachment-image img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+        .attachment-pdf iframe {
+            width: 100%;
+            height: 800px;
+            border: none;
+        }
+        .attachment-video video {
+            width: 100%;
+            max-height: 600px;
+        }
+        .attachment-audio audio {
+            width: 100%;
+            padding: 15px;
+        }
+        .attachment-text pre {
+            padding: 15px;
+            background: #f7fafc;
+            overflow-x: auto;
+            max-height: 500px;
+            font-size: 13px;
+            line-height: 1.5;
+        }
+        .attachment-file {
+            padding: 15px;
+        }
+        .file-link {
+            color: #4299e1;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .file-link:hover { text-decoration: underline; }
+        .ed-link {
+            display: inline-block;
+            margin-top: 15px;
+            color: #4299e1;
+            text-decoration: none;
+        }
+        .ed-link:hover { text-decoration: underline; }
+        @media (max-width: 768px) {
+            .thread-title { font-size: 1.4rem; }
+            .attachment-pdf iframe { height: 500px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <a href="../../../index.html" class="back-link">← Back to Directory</a>
+
+        <div class="thread-header">
+            <h1 class="thread-title">Special Participation E: A Visualizer for Optimizers</h1>
+            <div class="thread-meta">
+                <span>By Kithmini Herath</span>
+                <span>2025-12-08</span>
+                
+                <span class="model-badge">Claude</span>
+            </div>
+            <a href="https://edstem.org/us/courses/84647/discussion/7429585" target="_blank" class="ed-link">View on Ed Stem →</a>
+        </div>
+
+        <div class="thread-body">
+            <div class="body-content">Hi all, 
+
+I created an optimizer visualization tool (<a href="https://kithminiherath.github.io/optimizer-vis/)" target="_blank" rel="noopener noreferrer">https://kithminiherath.github.io/optimizer-vis/)</a> to interactively analyze how different hyperparameters affect the loss minimization trajectory for the following optimizers: 
+
+AdamW
+
+SGD (with and without nestorov momentum)
+
+Muon 
+
+To build this visualizer I used classic optimizer test functions (2D loss landscapes) to test convergence, precision, robustness and performance of the above optimization algorithms:
+
+Sphere
+
+Gaussian Bowl
+
+Rosenbrock
+
+Rastrigin
+
+The code for this visualizer is available at: <a href="https://github.com/KithminiHerath/optimizer-vis" target="_blank" rel="noopener noreferrer">https://github.com/KithminiHerath/optimizer-vis</a> which can be used to extend to more optimizers. 
+
+This visualization tool was built with the help of Gemini 3 on Antigravity using TypeScript and three.js. I also used Claude Code as a secondary agent to get a different view of the code implementations by Gemini and to weed out implementation bugs. 
+
+For a lightweight webapp deployment all optimizers and loss functions were implemented with TypeScript. To ensure there were no implementation bugs, I ran test benches comparing the TypeScript optimizers&#x27; step-wise outputs for loss functions against the corresponding PyTorch libraries.
+
+How I built the visualizer to represent Muon on 2D loss landscapes: 
+
+Implementing AdamW and SGD were quite straightforward, but it was challenging for me to make this visualizer to work for Muon in a meaningful way. This is because Muon only works for 2D parameters and the loss functions and the rest of this visualizer was built for vectors. Chatting with Gemini 3 we came up with the following workflow to make this visualizer work for Muon as well in a meaningful way:
+
+Since Muon needs 2D parameters we defined a “matrix mode” where a parameter matrix was defined as 
+
+$$W=\left[\begin{matrix}x&amp;z\\y&amp;w\end{matrix}\right]$$
+
+In the Muon implementation the rows will be orthogonalized here. 
+
+We define the “visible parameters” as $x$ and $y$ and the remaining parameters as “dummy” parameters. By separating $x$ and $y$ into different rows, you force the optimizer to make them orthogonal. If they were in the same row, they would just be normalized together. 
+
+Even if $z$ and $w$ are dummy parameters we still need to define gradients for them. Therefore we don’t fix them, in-order for them to support the orthogonality constraints and also to prevent the matrix from being rank-1. Currently they are initialized to -1 and 1 and the final loss function is defined as:  . 
+
+$$L_{total}=L_{2D}\left(x,y\right)+z^2+w^2$$
+
+$L_{2D}(x,y)$ is one of the four previously mentioned 2D loss functions and the remaining terms follow a simple bowl objective. Providing a &quot;slope&quot; for the hidden dimensions this way ensures the matrix has sufficient rank for the Newton-Schulz iteration to work non-trivially. 
+
+Under the above loss function the weights are optimized with the standard Muon implementation in TypeScript and we only visualize the behavior of $L_{2D}(x,y)$ in the tool.
+
+I think this is still a mathematically valid way to observe the behavior of Muon in comparison to the other two optimizers. I also want to note that when Muon is selected as an optimizer from the controls in the visualizer, any other optimizer selected with it will also be working on matrix parameters for common ground. 
+
+Features of the visualizer: 
+
+2D contour and 3D surface plots for visual representation of the loss landscapes. This way during a run the user can analyze both views. I think the 3D view is especially useful when there are multiple local minima, saddle points and when it’s not apparent on the 2D contour plot why the optimizer got stuck at certain points. 
+
+Loss function control – select any loss function.
+
+Configure Optimizer panel – 
+
+Type – optimizer type selection 
+
+Hyperparameter sliders to configure the optimizer and add it. 
+
+You’re able to select multiple optimizers at different configurations during a run and they will be listed with the choices of hyperparameters in the Optimizer List. You can also set the starting points of $x$ and $y$ by either clicking anywhere on the contour plot or typing out coordinates in the &quot;start X&quot; and &quot;start Y&quot; boxes. 
+
+You can also set the number of maximum steps you want the optimizer to run for. The default is 200 steps. 
+
+You start the run with “Start” button and it’ll automatically run until it hits the maximum number of steps. You can also pause runs or step through iterations one step at a time with the “Step” button. While the “Stop” button resets to the beginning of the run, the “Reset” button resets the visualizer.
+
+Some cool visualization examples:
+
+Learning rate comparison within the same optimizer type: AdamW with higher learning rate converging faster by escaping local minima:
+
+Comparing several optimizers:
+
+AdamW finds the global minima but both SGD versions reach the local minima:
+
+Muon originally moves towards the local minima but is able to recover and change the trajectory towards the global minima. I think this shows how Muon’s orthogonality constraints initially causes the dominant gradient at that point ($dy$) to affect the gradients in other directions and may overall pull in the local minima direction, but I think once $dw$ and $dz$ recovers under their loss it snaps back in the direction of the global minima:
+
+Muon seems to do great in converging at more complex loss landscapes. I think this is an interesting case that shows how Muon’s spectral norm constraints essentially “saves” it from exploding gradients along steep valleys and take controlled steps and eventually reach the global minima efficiently while the other optimizers seem to be distracted by the steep gradient in one direction (wall like structure) and gets stuck at local minimas since the gradient in other directions (valley like structure) gives less of a signal to move:
+
+Limitations:
+
+Users are unable to see the behavior of the hidden parameters in the matrix mode.
+
+Users cannot set different values for the hidden parameters and analyze how that affects optimization trajectory of the 2D losses. 
+
+I think this is a useful tool for anyone trying to understand how certain hyperparameters affect certain loss functions, gain insights into the behavior of different optimizers even if it’s for relatively simple loss landscapes. I think it would be a good playground to test specific instances to understand optimizers for academic purposes. 
+
+Hope y’all can also check this out and let me know if you have any feedback. I’m also interested in expanding this to other optimizers in the future.</div>
+        </div>
+
+        
+    </div>
+</body>
+</html>

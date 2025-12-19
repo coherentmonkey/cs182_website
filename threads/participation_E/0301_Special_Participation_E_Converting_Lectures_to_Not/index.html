@@ -1,0 +1,1068 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Special Participation E: Converting Lectures to Notes - CS 182</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #f5f7fa;
+            color: #333;
+            line-height: 1.6;
+        }
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .back-link {
+            display: inline-block;
+            margin-bottom: 20px;
+            color: #4299e1;
+            text-decoration: none;
+        }
+        .back-link:hover { text-decoration: underline; }
+        .thread-header {
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+        }
+        .thread-title {
+            font-size: 1.8rem;
+            color: #2d3748;
+            margin-bottom: 15px;
+        }
+        .thread-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            color: #718096;
+            font-size: 14px;
+        }
+        .model-badge {
+            display: inline-block;
+            padding: 4px 12px;
+            background: #e2e8f0;
+            color: #4a5568;
+            border-radius: 15px;
+            font-size: 13px;
+            font-weight: 500;
+        }
+        .hw-badge {
+            display: inline-block;
+            padding: 4px 12px;
+            background: #fed7e2;
+            color: #97266d;
+            border-radius: 15px;
+            font-size: 13px;
+            font-weight: 500;
+        }
+        .thread-body {
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+        }
+        .thread-body h3 {
+            margin-bottom: 15px;
+            color: #2d3748;
+        }
+        .body-content {
+            white-space: pre-wrap;
+            word-wrap: break-word;
+            line-height: 1.8;
+            font-size: 15px;
+        }
+        .body-content a {
+            color: #4299e1;
+            word-break: break-all;
+        }
+        .attachments {
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
+        .attachments h3 {
+            margin-bottom: 20px;
+            color: #2d3748;
+        }
+        .attachment {
+            margin-bottom: 25px;
+            border: 1px solid #e2e8f0;
+            border-radius: 6px;
+            overflow: hidden;
+        }
+        .attachment-label {
+            background: #f7fafc;
+            padding: 10px 15px;
+            font-weight: 500;
+            font-size: 14px;
+            border-bottom: 1px solid #e2e8f0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .download-link {
+            color: #4299e1;
+            text-decoration: none;
+            font-weight: normal;
+        }
+        .download-link:hover { text-decoration: underline; }
+        .attachment-image img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+        .attachment-pdf iframe {
+            width: 100%;
+            height: 800px;
+            border: none;
+        }
+        .attachment-video video {
+            width: 100%;
+            max-height: 600px;
+        }
+        .attachment-audio audio {
+            width: 100%;
+            padding: 15px;
+        }
+        .attachment-text pre {
+            padding: 15px;
+            background: #f7fafc;
+            overflow-x: auto;
+            max-height: 500px;
+            font-size: 13px;
+            line-height: 1.5;
+        }
+        .attachment-file {
+            padding: 15px;
+        }
+        .file-link {
+            color: #4299e1;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .file-link:hover { text-decoration: underline; }
+        .ed-link {
+            display: inline-block;
+            margin-top: 15px;
+            color: #4299e1;
+            text-decoration: none;
+        }
+        .ed-link:hover { text-decoration: underline; }
+        @media (max-width: 768px) {
+            .thread-title { font-size: 1.4rem; }
+            .attachment-pdf iframe { height: 500px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <a href="../../../index.html" class="back-link">← Back to Directory</a>
+
+        <div class="thread-header">
+            <h1 class="thread-title">Special Participation E: Converting Lectures to Notes</h1>
+            <div class="thread-meta">
+                <span>By Jameson Liu</span>
+                <span>2025-11-19</span>
+                
+                <span class="model-badge">Gemini</span>
+            </div>
+            <a href="https://edstem.org/us/courses/84647/discussion/7335566" target="_blank" class="ed-link">View on Ed Stem →</a>
+        </div>
+
+        <div class="thread-body">
+            <div class="body-content">I wanted a way to convert the lectures into a notes format, similar to those in CS70. This way, it would be easier to look for specific content and review material without needing to scan through the lecture recordings, timestamp by timestamp. While the lecture slides are posted, they alone do not cover everything stated in the lecture. 
+
+Therefore, I wrote a script to use an LLM to convert lectures into well-formatted, academic notes. It uses lecture slides and the transcript of the lecture recording (easily copyable), so no information is left out. An LLM is necessary for this task since 1. the YouTube transcript has several mistakes, and 2. traditional .pdf readers are not great at extracting handwritten text (especially math). 
+
+I had to use the Gemini API instead of a typical LLM website, since uploading a .pdf usually just extracts its text instead of having the LLM read it visually (which is a problem since traditional OCR fails). My code takes every page of the lecture slides and converts it to an image before appending it to the request (I verified that this works by testing it without providing a transcript).
+
+Below is the script and an annotated example (rendered from .tex) output. Running it requires a Gemini API key, which is free (subject to rate limit). The following is from lecture 2, and the transcript is copied directly from the YouTube transcript section (description -&gt; transcript -&gt; hide timestamps).</div>
+        </div>
+
+        <div class="attachments">
+                <div class="attachment attachment-pdf">
+                    <div class="attachment-label">lecture_notes.pdf <a href="attachments/lecture_notes.pdf" target="_blank" class="download-link">Open in new tab</a></div>
+                    <iframe src="attachments/lecture_notes.pdf" loading="lazy"></iframe>
+                </div>
+                    <div class="attachment attachment-text">
+                        <div class="attachment-label">lecture_notes.tex <a href="attachments/lecture_notes.tex" target="_blank" class="download-link">Download</a></div>
+                        <pre><code>\documentclass[11pt]{article}
+\usepackage{amsmath, amssymb, amsfonts}
+\usepackage{geometry}
+\geometry{a4paper, margin=1in}
+\usepackage{bm}
+
+\title{CS 182 Lecture 2: Optimization}
+\author{Deep Neural Networks}
+
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\E}{\mathbb{E}}
+\newcommand{\mat}[1]{\mathbf{#1}}
+\newcommand{\norm}[1]{\left\lVert#1\right\rVert}
+
+\begin{document}
+\maketitle
+
+\section{Implicit Regularization of Gradient Descent}
+
+\subsection{Recap: Geometry and Convergence of Gradient Descent}
+From the previous lecture, we analyzed the convergence of Gradient Descent (GD) for linear regression (least squares). A key takeaway is that the geometric properties of the loss function are critical for determining practical hyperparameters, such as the learning rate.
+
+For the least squares problem, the convergence of GD is guaranteed if the learning rate $\eta$ satisfies:
+\begin{equation}
+    \eta &lt; \frac{1}{\lambda_{\max}(\mat{X}^T \mat{X})} = \frac{1}{\sigma_{\max}^2(\mat{X})}
+\end{equation}
+where $\lambda_{\max}$ is the largest eigenvalue and $\sigma_{\max}$ is the largest singular value. The rate of convergence is determined by the condition number of $\mat{X}^T\mat{X}$, which is the ratio $\frac{\lambda_{\max}}{\lambda_{\min}} = \left(\frac{\sigma_{\max}}{\sigma_{\min}}\right)^2$.
+
+This concept generalizes beyond quadratic loss functions. Properties like \textbf{L-smoothness} and \textbf{$\mu$-strong convexity} provide upper and lower quadratic bounds on general loss functions, allowing us to extend these geometric intuitions. The convergence rate in these more general cases depends on the ratio $L/\mu$.
+
+\subsection{Ridge Regression in the SVD Basis}
+To understand regularization, we analyze Ridge Regression. The solution to the Ridge objective is given by:
+\begin{equation}
+    \vec{w}_{*} = (\mat{X}^T \mat{X} + \lambda \mat{I})^{-1} \mat{X}^T \vec{y}
+\end{equation}
+An equivalent form, known as the kernel form, is $\vec{w}_{*} = \mat{X}^T (\mat{X} \mat{X}^T + \lambda \mat{I})^{-1} \vec{y}$.
+
+Let&#x27;s analyze the solution in the basis defined by the Singular Value Decomposition (SVD) of the data matrix $\mat{X}$. Let $\mat{X} = \mat{U} \mat{\Sigma} \mat{V}^T$. Substituting this into the solution for $\vec{w}_{*}$:
+\begin{align*}
+    \vec{w}_{*} &amp;= ((\mat{U}\mat{\Sigma}\mat{V}^T)^T (\mat{U}\mat{\Sigma}\mat{V}^T) + \lambda \mat{I})^{-1} (\mat{U}\mat{\Sigma}\mat{V}^T)^T \vec{y} \\
+    &amp;= (\mat{V}\mat{\Sigma}^T\mat{U}^T \mat{U}\mat{\Sigma}\mat{V}^T + \lambda \mat{V}\mat{V}^T)^{-1} \mat{V}\mat{\Sigma}^T\mat{U}^T \vec{y} \quad (\text{since } \mat{I} = \mat{V}\mat{V}^T) \\
+    &amp;= (\mat{V}(\mat{\Sigma}^T\mat{\Sigma} + \lambda \mat{I})\mat{V}^T)^{-1} \mat{V}\mat{\Sigma}^T\mat{U}^T \vec{y} \quad (\text{since } \mat{U}^T\mat{U} = \mat{I}) \\
+    &amp;= \mat{V}(\mat{\Sigma}^T\mat{\Sigma} + \lambda \mat{I})^{-1}\mat{V}^T \mat{V}\mat{\Sigma}^T\mat{U}^T \vec{y} \\
+    &amp;= \mat{V}(\mat{\Sigma}^T\mat{\Sigma} + \lambda \mat{I})^{-1}\mat{\Sigma}^T\mat{U}^T \vec{y}
+\end{align*}
+The matrix $(\mat{\Sigma}^T\mat{\Sigma} + \lambda \mat{I})$ is a diagonal matrix with diagonal entries $\sigma_i^2 + \lambda$. Its inverse is also diagonal with entries $1/(\sigma_i^2 + \lambda)$. This allows us to express the solution as a sum over the singular components:
+\begin{equation}
+    \vec{w}_{*} = \sum_{i=1}^{\text{rank}(\mat{X})} \vec{v}_i \left( \frac{\sigma_i}{\sigma_i^2 + \lambda} \right) (\vec{u}_i^T \vec{y})
+\end{equation}
+Here, $\vec{v}_i$ and $\vec{u}_i$ are the right and left singular vectors, respectively. The term $\vec{u}_i^T \vec{y}$ is a scalar projection.
+
+The behavior of the solution is governed by the scaling factor $\frac{\sigma_i}{\sigma_i^2 + \lambda}$:
+\begin{itemize}
+    \item If $\lambda \gg \sigma_i^2$ (i.e., for directions with small singular values), the scaling factor approaches 0. The components of the solution in these directions are suppressed.
+    \item If $\sigma_i^2 \gg \lambda$ (i.e., for directions with large singular values), the scaling factor is approximately $\frac{\sigma_i}{\sigma_i^2} = \frac{1}{\sigma_i}$.
+\end{itemize}
+Small singular values correspond to directions of low variance in the data. Ridge regularization, therefore, prevents the model from fitting patterns in these low-variance directions, which are often dominated by noise. This is how Ridge helps prevent overfitting.
+
+\subsection{Gradient Descent and Early Stopping}
+The standard Gradient Descent update for least squares is:
+\begin{equation}
+    \vec{w}_{t+1} = \vec{w}_t - 2\eta \mat{X}^T(\mat{X}\vec{w}_t - \vec{y})
+\end{equation}
+An important observation is that the update step $\Delta \vec{w}_t$ is always in the column space of $\mat{X}^T$, which is the row space of $\mat{X}$ (the span of the data). If initialized at $\vec{w}_0 = \vec{0}$, the solution $\vec{w}_t$ will always remain in the span of the data.
+
+For comparison, the GD update for the Ridge objective includes a term often called \textbf{weight decay}:
+\begin{equation}
+    \vec{w}_{t+1} = (1 - 2\eta\lambda)\vec{w}_t - 2\eta \mat{X}^T(\mat{X}\vec{w}_t - \vec{y})
+\end{equation}
+The term $(1 - 2\eta\lambda)$ shrinks the weights at each step.
+
+Now, let&#x27;s analyze the standard GD update in the SVD basis. Let $\tilde{\vec{w}}_t = \mat{V}^T \vec{w}_t$ be the weights in the new basis.
+\begin{align*}
+    \mat{V}^T\vec{w}_{t+1} &amp;= \mat{V}^T\vec{w}_t - 2\eta \mat{V}^T (\mat{V}\mat{\Sigma}^T\mat{U}^T)(\mat{U}\mat{\Sigma}\mat{V}^T \vec{w}_t - \vec{y}) \\
+    \tilde{\vec{w}}_{t+1} &amp;= \tilde{\vec{w}}_t - 2\eta \mat{\Sigma}^T\mat{U}^T(\mat{U}\mat{\Sigma}\tilde{\vec{w}}_t - \vec{y}) \\
+    \tilde{\vec{w}}_{t+1} &amp;= \tilde{\vec{w}}_t - 2\eta \mat{\Sigma}^T(\mat{\Sigma}\tilde{\vec{w}}_t - \mat{U}^T\vec{y})
+\end{align*}
+Since $\mat{\Sigma}^T\mat{\Sigma}$ is diagonal, the system decouples. For the $i$-th component:
+\begin{equation}
+    \tilde{w}_{t+1,i} = \tilde{w}_{t,i} - 2\eta \sigma_i^2 \tilde{w}_{t,i} + 2\eta \sigma_i (\vec{u}_i^T \vec{y}) = (1 - 2\eta\sigma_i^2)\tilde{w}_{t,i} + 2\eta\sigma_i \tilde{y}_i
+\end{equation}
+The effective step size in the direction of the $i$-th singular vector is proportional to $\sigma_i^2$. This means:
+\begin{itemize}
+    \item GD takes large steps in directions corresponding to large singular values.
+    \item GD takes small steps in directions corresponding to small singular values.
+\end{itemize}
+This leads to the concept of \textbf{Early Stopping}. Gradient Descent will first converge rapidly along the high-variance directions. If we stop the algorithm before it has fully converged, it will not have had enough time to move significantly in the low-variance directions. This effectively prevents the model from fitting the noise in the data, achieving a similar regularizing effect as Ridge regression. This phenomenon is known as the \textbf{implicit regularization} of gradient descent.
+
+\section{Stochastic Gradient Descent (SGD)}
+\subsection{Motivation and Algorithm}
+While GD is effective for convex problems, training deep neural networks involves non-convex loss landscapes. Furthermore, GD is computationally expensive for large datasets, as it requires computing the gradient over the entire dataset for a single update.
+
+Stochastic Gradient Descent (SGD) addresses these issues. It assumes the loss function can be decomposed into a sum over individual data points:
+\begin{equation}
+    f(\theta) = \frac{1}{n} \sum_{i=1}^n f_i(\theta)
+\end{equation}
+Instead of computing the full gradient $\nabla f(\theta)$, SGD computes the gradient on a small, randomly sampled subset of the data called a \textbf{mini-batch}, $\mathcal{B}$. The update rule is:
+\begin{equation}
+    \theta_{t+1} = \theta_t - \eta \frac{1}{|\mathcal{B}|} \sum_{i \in \mathcal{B}} \nabla f_i(\theta_t)
+\end{equation}
+The gradient estimate is noisy but unbiased, assuming the mini-batch is sampled uniformly at random:
+\begin{equation}
+    \E_{i \sim \text{Uniform}}[\nabla f_i(\theta)] = \nabla f(\theta)
+\end{equation}
+
+\subsection{Properties of SGD}
+\begin{itemize}
+    \item \textbf{Computationally Efficient:} Each step is much faster than a full GD step.
+    \item \textbf{Noise helps escape local minima:} The stochasticity in the gradient estimate can help the optimization process escape sharp local minima or saddle points and find better, flatter minima, which often leads to better generalization.
+    \item \textbf{Convergence:} Traditional optimization theory suggests that for SGD to converge, the learning rate $\eta$ must decrease over time (a learning rate schedule). However, in the context of deep learning (often over-parameterized models), SGD can converge even with a constant step size.
+\end{itemize}
+
+\section{Momentum}
+\subsection{Motivation: Oscillations in Gradient Descent}
+The learning rate $\eta$ for GD is limited by the largest singular value, $\sigma_{\max}$. This choice of $\eta$ can lead to very slow convergence in directions with smaller singular values. If we try to increase $\eta$ to speed up convergence, the update term for the largest singular values, $(1-2\eta\sigma_{\max}^2)$, can become negative, causing oscillations in the optimization path. The goal is to accelerate convergence while damping these oscillations.
+
+\subsection{The Momentum Update}
+A common technique to smooth oscillations is averaging. Instead of a simple moving average, which is memory-intensive, we can use an exponentially decaying average of past gradients. This is the idea behind momentum. It introduces a &quot;velocity&quot; or &quot;state&quot; variable, $\vec{z}$, that accumulates a history of gradients.
+
+The momentum update consists of two steps:
+\begin{align}
+    \vec{z}_{k+1} &amp;= \beta \vec{z}_k + \nabla f(\vec{w}_k) \quad \text{(A common variant of the update)}\\
+    \vec{w}_{k+1} &amp;= \vec{w}_k - \eta \vec{z}_{k+1}
+\end{align}
+Alternatively, using the exponential moving average form:
+\begin{align}
+    \vec{z}_{k+1} &amp;= \beta \vec{z}_k + (1-\beta) \nabla f(\vec{w}_k), \quad \text{with } \vec{z}_0 = \vec{0} \\
+    \vec{w}_{k+1} &amp;= \vec{w}_k - \eta \vec{z}_{k+1}
+\end{align}
+Here, $\beta \in [0,1)$ is the momentum parameter. If we expand the recurrence for $\vec{z}_k$, we see it is an exponentially weighted average of past gradients:
+\begin{equation}
+    \vec{z}_k = (1-\beta)\sum_{i=0}^{k-1} \beta^{k-1-i} \nabla f(\vec{w}_i)
+\end{equation}
+The most recent gradients receive the highest weight.
+
+\textbf{Intuition:} Momentum acts like a ball rolling down a hill. It builds up speed in directions of consistent gradient and smooths out directions where the gradient oscillates. This has two main benefits:
+\begin{enumerate}
+    \item It smooths the optimization trajectory, especially for SGD where gradients are noisy.
+    \item It can provably accelerate convergence. For convex quadratic problems, GD&#x27;s convergence rate depends on the condition number $\kappa$, while momentum&#x27;s rate depends on $\sqrt{\kappa}$, which is a significant improvement.
+\end{enumerate}
+The main drawback is the introduction of a new hyperparameter, $\beta$, that needs to be tuned.
+
+\section{Analysis of SGD Convergence}
+We will now set up a proof to show that SGD can converge with a constant step size in a specific setting.
+
+\subsection{Problem Setup}
+Consider an underdetermined linear system $\mat{X}\vec{w} = \vec{y}$, where $\mat{X} \in \R^{n \times d}$ with $d &gt; n$ (a &quot;wide&quot; matrix) and $\mat{X}$ has full row rank. There are infinitely many solutions. Let $\vec{w}_{*}$ be the minimum-norm solution. We will analyze SGD with batch size 1, initialized at $\vec{w}_0 = \vec{0}$.
+
+We transform the problem by considering the error vector $\vec{q}_t = \vec{w}_t - \vec{w}_{*}$. The system becomes $\mat{X}\vec{q} = \vec{0}$.
+The loss function for the original problem is $L(\vec{w}) = \frac{1}{2}\norm{\mat{X}\vec{w}-\vec{y}}^2$. In the error space, we are trying to solve $\mat{X}\vec{q}=\vec{0}$.
+
+Using the SVD of $\mat{X}$, we can show that the dynamics of SGD are confined to the row space of $\mat{X}$. We can therefore reduce the problem from $d$ dimensions to $n$ dimensions, analyzing an equivalent square system $\tilde{\mat{X}}\vec{z} = \vec{0}$, where $\vec{z} \in \R^n$.
+
+The loss can be expressed as $L(\vec{z}) = \norm{\tilde{\mat{X}}\vec{z}}^2 = \vec{z}^T \tilde{\mat{X}}^T \tilde{\mat{X}} \vec{z}$. The SGD update for batch size 1 (sampling the $I_t$-th data point) in this reduced space is:
+\begin{equation}
+    \vec{z}_{t+1} = \vec{z}_t - 2\eta \tilde{\vec{x}}_{I_t} (\tilde{\vec{x}}_{I_t}^T \vec{z}_t)
+\end{equation}
+where $\tilde{\vec{x}}_{I_t}$ is the $I_t$-th row of $\tilde{\mat{X}}$.
+
+\subsection{Proof Strategy via a Lyapunov Function}
+To prove that the loss $L(\vec{z}_t)$ converges to 0, we can use a technique analogous to a Lyapunov function in control theory. We want to show that the expected loss decreases at every step. Specifically, we want to establish a contraction:
+\begin{equation}
+    \E[L(\vec{z}_{t+1}) | \vec{z}_t] \le (1 - C) L(\vec{z}_t)
+\end{equation}
+for some constant $C &gt; 0$. If this holds, the expected loss follows a geometric progression and must converge to zero.
+
+To analyze $\E[L(\vec{z}_{t+1})]$, we can write:
+\begin{align*}
+    L(\vec{z}_{t+1}) &amp;= \norm{\tilde{\mat{X}}(\vec{z}_t + (\vec{z}_{t+1} - \vec{z}_t))}^2 \\
+    &amp;= \norm{\tilde{\mat{X}}\vec{z}_t}^2 + 2(\tilde{\mat{X}}\vec{z}_t)^T \tilde{\mat{X}}(\vec{z}_{t+1} - \vec{z}_t) + \norm{\tilde{\mat{X}}(\vec{z}_{t+1} - \vec{z}_t)}^2 \\
+    &amp;= L(\vec{z}_t) + \text{Term A} + \text{Term B}
+\end{align*}
+The proof, to be continued, would involve taking the expectation of Term A and Term B and showing that their sum is negative and proportional to $L(\vec{z}_t)$, leading to the desired contraction.
+
+\end{document}</code></pre>
+                    </div>
+                    <div class="attachment attachment-text">
+                        <div class="attachment-label">lecture_notes_generator.py <a href="attachments/lecture_notes_generator.py" target="_blank" class="download-link">Download</a></div>
+                        <pre><code>from io import BytesIO
+from google import genai
+from google.genai.types import Part
+from pdf2image import convert_from_path
+from tqdm import tqdm
+
+def pdf_to_images(pdf_path):
+    print(f&quot;Converting PDF to images: {pdf_path}&quot;)
+    images = convert_from_path(pdf_path, dpi=300)
+    print(f&quot;Successfully converted {len(images)} pages to images&quot;)
+    
+    return images
+
+def read_transcript(txt_path):
+    with open(txt_path, &#x27;r&#x27;, encoding=&#x27;utf-8&#x27;) as f:
+        content = f.read()
+    print(f&quot;Successfully read transcript from {txt_path}&quot;)
+    
+    return content
+
+def image_to_bytes(image):
+    buffered = BytesIO()
+    image.save(buffered, format=&quot;PNG&quot;)
+
+    return buffered.getvalue()
+
+def call_gemini_api(images, transcript, GEMINI_API_KEY):
+    client = genai.Client(api_key=GEMINI_API_KEY)
+    
+    prompt = &quot;&quot;&quot;
+    Attached are the lecture video transcript and slides for CS 182, Deep Neural Networks. 
+    I want you to:
+
+    1. clean up the transcript, adjusting any typos
+    2. think about how the transcript aligns with the notes
+    3. create comprehensive notes that cover the entire lecture, such that I can read it and obtain the same information as watching the lecture
+    
+    Output the notes ONLY in academic latex format. 
+    Do not include any other text or formatting. 
+    As much content from the slides as possible should be included in the notes, supplemented by the transcript. 
+    Do not include images in the output, and don&#x27;t include a date.
+
+    Here is the transcript:
+
+    &quot;&quot;&quot; + transcript
+    
+    print(&quot;Attaching images to prompt...&quot;)
+    contents = [prompt]
+    for image in tqdm(images):
+        image_bytes = image_to_bytes(image)
+        contents.append(
+            Part.from_bytes(
+                data=image_bytes,
+                mime_type=&quot;image/png&quot;
+            )
+        )
+    
+    print(&quot;Calling Gemini API...&quot;)
+
+    response = client.models.generate_content(
+        model=&quot;gemini-2.5-pro&quot;,
+        contents=contents
+    )
+    result = response.text
+    print(&quot;Successfully received response from Gemini API&quot;)
+
+    return result
+
+def clean_latex_output(content):
+    content = content.lstrip()
+    if content.startswith(&quot;```latex&quot;):
+        content = content[8:].lstrip()
+    elif content.startswith(&quot;```&quot;):
+        content = content[3:].lstrip()
+    
+    content = content.rstrip()
+    if content.endswith(&quot;```&quot;):
+        content = content[:-3].rstrip()
+    
+    return content
+
+def save_latex_output(content, output_path):
+    content = clean_latex_output(content)
+    
+    with open(output_path, &#x27;w&#x27;, encoding=&#x27;utf-8&#x27;) as f:
+        f.write(content)
+    print(f&quot;Successfully saved LaTeX output to {output_path}&quot;)
+
+
+if __name__ == &quot;__main__&quot;:
+    PDF_FILE = &quot;lecture_slides.pdf&quot;
+    TXT_FILE = &quot;lecture_transcript.txt&quot;
+    OUTPUT_FILE = &quot;lecture_notes.tex&quot;
+    GEMINI_API_KEY = &quot;&quot; # fill this in
+    
+    images = pdf_to_images(PDF_FILE)
+    
+    transcript = read_transcript(TXT_FILE)
+    
+    latex_content = call_gemini_api(images, transcript, GEMINI_API_KEY)
+    
+    save_latex_output(latex_content, OUTPUT_FILE)
+</code></pre>
+                    </div>
+                    <div class="attachment attachment-text">
+                        <div class="attachment-label">lecture_transcript.txt <a href="attachments/lecture_transcript.txt" target="_blank" class="download-link">Download</a></div>
+                        <pre><code>come to lecture in your study groups and sit with your study group together. Um
+that way when something&#x27;s confusing you have someone next to you that you can actually ask a question and I find that
+this really makes a difference to the students uh as you go forward. So
+strongly strongly recommend that whoever you&#x27;re working with on homeworks get them to come to lecture and sit next to
+you in the lecture room.
+Okay. So, I&#x27;m going to try a couple of different ways of presenting the material today in terms of how I use the
+technology. If you have any feedback on this, please let me know. Um, and I will
+try to adapt to whatever is working with the best for the most number of people.
+So, what we&#x27;re going to do today uh is we&#x27;re going to pick up where we left off last. Before I start officially,
+um let me just remind you all that homework zero is due. When is homework
+zero due? Tomorrow at 10:59 p.m. Friday. And what
+happens if you don&#x27;t submit homework zero? You&#x27;re dropped from the class, right?
+So, please submit homework zero. Don&#x27;t accidentally get dropped from the class.
+Don&#x27;t wait till 10:58 to submit it and then have grades grow crash on you and then send us an email because the wait
+list is so huge. And as you&#x27;ve probably seen, we are not able to respond to all of your emails. So, just, you know,
+submit it at 10 p.m. instead of 10:59 p.m. That way, you have all this time to deal with any kind of buffer, whatever,
+late submission, this that. Um, make sure it goes in. You&#x27;ve had more than a
+week to complete it, and it should be all material that&#x27;s based on prerequisites. Okay. Any administrative questions
+before we start? Okay. So, the expansion is definitely
+happening. You should all be getting emails and like be officially being led
+into the class. We are hoping to clear the wait list. Okay, so all of you on
+the wait list, fingers crossed. I cannot promise anything, but we are absolutely hoping to clear the weight list. Okay,
+so uh uh that&#x27;s the good news. Okay, so today
+is all about optimization. We started talking about it last time and we&#x27;re going to continue talking about it. The
+first thing that I want to talk about is building on what we started off last time and talking about the implicit
+regularization of gradient descent. So last time we talked about how gradient
+descent converges for linear regression and we notice that what matters the most
+is really this largest value of xrpose x or the largest singular value of the
+matrix x itself. Right? Remember we saw this that you know we you you have to have the learning rate smaller than
+this. If this is if you need to remember this go and look at the 127 notes so you
+can recall this. And the key takeaway that I want you to remember from that is
+that the geometric properties of your loss function matter in terms of the
+practical parameters and hyperparameters that you will be using in tuning your functions. So here is a condition on ADA
+your learning rate or your step size that is a function of the geometry of
+your underlying loss function and here we did this for le squares or so it&#x27;s a quadratic loss function but this is not
+specific to le squares for example I had a question right after lecture it&#x27;s like
+I heard this thing about smoothness and like strong convexity and isn&#x27;t
+convergence supposed to depend on that so what smoothness and strong convexity are is they&#x27;re essentially
+generalizations of what we&#x27;re looking at in terms of these quadratic functions to try and
+sandwich other functions or approximate them using other quadratic functions. And so by looking at you know upper and
+lower bounds of our desired function in terms of quadratic functions we can get
+what is known as um strong convexity bounds. We call we call these mu strong
+convexity usually or we can get smoothness bounds. We call these L is usually a parameter associated with that
+L smoothness. And we can generalize this intuition that we have for uh gradient
+descent on linear regression or quadratic loss problems to other
+problems where what will matter is now the ratio of the smoothness to the uh
+strong convexity parameter. Here what we found that matters in terms of the convergence rate was the ratio of the
+largest to the smallest singular value. Right? Everyone remember that discussion from last time? Okay, great. So now
+we&#x27;re going to kind of build on this intuition about um singular values and
+start talking about ridge and ridge regularization and think about how this leads to the implicit regular
+regularization of um gradient descent. So remember that war star
+is given by uh for ridge xrpose x plus lambda i inverse
+xrpose y and we also said that this is equal to xrpose
+xxrpose plus lambda i inverse
+time y. Okay, these are the two ridge solutions. One is the straight form, the other is the kernel form.
+And now we wanted to try and say well can we look at ridge in the SVD
+coordinates. Right? Clearly we see even just from the straight convergence proof of gradient descent that the singular
+values and the particular directions the um singular vectors matter in terms of
+how gradient descent is going to behave. So let&#x27;s look at ridge in those d in those coordinates as well. So here let&#x27;s
+say this SVD of X is U sigma VRpose
+then I can write my W star as just filling this out. So coming from
+here
+if I just write this. So vranspose um sigma transpose
+u * actually there should not be a transpose
+here. This should be v sigma uranspose sigma transpose urpose u sigma vranspose
+plus lambda i inverse XRPOSE again will give me a
+U b sigma transpose uranspose
+times y I&#x27;m just plugging in my svd here okay so now I can do some manipulations
+of this and in particular what I will see here is that this u transpose is
+just going to cancel right and then I have this identity here I can
+write this identity as VVRpose because these are orthonormal matrices. Everyone remember that? And so I can just pull
+these out and so I can rewrite this effectively equal to
+V sigma transpose sigma plus lambda I whole inverse vranspose V
+sigma transpose uranspose Y again. And now these vranspose
+again because V is an orthonormal matrix VRpose is just its inverse. So that also
+cancels. And so I&#x27;m left with
+V V.
+Okay. So, what does this look like when I try to write out this matrix? What is this
+matrix in the middle? Well, this is an almost diagonal thing.
+This is an almost diagonal thing. So, when I multiply them together, what am I going to have? I&#x27;m going to have
+something with the squares of the singular values on the diagonal, as many singular values as I have. And what&#x27;s
+the rest going to be? It&#x27;s going to be all zeros, right? And then I have this lambda time I which
+is also diagonal. So the sum of these things to is going to be diagonal. And so I&#x27;ll either have a singular value
+squared plus lambda or I&#x27;ll just have that lambda. Does everyone see that when I add those two matrices together? So
+what I&#x27;m going to have is something of this form.
+And then I&#x27;m going to have some lambdas here based on how these dimensions actually work out.
+And this is all inverse. So what this means is when I try to
+write out my w star, what do I get? I can write it
+as vi coming from this v here. This V
+here gives me the VI. Sigma I divided by sigma I^ 2 + lambda
+times ui transpose time
+y and how many terms are going to be in this sum?
+Basically I&#x27;m going down the diagonal, right? So whatever my dimension is.
+So what do I see here in this particular setup?
+If I look at this now this particular quantity is what is
+governing the scaling. So I&#x27;m thinking of this this uranspose y this is a
+scalar. Does everyone see that this is a scaler? So now I&#x27;m basically
+looking at my W star as in the SVD basis
+and these are the coefficients for every single singular vector of my
+matrix. Everyone see that? Because these are just scalers. So what is going to happen to
+sigma i over sigma i^ 2 plus lambda if
+um lambda is much much bigger than sigma like sigma is like one and lambda is a
+million for example what is this quantity going to become
+if lambda is really large basically lambda is going to dominate and this thing is going to become smaller and
+smaller and smaller, right? It&#x27;s going to kind of tend to zero as lambda goes to infinity, right? For a
+fixed sigma i. So what this means is that if I have
+some small singular values compared to my ridge regularization parameter
+lambda, what&#x27;s going to happen is that are those vectors going to really show
+up in my optimal solution? No. There those components are just decaying away,
+right? Whereas on the other hand, what happens to this sigma i^ 2 plus lambda when I
+have u sigma i is much bigger than lambda. Well, then this just behaves
+like 1 / sigma i, right? Because I have a sigma i over
+sigma i squar approximately this is like 1 over sigma i. So I&#x27;m going to get that
+component there. And what this means is that the directions that have low
+singular values don&#x27;t show up in your optimal solution
+with ridge. Right? And by varying lambda, you can vary how easy it is for
+those low singular values to show up. Now what are those directions? When you think intuitively about what does it
+mean for a particular direction to have a low singular value. So take a minute and
+like find a person next to you and talk to them about this. What does it mean when a direction is a low singular value
+or a high singular? I&#x27;m going to give you one minute to actually talk.
+[Music]
+Yeah.
+[Applause]
+30 minutes.
+And that was
+Okay, that&#x27;s a minute. That&#x27;s one minute. So, if you want these
+breaks to talk, then you have to stop when I say stop. Otherwise, we&#x27;ll never finish. Okay. So, what is the impact of
+having a um what what does it mean to have a small singular value? What does that
+mean for those directions in terms of the data? Yeah, low variance. Low variance, right? So the large
+singular values capture directions that have a lot of variance in the data. The small singular values are the ones that
+don&#x27;t have that that much variance in the data. So what that means is that when you look at your data points,
+right, what is X made of? X is made of basically the rows of X are your data points. Those directions that are not
+represented in the data are the directions that have small singular values.
+So if you don&#x27;t have a lot of information about particular directions, maybe you shouldn&#x27;t actually be paying
+too much attention to those when you&#x27;re trying to fit your function. Remember we
+started talking about ridge because ridge or regularization in general is a
+common solution to the problem of overfitting. Where does overfitting happen? When you&#x27;re too married to your
+particular training data points because you&#x27;re like, &quot;Oh my gosh, I love my training data. I&#x27;m so happy to have it. let me try to fit it absolutely
+perfectly. But you fit in these directions that miss maybe aren&#x27;t, you
+know, really representative. You&#x27;re just fitting some noise and it reduces your generalization. It reduces your
+performance on the test data. So by ignoring the directions or putting
+less weight on the directions that have low variability, you can actually improve your performance, right? And that&#x27;s why regularization in general is
+um can be a very good thing. So regularization is not just about
+incorporating some kind of side information about your data. For example, you know that your true vector
+might be small or if you use ton of maybe you know that your true vector is close to some other vector or you know
+something about specific components. But what it&#x27;s trying to say is that look you know maybe you don&#x27;t want to move in
+those directions where there are um low singular values. Okay make sense to everyone.
+So what I want to remind you now if I look at for example my gradient descent update this is what it looks like for
+um again the just the le squares problem here I&#x27;m not thinking about rich I&#x27;m not regularizing it but what you&#x27;ll notice
+here is that there&#x27;s this xrpose that multiplies this vector here right and so
+this vector this vector is basically your residual
+right or your error that you&#x27;re when you&#x27;re currently predicting your current best guess is wt and so x wt
+minus y is how bad are you at predicting y on your training data
+and what is xrpose xrpose is your data so basically what this says is that my
+gradient descent will always take a step only in the span of the data I can never
+leave the span of the data does is that clear using gradient descent so always
+remains in the span assuming you initialize at
+zero of the data.
+The other thing that I&#x27;ll briefly mention because it might come up later. If I look at the gradient descent update
+for a ridge, it has a similar property
+and I have wt + 1 is equal to
+um 1 - 2 a lambda
+- 2 a times
+So basically when I look at this um gradient descent update for ridge, what
+I have here is this extra term on the WT. If I compare it to the
+I don&#x27;t see a siren blaring telling us to get out of the room. So I think we can continue.
+So if I didn&#x27;t if my lambda was zero, I&#x27;m just at back at gradient descent, right?
+What is this doing? What is this term doing? This is coming from the regularization.
+And what it&#x27;s saying is look every time maybe just like down weight a little bit
+on WT right it&#x27;s pulling down the weight it used to in gradient descent this would be one this is saying do something
+slightly less than one okay and so this term is called sometimes
+uh weight decay
+and what you&#x27;ll see is that uh we haven&#x27;t what you&#x27;ll see is that gradient descent actually has this implicit
+regularization property that I&#x27;m going to talk about in just a minute and so often when you&#x27;re implementing
+uh gradient descent in deep learning we will not actually have an explicit
+regularization we will not include a ridge parameter or a lasso parameter or anything like that
+and even then there will be a regularizing effect and there are other tricks that we can use by which we can
+avoid overfitting even though we might not have an explicit regularization. So I&#x27;m going to talk about that next.
+However, sometimes there are other benefits to not having your weights get too large. And so sometimes even though
+you won&#x27;t have a ridge term in your loss, what you will do is you will include some kind of weight decay
+schedule that will you know just kind of keep pulling your weights down by a little bit to avoid them from getting
+too big. So this is another thing that this is a piece of terminology that I wanted to put out there that sometimes
+regularization weight decay and now what I&#x27;m going to talk about as implicit regularization and early stopping of
+gradient descent are all talked about sometimes in the same breath and sometimes interchangeably and they all
+mean the spiritually same idea implemented in slightly different ways. So what I want you to understand is that
+whatever when someone&#x27;s talking about this that&#x27;s the kind of idea that they&#x27;re talking about. Okay, everyone
+with me? Questions? Okay, good. So now let&#x27;s go back to gradient
+descent. And now what I want to get to is this implicit regularization.
+And what do I mean by that?
+So, I&#x27;m going to take again um my gradient descent update equation and I&#x27;m
+going to write it out. But now I&#x27;m going to write it out in my SVD basis.
+So to write it out in my SVD basis, I&#x27;m just going to do a change of basis. Multiply by VRpose.
+So I&#x27;m multiplying the whole equation by VRpose. This xrpose I&#x27;m going to replace
+with the svd. So I get a v sigma transpose
+u uranspose and then I have this x wt
+minus y. And so when this I change bases into
+this new coordinate. Let me call this new vector w tilda. Let&#x27;s say
+so now I&#x27;m this new basis minus 2 ADA. These vranspose V&#x27;s cancel.
+Um
+so then I have this sigma transpose and then I can pull this urpose into here I
+have a U sigma V transpose WT
+minus URPOSE Y. This is equal to then
+W tilda T transpose minus 2 ADA. These uranspose U&#x27;s cancel. This thing I&#x27;m
+going to pull into becoming another W tilda because now this is just expressing my old WT in the SVD basis.
+Everyone see that?
+So then I have a sigma transpose sigma w
+tilda t minus uranspose y.
+So now what has happened by me writing this in the svd basis? Let me look at
+this. Right? This is a vector. But what has happened to this thing? What kind of matrix is this?
+This is again a diagonal matrix, right? This is a diagonal matrix. So now when I
+look at the different components of WT, they&#x27;re no longer coupled, right? By transforming into the SVD basis, I&#x27;ve
+basically diagonalized my problem. And now I can look at this component by component. So I can basically look at
+the E component.
+And that is 2 ADA times I basically have this sigma i^ 2 w tilda t
+minus sigma i and then whatever is the component I&#x27;m just going to call this y
+i twiddle right I don&#x27;t really care about this is just some scalar here
+so what do I notice when I look at this
+this singular value is showing up right
+and so when I&#x27;m taking so this is the step that I&#x27;m taking in the direction of
+the i singular vector does everyone see that now we&#x27;ve projected into that basis
+so this is the step that I&#x27;m taking according to that direction everyone with me there
+okay folks I need you to like give me some feedback, thumbs up, thumbs down, like
+because otherwise I will keep barreling at you and you will understand nothing. But if you tell me that you don&#x27;t
+understand, then there&#x27;s a hope that I might tell you again. I still might not, but at least there&#x27;s a chance, right?
+So, you&#x27;re good. Please nod. Give me thumbs up, thumbs down. Is there a typo on the third?
+Oh, yeah.
+Yeah, this is all the I component and this is a uh these are not vectors anymore actually. This is
+okay. So when you look at singular values yes
+question yeah I was just curious on the second line um where you crossed out the
+transpose Yes. Where did the go and then the line after that?
+I expressed this in the V basis. Oh, it&#x27;s a different basis. Okay. Thank you. Because I put a twiddle here.
+So now we&#x27;re looking at this in this basis and what I see is that the size of the
+singular value matters for how big a step I can take. I pulled this singular
+value inside. But maybe actually it&#x27;s even clearer to write it as wti twiddle minus 2 a sigma i times sigma wt
+comma i minus yi
+right so you can think of this as your residual you know are you already
+matching in this direction or not but if you&#x27;re not matching how big the step you take depends yes on your learning rate
+but it also depends on the singular value. So for the big singular values,
+you&#x27;re going to take big steps and for the small singular values, you&#x27;re going to take small steps, right? So you&#x27;re
+going to be moving faster in some directions than you are in others. And singular values tend to vary when you
+think when you just look at them for a matrix, they tend to vary across orders
+of magnitude. So you know you will have singular values that are like 10 or 100
+10 five and then you&#x27;ll have some singular values that are like 10 the minus2 10 the minus 5 10 the minus there
+they&#x27;re they can be very small so there&#x27;s a huge variation in these and so when you&#x27;re plotting singular values
+it&#x27;s a good rule of thumb when you&#x27;re looking at these things sometimes it can be useful to plot on log scale you might
+not see the kind of variation that you need to see when you plot on linear scale so just a trick to keep in mind if you&#x27;re ever trying to debug your code in
+this uh in this kind of stuff. And so what&#x27;s going to happen? Let&#x27;s say
+I have all of these directions to different directions to move in. Right? So let&#x27;s say I have just a two dimensional setup and I have a really
+big singular value uh this way and a really small singular value that way. Right? I&#x27;m going to take big steps along
+this direction and I&#x27;m going to converge pretty quickly along those big singular values. But I still have not moved as
+much in the other direction where the singular value is small. Okay. So what
+does this mean? If I let&#x27;s say don&#x27;t run gradient descent to convergence.
+If I somehow do what is called early stopping of gradient descent.
+Gradient descent naturally has this property that it likes moving along
+large singular values more than it likes moving along small singular values. So it&#x27;ll do the large singular values first
+and only then later do the small singular values. So if I stop early
+without running to convergence, what&#x27;s going to happen is that I&#x27;m not going to move in those directions that have small
+singular values that maybe I didn&#x27;t want to move in anyways because that&#x27;s what my ridge was doing,
+right? That&#x27;s exactly what this term is doing in ridge. I
+haven&#x27;t actually put any ridge par regularization on this. There&#x27;s no ridge penalty. But if I say I stop early,
+I will get the same benefit. So you you might hear this term early stopping.
+Have have people ever heard of this term early stopping in machine learning?
+And so early stopping doesn&#x27;t literally mean I mean it can it can mean just you know stop doing gradients descent at a
+random early point before it has converged. But often what this means is that you actually run gradient descent
+for a long time and then you keep you have training checkpoints for your model
+and then you go back and you pick that training checkpoint that actually performs best before you start running
+into the overfitting regime. So you might have some training loss curve is coming down down down down and then maybe it starts going up because you&#x27;re
+starting to overfit. So then you find that checkpoint where you&#x27;ve actually done the best. And now what this is
+saying is this is giving you a reason for why that&#x27;s a totally valid thing to do. It&#x27;s not some arbitrary let&#x27;s well
+there&#x27;s a lot of magic and alchemy in deep learning. But there&#x27;s an element of principled alchemy, right? This is
+explaining to you why this is just like doing regularization. Does that make sense? Questions?
+Yes. So did you say it converges in the directions with high singular values
+first but then it still converges the low value it will keep going. So for example right
+if I if I now move let&#x27;s say I have these two directions I can move it right I&#x27;m moving a two dimensional so I can
+either move this way or this way and I&#x27;m taking these giant steps this way but now I&#x27;ve reached my optimum.
+If I&#x27;ve reached my optimum what does that mean for this term?
+It&#x27;s zero right? So I&#x27;m not going to move like let&#x27;s say I have a possibility let&#x27;s say
+I&#x27;m working with a problem where I can actually reach zero loss then now that I have reached my optimum
+my large singular values are no longer going to move and then now there&#x27;s gradient pressure to make steps in the
+directions of the small singular values right now to decrease my loss I can&#x27;t I can&#x27;t decrease my loss by moving in this
+direction anymore I&#x27;ve already zeroed out my residual so now I have to start moving this way and I&#x27;ll get there but
+my singular so small it&#x27;ll go like this. Okay. But it will still move along. But I will still eventually move there.
+But maybe this is just maybe I&#x27;m just fitting noise in doing this and I don&#x27;t really want to be doing it.
+Does that make sense? Yeah, absolutely. Yeah.
+AIS and you move across that ais
+So I&#x27;m expressing gradient descent here in the SVD basis. So that&#x27;s it&#x27;s a
+gradient descent isn&#x27;t saying well I will move in direction V1 and then V2 and then V3 and then V4. This is what is
+happening kind of in the back it&#x27;s not even in the back end it&#x27;s just happening but it&#x27;s it&#x27;s a perspective it&#x27;s a lens
+through which you&#x27;re viewing the standard gradient descent update which is not done component wise it&#x27;s done in
+whatever braces you&#x27;re in. You&#x27;re decomposing into the SVD basis.
+Okay. So in the SVD basis your data set moves only one direction at a time.
+No no it will move in all directions but it will do the best thing. So it will move the step size it will take in each
+direction is proportional to the singular value in that direction. So it will move in this way and this way but
+the step horizontally will be this big and the step vertically will be this big.
+Okay. So you&#x27;re just going to get to your optimum in this direction much slower. So for example, your optimum
+might be, you know, you might want need to move in this direction a little bit, but you&#x27;ve already converge along this
+axis. Yes. Question at the back. Yeah. So kind of along that line, if you have a smaller singular value which
+corresponds to you like in theory need to go a shorter direction like shorter
+distance in that orthogonal direction to reach your optimum for that smaller variance sigma. So, so you you don&#x27;t so
+so you&#x27;re you&#x27;re there the the the residual which is the distance to your
+optimum is not a function of your singular value. That&#x27;s whatever it is. Just because your singular value is
+small doesn&#x27;t mean your initial is somehow magically close to your that&#x27;s a function of where you&#x27;ve initialized.
+Right? The question was like the small singular values means you&#x27;re closer to your optimum in that direction or not.
+But no. Does that make sense? Yeah. Okay, good. Yes, question.
+Yeah, I just want to make sure that I get you right. So the right intuition is that for large singular value directions, you move a proportionally
+larger reser distance as you run gradient descent early on and then as uh those will converge first and so when
+you keep running then you start optimizing the smaller. Exactly. Exactly. Because you you know you have you have some amount of
+gradient pressure and if you can just like you have to choose a direction, right? There&#x27;s a trade-off, right? You
+know I can I can I I only have a certain step size. I can take and I can choose to distribute that component. I can
+choose to distribute my vector that I&#x27;m taking a step in. You know, I can have a component in each orthogonal direction.
+The directions of the SVD are orthogonal. My step size is still fixed. So, I can&#x27;t have large components in
+every direction, but proportionally the large singular values will pull a larger component. And so, there won&#x27;t be that
+much step size left to take in the smaller direction. Okay? you have to spread it across whatever dimensions you
+have. These are good questions. Okay, last question.
+Is the second line second to last? Is that supposed to be a vector? Is that
+Yeah, that&#x27;s probably not a vector.
+Okay, awesome. Okay, good. So with this um basically I hope you&#x27;ve learned that
+geometry matters and that it&#x27;s a good thing to look at even simple cases
+because it turns out that this intuition generalizes to um you know other larger
+other larger problems that you know we looked at this in the case of um just le
+squares with a quadratic loss but early stopping is something that is commonly used in training lots of networks.
+even though you might not be working exactly on the le squares problem for linear regression. So these kinds of
+intuitions are helpful and that&#x27;s kind of what we&#x27;re going to be building today and uh and the next class. Okay, good.
+So I haven&#x27;t written down much about early stopping but is everyone clear on that? You can Google early stopping if
+you can&#x27;t find this and you&#x27;ll find um you&#x27;ll find information on it as well. Okay, last question. Can you explain
+what the implicit Okay. What is the implicit regularization here?
+So maybe I&#x27;ll write this out.
+Okay. So what is the implicit regularization?
+So in a ridge if lambda is large
+uh we don&#x27;t move in directions
+of small singular values. Actually I shouldn&#x27;t
+say we don&#x27;t move. So I should say we don&#x27;t
+have large components
+of um directions
+with large singular with small singular values in the ridge
+solution. Okay, is that clear to everyone? So and ridge is regularizing
+right. So it&#x27;s basically saying one there&#x27;s many lenses of looking at regularization. One&#x27;s lens by which we
+can look at regularization is to say don&#x27;t move in directions of small singular values.
+Gradient descent with early stopping
+also does not move
+in directions of
+small singular values.
+Does that make sense? So that&#x27;s why this is regularizing.
+Can we wait for office hours? Are you still moving? What? You&#x27;re still moving. You&#x27;re still moving. I mean, ridge is
+not saying don&#x27;t move either. It&#x27;s just saying you move quite a bit less. This is not zero.
+That&#x27;s like zero. We don&#x27;t It moves a little bit. Okay.
+Sure. Does not move. A better terminology would be the
+weights at the end are proportionally less. Yeah. But I mean this is so these are
+all like these are all intuitions for getting you there, right? Yes. You&#x27;re moving but you&#x27;re moving you know does
+not move or moves very little
+in directions of small singular values. So yes it&#x27;s not that you&#x27;re not moving at all. It&#x27;s totally possible to move
+small amounts but your your step size is proportional basically to the to the to the to the value to the
+singular value. Okay. Good.
+Okay, so with that I want to now get to the next part of optimization which I&#x27;m
+sure you&#x27;ve all seen before is stochastic gradient descent, right? So
+gradient descent is great. Gradient descent works wonderfully for convex functions,
+but guess what? Like real life is hard and real life includes non-convex
+functions. If everything we wanted to optimize was convex, life would really would be really nice. And in particular,
+fitting neural networks and deep neural networks requires being able to optimize over long
+non-convex landscapes. So what do we do? Basically, SGD is um is the solution
+that leads us to be able to um have better generalization in these non-convex landscapes. The other thing
+about gradient descent is that when you have lots and lots and lots of data, computing the gradient over many many
+many many many data points is computationally expensive. What SGD does
+is it gives you a way of being a little bit lazy and saying I&#x27;m going to only
+compute the gradient in in certain spaces and over a certain subset of my
+data and move in that direction. Okay, so everyone here has seen some version
+of state SGD before like your machine learning class has covered this, right? So you know the basic idea. Okay, good.
+So what is SGD doing? SGD is thinking about basically this setup where you
+have a loss function here. And now I&#x27;m calling my loss function f and theta is
+my parameter and I have this loss function that decomposes as a sum of other loss
+functions and many many common loss functions that we like to think about actually have
+this property. So for example if I just think about my standard squared loss function which is our canonical you know
+we don&#x27;t know what anything is doing. Let us try a loss function and understand how it behaves. We always try the same loss function. Well, when I
+look at this le squares loss function, I can think about it as
+you know the argument over this is the same as a normalized version of that. I can just uh average the over the number
+of data points. But this is basically the same as looking at the loss per data
+point. Right? So I can think of my squared loss as actually the loss on the first data
+point plus the loss on the second data point plus the loss on the third data point. So on and so forth. So I
+naturally have a way of taking my loss function and decomposing it into this sum of component loss functions.
+Now if I wanted to take a gradient step and do proper gradient descent, I had to take the gradient for the loss with
+respect to every single data point. If n is large, that&#x27;s a lot of data points.
+What if instead I took the lazy approach and I said let&#x27;s just take a few of you
+and you take what is called a batch or a mini batch
+and say instead of taking the gradient over all of the data points I will take
+the gradient over just some subset of data points I&#x27;ll pick B of them
+uniformly at random iid and this is my batch and that&#x27;s the
+gradient step I take everything else is exactly the same. So sometimes you will hear people
+talking about full batch gradient descent or full batch SG. Full batch SGD
+is just gradient descent because you&#x27;re taking all of your data
+um into uh and accounting for that in your gradient. Okay.
+So what this is doing is this is saying ideally I have a certain gradient and I
+would like to move in that direction. Instead I&#x27;m going to move in this direction that is you know um
+in expectation the same but slightly different. So I can think of it as a noisy version of my gradient um instead
+of moving exactly in the direction of the gradient. And when I think about what I&#x27;m doing in expectation, well, in
+expectation, the gradient of each of these is just the gradient of my true function, right? Because I&#x27;m basically
+to taking I&#x27;m looking at a uniform iid, which gives me a one. If I have n different data points, I have a one
+overn probability of picking each of these and I average over all of them. That just returns to me my original
+gradient. So on average I&#x27;m doing exactly what gradient descent would do but I&#x27;m doing it a little bit more uh
+more shakily. Questions on this? Everyone clear on what SGD is? You should have seen this
+before. So what are some advantages of this?
+Basically, we see that you know the one nice thing about it is that yes, it is
+noisy, but it still always improves the fit on a subset of the data, not all of
+the data. The second advantage of it is that it is actually computationally
+less expensive because you have to compute fewer gradients. And the third nice property of it is that because
+you&#x27;re not always going in the direction of the gradient, sometimes you can escape local minima and saddle points,
+right? So let&#x27;s say I have like something like this where I have some
+local minima and then a bigger ravine. Gradient discount can get stuck in that local minima. But stocastic gradient
+descent because it&#x27;s noisy sometimes it will do things that are not exactly in the direction of the optimal gradient
+and that will allow it to get out of a local minima and escape to somewhere else. Okay, so that&#x27;s great but
+typically when you take some algorithm and you add a bunch of noise to it, it doesn&#x27;t perform better, it performs
+worse. Right? We have these nice convergence guarantees for gradient descent. What about SGD?
+So in general, one of the things that if you just read about SGD um you know anywhere in a standard textbook, what
+you will hear is that the optimization perspective says that we need to have a
+decreasing step size or a learning rate schedule that allows for the ADA itself
+to get smaller over time which will allow SGD to converge. If you don&#x27;t do
+that because the gradient is noisy, you&#x27;ll get close to the solution. you&#x27;ll get close to the optimal, but then
+you&#x27;ll just do this like bouncing around, dancing around it because your gradient is never actually hitting zero.
+You&#x27;re just kind of on average zero, but you&#x27;re never actually exactly zero. So you you&#x27;ll see this kind of bouncing.
+And if I have time, I&#x27;ll try to show you a demo of this. We&#x27;ll see if I actually get to it.
+But in practice, what you see is that sometimes SGD can actually converge with constant step sizes. And I&#x27;m going to
+try to show you a proof uh at the end of class of why this actually happens um
+for the least squares case and we&#x27;ll or not the least squares case but really the um underdetermined um case of having
+a linear system that you&#x27;re trying to fit questions here. We&#x27;re good.
+So for example, this is a really nice picture from the prince book. So what
+you&#x27;re seeing here is a lost landscape. The valleys are the dark colors. The
+peaks are kind of these lighter colors. And what you see is you have three different initialization points. One,
+two, and three. And when you do gradient descent, well, you know, you initialize at one and it
+kind of finds its way to the right minimum. When you initialize at three, it finds its way to the right minimum.
+But two kind of takes a different path and doesn&#x27;t really get you to the
+minimum the the global minimum it takes you to a different local minimum and it kind of gets stuck there. Does everyone
+see that from this uh picture? Stoastic gradient descent on the other hand because it&#x27;s not taking the optimal
+gradient step in every time point instead of kind of going off in this direction which is where the optimal
+gradient would have pointed you. It happens to have a batch where the gradient kind of points this direction
+and it allows it to escape falling into that local minimum over there and actually converge to um a better
+minimum. Yes. Question. Also fall into the wory.
+It could also do bad things. Yes, it&#x27;s entirely possible that it will do bad things. there&#x27;s no guarantee um except
+that we will actually show that in some cases you can provably show that gradient descent uh will converge to the
+right optimum but there&#x27;s there&#x27;s no guarantees on this right especially in these complicated non-convex spaces it it it
+could go to the bad place but the thing that kind of gives you hope is that you know on average it&#x27;s doing the the right
+thing um and there&#x27;s many many different components to the gradient there&#x27;s many different batches you get lots and lots
+of tries at this questions.
+Okay, so that&#x27;s really what I want to say about SGD. I want to get to one more thing and then if we have time at the
+end, I&#x27;m going to try and walk you through a proof of convergence of uh stoastic gradient descent which will try
+to which will kind of bring out more properties of SG as we go through it.
+But SGD or gradient descent, both of these
+are still, you know, they&#x27;re they&#x27;re great algorithms, but we always want to be able to do better. And the one thing
+that we can do to do better, there&#x27;s many things, and we&#x27;re going to talk about momentum today. We will talk about Adam in the next class
+as sequential or as as a series of improvements that have come to get
+gradient descent to be better and better and better as an algorithm.
+So let&#x27;s think about gradient descent. Again, we can just think about this scalar case. Um remember if we look at
+things in the SVD basis, now we just talked about this a bunch. Essentially everything just reduces to this scalar
+case. Right? So understanding this scalar case is equivalent to thinking about a gradient descent in the vector
+case but looking at it in the SVD basis and we know that basically our step size
+had better be smaller than uh sigma max squ to be able to get to the minimum
+uh or to be able to converge at all. So what does this what does this mean? If I
+look at this particular quantity. Okay. So I have a range of different values for ADA. ADA could be zero or the
+largest thing ADA could be is one over sigma squ. So what happens when ADA is zero? What
+is the value of this particular what is this value or what is this like this is the this is this is
+uh determining the convergence rate of this recurrence relation. Right? So
+well when sigma is zero when ada is zero sorry this is just one and when a is is
+at its largest size well this is negative one right so I can think about these igen values basically I can think
+about them as igen values in the complex plane but you know we happen to have
+uh no imaginary part for any of these for this particular example
+if you had imaginary parts you would get oscillations But we&#x27;re not really going to worry about that right now.
+And so when I have values, let&#x27;s say that are, you know, over here between 0 and one, I have these positive but
+convergent igen values, I&#x27;m going to get this kind of exponential decay, right,
+of my error, and it&#x27;s just going to go uh exponentially to zero.
+On the other hand, kind of as ADA increases and I&#x27;m moving over closer and closer to here, as I get closer and
+closer to zero, what&#x27;s going to happen to the shape of this exponential? I&#x27;m going to start decreasing faster and faster, right? As I get closer to zero,
+but then what happens as soon as I kind of flip to the other side of zero,
+I&#x27;m going to start seeing some oscillations now because I&#x27;m multiplying by a minus one every time, right? So I&#x27;m
+still going to converge, but I&#x27;m going to start doing things like bouncing around to converge. I&#x27;m going to start
+my error convergence is going to start looking like this. And eventually these oscillations will
+kind of get bigger and bigger and bigger and then I&#x27;ll stop being able to converge. That oscillation will force me
+to diverge as I cross this minus one boundary. Does this does this make sense of what
+we&#x27;re we&#x27;re doing? Okay.
+So what&#x27;s going to happen is that basically this max singular value is going to dictate
+the learning rate I can choose right I have a learning rate and it&#x27;s always the same for every direction doesn&#x27;t I&#x27;m not
+be able to pick we might we&#x27;ll we&#x27;ll talk about this later but one of the key challenges here is that we cannot our
+algorithm does not allow us to pick a different ADA for every different direction.
+So I can choose a good ADA that will allow me to converge reasonably fast in
+my largest singular value. But that could still mean a lot slower
+convergence for other directions that have smaller singular values. Right? These might these might not be tiny
+singular values in which I don&#x27;t want to move and I don&#x27;t care about. They might be like medium singular values but I still might converge slowly in them
+because my ADA is picked based on my maximum one. Okay.
+So can we basically do something to to sm to improve our conversions? Can we
+somehow smooth out some of these oscillations? Right? We might like if we want to keep making ADA bigger.
+Oscillations are bad, but can we smooth them out? Is there something we can do to improve our convergence rate while
+not oscillating too much? Okay, is that&#x27;s the problem that we want to try and tackle. Okay. And that is the
+problem that momentum is trying to solve. Is everyone with me on what the problem is?
+That we have different singular values and we want to kind of not just focus on the largest one. We want to be somewhat
+uh equitable. So when you have oscillations,
+what&#x27;s the way of smoothing out oscillations? Like what&#x27;s your intuition? What have you seen before?
+decrease magnitude. Decrease magnitude of what? The mountain you&#x27;re jumping by.
+That&#x27;s dictated by ADA, right? We can&#x27;t actually decrease the magnitude on one singular value without affecting the
+other singular values. So yeah, moving average. Keep a moving average, right? That&#x27;s a
+way of same idea. Yeah. Okay. So keep a moving average, right? The idea is to say that
+if you&#x27;re bouncing around a lot, well, don&#x27;t bounce so much. And if you keep
+averaging yourself, you&#x27;re going up and down and up and down. If you average, you&#x27;re going to kind of zero out yourself. And then you might oscillate
+less. Okay? So then the question comes, well, how much do I average? Right? Do I average
+the past two steps, the past three steps, the past five steps? How do I think about this average?
+The thing about deep learning and just learning algorithms in general is that you&#x27;re not like you want to also be able
+to implement these algorithms. And so when I think about taking an average, that is my standard intuition for
+reducing oscillations. But let&#x27;s say I want to do a moving average window of 10. That means I have to remember the
+gradient of the past 10 points and then average it average them. Maybe I want to do a larger window. You know, I don&#x27;t
+know. This is again one more hyperparameter that has now been introduced that I have to tune. What is the right amount of averaging? Okay,
+but what is another way that we know to do averaging or for those of you who
+have heard have you ever has anyone heard the term low pass filter? Yeah. So the EES in the room definitely have 16A
+have definitely heard uh uh what a low pass filter is. So a low pass filter is
+something that&#x27;s saying take my high frequency oscillations and smooth them out, right? don&#x27;t have high frequencies
+in my signal. Keep only the low low pass the low frequencies. Right? Big oscillations are high frequencies.
+A low pass filter is basically an average averaging mechanism. And we have these in nature everywhere, right? And
+these are often coming when we have a a kind of state in our system.
+So one example of this just comes from circuits straight up circuits. So for
+example if I have this is a standard low RC lowass filter what do I have is I
+have just this uh resistance and as VIN changes my V out is going to change but
+what this capacitor is going to do is is going to dampen my change right so for
+example if this um if my VN is pretty
+constant right if my VN is pretty constant what&#x27;s going to happen is my capacitor is just going to saturate no
+current is going to flow this Okay. And then VN is just going to be equal to V out. That&#x27;s what for a constant input.
+But now if my VN is like going up and down and up and down, what&#x27;s going to happen is I&#x27;m going to charge discharge
+charge discharge charge discharge my capacitor and it&#x27;s going to eat up some of that charge. What&#x27;s going to come out
+at V out is going to be a smooth version, a much smooth version. It&#x27;s going to be an automatic averaging of
+what VN is. And the way this is being done is basically through maintaining state, right? The charge on the
+capacitor is dictating whether the capacitor is acting like a short or like an open circuit. And therefore what
+we&#x27;re seeing is that averaged version. The nice thing
+about this is this is essentially doing averaging. But do I need to now what is
+the memory required to implement this? Do I need to remember the 10 past values? No. The state is automatically
+changing. It&#x27;s the state space model now. And so automatically my memory is being captured by this capacitor. I
+don&#x27;t want to take questions about the circuits here because I know that people probably have forgotten their circuits.
+Go remind yourself of this. But basically this is a straight differential equation that this is this is modeling, right? For a step input of
+V, you have this exponential decay that you can um you can capture. What I want
+you to get is the physics intuition of this. And you know we talked about in the first lecture of how essentially
+there&#x27;s we&#x27;re looking at analog circuits. That&#x27;s what neural networks are in some sense. And these intuitions
+help us actually understand a lot of what&#x27;s going on. So if we take this and we actually
+discretise what this is doing, we can think of this in the following
+way. Where is my pointer?
+I can think of maintaining a state. So I take think of this zk as my state
+variable. And I update my zk plus one at every iteration as some beta time zk. So
+basically where I was previously or what my previous gradient was plus 1 minus
+beta times the new gradient that I have got in okay
+so what is happening when I when I do this so let&#x27;s say z is zero and just
+take one minute and try to write out use this recurrence relation start with z not is zero and try to write out what
+how zen not is evolving so that you will see what is going on so take a minute write this out, discuss with your
+neighbor. You know, the two of you can uh do it on one piece of paper to encourage interaction. So,
+I&#x27;ll give you one minute. I have a timer.
+Just sit there.
+[Music]
+Okay. So, what&#x27;s happening here as I run this?
+What what does what does Z1 look like?
+Right? Everyone got what I got? Basically, I just have, you know, this
+is just zero. So, I just have this one term here. Okay. But then what happens the next
+time step? This thing goes and populates here
+and I get a new term here. Now it gets multiplied by this beta. So I have a
+beta* 1 minus beta. Then this whole thing gets now multiplied again by another um uh beta term. And so now if I
+look at my state, my Z&#x27;s, how are they evolving? where there&#x27;s some weight
+times my oldest gradient and then the slightly larger weight times my middle gradient and then the largest weight is
+on my most recent gradient. Right? So I have this exponentially decaying average
+that is saying take my history of gradients put less weight on the ones
+that were really way back when when we knew nothing. put more weight on the current data
+um but use this to keep kind of moving in
+the direction that you were moving in. So if you get some like you know crazy outlier point what this is saying is
+that if you were moving in this direction and this was kind of working even if you have a huge thing you&#x27;re
+still you&#x27;re not going to completely change course and move just in the direction of the new gradient but the
+momentum that you were moving in previously is going to keep you moving a little bit in that direction.
+Does that does that make sense? That&#x27;s why this is called momentum. There&#x27;s like a physics analogy that uh people
+are thinking about maybe like a a a ball rolling. The momentum is just like keep doing
+what you were doing. Don&#x27;t always just follow the new thing. Okay. It&#x27;s a good
+uh strategy for life too to be grounded. Whatever new trendy thing comes in, you don&#x27;t have to jump on the boat every
+time. Especially for those of you who are interested in deep learning. It&#x27;s going to be hard. The times are crazy.
+So finding ways to be grounded is just a good useful life strategy. Little bit of
+uh philosophy in there. Okay. So does everyone see what this kind of
+momentum term is is trying to do and how it&#x27;s actually helping us.
+So if I look now at so this is now this is now so this we
+just talked about momentum in the context of gradient descent. But I can also do momentum with stochastic
+gradient descent. Right? And typically that&#x27;s what we will be we we do do. And now in stoastic gradient descent, my
+gradients are already noisy. So when I do momentum, I&#x27;m just basically getting
+more averaging, right? And so in a in a sense it&#x27;s it&#x27;s going to be helpful.
+It&#x27;s going to be better. There is a downside with stoastic gradient descent is that I&#x27;m averaging, but I&#x27;m averaging
+noisy things. So the noise from my early iterates it might have been really high
+and it might have been really big because my gradient was large then is going to creep in later. So there is
+like this downside in the sense uh of momentum as well when you&#x27;re doing it </code></pre>
+                    </div></div>
+    </div>
+</body>
+</html>

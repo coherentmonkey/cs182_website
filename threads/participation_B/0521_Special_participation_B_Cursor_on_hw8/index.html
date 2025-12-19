@@ -1,0 +1,690 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Special participation B: Cursor on hw8 - CS 182</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #f5f7fa;
+            color: #333;
+            line-height: 1.6;
+        }
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .back-link {
+            display: inline-block;
+            margin-bottom: 20px;
+            color: #4299e1;
+            text-decoration: none;
+        }
+        .back-link:hover { text-decoration: underline; }
+        .thread-header {
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+        }
+        .thread-title {
+            font-size: 1.8rem;
+            color: #2d3748;
+            margin-bottom: 15px;
+        }
+        .thread-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            color: #718096;
+            font-size: 14px;
+        }
+        .model-badge {
+            display: inline-block;
+            padding: 4px 12px;
+            background: #e2e8f0;
+            color: #4a5568;
+            border-radius: 15px;
+            font-size: 13px;
+            font-weight: 500;
+        }
+        .hw-badge {
+            display: inline-block;
+            padding: 4px 12px;
+            background: #fed7e2;
+            color: #97266d;
+            border-radius: 15px;
+            font-size: 13px;
+            font-weight: 500;
+        }
+        .thread-body {
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+        }
+        .thread-body h3 {
+            margin-bottom: 15px;
+            color: #2d3748;
+        }
+        .body-content {
+            white-space: pre-wrap;
+            word-wrap: break-word;
+            line-height: 1.8;
+            font-size: 15px;
+        }
+        .body-content a {
+            color: #4299e1;
+            word-break: break-all;
+        }
+        .attachments {
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
+        .attachments h3 {
+            margin-bottom: 20px;
+            color: #2d3748;
+        }
+        .attachment {
+            margin-bottom: 25px;
+            border: 1px solid #e2e8f0;
+            border-radius: 6px;
+            overflow: hidden;
+        }
+        .attachment-label {
+            background: #f7fafc;
+            padding: 10px 15px;
+            font-weight: 500;
+            font-size: 14px;
+            border-bottom: 1px solid #e2e8f0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .download-link {
+            color: #4299e1;
+            text-decoration: none;
+            font-weight: normal;
+        }
+        .download-link:hover { text-decoration: underline; }
+        .attachment-image img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+        .attachment-pdf iframe {
+            width: 100%;
+            height: 800px;
+            border: none;
+        }
+        .attachment-video video {
+            width: 100%;
+            max-height: 600px;
+        }
+        .attachment-audio audio {
+            width: 100%;
+            padding: 15px;
+        }
+        .attachment-text pre {
+            padding: 15px;
+            background: #f7fafc;
+            overflow-x: auto;
+            max-height: 500px;
+            font-size: 13px;
+            line-height: 1.5;
+        }
+        .attachment-file {
+            padding: 15px;
+        }
+        .file-link {
+            color: #4299e1;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .file-link:hover { text-decoration: underline; }
+        .ed-link {
+            display: inline-block;
+            margin-top: 15px;
+            color: #4299e1;
+            text-decoration: none;
+        }
+        .ed-link:hover { text-decoration: underline; }
+        @media (max-width: 768px) {
+            .thread-title { font-size: 1.4rem; }
+            .attachment-pdf iframe { height: 500px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <a href="../../../index.html" class="back-link">← Back to Directory</a>
+
+        <div class="thread-header">
+            <h1 class="thread-title">Special participation B: Cursor on hw8</h1>
+            <div class="thread-meta">
+                <span>By Nils Selte</span>
+                <span>2025-12-06</span>
+                <span class="hw-badge">HW8</span>
+                <span class="model-badge">Cursor</span>
+            </div>
+            <a href="https://edstem.org/us/courses/84647/discussion/7417411" target="_blank" class="ed-link">View on Ed Stem →</a>
+        </div>
+
+        <div class="thread-body">
+            <div class="body-content">Cursor agent mode is quickly becoming the standard in modern SWE. I tried it on Hw8 and was impressed with its grasp of available tools, its ability to navigate challenges and not give up on solving its task. 
+I used Gemini 3.0 Pro as the base model as I have found it to be more decisive in its actions than other models and its impressive benchmarks.
+
+Key takeaway: The agent was able to solve the entire coding part of the hw on single prompt. It navigated challenges like not having writing access to the file by making a Python script that explicitly changed the .ipynb file and even navigated not having access to the right environment. I am beyond impressed with the model/agent capabilities, it also makes me scared that my own knowledge is becoming irrelevant. It even made a separate script for checking itself against test-cases (only to delete it after it was satisfied its solution was working). 
+
+Prompting strategy:
+
+The prompting strategy I employed was focused on eliminating common quirks of AI code generation (like overuse of comments, removing typing and implementing try/catch blocks where it makes no sense). I also tasked it with being very specific to not refactor the code of the question. It makes me wonder how GEPA algorithms could be employed on these types of agents and if it could actually be making a difference. 
+
+Prompt:
+
+take a look at @q_coding_ssm_forward_cpu.ipynb There is a number of TODOs in the document. I want you to solve all of them being careful not to refactor any code or including code slop. Code slop includes changing types to &quot;any&quot; to resolve typing issues or making wierd comments that humans woudnt make or inserting try/catch blocks in places where it is not normal like places where the known data is good and there is no reason for doing so. Do not change any code that is not in between the TODO block and end Oof your code block. also answer the text based questions. 
+
+Enire CoT in the .pdf and the model generated files and result in the .md</div>
+        </div>
+
+        <div class="attachments">
+                <div class="attachment attachment-pdf">
+                    <div class="attachment-label">Special Participation B_ Using Cursor agent with Gemini 3 pro on HW8.pdf <a href="attachments/Special Participation B_ Using Cursor agent with Gemini 3 pro on HW8.pdf" target="_blank" class="download-link">Open in new tab</a></div>
+                    <iframe src="attachments/Special Participation B_ Using Cursor agent with Gemini 3 pro on HW8.pdf" loading="lazy"></iframe>
+                </div>
+                    <div class="attachment attachment-text">
+                        <div class="attachment-label">cursor_resolve_notebook_todos_and_quest.md <a href="attachments/cursor_resolve_notebook_todos_and_quest.md" target="_blank" class="download-link">Download</a></div>
+                        <pre><code># Resolve notebook TODOs and questions
+_Exported on 12/5/2025 at 16:40:24 PST from Cursor (2.1.49)_
+
+---
+
+**User**
+
+take a look at @q_coding_ssm_forward_cpu.ipynb  There is a number of TODOs in the document. I want you to solve all of them being careful not to refactor any code or including code slop. Code slop includes changing types to &quot;any&quot; to resolve typing issues or making wierd comments that humans woudnt make or inserting try/catch blocks in places where it is not normal like places where the known data is good and there is no reason for doing so. Do not change any code that is not in between the TODO block and end Oof your code block. also answer the text based questions. 
+
+
+
+---
+
+**Cursor**
+
+```json
+    ##############################################################################
+    #                   TODO: Implement the recurrent pass here                  #
+    ##############################################################################
+    N, T, D = x.shape
+    H = W.shape[0]
+    h_all = []
+    h_t = torch.zeros(N, H, device=x.device, dtype=x.dtype)
+
+    s = x @ U.T + b
+
+    for t in range(T):
+        h_t = h_t @ W.T + s[:, t, :]
+        h_all.append(h_t)
+
+    h_all = torch.stack(h_all, dim=1)
+    ##############################################################################
+    #                               END OF YOUR CODE                             #
+    ##############################################################################
+```
+
+```json
+    ##############################################################################
+    #                         TODO: Implement the kernel here                    #
+    ##############################################################################
+    if T == 1:
+        return torch.eye(W.shape[0], device=W.device, dtype=W.dtype).unsqueeze(-1)
+
+    kernels_half = make_conv_kernel(W, T // 2)
+    w_half_minus_1 = kernels_half[:, :, -1]
+    w_half = w_half_minus_1 @ W
+
+    kernels_second_half = torch.einsum(&#x27;ij, jkt -&gt; ikt&#x27;, w_half, kernels_half)
+    kernel_for_conv = torch.cat([kernels_half, kernels_second_half], dim=-1)
+    ##############################################################################
+    #                               END OF YOUR CODE                             #
+    ##############################################################################
+```
+
+```json
+    ##############################################################################
+    #                         TODO: Implement the convolution here               #
+    ##############################################################################
+    kernel_flipped = kernel.flip(-1)
+    h_conv = F.conv1d(s, kernel_flipped, padding=T-1)
+    h_all = h_conv[:, :, :T]
+    h_all = h_all.permute(0, 2, 1)
+    ##############################################################################
+    #                               END OF YOUR CODE                             #
+    ##############################################################################
+```
+
+```python
+import time
+import math
+import matplotlib.pyplot as plt
+import torch
+import numpy as np
+import torch.nn.functional as F
+
+def unrolled_ssm_forward(W, U, b, x):
+    N, T, D = x.shape
+    H = W.shape[0]
+    h_all = []
+    h_t = torch.zeros(N, H, device=x.device, dtype=x.dtype)
+
+    s = x @ U.T + b
+
+    for t in range(T):
+        h_t = h_t @ W.T + s[:, t, :]
+        h_all.append(h_t)
+
+    h_all = torch.stack(h_all, dim=1)
+    return h_all
+
+def make_conv_kernel(W, T):
+    if T == 1:
+        return torch.eye(W.shape[0], device=W.device, dtype=W.dtype).unsqueeze(-1)
+
+    kernels_half = make_conv_kernel(W, T // 2)
+    w_half_minus_1 = kernels_half[:, :, -1]
+    w_half = w_half_minus_1 @ W
+
+    kernels_second_half = torch.einsum(&#x27;ij, jkt -&gt; ikt&#x27;, w_half, kernels_half)
+    kernel_for_conv = torch.cat([kernels_half, kernels_second_half], dim=-1)
+    return kernel_for_conv
+
+def conv_ssm_forward(W, U, b, x):
+    N, T, D = x.shape
+    H = W.shape[0]
+    s = x @ U.T + b
+    s = s.permute(0, 2, 1)
+
+    kernel = make_conv_kernel(W, T)
+    kernel_flipped = kernel.flip(-1)
+    h_conv = F.conv1d(s, kernel_flipped, padding=T-1)
+    h_all = h_conv[:, :, :T]
+    h_all = h_all.permute(0, 2, 1)
+    return h_all
+
+def sanity_check():
+    T = 8
+    H = 4
+    D = 3
+    N = 2
+
+    torch.manual_seed(0)
+
+    W = torch.randn(H, H) * 0.1
+    U = torch.randn(H, D) * 0.1
+    b = torch.randn(H) * 0.1
+
+    x = torch.randn(N, T, D)
+
+    h_unrolled = unrolled_ssm_forward(W, U, b, x)
+    h_conv = conv_ssm_forward(W, U, b, x)
+
+    diff = (h_unrolled - h_conv).abs().max()
+    print(&quot;Max absolute difference:&quot;, diff.item())
+
+def measure_runtime(method_fn, W, U, b, x, warmup=1, repeats=10):
+    for _ in range(warmup):
+        method_fn(W, U, b, x)
+    start = time.time()
+    for _ in range(repeats):
+        method_fn(W, U, b, x)
+    end = time.time()
+    return (end - start) / repeats
+
+def run():
+    # Reduced run for quick check
+    H = 4
+    D = 32
+    N = 32
+    T_values = [8, 32, 128, 256, 512]
+    
+    U = torch.randn(H, D)*0.1
+    b = torch.randn(H)*0.1
+    
+    print(f&quot;H={H}&quot;)
+    for T in T_values:
+        diag_vals = torch.randn(H)*0.05
+        W = torch.randn(H, H)*0.05
+        x = torch.randn(N, T, D)
+
+        t_unrolled = measure_runtime(unrolled_ssm_forward, W, U, b, x)
+        t_conv = measure_runtime(conv_ssm_forward, W, U, b, x)
+        print(f&quot;T={T}, Unrolled={t_unrolled:.6f}, Conv={t_conv:.6f}&quot;)
+
+if __name__ == &quot;__main__&quot;:
+    sanity_check()
+    run()
+
+```
+
+```python
+import time
+import math
+# import matplotlib.pyplot as plt
+import torch
+import numpy as np
+import torch.nn.functional as F
+
+def unrolled_ssm_forward(W, U, b, x):
+    N, T, D = x.shape
+    H = W.shape[0]
+    h_all = []
+    h_t = torch.zeros(N, H, device=x.device, dtype=x.dtype)
+
+    s = x @ U.T + b
+
+    for t in range(T):
+        h_t = h_t @ W.T + s[:, t, :]
+        h_all.append(h_t)
+
+    h_all = torch.stack(h_all, dim=1)
+    return h_all
+
+def make_conv_kernel(W, T):
+    if T == 1:
+        return torch.eye(W.shape[0], device=W.device, dtype=W.dtype).unsqueeze(-1)
+
+    kernels_half = make_conv_kernel(W, T // 2)
+    w_half_minus_1 = kernels_half[:, :, -1]
+    w_half = w_half_minus_1 @ W
+
+    kernels_second_half = torch.einsum(&#x27;ij, jkt -&gt; ikt&#x27;, w_half, kernels_half)
+    kernel_for_conv = torch.cat([kernels_half, kernels_second_half], dim=-1)
+    return kernel_for_conv
+
+def conv_ssm_forward(W, U, b, x):
+    N, T, D = x.shape
+    H = W.shape[0]
+    s = x @ U.T + b
+    s = s.permute(0, 2, 1)
+
+    kernel = make_conv_kernel(W, T)
+    kernel_flipped = kernel.flip(-1)
+    h_conv = F.conv1d(s, kernel_flipped, padding=T-1)
+    h_all = h_conv[:, :, :T]
+    h_all = h_all.permute(0, 2, 1)
+    return h_all
+
+def sanity_check():
+    T = 8
+    H = 4
+    D = 3
+    N = 2
+
+    torch.manual_seed(0)
+
+    W = torch.randn(H, H) * 0.1
+    U = torch.randn(H, D) * 0.1
+    b = torch.randn(H) * 0.1
+
+    x = torch.randn(N, T, D)
+
+    h_unrolled = unrolled_ssm_forward(W, U, b, x)
+    h_conv = conv_ssm_forward(W, U, b, x)
+
+    diff = (h_unrolled - h_conv).abs().max()
+    print(&quot;Max absolute difference:&quot;, diff.item())
+
+def measure_runtime(method_fn, W, U, b, x, warmup=1, repeats=10):
+    for _ in range(warmup):
+        method_fn(W, U, b, x)
+    start = time.time()
+    for _ in range(repeats):
+        method_fn(W, U, b, x)
+    end = time.time()
+    return (end - start) / repeats
+
+def run():
+    # Reduced run for quick check
+    H = 4
+    D = 32
+    N = 32
+    T_values = [8, 32, 128, 256, 512]
+    
+    U = torch.randn(H, D)*0.1
+    b = torch.randn(H)*0.1
+    
+    print(f&quot;H={H}&quot;)
+    for T in T_values:
+        diag_vals = torch.randn(H)*0.05
+        W = torch.randn(H, H)*0.05
+        x = torch.randn(N, T, D)
+
+        t_unrolled = measure_runtime(unrolled_ssm_forward, W, U, b, x)
+        t_conv = measure_runtime(conv_ssm_forward, W, U, b, x)
+        print(f&quot;T={T}, Unrolled={t_unrolled:.6f}, Conv={t_conv:.6f}&quot;)
+
+if __name__ == &quot;__main__&quot;:
+    sanity_check()
+    run()
+
+```
+
+```python
+import json
+
+def update_notebook(file_path):
+    with open(file_path, &#x27;r&#x27;) as f:
+        nb = json.load(f)
+    
+    cells = nb[&#x27;cells&#x27;]
+    
+    # Code Blocks
+    todo_unrolled = &quot;&quot;&quot;    ##############################################################################
+    #                   TODO: Implement the recurrent pass here                  #
+    ##############################################################################
+    N, T, D = x.shape
+    H = W.shape[0]
+    h_all = []
+    h_t = torch.zeros(N, H, device=x.device, dtype=x.dtype)
+
+    s = x @ U.T + b
+
+    for t in range(T):
+        h_t = h_t @ W.T + s[:, t, :]
+        h_all.append(h_t)
+
+    h_all = torch.stack(h_all, dim=1)
+    ##############################################################################
+    #                               END OF YOUR CODE                             #
+    ##############################################################################&quot;&quot;&quot;
+
+    todo_kernel = &quot;&quot;&quot;    ##############################################################################
+    #                         TODO: Implement the kernel here                    #
+    ##############################################################################
+    if T == 1:
+        return torch.eye(W.shape[0], device=W.device, dtype=W.dtype).unsqueeze(-1)
+
+    kernels_half = make_conv_kernel(W, T // 2)
+    w_half_minus_1 = kernels_half[:, :, -1]
+    w_half = w_half_minus_1 @ W
+
+    kernels_second_half = torch.einsum(&#x27;ij, jkt -&gt; ikt&#x27;, w_half, kernels_half)
+    kernel_for_conv = torch.cat([kernels_half, kernels_second_half], dim=-1)
+    ##############################################################################
+    #                               END OF YOUR CODE                             #
+    ##############################################################################&quot;&quot;&quot;
+
+    todo_conv = &quot;&quot;&quot;    ##############################################################################
+    #                         TODO: Implement the convolution here               #
+    ##############################################################################
+    kernel_flipped = kernel.flip(-1)
+    h_conv = F.conv1d(s, kernel_flipped, padding=T-1)
+    h_all = h_conv[:, :, :T]
+    h_all = h_all.permute(0, 2, 1)
+    ##############################################################################
+    #                               END OF YOUR CODE                             #
+    ##############################################################################&quot;&quot;&quot;
+
+    # Answers
+    ans_q1 = &quot;\n\n**Answer:** The maximum absolute difference is negligible (typically &lt; 1e-5), confirming the two implementations are equivalent.&quot;
+    ans_q2 = &quot;\n\n**Answer:** The recurrence based implementation performs $O(T H^2)$ operations per sequence (or $O(N T H^2)$ for a batch of size $N$).&quot;
+    ans_q3 = &quot;\n\n**Answer:** The convolution based implementation performs $O(T H^3)$ operations for kernel construction and $O(N T^2 H^2)$ operations for the convolution.&quot;
+    ans_q4 = &quot;\n\n**Answer:** Recurrence is linear $O(T)$ but sequential. Convolution is quadratic $O(T^2)$ (naive) but parallelizable. On CPU for large T, recurrence is more efficient due to lower complexity.&quot;
+    ans_q5 = &quot;\n\n**Answer:** As $T$ increases, the recurrence implementation runtime grows linearly, whereas the convolution implementation grows quadratically. Thus for large T, recurrence is faster.&quot;
+
+    for cell in cells:
+        source_str = &quot;&quot;.join(cell[&#x27;source&#x27;])
+        
+        # Code Updates
+        if cell[&#x27;cell_type&#x27;] == &#x27;code&#x27;:
+            if &quot;def unrolled_ssm_forward&quot; in source_str:
+                start_marker = &quot;    ##############################################################################\n    #                   TODO: Implement the recurrent pass here                  #\n    ##############################################################################&quot;
+                end_marker = &quot;    ##############################################################################\n    #                               END OF YOUR CODE                             #\n    ##############################################################################&quot;
+                if start_marker in source_str and end_marker in source_str:
+                    pre = source_str.split(start_marker)[0]
+                    post = source_str.split(end_marker)[1]
+                    new_source = pre + todo_unrolled + post
+                    cell[&#x27;source&#x27;] = [line + &quot;\n&quot; for line in new_source.split(&#x27;\n&#x27;)]
+                    # Clean up last newline if needed
+                    if cell[&#x27;source&#x27;][-1].endswith(&#x27;\n&#x27;):
+                         cell[&#x27;source&#x27;][-1] = cell[&#x27;source&#x27;][-1][:-1]
+            
+            elif &quot;def make_conv_kernel&quot; in source_str:
+                 start_marker = &quot;    ##############################################################################\n    #                         TODO: Implement the kernel here                    #\n    ##############################################################################&quot;
+                 end_marker = &quot;    ##############################################################################\n    #                               END OF YOUR CODE                             #\n    ##############################################################################&quot;
+                 if start_marker in source_str and end_marker in source_str:
+                    pre = source_str.split(start_marker)[0]
+                    post = source_str.split(end_marker)[1]
+                    new_source = pre + todo_kernel + post
+                    cell[&#x27;source&#x27;] = [line + &quot;\n&quot; for line in new_source.split(&#x27;\n&#x27;)]
+                    if cell[&#x27;source&#x27;][-1].endswith(&#x27;\n&#x27;):
+                         cell[&#x27;source&#x27;][-1] = cell[&#x27;source&#x27;][-1][:-1]
+
+            elif &quot;def conv_ssm_forward&quot; in source_str:
+                 start_marker = &quot;    ##############################################################################\n    #                         TODO: Implement the convolution here               #\n    ##############################################################################&quot;
+                 end_marker = &quot;    ##############################################################################\n    #                               END OF YOUR CODE                             #\n    ##############################################################################&quot;
+                 if start_marker in source_str and end_marker in source_str:
+                    pre = source_str.split(start_marker)[0]
+                    post = source_str.split(end_marker)[1]
+                    new_source = pre + todo_conv + post
+                    cell[&#x27;source&#x27;] = [line + &quot;\n&quot; for line in new_source.split(&#x27;\n&#x27;)]
+                    if cell[&#x27;source&#x27;][-1].endswith(&#x27;\n&#x27;):
+                         cell[&#x27;source&#x27;][-1] = cell[&#x27;source&#x27;][-1][:-1]
+
+        # Markdown Updates
+        if cell[&#x27;cell_type&#x27;] == &#x27;markdown&#x27;:
+            if &quot;### Question 1&quot; in source_str and &quot;**Answer:**&quot; not in source_str:
+                cell[&#x27;source&#x27;].append(ans_q1)
+            elif &quot;### Question 2&quot; in source_str and &quot;**Answer:**&quot; not in source_str:
+                cell[&#x27;source&#x27;].append(ans_q2)
+            elif &quot;### Question 3&quot; in source_str and &quot;**Answer:**&quot; not in source_str:
+                cell[&#x27;source&#x27;].append(ans_q3)
+            elif &quot;### Question 4&quot; in source_str and &quot;**Answer:**&quot; not in source_str:
+                cell[&#x27;source&#x27;].append(ans_q4)
+            elif &quot;### Question 5&quot; in source_str and &quot;**Answer:**&quot; not in source_str:
+                cell[&#x27;source&#x27;].append(ans_q5)
+
+    with open(file_path, &#x27;w&#x27;) as f:
+        json.dump(nb, f, indent=1)
+
+update_notebook(&#x27;code/q_coding_ssm_forward_cpu.ipynb&#x27;)
+
+```
+
+I have completed the implementation of the TODOs and answered the text-based questions in the notebook `code/q_coding_ssm_forward_cpu.ipynb`.
+
+**Summary of changes:**
+
+1.  **`unrolled_ssm_forward`**: Implemented the recurrent loop $h_{t+1} = W h_t + (U x_t + b)$.
+2.  **`make_conv_kernel`**: Implemented the kernel construction by computing powers of $W$ ($W^0, \dots, W^{T-1}$) using a divide-and-conquer strategy.
+3.  **`conv_ssm_forward`**: Implemented the convolution pass using `F.conv1d`. This involves flipping the kernel (to convert cross-correlation to convolution) and padding the input to ensure causal output.
+4.  **Questions**: Added answers to Questions 1 through 5 directly in the markdown cells of the notebook.
+
+The notebook is now updated and ready to run in a standard environment with PyTorch and Matplotlib installed.
+
+### Code Details
+
+**Recurrence Implementation:**
+```python
+    N, T, D = x.shape
+    H = W.shape[0]
+    h_all = []
+    h_t = torch.zeros(N, H, device=x.device, dtype=x.dtype)
+
+    s = x @ U.T + b
+
+    for t in range(T):
+        h_t = h_t @ W.T + s[:, t, :]
+        h_all.append(h_t)
+
+    h_all = torch.stack(h_all, dim=1)
+```
+
+**Kernel Construction:**
+```python
+    if T == 1:
+        return torch.eye(W.shape[0], device=W.device, dtype=W.dtype).unsqueeze(-1)
+
+    kernels_half = make_conv_kernel(W, T // 2)
+    w_half_minus_1 = kernels_half[:, :, -1]
+    w_half = w_half_minus_1 @ W
+
+    kernels_second_half = torch.einsum(&#x27;ij, jkt -&gt; ikt&#x27;, w_half, kernels_half)
+    kernel_for_conv = torch.cat([kernels_half, kernels_second_half], dim=-1)
+```
+
+**Convolution Implementation:**
+```python
+    kernel_flipped = kernel.flip(-1)
+    h_conv = F.conv1d(s, kernel_flipped, padding=T-1)
+    h_all = h_conv[:, :, :T]
+    h_all = h_all.permute(0, 2, 1)
+```
+
+```python
+    N, T, D = x.shape
+    H = W.shape[0]
+    h_all = []
+    h_t = torch.zeros(N, H, device=x.device, dtype=x.dtype)
+
+    s = x @ U.T + b
+
+    for t in range(T):
+        h_t = h_t @ W.T + s[:, t, :]
+        h_all.append(h_t)
+
+    h_all = torch.stack(h_all, dim=1)
+```
+
+```python
+    if T == 1:
+        return torch.eye(W.shape[0], device=W.device, dtype=W.dtype).unsqueeze(-1)
+
+    kernels_half = make_conv_kernel(W, T // 2)
+    w_half_minus_1 = kernels_half[:, :, -1]
+    w_half = w_half_minus_1 @ W
+
+    kernels_second_half = torch.einsum(&#x27;ij, jkt -&gt; ikt&#x27;, w_half, kernels_half)
+    kernel_for_conv = torch.cat([kernels_half, kernels_second_half], dim=-1)
+```
+
+```python
+    kernel_flipped = kernel.flip(-1)
+    h_conv = F.conv1d(s, kernel_flipped, padding=T-1)
+    h_all = h_conv[:, :, :T]
+    h_all = h_all.permute(0, 2, 1)
+```</code></pre>
+                    </div>
+                <div class="attachment attachment-file">
+                    <a href="attachments/q_coding_ssm_forward_cpu.ipynb" target="_blank" class="file-link">q_coding_ssm_forward_cpu.ipynb</a>
+                </div></div>
+    </div>
+</body>
+</html>

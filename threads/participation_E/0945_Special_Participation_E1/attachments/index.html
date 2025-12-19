@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Visual MHA Animator - Complete Pipeline</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Animation Base Styles */
+        .stage-container {
+            position: relative;
+            height: 600px; /* Increased height for complex steps */
+            width: 100%;
+            overflow: hidden;
+            background-color: #f8fafc; /* slate-50 */
+            border: 1px solid #e2e8f0;
+            border-radius: 0.5rem;
+        }
+
+        .matrix-block {
+            position: absolute;
+            transition: all 1.0s cubic-bezier(0.4, 0, 0.2, 1);
+            display: grid;
+            gap: 2px;
+            padding: 4px;
+            background: rgba(255, 255, 255, 0.9);
+            border: 1px solid #cbd5e1;
+            border-radius: 4px;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        }
+
+        .cell {
+            width: 20px;
+            height: 20px;
+            font-size: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 2px;
+            font-family: monospace;
+            color: white;
+            transition: background-color 0.3s, transform 0.3s;
+        }
+
+        /* Highlight animations */
+        @keyframes pulse-border {
+            0% { border-color: #2563eb; }
+            50% { border-color: #93c5fd; }
+            100% { border-color: #2563eb; }
+        }
+        .highlight-row { border: 2px solid #2563eb; z-index: 10; transform: scale(1.1); }
+        .highlight-col { border: 2px solid #dc2626; z-index: 10; transform: scale(1.1); }
+        .highlight-result { border: 2px solid #16a34a; background-color: #dcfce7 !important; color: #166534 !important; font-weight: bold;}
+        
+        .fade-text { transition: opacity 0.5s ease-in-out; }
+        
+        /* Arrow helper */
+        .arrow-right {
+            position: absolute;
+            font-size: 24px;
+            color: #94a3b8;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body class="bg-gray-100 p-8 font-sans">
+
+    <div class="max-w-6xl mx-auto space-y-6">
+        <div class="bg-white p-6 rounded-lg shadow-sm border border-gray-200 flex justify-between items-center">
+            <div>
+                <h1 class="text-3xl font-bold text-gray-800">📽️ Complete MHA Pipeline Animator</h1>
+                <p class="text-gray-600">Visualizing: Split $\rightarrow$ Attention $\rightarrow$ Weighted Sum $\rightarrow$ Combine $\rightarrow$ $W_o$</p>
+            </div>
+            <div class="text-right text-sm text-gray-500 font-mono">
+                <p>Seq Len (L)=4</p>
+                <p>d_model (D)=12</p>
+                <p>Heads (H)=3</p>
+            </div>
+        </div>
+
+        <div class="bg-white p-4 rounded-lg shadow-lg border border-gray-200">
+            <div class="flex justify-between items-center mb-4">
+                <h2 class="text-xl font-bold text-blue-700" id="step-title">1. Input Tensor</h2>
+                <div class="space-x-2">
+                    <button onclick="prevStep()" class="px-4 py-2 bg-gray-200 hover:bg-gray-300 rounded text-gray-700 font-medium disabled:opacity-50" id="btn-prev">Previous</button>
+                    <button onclick="nextStep()" class="px-4 py-2 bg-blue-600 hover:bg-blue-700 rounded text-white font-medium shadow-md hover:shadow-lg transition-all" id="btn-next">Next Operation ➡</button>
+                </div>
+            </div>
+
+            <div id="stage" class="stage-container relative">
+                <div id="explanation-overlay" class="absolute bottom-4 left-4 right-4 bg-white/95 p-4 rounded border-l-4 border-blue-500 shadow-xl text-sm text-gray-800 backdrop-blur-sm fade-text z-50">
+                    Initializing...
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // --- Configuration ---
+        const L = 4;   // Sequence Length
+        const D = 12;  // d_model
+        const H = 3;   // Heads
+        const Dk = 4;  // d_k (12/3)
+        
+        // --- State Management ---
+        let currentStep = 0;
+        
+        const steps = [
+            { id: 0, title: '1. Input Tensor', text: 'Start with input X (Shape: 4x12). This contains the embeddings for 4 tokens.' },
+            { id: 1, title: '2. Split Heads (Visual Slice)', text: 'We logically slice the vectors into 3 parts (Red, Green, Blue).' },
+            { id: 2, title: '3. Split Heads (Physical Separate)', text: 'The slices are pulled apart into 3 separate Heads (Shape: 3 x 4x4).' },
+            { id: 3, title: '4. Prepare Attention (Head 1)', text: 'Focusing on the Red Head: We have Query (Q) and Key (K) matrices.' },
+            { id: 4, title: '5. Transpose Key (K)', text: 'To multiply, we rotate K to become K^T (Shape: 4x4 -> 4x4).' },
+            { id: 5, title: '6. Attention Scores (Q @ K^T)', text: 'Dot Product: Row of Q * Col of K^T = Score. Highlighted: Q_row_0 attending to K_col_0.' },
+            { id: 6, title: '7. Weighted Sum (Scores @ V)', text: 'We multiply the Attention Scores (probabilities) by the Value matrix (V). This creates the Context Vector for this head.' },
+            { id: 7, title: '8. Combine Heads', text: 'We perform this for all 3 heads, then concatenate the results back together.' },
+            { id: 8, title: '9. Final Linear Layer (Context @ Wo)', text: 'Finally, the combined matrix (4x12) is multiplied by the Output Weight Matrix Wo (12x12) to mix information across heads.' }
+        ];
+
+        // --- Render Helpers ---
+
+        function createMatrix(id, rows, cols, startX, startY, colorClass, label) {
+            const matrix = document.createElement('div');
+            matrix.id = id;
+            matrix.className = 'matrix-block';
+            matrix.style.gridTemplateColumns = `repeat(${cols}, 1fr)`;
+            matrix.style.left = `${startX}px`;
+            matrix.style.top = `${startY}px`;
+            
+            // Label
+            const lbl = document.createElement('div');
+            lbl.innerText = label;
+            lbl.className = 'absolute -top-6 left-0 w-full text-center text-xs font-bold text-gray-500 whitespace-nowrap';
+            matrix.appendChild(lbl);
+
+            // Cells
+            for (let r = 0; r < rows; r++) {
+                for (let c = 0; c < cols; c++) {
+                    const cell = document.createElement('div');
+                    cell.className = `cell ${colorClass}`;
+                    cell.innerText = '•'; 
+                    cell.dataset.r = r;
+                    cell.dataset.c = c;
+                    matrix.appendChild(cell);
+                }
+            }
+            return matrix;
+        }
+
+        function createArrow(x, y) {
+            const arrow = document.createElement('div');
+            arrow.className = 'arrow-right';
+            arrow.innerHTML = '➜';
+            arrow.style.left = `${x}px`;
+            arrow.style.top = `${y}px`;
+            return arrow;
+        }
+
+        // --- Main Render Function ---
+        function render() {
+            const stage = document.getElementById('stage');
+            const explanation = document.getElementById('explanation-overlay');
+            const title = document.getElementById('step-title');
+            
+            title.innerText = steps[currentStep].title;
+            explanation.innerText = steps[currentStep].text;
+
+            // Clear stage (except overlay if we wanted to keep it, but easy to just rebuild)
+            stage.innerHTML = '';
+            stage.appendChild(explanation);
+
+            const colors = ['bg-red-500', 'bg-green-500', 'bg-blue-500'];
+
+            // --- STEP 0: Input ---
+            if (currentStep === 0) {
+                stage.appendChild(createMatrix('in', L, D, 150, 200, 'bg-gray-600', 'Input X (4x12)'));
+            } 
+            
+            // --- STEP 1: Color Slices ---
+            else if (currentStep === 1) {
+                const m = createMatrix('in', L, D, 150, 200, '', 'Input X (4x12)');
+                Array.from(m.children).forEach((child, i) => {
+                    if (child.classList.contains('cell')) {
+                        const colIndex = i % D;
+                        if (colIndex < 4) child.classList.add('bg-red-500');
+                        else if (colIndex < 8) child.classList.add('bg-green-500');
+                        else child.classList.add('bg-blue-500');
+                    }
+                });
+                stage.appendChild(m);
+            }
+            
+            // --- STEP 2: Separate Heads ---
+            else if (currentStep === 2) {
+                const gaps = [50, 250, 450];
+                colors.forEach((col, i) => {
+                    stage.appendChild(createMatrix(`h${i}`, L, Dk, gaps[i], 200, col, `Head ${i+1}`));
+                });
+            }
+            
+            // --- STEP 3: Prep Attention ---
+            else if (currentStep === 3) {
+                stage.appendChild(createMatrix('Q', L, Dk, 150, 200, 'bg-red-500', 'Query (Q)'));
+                stage.appendChild(createMatrix('K', L, Dk, 350, 200, 'bg-red-300', 'Key (K)'));
+            }
+            
+            // --- STEP 4: Transpose K ---
+            else if (currentStep === 4) {
+                stage.appendChild(createMatrix('Q', L, Dk, 150, 200, 'bg-red-500', 'Query (Q)'));
+                
+                const k = createMatrix('K', L, Dk, 350, 200, 'bg-red-300', 'Key^T');
+                k.style.transform = "rotate(90deg)"; // CSS Rotate
+                k.style.left = "400px"; // Adjust for visual center
+                stage.appendChild(k);
+            }
+            
+            // --- STEP 5: Attention Scores ---
+            else if (currentStep === 5) {
+                // Layout: Q(Left) * Kt(Top) = Scores(Middle)
+                const q = createMatrix('Q', L, Dk, 50, 250, 'bg-red-500', 'Q');
+                const kt = createMatrix('Kt', Dk, L, 200, 100, 'bg-red-300', 'K^T'); // Physically transposed dimensions for clarity
+                const scores = createMatrix('Sc', L, L, 200, 250, 'bg-gray-400', 'Scores (Softmax)');
+                
+                stage.appendChild(q);
+                stage.appendChild(kt);
+                stage.appendChild(scores);
+                
+                setTimeout(() => {
+                    highlightRow(q, 0);
+                    highlightCol(kt, 0);
+                    highlightCell(scores, 0, 0);
+                }, 500);
+            }
+
+            // --- STEP 6: Weighted Sum (Scores * V) ---
+            else if (currentStep === 6) {
+                // Layout: Scores(Left) * V(Top-Right-ish) = Context(Right)
+                // Equation: Scores(LxL) * V(LxDk) = Context(LxDk)
+                
+                const scores = createMatrix('Sc', L, L, 50, 250, 'bg-gray-400', 'Scores (Probabilities)');
+                const v = createMatrix('V', L, Dk, 250, 100, 'bg-red-600', 'Value (V)'); // V is darker red usually
+                const ctx = createMatrix('Ctx', L, Dk, 250, 250, 'bg-purple-600', 'Context Vector');
+
+                stage.appendChild(scores);
+                stage.appendChild(v);
+                stage.appendChild(ctx);
+                stage.appendChild(createArrow(210, 270)); // Arrow between Scores and Ctx
+
+                setTimeout(() => {
+                    // Show that Row 0 of Scores * ALL of V = Row 0 of Context
+                    highlightRow(scores, 0); 
+                    // To imply matrix mult logic: Row 0 of scores weights the rows of V.
+                    // Let's highlight the whole V lightly, or just columns. 
+                    // Standard Matmul: Row 0(Sc) * Col 0(V) = Cell 0,0(Ctx)
+                    highlightCol(v, 0);
+                    highlightCell(ctx, 0, 0);
+                }, 500);
+            }
+
+            // --- STEP 7: Combine Heads ---
+            else if (currentStep === 7) {
+                // Show 3 Context vectors snapping together
+                // Start separated
+                const ctx1 = createMatrix('c1', L, Dk, 50, 200, 'bg-purple-600', 'Head 1');
+                const ctx2 = createMatrix('c2', L, Dk, 250, 200, 'bg-purple-600', 'Head 2'); // Normally different colors per head result, but reusing for simplicity
+                const ctx3 = createMatrix('c3', L, Dk, 450, 200, 'bg-purple-600', 'Head 3');
+                
+                // Override colors to match Step 1 colors
+                recolorMatrix(ctx1, 'bg-red-600');
+                recolorMatrix(ctx2, 'bg-green-600');
+                recolorMatrix(ctx3, 'bg-blue-600');
+
+                stage.appendChild(ctx1);
+                stage.appendChild(ctx2);
+                stage.appendChild(ctx3);
+
+                // Animate to center
+                setTimeout(() => {
+                    ctx1.style.left = "150px";
+                    ctx2.style.left = "230px"; // 150 + width(approx 80)
+                    ctx3.style.left = "310px"; // 230 + width
+                    // Update label
+                    ctx1.querySelector('div').innerText = "Concatenated (4x12)";
+                    ctx2.querySelector('div').innerText = "";
+                    ctx3.querySelector('div').innerText = "";
+                }, 200);
+            }
+
+            // --- STEP 8: Final Linear (Wo) ---
+            else if (currentStep === 8) {
+                // Layout: Combined(Left) * Wo(Right) = Output(Far Right)
+                // Shape: (L x D) * (D x D) = (L x D)
+                
+                // To fit in 600px width, we might need to scale down or overlap
+                // Combined (4x12)
+                const comb = createMatrix('comb', L, D, 50, 200, '', 'Combined Heads');
+                 // Color the cols again
+                 Array.from(comb.children).forEach((child, i) => {
+                    if (child.classList.contains('cell')) {
+                        const c = i % D;
+                        if (c < 4) child.classList.add('bg-red-600');
+                        else if (c < 8) child.classList.add('bg-green-600');
+                        else child.classList.add('bg-blue-600');
+                    }
+                });
+
+                // Wo (12x12) - Big matrix!
+                const wo = createMatrix('Wo', D, D, 300, 50, 'bg-gray-800', 'Weights (Wo)');
+                
+                // Output
+                const out = createMatrix('out', L, D, 300, 350, 'bg-indigo-600', 'Final Output (Z)');
+
+                stage.appendChild(comb);
+                stage.appendChild(wo);
+                stage.appendChild(out);
+
+                setTimeout(() => {
+                    highlightRow(comb, 0);
+                    highlightCol(wo, 0);
+                    highlightCell(out, 0, 0);
+                }, 500);
+            }
+        }
+
+        // --- Utils ---
+        function highlightRow(matrix, rowIdx) {
+            Array.from(matrix.children).forEach(cell => {
+                if (cell.dataset.r == rowIdx) cell.classList.add('highlight-row');
+            });
+        }
+        function highlightCol(matrix, colIdx) {
+            Array.from(matrix.children).forEach(cell => {
+                if (cell.dataset.c == colIdx) cell.classList.add('highlight-col');
+            });
+        }
+        function highlightCell(matrix, r, c) {
+            Array.from(matrix.children).forEach(cell => {
+                if (cell.dataset.r == r && cell.dataset.c == c) {
+                    cell.innerText = "★";
+                    cell.classList.add('highlight-result');
+                }
+            });
+        }
+        function recolorMatrix(matrix, colorClass) {
+            Array.from(matrix.children).forEach(cell => {
+                if (cell.classList.contains('cell')) {
+                    cell.className = `cell ${colorClass}`;
+                }
+            });
+        }
+
+        // --- Controls ---
+        function nextStep() {
+            if (currentStep < steps.length - 1) {
+                currentStep++;
+                render();
+            }
+        }
+        function prevStep() {
+            if (currentStep > 0) {
+                currentStep--;
+                render();
+            }
+        }
+
+        // Init
+        document.addEventListener('DOMContentLoaded', () => {
+            render();
+            document.addEventListener('keydown', (e) => {
+                if (e.key === "ArrowRight") nextStep();
+                if (e.key === "ArrowLeft") prevStep();
+            });
+        });
+
+    </script>
+</body>
+</html>

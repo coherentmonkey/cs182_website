@@ -1,0 +1,628 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Special Participation C: HW12 - CS 182</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #f5f7fa;
+            color: #333;
+            line-height: 1.6;
+        }
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .back-link {
+            display: inline-block;
+            margin-bottom: 20px;
+            color: #4299e1;
+            text-decoration: none;
+        }
+        .back-link:hover { text-decoration: underline; }
+        .thread-header {
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+        }
+        .thread-title {
+            font-size: 1.8rem;
+            color: #2d3748;
+            margin-bottom: 15px;
+        }
+        .thread-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            color: #718096;
+            font-size: 14px;
+        }
+        .model-badge {
+            display: inline-block;
+            padding: 4px 12px;
+            background: #e2e8f0;
+            color: #4a5568;
+            border-radius: 15px;
+            font-size: 13px;
+            font-weight: 500;
+        }
+        .hw-badge {
+            display: inline-block;
+            padding: 4px 12px;
+            background: #fed7e2;
+            color: #97266d;
+            border-radius: 15px;
+            font-size: 13px;
+            font-weight: 500;
+        }
+        .thread-body {
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+        }
+        .thread-body h3 {
+            margin-bottom: 15px;
+            color: #2d3748;
+        }
+        .body-content {
+            white-space: pre-wrap;
+            word-wrap: break-word;
+            line-height: 1.8;
+            font-size: 15px;
+        }
+        .body-content a {
+            color: #4299e1;
+            word-break: break-all;
+        }
+        .attachments {
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
+        .attachments h3 {
+            margin-bottom: 20px;
+            color: #2d3748;
+        }
+        .attachment {
+            margin-bottom: 25px;
+            border: 1px solid #e2e8f0;
+            border-radius: 6px;
+            overflow: hidden;
+        }
+        .attachment-label {
+            background: #f7fafc;
+            padding: 10px 15px;
+            font-weight: 500;
+            font-size: 14px;
+            border-bottom: 1px solid #e2e8f0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .download-link {
+            color: #4299e1;
+            text-decoration: none;
+            font-weight: normal;
+        }
+        .download-link:hover { text-decoration: underline; }
+        .attachment-image img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+        .attachment-pdf iframe {
+            width: 100%;
+            height: 800px;
+            border: none;
+        }
+        .attachment-video video {
+            width: 100%;
+            max-height: 600px;
+        }
+        .attachment-audio audio {
+            width: 100%;
+            padding: 15px;
+        }
+        .attachment-text pre {
+            padding: 15px;
+            background: #f7fafc;
+            overflow-x: auto;
+            max-height: 500px;
+            font-size: 13px;
+            line-height: 1.5;
+        }
+        .attachment-file {
+            padding: 15px;
+        }
+        .file-link {
+            color: #4299e1;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .file-link:hover { text-decoration: underline; }
+        .ed-link {
+            display: inline-block;
+            margin-top: 15px;
+            color: #4299e1;
+            text-decoration: none;
+        }
+        .ed-link:hover { text-decoration: underline; }
+        @media (max-width: 768px) {
+            .thread-title { font-size: 1.4rem; }
+            .attachment-pdf iframe { height: 500px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <a href="../../../index.html" class="back-link">← Back to Directory</a>
+
+        <div class="thread-header">
+            <h1 class="thread-title">Special Participation C: HW12</h1>
+            <div class="thread-meta">
+                <span>By Peidong Zhang</span>
+                <span>2025-12-10</span>
+                
+                <span class="model-badge">Unknown</span>
+            </div>
+            <a href="https://edstem.org/us/courses/84647/discussion/7444385" target="_blank" class="ed-link">View on Ed Stem →</a>
+        </div>
+
+        <div class="thread-body">
+            <div class="body-content">Hi everyone!
+
+I refactored HW12 for special participation C. Below is my .py files on what I changed in the code and why, along with a description of the AI assistance.
+
+The original MAML and VAE notebook code was transformed into well-structured, documented, and modular Python modules following good software engineering and ML engineering practices, while fully preserving its teaching intent.
+
+The MAML portion was extracted into maml_refactored.py, where the code was reorganized around clear abstractions such as a MetaClassificationConfig dataclass, a dedicated logistic loss function, and a structured meta-update function with explicit documentation linking directly to the mathematical formulation taught in class. The VAE portion was similarly separated into vae_refactored.py, containing a clean and well-documented implementation of the reparameterization trick, a VAEConfig dataclass for reproducible experiments, and a transparent negative_elbo_bound method whose docstring explicitly explains the ELBO equation and its components.
+
+Across both files, consistent improvements were made: detailed Google-style docstrings were added, type hints were introduced for clarity, reproducibility helpers such as set_global_seed() were included, and logging infrastructure was standardized. Helper functions were factored into small, easily testable units, and the structure of each module now mirrors standard ML engineering patterns without obscuring the underlying algorithms. Overall, my work results in two high-quality instructional modules that enhance readability, maintainability, and pedagogical value.</div>
+        </div>
+
+        <div class="attachments">
+                    <div class="attachment attachment-text">
+                        <div class="attachment-label">maml_refactored.py <a href="attachments/maml_refactored.py" target="_blank" class="download-link">Download</a></div>
+                        <pre><code>&quot;&quot;&quot;
+maml_refactored.py
+
+Refactored teaching code for:
+    - MAML-style binary classification
+
+This module is designed to be used alongside the CS182 MAML notebook.
+It improves structure, documentation, and style without changing the
+underlying math or assignment logic.
+
+You are expected to already have the following defined in your notebook
+or another module:
+    - generate_x(n, distribution)
+    - featurize(x, phi_type, d, normalize)
+    - generate_y(features, k_idx, k_val)
+    - add_label_noise(y, noise_prob)
+    - my_sign(y)
+&quot;&quot;&quot;
+
+from __future__ import annotations
+
+from dataclasses import dataclass
+from typing import Sequence, Tuple
+
+import logging
+import random
+
+import numpy as np
+import torch
+from torch import Tensor, nn
+
+# If you use &quot;higher&quot; for MAML inner-loop optimization, ensure it&#x27;s installed:
+#   pip install higher
+try:
+    import higher
+except ImportError:  # optional dependency for this module
+    higher = None  # type: ignore
+
+
+###############################################################################
+# Utility: Reproducibility helpers
+###############################################################################
+
+
+def set_global_seed(seed: int) -&gt; None:
+    &quot;&quot;&quot;Set seeds for Python, NumPy and PyTorch for reproducible experiments.
+
+    Args:
+        seed: Integer seed value.
+    &quot;&quot;&quot;
+    random.seed(seed)
+    np.random.seed(seed)
+    torch.manual_seed(seed)
+    if torch.cuda.is_available():
+        torch.cuda.manual_seed_all(seed)
+
+
+###############################################################################
+# MAML-style binary classification
+###############################################################################
+
+
+@dataclass
+class MetaClassificationConfig:
+    &quot;&quot;&quot;Configuration for MAML-style binary classification.
+
+    Attributes:
+        n_meta_train: Number of meta-training examples per task.
+        feature_type: Name of the feature mapping φ(x).
+        d: Dimensionality of the feature space.
+        k_idx: Indices of non-zero teacher weights.
+        k_val: Values of the non-zero teacher weights.
+        label_noise_prob: Probability of flipping each label.
+    &quot;&quot;&quot;
+
+    n_meta_train: int
+    feature_type: str
+    d: int
+    k_idx: Sequence[int]
+    k_val: Sequence[float]
+    label_noise_prob: float
+
+
+def classification_logistic_loss(logits: Tensor, y: Tensor) -&gt; Tensor:
+    &quot;&quot;&quot;Binary logistic loss for labels in ℝ (thresholded to {+1, -1}).
+
+    The targets y are first mapped to z ∈ {+1, -1} using my_sign. The loss is:
+
+        L = mean_i log(1 + exp(- z_i * f_i)),
+
+    where f_i are the logits.
+
+    Args:
+        logits: Model outputs f(x) of shape (N, 1) or (N,).
+        y: Real-valued targets (N, 1) or (N,) to be mapped to {+1, -1}.
+
+    Returns:
+        Scalar tensor mean loss over the batch.
+    &quot;&quot;&quot;
+    z = my_sign(y).float()  # type: ignore[name-defined]
+    loss = torch.mean(torch.log1p(torch.exp(-z * logits)))
+    return loss
+
+
+def meta_update_classification(
+    w_t: Tensor,
+    feature_weights_t: Tensor,
+    config: MetaClassificationConfig,
+) -&gt; Tensor:
+    &quot;&quot;&quot;Compute meta-training loss for a binary classification task.
+
+    This implements the negative log-likelihood for a logistic model:
+
+        L(α) = sum_i log(1 + exp(- z_i f_i)),
+        z_i ∈ {+1, -1}, f_i = ⟨α, φ(x_i)⟩.
+
+    The function assumes that the following helper functions are defined in
+    your environment (as in the CS182 MAML notebook):
+
+        - generate_x(n, distribution)
+        - featurize(x, phi_type, d, normalize)
+        - generate_y(features, k_idx, k_val)
+        - add_label_noise(y, noise_prob)
+        - my_sign(y)
+
+    Args:
+        w_t: Current meta-parameters α_t, shape (d, 1).
+        feature_weights_t: Included for API symmetry with regression;
+            not used here but kept for teaching purposes.
+        config: Meta-learning configuration (features, label noise, etc.).
+
+    Returns:
+        Scalar tensor containing the meta-loss for this task.
+    &quot;&quot;&quot;
+    # Generate meta-training inputs and features
+    x_meta = generate_x(config.n_meta_train, distribution=&quot;uniform_random&quot;)  # type: ignore[name-defined]
+    features_meta = featurize(  # type: ignore[name-defined]
+        x_meta, phi_type=config.feature_type, d=config.d, normalize=True
+    )
+    features_meta_t = torch.as_tensor(features_meta, dtype=torch.float32)
+
+    # Generate clean labels from the teacher and add label noise
+    y_meta = generate_y(features_meta, config.k_idx, config.k_val)  # type: ignore[name-defined]
+    y_meta = add_label_noise(y_meta, config.label_noise_prob)  # type: ignore[name-defined]
+    y_meta_t = torch.as_tensor(y_meta, dtype=torch.float32)
+
+    # Model logits f(x) = φ(x)^T α
+    y_meta_pred_t = features_meta_t @ w_t
+
+    # Convert real-valued targets to {+1, -1}
+    z_meta_t = my_sign(y_meta_t).float()  # type: ignore[name-defined]
+
+    # Logistic loss: sum_i log(1 + exp(-z_i f_i))
+    loss = torch.sum(torch.log1p(torch.exp(-z_meta_t * y_meta_pred_t)))
+
+    return loss
+
+
+def meta_learning_classification(
+    dm: nn.Module,
+    opt_inner: torch.optim.Optimizer,
+    tasks: Sequence[Tuple[Tensor, Tensor]],
+    num_gd_steps: int,
+) -&gt; Tensor:
+    &quot;&quot;&quot;Perform inner-loop adaptation over a sequence of classification tasks.
+
+    This function is a *template* for the inner loop shown in the MAML
+    classification notebook. It uses the same logistic loss as the
+    meta-update function and is written to preserve teaching value.
+
+    Args:
+        dm: Base model (e.g., a linear model mapping features to logits).
+        opt_inner: Inner-loop optimizer (e.g., SGD or Adam).
+        tasks: Sequence of (features, targets) pairs for adaptation.
+        num_gd_steps: Number of gradient descent steps per task.
+
+    Returns:
+        Scalar tensor containing the total inner-loop loss across tasks.
+    &quot;&quot;&quot;
+    if higher is None:
+        raise RuntimeError(
+            &quot;The &#x27;higher&#x27; package is required for meta-learning. &quot;
+            &quot;Install it via &#x27;pip install higher&#x27;.&quot;
+        )
+
+    total_loss = torch.tensor(0.0, dtype=torch.float32)
+
+    for features_t, y_t in tasks:
+        features_t = features_t.detach()
+        y_t = y_t.detach()
+
+        with higher.innerloop_ctx(
+            dm,
+            opt_inner,
+            copy_initial_weights=False,
+            track_higher_grads=True,
+        ) as (mod, opt):
+            for _ in range(num_gd_steps):
+                logits = mod(features_t)
+                loss = classification_logistic_loss(logits, y_t)
+
+                opt.zero_grad()
+                loss.backward(retain_graph=True)
+                opt.step(loss)
+
+            # Accumulate loss for logging / teaching purposes
+            total_loss = total_loss + loss.detach()
+
+    return total_loss
+
+
+###############################################################################
+# Minimal logging setup (for scripts that import this module)
+###############################################################################
+
+logging.basicConfig(
+    level=logging.INFO,
+    format=&quot;[%(asctime)s] %(levelname)s - %(message)s&quot;,
+)
+
+
+if __name__ == &quot;__main__&quot;:
+    logging.info(
+        &quot;maml_refactored.py loaded as a script. &quot;
+        &quot;Import its functions/classes into your notebook.&quot;
+    )</code></pre>
+                    </div>
+                    <div class="attachment attachment-text">
+                        <div class="attachment-label">vae_refactored.py <a href="attachments/vae_refactored.py" target="_blank" class="download-link">Download</a></div>
+                        <pre><code>&quot;&quot;&quot;
+vae_refactored.py
+
+Refactored teaching code for:
+    - Bernoulli VAE with ELBO loss
+
+This module is designed to be used alongside the CS182 VAE notebook.
+It improves structure, documentation, and style without changing the
+underlying math or assignment logic.
+
+You are expected to already have:
+    - An encoder that maps x -&gt; (mean, logvar).
+    - A decoder that maps z -&gt; logits of p(x | z).
+    - Utility functions in codebase.utils:
+        * log_normal
+        * log_normal_standard
+        * log_bernoulli_with_logits
+&quot;&quot;&quot;
+
+from __future__ import annotations
+
+from dataclasses import dataclass
+from typing import Tuple, Dict
+
+import logging
+import random
+
+import numpy as np
+import torch
+from torch import Tensor, nn
+
+# In the CS182 homework, this is often something like:
+#   import codebase.utils as ut
+try:
+    import codebase.utils as ut  # type: ignore
+except ImportError:  # adapt as needed to your project structure
+    ut = None  # type: ignore
+
+
+###############################################################################
+# Utility: Reproducibility helpers
+###############################################################################
+
+
+def set_global_seed(seed: int) -&gt; None:
+    &quot;&quot;&quot;Set seeds for Python, NumPy and PyTorch for reproducible experiments.
+
+    Args:
+        seed: Integer seed value.
+    &quot;&quot;&quot;
+    random.seed(seed)
+    np.random.seed(seed)
+    torch.manual_seed(seed)
+    if torch.cuda.is_available():
+        torch.cuda.manual_seed_all(seed)
+
+
+###############################################################################
+# VAE: Config, sampling, ELBO
+###############################################################################
+
+
+@dataclass
+class VAEConfig:
+    &quot;&quot;&quot;Configuration for a Bernoulli VAE experiment.
+
+    Attributes:
+        latent_dim: Dimensionality of the latent space.
+        learning_rate: Learning rate for the optimizer.
+        batch_size: Training batch size.
+        num_epochs: Number of training epochs.
+        seed: Random seed for reproducibility.
+    &quot;&quot;&quot;
+
+    latent_dim: int
+    learning_rate: float
+    batch_size: int
+    num_epochs: int
+    seed: int = 42
+
+
+def sample_gaussian(mean: Tensor, logvar: Tensor) -&gt; Tensor:
+    &quot;&quot;&quot;Sample from a diagonal Gaussian using the reparameterization trick.
+
+    Given q(z | x) = N(z; μ, diag(σ²)), where logvar = log σ², we draw:
+
+        ε ~ N(0, I),
+        z = μ + σ ⊙ ε.
+
+    Args:
+        mean: Tensor of shape (batch_size, latent_dim) with μ.
+        logvar: Tensor of shape (batch_size, latent_dim) with log σ².
+
+    Returns:
+        Tensor of shape (batch_size, latent_dim) containing samples z.
+    &quot;&quot;&quot;
+    std = torch.exp(0.5 * logvar)
+    eps = torch.randn_like(std)
+    return mean + std * eps
+
+
+class VAE(nn.Module):
+    &quot;&quot;&quot;Bernoulli VAE with explicit negative ELBO computation.
+
+    This class is deliberately minimal and designed to be used as a teaching
+    reference. In the CS182 homework, you typically already have a VAE class
+    defined; you can copy the `negative_elbo_bound` method into that class
+    rather than using this skeleton directly.
+    &quot;&quot;&quot;
+
+    def __init__(self, encoder: nn.Module, decoder: nn.Module):
+        &quot;&quot;&quot;Initialize the VAE with an encoder and decoder.
+
+        Args:
+            encoder: Module mapping x to (mean, logvar) of q(z | x).
+            decoder: Module mapping z to logits of p(x | z).
+        &quot;&quot;&quot;
+        super().__init__()
+        self.enc = encoder
+        self.dec = decoder
+
+    def encode(self, x: Tensor) -&gt; Tuple[Tensor, Tensor]:
+        &quot;&quot;&quot;Encode x into mean and log-variance of q(z | x).&quot;&quot;&quot;
+        return self.enc(x)
+
+    def decode(self, z: Tensor) -&gt; Tensor:
+        &quot;&quot;&quot;Decode latent z into logits for Bernoulli p(x | z).&quot;&quot;&quot;
+        return self.dec(z)
+
+    def negative_elbo_bound(self, x: Tensor) -&gt; Tuple[Tensor, Dict[str, Tensor]]:
+        &quot;&quot;&quot;Compute the negative ELBO for a Bernoulli VAE.
+
+        ELBO(x) = E_q(z|x)[log p(x|z)] - KL(q(z|x) || p(z)),
+        where:
+            - p(z) = N(0, I)
+            - p(x|z) is Bernoulli with logits given by decoder(z).
+
+        We return the negative ELBO:
+
+            NELBO = KL(q(z|x) || p(z)) - E_q[log p(x|z)]
+                  = KL + reconstruction_loss
+
+        Args:
+            x: Input batch of images, normalized in [0, 1],
+               shape (B, C, H, W) or (B, D).
+
+        Returns:
+            nelbo: Scalar tensor to minimize.
+            stats: Dict with detached components {&quot;nelbo&quot;, &quot;kl&quot;, &quot;rec&quot;}.
+        &quot;&quot;&quot;
+        if ut is None:
+            raise RuntimeError(
+                &quot;Utility module &#x27;codebase.utils&#x27; could not be imported. &quot;
+                &quot;Adapt the import at the top of this file to match your &quot;
+                &quot;project structure.&quot;
+            )
+
+        # Encode approximate posterior q(z | x)
+        mean, logvar = self.encode(x)
+
+        # Sample z via reparameterization
+        z = sample_gaussian(mean, logvar)
+
+        # KL(q || p): E_q[log q(z|x) - log p(z)]
+        log_qz = ut.log_normal(z, mean, logvar)  # type: ignore[attr-defined]
+        log_pz = ut.log_normal_standard(z)       # type: ignore[attr-defined]
+        kl = torch.mean(log_qz - log_pz)
+
+        # Reconstruction term: -E_q[log p(x|z)]
+        logits_x = self.decode(z)
+        log_pxz = ut.log_bernoulli_with_logits(x, logits_x)  # type: ignore[attr-defined]
+        rec = -torch.mean(log_pxz)
+
+        nelbo = kl + rec
+
+        stats = {
+            &quot;nelbo&quot;: nelbo.detach(),
+            &quot;kl&quot;: kl.detach(),
+            &quot;rec&quot;: rec.detach(),
+        }
+        return nelbo, stats
+
+
+###############################################################################
+# Minimal logging setup (for scripts that import this module)
+###############################################################################
+
+logging.basicConfig(
+    level=logging.INFO,
+    format=&quot;[%(asctime)s] %(levelname)s - %(message)s&quot;,
+)
+
+
+if __name__ == &quot;__main__&quot;:
+    logging.info(
+        &quot;vae_refactored.py loaded as a script. &quot;
+        &quot;Import its functions/classes into your notebook.&quot;
+    )
+</code></pre>
+                    </div></div>
+    </div>
+</body>
+</html>

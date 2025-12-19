@@ -1,0 +1,1520 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Special Participation E: Using Gemini Pro 3 and Claude Opus 4.5 for Jupyter Notebook Demos of Lecture Topics - CS 182</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #f5f7fa;
+            color: #333;
+            line-height: 1.6;
+        }
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .back-link {
+            display: inline-block;
+            margin-bottom: 20px;
+            color: #4299e1;
+            text-decoration: none;
+        }
+        .back-link:hover { text-decoration: underline; }
+        .thread-header {
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+        }
+        .thread-title {
+            font-size: 1.8rem;
+            color: #2d3748;
+            margin-bottom: 15px;
+        }
+        .thread-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            color: #718096;
+            font-size: 14px;
+        }
+        .model-badge {
+            display: inline-block;
+            padding: 4px 12px;
+            background: #e2e8f0;
+            color: #4a5568;
+            border-radius: 15px;
+            font-size: 13px;
+            font-weight: 500;
+        }
+        .hw-badge {
+            display: inline-block;
+            padding: 4px 12px;
+            background: #fed7e2;
+            color: #97266d;
+            border-radius: 15px;
+            font-size: 13px;
+            font-weight: 500;
+        }
+        .thread-body {
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+        }
+        .thread-body h3 {
+            margin-bottom: 15px;
+            color: #2d3748;
+        }
+        .body-content {
+            white-space: pre-wrap;
+            word-wrap: break-word;
+            line-height: 1.8;
+            font-size: 15px;
+        }
+        .body-content a {
+            color: #4299e1;
+            word-break: break-all;
+        }
+        .attachments {
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
+        .attachments h3 {
+            margin-bottom: 20px;
+            color: #2d3748;
+        }
+        .attachment {
+            margin-bottom: 25px;
+            border: 1px solid #e2e8f0;
+            border-radius: 6px;
+            overflow: hidden;
+        }
+        .attachment-label {
+            background: #f7fafc;
+            padding: 10px 15px;
+            font-weight: 500;
+            font-size: 14px;
+            border-bottom: 1px solid #e2e8f0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .download-link {
+            color: #4299e1;
+            text-decoration: none;
+            font-weight: normal;
+        }
+        .download-link:hover { text-decoration: underline; }
+        .attachment-image img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+        .attachment-pdf iframe {
+            width: 100%;
+            height: 800px;
+            border: none;
+        }
+        .attachment-video video {
+            width: 100%;
+            max-height: 600px;
+        }
+        .attachment-audio audio {
+            width: 100%;
+            padding: 15px;
+        }
+        .attachment-text pre {
+            padding: 15px;
+            background: #f7fafc;
+            overflow-x: auto;
+            max-height: 500px;
+            font-size: 13px;
+            line-height: 1.5;
+        }
+        .attachment-file {
+            padding: 15px;
+        }
+        .file-link {
+            color: #4299e1;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .file-link:hover { text-decoration: underline; }
+        .ed-link {
+            display: inline-block;
+            margin-top: 15px;
+            color: #4299e1;
+            text-decoration: none;
+        }
+        .ed-link:hover { text-decoration: underline; }
+        @media (max-width: 768px) {
+            .thread-title { font-size: 1.4rem; }
+            .attachment-pdf iframe { height: 500px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <a href="../../../index.html" class="back-link">← Back to Directory</a>
+
+        <div class="thread-header">
+            <h1 class="thread-title">Special Participation E: Using Gemini Pro 3 and Claude Opus 4.5 for Jupyter Notebook Demos of Lecture Topics</h1>
+            <div class="thread-meta">
+                <span>By Deena Sun</span>
+                <span>2025-11-27</span>
+                
+                <span class="model-badge">Claude</span>
+            </div>
+            <a href="https://edstem.org/us/courses/84647/discussion/7368105" target="_blank" class="ed-link">View on Ed Stem →</a>
+        </div>
+
+        <div class="thread-body">
+            <div class="body-content">Executive Summary:
+
+I enjoy taking the concepts/theory we learn in class and applying them in code—I think it forces me to turn what I thought I understood through math or abstract concepts and make them more concrete by executing them. As a CS 189 course staff this semester, we’re creating a lot of demo notebooks and coding-forward Jupyter notebooks for students to try out. So taking inspiration from the demos in CS 189 as well as our coding homework problems, I decided to try to prompt LLMs and IDE-integrated coding assistants to produce some Jupyter notebook demos of topics covered in class.
+
+Prompt used:
+
+You are an expert deep learning instructor and advanced Python coder creating a demo for the Berkeley course CS 182, Deep Neural Networks. Your task is to produce a Jupyter notebook that explains and demonstrates the target topic. Use the written lecture notes and transcript of the lecture to inform what key concepts to cover in the demo for the target topic.
+
+The notebook should following these key principles:
+1. Introduce the topic, describe its relevance in deep learning, and define core concepts from the provided transcript/lecture notes. If necessary, provide comparisons between solutions/practices covered in lecture that “didn’t work”, and those that “did work”.
+2. Use clear markdown cells to present essential theoretical background.
+3. Provide a complete Python implementation using PyTorch, Numpy, and Pandas libraries.
+4. Integrate plots and visualizations throughout to aid interpretation.
+
+Formatting guidelines:
+1. Use descriptive comments and narrative explanations alongside code. Write clear docstrings where needed.
+2. Limit total length to 100-150 lines of code and under 5000 words.
+3. The notebook should be runnable end-to-end in Colab or local Jupyter environments.
+
+Output only the ipynb notebook.
+
+Target topic:
+&lt;INSERT YOUR TARGET TOPIC HERE&gt;
+&lt;MAKE SURE TO ADD PDF OF LECTURE NOTES AND TXT FILE OF LECTURE TRANSCRIPTS FROM YOUTUBE&gt;
+
+
+I explored 2 LLMs:
+
+Gemini Pro 3 from the Gemini website
+
+I pasted in the prompt, added my target topic (Soft-prompting and soft-prefix prompting), and attached the pdf of lecture 21’s notes as well as a txt of lecture 21’s YouTube transcripts
+
+Since I was using Gemini’s website rather than an IDE, Gemini produced a JSON that I then pasted into a .json file and converted into an ipynb by changing the file extension
+
+Claude Opus 4.5 within Cursor
+
+I pasted in the prompt, and attached lecture 21 ’s PDF notes and a txt of the YouTube transcripts
+
+Both models produced a runnable Jupyter notebook that included a toy encoder implementation, a toy task (Gemini used the task of reversing a sequence and Claude made dummy sequences to map to positive, negative, or neutral sentiment), training loops for soft-prompting, soft-prefixes, and frozen baseline models, and comparisons of parameter counts and training metrics. Furthermore, both models included detailed walkthroughs and explanations that motivated why soft-prompting/soft-prefixing could be useful, implementation details, and key takeaways.
+
+Some limitations I noticed from both models were the use of outdated additive positional embeddings (perhaps chosen for instructive simplicity). Claude’s implementation of soft-prefixing was flawed, and seemed equivalent to just appending the supposedly learned keys/values to the input sequence’s token embeddings.
+
+Overall, I was impressed with the thoroughness of both model’s demos. I found it a helpful guide towards seeing how a concept we discussed in class might actually be implemented in practice. The interactivity of a Jupyter notebook also makes it easier to play around and tweak things on my own (e.g. by adding extra print statements, adjusting different parameter sizes) that can not be as easily achieved by reading an article or textbook even if it does include code implementations.
+
+While this was a fun experiment to see how we could leverage LLMs to produce workable demos, I still ultimately find hands-on doing more effective for my learning than just reading through the demo, even if I’m actively engaged with the reading and trying to understand every step or identify potential errors. I’d be curious to see if this provides a good baseline demo that we could then ask another LLM to help “ablate” and add “TODOs” for students to fill out/code on their own.
+
+Gemini Pro 3 - Detailed Analysis
+
+Link to my conversation with Gemini Pro 3: <a href="https://gemini.google.com/app/cbcac1c80e5f5041" target="_blank" rel="noopener noreferrer">https://gemini.google.com/app/cbcac1c80e5f5041</a>
+
+Jupyter Notebook:
+
+Some outdated practices I noticed from Gemini’s Transformer implementation
+
+ToyGPT implementation uses additive learned absolute positional embeddings—which as mentioned in lectures 19 and 20 is no longer standard practice (in favor of NoPE or RoPE). However, more advanced techniques like RoPE require custom attention implementations (e.g. hooking into the Q, K tensors before they’re multiplied to apply the rotary transform). For instructive toy models in a demo, I can see how additive positional encodings might be simpler and easier to understand.
+
+The FFN/MLP uses GeLU rather than more recent alternatives like SwiGLU or ReLU^2
+
+Layernorms in the transformer encoder blocks instead of RMS norm
+
+Some modern practices that Gemini’s transformer included which differed from the original Transformer paper:
+
+Pre-norm residual connections (adding the norm before the Attention sublayer and residual connections that bypass the norm entirely) versus post norm (normalizing after the residual add)
+
+I love that Gemini included the shapes of different tensors in the code comments. I often add these myself as I code to track the dimensions of things/sanity check/debug and I find that they really help my understanding as I implement. I also really appreciate that it makes some of the different dimension-changing functions (e.g. unsqueezed, expand, concat) more readable without having to guess at what they’re trying to do.
+
+The comments in the code for the CausalSelfAttention’s forward method were very detailed, and covered implementation details beyond what was mentioned in lecture.
+
+For instance, Gemini noted that we needed to adjust the shape of the causal mask when a soft-prefix is supplied to be [T, P + T] where P = prefix length and T = sequence length.
+
+Additionally, Gemini also explicitly outlined how the causal mask should still allow attending to all the prefixes and be causal for the rest of the tokens themselves.
+
+In the ToyGPT forward method, Gemini cuts off the soft prompt embedding token’s output predictions and only returns logits for the original T tokens. This makes sense because we don’t care about what the model predicts for the pre-prompt.
+
+Some things that Gemini included beyond the lecture scope:
+
+Comments inside PrefixTuning noted that usually the learnable prefix parameters are reparameterized through a small MLP for stability.
+
+General good coding practices that Gemini used:
+
+Seeding for reproducibility
+
+PyTorch practice of explicitly checking and printing what device we’re using
+
+Using constants to set the model hyperparameters
+
+Makes copies of the base model for each variant (soft-prompting, soft-prefix, and base model only) so that the base models all start from the same random state for comparison
+
+Although Gemini confidently provided an “Analysis of Results” for what I should expect to see, running the demo as given did not produce a frozen baseline with high/flat loss or a decreasing loss curve for soft prompting.
+
+Gemini also included a visualization of the soft prompt embeddings. However, unlike Claude, Gemini also included an interpretation of what we can use it for—it noted that we can apply a KNN-like search to find the nearest token in the real vocabulary to see if the soft prompt corresponds to any understandable human words.
+
+Claude Opus 4.5 - Detailed Analysis
+
+Log of my conversation with Claude in Cursor:
+
+Jupyter Notebook:
+
+SimpleTransformer implementation uses additive learned absolute positional embeddings—which as mentioned in lectures 19 and 20 is no longer standard practice (in favor of NoPE or RoPE). However, more advanced techniques like RoPE require custom attention implementations (e.g. hooking into the Q, K tensors before they’re multiplied to apply the rotary transform). For instructive toy models in a demo, I can see how additive positional encodings might be simpler and easier to understand.
+
+Interesting that Claude actually referenced the lecture itself in the notebook: As described in lecture: &quot;The past queries have no influence except how they influence the keys and values. The state is the keys and the values.&quot;
+
+Some things that weren’t immediately clear/understandable to me:
+
+Why did we need MLP reparameterization for the soft-prefixes?
+
+What I was supposed to take away from 7: Visualizing Learned Soft Prompt Embeddings — what kinds of patterns should I be expecting?
+
+I don’t think that Opus actually implemented soft-prefix tuning. Its implementation is functionally a learned prepended prompt. True “prefix-tuning” injects learned key/value vectors directly into the attention cache of every transformer layer; this requires modifying each layer’s attention module so the extra K/Vs are concatenated before computing attention scores. Crucially, the code in SimpleTransformer simply concatenates the prefix to the token embeddings before the encoder. That makes the prefix act like extra prepended tokens (a soft prompt), not as layerwise K/V injections.
+
+Also, PrefixWrapper only returns the first layer’s keys even though SoftPrefix stores tensors shaped like per-layer K/Vs, get_all_prefixes(). I’m not sure why Claude decided to only provide a “simplified” version of get_all-prefixes. But since the SimpleTransformer never consumes layer-specific prefixes, the stored K/Vs are never wired into the attention blocks.</div>
+        </div>
+
+        <div class="attachments">
+                    <div class="attachment attachment-text">
+                        <div class="attachment-label">claude_jupyter_notebook_log.md <a href="attachments/claude_jupyter_notebook_log.md" target="_blank" class="download-link">Download</a></div>
+                        <pre><code># Creating a Jupyter notebook for soft prompting
+_Exported on 11/26/2025 at 08:45:44 PST from Cursor (2.1.34)_
+
+---
+
+**User**
+
+lecture_21.pdf @lecture_21_transcript.txt 
+You are an expert deep learning instructor and advanced Python coder helping to create a demo for the Berkeley course CS 182, Deep Neural Networks. Your task is to produce a Jupyter notebook that explains and demonstrates the target topic. Use the written lecture notes and transcript of the lecture to inform what key concepts to cover in the demo for the target topic.
+
+The notebook should following these key principles:
+1. Introduce the topic, describe its relevance in deep learning, and define core concepts from the provided transcript/lecture notes. If necessary, provide comparisons between solutions/practices covered in lecture that “didn’t work”, and those that “did work”.
+2. Use clear markdown cells to present essential theoretical background.
+3. Provide a complete Python implementation using PyTorch, Numpy, and Pandas libraries.
+4. Integrate plots and visualizations throughout to aid interpretation.
+
+Formatting guidelines:
+1. Use descriptive comments and narrative explanations alongside code. Write clear docstrings where needed.
+2. Limit total length to 100-150 lines of code and under 5000 words.
+3. The notebook should be runnable end-to-end in Colab or local Jupyter environments.
+
+Output only the ipynb notebook.
+
+Target topic: 
+Soft-prompting and soft-prefix prompting
+
+---
+
+**Cursor**
+
+```json
+{
+ &quot;cells&quot;: [
+  {
+   &quot;cell_type&quot;: &quot;markdown&quot;,
+   &quot;metadata&quot;: {},
+   &quot;source&quot;: [
+    &quot;# Soft Prompting and Soft Prefix Tuning\n&quot;,
+    &quot;\n&quot;,
+    &quot;## CS 182: Deep Neural Networks - UC Berkeley\n&quot;,
+    &quot;\n&quot;,
+    &quot;This notebook demonstrates **soft prompting** and **soft prefix tuning**, two parameter-efficient fine-tuning (PEFT) techniques that allow us to adapt large language models without modifying their weights.\n&quot;,
+    &quot;\n&quot;,
+    &quot;### The Problem\n&quot;,
+    &quot;\n&quot;,
+    &quot;When we want to optimize a prompt for a language model, we face a fundamental challenge:\n&quot;,
+    &quot;- **Gradients cannot flow back through discrete token selection**\n&quot;,
+    &quot;- The embedding layer maps discrete tokens → continuous embeddings, but this mapping is non-differentiable\n&quot;,
+    &quot;\n&quot;,
+    &quot;### The Solution: Soft Prompts\n&quot;,
+    &quot;\n&quot;,
+    &quot;Instead of using discrete tokens, we learn **continuous embeddings** directly:\n&quot;,
+    &quot;1. **Soft Prompting**: Learn special token embeddings that are prepended to inputs\n&quot;,
+    &quot;2. **Soft Prefix Tuning**: Learn key-value pairs at each transformer layer\n&quot;,
+    &quot;\n&quot;,
+    &quot;### Why This Matters\n&quot;,
+    &quot;\n&quot;,
+    &quot;| Method | Parameters (8B model, 100-token prompt) |\n&quot;,
+    &quot;|--------|----------------------------------------|\n&quot;,
+    &quot;| Full Fine-tuning | ~8 billion |\n&quot;,
+    &quot;| Soft Prompting | ~400K (embedding_dim × prompt_length) |\n&quot;,
+    &quot;| Soft Prefix | ~26M (includes K-V across layers) |\n&quot;,
+    &quot;\n&quot;,
+    &quot;This is a **20,000x reduction** in learnable parameters!&quot;
+   ]
+  },
+  {
+   &quot;cell_type&quot;: &quot;code&quot;,
+   &quot;execution_count&quot;: null,
+   &quot;metadata&quot;: {},
+   &quot;outputs&quot;: [],
+   &quot;source&quot;: [
+    &quot;# Install dependencies (uncomment if running in Colab)\n&quot;,
+    &quot;# !pip install torch transformers matplotlib numpy pandas -q&quot;
+   ]
+  },
+  {
+   &quot;cell_type&quot;: &quot;code&quot;,
+   &quot;execution_count&quot;: null,
+   &quot;metadata&quot;: {},
+   &quot;outputs&quot;: [],
+   &quot;source&quot;: [
+    &quot;import torch\n&quot;,
+    &quot;import torch.nn as nn\n&quot;,
+    &quot;import torch.nn.functional as F\n&quot;,
+    &quot;import numpy as np\n&quot;,
+    &quot;import matplotlib.pyplot as plt\n&quot;,
+    &quot;from torch.utils.data import DataLoader, Dataset\n&quot;,
+    &quot;import pandas as pd\n&quot;,
+    &quot;\n&quot;,
+    &quot;# Set device and seed for reproducibility\n&quot;,
+    &quot;device = torch.device(&#x27;cuda&#x27; if torch.cuda.is_available() else &#x27;cpu&#x27;)\n&quot;,
+    &quot;torch.manual_seed(42)\n&quot;,
+    &quot;print(f\&quot;Using device: {device}\&quot;)&quot;
+   ]
+  },
+  {
+   &quot;cell_type&quot;: &quot;markdown&quot;,
+   &quot;metadata&quot;: {},
+   &quot;source&quot;: [
+    &quot;## 1. Building a Simple Transformer for Demonstration\n&quot;,
+    &quot;\n&quot;,
+    &quot;We&#x27;ll create a small transformer to demonstrate the concepts. In practice, you&#x27;d use a pre-trained model like GPT-2 or LLaMA.&quot;
+   ]
+  },
+  {
+   &quot;cell_type&quot;: &quot;code&quot;,
+   &quot;execution_count&quot;: null,
+   &quot;metadata&quot;: {},
+   &quot;outputs&quot;: [],
+   &quot;source&quot;: [
+    &quot;class SimpleTransformer(nn.Module):\n&quot;,
+    &quot;    \&quot;\&quot;\&quot;A minimal transformer for classification tasks.\&quot;\&quot;\&quot;\n&quot;,
+    &quot;    \n&quot;,
+    &quot;    def __init__(self, vocab_size=1000, embed_dim=128, num_heads=4, \n&quot;,
+    &quot;                 num_layers=4, num_classes=2, max_seq_len=64):\n&quot;,
+    &quot;        super().__init__()\n&quot;,
+    &quot;        self.embed_dim = embed_dim\n&quot;,
+    &quot;        self.num_layers = num_layers\n&quot;,
+    &quot;        \n&quot;,
+    &quot;        # Token and position embeddings\n&quot;,
+    &quot;        self.token_embed = nn.Embedding(vocab_size, embed_dim)\n&quot;,
+    &quot;        self.pos_embed = nn.Embedding(max_seq_len, embed_dim)\n&quot;,
+    &quot;        \n&quot;,
+    &quot;        # Transformer layers\n&quot;,
+    &quot;        encoder_layer = nn.TransformerEncoderLayer(\n&quot;,
+    &quot;            d_model=embed_dim, nhead=num_heads, dim_feedforward=256,\n&quot;,
+    &quot;            dropout=0.1, batch_first=True\n&quot;,
+    &quot;        )\n&quot;,
+    &quot;        self.transformer = nn.TransformerEncoder(encoder_layer, num_layers)\n&quot;,
+    &quot;        \n&quot;,
+    &quot;        # Classification head\n&quot;,
+    &quot;        self.classifier = nn.Linear(embed_dim, num_classes)\n&quot;,
+    &quot;        \n&quot;,
+    &quot;    def forward(self, x, prefix_embeds=None):\n&quot;,
+    &quot;        \&quot;\&quot;\&quot;Forward pass with optional prefix embeddings for soft prompting.\&quot;\&quot;\&quot;\n&quot;,
+    &quot;        batch_size, seq_len = x.shape\n&quot;,
+    &quot;        \n&quot;,
+    &quot;        # Get token embeddings\n&quot;,
+    &quot;        tok_emb = self.token_embed(x)\n&quot;,
+    &quot;        \n&quot;,
+    &quot;        # Handle soft prompt prefix\n&quot;,
+    &quot;        if prefix_embeds is not None:\n&quot;,
+    &quot;            prefix_len = prefix_embeds.shape[1]\n&quot;,
+    &quot;            # Expand prefix for batch\n&quot;,
+    &quot;            prefix = prefix_embeds.expand(batch_size, -1, -1)\n&quot;,
+    &quot;            tok_emb = torch.cat([prefix, tok_emb], dim=1)\n&quot;,
+    &quot;            seq_len = seq_len + prefix_len\n&quot;,
+    &quot;        \n&quot;,
+    &quot;        # Add positional embeddings\n&quot;,
+    &quot;        positions = torch.arange(seq_len, device=x.device).unsqueeze(0)\n&quot;,
+    &quot;        pos_emb = self.pos_embed(positions)\n&quot;,
+    &quot;        embeddings = tok_emb + pos_emb\n&quot;,
+    &quot;        \n&quot;,
+    &quot;        # Transform\n&quot;,
+    &quot;        hidden = self.transformer(embeddings)\n&quot;,
+    &quot;        \n&quot;,
+    &quot;        # Use mean pooling for classification\n&quot;,
+    &quot;        pooled = hidden.mean(dim=1)\n&quot;,
+    &quot;        return self.classifier(pooled)\n&quot;,
+    &quot;\n&quot;,
+    &quot;# Initialize the base model\n&quot;,
+    &quot;base_model = SimpleTransformer().to(device)\n&quot;,
+    &quot;print(f\&quot;Base model parameters: {sum(p.numel() for p in base_model.parameters()):,}\&quot;)&quot;
+   ]
+  },
+  {
+   &quot;cell_type&quot;: &quot;markdown&quot;,
+   &quot;metadata&quot;: {},
+   &quot;source&quot;: [
+    &quot;## 2. Creating a Toy Dataset\n&quot;,
+    &quot;\n&quot;,
+    &quot;We&#x27;ll create a simple sentiment classification task where the model must learn to classify sequences based on the presence of certain \&quot;positive\&quot; or \&quot;negative\&quot; tokens.&quot;
+   ]
+  },
+  {
+   &quot;cell_type&quot;: &quot;code&quot;,
+   &quot;execution_count&quot;: null,
+   &quot;metadata&quot;: {},
+   &quot;outputs&quot;: [],
+   &quot;source&quot;: [
+    &quot;class SentimentDataset(Dataset):\n&quot;,
+    &quot;    \&quot;\&quot;\&quot;Synthetic dataset where class depends on token frequency patterns.\&quot;\&quot;\&quot;\n&quot;,
+    &quot;    \n&quot;,
+    &quot;    def __init__(self, num_samples=1000, seq_len=32, vocab_size=1000):\n&quot;,
+    &quot;        self.data = []\n&quot;,
+    &quot;        self.labels = []\n&quot;,
+    &quot;        \n&quot;,
+    &quot;        # Tokens 1-100 are \&quot;positive\&quot;, 101-200 are \&quot;negative\&quot;\n&quot;,
+    &quot;        pos_tokens = list(range(1, 101))\n&quot;,
+    &quot;        neg_tokens = list(range(101, 201))\n&quot;,
+    &quot;        neutral_tokens = list(range(201, vocab_size))\n&quot;,
+    &quot;        \n&quot;,
+    &quot;        for _ in range(num_samples):\n&quot;,
+    &quot;            label = np.random.randint(0, 2)\n&quot;,
+    &quot;            seq = []\n&quot;,
+    &quot;            for _ in range(seq_len):\n&quot;,
+    &quot;                r = np.random.random()\n&quot;,
+    &quot;                if r &lt; 0.3:  # 30% chance of sentiment token\n&quot;,
+    &quot;                    if label == 1:\n&quot;,
+    &quot;                        seq.append(np.random.choice(pos_tokens))\n&quot;,
+    &quot;                    else:\n&quot;,
+    &quot;                        seq.append(np.random.choice(neg_tokens))\n&quot;,
+    &quot;                else:\n&quot;,
+    &quot;                    seq.append(np.random.choice(neutral_tokens))\n&quot;,
+    &quot;            \n&quot;,
+    &quot;            self.data.append(seq)\n&quot;,
+    &quot;            self.labels.append(label)\n&quot;,
+    &quot;    \n&quot;,
+    &quot;    def __len__(self):\n&quot;,
+    &quot;        return len(self.data)\n&quot;,
+    &quot;    \n&quot;,
+    &quot;    def __getitem__(self, idx):\n&quot;,
+    &quot;        return torch.tensor(self.data[idx]), torch.tensor(self.labels[idx])\n&quot;,
+    &quot;\n&quot;,
+    &quot;# Create datasets\n&quot;,
+    &quot;train_dataset = SentimentDataset(num_samples=2000)\n&quot;,
+    &quot;val_dataset = SentimentDataset(num_samples=500)\n&quot;,
+    &quot;train_loader = DataLoader(train_dataset, batch_size=32, shuffle=True)\n&quot;,
+    &quot;val_loader = DataLoader(val_dataset, batch_size=32)\n&quot;,
+    &quot;\n&quot;,
+    &quot;print(f\&quot;Training samples: {len(train_dataset)}, Validation samples: {len(val_dataset)}\&quot;)&quot;
+   ]
+  },
+  {
+   &quot;cell_type&quot;: &quot;markdown&quot;,
+   &quot;metadata&quot;: {},
+   &quot;source&quot;: [
+    &quot;## 3. Soft Prompting Implementation\n&quot;,
+    &quot;\n&quot;,
+    &quot;The key insight: instead of discrete tokens, we create **learnable embedding vectors** that are prepended to the input. These \&quot;soft\&quot; tokens can be optimized via gradient descent.\n&quot;,
+    &quot;\n&quot;,
+    &quot;```\n&quot;,
+    &quot;┌──────────────────────────────────────────────────┐\n&quot;,
+    &quot;│  [SOFT_1][SOFT_2]...[SOFT_N] + [input tokens]    │\n&quot;,
+    &quot;│      ↑                                           │\n&quot;,
+    &quot;│  Learnable parameters                            │\n&quot;,
+    &quot;└──────────────────────────────────────────────────┘\n&quot;,
+    &quot;```&quot;
+   ]
+  },
+  {
+   &quot;cell_type&quot;: &quot;code&quot;,
+   &quot;execution_count&quot;: null,
+   &quot;metadata&quot;: {},
+   &quot;outputs&quot;: [],
+   &quot;source&quot;: [
+    &quot;class SoftPrompt(nn.Module):\n&quot;,
+    &quot;    \&quot;\&quot;\&quot;Learnable soft prompt embeddings.\&quot;\&quot;\&quot;\n&quot;,
+    &quot;    \n&quot;,
+    &quot;    def __init__(self, prompt_length, embed_dim, init_from_vocab=None):\n&quot;,
+    &quot;        super().__init__()\n&quot;,
+    &quot;        self.prompt_length = prompt_length\n&quot;,
+    &quot;        \n&quot;,
+    &quot;        # Initialize soft prompt embeddings\n&quot;,
+    &quot;        if init_from_vocab is not None:\n&quot;,
+    &quot;            # Initialize from existing vocabulary embeddings\n&quot;,
+    &quot;            self.soft_embeds = nn.Parameter(init_from_vocab.clone())\n&quot;,
+    &quot;        else:\n&quot;,
+    &quot;            # Random initialization\n&quot;,
+    &quot;            self.soft_embeds = nn.Parameter(\n&quot;,
+    &quot;                torch.randn(1, prompt_length, embed_dim) * 0.02\n&quot;,
+    &quot;            )\n&quot;,
+    &quot;    \n&quot;,
+    &quot;    def forward(self):\n&quot;,
+    &quot;        return self.soft_embeds\n&quot;,
+    &quot;\n&quot;,
+    &quot;# Create soft prompt\n&quot;,
+    &quot;PROMPT_LENGTH = 10\n&quot;,
+    &quot;soft_prompt = SoftPrompt(PROMPT_LENGTH, base_model.embed_dim).to(device)\n&quot;,
+    &quot;\n&quot;,
+    &quot;soft_params = sum(p.numel() for p in soft_prompt.parameters())\n&quot;,
+    &quot;base_params = sum(p.numel() for p in base_model.parameters())\n&quot;,
+    &quot;print(f\&quot;Soft prompt parameters: {soft_params:,}\&quot;)\n&quot;,
+    &quot;print(f\&quot;Reduction ratio: {base_params / soft_params:.1f}x fewer parameters\&quot;)&quot;
+   ]
+  },
+  {
+   &quot;cell_type&quot;: &quot;markdown&quot;,
+   &quot;metadata&quot;: {},
+   &quot;source&quot;: [
+    &quot;## 4. Training with Soft Prompting\n&quot;,
+    &quot;\n&quot;,
+    &quot;We freeze the base model and only train the soft prompt embeddings.&quot;
+   ]
+  },
+  {
+   &quot;cell_type&quot;: &quot;code&quot;,
+   &quot;execution_count&quot;: null,
+   &quot;metadata&quot;: {},
+   &quot;outputs&quot;: [],
+   &quot;source&quot;: [
+    &quot;def train_epoch(model, soft_prompt, dataloader, optimizer, freeze_base=True):\n&quot;,
+    &quot;    \&quot;\&quot;\&quot;Train for one epoch.\&quot;\&quot;\&quot;\n&quot;,
+    &quot;    model.train()\n&quot;,
+    &quot;    if freeze_base:\n&quot;,
+    &quot;        # Freeze base model - only soft prompt is trainable\n&quot;,
+    &quot;        for param in model.parameters():\n&quot;,
+    &quot;            param.requires_grad = False\n&quot;,
+    &quot;    \n&quot;,
+    &quot;    total_loss, correct = 0, 0\n&quot;,
+    &quot;    for x, y in dataloader:\n&quot;,
+    &quot;        x, y = x.to(device), y.to(device)\n&quot;,
+    &quot;        optimizer.zero_grad()\n&quot;,
+    &quot;        \n&quot;,
+    &quot;        # Get soft prompt and forward\n&quot;,
+    &quot;        prefix = soft_prompt() if soft_prompt else None\n&quot;,
+    &quot;        logits = model(x, prefix_embeds=prefix)\n&quot;,
+    &quot;        \n&quot;,
+    &quot;        loss = F.cross_entropy(logits, y)\n&quot;,
+    &quot;        loss.backward()\n&quot;,
+    &quot;        optimizer.step()\n&quot;,
+    &quot;        \n&quot;,
+    &quot;        total_loss += loss.item()\n&quot;,
+    &quot;        correct += (logits.argmax(1) == y).sum().item()\n&quot;,
+    &quot;    \n&quot;,
+    &quot;    return total_loss / len(dataloader), correct / len(dataloader.dataset)\n&quot;,
+    &quot;\n&quot;,
+    &quot;def evaluate(model, soft_prompt, dataloader):\n&quot;,
+    &quot;    \&quot;\&quot;\&quot;Evaluate model.\&quot;\&quot;\&quot;\n&quot;,
+    &quot;    model.eval()\n&quot;,
+    &quot;    correct = 0\n&quot;,
+    &quot;    with torch.no_grad():\n&quot;,
+    &quot;        for x, y in dataloader:\n&quot;,
+    &quot;            x, y = x.to(device), y.to(device)\n&quot;,
+    &quot;            prefix = soft_prompt() if soft_prompt else None\n&quot;,
+    &quot;            logits = model(x, prefix_embeds=prefix)\n&quot;,
+    &quot;            correct += (logits.argmax(1) == y).sum().item()\n&quot;,
+    &quot;    return correct / len(dataloader.dataset)&quot;
+   ]
+  },
+  {
+   &quot;cell_type&quot;: &quot;code&quot;,
+   &quot;execution_count&quot;: null,
+   &quot;metadata&quot;: {},
+   &quot;outputs&quot;: [],
+   &quot;source&quot;: [
+    &quot;# Train soft prompt\n&quot;,
+    &quot;optimizer = torch.optim.AdamW(soft_prompt.parameters(), lr=0.01)\n&quot;,
+    &quot;soft_prompt_history = {&#x27;train_loss&#x27;: [], &#x27;train_acc&#x27;: [], &#x27;val_acc&#x27;: []}\n&quot;,
+    &quot;\n&quot;,
+    &quot;print(\&quot;Training Soft Prompt (base model frozen)...\&quot;)\n&quot;,
+    &quot;for epoch in range(20):\n&quot;,
+    &quot;    train_loss, train_acc = train_epoch(base_model, soft_prompt, train_loader, optimizer)\n&quot;,
+    &quot;    val_acc = evaluate(base_model, soft_prompt, val_loader)\n&quot;,
+    &quot;    \n&quot;,
+    &quot;    soft_prompt_history[&#x27;train_loss&#x27;].append(train_loss)\n&quot;,
+    &quot;    soft_prompt_history[&#x27;train_acc&#x27;].append(train_acc)\n&quot;,
+    &quot;    soft_prompt_history[&#x27;val_acc&#x27;].append(val_acc)\n&quot;,
+    &quot;    \n&quot;,
+    &quot;    if (epoch + 1) % 5 == 0:\n&quot;,
+    &quot;        print(f\&quot;Epoch {epoch+1}: Loss={train_loss:.4f}, Train Acc={train_acc:.3f}, Val Acc={val_acc:.3f}\&quot;)&quot;
+   ]
+  },
+  {
+   &quot;cell_type&quot;: &quot;markdown&quot;,
+   &quot;metadata&quot;: {},
+   &quot;source&quot;: [
+    &quot;## 5. Soft Prefix Tuning\n&quot;,
+    &quot;\n&quot;,
+    &quot;Soft prefix tuning extends the idea by learning **key-value pairs at each transformer layer**, not just input embeddings. This provides more control over how the model processes information.\n&quot;,
+    &quot;\n&quot;,
+    &quot;```\n&quot;,
+    &quot;Layer N:   [K_soft, V_soft] ─┐\n&quot;,
+    &quot;                             ├─► Attention\n&quot;,
+    &quot;           [K_input, V_input]┘\n&quot;,
+    &quot;                .\n&quot;,
+    &quot;                .\n&quot;,
+    &quot;Layer 1:   [K_soft, V_soft] ─┐\n&quot;,
+    &quot;                             ├─► Attention  \n&quot;,
+    &quot;           [K_input, V_input]┘\n&quot;,
+    &quot;```&quot;
+   ]
+  },
+  {
+   &quot;cell_type&quot;: &quot;code&quot;,
+   &quot;execution_count&quot;: null,
+   &quot;metadata&quot;: {},
+   &quot;outputs&quot;: [],
+   &quot;source&quot;: [
+    &quot;class SoftPrefix(nn.Module):\n&quot;,
+    &quot;    \&quot;\&quot;\&quot;Learnable prefix for key-value pairs at each layer.\n&quot;,
+    &quot;    \n&quot;,
+    &quot;    This is more expressive than soft prompting as we directly\n&quot;,
+    &quot;    control the K-V cache that influences attention.\n&quot;,
+    &quot;    \&quot;\&quot;\&quot;\n&quot;,
+    &quot;    \n&quot;,
+    &quot;    def __init__(self, prefix_length, embed_dim, num_layers):\n&quot;,
+    &quot;        super().__init__()\n&quot;,
+    &quot;        self.prefix_length = prefix_length\n&quot;,
+    &quot;        self.num_layers = num_layers\n&quot;,
+    &quot;        \n&quot;,
+    &quot;        # Learn prefix keys and values for each layer\n&quot;,
+    &quot;        # Shape: (num_layers, 2, prefix_length, embed_dim)\n&quot;,
+    &quot;        # The &#x27;2&#x27; is for key and value\n&quot;,
+    &quot;        self.prefix_kv = nn.Parameter(\n&quot;,
+    &quot;            torch.randn(num_layers, 2, prefix_length, embed_dim) * 0.02\n&quot;,
+    &quot;        )\n&quot;,
+    &quot;        \n&quot;,
+    &quot;        # Optional: Use an MLP to reparameterize (helps with optimization)\n&quot;,
+    &quot;        self.reparam = nn.Sequential(\n&quot;,
+    &quot;            nn.Linear(embed_dim, embed_dim * 2),\n&quot;,
+    &quot;            nn.Tanh(),\n&quot;,
+    &quot;            nn.Linear(embed_dim * 2, embed_dim)\n&quot;,
+    &quot;        )\n&quot;,
+    &quot;    \n&quot;,
+    &quot;    def forward(self, layer_idx):\n&quot;,
+    &quot;        \&quot;\&quot;\&quot;Get prefix K-V for a specific layer.\&quot;\&quot;\&quot;\n&quot;,
+    &quot;        kv = self.prefix_kv[layer_idx]  # (2, prefix_len, embed_dim)\n&quot;,
+    &quot;        # Apply reparameterization\n&quot;,
+    &quot;        k = self.reparam(kv[0])\n&quot;,
+    &quot;        v = self.reparam(kv[1])\n&quot;,
+    &quot;        return k, v\n&quot;,
+    &quot;    \n&quot;,
+    &quot;    def get_all_prefixes(self):\n&quot;,
+    &quot;        \&quot;\&quot;\&quot;Get prefix embeddings to prepend (simplified version).\&quot;\&quot;\&quot;\n&quot;,
+    &quot;        # For our simple transformer, we&#x27;ll just use the first layer&#x27;s K as prefix\n&quot;,
+    &quot;        return self.reparam(self.prefix_kv[0, 0]).unsqueeze(0)\n&quot;,
+    &quot;\n&quot;,
+    &quot;# Create soft prefix\n&quot;,
+    &quot;soft_prefix = SoftPrefix(\n&quot;,
+    &quot;    prefix_length=PROMPT_LENGTH, \n&quot;,
+    &quot;    embed_dim=base_model.embed_dim, \n&quot;,
+    &quot;    num_layers=base_model.num_layers\n&quot;,
+    &quot;).to(device)\n&quot;,
+    &quot;\n&quot;,
+    &quot;prefix_params = sum(p.numel() for p in soft_prefix.parameters())\n&quot;,
+    &quot;print(f\&quot;Soft prefix parameters: {prefix_params:,}\&quot;)\n&quot;,
+    &quot;print(f\&quot;Ratio to soft prompt: {prefix_params / soft_params:.1f}x more (but still much less than full fine-tune)\&quot;)&quot;
+   ]
+  },
+  {
+   &quot;cell_type&quot;: &quot;code&quot;,
+   &quot;execution_count&quot;: null,
+   &quot;metadata&quot;: {},
+   &quot;outputs&quot;: [],
+   &quot;source&quot;: [
+    &quot;# Reset base model and train with soft prefix\n&quot;,
+    &quot;base_model_2 = SimpleTransformer().to(device)\n&quot;,
+    &quot;soft_prefix = SoftPrefix(PROMPT_LENGTH, base_model_2.embed_dim, base_model_2.num_layers).to(device)\n&quot;,
+    &quot;\n&quot;,
+    &quot;# Wrap to use with our training function\n&quot;,
+    &quot;class PrefixWrapper(nn.Module):\n&quot;,
+    &quot;    def __init__(self, prefix_module):\n&quot;,
+    &quot;        super().__init__()\n&quot;,
+    &quot;        self.prefix = prefix_module\n&quot;,
+    &quot;    def forward(self):\n&quot;,
+    &quot;        return self.prefix.get_all_prefixes()\n&quot;,
+    &quot;\n&quot;,
+    &quot;prefix_wrapper = PrefixWrapper(soft_prefix).to(device)\n&quot;,
+    &quot;optimizer = torch.optim.AdamW(soft_prefix.parameters(), lr=0.005)\n&quot;,
+    &quot;prefix_history = {&#x27;train_loss&#x27;: [], &#x27;train_acc&#x27;: [], &#x27;val_acc&#x27;: []}\n&quot;,
+    &quot;\n&quot;,
+    &quot;print(\&quot;Training Soft Prefix (base model frozen)...\&quot;)\n&quot;,
+    &quot;for epoch in range(20):\n&quot;,
+    &quot;    train_loss, train_acc = train_epoch(base_model_2, prefix_wrapper, train_loader, optimizer)\n&quot;,
+    &quot;    val_acc = evaluate(base_model_2, prefix_wrapper, val_loader)\n&quot;,
+    &quot;    \n&quot;,
+    &quot;    prefix_history[&#x27;train_loss&#x27;].append(train_loss)\n&quot;,
+    &quot;    prefix_history[&#x27;train_acc&#x27;].append(train_acc)\n&quot;,
+    &quot;    prefix_history[&#x27;val_acc&#x27;].append(val_acc)\n&quot;,
+    &quot;    \n&quot;,
+    &quot;    if (epoch + 1) % 5 == 0:\n&quot;,
+    &quot;        print(f\&quot;Epoch {epoch+1}: Loss={train_loss:.4f}, Train Acc={train_acc:.3f}, Val Acc={val_acc:.3f}\&quot;)&quot;
+   ]
+  },
+  {
+   &quot;cell_type&quot;: &quot;markdown&quot;,
+   &quot;metadata&quot;: {},
+   &quot;source&quot;: [
+    &quot;## 6. Comparison: Full Fine-tuning vs Soft Prompting&quot;
+   ]
+  },
+  {
+   &quot;cell_type&quot;: &quot;code&quot;,
+   &quot;execution_count&quot;: null,
+   &quot;metadata&quot;: {},
+   &quot;outputs&quot;: [],
+   &quot;source&quot;: [
+    &quot;# Full fine-tuning baseline\n&quot;,
+    &quot;base_model_full = SimpleTransformer().to(device)\n&quot;,
+    &quot;optimizer = torch.optim.AdamW(base_model_full.parameters(), lr=0.001)\n&quot;,
+    &quot;full_history = {&#x27;train_loss&#x27;: [], &#x27;train_acc&#x27;: [], &#x27;val_acc&#x27;: []}\n&quot;,
+    &quot;\n&quot;,
+    &quot;print(\&quot;Training Full Model (all parameters)...\&quot;)\n&quot;,
+    &quot;for epoch in range(20):\n&quot;,
+    &quot;    base_model_full.train()\n&quot;,
+    &quot;    for param in base_model_full.parameters():\n&quot;,
+    &quot;        param.requires_grad = True\n&quot;,
+    &quot;    \n&quot;,
+    &quot;    train_loss, train_acc = train_epoch(base_model_full, None, train_loader, optimizer, freeze_base=False)\n&quot;,
+    &quot;    val_acc = evaluate(base_model_full, None, val_loader)\n&quot;,
+    &quot;    \n&quot;,
+    &quot;    full_history[&#x27;train_loss&#x27;].append(train_loss)\n&quot;,
+    &quot;    full_history[&#x27;train_acc&#x27;].append(train_acc)\n&quot;,
+    &quot;    full_history[&#x27;val_acc&#x27;].append(val_acc)\n&quot;,
+    &quot;    \n&quot;,
+    &quot;    if (epoch + 1) % 5 == 0:\n&quot;,
+    &quot;        print(f\&quot;Epoch {epoch+1}: Loss={train_loss:.4f}, Train Acc={train_acc:.3f}, Val Acc={val_acc:.3f}\&quot;)&quot;
+   ]
+  },
+  {
+   &quot;cell_type&quot;: &quot;code&quot;,
+   &quot;execution_count&quot;: null,
+   &quot;metadata&quot;: {},
+   &quot;outputs&quot;: [],
+   &quot;source&quot;: [
+    &quot;# Visualization\n&quot;,
+    &quot;fig, axes = plt.subplots(1, 3, figsize=(14, 4))\n&quot;,
+    &quot;\n&quot;,
+    &quot;# Training loss\n&quot;,
+    &quot;axes[0].plot(soft_prompt_history[&#x27;train_loss&#x27;], label=&#x27;Soft Prompt&#x27;, linewidth=2)\n&quot;,
+    &quot;axes[0].plot(prefix_history[&#x27;train_loss&#x27;], label=&#x27;Soft Prefix&#x27;, linewidth=2)\n&quot;,
+    &quot;axes[0].plot(full_history[&#x27;train_loss&#x27;], label=&#x27;Full Fine-tune&#x27;, linewidth=2, linestyle=&#x27;--&#x27;)\n&quot;,
+    &quot;axes[0].set_xlabel(&#x27;Epoch&#x27;)\n&quot;,
+    &quot;axes[0].set_ylabel(&#x27;Training Loss&#x27;)\n&quot;,
+    &quot;axes[0].set_title(&#x27;Training Loss Comparison&#x27;)\n&quot;,
+    &quot;axes[0].legend()\n&quot;,
+    &quot;axes[0].grid(True, alpha=0.3)\n&quot;,
+    &quot;\n&quot;,
+    &quot;# Validation accuracy\n&quot;,
+    &quot;axes[1].plot(soft_prompt_history[&#x27;val_acc&#x27;], label=&#x27;Soft Prompt&#x27;, linewidth=2)\n&quot;,
+    &quot;axes[1].plot(prefix_history[&#x27;val_acc&#x27;], label=&#x27;Soft Prefix&#x27;, linewidth=2)\n&quot;,
+    &quot;axes[1].plot(full_history[&#x27;val_acc&#x27;], label=&#x27;Full Fine-tune&#x27;, linewidth=2, linestyle=&#x27;--&#x27;)\n&quot;,
+    &quot;axes[1].set_xlabel(&#x27;Epoch&#x27;)\n&quot;,
+    &quot;axes[1].set_ylabel(&#x27;Validation Accuracy&#x27;)\n&quot;,
+    &quot;axes[1].set_title(&#x27;Validation Accuracy Comparison&#x27;)\n&quot;,
+    &quot;axes[1].legend()\n&quot;,
+    &quot;axes[1].grid(True, alpha=0.3)\n&quot;,
+    &quot;\n&quot;,
+    &quot;# Parameter comparison\n&quot;,
+    &quot;methods = [&#x27;Soft Prompt&#x27;, &#x27;Soft Prefix&#x27;, &#x27;Full Fine-tune&#x27;]\n&quot;,
+    &quot;params = [soft_params, prefix_params, base_params]\n&quot;,
+    &quot;colors = [&#x27;#2ecc71&#x27;, &#x27;#3498db&#x27;, &#x27;#e74c3c&#x27;]\n&quot;,
+    &quot;axes[2].bar(methods, params, color=colors)\n&quot;,
+    &quot;axes[2].set_ylabel(&#x27;Number of Parameters&#x27;)\n&quot;,
+    &quot;axes[2].set_title(&#x27;Trainable Parameters&#x27;)\n&quot;,
+    &quot;axes[2].set_yscale(&#x27;log&#x27;)\n&quot;,
+    &quot;for i, v in enumerate(params):\n&quot;,
+    &quot;    axes[2].text(i, v * 1.5, f&#x27;{v:,}&#x27;, ha=&#x27;center&#x27;, fontsize=9)\n&quot;,
+    &quot;\n&quot;,
+    &quot;plt.tight_layout()\n&quot;,
+    &quot;plt.show()&quot;
+   ]
+  },
+  {
+   &quot;cell_type&quot;: &quot;markdown&quot;,
+   &quot;metadata&quot;: {},
+   &quot;source&quot;: [
+    &quot;## 7. Visualizing Learned Soft Prompt Embeddings&quot;
+   ]
+  },
+  {
+   &quot;cell_type&quot;: &quot;code&quot;,
+   &quot;execution_count&quot;: null,
+   &quot;metadata&quot;: {},
+   &quot;outputs&quot;: [],
+   &quot;source&quot;: [
+    &quot;# Visualize the learned soft prompt embeddings\n&quot;,
+    &quot;soft_embeds = soft_prompt.soft_embeds.detach().cpu().squeeze(0).numpy()\n&quot;,
+    &quot;\n&quot;,
+    &quot;fig, axes = plt.subplots(1, 2, figsize=(12, 4))\n&quot;,
+    &quot;\n&quot;,
+    &quot;# Heatmap of embeddings\n&quot;,
+    &quot;im = axes[0].imshow(soft_embeds.T, aspect=&#x27;auto&#x27;, cmap=&#x27;RdBu_r&#x27;)\n&quot;,
+    &quot;axes[0].set_xlabel(&#x27;Soft Token Position&#x27;)\n&quot;,
+    &quot;axes[0].set_ylabel(&#x27;Embedding Dimension&#x27;)\n&quot;,
+    &quot;axes[0].set_title(&#x27;Learned Soft Prompt Embeddings&#x27;)\n&quot;,
+    &quot;plt.colorbar(im, ax=axes[0])\n&quot;,
+    &quot;\n&quot;,
+    &quot;# Compare with random token embeddings\n&quot;,
+    &quot;random_embeds = base_model.token_embed.weight[:PROMPT_LENGTH].detach().cpu().numpy()\n&quot;,
+    &quot;im2 = axes[1].imshow(random_embeds.T, aspect=&#x27;auto&#x27;, cmap=&#x27;RdBu_r&#x27;)\n&quot;,
+    &quot;axes[1].set_xlabel(&#x27;Token Position&#x27;)\n&quot;,
+    &quot;axes[1].set_ylabel(&#x27;Embedding Dimension&#x27;)\n&quot;,
+    &quot;axes[1].set_title(&#x27;Original Vocabulary Embeddings (first 10)&#x27;)\n&quot;,
+    &quot;plt.colorbar(im2, ax=axes[1])\n&quot;,
+    &quot;\n&quot;,
+    &quot;plt.tight_layout()\n&quot;,
+    &quot;plt.show()&quot;
+   ]
+  },
+  {
+   &quot;cell_type&quot;: &quot;code&quot;,
+   &quot;execution_count&quot;: null,
+   &quot;metadata&quot;: {},
+   &quot;outputs&quot;: [],
+   &quot;source&quot;: [
+    &quot;# Summary statistics\n&quot;,
+    &quot;results_df = pd.DataFrame({\n&quot;,
+    &quot;    &#x27;Method&#x27;: [&#x27;Soft Prompt&#x27;, &#x27;Soft Prefix&#x27;, &#x27;Full Fine-tune&#x27;],\n&quot;,
+    &quot;    &#x27;Parameters&#x27;: [soft_params, prefix_params, base_params],\n&quot;,
+    &quot;    &#x27;Final Val Acc&#x27;: [\n&quot;,
+    &quot;        soft_prompt_history[&#x27;val_acc&#x27;][-1],\n&quot;,
+    &quot;        prefix_history[&#x27;val_acc&#x27;][-1],\n&quot;,
+    &quot;        full_history[&#x27;val_acc&#x27;][-1]\n&quot;,
+    &quot;    ],\n&quot;,
+    &quot;    &#x27;Best Val Acc&#x27;: [\n&quot;,
+    &quot;        max(soft_prompt_history[&#x27;val_acc&#x27;]),\n&quot;,
+    &quot;        max(prefix_history[&#x27;val_acc&#x27;]),\n&quot;,
+    &quot;        max(full_history[&#x27;val_acc&#x27;])\n&quot;,
+    &quot;    ]\n&quot;,
+    &quot;})\n&quot;,
+    &quot;\n&quot;,
+    &quot;results_df[&#x27;Param Reduction&#x27;] = results_df[&#x27;Parameters&#x27;].max() / results_df[&#x27;Parameters&#x27;]\n&quot;,
+    &quot;results_df[&#x27;Param Reduction&#x27;] = results_df[&#x27;Param Reduction&#x27;].apply(lambda x: f&#x27;{x:.1f}x&#x27;)\n&quot;,
+    &quot;\n&quot;,
+    &quot;print(\&quot;\\n\&quot; + \&quot;=\&quot;*60)\n&quot;,
+    &quot;print(\&quot;RESULTS SUMMARY\&quot;)\n&quot;,
+    &quot;print(\&quot;=\&quot;*60)\n&quot;,
+    &quot;print(results_df.to_string(index=False))&quot;
+   ]
+  },
+  {
+   &quot;cell_type&quot;: &quot;markdown&quot;,
+   &quot;metadata&quot;: {},
+   &quot;source&quot;: [
+    &quot;## Key Takeaways\n&quot;,
+    &quot;\n&quot;,
+    &quot;### 1. The Core Insight\n&quot;,
+    &quot;Discrete prompts can&#x27;t be optimized with gradients because the embedding lookup is non-differentiable. **Soft prompts bypass this by directly learning continuous embeddings.**\n&quot;,
+    &quot;\n&quot;,
+    &quot;### 2. Trade-offs\n&quot;,
+    &quot;\n&quot;,
+    &quot;| Aspect | Soft Prompt | Soft Prefix | Full Fine-tune |\n&quot;,
+    &quot;|--------|-------------|-------------|----------------|\n&quot;,
+    &quot;| Parameters | Very few | Few | All |\n&quot;,
+    &quot;| Expressiveness | Limited | Moderate | Full |\n&quot;,
+    &quot;| Training cost | Low | Low | High |\n&quot;,
+    &quot;| Model modification | None | None | All weights |\n&quot;,
+    &quot;\n&quot;,
+    &quot;### 3. When to Use What\n&quot;,
+    &quot;\n&quot;,
+    &quot;- **Soft Prompting**: When you have limited compute and the task is closely related to pre-training\n&quot;,
+    &quot;- **Soft Prefix**: When you need more control but still want parameter efficiency  \n&quot;,
+    &quot;- **Full Fine-tuning**: When you have compute budget and need maximum performance\n&quot;,
+    &quot;\n&quot;,
+    &quot;### 4. Scaling Behavior\n&quot;,
+    &quot;As noted in lecture: *\&quot;The bigger the model, the better soft prompting works.\&quot;* Large pre-trained models are more \&quot;steerable\&quot; with small prompts.\n&quot;,
+    &quot;\n&quot;,
+    &quot;### References\n&quot;,
+    &quot;- Lester et al., \&quot;The Power of Scale for Parameter-Efficient Prompt Tuning\&quot; (2021)\n&quot;,
+    &quot;- Li &amp; Liang, \&quot;Prefix-Tuning: Optimizing Continuous Prompts for Generation\&quot; (2021)&quot;
+   ]
+  }
+ ],
+ &quot;metadata&quot;: {
+  &quot;kernelspec&quot;: {
+   &quot;display_name&quot;: &quot;Python 3&quot;,
+   &quot;language&quot;: &quot;python&quot;,
+   &quot;name&quot;: &quot;python3&quot;
+  },
+  &quot;language_info&quot;: {
+   &quot;name&quot;: &quot;python&quot;,
+   &quot;version&quot;: &quot;3.9.0&quot;
+  }
+ },
+ &quot;nbformat&quot;: 4,
+ &quot;nbformat_minor&quot;: 4
+}
+
+```
+
+```plaintext
+
+
+-&gt;
+
+# Soft Prompting and Soft Prefix Tuning
+
+## CS 182: Deep Neural Networks - UC Berkeley
+
+This notebook demonstrates **soft prompting** and **soft prefix tuning**, two parameter-efficient fine-tuning (PEFT) techniques that allow us to adapt large language models without modifying their weights.
+
+### The Problem
+
+When we want to optimize a prompt for a language model, we face a fundamental challenge:
+- **Gradients cannot flow back through discrete token selection**
+- The embedding layer maps discrete tokens → continuous embeddings, but this mapping is non-differentiable
+
+### The Solution: Soft Prompts
+
+Instead of using discrete tokens, we learn **continuous embeddings** directly:
+1. **Soft Prompting**: Learn special token embeddings that are prepended to inputs
+2. **Soft Prefix Tuning**: Learn key-value pairs at each transformer layer
+
+### Why This Matters
+
+| Method | Parameters (8B model, 100-token prompt) |
+|--------|----------------------------------------|
+| Full Fine-tuning | ~8 billion |
+| Soft Prompting | ~400K (embedding_dim × prompt_length) |
+| Soft Prefix | ~26M (includes K-V across layers) |
+
+This is a **20,000x reduction** in learnable parameters!
+```
+
+```plaintext
+
+
+-&gt;
+
+# Install dependencies (uncomment if running in Colab)
+# !pip install torch transformers matplotlib numpy pandas -q
+```
+
+```plaintext
+
+
+-&gt;
+
+import torch
+import torch.nn as nn
+import torch.nn.functional as F
+import numpy as np
+import matplotlib.pyplot as plt
+from torch.utils.data import DataLoader, Dataset
+import pandas as pd
+
+# Set device and seed for reproducibility
+device = torch.device(&#x27;cuda&#x27; if torch.cuda.is_available() else &#x27;cpu&#x27;)
+torch.manual_seed(42)
+print(f&quot;Using device: {device}&quot;)
+```
+
+```plaintext
+
+
+-&gt;
+
+## 1. Building a Simple Transformer for Demonstration
+
+We&#x27;ll create a small transformer to demonstrate the concepts. In practice, you&#x27;d use a pre-trained model like GPT-2 or LLaMA.
+```
+
+```plaintext
+
+
+-&gt;
+
+class SimpleTransformer(nn.Module):
+    &quot;&quot;&quot;A minimal transformer for classification tasks.&quot;&quot;&quot;
+    
+    def __init__(self, vocab_size=1000, embed_dim=128, num_heads=4, 
+                 num_layers=4, num_classes=2, max_seq_len=64):
+        super().__init__()
+        self.embed_dim = embed_dim
+        self.num_layers = num_layers
+        
+        # Token and position embeddings
+        self.token_embed = nn.Embedding(vocab_size, embed_dim)
+        self.pos_embed = nn.Embedding(max_seq_len, embed_dim)
+        
+        # Transformer layers
+        encoder_layer = nn.TransformerEncoderLayer(
+            d_model=embed_dim, nhead=num_heads, dim_feedforward=256,
+            dropout=0.1, batch_first=True
+        )
+        self.transformer = nn.TransformerEncoder(encoder_layer, num_layers)
+        
+        # Classification head
+        self.classifier = nn.Linear(embed_dim, num_classes)
+        
+    def forward(self, x, prefix_embeds=None):
+        &quot;&quot;&quot;Forward pass with optional prefix embeddings for soft prompting.&quot;&quot;&quot;
+        batch_size, seq_len = x.shape
+        
+        # Get token embeddings
+        tok_emb = self.token_embed(x)
+        
+        # Handle soft prompt prefix
+        if prefix_embeds is not None:
+            prefix_len = prefix_embeds.shape[1]
+            # Expand prefix for batch
+            prefix = prefix_embeds.expand(batch_size, -1, -1)
+            tok_emb = torch.cat([prefix, tok_emb], dim=1)
+            seq_len = seq_len + prefix_len
+        
+        # Add positional embeddings
+        positions = torch.arange(seq_len, device=x.device).unsqueeze(0)
+        pos_emb = self.pos_embed(positions)
+        embeddings = tok_emb + pos_emb
+        
+        # Transform
+        hidden = self.transformer(embeddings)
+        
+        # Use mean pooling for classification
+        pooled = hidden.mean(dim=1)
+        return self.classifier(pooled)
+
+# Initialize the base model
+base_model = SimpleTransformer().to(device)
+print(f&quot;Base model parameters: {sum(p.numel() for p in base_model.parameters()):,}&quot;)
+```
+
+```plaintext
+
+
+-&gt;
+
+## 2. Creating a Toy Dataset
+
+We&#x27;ll create a simple sentiment classification task where the model must learn to classify sequences based on the presence of certain &quot;positive&quot; or &quot;negative&quot; tokens.
+```
+
+```plaintext
+
+
+-&gt;
+
+## 2. Creating a Toy Dataset
+
+We&#x27;ll create a simple sentiment classification task where the model must learn to classify sequences based on the presence of certain &quot;positive&quot; or &quot;negative&quot; tokens.
+```
+
+```plaintext
+
+
+-&gt;
+
+class SentimentDataset(Dataset):
+    &quot;&quot;&quot;Synthetic dataset where class depends on token frequency patterns.&quot;&quot;&quot;
+    
+    def __init__(self, num_samples=1000, seq_len=32, vocab_size=1000):
+        self.data, self.labels = [], []
+        pos_tokens, neg_tokens = list(range(1, 101)), list(range(101, 201))
+        neutral_tokens = list(range(201, vocab_size))
+        
+        for _ in range(num_samples):
+            label = np.random.randint(0, 2)
+            seq = []
+            for _ in range(seq_len):
+                if np.random.random() &lt; 0.3:
+                    seq.append(np.random.choice(pos_tokens if label == 1 else neg_tokens))
+                else:
+                    seq.append(np.random.choice(neutral_tokens))
+            self.data.append(seq)
+            self.labels.append(label)
+    
+    def __len__(self): return len(self.data)
+    def __getitem__(self, idx): return torch.tensor(self.data[idx]), torch.tensor(self.labels[idx])
+
+train_dataset = SentimentDataset(num_samples=2000)
+val_dataset = SentimentDataset(num_samples=500)
+train_loader = DataLoader(train_dataset, batch_size=32, shuffle=True)
+val_loader = DataLoader(val_dataset, batch_size=32)
+print(f&quot;Training samples: {len(train_dataset)}, Validation samples: {len(val_dataset)}&quot;)
+```
+
+```plaintext
+
+
+-&gt;
+
+## 3. Soft Prompting Implementation
+
+The key insight: instead of discrete tokens, we create **learnable embedding vectors** that are prepended to the input. These &quot;soft&quot; tokens can be optimized via gradient descent.
+
+```
+┌──────────────────────────────────────────────────┐
+│  [SOFT_1][SOFT_2]...[SOFT_N] + [input tokens]    │
+│      ↑                                           │
+│  Learnable parameters (gradients flow here!)    │
+└──────────────────────────────────────────────────┘
+```
+```
+
+```plaintext
+
+
+-&gt;
+
+class SoftPrompt(nn.Module):
+    &quot;&quot;&quot;Learnable soft prompt embeddings.&quot;&quot;&quot;
+    
+    def __init__(self, prompt_length, embed_dim, init_from_vocab=None):
+        super().__init__()
+        self.prompt_length = prompt_length
+        if init_from_vocab is not None:
+            self.soft_embeds = nn.Parameter(init_from_vocab.clone())
+        else:
+            self.soft_embeds = nn.Parameter(torch.randn(1, prompt_length, embed_dim) * 0.02)
+    
+    def forward(self):
+        return self.soft_embeds
+
+# Create soft prompt with 10 learnable tokens
+PROMPT_LENGTH = 10
+soft_prompt = SoftPrompt(PROMPT_LENGTH, base_model.embed_dim).to(device)
+
+soft_params = sum(p.numel() for p in soft_prompt.parameters())
+base_params = sum(p.numel() for p in base_model.parameters())
+print(f&quot;Soft prompt parameters: {soft_params:,}&quot;)
+print(f&quot;Reduction ratio: {base_params / soft_params:.1f}x fewer parameters&quot;)
+```
+
+```plaintext
+
+
+-&gt;
+
+## 4. Training with Soft Prompting
+
+We freeze the base model and only train the soft prompt embeddings.
+```
+
+```plaintext
+
+
+-&gt;
+
+def train_epoch(model, soft_prompt, dataloader, optimizer, freeze_base=True):
+    &quot;&quot;&quot;Train for one epoch.&quot;&quot;&quot;
+    model.train()
+    if freeze_base:
+        for param in model.parameters():
+            param.requires_grad = False
+    
+    total_loss, correct = 0, 0
+    for x, y in dataloader:
+        x, y = x.to(device), y.to(device)
+        optimizer.zero_grad()
+        prefix = soft_prompt() if soft_prompt else None
+        logits = model(x, prefix_embeds=prefix)
+        loss = F.cross_entropy(logits, y)
+        loss.backward()
+        optimizer.step()
+        total_loss += loss.item()
+        correct += (logits.argmax(1) == y).sum().item()
+    return total_loss / len(dataloader), correct / len(dataloader.dataset)
+
+def evaluate(model, soft_prompt, dataloader):
+    &quot;&quot;&quot;Evaluate model.&quot;&quot;&quot;
+    model.eval()
+    correct = 0
+    with torch.no_grad():
+        for x, y in dataloader:
+            x, y = x.to(device), y.to(device)
+            prefix = soft_prompt() if soft_prompt else None
+            logits = model(x, prefix_embeds=prefix)
+            correct += (logits.argmax(1) == y).sum().item()
+    return correct / len(dataloader.dataset)
+```
+
+```plaintext
+
+
+-&gt;
+
+# Train soft prompt
+optimizer = torch.optim.AdamW(soft_prompt.parameters(), lr=0.01)
+soft_prompt_history = {&#x27;train_loss&#x27;: [], &#x27;train_acc&#x27;: [], &#x27;val_acc&#x27;: []}
+
+print(&quot;Training Soft Prompt (base model frozen)...&quot;)
+for epoch in range(20):
+    train_loss, train_acc = train_epoch(base_model, soft_prompt, train_loader, optimizer)
+    val_acc = evaluate(base_model, soft_prompt, val_loader)
+    soft_prompt_history[&#x27;train_loss&#x27;].append(train_loss)
+    soft_prompt_history[&#x27;train_acc&#x27;].append(train_acc)
+    soft_prompt_history[&#x27;val_acc&#x27;].append(val_acc)
+    if (epoch + 1) % 5 == 0:
+        print(f&quot;Epoch {epoch+1}: Loss={train_loss:.4f}, Train Acc={train_acc:.3f}, Val Acc={val_acc:.3f}&quot;)
+```
+
+```plaintext
+
+
+-&gt;
+
+## 5. Soft Prefix Tuning
+
+Soft prefix tuning extends the idea by learning **key-value pairs at each transformer layer**, not just input embeddings. This provides more control over how the model processes information.
+
+As described in lecture: *&quot;The past queries have no influence except how they influence the keys and values. The state is the keys and the values.&quot;*
+```
+
+```plaintext
+
+
+-&gt;
+
+class SoftPrefix(nn.Module):
+    &quot;&quot;&quot;Learnable prefix with reparameterization for better optimization.&quot;&quot;&quot;
+    
+    def __init__(self, prefix_length, embed_dim, num_layers):
+        super().__init__()
+        self.prefix_length = prefix_length
+        self.num_layers = num_layers
+        # Learn prefix K-V for each layer: (num_layers, 2, prefix_length, embed_dim)
+        self.prefix_kv = nn.Parameter(torch.randn(num_layers, 2, prefix_length, embed_dim) * 0.02)
+        # MLP reparameterization helps optimization
+        self.reparam = nn.Sequential(
+            nn.Linear(embed_dim, embed_dim * 2), nn.Tanh(), nn.Linear(embed_dim * 2, embed_dim)
+        )
+    
+    def get_all_prefixes(self):
+        &quot;&quot;&quot;Get prefix embeddings (simplified: use first layer&#x27;s keys).&quot;&quot;&quot;
+        return self.reparam(self.prefix_kv[0, 0]).unsqueeze(0)
+
+# Create soft prefix
+base_model_2 = SimpleTransformer().to(device)
+soft_prefix = SoftPrefix(PROMPT_LENGTH, base_model_2.embed_dim, base_model_2.num_layers).to(device)
+
+class PrefixWrapper(nn.Module):
+    def __init__(self, prefix_module):
+        super().__init__()
+        self.prefix = prefix_module
+    def forward(self):
+        return self.prefix.get_all_prefixes()
+
+prefix_wrapper = PrefixWrapper(soft_prefix).to(device)
+prefix_params = sum(p.numel() for p in soft_prefix.parameters())
+print(f&quot;Soft prefix parameters: {prefix_params:,}&quot;)
+```
+
+```plaintext
+
+
+-&gt;
+
+# Train soft prefix
+optimizer = torch.optim.AdamW(soft_prefix.parameters(), lr=0.005)
+prefix_history = {&#x27;train_loss&#x27;: [], &#x27;train_acc&#x27;: [], &#x27;val_acc&#x27;: []}
+
+print(&quot;Training Soft Prefix (base model frozen)...&quot;)
+for epoch in range(20):
+    train_loss, train_acc = train_epoch(base_model_2, prefix_wrapper, train_loader, optimizer)
+    val_acc = evaluate(base_model_2, prefix_wrapper, val_loader)
+    prefix_history[&#x27;train_loss&#x27;].append(train_loss)
+    prefix_history[&#x27;train_acc&#x27;].append(train_acc)
+    prefix_history[&#x27;val_acc&#x27;].append(val_acc)
+    if (epoch + 1) % 5 == 0:
+        print(f&quot;Epoch {epoch+1}: Loss={train_loss:.4f}, Train Acc={train_acc:.3f}, Val Acc={val_acc:.3f}&quot;)
+```
+
+```plaintext
+
+
+-&gt;
+
+## 6. Comparison: Full Fine-tuning vs Soft Prompting
+```
+
+```plaintext
+
+
+-&gt;
+
+# Full fine-tuning baseline
+base_model_full = SimpleTransformer().to(device)
+optimizer = torch.optim.AdamW(base_model_full.parameters(), lr=0.001)
+full_history = {&#x27;train_loss&#x27;: [], &#x27;train_acc&#x27;: [], &#x27;val_acc&#x27;: []}
+
+print(&quot;Training Full Model (all parameters)...&quot;)
+for epoch in range(20):
+    base_model_full.train()
+    for param in base_model_full.parameters():
+        param.requires_grad = True
+    train_loss, train_acc = train_epoch(base_model_full, None, train_loader, optimizer, freeze_base=False)
+    val_acc = evaluate(base_model_full, None, val_loader)
+    full_history[&#x27;train_loss&#x27;].append(train_loss)
+    full_history[&#x27;train_acc&#x27;].append(train_acc)
+    full_history[&#x27;val_acc&#x27;].append(val_acc)
+    if (epoch + 1) % 5 == 0:
+        print(f&quot;Epoch {epoch+1}: Loss={train_loss:.4f}, Train Acc={train_acc:.3f}, Val Acc={val_acc:.3f}&quot;)
+```
+
+```plaintext
+
+
+-&gt;
+
+# Visualization
+fig, axes = plt.subplots(1, 3, figsize=(14, 4))
+
+# Training loss
+axes[0].plot(soft_prompt_history[&#x27;train_loss&#x27;], label=&#x27;Soft Prompt&#x27;, linewidth=2)
+axes[0].plot(prefix_history[&#x27;train_loss&#x27;], label=&#x27;Soft Prefix&#x27;, linewidth=2)
+axes[0].plot(full_history[&#x27;train_loss&#x27;], label=&#x27;Full Fine-tune&#x27;, linewidth=2, linestyle=&#x27;--&#x27;)
+axes[0].set_xlabel(&#x27;Epoch&#x27;); axes[0].set_ylabel(&#x27;Training Loss&#x27;)
+axes[0].set_title(&#x27;Training Loss Comparison&#x27;); axes[0].legend(); axes[0].grid(True, alpha=0.3)
+
+# Validation accuracy
+axes[1].plot(soft_prompt_history[&#x27;val_acc&#x27;], label=&#x27;Soft Prompt&#x27;, linewidth=2)
+axes[1].plot(prefix_history[&#x27;val_acc&#x27;], label=&#x27;Soft Prefix&#x27;, linewidth=2)
+axes[1].plot(full_history[&#x27;val_acc&#x27;], label=&#x27;Full Fine-tune&#x27;, linewidth=2, linestyle=&#x27;--&#x27;)
+axes[1].set_xlabel(&#x27;Epoch&#x27;); axes[1].set_ylabel(&#x27;Validation Accuracy&#x27;)
+axes[1].set_title(&#x27;Validation Accuracy Comparison&#x27;); axes[1].legend(); axes[1].grid(True, alpha=0.3)
+
+# Parameter comparison
+methods = [&#x27;Soft Prompt&#x27;, &#x27;Soft Prefix&#x27;, &#x27;Full Fine-tune&#x27;]
+params = [soft_params, prefix_params, base_params]
+colors = [&#x27;#2ecc71&#x27;, &#x27;#3498db&#x27;, &#x27;#e74c3c&#x27;]
+axes[2].bar(methods, params, color=colors)
+axes[2].set_ylabel(&#x27;Number of Parameters&#x27;); axes[2].set_title(&#x27;Trainable Parameters&#x27;); axes[2].set_yscale(&#x27;log&#x27;)
+for i, v in enumerate(params):
+    axes[2].text(i, v * 1.5, f&#x27;{v:,}&#x27;, ha=&#x27;center&#x27;, fontsize=9)
+
+plt.tight_layout()
+plt.show()
+```
+
+```plaintext
+
+
+-&gt;
+
+## 7. Visualizing Learned Soft Prompt Embeddings
+```
+
+```plaintext
+
+
+-&gt;
+
+# Visualize learned soft prompt embeddings
+soft_embeds = soft_prompt.soft_embeds.detach().cpu().squeeze(0).numpy()
+fig, axes = plt.subplots(1, 2, figsize=(12, 4))
+
+im = axes[0].imshow(soft_embeds.T, aspect=&#x27;auto&#x27;, cmap=&#x27;RdBu_r&#x27;)
+axes[0].set_xlabel(&#x27;Soft Token Position&#x27;); axes[0].set_ylabel(&#x27;Embedding Dimension&#x27;)
+axes[0].set_title(&#x27;Learned Soft Prompt Embeddings&#x27;); plt.colorbar(im, ax=axes[0])
+
+random_embeds = base_model.token_embed.weight[:PROMPT_LENGTH].detach().cpu().numpy()
+im2 = axes[1].imshow(random_embeds.T, aspect=&#x27;auto&#x27;, cmap=&#x27;RdBu_r&#x27;)
+axes[1].set_xlabel(&#x27;Token Position&#x27;); axes[1].set_ylabel(&#x27;Embedding Dimension&#x27;)
+axes[1].set_title(&#x27;Original Vocabulary Embeddings (first 10)&#x27;); plt.colorbar(im2, ax=axes[1])
+plt.tight_layout(); plt.show()
+```
+
+```plaintext
+
+
+-&gt;
+
+# Summary statistics
+results_df = pd.DataFrame({
+    &#x27;Method&#x27;: [&#x27;Soft Prompt&#x27;, &#x27;Soft Prefix&#x27;, &#x27;Full Fine-tune&#x27;],
+    &#x27;Parameters&#x27;: [soft_params, prefix_params, base_params],
+    &#x27;Final Val Acc&#x27;: [soft_prompt_history[&#x27;val_acc&#x27;][-1], prefix_history[&#x27;val_acc&#x27;][-1], full_history[&#x27;val_acc&#x27;][-1]],
+    &#x27;Best Val Acc&#x27;: [max(soft_prompt_history[&#x27;val_acc&#x27;]), max(prefix_history[&#x27;val_acc&#x27;]), max(full_history[&#x27;val_acc&#x27;])]
+})
+results_df[&#x27;Param Reduction&#x27;] = results_df[&#x27;Parameters&#x27;].max() / results_df[&#x27;Parameters&#x27;]
+results_df[&#x27;Param Reduction&#x27;] = results_df[&#x27;Param Reduction&#x27;].apply(lambda x: f&#x27;{x:.1f}x&#x27;)
+
+print(&quot;\n&quot; + &quot;=&quot;*60)
+print(&quot;RESULTS SUMMARY&quot;)
+print(&quot;=&quot;*60)
+print(results_df.to_string(index=False))
+```
+
+```plaintext
+
+
+-&gt;
+
+## Key Takeaways
+
+### 1. The Core Insight
+Discrete prompts can&#x27;t be optimized with gradients because the embedding lookup is non-differentiable. **Soft prompts bypass this by directly learning continuous embeddings.**
+
+### 2. Trade-offs
+
+| Aspect | Soft Prompt | Soft Prefix | Full Fine-tune |
+|--------|-------------|-------------|----------------|
+| Parameters | Very few | Few | All |
+| Expressiveness | Limited | Moderate | Full |
+| Training cost | Low | Low | High |
+| Model modification | None | None | All weights |
+
+### 3. When to Use What
+
+- **Soft Prompting**: When you have limited compute and the task is closely related to pre-training
+- **Soft Prefix**: When you need more control but still want parameter efficiency  
+- **Full Fine-tuning**: When you have compute budget and need maximum performance
+
+### 4. Scaling Behavior
+As noted in lecture: *&quot;The bigger the model, the better soft prompting works.&quot;* Large pre-trained models are more &quot;steerable&quot; with small prompts.
+
+### 5. Important Details from Lecture
+
+- Soft prompts don&#x27;t transfer across models (unlike natural language prompts optimized via DSPY)
+- The prompt length is a hyperparameter you can sweep over
+- You can optionally quantize soft prompts back to discrete tokens (won&#x27;t be human-interpretable)
+
+### References
+- Lester et al., &quot;The Power of Scale for Parameter-Efficient Prompt Tuning&quot; (2021)
+- Li &amp; Liang, &quot;Prefix-Tuning: Optimizing Continuous Prompts for Generation&quot; (2021)
+```
+
+I&#x27;ve created the Jupyter notebook `soft_prompting_demo.ipynb` that demonstrates soft prompting and soft prefix tuning. The notebook includes:
+
+**Structure:**
+1. **Introduction** - Explains the core problem (gradients can&#x27;t flow through discrete tokens) and the solution (learnable continuous embeddings)
+2. **Simple Transformer** - A minimal transformer for demonstration purposes
+3. **Toy Dataset** - Synthetic sentiment classification task
+4. **Soft Prompting** - Implementation with learnable embedding vectors prepended to inputs
+5. **Soft Prefix Tuning** - Extended approach learning K-V pairs at each layer
+6. **Comparison** - Full fine-tuning baseline for comparison
+7. **Visualizations** - Training curves, parameter counts, and embedding heatmaps
+8. **Summary** - Key takeaways from the lecture
+
+**Key concepts covered from the lecture:**
+- Why gradients can&#x27;t flow back through the embedder (discrete token selection)
+- The &quot;special token&quot; approach where we add learnable columns to the embedding table
+- Parameter efficiency: ~1,280 params (soft prompt) vs ~176K (full model) in this demo
+- Soft prefix learns the K-V cache directly across all layers
+- The observation that &quot;the bigger the model, the better soft prompting works&quot;
+
+The notebook is runnable end-to-end in Colab or local Jupyter environments with just PyTorch, NumPy, Pandas, and Matplotlib.
+
+</code></pre>
+                    </div>
+                <div class="attachment attachment-file">
+                    <a href="attachments/claude_soft_prompting_demo.ipynb" target="_blank" class="file-link">claude_soft_prompting_demo.ipynb</a>
+                </div>
+                <div class="attachment attachment-file">
+                    <a href="attachments/gemini_soft_prompting_demo.ipynb" target="_blank" class="file-link">gemini_soft_prompting_demo.ipynb</a>
+                </div></div>
+    </div>
+</body>
+</html>

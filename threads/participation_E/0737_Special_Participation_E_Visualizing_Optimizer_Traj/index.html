@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Special Participation E: Visualizing Optimizer Trajectories (SGD vs Momentum vs Adam) - CS 182</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #f5f7fa;
+            color: #333;
+            line-height: 1.6;
+        }
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .back-link {
+            display: inline-block;
+            margin-bottom: 20px;
+            color: #4299e1;
+            text-decoration: none;
+        }
+        .back-link:hover { text-decoration: underline; }
+        .thread-header {
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+        }
+        .thread-title {
+            font-size: 1.8rem;
+            color: #2d3748;
+            margin-bottom: 15px;
+        }
+        .thread-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            color: #718096;
+            font-size: 14px;
+        }
+        .model-badge {
+            display: inline-block;
+            padding: 4px 12px;
+            background: #e2e8f0;
+            color: #4a5568;
+            border-radius: 15px;
+            font-size: 13px;
+            font-weight: 500;
+        }
+        .hw-badge {
+            display: inline-block;
+            padding: 4px 12px;
+            background: #fed7e2;
+            color: #97266d;
+            border-radius: 15px;
+            font-size: 13px;
+            font-weight: 500;
+        }
+        .thread-body {
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+        }
+        .thread-body h3 {
+            margin-bottom: 15px;
+            color: #2d3748;
+        }
+        .body-content {
+            white-space: pre-wrap;
+            word-wrap: break-word;
+            line-height: 1.8;
+            font-size: 15px;
+        }
+        .body-content a {
+            color: #4299e1;
+            word-break: break-all;
+        }
+        .attachments {
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
+        .attachments h3 {
+            margin-bottom: 20px;
+            color: #2d3748;
+        }
+        .attachment {
+            margin-bottom: 25px;
+            border: 1px solid #e2e8f0;
+            border-radius: 6px;
+            overflow: hidden;
+        }
+        .attachment-label {
+            background: #f7fafc;
+            padding: 10px 15px;
+            font-weight: 500;
+            font-size: 14px;
+            border-bottom: 1px solid #e2e8f0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .download-link {
+            color: #4299e1;
+            text-decoration: none;
+            font-weight: normal;
+        }
+        .download-link:hover { text-decoration: underline; }
+        .attachment-image img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+        .attachment-pdf iframe {
+            width: 100%;
+            height: 800px;
+            border: none;
+        }
+        .attachment-video video {
+            width: 100%;
+            max-height: 600px;
+        }
+        .attachment-audio audio {
+            width: 100%;
+            padding: 15px;
+        }
+        .attachment-text pre {
+            padding: 15px;
+            background: #f7fafc;
+            overflow-x: auto;
+            max-height: 500px;
+            font-size: 13px;
+            line-height: 1.5;
+        }
+        .attachment-file {
+            padding: 15px;
+        }
+        .file-link {
+            color: #4299e1;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .file-link:hover { text-decoration: underline; }
+        .ed-link {
+            display: inline-block;
+            margin-top: 15px;
+            color: #4299e1;
+            text-decoration: none;
+        }
+        .ed-link:hover { text-decoration: underline; }
+        @media (max-width: 768px) {
+            .thread-title { font-size: 1.4rem; }
+            .attachment-pdf iframe { height: 500px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <a href="../../../index.html" class="back-link">← Back to Directory</a>
+
+        <div class="thread-header">
+            <h1 class="thread-title">Special Participation E: Visualizing Optimizer Trajectories (SGD vs Momentum vs Adam)</h1>
+            <div class="thread-meta">
+                <span>By Rishi Thakar</span>
+                <span>2025-12-09</span>
+                
+                <span class="model-badge">Claude</span>
+            </div>
+            <a href="https://edstem.org/us/courses/84647/discussion/7435928" target="_blank" class="ed-link">View on Ed Stem →</a>
+        </div>
+
+        <div class="thread-body">
+            <div class="body-content">I kept memorizing optimizer formulas (momentum accumulates velocity, Adam divides by √v̂) but didn&#x27;t really understand why they behave differently. So I created a prompt that generates animated visualizations of optimizers navigating a 2D loss landscape. Watching them move made the intuition click.
+
+The Prompt:
+
+&quot;You are a visual learning tutor helping me understand optimization algorithms for CS182 (graduate deep learning at Berkeley). Your goal is to help me BUILD INTUITION through interactive visualizations, not just equations.
+
+RULES:
+
+For every optimizer concept, generate RUNNABLE Python code that visualizes it
+
+Before showing math, show me what the optimizer DOES on a 2D loss landscape
+
+Ask me to PREDICT what will happen before running the visualization
+
+After I see the visualization, ask me to explain WHY it behaved that way
+
+Build up complexity: start with vanilla SGD, then add momentum, then Adam
+
+STRUCTURE:
+
+Phase 1: Setup a 2D Loss Landscape
+
+Generate code for a challenging 2D loss surface (e.g., Rosenbrock, Beale, or a ravine)
+
+Visualize it as a contour plot
+
+Ask me: &quot;Where do you think gradient descent will struggle on this surface? Why?&quot;
+
+Phase 2: Vanilla SGD
+
+Animate SGD trajectory on the loss landscape
+
+Show the path it takes, step by step
+
+Ask me to explain what I observe (oscillation? slow convergence? why?)
+
+Phase 3: SGD + Momentum
+
+Same landscape, now with momentum
+
+Ask me to PREDICT how the trajectory will differ BEFORE showing me
+
+Animate it, then ask: &quot;Why did momentum help/hurt here?&quot;
+
+Visualize the velocity vector at each step
+
+Phase 4: Adam
+
+Same landscape, now with Adam
+
+Ask me to predict the difference from momentum
+
+Animate it, show the adaptive learning rates per dimension
+
+Ask: &quot;Why does Adam handle the ravine differently?&quot;
+
+Phase 5: Side-by-Side Comparison
+
+Generate a single animation showing ALL THREE optimizers racing on the same landscape
+
+Different colors for each trajectory
+
+Ask: &quot;In what situations would you choose each optimizer?&quot;
+
+Phase 6: Pathological Cases
+
+Show me a landscape where momentum HURTS (overshooting)
+
+Show me a landscape where Adam struggles (sharp minima / generalization)
+
+Ask me to explain each failure mode
+
+REQUIREMENTS FOR CODE:
+
+Use matplotlib with animation (FuncAnimation) or generate frame-by-frame GIFs
+
+Make code self-contained and runnable in a Jupyter notebook or as a .py file
+
+Include clear comments explaining each part
+
+Use a reasonable number of iterations so animations aren&#x27;t too long (50-200 steps)
+
+Context: I understand gradient descent conceptually and know the optimizer update formulas, but I don&#x27;t have intuition for WHY momentum/Adam behave differently in practice.
+
+Start with Phase 1 - generate the loss landscape and ask me your first question.&quot;
+
+Key Realizations
+
+The &quot;predict → visualize → verify&quot; loop made this stick:
+
+The &quot;effective learning rate&quot; plot was the money shot — seeing Adam automatically give 3x higher LR to the x-direction than y-direction made the adaptive denominator intuitive.
+
+Analysis
+
+What worked:
+
+Predict-before-you-see forced me to actually think, not passively watch
+
+Runnable code means I can tweak parameters and re-run
+
+Side-by-side comparisons make differences obvious
+
+Velocity/LR plots explain why, not just what
+
+Where it could improve:
+
+Didn&#x27;t cover learning rate schedules or weight decay
+
+Pathological cases (Phase 6) would strengthen understanding of failure modes
+
+Could add RMSprop as intermediate step before Adam
+
+Interesting finding: Momentum actually got lower final loss than Adam (0.0003 vs 0.0014) because its &quot;wild&quot; overshooting helped it explore. Adam&#x27;s caution = less exploration. This is the exploration-exploitation tradeoff I&#x27;d only read about abstractly.
+
+Full Thread: <a href="https://claude.ai/share/71acabcd-b2eb-4e39-a424-12c8bdcda711" target="_blank" rel="noopener noreferrer">https://claude.ai/share/71acabcd-b2eb-4e39-a424-12c8bdcda711</a>
+
+Annotated PDF:</div>
+        </div>
+
+        <div class="attachments">
+                <div class="attachment attachment-pdf">
+                    <div class="attachment-label">Optimizer Visualization Annotated.pdf <a href="attachments/Optimizer Visualization Annotated.pdf" target="_blank" class="download-link">Open in new tab</a></div>
+                    <iframe src="attachments/Optimizer Visualization Annotated.pdf" loading="lazy"></iframe>
+                </div></div>
+    </div>
+</body>
+</html>

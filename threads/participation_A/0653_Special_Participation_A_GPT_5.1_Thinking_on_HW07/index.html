@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Special Participation A: GPT 5.1 Thinking on HW07 - CS 182</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #f5f7fa;
+            color: #333;
+            line-height: 1.6;
+        }
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .back-link {
+            display: inline-block;
+            margin-bottom: 20px;
+            color: #4299e1;
+            text-decoration: none;
+        }
+        .back-link:hover { text-decoration: underline; }
+        .thread-header {
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+        }
+        .thread-title {
+            font-size: 1.8rem;
+            color: #2d3748;
+            margin-bottom: 15px;
+        }
+        .thread-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            color: #718096;
+            font-size: 14px;
+        }
+        .model-badge {
+            display: inline-block;
+            padding: 4px 12px;
+            background: #e2e8f0;
+            color: #4a5568;
+            border-radius: 15px;
+            font-size: 13px;
+            font-weight: 500;
+        }
+        .hw-badge {
+            display: inline-block;
+            padding: 4px 12px;
+            background: #fed7e2;
+            color: #97266d;
+            border-radius: 15px;
+            font-size: 13px;
+            font-weight: 500;
+        }
+        .thread-body {
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+        }
+        .thread-body h3 {
+            margin-bottom: 15px;
+            color: #2d3748;
+        }
+        .body-content {
+            white-space: pre-wrap;
+            word-wrap: break-word;
+            line-height: 1.8;
+            font-size: 15px;
+        }
+        .body-content a {
+            color: #4299e1;
+            word-break: break-all;
+        }
+        .attachments {
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
+        .attachments h3 {
+            margin-bottom: 20px;
+            color: #2d3748;
+        }
+        .attachment {
+            margin-bottom: 25px;
+            border: 1px solid #e2e8f0;
+            border-radius: 6px;
+            overflow: hidden;
+        }
+        .attachment-label {
+            background: #f7fafc;
+            padding: 10px 15px;
+            font-weight: 500;
+            font-size: 14px;
+            border-bottom: 1px solid #e2e8f0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .download-link {
+            color: #4299e1;
+            text-decoration: none;
+            font-weight: normal;
+        }
+        .download-link:hover { text-decoration: underline; }
+        .attachment-image img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+        .attachment-pdf iframe {
+            width: 100%;
+            height: 800px;
+            border: none;
+        }
+        .attachment-video video {
+            width: 100%;
+            max-height: 600px;
+        }
+        .attachment-audio audio {
+            width: 100%;
+            padding: 15px;
+        }
+        .attachment-text pre {
+            padding: 15px;
+            background: #f7fafc;
+            overflow-x: auto;
+            max-height: 500px;
+            font-size: 13px;
+            line-height: 1.5;
+        }
+        .attachment-file {
+            padding: 15px;
+        }
+        .file-link {
+            color: #4299e1;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .file-link:hover { text-decoration: underline; }
+        .ed-link {
+            display: inline-block;
+            margin-top: 15px;
+            color: #4299e1;
+            text-decoration: none;
+        }
+        .ed-link:hover { text-decoration: underline; }
+        @media (max-width: 768px) {
+            .thread-title { font-size: 1.4rem; }
+            .attachment-pdf iframe { height: 500px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <a href="../../../index.html" class="back-link">← Back to Directory</a>
+
+        <div class="thread-header">
+            <h1 class="thread-title">Special Participation A: GPT 5.1 Thinking on HW07</h1>
+            <div class="thread-meta">
+                <span>By Jaewon Chang</span>
+                <span>2025-12-08</span>
+                <span class="hw-badge">HW7</span>
+                <span class="model-badge">GPT</span>
+            </div>
+            <a href="https://edstem.org/us/courses/84647/discussion/7428314" target="_blank" class="ed-link">View on Ed Stem →</a>
+        </div>
+
+        <div class="thread-body">
+            <div class="body-content">I utilized GPT 5.1 Thinking on homework 7 (the written questions), and overall I was surprised by how easily the model was able to one shot all the problems. Here are my specific notes per subquestion:
+
+Q3
+
+(1 minute 43 seconds of thinking + 13 seconds of thinking for clarification) The model was able to one shot the problem successfully, in a slightly different method than the solutions for part (b) (ii). There was a minor question I had because the model didn’t fully clarify one step in its working, so I wanted to confirm that I was correct on this. The model responded with a really in-depth clarification on this part, which I found to be extremely helpful for my own learning
+
+(51 seconds of thinking) Given that the solution was slightly different from that of the staff solution, I tried steering the model to mimik the staff solution, and I was surprised by how much more in-depth it was than the staff solution in explaining how to go from one part to the next.
+
+Q4
+
+(33 seconds of thinking) For part (a), the model got the correct accuracy numbers but wrong times, so I’m thinking it actually didn’t reference the blog post and instead just answered based on its background knowledge (e.g. maybe these numbers were part of its pretraining corpus)
+
+For part (b), the model had a good takeaway and also explains with great specificity
+
+For part (c), the model gave an answer that made me also re-think my own takeaways from reading the article – giving me a perspective that I previously hadn&#x27;t thought of.
+
+Q7
+
+(36 seconds of thinking) The model was able to zero shot all the problems, and was able to get both reasonable answers for part (a) even though the problem only asked for one.
+
+For this question, I also typed out the question just in case the model was not able to fully parse the pdf.
+
+Q8
+
+(1 minute 26 seconds of thinking) The model was able to zero shot (a) (i - iii), and also (b), in a method that was similar to that of the staff solution
+
+
+When prompting the model to solve all the problems above, for the most part I was taking screenshots of the problems and pasting it into the chat. The reason for doing this is simply because copy pasting math equations often ruins format, which may get in the way (e.g. w^2 when copy pasted may appear as w2, which the model may confuse to be w_2 instead of w^2). Personally I trust the model&#x27;s OCR capabilities (i.e. parsing text on a screenshot) more than its capability to deduce unformatted math notation. I think this was the reason why I found that the model often thinks for a long period of time (as seen above it often takes the model 30 - 90 seconds of thinking before responding).
+
+Result wise, the model was essentially able to one-shot all of the problems, and utilized the hints when appropriate (E.g. Q8 part b). Although GPT 5.1 Thinking is a frontier model, I was surprised by how it was still able to one shot the problems given that I pasted screenshots of the problems rather than latex-formatted math.
+
+Annotated drive link: <a href="https://drive.google.com/file/d/1mmyNNNoPi6a7Nmy8W2y_9hAXkFW1pW1Z/view?usp=sharing" target="_blank" rel="noopener noreferrer">https://drive.google.com/file/d/1mmyNNNoPi6a7Nmy8W2y_9hAXkFW1pW1Z/view?usp=sharing</a></div>
+        </div>
+
+        <div class="attachments">
+                <div class="attachment attachment-pdf">
+                    <div class="attachment-label">182 participation A.pdf <a href="attachments/182 participation A.pdf" target="_blank" class="download-link">Open in new tab</a></div>
+                    <iframe src="attachments/182 participation A.pdf" loading="lazy"></iframe>
+                </div></div>
+    </div>
+</body>
+</html>

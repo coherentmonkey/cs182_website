@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Special Participation B: GPT 5.1 on HW 0 - CS 182</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #f5f7fa;
+            color: #333;
+            line-height: 1.6;
+        }
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .back-link {
+            display: inline-block;
+            margin-bottom: 20px;
+            color: #4299e1;
+            text-decoration: none;
+        }
+        .back-link:hover { text-decoration: underline; }
+        .thread-header {
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+        }
+        .thread-title {
+            font-size: 1.8rem;
+            color: #2d3748;
+            margin-bottom: 15px;
+        }
+        .thread-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            color: #718096;
+            font-size: 14px;
+        }
+        .model-badge {
+            display: inline-block;
+            padding: 4px 12px;
+            background: #e2e8f0;
+            color: #4a5568;
+            border-radius: 15px;
+            font-size: 13px;
+            font-weight: 500;
+        }
+        .hw-badge {
+            display: inline-block;
+            padding: 4px 12px;
+            background: #fed7e2;
+            color: #97266d;
+            border-radius: 15px;
+            font-size: 13px;
+            font-weight: 500;
+        }
+        .thread-body {
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+        }
+        .thread-body h3 {
+            margin-bottom: 15px;
+            color: #2d3748;
+        }
+        .body-content {
+            white-space: pre-wrap;
+            word-wrap: break-word;
+            line-height: 1.8;
+            font-size: 15px;
+        }
+        .body-content a {
+            color: #4299e1;
+            word-break: break-all;
+        }
+        .attachments {
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
+        .attachments h3 {
+            margin-bottom: 20px;
+            color: #2d3748;
+        }
+        .attachment {
+            margin-bottom: 25px;
+            border: 1px solid #e2e8f0;
+            border-radius: 6px;
+            overflow: hidden;
+        }
+        .attachment-label {
+            background: #f7fafc;
+            padding: 10px 15px;
+            font-weight: 500;
+            font-size: 14px;
+            border-bottom: 1px solid #e2e8f0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .download-link {
+            color: #4299e1;
+            text-decoration: none;
+            font-weight: normal;
+        }
+        .download-link:hover { text-decoration: underline; }
+        .attachment-image img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+        .attachment-pdf iframe {
+            width: 100%;
+            height: 800px;
+            border: none;
+        }
+        .attachment-video video {
+            width: 100%;
+            max-height: 600px;
+        }
+        .attachment-audio audio {
+            width: 100%;
+            padding: 15px;
+        }
+        .attachment-text pre {
+            padding: 15px;
+            background: #f7fafc;
+            overflow-x: auto;
+            max-height: 500px;
+            font-size: 13px;
+            line-height: 1.5;
+        }
+        .attachment-file {
+            padding: 15px;
+        }
+        .file-link {
+            color: #4299e1;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .file-link:hover { text-decoration: underline; }
+        .ed-link {
+            display: inline-block;
+            margin-top: 15px;
+            color: #4299e1;
+            text-decoration: none;
+        }
+        .ed-link:hover { text-decoration: underline; }
+        @media (max-width: 768px) {
+            .thread-title { font-size: 1.4rem; }
+            .attachment-pdf iframe { height: 500px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <a href="../../../index.html" class="back-link">← Back to Directory</a>
+
+        <div class="thread-header">
+            <h1 class="thread-title">Special Participation B: GPT 5.1 on HW 0</h1>
+            <div class="thread-meta">
+                <span>By Anshul Verma</span>
+                <span>2025-12-08</span>
+                <span class="hw-badge">HW0</span>
+                <span class="model-badge">GPT</span>
+            </div>
+            <a href="https://edstem.org/us/courses/84647/discussion/7427241" target="_blank" class="ed-link">View on Ed Stem →</a>
+        </div>
+
+        <div class="thread-body">
+            <div class="body-content">Chat History: <a href="https://chatgpt.com/share/6935ebc1-4214-800e-b0e8-93e9889d481d" target="_blank" rel="noopener noreferrer">https://chatgpt.com/share/6935ebc1-4214-800e-b0e8-93e9889d481d</a>
+
+Annotation: <a href="https://drive.google.com/file/d/15xrxl-aVIQQQ-fi-atYCIqujloFNIf5T/view?usp=sharing" target="_blank" rel="noopener noreferrer">https://drive.google.com/file/d/15xrxl-aVIQQQ-fi-atYCIqujloFNIf5T/view?usp=sharing</a>
+
+Overall Performance: The model demonstrated strong proficiency in writing &quot;Pythonic&quot; numerical code and producing implementations that were very computationally efficient and correct. However, it lacked intuition regarding training dynamics; while the architecture was correct, the model initially failed to select viable hyperparameters, leading to severe underfitting.
+
+Strategy Used: Rather than immediately correcting the model&#x27;s poor hyperparameter choices, I allowed it to attempt multiple training runs with its suggested values to demonstrate the failure mode (underfitting). I then directed the model to analyze these previous failed attempts to infer why the loss wasn&#x27;t decreasing. I eventually had to provide the solution for overfitting the 3-Layer Net but it was able to use this to correctly infer hyperparameters to overfit the 5-Layer net.
+
+Code:</div>
+        </div>
+
+        <div class="attachments">
+                    <div class="attachment attachment-text">
+                        <div class="attachment-label">fc_net.py <a href="attachments/fc_net.py" target="_blank" class="download-link">Download</a></div>
+                        <pre><code>import numpy as np
+from deeplearning.layers import affine_forward, affine_backward, softmax_loss
+from deeplearning.layer_utils import affine_relu_forward, affine_relu_backward
+
+class TwoLayerNet(object):
+    &quot;&quot;&quot;
+    A two-layer fully-connected neural network with ReLU nonlinearity and
+    softmax loss. Architecture: affine - relu - affine - softmax
+    &quot;&quot;&quot;
+
+    def __init__(self, input_dim=3 * 32 * 32, hidden_dim=100,
+                 num_classes=10, weight_scale=1e-3, reg=0.0):
+        self.params = {}
+        self.reg = reg
+
+        ############################################################################
+        # Initialize weights and biases                                            #
+        ############################################################################
+        # First layer: D -&gt; H
+        self.params[&#x27;W1&#x27;] = weight_scale * np.random.randn(input_dim, hidden_dim)
+        self.params[&#x27;b1&#x27;] = np.zeros(hidden_dim)
+
+        # Second layer: H -&gt; C
+        self.params[&#x27;W2&#x27;] = weight_scale * np.random.randn(hidden_dim, num_classes)
+        self.params[&#x27;b2&#x27;] = np.zeros(num_classes)
+        ############################################################################
+        #                            END OF CODE                                   #
+        ############################################################################
+
+    def loss(self, X, y=None):
+        &quot;&quot;&quot;
+        Compute loss and gradients for a minibatch of data.
+        &quot;&quot;&quot;
+        W1, b1 = self.params[&#x27;W1&#x27;], self.params[&#x27;b1&#x27;]
+        W2, b2 = self.params[&#x27;W2&#x27;], self.params[&#x27;b2&#x27;]
+
+        # Forward pass
+        ############################################################################
+        # Compute class scores                                                      #
+        ############################################################################
+        # First layer: affine -&gt; relu
+        out_hidden, cache_hidden = affine_relu_forward(X, W1, b1)
+
+        # Second layer: affine
+        scores, cache_scores = affine_forward(out_hidden, W2, b2)
+        ############################################################################
+        #                           END OF CODE                                    #
+        ############################################################################
+
+        # If test mode, just return the scores
+        if y is None:
+            return scores
+
+        ############################################################################
+        # Compute softmax loss + backward                                          #
+        ############################################################################
+
+        # Loss (data loss + regularization loss)
+        loss, dscores = softmax_loss(scores, y)
+
+        # Add regularization: 0.5 * reg * ∑ W^2
+        loss += 0.5 * self.reg * (np.sum(W1 * W1) + np.sum(W2 * W2))
+
+        # Backward pass
+        grads = {}
+
+        # Backprop through second layer
+        dhidden, dW2, db2 = affine_backward(dscores, cache_scores)
+
+        # Backprop through first layer (affine + relu)
+        dX, dW1, db1 = affine_relu_backward(dhidden, cache_hidden)
+
+        # Add reg gradients (only weights)
+        dW2 += self.reg * W2
+        dW1 += self.reg * W1
+
+        # Store grads
+        grads[&#x27;W1&#x27;] = dW1
+        grads[&#x27;b1&#x27;] = db1
+        grads[&#x27;W2&#x27;] = dW2
+        grads[&#x27;b2&#x27;] = db2
+        ############################################################################
+        #                           END OF CODE                                    #
+        ############################################################################
+
+        return loss, grads
+
+class FullyConnectedNet(object):
+    &quot;&quot;&quot;
+    Fully-connected network: {affine - relu} x (L-1) - affine - softmax
+    &quot;&quot;&quot;
+
+    def __init__(self, hidden_dims, input_dim=3 * 32 * 32,
+                 num_classes=10, dropout=0, use_batchnorm=False,
+                 reg=0.0, weight_scale=1e-2, dtype=np.float32, seed=None):
+
+        self.use_batchnorm = use_batchnorm
+        self.use_dropout = dropout &gt; 0
+        self.reg = reg
+        self.num_layers = 1 + len(hidden_dims)
+        self.dtype = dtype
+        self.params = {}
+
+        ############################################################################
+        # Parameter initialization                                                 #
+        ############################################################################
+
+        layer_input_dim = input_dim
+
+        # Hidden layers
+        for i, hidden_dim in enumerate(hidden_dims):
+            self.params[&#x27;W%d&#x27; % (i+1)] = weight_scale * np.random.randn(layer_input_dim, hidden_dim)
+            self.params[&#x27;b%d&#x27; % (i+1)] = np.zeros(hidden_dim)
+            layer_input_dim = hidden_dim
+
+        # Final output layer
+        self.params[&#x27;W%d&#x27; % self.num_layers] = weight_scale * np.random.randn(layer_input_dim, num_classes)
+        self.params[&#x27;b%d&#x27; % self.num_layers] = np.zeros(num_classes)
+
+        ############################################################################
+
+        # Cast parameters
+        for k, v in self.params.items():
+            self.params[k] = v.astype(dtype)
+
+        # Ignore dropout and batchnorm for now
+
+    def loss(self, X, y=None):
+        &quot;&quot;&quot;
+        Compute loss and gradient.
+        &quot;&quot;&quot;
+        X = X.astype(self.dtype)
+        mode = &#x27;test&#x27; if y is None else &#x27;train&#x27;
+
+        caches = {}
+        out = X
+
+        ############################################################################
+        # Forward pass                                                             #
+        ############################################################################
+
+        # Forward through hidden layers
+        for i in range(1, self.num_layers):
+            Wi = self.params[&#x27;W%d&#x27; % i]
+            bi = self.params[&#x27;b%d&#x27; % i]
+            out, caches[i] = affine_relu_forward(out, Wi, bi)
+
+        # Final affine layer
+        W_last = self.params[&#x27;W%d&#x27; % self.num_layers]
+        b_last = self.params[&#x27;b%d&#x27; % self.num_layers]
+        scores, caches[self.num_layers] = affine_forward(out, W_last, b_last)
+
+        # Test mode: return scores only
+        if y is None:
+            return scores
+
+        ############################################################################
+        # Backward pass                                                            #
+        ############################################################################
+
+        grads = {}
+        loss, dscores = softmax_loss(scores, y)
+
+        # Add regularization to loss
+        for i in range(1, self.num_layers+1):
+            Wi = self.params[&#x27;W%d&#x27; % i]
+            loss += 0.5 * self.reg * np.sum(Wi * Wi)
+
+        # Backprop through final layer
+        dout, dW, db = affine_backward(dscores, caches[self.num_layers])
+        grads[&#x27;W%d&#x27; % self.num_layers] = dW + self.reg * W_last
+        grads[&#x27;b%d&#x27; % self.num_layers] = db
+
+        # Backprop through hidden layers (reverse order)
+        for i in reversed(range(1, self.num_layers)):
+            Wi = self.params[&#x27;W%d&#x27; % i]
+            dout, dW, db = affine_relu_backward(dout, caches[i])
+            grads[&#x27;W%d&#x27; % i] = dW + self.reg * Wi
+            grads[&#x27;b%d&#x27; % i] = db
+
+        return loss, grads
+</code></pre>
+                    </div>
+                    <div class="attachment attachment-text">
+                        <div class="attachment-label">layers.py <a href="attachments/layers.py" target="_blank" class="download-link">Download</a></div>
+                        <pre><code>import numpy as np
+
+
+def affine_forward(x, w, b):
+    &quot;&quot;&quot;
+    Computes the forward pass for an affine (fully-connected) layer.
+    &quot;&quot;&quot;
+    # (N, d1, d2, ..., dk)
+    N = x.shape[0]
+
+    # Reshape x into (N, D)
+    x_row = x.reshape(N, -1)
+
+    # Compute output: (N, M)
+    out = x_row.dot(w) + b  # b broadcasted
+
+    # Values needed for backward pass
+    cache = (x, w, b)
+
+    return out, cache
+
+
+
+def affine_backward(dout, cache):
+    &quot;&quot;&quot;
+    Computes the backward pass for an affine layer.
+    &quot;&quot;&quot;
+    x, w, b = cache
+    N = x.shape[0]
+
+    # Reshape x to (N, D)
+    x_row = x.reshape(N, -1)
+
+    # Gradients
+    dx = dout.dot(w.T)                    # (N, D)
+    dx = dx.reshape(x.shape)              # back to (N, d1, ..., dk)
+
+    dw = x_row.T.dot(dout)                # (D, M)
+
+    db = np.sum(dout, axis=0)             # (M,)
+
+    return dx, dw, db
+
+
+
+def relu_forward(x):
+    &quot;&quot;&quot;
+    Computes the forward pass for a layer of rectified linear units (ReLUs).
+    &quot;&quot;&quot;
+    # Apply ReLU elementwise
+    out = np.maximum(0, x)
+
+    # Store x for backward pass
+    cache = x
+    return out, cache
+
+
+
+def relu_backward(dout, cache):
+    &quot;&quot;&quot;
+    Computes the backward pass for a layer of rectified linear units (ReLUs).
+    &quot;&quot;&quot;
+    x = cache
+    
+    # Gradient flows where x &gt; 0
+    dx = dout * (x &gt; 0)
+    
+    return dx
+
+
+def svm_loss(x, y):
+    &quot;&quot;&quot;
+    Computes the loss and gradient using for multiclass SVM classification.
+
+    Inputs:
+    - x: Input data, of shape (N, C) where x[i, j] is the score for the jth class
+      for the ith input.
+    - y: Vector of labels, of shape (N,) where y[i] is the label for x[i] and
+      0 &lt;= y[i] &lt; C
+
+    Returns a tuple of:
+    - loss: Scalar giving the loss
+    - dx: Gradient of the loss with respect to x
+    &quot;&quot;&quot;
+    N = x.shape[0]
+    correct_class_scores = x[np.arange(N), y]
+    margins = np.maximum(0, x - correct_class_scores[:, np.newaxis] + 1.0)
+    margins[np.arange(N), y] = 0
+    loss = np.sum(margins) / N
+    num_pos = np.sum(margins &gt; 0, axis=1)
+    dx = np.zeros_like(x)
+    dx[margins &gt; 0] = 1
+    dx[np.arange(N), y] -= num_pos
+    dx /= N
+    return loss, dx
+
+
+def softmax_loss(x, y):
+    &quot;&quot;&quot;
+    Computes the loss and gradient for softmax classification.
+
+    Inputs:
+    - x: Input data, of shape (N, C) where x[i, j] is the score for the jth class
+      for the ith input.
+    - y: Vector of labels, of shape (N,) where y[i] is the label for x[i] and
+      0 &lt;= y[i] &lt; C
+
+    Returns a tuple of:
+    - loss: Scalar giving the loss
+    - dx: Gradient of the loss with respect to x
+    &quot;&quot;&quot;
+    probs = np.exp(x - np.max(x, axis=1, keepdims=True))
+    probs /= np.sum(probs, axis=1, keepdims=True)
+    N = x.shape[0]
+    loss = -np.sum(np.log(probs[np.arange(N), y])) / N
+    dx = probs.copy()
+    dx[np.arange(N), y] -= 1
+    dx /= N
+    return loss, dx
+</code></pre>
+                    </div>
+                <div class="attachment attachment-file">
+                    <a href="attachments/networks.ipynb" target="_blank" class="file-link">networks.ipynb</a>
+                </div></div>
+    </div>
+</body>
+</html>

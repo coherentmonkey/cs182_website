@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Special Participation E: The &quot;Broken Blueprint&quot; Game - CS 182</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #f5f7fa;
+            color: #333;
+            line-height: 1.6;
+        }
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .back-link {
+            display: inline-block;
+            margin-bottom: 20px;
+            color: #4299e1;
+            text-decoration: none;
+        }
+        .back-link:hover { text-decoration: underline; }
+        .thread-header {
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+        }
+        .thread-title {
+            font-size: 1.8rem;
+            color: #2d3748;
+            margin-bottom: 15px;
+        }
+        .thread-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            color: #718096;
+            font-size: 14px;
+        }
+        .model-badge {
+            display: inline-block;
+            padding: 4px 12px;
+            background: #e2e8f0;
+            color: #4a5568;
+            border-radius: 15px;
+            font-size: 13px;
+            font-weight: 500;
+        }
+        .hw-badge {
+            display: inline-block;
+            padding: 4px 12px;
+            background: #fed7e2;
+            color: #97266d;
+            border-radius: 15px;
+            font-size: 13px;
+            font-weight: 500;
+        }
+        .thread-body {
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+        }
+        .thread-body h3 {
+            margin-bottom: 15px;
+            color: #2d3748;
+        }
+        .body-content {
+            white-space: pre-wrap;
+            word-wrap: break-word;
+            line-height: 1.8;
+            font-size: 15px;
+        }
+        .body-content a {
+            color: #4299e1;
+            word-break: break-all;
+        }
+        .attachments {
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
+        .attachments h3 {
+            margin-bottom: 20px;
+            color: #2d3748;
+        }
+        .attachment {
+            margin-bottom: 25px;
+            border: 1px solid #e2e8f0;
+            border-radius: 6px;
+            overflow: hidden;
+        }
+        .attachment-label {
+            background: #f7fafc;
+            padding: 10px 15px;
+            font-weight: 500;
+            font-size: 14px;
+            border-bottom: 1px solid #e2e8f0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .download-link {
+            color: #4299e1;
+            text-decoration: none;
+            font-weight: normal;
+        }
+        .download-link:hover { text-decoration: underline; }
+        .attachment-image img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+        .attachment-pdf iframe {
+            width: 100%;
+            height: 800px;
+            border: none;
+        }
+        .attachment-video video {
+            width: 100%;
+            max-height: 600px;
+        }
+        .attachment-audio audio {
+            width: 100%;
+            padding: 15px;
+        }
+        .attachment-text pre {
+            padding: 15px;
+            background: #f7fafc;
+            overflow-x: auto;
+            max-height: 500px;
+            font-size: 13px;
+            line-height: 1.5;
+        }
+        .attachment-file {
+            padding: 15px;
+        }
+        .file-link {
+            color: #4299e1;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .file-link:hover { text-decoration: underline; }
+        .ed-link {
+            display: inline-block;
+            margin-top: 15px;
+            color: #4299e1;
+            text-decoration: none;
+        }
+        .ed-link:hover { text-decoration: underline; }
+        @media (max-width: 768px) {
+            .thread-title { font-size: 1.4rem; }
+            .attachment-pdf iframe { height: 500px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <a href="../../../index.html" class="back-link">← Back to Directory</a>
+
+        <div class="thread-header">
+            <h1 class="thread-title">Special Participation E: The &quot;Broken Blueprint&quot; Game</h1>
+            <div class="thread-meta">
+                <span>By Tom Chen</span>
+                <span>2025-12-05</span>
+                
+                <span class="model-badge">Gemini</span>
+            </div>
+            <a href="https://edstem.org/us/courses/84647/discussion/7410745" target="_blank" class="ed-link">View on Ed Stem →</a>
+        </div>
+
+        <div class="thread-body">
+            <div class="body-content">The &quot;Broken Blueprint&quot; Game: Learning Deep Learning via AI Code Review
+
+This game is a &quot;Reverse Learning&quot; approach: Instead of asking the AI to explain a concept or quiz me, I inverted the roles: The AI writes code, and I have to debug it.
+
+I designed a prompt called &quot;The Buggy Architect&quot; to simulate a real-world scenario: reviewing the code of a junior engineer who makes subtle, logical errors in deep learning implementations.
+
+The Core Idea: Evaluation over Passive Consumption
+
+Traditional AI study tools often encourage passive consumption (reading summaries). My goal was to target the higher levels of Bloom&#x27;s Taxonomy: Analysis and Evaluation.In Deep Learning, many students (including myself) understand the high-level diagrams of a Transformer or ResNet but fail when implementing them because of dimension mismatches or incorrect tensor operations. By forcing myself to &quot;Code Review&quot; the AI&#x27;s faulty implementation, I am required to mentally trace the data flow and tensor shapes ensuring a much more rigorous understanding of the architecture.
+
+Prompt Design Choices
+
+I iteratively built a system prompt with specific constraints:
+
+The &quot;Subtlety&quot; Constraint: The prompt explicitly forbids syntax errors (which a compiler would catch). The bugs must be logical or architectural (e.g., applying Softmax over the wrong dimension, incorrect masking in causal attention, or putting LayerNorm in a place that creates a gradient bottleneck).
+
+The &quot;Junior Engineer&quot; Personality: I instructed the AI to act as a confident but prone-to-error junior engineer. This lowers the barrier to entry and makes the &quot;correction&quot; process feel like a collaborative code review rather than a test.
+
+Scaffolded Hinting: If I fail to spot the bug, the AI is instructed not to reveal the answer immediately but to provide hints related to Tensor Shapes or Gradient Flow. This forces me to check the math manually.
+
+What Worked Well
+
+Based on my interaction trace (see attached), this approach was highly effective for technical rigor:
+
+Forced Math Verification: When the model implemented Multi-Head Attention, I had to manually write down the matrix dimensions on paper to verify if the view and transpose operations were correct. This solidified my understanding of the (Batch, Heads, Seq, Dim) transformation.
+
+Catching &quot;Silent Failures&quot;: The tool was good at generating bugs that run without crashing but destroy performance (e.g., forgetting to add the residual connection in a ResNet block). Spotting this required understanding the purpose of the architecture, not just the code.
+
+Engagement: The gamified nature (&quot;Find the bug&quot;) made the session significantly more engaging than a standard Q&amp;A.
+
+What Could Be Improved
+
+However, the tool exhibited specific weaknesses that require critical oversight:
+
+&quot;Gaslighting&quot; / False Positives: In one instance, the AI actually wrote correct code but insisted there was a bug because the prompt forced it to include one. It then tried to convince me that a standard implementation was wrong. This requires the student to be very confident to push back.
+
+Inconsistent Difficulty: Sometimes the &quot;bug&quot; was too trivial (e.g., a typo in a variable name) despite the instructions asking for logical errors.
+
+Lack of Context: The AI sometimes used variable names (like x vs h) that were ambiguous without a surrounding class definition, making it hard to judge if a bug existed or if it was just poor naming convention.
+
+Reflection
+
+This tool serves as an excellent &quot;Pre-Implementation Check.&quot; Before I start my own homework or project, playing a few rounds of &quot;Find the Bug&quot; with this prompt helps me anticipate the common pitfalls I am likely to make myself. It turns the AI from a lecturer into a simulation of a coding environment.</div>
+        </div>
+
+        <div class="attachments">
+                    <div class="attachment attachment-text">
+                        <div class="attachment-label">Prompt.txt <a href="attachments/Prompt.txt" target="_blank" class="download-link">Download</a></div>
+                        <pre><code></code></pre>
+                    </div>
+                <div class="attachment attachment-pdf">
+                    <div class="attachment-label">Special Participation E by Tom.pdf <a href="attachments/Special Participation E by Tom.pdf" target="_blank" class="download-link">Open in new tab</a></div>
+                    <iframe src="attachments/Special Participation E by Tom.pdf" loading="lazy"></iframe>
+                </div></div>
+    </div>
+</body>
+</html>

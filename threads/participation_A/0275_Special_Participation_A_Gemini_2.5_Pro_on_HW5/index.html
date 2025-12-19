@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Special Participation A: Gemini 2.5 Pro on HW5 - CS 182</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #f5f7fa;
+            color: #333;
+            line-height: 1.6;
+        }
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .back-link {
+            display: inline-block;
+            margin-bottom: 20px;
+            color: #4299e1;
+            text-decoration: none;
+        }
+        .back-link:hover { text-decoration: underline; }
+        .thread-header {
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+        }
+        .thread-title {
+            font-size: 1.8rem;
+            color: #2d3748;
+            margin-bottom: 15px;
+        }
+        .thread-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            color: #718096;
+            font-size: 14px;
+        }
+        .model-badge {
+            display: inline-block;
+            padding: 4px 12px;
+            background: #e2e8f0;
+            color: #4a5568;
+            border-radius: 15px;
+            font-size: 13px;
+            font-weight: 500;
+        }
+        .hw-badge {
+            display: inline-block;
+            padding: 4px 12px;
+            background: #fed7e2;
+            color: #97266d;
+            border-radius: 15px;
+            font-size: 13px;
+            font-weight: 500;
+        }
+        .thread-body {
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+        }
+        .thread-body h3 {
+            margin-bottom: 15px;
+            color: #2d3748;
+        }
+        .body-content {
+            white-space: pre-wrap;
+            word-wrap: break-word;
+            line-height: 1.8;
+            font-size: 15px;
+        }
+        .body-content a {
+            color: #4299e1;
+            word-break: break-all;
+        }
+        .attachments {
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
+        .attachments h3 {
+            margin-bottom: 20px;
+            color: #2d3748;
+        }
+        .attachment {
+            margin-bottom: 25px;
+            border: 1px solid #e2e8f0;
+            border-radius: 6px;
+            overflow: hidden;
+        }
+        .attachment-label {
+            background: #f7fafc;
+            padding: 10px 15px;
+            font-weight: 500;
+            font-size: 14px;
+            border-bottom: 1px solid #e2e8f0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .download-link {
+            color: #4299e1;
+            text-decoration: none;
+            font-weight: normal;
+        }
+        .download-link:hover { text-decoration: underline; }
+        .attachment-image img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+        .attachment-pdf iframe {
+            width: 100%;
+            height: 800px;
+            border: none;
+        }
+        .attachment-video video {
+            width: 100%;
+            max-height: 600px;
+        }
+        .attachment-audio audio {
+            width: 100%;
+            padding: 15px;
+        }
+        .attachment-text pre {
+            padding: 15px;
+            background: #f7fafc;
+            overflow-x: auto;
+            max-height: 500px;
+            font-size: 13px;
+            line-height: 1.5;
+        }
+        .attachment-file {
+            padding: 15px;
+        }
+        .file-link {
+            color: #4299e1;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .file-link:hover { text-decoration: underline; }
+        .ed-link {
+            display: inline-block;
+            margin-top: 15px;
+            color: #4299e1;
+            text-decoration: none;
+        }
+        .ed-link:hover { text-decoration: underline; }
+        @media (max-width: 768px) {
+            .thread-title { font-size: 1.4rem; }
+            .attachment-pdf iframe { height: 500px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <a href="../../../index.html" class="back-link">← Back to Directory</a>
+
+        <div class="thread-header">
+            <h1 class="thread-title">Special Participation A: Gemini 2.5 Pro on HW5</h1>
+            <div class="thread-meta">
+                <span>By Kithmini Herath</span>
+                <span>2025-11-12</span>
+                <span class="hw-badge">HW5</span>
+                <span class="model-badge">Gemini</span>
+            </div>
+            <a href="https://edstem.org/us/courses/84647/discussion/7297480" target="_blank" class="ed-link">View on Ed Stem →</a>
+        </div>
+
+        <div class="thread-body">
+            <div class="body-content">I used Gemini 2.5 Pro to solve the written parts of Homework 5 (Q1-4). I started by mentioning that I wanted to solve a problem set related to a specific topic (in this case, basics of CNNs) and went over the four problems one by one with attached screenshots of the entire problem. I’ve attached an annotated pdf of my interactions with the LLM and a link to my original chat. 
+
+In summary, even without extensive context in my typed prompt, Gemini 2.5 Pro was able to extract information included within the problem from the screenshots themselves and one-shot solve almost all the problems correctly without any hallucinations. 
+
+Notable observations: 
+
+Good parsing of information - Most of the time it correctly parsed all mathematical equations, figures and text from the screenshots, even when a problem was spread across multiple screenshots. This is evident because it often types back key information from the problem statement to formulate the answer. All final answers (after corrections noted below) had no mathematical or conceptual errors. 
+
+Misinterpretation of a hint - In question 1b), it used the hint to solve the problem itself. I wonder if this is because it mostly encountered instances of math problems where the hint is used to solve the problem itself. However, when I went through the other special participation threads for HW5 (that were posted as of 11/12/25), I noticed that none of those LLMs used the hint this way and often correctly interpreted it. So, it was interesting to see this behavior from Gemini. When I pointed this misinterpretation to Gemini, it acknowledged the mistake and solved the problem correctly using substitutions for the system of equations. 
+
+Overly complicated solutions - In this homework I would like to point out to its answers for the subparts in question 2b) in the attached pdf. While none of the approaches were incorrect, there were steps that were unnecessary to build the solution (annotated in the pdf). 
+
+Incomplete reasoning - The answer to 4b) could have been more complete. One could see that from the first term we can derive the transformation we need to apply to $\check{w}$ to get to equation (3) (as the LLM did). However, I think the answer would be complete if it mentioned what should also happen to the $\Gamma$ matrix (even though this was not explicitly asked in the question) for the equation to achieve the form in equation (3) rather than treating it as something obvious. 
+
+In conclusion, I think Gemini 2.5 Pro is fully capable of answering all questions correctly with good mathematical and conceptual reasoning. However, some of the solution approaches could be more concise and complete.</div>
+        </div>
+
+        <div class="attachments">
+                <div class="attachment attachment-pdf">
+                    <div class="attachment-label">gemini2.5Pro-chat_2025-11-11.pdf <a href="attachments/gemini2.5Pro-chat_2025-11-11.pdf" target="_blank" class="download-link">Open in new tab</a></div>
+                    <iframe src="attachments/gemini2.5Pro-chat_2025-11-11.pdf" loading="lazy"></iframe>
+                </div></div>
+    </div>
+</body>
+</html>
